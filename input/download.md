@@ -78,13 +78,13 @@ rather than from a mirror. Then verify the signatures using one of the
 following sets of commands.
 
     % pgpk -a KEYS
-    % pgpv qpid-{{current_release}}.tar.gz.asc
+    % pgpv <artifact-name>.asc
 
     % pgp -ka KEYS
-    % pgp qpid-{{current_release}}.tar.gz.asc
+    % pgp <artifact-name>.asc
 
     % gpg --import KEYS
-    % gpg --verify qpid-{{current_release}}.tar.gz.asc
+    % gpg --verify <artifact-name>.asc
 
 Alternatively, you can verify the MD5 or SHA1 checksums of the
 files. Unix programs called `md5sum` and `sha1sum` (or `md5` and
