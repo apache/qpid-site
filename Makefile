@@ -38,7 +38,8 @@ default: render
 .PHONY: help
 help:
 	@echo "[default]       Equivalent to 'make render'"
-	@echo "render          Renders input/* to output/ and docs/"
+	@echo "render          Renders input/* to output/"
+	@echo "publish         Renders input/* to content/"
 	@echo "clean           Removes output/"
 	@echo "check-links [INTERNAL=1] [EXTERNAL=0]"
 	@echo "                Verify that all links have targets"
@@ -60,13 +61,13 @@ render:
 
 .PHONY: publish
 publish: 
-	scripts/render "" input docs
-	svn status docs
+	scripts/render "" input content
+	git status content
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	@echo "NOTICE! One more step remains!"
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	@echo "Use svn to commit the changes under docs.  Keep in mind that you"
-	@echo "may need to svn add new files."
+	@echo "Use git to commit the changes under content."
+	@echo "Keep in mind that you may need to git add new files."
 
 .PHONY: devel-publish
 devel-publish: TAG := "head"
@@ -80,8 +81,8 @@ devel-publish:
 
 .PHONY: check-output-files
 check-output-files:
-	scripts/render "" input docs
-	scripts/check-output-files ${SITE_URL} input docs
+	scripts/render "" input content
+	scripts/check-output-files ${SITE_URL} input content
 
 .PHONY: check-links
 check-links: INTERNAL := 1

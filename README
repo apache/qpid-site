@@ -15,7 +15,7 @@ To setup paths in your environment, source the `config.sh` script.
     scripts/                      # Scripts called by the make rules
     input/                        # The site content before rendering
     output/                       # Rendered result for local testing
-    docs/                         # Rendered result for publication to the site
+    content/                      # Rendered result for publication to the site
 
 Some notable files in `input/`:
 
@@ -31,7 +31,7 @@ These are the important ones:
 
     site$ make render             # Renders input/* to output/
     site$ make clean              # Removes output/
-    site$ make publish            # Renders input/* to docs/ in preparation
+    site$ make publish            # Renders input/* to content/ in preparation
                                   # for a live site update
 
 ## Adding content
@@ -86,7 +86,7 @@ page.  To illustrate:
     {{current_dispatch_release}} -> 0.1
 
 Under `output/`, `{{site_url}}` is set to a path in your development
-environment, to allow for local testing.  Under `docs/`,
+environment, to allow for local testing.  Under `content/`,
 `{{site_url}}` is set to <http://qpid.apache.org>, for publication to
 the live site.
 
@@ -156,37 +156,38 @@ files:
 
 The scripts depend on the availability of the following tools in your
 environment: cmake, dot, doxygen, epydoc, fop, gcc, javadoc, make,
-pygments, PyYAML, rdoc, svn, pandoc, pdflatex and xsltproc.  The
+pygments, PyYAML, rdoc, git, pandoc, pdflatex and xsltproc.  The
 following yum command works to install all the required dependencies
 on Fedora or RHEL.
 
     $ sudo yum install cmake doxygen epydoc fop gcc graphviz java-devel \
-          libxslt make python-pygments PyYAML rubygem-rdoc subversion \
+          libxslt make python-pygments PyYAML rubygem-rdoc git \
           pandoc-pdf python-sphinx apache-maven
 
 ## Publishing your work
 
-Qpid uses svnpubsub to send new content to the Qpid website.  Any file
-committed under <http://svn.apache.org/repos/asf/qpid/site/docs/> is
+Qpid uses gitpubsub to send new content to the Qpid website.  Any file
+committed under the 'content' dir on the 'asf-site' branch of the
+https://git-wip-us.apache.org/repos/asf/qpid-site.git repo is
 automatically propagated to the live site.  `make publish` renders to
-this same `docs/` directory.
+this same `content/` directory.
 
-To publish, run `make publish` and use subversion to commit the
-changes.  Any additions or other structural changes under the `docs/`
-directory may require subversion adds or removes.
+To publish, run `make publish` and use git to commit and push the
+changes.  Any additions or other structural changes under the `content/`
+directory may require git adds or removes.
 
     site$ make publish
-    scripts/render "" input docs
-    svn status docs
-    M       docs/index.html
-    ?       docs/a-new-file.html
+    scripts/render "" input content
+    git status content
+    M       content/index.html
+    ?       content/a-new-file.html
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     NOTICE! One more step remains!
     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    Use svn to commit the changes under docs.  Keep in mind that you
-    may need to svn add new files.
-    site$ svn add docs/a-new-file.html
-    site$ svn ci docs -m "A commit message"
+    Use git to commit the changes under content.
+    Keep in mind that you may need to git add new files.
+    site$ git add content/a-new-file.html
+    site$ git commit content -m "A commit message"
 
 ## More information
 
