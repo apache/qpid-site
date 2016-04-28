@@ -34,7 +34,7 @@ unsubscribe address.
 |------|---------|-----------|-------------|---------|
 | [users@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-users/) | General discussion | [users-subscribe](mailto:users-subscribe@qpid.apache.org) | [users-unsubscribe](mailto:users-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html) |
 | [dev@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-dev/) | Development | [dev-subscribe](mailto:dev-subscribe@qpid.apache.org) | [dev-unsubscribe](mailto:dev-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html) |
-| [proton@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-proton/) | Proton. Going forward, use above. |  | [proton-unsubscribe](mailto:proton-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-Proton-f7580687.html) |
+| [proton@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-proton/) | Proton. Going forward, use above lists. |  | | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-Proton-f7580687.html) |
 
 Qpid also offers lists for
 [commits]({{site_url}}/source-code.html#commits-list) and
