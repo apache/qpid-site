@@ -62,11 +62,11 @@ render:
 .PHONY: publish
 publish: 
 	scripts/render "" input content
-	git status content
+	git status input content
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	@echo "NOTICE! One more step remains!"
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	@echo "Use git to commit the changes under content."
+	@echo "Use git to commit and push the changes."
 	@echo "Keep in mind that you may need to git add new files."
 
 .PHONY: devel-publish
