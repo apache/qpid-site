@@ -23,12 +23,12 @@
 [Qpid packages](packages.html) and [Qpid via Maven](maven.html).*
 
 Qpid's source artefacts are produced as part of our community release
-process.  The downloads on this page are from our current releases,
+process. The downloads on this page are from our current releases,
 {{current_release_link}}, {{current_proton_release_link}},
 {{current_dispatch_release_link}}, {{current_jms_release_link}}, {{current_java_release_link}} and {{current_cpp_release_link}}. You can also see our
 [past releases]({{site_url}}/releases/index.html#past-releases).
 
-It's important to [verify the integrity](#verify-what-you-download) of the files you download.
+It is important to [verify the integrity](#verify-what-you-download) of the files you download.
 
 ## Messaging APIs
 
