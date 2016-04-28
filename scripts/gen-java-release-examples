@@ -1,0 +1,63 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+## JMS ##
+
+def gen_jms(release, source_dir, release_dir):
+    component_dir = join(release_dir, "qpid-jms")
+    input_dir = join(source_dir, "client", "example", "src", "main",
+                     "java", "org", "apache", "qpid", "example")
+    output_dir = join(component_dir, "examples")
+
+    release_url = get_release_branch_url("java", release)
+    readme_url = "{}/java/client/README.txt".format(release_url)
+    source_url = "{}/java/client/example/src/main/java/org/apache/qpid/example".format(release_url)
+
+    input_names = list_dir(input_dir, "*.java", "*.properties")
+
+    for name in input_names:
+        lang = "java"
+
+        if name.endswith(".properties"):
+            lang = "ini"
+
+        gen_example_page(release=release,
+                         input_dir=input_dir,
+                         input_name=name,
+                         output_dir=output_dir,
+                         lang=lang)
+
+    gen_examples_index(release=release,
+                       input_names=input_names,
+                       output_dir=output_dir,
+                       title="Qpid JMS Examples (AMQP 0-10)",
+                       readme_url=readme_url,
+                       source_url=source_url)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release("java", source_release, checkout_dir)
+
+gen_jms(release, source_dir, release_dir)
+
+notice("Examples generated")

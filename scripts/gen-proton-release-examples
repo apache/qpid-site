@@ -1,0 +1,158 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+## Engine/Reactor ##
+
+def gen_proton_examples(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+
+    gen_python_proton_examples(release, source_dir, component_dir)
+    gen_cpp_proton_examples(release, source_dir, component_dir)
+
+def gen_python_proton_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "python")
+    output_dir = join(component_dir, "python", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/python")
+    readme_url = "{}/README".format(source_url)
+    input_names = list_dir(input_dir, "*.py")
+
+    gen_examples(release=release,
+                 lang="python",
+                 title="Proton Python Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url,
+                 readme_url=readme_url)
+
+def gen_cpp_proton_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "cpp")
+    output_dir = join(component_dir, "cpp", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/cpp")
+    readme_url = "{}/README.hpp".format(source_url)
+    input_names = list_dir(input_dir, "*.cpp", "*.hpp")
+
+    #input_names.remove("README.hpp")
+    
+    gen_examples(release=release,
+                 lang="cpp",
+                 title="Proton C++ Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url,
+                 readme_url=readme_url)
+
+
+## Messenger ##
+
+def gen_messenger_examples(release, source_dir, release_dir):
+    component_dir = join(release_dir, "messenger")
+
+    gen_c_messenger_examples(release, source_dir, component_dir)
+    gen_perl_messenger_examples(release, source_dir, component_dir)
+    gen_php_messenger_examples(release, source_dir, component_dir)
+    gen_python_messenger_examples(release, source_dir, component_dir)
+    gen_ruby_messenger_examples(release, source_dir, component_dir)
+
+def gen_c_messenger_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "c", "messenger")
+    output_dir = join(component_dir, "c", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/c/messenger")
+    input_names = list_dir(input_dir, "*.c", "*.h")
+
+    gen_examples(release=release,
+                 lang="c",
+                 title="C AMQP Messenger Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_perl_messenger_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "perl", "messenger")
+    output_dir = join(component_dir, "perl", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/perl/messenger")
+    input_names = list_dir(input_dir, "*.pl")
+
+    gen_examples(release=release,
+                 lang="perl",
+                 title="Perl AMQP Messenger Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_php_messenger_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "php", "messenger")
+    output_dir = join(component_dir, "php", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/php/messenger")
+    input_names = list_dir(input_dir, "*.php")
+
+    gen_examples(release=release,
+                 lang="php",
+                 title="PHP AMQP Messenger Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_python_messenger_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "python", "messenger")
+    output_dir = join(component_dir, "python", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/python/messenger")
+    readme_url = "{}/README.txt".format(source_url)
+
+    input_names = list_dir(input_dir, "*.py")
+
+    gen_examples(release=release,
+                 lang="python",
+                 title="Python AMQP Messenger Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url,
+                 readme_url=readme_url)
+
+def gen_ruby_messenger_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "ruby", "messenger")
+    output_dir = join(component_dir, "ruby", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/ruby/messenger")
+    input_names = list_dir(input_dir, "*.rb")
+
+    gen_examples(release=release,
+                 lang="ruby",
+                 title="Ruby AMQP Messenger Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release_from_git("proton", source_release)
+
+gen_proton_examples(release, source_dir, release_dir)
+gen_messenger_examples(release, source_dir, release_dir)
+
+notice("Examples generated")

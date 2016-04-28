@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>qpid.messaging.util</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="qpid.messaging-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Python Messaging API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Package&nbsp;qpid ::
+        <a href="qpid.messaging-module.html">Package&nbsp;messaging</a> ::
+        Module&nbsp;util
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="qpid.messaging.util-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="qpid.messaging.util-module.html">Module qpid.messaging.util</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-comment"># Licensed to the Apache Software Foundation (ASF) under one</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-comment"># or more contributor license agreements.  See the NOTICE file</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-comment"># distributed with this work for additional information</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-comment"># regarding copyright ownership.  The ASF licenses this file</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-comment"># to you under the Apache License, Version 2.0 (the</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-comment"># "License"); you may not use this file except in compliance</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-comment"># with the License.  You may obtain a copy of the License at</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno">10</tt>  <tt class="py-line"><tt class="py-comment">#   http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"><tt class="py-comment"># software distributed under the License is distributed on an</tt> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line"><tt class="py-comment"># "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</tt> </tt>
+<a name="L15"></a><tt class="py-lineno">15</tt>  <tt class="py-line"><tt class="py-comment"># KIND, either express or implied.  See the License for the</tt> </tt>
+<a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line"><tt class="py-comment"># specific language governing permissions and limitations</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line"><tt class="py-comment"># under the License.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno">20</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line"><tt class="py-docstring">Add-on utilities for the L{qpid.messaging} API.</tt> </tt>
+<a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"><tt class="py-docstring">"""</tt> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line"> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">qpid</tt><tt class="py-op">.</tt><tt id="link-0" class="py-name" targets="Package qpid.messaging=qpid.messaging-module.html"><a title="qpid.messaging" class="py-name" href="#" onclick="return doclink('link-0', 'messaging', 'link-0');">messaging</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L25"></a><tt class="py-lineno">25</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">logging</tt> <tt class="py-keyword">import</tt> <tt class="py-name">getLogger</tt> </tt>
+<a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">threading</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Thread</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line"> </tt>
+<a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"><tt id="link-1" class="py-name" targets="Variable qpid.messaging.driver.log=qpid.messaging.driver-module.html#log,Variable qpid.messaging.endpoints.log=qpid.messaging.endpoints-module.html#log,Variable qpid.messaging.util.log=qpid.messaging.util-module.html#log"><a title="qpid.messaging.driver.log
+qpid.messaging.endpoints.log
+qpid.messaging.util.log" class="py-name" href="#" onclick="return doclink('link-1', 'log', 'link-1');">log</a></tt> <tt class="py-op">=</tt> <tt class="py-name">getLogger</tt><tt class="py-op">(</tt><tt class="py-string">"qpid.messaging.util"</tt><tt class="py-op">)</tt> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line"> </tt>
+<a name="auto_fetch_reconnect_urls"></a><div id="auto_fetch_reconnect_urls-def"><a name="L30"></a><tt class="py-lineno">30</tt> <a class="py-toggle" href="#" id="auto_fetch_reconnect_urls-toggle" onclick="return toggle('auto_fetch_reconnect_urls');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="qpid.messaging.util-module.html#auto_fetch_reconnect_urls">auto_fetch_reconnect_urls</a><tt class="py-op">(</tt><tt class="py-param">conn</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="auto_fetch_reconnect_urls-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="auto_fetch_reconnect_urls-expanded"><a name="L31"></a><tt class="py-lineno">31</tt>  <tt class="py-line">  <tt class="py-name">ssn</tt> <tt class="py-op">=</tt> <tt class="py-name">conn</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method qpid.messaging.endpoints.Connection.session()=qpid.messaging.endpoints.Connection-class.html#session"><a title="qpid.messaging.endpoints.Connection.session" class="py-name" href="#" onclick="return doclink('link-2', 'session', 'link-2');">session</a></tt><tt class="py-op">(</tt><tt class="py-string">"auto-fetch-reconnect-urls"</tt><tt class="py-op">)</tt> </tt>
+<a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">  <tt class="py-name">rcv</tt> <tt class="py-op">=</tt> <tt class="py-name">ssn</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method qpid.messaging.endpoints.Session.receiver()=qpid.messaging.endpoints.Session-class.html#receiver"><a title="qpid.messaging.endpoints.Session.receiver" class="py-name" href="#" onclick="return doclink('link-3', 'receiver', 'link-3');">receiver</a></tt><tt class="py-op">(</tt><tt class="py-string">"amq.failover"</tt><tt class="py-op">)</tt> </tt>
+<a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line">  <tt class="py-name">rcv</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Variable qpid.messaging.endpoints.Receiver.capacity=qpid.messaging.endpoints.Receiver-class.html#capacity"><a title="qpid.messaging.endpoints.Receiver.capacity" class="py-name" href="#" onclick="return doclink('link-4', 'capacity', 'link-4');">capacity</a></tt> <tt class="py-op">=</tt> <tt class="py-number">10</tt> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno">35</tt>  <tt class="py-line">  <tt class="py-keyword">def</tt> <tt class="py-def-name">main</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-name">True</tt><tt class="py-op">:</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">      <tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">        <tt class="py-name">msg</tt> <tt class="py-op">=</tt> <tt class="py-name">rcv</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method qpid.messaging.endpoints.Receiver.fetch()=qpid.messaging.endpoints.Receiver-class.html#fetch"><a title="qpid.messaging.endpoints.Receiver.fetch" class="py-name" href="#" onclick="return doclink('link-5', 'fetch', 'link-5');">fetch</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">      <tt class="py-keyword">except</tt> <tt id="link-6" class="py-name" targets="Class qpid.messaging.exceptions.LinkClosed=qpid.messaging.exceptions.LinkClosed-class.html"><a title="qpid.messaging.exceptions.LinkClosed" class="py-name" href="#" onclick="return doclink('link-6', 'LinkClosed', 'link-6');">LinkClosed</a></tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">      <tt id="link-7" class="py-name" targets="Function qpid.messaging.util.set_reconnect_urls()=qpid.messaging.util-module.html#set_reconnect_urls"><a title="qpid.messaging.util.set_reconnect_urls" class="py-name" href="#" onclick="return doclink('link-7', 'set_reconnect_urls', 'link-7');">set_reconnect_urls</a></tt><tt class="py-op">(</tt><tt class="py-name">conn</tt><tt class="py-op">,</tt> <tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line">      <tt class="py-name">ssn</tt><tt class="py-op">.</tt><tt id="link-8" class="py-name" targets="Method qpid.messaging.endpoints.Session.acknowledge()=qpid.messaging.endpoints.Session-class.html#acknowledge"><a title="qpid.messaging.endpoints.Session.acknowledge" class="py-name" href="#" onclick="return doclink('link-8', 'acknowledge', 'link-8');">acknowledge</a></tt><tt class="py-op">(</tt><tt class="py-name">msg</tt><tt class="py-op">,</tt> <tt id="link-9" class="py-name" targets="Method qpid.messaging.endpoints.Sender.sync()=qpid.messaging.endpoints.Sender-class.html#sync,Method qpid.messaging.endpoints.Session.sync()=qpid.messaging.endpoints.Session-class.html#sync"><a title="qpid.messaging.endpoints.Sender.sync
+qpid.messaging.endpoints.Session.sync" class="py-name" href="#" onclick="return doclink('link-9', 'sync', 'link-9');">sync</a></tt><tt class="py-op">=</tt><tt class="py-name">False</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line"> </tt>
+<a name="L44"></a><tt class="py-lineno">44</tt>  <tt class="py-line">  <tt class="py-name">thread</tt> <tt class="py-op">=</tt> <tt class="py-name">Thread</tt><tt class="py-op">(</tt><tt id="link-10" class="py-name" targets="Variable qpid.messaging.driver.name=qpid.messaging.driver-module.html#name"><a title="qpid.messaging.driver.name" class="py-name" href="#" onclick="return doclink('link-10', 'name', 'link-10');">name</a></tt><tt class="py-op">=</tt><tt class="py-string">"auto-fetch-reconnect-urls"</tt><tt class="py-op">,</tt> <tt class="py-name">target</tt><tt class="py-op">=</tt><tt class="py-name">main</tt><tt class="py-op">)</tt> </tt>
+<a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">  <tt class="py-name">thread</tt><tt class="py-op">.</tt><tt class="py-name">setDaemon</tt><tt class="py-op">(</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">  <tt class="py-name">thread</tt><tt class="py-op">.</tt><tt id="link-11" class="py-name" targets="Method qpid.messaging.driver.Driver.start()=qpid.messaging.driver.Driver-class.html#start"><a title="qpid.messaging.driver.Driver.start" class="py-name" href="#" onclick="return doclink('link-11', 'start', 'link-11');">start</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line"> </tt>
+<a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt>
+<a name="set_reconnect_urls"></a><div id="set_reconnect_urls-def"><a name="L49"></a><tt class="py-lineno">49</tt> <a class="py-toggle" href="#" id="set_reconnect_urls-toggle" onclick="return toggle('set_reconnect_urls');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="qpid.messaging.util-module.html#set_reconnect_urls">set_reconnect_urls</a><tt class="py-op">(</tt><tt class="py-param">conn</tt><tt class="py-op">,</tt> <tt class="py-param">msg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="set_reconnect_urls-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="set_reconnect_urls-expanded"><a name="L50"></a><tt class="py-lineno">50</tt>  <tt class="py-line">  <tt class="py-name">reconnect_urls</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-op">]</tt> </tt>
+<a name="L51"></a><tt class="py-lineno">51</tt>  <tt class="py-line">  <tt class="py-name">urls</tt> <tt class="py-op">=</tt> <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt class="py-name">properties</tt><tt class="py-op">[</tt><tt class="py-string">"amq.failover"</tt><tt class="py-op">]</tt> </tt>
+<a name="L52"></a><tt class="py-lineno">52</tt>  <tt class="py-line">  <tt class="py-keyword">for</tt> <tt class="py-name">u</tt> <tt class="py-keyword">in</tt> <tt class="py-name">urls</tt><tt class="py-op">:</tt> </tt>
+<a name="L53"></a><tt class="py-lineno">53</tt>  <tt class="py-line">    <tt class="py-comment"># FIXME aconway 2012-06-12: Nasty hack parsing of the C++ broker's URL format.</tt> </tt>
+<a name="L54"></a><tt class="py-lineno">54</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt class="py-name">u</tt><tt class="py-op">.</tt><tt class="py-name">startswith</tt><tt class="py-op">(</tt><tt class="py-string">"amqp:"</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L55"></a><tt class="py-lineno">55</tt>  <tt class="py-line">      <tt class="py-keyword">for</tt> <tt class="py-name">a</tt> <tt class="py-keyword">in</tt> <tt class="py-name">u</tt><tt class="py-op">[</tt><tt class="py-number">5</tt><tt class="py-op">:</tt><tt class="py-op">]</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">","</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno">56</tt>  <tt class="py-line">        <tt class="py-name">parts</tt> <tt class="py-op">=</tt> <tt class="py-name">a</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">":"</tt><tt class="py-op">)</tt> </tt>
+<a name="L57"></a><tt class="py-lineno">57</tt>  <tt class="py-line">        <tt class="py-comment"># Handle IPv6 addresses which have : in the host part.</tt> </tt>
+<a name="L58"></a><tt class="py-lineno">58</tt>  <tt class="py-line">        <tt class="py-name">port</tt> <tt class="py-op">=</tt> <tt class="py-name">parts</tt><tt class="py-op">[</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt>        <tt class="py-comment"># Last : separated field is port</tt> </tt>
+<a name="L59"></a><tt class="py-lineno">59</tt>  <tt class="py-line">        <tt class="py-name">host</tt> <tt class="py-op">=</tt> <tt class="py-string">":"</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">parts</tt><tt class="py-op">[</tt><tt class="py-number">1</tt><tt class="py-op">:</tt><tt class="py-op">-</tt><tt class="py-number">1</tt><tt class="py-op">]</tt><tt class="py-op">)</tt> <tt class="py-comment"># First : separated field is protocol, host is the rest.</tt> </tt>
+<a name="L60"></a><tt class="py-lineno">60</tt>  <tt class="py-line">        <tt class="py-name">reconnect_urls</tt><tt class="py-op">.</tt><tt class="py-name">append</tt><tt class="py-op">(</tt><tt class="py-string">"%s:%s"</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">host</tt><tt class="py-op">,</tt> <tt class="py-name">port</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L61"></a><tt class="py-lineno">61</tt>  <tt class="py-line">  <tt class="py-name">conn</tt><tt class="py-op">.</tt><tt class="py-name">reconnect_urls</tt> <tt class="py-op">=</tt> <tt class="py-name">reconnect_urls</tt> </tt>
+<a name="L62"></a><tt class="py-lineno">62</tt>  <tt class="py-line">  <tt id="link-12" class="py-name"><a title="qpid.messaging.driver.log
+qpid.messaging.endpoints.log
+qpid.messaging.util.log" class="py-name" href="#" onclick="return doclink('link-12', 'log', 'link-1');">log</a></tt><tt class="py-op">.</tt><tt class="py-name">warn</tt><tt class="py-op">(</tt><tt class="py-string">"set reconnect_urls for conn %s: %s"</tt><tt class="py-op">,</tt> <tt class="py-name">conn</tt><tt class="py-op">,</tt> <tt class="py-name">reconnect_urls</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L63"></a><tt class="py-lineno">63</tt>  <tt class="py-line"> </tt>
+<a name="L64"></a><tt class="py-lineno">64</tt>  <tt class="py-line"><tt class="py-name">__all__</tt> <tt class="py-op">=</tt> <tt class="py-op">[</tt><tt class="py-string">"auto_fetch_reconnect_urls"</tt><tt class="py-op">,</tt> <tt class="py-string">"set_reconnect_urls"</tt><tt class="py-op">]</tt> </tt>
+<a name="L65"></a><tt class="py-lineno">65</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="qpid.messaging-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Python Messaging API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu May 15 15:05:59 2014
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

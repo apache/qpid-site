@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>1.6.&#160;LVQ - Last Value Queue - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-0.34/index.html">Qpid C++ 0.34</a></li><li><a href="/releases/qpid-cpp-0.34/cpp-broker/book/index.html">AMQP Messaging Broker (Implemented in C++)</a></li><li>1.6.&#160;LVQ - Last Value Queue</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.6.&#160;LVQ - Last Value Queue</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chap-Messaging_User_Guide-Security.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="queue-state-replication.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm221064308384"></a>1.6.&#160;LVQ - Last Value Queue</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-UnderstandingLVQ"></a>1.6.1.&#160;Understanding LVQ</h3></div></div></div><p>
+      A Last Value Queue is configured with the name of a message header that
+      is used as a key.  The queue behaves as a normal FIFO queue with the
+      exception that when a message is enqueued, any other message in the
+      queue with the same value in the key header is removed and discarded.
+      Thus, for any given key value, the queue holds only the most recent
+      message.
+    </p><p>
+      The following example illustrates the operation of a Last Value Queue.
+      The example shows an empty queue with no consumers and a sequence of
+      produced messages.  The numbers represent the key for each message.
+    </p><pre class="programlisting">
+           &lt;empty queue&gt;
+      1 =&gt;
+           1
+      2 =&gt;
+           1 2
+      3 =&gt;
+           1 2 3
+      4 =&gt;
+           1 2 3 4
+      2 =&gt;
+           1 3 4 2
+      1 =&gt;
+           3 4 2 1
+    </pre><p>
+      Note that the first four messages are enqueued normally in FIFO order.
+      The fifth message has key '2' and is also enqueued on the tail of the
+      queue.  However the message already in the queue with the same key is
+      discarded.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+          If the set of keys used in the messages in a LVQ is constrained, the
+          number of messages in the queue shall not exceed the number of
+          distinct keys in use.
+        </p></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="LVQ-UnderstandingLVQ-UseCases"></a>1.6.1.1.&#160;Common Use-Cases</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+            LVQ with zero or one consuming subscriptions - In this case, if
+            the consumer drops momentarily or is slower than the producer(s),
+            it will only receive current information relative to the message
+            keys.
+          </p></li><li class="listitem"><p>
+            LVQ with zero or more browsing subscriptions - A browsing consumer
+            can subscribe to the LVQ and get an immediate dump of all of the
+            "current" messages and track updates thereafter.  Any number of
+            independent browsers can subscribe to the same LVQ with the same
+            effect.  Since messages are never consumed, they only disappear
+            when replaced with a newer message with the same key or when their
+            TTL expires.
+          </p></li></ul></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-Creating"></a>1.6.2.&#160;Creating a Last Value Queue</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="LVQ-Creating-Address"></a>1.6.2.1.&#160;Using Addressing Syntax</h4></div></div></div><p>
+        A LVQ may be created using directives in the API's address syntax.
+        The important argument is "qpid.last_value_queue_key".  The following
+        Python example shows how a producer of stock price updates can create
+        a LVQ to hold the latest stock prices for each ticker symbol.  The
+        message header used to hold the ticker symbol is called "ticker".
+      </p><pre class="programlisting">
+    conn = Connection(url)
+    conn.open()
+    sess = conn.session()
+    tx = sess.sender("prices;{create:always, node:{type:queue, x-declare:{arguments:{'qpid.last_value_queue_key':'ticker'}}}}")
+      </pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="LVQ-Creating-Tool"></a>1.6.2.2.&#160;Using qpid-config</h4></div></div></div><p>
+        The same LVQ as shown in the previous example can be created using the
+        qpid-config utility:
+      </p><pre class="programlisting">
+    $ qpid-config add queue prices --lvq-key ticker
+      </pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-Example"></a>1.6.3.&#160;LVQ Example</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="LVQ-Example-Sender"></a>1.6.3.1.&#160;LVQ Sender</h4></div></div></div><pre class="programlisting">
+    from qpid.messaging import Connection, Message
+
+    def send(sender, key, message):
+      message.properties["ticker"] = key
+      sender.send(message)
+
+    conn = Connection("localhost")
+    conn.open()
+    sess = conn.session()
+    tx = sess.sender("prices;{create:always, node:{type:queue,x-declare:{arguments:{'qpid.last_value_queue_key':ticker}}}}")
+
+    msg = Message("Content")
+    send(tx, "key1", msg);
+    send(tx, "key2", msg);
+    send(tx, "key3", msg);
+    send(tx, "key4", msg);
+    send(tx, "key2", msg);
+    send(tx, "key1", msg);
+
+    conn.close()
+      </pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="LVQ-Example-Receiver"></a>1.6.3.2.&#160;LVQ Browsing Receiver</h4></div></div></div><pre class="programlisting">
+    from qpid.messaging import Connection, Message
+
+    conn = Connection("localhost")
+    conn.open()
+    sess = conn.session()
+    rx = sess.receiver("prices;{mode:browse}")
+
+    while True:
+      msg = rx.fetch()
+      sess.acknowledge()
+      print msg
+      </pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="LVQ-Deprecated"></a>1.6.4.&#160;Deprecated LVQ Modes</h3></div></div></div><p>
+      There are two legacy modes (still implemented as of Qpid 0.14)
+      controlled by the qpid.last_value_queue and
+      qpid.last_value_queue_no_browse argument values.  These modes are
+      deprecated and should not be used.
+    </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="chap-Messaging_User_Guide-Security.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch01.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="queue-state-replication.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.5.&#160;Security&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.7.&#160;
+    Queue State Replication
+  </td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

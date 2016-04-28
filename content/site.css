@@ -1,0 +1,463 @@
+/*
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ * 
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ *
+ */
+
+/*
+light linen: #fcfcfb
+medium linen: #f7f7ef
+darker linen: #ecece0
+darkest linen: #d4d4ca
+blue: #0d6dad
+dark blue: #0d567f
+lightest indigo: #f9f8fd
+lighter indigo: #d0c6e7
+shady indigo: #7d778b
+*/
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  font-weight: 300;
+  src: url(fonts/Oswald/Oswald-Light.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Oswald";
+  font-style: normal;
+  src: url(fonts/Oswald/Oswald-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  src: url(fonts/Roboto/Roboto-Condensed-Light.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  font-style: italic;
+  src: url(fonts/Roboto/Roboto-Condensed-Light-Italic.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Roboto Condensed";
+  font-style: normal;
+  font-weight: 700;
+  src: url(fonts/Roboto/Roboto-Condensed-Bold.woff) format("woff");
+}
+
+* {
+    margin: 1em 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:first-child {
+    margin-top: 0;
+}
+
+*:last-child {
+    margin-bottom: 0;
+}
+
+html, body, div, a, br {
+    margin: 0;
+}
+
+section, div.section {
+    margin: 1em 0;
+}
+
+body {
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 400;
+    font-size: 13.5pt;
+    line-height: 18pt;
+    text-rendering: optimizeLegibility;
+    color: rgba(0, 0, 0, 0.9);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    clear: left;
+    color: rgba(0, 0, 0, 0.8);
+    line-height: 100%;
+}
+
+h1 {
+    font-size: 1.7em;
+    margin-top: 0;
+    margin-bottom: 0.8em;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+h3 {
+    font-size: 1em;
+}
+
+h4 {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+hr {
+    margin-top: 1em;
+    border: none;
+    border-top: 1px solid #d4d4d4;
+    height: 1px;
+    clear: both;
+}
+
+ol, ul, dd {
+    padding-left: 1.2em;
+}
+
+li, dt, dd {
+    margin: 0;
+}
+
+li > ul, li > ol, dd > dl {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+li > p:last-child, dd > p:last-child {
+    margin-bottom: 1em;
+}
+
+.two-column {
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+}
+
+.three-column {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+}
+
+.four-column {
+    -webkit-column-count: 4;
+    -moz-column-count: 4;
+    column-count: 4;
+}
+
+.column, li {
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+.indent {
+    margin-left: 1em;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex > section, .flex > div {
+    flex: 1 0 0;
+    margin: 0;
+}
+
+a > img {
+    border: none;
+}
+
+input, button {
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    border: 0.1em solid #d4d4d4;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+input {
+    width: 60%;
+}
+
+button {
+    padding: 0 0.4em;
+}
+
+table {
+    border: none;
+    border-collapse: collapse;
+}
+
+td, th {
+    border-bottom: 1px solid #efefef;
+    padding: 0.3em;
+    vertical-align: top;
+    text-align: left;
+}
+
+td:last-child, th:last-child {
+    padding-right: 0;
+}
+
+td {
+    overflow-wrap: break-word;
+}
+
+th, td > em, th > em {
+    font-family: "Oswald", sans-serif;
+    font-size: 0.95em;
+    font-weight: 300;
+    font-style: normal;
+    color: rgba(80, 80, 75, 0.8);
+}
+
+code, pre {
+    font-size: 0.95em;
+}
+
+blockquote, pre, .feature {
+    padding: 1em;
+    margin: 1.5em 0;
+}
+
+pre, .scroll {
+    overflow: auto;
+}
+
+.panel {
+    clear: both;
+    padding: 1.5em;
+}
+
+#-content {
+    max-width: 60em;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: none;
+}
+
+#-top {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid #d4d4ca;
+}
+
+#-nameplate {
+    font-size: 2.5em;
+    line-height: 80%;
+    margin-bottom: 0.75em;
+}
+
+#-nameplate > sup {
+    font-size: 0.4em;
+    position: relative;
+    top: -0.6em;
+}
+
+#-logotype {
+    font-weight: 400;
+}
+
+#-menu-link, #-search-link {
+    float: right;
+    margin-left: 1em;
+}
+
+#-menu-link > img, #-search-link > img {
+    vertical-align: -0.1em;
+}
+
+#-global-navigation {
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    font-size: 0.95em;
+    line-height: 100%;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0.25em;
+}
+
+#-global-navigation > li {
+    display: inline;
+    padding-right: 1em;
+}
+
+#-path-navigation {
+    margin-left: 0;
+    margin-bottom: 1.2em;
+    padding: 0;
+    font-size: 0.9em;
+    line-height: 100%;
+    display: none;
+}
+
+#-path-navigation > li {
+    display: inline;
+}
+
+#-path-navigation > li:after {
+    content: " \003e\00a0";
+}
+
+#-path-navigation > li:last-child:after {
+    content: none;
+}
+
+#-left-column {
+    float: left;
+    width: 67%;
+    margin-bottom: 1em;
+}
+
+#-components-link {
+    font-family: "Oswald", sans-serif;
+    font-weight: 300;
+    font-size: 1.15em;
+}
+
+#-right-column {
+    float: right;
+    width: 30%;
+    min-height: 32em;
+    border-left: 1px solid #d4d4ca;
+    margin-bottom: 1em;
+    padding-left: 2.5%
+}
+
+.right-column-adjusted {
+    position: relative;
+    top: -2em;
+}
+
+#-right-column h2 {
+    font-weight: 300;
+}
+
+#-download-link {
+    margin: 0.4em 0 1.4em 0;
+    font-size: 1.1em;
+}
+
+#-download-link > a {
+    padding: 0.2em 0.6em;
+    display: inline;
+    font-family: "Oswald", sans-serif;
+    font-weight: 400;
+    border: 0.15em solid #0d6dad;
+}
+
+#-apache-navigation {
+    margin: 0;
+    padding: 0;
+    font-size: 0.9em;
+}
+
+#-apache-navigation > li {
+    display: inline;
+}
+
+#-apache-feather {
+    display: inline;
+    vertical-align: -0.07em;
+}
+
+#-legal {
+    font-size: 0.8em;
+    clear: both;
+}
+
+/* Style adjustments for mobile devices */
+
+@media screen and (max-width: 800px) {
+    .flex {
+        display: block;
+    }
+
+    .flex > section,
+    .flex > div {
+        margin: 1em 0;
+    }
+
+    .flex > section:first-child,
+    .flex > div:first-child {
+        margin-top: 0;
+    }
+
+    .flex > section:last-child,
+    .flex > div:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #-global-navigation > li:nth-child(3),
+    #-global-navigation > li:nth-child(4) {
+        display: none;
+    }
+
+    #-nameplate {
+        font-size: 2em;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .feature {
+        padding: 0.8em;
+    }
+
+    table, pre {
+        font-size: 0.7em;
+        margin-bottom: 1.2em;
+    }
+
+    .two-column, .three-column, .four-column {
+        -webkit-column-count: 1;
+        -moz-column-count: 1;
+        column-count: 1;
+    }
+
+    .panel {
+        padding: 1em;
+    }
+
+    #-left-column {
+        float: none;
+        width: 100%;
+    }
+
+    #-right-column {
+        float: none;
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid #d4d4ca;
+        margin: 1em 0;
+        padding: 1em 0 0 0;
+    }
+
+    .right-column-adjusted {
+        position: inherit;
+    }
+}

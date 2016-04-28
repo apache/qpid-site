@@ -1,0 +1,70 @@
+
+<h1>recv_async.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">qpid_proton</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">async</span><span class="p">;</span>
+
+<span class="nb">package</span> <span class="nn">async::</span><span class="n">Receiver</span><span class="p">;</span>
+
+<span class="nv">@ISA</span> <span class="o">=</span> <span class="p">(</span><span class="nn">async::</span><span class="n">CallbackAdapter</span><span class="p">);</span>
+
+<span class="k">sub </span><span class="nf">on_start</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="p">(</span><span class="nv">$self</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$args</span> <span class="o">=</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">||</span> <span class="p">(</span><span class="s">&quot;amqp://~0.0.0.0&quot;</span><span class="p">);</span>
+    <span class="k">my</span> <span class="nv">$messenger</span> <span class="o">=</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">_messenger</span><span class="p">};</span>
+
+    <span class="k">foreach</span> <span class="nv">$arg</span> <span class="p">(</span><span class="nv">$args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$messenger</span><span class="o">-&gt;</span><span class="n">subscribe</span><span class="p">(</span><span class="nv">$arg</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nv">$messenger</span><span class="o">-&gt;</span><span class="n">receive</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">on_receive</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="p">(</span><span class="nv">$self</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$msg</span> <span class="o">=</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+    <span class="k">my</span> <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">_message</span><span class="p">};</span>
+    <span class="k">my</span> <span class="nv">$text</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nb">defined</span><span class="p">(</span><span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_body</span><span class="p">))</span> <span class="p">{</span>
+        <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_body</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$text</span> <span class="ow">eq</span> <span class="s">&quot;die&quot;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$self</span><span class="o">-&gt;</span><span class="n">stop</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nv">$text</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_subject</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="nv">$text</span> <span class="o">=</span> <span class="s">&quot;&quot;</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nb">defined</span><span class="p">(</span><span class="nv">$text</span><span class="p">));</span>
+
+    <span class="k">print</span> <span class="s">&quot;Received: $text\n&quot;</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_reply_to</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">print</span> <span class="s">&quot;Sending reply to: &quot;</span> <span class="o">.</span> <span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_reply_to</span> <span class="o">.</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">clear</span><span class="p">;</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_address</span><span class="p">(</span><span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_reply_to</span><span class="p">());</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_body</span><span class="p">(</span><span class="s">&quot;Reply for &quot;</span><span class="p">,</span> <span class="nv">$msg</span><span class="o">-&gt;</span><span class="n">get_body</span><span class="p">);</span>
+        <span class="nv">$self</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">on_status</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="p">(</span><span class="nv">$self</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$messenger</span> <span class="o">=</span> <span class="nv">$self</span><span class="o">-&gt;</span><span class="p">{</span><span class="n">_messenger</span><span class="p">};</span>
+    <span class="k">my</span> <span class="nv">$status</span> <span class="o">=</span> <span class="nv">$_</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+
+    <span class="k">print</span> <span class="s">&quot;Status: &quot;</span><span class="p">,</span> <span class="nv">$status</span><span class="p">,</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">on_stop</span> <span class="p">{</span>
+    <span class="k">print</span> <span class="s">&quot;Stopped.\n&quot;</span>
+<span class="p">}</span>
+
+<span class="nb">package</span> <span class="n">main</span><span class="p">;</span>
+
+<span class="k">our</span> <span class="nv">$messenger</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::proton::</span><span class="n">Messenger</span><span class="p">();</span>
+<span class="k">our</span> <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">async::</span><span class="n">Receiver</span><span class="p">(</span><span class="nv">$messenger</span><span class="p">);</span>
+
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="n">run</span><span class="p">();</span>
+</pre></div>
+
+<p><a href="recv_async.pl">Download this file</a></p>

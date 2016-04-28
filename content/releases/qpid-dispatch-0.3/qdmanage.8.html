@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<h1 id="name">NAME</h1>
+<p>qdmanage - A management tool for Dispatch routers.</p>
+<h1 id="synopsis">SYNOPSIS</h1>
+<p>qdmanage <em>operation</em> [<em>options...</em>] [<em>arguments...</em>]</p>
+<h1 id="description">DESCRIPTION</h1>
+<p>An AMQP management client for use with qdrouterd. Sends AMQP management operations requests and prints the response in JSON format. This is a generic AMQP management tool and can be used with any standard AMQP managed endpoint, not just with qdrouter.</p>
+<h1 id="operations">OPERATIONS</h1>
+<dl>
+<dt><code>query</code> [<em>ATTR</em>...]</dt>
+<dd><p>Prints the named attributes of all entities. With no arguments prints all attributes. The --type option restricts the result to entities extending the type.</p>
+</dd>
+<dt><code>create</code> [<em>ATTR=VALUE</em>...]</dt>
+<dd><p>Create a new entity with the specified attributes. With the --stdin option, read attributes from stdin. This can be a JSON map of attributes to create a single entity, or a JSON list of maps to create multiple entitiees.</p>
+</dd>
+<dt><code>read</code></dt>
+<dd><p>Print the attributes of an entity specified by the --name or --identity options. With the --stdin option, create entities based on data from stdin. This can be a JSON map of attributes to create a single entity, or a JSON list of maps to create multiple entitiees.</p>
+</dd>
+<dt><code>update</code> [<em>ATTR=VALUE</em>...]</dt>
+<dd><p>Update the attributes of an existing entity. With the --stdin option, read attributes from stdin. This can be a JSON map of attributes to update a single entity, or a JSON list of maps to update multiple entitiees. If an ATTR name is listed with no =VALUE, that attribute will be deleted from the entity.</p>
+</dd>
+<dt><code>delete</code></dt>
+<dd><p>Delete an entity specified by the --name or --identity options.</p>
+</dd>
+<dt><code>get-types</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their base types. With no arguments list all types.</p>
+</dd>
+<dt><code>get-operations</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their operations. With no arguments list all types.</p>
+</dd>
+<dt><code>get-attributes</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their attributes. With no arguments list all types.</p>
+</dd>
+<dt><code>get-annotations</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their annotations. With no arguments list all types.</p>
+</dd>
+<dt><code>get-mgmt-nodes</code></dt>
+<dd>List all other known management nodes connected to this one.
+</dd>
+</dl>
+<h1 id="options">OPTIONS</h1>
+<dl>
+<dt>-h, --help</dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt>--version</dt>
+<dd><p>Print version and exit.</p>
+</dd>
+<dt>--type=TYPE</dt>
+<dd><p>Type of entity to operate on.</p>
+</dd>
+<dt>--name=NAME</dt>
+<dd><p>Name of entity to operate on.</p>
+</dd>
+<dt>--identity=ID</dt>
+<dd><p>Identity of entity to operate on.</p>
+</dd>
+<dt>--indent=INDENT</dt>
+<dd><p>Pretty-printing indent. -1 means don't pretty-print (default 2)</p>
+</dd>
+<dt>--stdin</dt>
+<dd><p>Read attributes as JSON map or list of maps from stdin.</p>
+</dd>
+</dl>
+<h2 id="connection-options">CONNECTION OPTIONS</h2>
+<dl>
+<dt>-b URL, --bus=URL</dt>
+<dd><p>URL of the messaging bus to connect to (default 0.0.0.0)</p>
+</dd>
+<dt>-r ROUTER-ID, --router=ROUTER-ID</dt>
+<dd><p>Router to be queried</p>
+</dd>
+<dt>-t SECS, --timeout=SECS</dt>
+<dd><p>Maximum time to wait for connection in seconds (default 5)</p>
+</dd>
+<dt>--sasl-mechanism=MECH</dt>
+<dd><p>Force SASL mechanism (e.g. EXTERNAL, ANONYMOUS, PLAIN, CRAM-MD5, DIGEST-MD5, GSSAPI).</p>
+</dd>
+<dt>--ssl-certificate=CERT</dt>
+<dd><p>Client SSL certificate (PEM Format)</p>
+</dd>
+<dt>--ssl-key=KEY</dt>
+<dd><p>Client SSL private key (PEM Format)</p>
+</dd>
+</dl>
+<p>Run <code>qdmanage --help</code> to see options.</p>
+<h1 id="files">FILES</h1>
+<dl>
+<dt><em>/usr/local/share/doc/qpid-dispatch/qdrouter.json</em></dt>
+<dd>Management schema for qdrouterd.
+</dd>
+<dt><em>/usr/local/share/doc/qpid-dispatch/qdrouter.json.readme.txt</em></dt>
+<dd>Explanation of the management schema.
+</dd>
+</dl>
+<h1 id="examples">EXAMPLES</h1>
+<p>Show the logging configuration</p>
+<pre><code>qdmanage query --type=log</code></pre>
+<p>Enable debug and higher log messages by default:</p>
+<pre><code>qdmanage udpdate name=log/DEFAULT enable=debug+</code></pre>
+<p>Enable trace log messages only for the MESSAGE moudle and direct MESSAGE logs to the file &quot;test.log&quot;</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=trace output=test.log</code></pre>
+<p>Set MESSAGE logging back to the default:</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=default</code></pre>
+<p>Disable MESSAGE logging:</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=none</code></pre>
+<h1 id="see-also">SEE ALSO</h1>
+<p><em>qdrouterd</em>(8), <em>qdstat</em>(8), <em>qdrouterd.conf</em>(5)</p>
+<p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+</body>
+</html>

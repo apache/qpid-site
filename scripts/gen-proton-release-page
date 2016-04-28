@@ -1,0 +1,204 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+from datetime import datetime
+
+download_records = (
+    ("qpid-proton-{}.tar.gz", "Qpid Proton"),
+    )
+
+documentation = \
+"""
+<div class="two-column" markdown="1">
+
+ - [C API reference](proton/c/api/files.html)
+ - [C++ introduction](proton/cpp/api/index.html)
+ - [C++ tutorial](proton/cpp/api/tutorial.html)
+ - [C++ examples](proton/cpp/examples/index.html)
+ - [C++ API reference](proton/cpp/api/annotated.html)
+ - [Java API reference](proton/java/api/index.html)
+ - [Python overview](proton/python/book/overview.html)
+ - [Python tutorial](proton/python/book/tutorial.html)
+ - [Python examples](proton/python/examples/index.html)
+ - [Python API reference](proton/python/api/index.html)
+;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
+ - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb={source_release})
+
+</div>
+"""
+
+template = \
+"""
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Proton {release}
+
+Qpid Proton is a high-performance, lightweight messaging library. More
+about [Qpid Proton]({{{{site_url}}}}/proton/index.html).
+
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
+
+## Download
+
+It's important to [verify the
+integrity]({{{{site_url}}}}/download.html#verify-what-you-download) of
+the files you download.
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{downloads}
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [All release artefacts](http://archive.apache.org/dist/qpid/proton/{release})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository branch](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tree;hb={source_release})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tag;h={release})
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {{
+      if ("{release}" === "{{{{current_proton_release}}}}") {{
+          _modifyCurrentReleaseLinks();
+      }}
+  }});
+</script>
+"""
+
+def gen_release_page(release, issues_release, source_release, release_dir):
+    output_path = join(release_dir, "index.md")
+
+    downloads = list()
+    artifact_url_template = "http://archive.apache.org/dist/qpid/proton/{}/{}"
+
+    for artifact, summary in download_records:
+        artifact = artifact.format(release)
+        artifact_url = artifact_url_template.format(release, artifact)
+        asc_url = "{}.asc".format(artifact_url)
+        md5_url = "{}.md5".format(artifact_url)
+        sha1_url = "{}.sha1".format(artifact_url)
+
+        args = summary, artifact, artifact_url, asc_url, md5_url, sha1_url
+        downloads.append("| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args))
+
+    downloads = "\n".join(downloads)
+
+    jql = "project = PROTON AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release=release, source_release=source_release)
+    
+    output = template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+master_template = """
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Proton Master
+
+<div class="feature" markdown="1">
+
+## Warning! This is a snapshot of work in progress
+
+Code and documentation found here may be unstable, incorrect, or
+incomplete.  For a smoother experience, see the [current stable
+release]({{{{current_proton_release_url}}}}/index.html).
+
+This content was generated at {time} on {day}, {date}.
+
+</div>
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-proton.git?a=tree)
+"""
+
+def gen_master_release_page(release_dir):
+    output_path = join(release_dir, "index.md")
+
+    now = datetime.now()
+
+    day = now.strftime("%A")
+    date = now.strftime("%d %B %Y")
+    time = now.strftime("%H:%M %Z")
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release="master", source_release="master")
+    
+    output = master_template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+
+if release == "master":
+    gen_master_release_page(release_dir)
+else:
+    gen_release_page(release, issues_release, source_release, release_dir)
+
+notice("Release page generated")

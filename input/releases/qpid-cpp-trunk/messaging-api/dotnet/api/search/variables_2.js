@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['immediate',['IMMEDIATE',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1sealed.html#a7360eb318273e913f3a47ef6e52dc9f6',1,'Org::Apache::Qpid::Messaging::sealed']]],
+  ['isclosed',['IsClosed',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#a2da52dcfc36d3b7ea444179e119f021a',1,'Org::Apache::Qpid::Messaging::Receiver']]],
+  ['isdisposed',['IsDisposed',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Address.html#a5baf2282f06cffb4ba44cad0eb234d29',1,'Org::Apache::Qpid::Messaging::Address::IsDisposed()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a2ce940d0de43a6543b8a09041a939142',1,'Org::Apache::Qpid::Messaging::Connection::IsDisposed()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Message.html#a2eae44fcf0528ff4cf16ca9950767fc9',1,'Org::Apache::Qpid::Messaging::Message::IsDisposed()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Receiver.html#ad4b9c29329bc2ebd9753d3b7b2d10417',1,'Org::Apache::Qpid::Messaging::Receiver::IsDisposed()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Sender.html#a712e00964cc47b883b08f97d2a86e3f9',1,'Org::Apache::Qpid::Messaging::Sender::IsDisposed()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a1198e602445dbf0f3520dd661aea558e',1,'Org::Apache::Qpid::Messaging::Session::IsDisposed()']]],
+  ['isopen',['IsOpen',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Connection.html#a572b87e7492c1d22231162e756cfc572',1,'Org::Apache::Qpid::Messaging::Connection']]]
+];

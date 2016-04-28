@@ -1,0 +1,127 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+## Messaging API ##
+
+def gen_messaging_api(release, source_dir, release_dir):
+    component_dir = join(release_dir, "messaging-api")
+
+    gen_cpp_messaging_api(release, source_dir, component_dir)
+    gen_dotnet_messaging_api(release, source_dir, component_dir)
+    gen_python_messaging_api(release, source_dir, component_dir)
+    gen_ruby_messaging_api(release, source_dir, component_dir)
+
+def gen_cpp_messaging_api(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "examples", "messaging")
+    output_dir = join(component_dir, "cpp", "examples")
+
+    release_url = get_release_branch_url("main", release)
+    readme_url = "{}/cpp/examples/README.txt".format(release_url)
+    source_url = "{}/cpp/examples/messaging".format(release_url)
+
+    input_names = list_dir(input_dir, "*.cpp", "*.h")
+
+    gen_examples(release=release,
+                 lang="cpp",
+                 title="C++ Messaging API Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 readme_url=readme_url,
+                 source_url=source_url)
+
+def gen_dotnet_messaging_api(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet", "examples")
+    output_dir = join(component_dir, "dotnet", "examples")
+
+    release_url = get_release_branch_url("main", release)
+    source_url = "{}/cpp/bindings/qpid/dotnet/examples".format(release_url)
+
+    # The layout of dotnet examples is funky, so some schlepping to
+    # normalize it
+
+    temp_dir = make_temp_dir()
+    input_names = set()
+
+    for path in find(input_dir, "*.cs"):
+        name = split(path)[1]
+
+        if name == "AssemblyInfo.cs":
+            continue
+
+        copy(path, join(temp_dir, name))
+        input_names.add(name)
+
+    input_names = sorted(input_names)
+
+    gen_examples(release=release,
+                 title=".NET Messaging API Examples",
+                 lang="csharp",
+                 input_dir=temp_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+def gen_python_messaging_api(release, source_dir, component_dir):
+    input_dir = join(source_dir, "python", "examples", "api")
+    output_dir = join(component_dir, "python", "examples")
+
+    release_url = get_release_branch_url("main", release)
+    readme_url = "{}/python/examples/README.txt".format(release_url)
+    source_url = "{}/python/examples".format(release_url)
+
+    input_names = list_dir(input_dir)
+
+    gen_examples(release=release,
+                 title="Python Messaging API Examples",
+                 lang="python",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 readme_url=readme_url,
+                 source_url=source_url)
+
+def gen_ruby_messaging_api(release, source_dir, component_dir):
+    input_dir = join(source_dir, "cpp", "bindings", "qpid", "ruby", "examples")
+    output_dir = join(component_dir, "ruby", "examples")
+
+    release_url = get_release_branch_url("main", release)
+    source_url = "{}/cpp/bindings/qpid/ruby/examples".format(release_url)
+
+    input_names = list_dir(input_dir, "*.rb")
+
+    gen_examples(release=release,
+                 title="Ruby Messaging API Examples",
+                 lang="ruby",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release("cpp", source_release, checkout_dir)
+
+gen_messaging_api(release, source_dir, release_dir)
+
+notice("Examples generated")

@@ -1,0 +1,35 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;6.&#160;Broker Ports</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Configuring-And-Managing-Other-Tooling.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Hosts.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Ports"></a>Chapter&#160;6.&#160;Broker Ports</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="Java-Broker-Ports.html#Java-Broker-Ports-Configuring">6.1. Configuring Broker Ports</a></span></dt></dl></div><p>This section guides through the process of configuring of Broker AMQP and non-AMQP ports.</p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Ports-Configuring"></a>6.1.&#160;Configuring Broker Ports</h2></div></div></div><p>
+        The Broker Ports can be configured using the
+        <a class="link" href="Java-Broker-Configuring-And-Managing-HTTP-Management.html#Java-Broker-Configuring-And-Managing-HTTP-Management-Introduction" title="5.2.1.&#160;Introduction">HTTP management interfaces</a>.
+    </p><p>The following Port managing operations are available from the
+            <a class="link" href="Java-Broker-Configuring-And-Managing-HTTP-Management.html#Java-Broker-Configuring-And-Managing-Web-Console" title="5.2.2.&#160;Web Management Console">Web Management Console</a>:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>A new Port can be created by clicking "Add Port" button on the Broker tab.</p></li><li class="listitem"><p>An existing Port details are displayed on the Port tab after clicking
+            on Port name in the Broker object tree or after clicking on a Port row in the Ports grid on the Broker tab.</p></li><li class="listitem"><p>An existing Port can be edited by clicking on "Edit" button on the Port tab.</p></li><li class="listitem"><p>An existing Port can be deleted by clicking on "Delete Port" button
+            on Broker tab or "Delete" button on the Port tab.</p></li></ul></div><p>
+    </p><p>Three different types of ports can be created:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>AMQP ports accepting connections for supported AMQP protocols.</p></li><li class="listitem"><p>HTTP ports accepting connections for HTTP and HTTPS (by selecting the SSL transport) and used by web management plugin.</p></li><li class="listitem"><p>JMX related ports supporting RMI and JMX_RMI protocols and used by JMX management plugin.</p></li></ul></div><p>
+    </p><p>
+        It is possible to create any number of HTTP and AMQP (supporting any mixture of AMQP versions) ports, however only
+        two JMX-related ports can recommended to configure on the Broker: one with the RMI protocol for the RMI Registry to
+        advertise the JMX Connector Server and another with the JMX_RMI protocol for the JMX Connector Server itself.
+    </p><p>
+        A configured <a class="link" href="Java-Broker-Security.html#Java-Broker-Security-Authentication-Providers" title="11.1.&#160;Authentication Providers">Authentication Provider</a> must be
+        selected on ports using the AMQP, HTTP and JMX_RMI protocols.
+    </p><p>
+        SSL can be enabled forPorts with protocols that support it by selecting the 'SSL' transport, at which
+        point a configured <a class="link" href="Java-Broker-Security-SSL.html#Java-Broker-SSL-Keystore" title="11.4.1.&#160;Keystore Configuration">KeyStore</a> must also be selected for the Port.
+    </p><p>
+        Client Certificate Authentication can be configured for AMQP ports. This requires selecting one or more configured
+        <a class="link" href="Java-Broker-Security-SSL.html#SSL-Truststore-ClientCertificate" title="11.4.2.&#160;Truststore / Client Certificate Authentication">TrustStores</a> on the Port and setting the <span class="emphasis"><em>needClientAuthentication</em></span>
+        and <span class="emphasis"><em>wantClientAuthentication</em></span> attributes as desired.
+        They allow control of whether the client must present an SSL certificate, allowing for three possible states:
+        required (needClientAuth = true), requested (wantClientAuth = true), or none desired (both false, the default).
+        If both elements are set to true, needClientAuth takes precedence. When using Client Certificate Authentication
+        it may be desirable to use the <a class="link" href="Java-Broker-Security.html#Java-Broker-Security-External-Provider" title="11.1.3.&#160;External (SSL Client Certificates)">External Authentication Provider</a>.
+    </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3>
+        Changes to port attributes will take effect only after broker restart. You should restart the broker
+        immediately if you require the attribute change sto take effect.
+    </div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3>
+        Following deletion of an active Port, the port remains bound until the Broker is restarted. You should restart the broker
+        immediately if you require preventing new connections on the port or disconnecting existing clients.
+    </div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Configuring-And-Managing-Other-Tooling.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Hosts.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">5.4.&#160;Other Tooling&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;7.&#160;Virtual Hosts</td></tr></table></div></div>

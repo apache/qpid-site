@@ -1,0 +1,37 @@
+
+<h1>recv.php</h1>
+<div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+
+
+<span class="k">include</span><span class="p">(</span><span class="s2">&quot;proton.php&quot;</span><span class="p">);</span>
+
+<span class="nv">$mess</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Messenger</span><span class="p">();</span>
+<span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">start</span><span class="p">();</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+  <span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">subscribe</span><span class="p">(</span><span class="nv">$argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">subscribe</span><span class="p">(</span><span class="s2">&quot;amqp://~0.0.0.0&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nv">$msg</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Message</span><span class="p">();</span>
+<span class="k">while</span> <span class="p">(</span><span class="k">true</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">incoming</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+      <span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$msg</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$e\n</span><span class="s2">&quot;</span><span class="p">;</span>
+      <span class="k">continue</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">print</span> <span class="s2">&quot;</span><span class="si">$msg-&gt;address</span><span class="s2">, </span><span class="si">$msg-&gt;subject</span><span class="s2">, </span><span class="si">$msg-&gt;body\n</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$mess</span><span class="o">-&gt;</span><span class="na">stop</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+
+<p><a href="recv.php">Download this file</a></p>

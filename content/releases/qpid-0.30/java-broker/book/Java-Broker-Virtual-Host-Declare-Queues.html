@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>14.8.&#160;Configuring Queues - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.30/index.html">Qpid 0.30</a></li><li><a href="/releases/qpid-0.30/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>14.8.&#160;Configuring Queues</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">14.8.&#160;Configuring Queues</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Virtual-Host-Configuration-Exchange.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;14.&#160;Virtual Host XML configuration file</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Host-Binding-Queue.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Virtual-Host-Declare-Queues"></a>14.8.&#160;Configuring Queues</h2></div></div></div><p>To create a priority, sorted or LVQ queue within configuration, add the appropriate xml
+        to the virtualhost.xml configuration file within the <code class="varname">queues</code>
+        element.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Simple"></a>14.8.1.&#160;Simple</h3></div></div></div><p>For declaration of a simple queue define a queue entry in the virtual host configuration as in example below</p><div class="example"><a id="idm140304441013840"></a><p class="title"><strong>Example&#160;14.7.&#160;Configuring a simple queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;my-simple-queue&lt;/name&gt;
+    &lt;my-simple-queue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;durable&gt;true&lt;/durable&gt;
+    &lt;/my-simple-queue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Priority"></a>14.8.2.&#160;Priority</h3></div></div></div><p> To defining a priority queue, add a &lt;priority&gt;true&lt;/priority&gt; element. By
+          default the queue will have 10 distinct priorities. </p><div class="example"><a id="idm140304441010352"></a><p class="title"><strong>Example&#160;14.8.&#160;Configuring a priority queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;myqueue&lt;/name&gt;
+    &lt;myqueue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;priority&gt;true&lt;/priority&gt;
+    &lt;/myqueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /><p> If you require fewer priorities, it is possible to specify a
+            <code class="varname">priorities</code> element (whose value is a integer value between 2 and 10
+          inclusive) which will give the queue that number of distinct priorities. When messages are
+          sent to that queue, their effective priority will be calculated by partitioning the
+          priority space. If the number of effective priorities is 2, then messages with priority
+          0-4 are treated the same as "lower priority" and messages with priority 5-9 are treated
+          equivalently as "higher priority". </p><div class="example"><a id="idm140304441042096"></a><p class="title"><strong>Example&#160;14.9.&#160;Configuring a priority queue with fewer priorities</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;myqueue&lt;/name&gt;
+    &lt;myqueue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;priority&gt;true&lt;/priority&gt;
+        &lt;priorities&gt;4&lt;/priorities&gt;
+    &lt;/myqueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-Sorted"></a>14.8.3.&#160;Sorted</h3></div></div></div><p> To define a sorted queue, add a <code class="varname">sortKey</code> element. The value of the
+            <code class="varname">sortKey</code> element defines the message property to use the value of when
+          sorting the messages put onto the queue. </p><div class="example"><a id="idm140304441037616"></a><p class="title"><strong>Example&#160;14.10.&#160;Configuring a sorted queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;myqueue&lt;/name&gt;
+    &lt;myqueue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;sortKey&gt;message-property-to-sort-by&lt;/sortKey&gt;
+    &lt;/myqueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig-LVQ"></a>14.8.4.&#160;LVQ</h3></div></div></div><p> To define a LVQ, add a <code class="varname">lvq</code> element with the value
+            <code class="constant">true</code>. Without any further configuration this will define an LVQ
+          which uses the JMS message property <code class="constant">qpid.LVQ_key</code> as the key for
+          replacement. </p><div class="example"><a id="idm140304441032704"></a><p class="title"><strong>Example&#160;14.11.&#160;Configuring a LVQ queue</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;myqueue&lt;/name&gt;
+    &lt;myqueue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;lvq&gt;true&lt;/lvq&gt;
+    &lt;/myqueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /><p> If you wish to define your own property then you can do so using the
+            <code class="varname">lvqKey</code> element.</p><div class="example"><a id="idm140304441030384"></a><p class="title"><strong>Example&#160;14.12.&#160;Configuring a LVQ queue with custom message property name</strong></p><div class="example-contents"><pre class="programlisting">&lt;queue&gt;
+    &lt;name&gt;myqueue&lt;/name&gt;
+    &lt;myqueue&gt;
+        &lt;exchange&gt;amq.direct&lt;/exchange&gt;
+        &lt;lvq&gt;true&lt;/lvq&gt;
+        &lt;lvqKey&gt;ISIN&lt;/lvqKey&gt;
+    &lt;/myqueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Virtual-Host-Configuring-Queue-With-Arguments"></a>14.8.5.&#160;Configuring queue with arguments</h3></div></div></div><p>Queue arguments can be configured in virtual host configuration file.
+        An element <span class="emphasis"><em>argument</em></span> is used to specify a queue argument as a name-value pair separated with equal character.
+        Any number of queue arguments can be provided for a queue in their own <span class="emphasis"><em>argument</em></span> elements.</p><p>The following example demonstrates how to configure queue with two arguments.</p><div class="example"><a id="idm140304442180496"></a><p class="title"><strong>Example&#160;14.13.&#160;Setting arbitrary queue arguments</strong></p><div class="example-contents"><pre class="programlisting">
+&lt;queue&gt;
+    &lt;name&gt;myQueue&lt;/name&gt;
+    &lt;myQueue&gt;
+        &lt;argument&gt;qpid.group_header_key=JMSXgroupID&lt;/argument&gt;
+        &lt;argument&gt;qpid.shared_msg_group=1&lt;/argument&gt;
+    &lt;/myQueue&gt;
+&lt;/queue&gt;</pre></div></div><br class="example-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Virtual-Host-Configuration-Exchange.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Virtual-Hosts-Configuration-File.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Host-Binding-Queue.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">14.7.&#160;Configuring Exchanges&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;14.9.&#160;Queue Binding</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

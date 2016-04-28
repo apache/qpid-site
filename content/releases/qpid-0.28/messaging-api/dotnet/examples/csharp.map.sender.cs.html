@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>csharp.map.sender.cs - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.28/index.html">Qpid 0.28</a></li><li><a href="/releases/qpid-0.28/messaging-api/dotnet/examples/index.html">.NET Messaging API Examples</a></li><li>csharp.map.sender.cs</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>csharp.map.sender.cs</h1>
+<div class="highlight"><pre><span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">Org.Apache.Qpid.Messaging</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nn">Org.Apache.Qpid.Messaging.examples</span>
+<span class="p">{</span>
+    <span class="k">class</span> <span class="nc">MapSender</span>
+    <span class="p">{</span>
+        <span class="c1">// csharp.map.sender example</span>
+        <span class="c1">//</span>
+        <span class="c1">// Send an amqp/map message to amqp:tcp:localhost:5672 amq.direct/map_example</span>
+        <span class="c1">// The map message contains simple types, a nested amqp/map,</span>
+        <span class="c1">// an ampq/list, and specific instances of each supported type.</span>
+        <span class="c1">//</span>
+        <span class="k">static</span> <span class="kt">int</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">string</span> <span class="n">url</span> <span class="p">=</span> <span class="s">&quot;amqp:tcp:localhost:5672&quot;</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">address</span> <span class="p">=</span> <span class="s">&quot;message_queue; {create: always}&quot;</span><span class="p">;</span>
+            <span class="kt">string</span> <span class="n">connectionOptions</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">0</span><span class="p">)</span>
+                <span class="n">url</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">1</span><span class="p">)</span>
+                <span class="n">address</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="m">1</span><span class="p">];</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">args</span><span class="p">.</span><span class="n">Length</span> <span class="p">&gt;</span> <span class="m">2</span><span class="p">)</span>
+                <span class="n">connectionOptions</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="m">2</span><span class="p">];</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Create and open an AMQP connection to the broker URL</span>
+            <span class="c1">//</span>
+            <span class="n">Connection</span> <span class="n">connection</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Connection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">connectionOptions</span><span class="p">);</span>
+            <span class="n">connection</span><span class="p">.</span><span class="n">Open</span><span class="p">();</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Create a session and a sender to the direct exchange</span>
+            <span class="c1">//</span>
+            <span class="n">Session</span> <span class="n">session</span> <span class="p">=</span> <span class="n">connection</span><span class="p">.</span><span class="n">CreateSession</span><span class="p">();</span>
+            <span class="n">Sender</span> <span class="n">sender</span> <span class="p">=</span> <span class="n">session</span><span class="p">.</span><span class="n">CreateSender</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Create structured content for the message.  This example builds a</span>
+            <span class="c1">// map of items including a nested map and a list of values.</span>
+            <span class="c1">//</span>
+            <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">content</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
+            <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;</span> <span class="n">subMap</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Dictionary</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">,</span> <span class="kt">object</span><span class="p">&gt;();</span>
+            <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;</span> <span class="n">colors</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">object</span><span class="p">&gt;();</span>
+
+            <span class="c1">// add simple types</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;id&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="m">987654321</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Widget&quot;</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;percent&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="m">0.99</span><span class="p">;</span>
+
+            <span class="c1">// add nested amqp/map</span>
+            <span class="n">subMap</span><span class="p">[</span><span class="s">&quot;name&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="s">&quot;Smith&quot;</span><span class="p">;</span>
+            <span class="n">subMap</span><span class="p">[</span><span class="s">&quot;number&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="m">354</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;nestedMap&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">subMap</span><span class="p">;</span>
+
+            <span class="c1">// add an amqp/list</span>
+            <span class="n">colors</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;red&quot;</span><span class="p">);</span>
+            <span class="n">colors</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;green&quot;</span><span class="p">);</span>
+            <span class="n">colors</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">&quot;white&quot;</span><span class="p">);</span>
+            <span class="c1">// list contains null value</span>
+            <span class="n">colors</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;colorsList&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">colors</span><span class="p">;</span>
+
+            <span class="c1">// add one of each supported amqp data type</span>
+            <span class="kt">bool</span> <span class="n">mybool</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;mybool&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">mybool</span><span class="p">;</span>
+
+            <span class="kt">byte</span> <span class="n">mybyte</span> <span class="p">=</span> <span class="m">4</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;mybyte&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">mybyte</span><span class="p">;</span>
+
+            <span class="n">UInt16</span> <span class="n">myUInt16</span> <span class="p">=</span> <span class="m">5</span> <span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myUInt16&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myUInt16</span><span class="p">;</span>
+
+            <span class="n">UInt32</span> <span class="n">myUInt32</span> <span class="p">=</span> <span class="m">6</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myUInt32&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myUInt32</span><span class="p">;</span>
+
+            <span class="n">UInt64</span> <span class="n">myUInt64</span> <span class="p">=</span> <span class="m">7</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myUInt64&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myUInt64</span><span class="p">;</span>
+
+            <span class="kt">char</span> <span class="n">mychar</span> <span class="p">=</span> <span class="sc">&#39;h&#39;</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;mychar&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">mychar</span><span class="p">;</span>
+
+            <span class="n">Int16</span> <span class="n">myInt16</span> <span class="p">=</span> <span class="m">9</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myInt16&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myInt16</span><span class="p">;</span>
+
+            <span class="n">Int32</span> <span class="n">myInt32</span> <span class="p">=</span> <span class="m">10</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myInt32&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myInt32</span><span class="p">;</span>
+
+            <span class="n">Int64</span> <span class="n">myInt64</span> <span class="p">=</span> <span class="m">11</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myInt64&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myInt64</span><span class="p">;</span>
+
+            <span class="n">Single</span> <span class="n">mySingle</span> <span class="p">=</span> <span class="p">(</span><span class="n">Single</span><span class="p">)</span><span class="m">12.12</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;mySingle&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">mySingle</span><span class="p">;</span>
+
+            <span class="n">Double</span> <span class="n">myDouble</span> <span class="p">=</span> <span class="m">13.13</span><span class="p">;</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myDouble&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myDouble</span><span class="p">;</span>
+
+            <span class="n">Guid</span> <span class="n">myGuid</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Guid</span><span class="p">(</span><span class="s">&quot;000102030405060708090a0b0c0d0e0f&quot;</span><span class="p">);</span>
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myGuid&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="n">myGuid</span><span class="p">;</span>
+
+            <span class="n">content</span><span class="p">[</span><span class="s">&quot;myNull&quot;</span><span class="p">]</span> <span class="p">=</span> <span class="k">null</span><span class="p">;</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Construct a message with the map content and send it synchronously</span>
+            <span class="c1">// via the sender.</span>
+            <span class="c1">//</span>
+            <span class="n">Message</span> <span class="n">message</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Message</span><span class="p">(</span><span class="n">content</span><span class="p">);</span>
+            <span class="n">sender</span><span class="p">.</span><span class="n">Send</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Wait until broker receives all messages.</span>
+            <span class="c1">//</span>
+            <span class="n">session</span><span class="p">.</span><span class="n">Sync</span><span class="p">();</span>
+
+            <span class="c1">//</span>
+            <span class="c1">// Close the connection.</span>
+            <span class="c1">//</span>
+            <span class="n">connection</span><span class="p">.</span><span class="n">Close</span><span class="p">();</span>
+            <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="csharp.map.sender.cs">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

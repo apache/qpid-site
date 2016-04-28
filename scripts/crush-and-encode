@@ -1,0 +1,11 @@
+#!/bin/bash
+
+tmpfile=$(mktemp)
+
+pngcrush -rem alla -rem text $1 $tmpfile
+
+echo -n "data:image/png;base64,"
+
+base64 --wrap 0 $tmpfile
+
+echo

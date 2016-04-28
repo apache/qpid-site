@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>2.17.&#160;Using Message Groups - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.30/index.html">Qpid 0.30</a></li><li><a href="/releases/qpid-0.30/programming/book/index.html">Programming in Apache Qpid</a></li><li>2.17.&#160;Using Message Groups</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.17.&#160;Using Message Groups</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="section-amqp0-10-mapping.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="QpidJMS.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Message-Groups-Guide"></a>2.17.&#160;Using Message Groups</h2></div></div></div><p>
+    This section describes how messaging applications can use the Message Group feature
+    provided by the Broker.
+  </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>
+    The content of this section assumes the reader is familiar with the Message Group
+    feature as described in the AMQP Messaging Broker user's guide.  Please read the
+    message grouping section in the Broker user's guide before using the
+    examples given in this section.
+  </div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="messagegroups-setup"></a>2.17.1.&#160;Creating Message Group Queues</h3></div></div></div><p>
+      The following examples show how to create a message group queue that enforces
+      ordered group consumption across multiple consumers.
+    </p><div class="example"><a id="idm139972650504768"></a><p class="title"><strong>Example&#160;2.22.&#160;Message Group Queue Creation - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
+sender = connection.session().sender("msg-group-q;" +
+                                     " {create:always, delete:receiver," +
+                                     " node: {x-declare: {arguments:" +
+                                     " {'qpid.group_header_key':'THE-GROUP'," +
+                                     " 'qpid.shared_msg_group':1}}}}")
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm139972650503120"></a><p class="title"><strong>Example&#160;2.23.&#160;Message Group Queue Creation - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="c++" xml:lang="c++">
+std::string addr("msg-group-q; "
+                 " {create:always, delete:receiver,"
+                 " node: {x-declare: {arguments:"
+                 " {qpid.group_header_key:'THE-GROUP',"
+                 " qpid.shared_msg_group:1}}}}");
+Sender sender = session.createSender(addr);
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm139972650501328"></a><p class="title"><strong>Example&#160;2.24.&#160;Message Group Queue Creation - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
+Session s = c.createSession(false, Session.CLIENT_ACKNOWLEDGE);
+String addr = "msg-group-q; {create:always, delete:receiver," +
+                             " node: {x-declare: {arguments:" +
+                             " {'qpid.group_header_key':'THE-GROUP'," +
+                             " 'qpid.shared_msg_group':1}}}}";
+Destination d = (Destination) new AMQAnyDestination(addr);
+MessageProducer sender = s.createProducer(d);
+      </pre></div></div><br class="example-break" /><p>
+      The example code uses the x-declare map to specify the message group configuration
+      that should be used for the queue.  See the AMQP Messaging Broker user's guide
+      for a detailed description of these arguments.  Note that the
+      qpid.group_header_key's value MUST be a string type if using the C++ broker.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="messagegroups-sending"></a>2.17.2.&#160;Sending Grouped Messages</h3></div></div></div><p>
+      When sending grouped messages, the client must add a message property containing the
+      group identifier to the outgoing message.  If using the C++ broker, the group identifier
+      must be a string type.  The key used for the property must exactly match the value passed in the
+      'qpid.group_header_key' configuration argument.
+    </p><div class="example"><a id="idm139972656262752"></a><p class="title"><strong>Example&#160;2.25.&#160;Sending Grouped Messages - Python</strong></p><div class="example-contents"><pre class="programlisting" lang="python" xml:lang="python">
+group = "A"
+m = Message(content="some data", properties={"THE-GROUP": group})
+sender.send(m)
+
+group = "B"
+m = Message(content="some other group's data", properties={"THE-GROUP": group})
+sender.send(m)
+
+group = "A"
+m = Message(content="more data for group 'A'", properties={"THE-GROUP": group})
+sender.send(m)
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm139972656243984"></a><p class="title"><strong>Example&#160;2.26.&#160;Sending Grouped Messages - C++</strong></p><div class="example-contents"><pre class="programlisting" lang="C++" xml:lang="C++">
+
+const std::string groupKey("THE-GROUP");
+{
+    Message msg("some data");
+    msg.getProperties()[groupKey] = std::string("A");
+    sender.send(msg);
+}
+{
+    Message msg("some other group's data");
+    msg.getProperties()[groupKey] = std::string("B");
+    sender.send(msg);
+}
+{
+    Message msg("more data for group 'A'");
+    msg.getProperties()[groupKey] = std::string("A");
+    sender.send(msg);
+}
+      </pre></div></div><br class="example-break" /><div class="example"><a id="idm139972656241968"></a><p class="title"><strong>Example&#160;2.27.&#160;Sending Grouped Messages - Java</strong></p><div class="example-contents"><pre class="programlisting" lang="java" xml:lang="java">
+String groupKey = "THE-GROUP";
+
+TextMessage tmsg1 = s.createTextMessage("some data");
+tmsg1.setStringProperty(groupKey, "A");
+sender.send(tmsg1);
+
+TextMessage tmsg2 = s.createTextMessage("some other group's data");
+tmsg2.setStringProperty(groupKey, "B");
+sender.send(tmsg2);
+
+TextMessage tmsg3 = s.createTextMessage("more data for group 'A'");
+tmsg3.setStringProperty(groupKey, "A");
+sender.send(tmsg3);
+      </pre></div></div><br class="example-break" /><p>
+      The examples above send two groups worth of messages to the queue created in the
+      previous example.  Two messages belong to group "A", and one belongs to group
+      "B". Note that it is not necessary to complete sending one group's messages before
+      starting another.  Also note that there is no need to indicate to the broker when a
+      new group is created or an existing group retired - the broker tracks group state
+      automatically.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="messagegroups-receiving"></a>2.17.3.&#160;Receiving Grouped Messages</h3></div></div></div><p>
+      Since the broker enforces group policy when delivering messages, no special actions
+      are necessary for receiving grouped messages from the broker.  However, applications
+      must adhere to the rules for message group consumption as described in the AMQP
+      Messaging Broker user's guide.
+    </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="section-amqp0-10-mapping.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch02.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="QpidJMS.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">2.16.&#160;The AMQP 0-10 mapping&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;3.&#160;Using the Qpid JMS client</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

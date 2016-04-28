@@ -1,0 +1,256 @@
+
+
+  
+  <div class="section" id="qdrouterd-conf-manual-page">
+<h1>qdrouterd.conf manual page<a class="headerlink" href="#qdrouterd-conf-manual-page" title="Permalink to this headline">.</a></h1>
+<div class="section" id="synopsis">
+<h2>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this headline">.</a></h2>
+<p>qdroutered.conf is the configuration file for the dispatch router.</p>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">.</a></h2>
+<p>The configuration file is made up of sections with this syntax:</p>
+<div class="highlight-python"><pre>SECTION-NAME {
+    ATTRIBUTE-NAME: ATTRIBUTE-VALUE
+    ATTRIBUTE-NAME: ATTRIBUTE-VALUE
+    ...
+}</pre>
+</div>
+<p>There are two types of sections:</p>
+<p><em>Configuration sections</em> correspond to configuration entities. They can be queried and
+configured via management tools as well as via the configuration file.</p>
+<p><em>Annotation sections</em> define a group of attribute values that can be included in
+one or more entity sections.</p>
+<p>For example you can define an &#8220;ssl-profile&#8221; annotation section with SSL credentials
+that can be included in multiple &#8220;listener&#8221; entities. Here&#8217;s an example, note
+how the &#8216;ssl-profile&#8217; attribute of &#8216;listener&#8217; sections references the &#8216;name&#8217;
+attribute of &#8216;ssl-profile&#8217; sections.</p>
+<div class="highlight-python"><pre>ssl-profile {
+    name: ssl-profile-one
+    cert-db: ca-certificate-1.pem
+    cert-file: server-certificate-1.pem
+    key-file: server-private-key.pem
+}
+
+listener {
+    ssl-profile: ssl-profile-one
+    addr: 0.0.0.0
+    port: 20102
+    sasl-mechanisms: ANONYMOUS
+}</pre>
+</div>
+</div>
+<div class="section" id="annotation-sections">
+<h2>Annotation Sections<a class="headerlink" href="#annotation-sections" title="Permalink to this headline">.</a></h2>
+<div class="section" id="addrport">
+<h3>addrPort<a class="headerlink" href="#addrport" title="Permalink to this headline">.</a></h3>
+<p>Attributes for internet address and port.</p>
+<p>Used by: <strong>listener</strong>, <strong>connector</strong>.</p>
+<dl class="docutils">
+<dt><em>addr</em> (string, default=&#8216;127.0.0.1&#8217;)</dt>
+<dd>IP address: ipv4 or ipv6 literal or a host name.</dd>
+<dt><em>port</em> (string, default=&#8217;amqp&#8217;)</dt>
+<dd>Port number or symbolic service name.</dd>
+</dl>
+</div>
+<div class="section" id="connectionrole">
+<h3>connectionRole<a class="headerlink" href="#connectionrole" title="Permalink to this headline">.</a></h3>
+<p>Attribute for the role of a connection.</p>
+<p>Used by: <strong>listener</strong>, <strong>connector</strong>.</p>
+<dl class="docutils">
+<dt><em>role</em> (One of [&#8216;normal&#8217;, &#8216;inter-router&#8217;, &#8216;on-demand&#8217;], default=&#8217;normal&#8217;)</dt>
+<dd>The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections.</dd>
+</dl>
+</div>
+<div class="section" id="sslprofile">
+<h3>sslProfile<a class="headerlink" href="#sslprofile" title="Permalink to this headline">.</a></h3>
+<p>Attributes for setting TLS/SSL configuration for connections.</p>
+<p>Used by: <strong>listener</strong>, <strong>connector</strong>.</p>
+<dl class="docutils">
+<dt><em>certDb</em> (path)</dt>
+<dd>The path to the database that contains the public certificates of trusted certificate authorities (CA).</dd>
+<dt><em>certFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</dd>
+<dt><em>keyFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted private key for the above certificate.</dd>
+<dt><em>passwordFile</em> (path)</dt>
+<dd>If the above private key is password protected, this is the path to a file containing the password that unlocks the certificate key.</dd>
+<dt><em>password</em> (string)</dt>
+<dd>An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the &#8216;password&#8217; option.  Don&#8217;t use both password and passwordFile in the same profile.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="configuration-sections">
+<h2>Configuration Sections<a class="headerlink" href="#configuration-sections" title="Permalink to this headline">.</a></h2>
+<div class="section" id="container">
+<h3>container<a class="headerlink" href="#container" title="Permalink to this headline">.</a></h3>
+<p>Attributes related to the AMQP container.</p>
+<dl class="docutils">
+<dt><em>containerName</em> (string)</dt>
+<dd>The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</dd>
+<dt><em>workerThreads</em> (integer, default=1)</dt>
+<dd>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</dd>
+<dt><em>debugDump</em> (path)</dt>
+<dd>A file to dump debugging information that can&#8217;t be logged normally.</dd>
+<dt><em>saslConfigPath</em> (path)</dt>
+<dd>Absolute path to the SASL configuration file.</dd>
+<dt><em>saslConfigName</em> (string, default=&#8217;qdrouterd&#8217;)</dt>
+<dd>Name of the SASL configuration.  This string + &#8216;.conf&#8217; is the name of the configuration file.</dd>
+</dl>
+</div>
+<div class="section" id="router">
+<h3>router<a class="headerlink" href="#router" title="Permalink to this headline">.</a></h3>
+<p>Tracks peer routers and computes routes to destinations.</p>
+<dl class="docutils">
+<dt><em>routerId</em> (string)</dt>
+<dd>Router&#8217;s unique identity.</dd>
+<dt><em>mode</em> (One of [&#8216;standalone&#8217;, &#8216;interior&#8217;, &#8216;edge&#8217;, &#8216;endpoint&#8217;], default=&#8217;standalone&#8217;)</dt>
+<dd>In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.  In edge mode, the router operates with an up link into an interior router network. Edge routers are typically used as connection concentrators or as security firewalls for access into the interior network.</dd>
+<dt><em>helloInterval</em> (integer, default=1)</dt>
+<dd>Interval in seconds between HELLO messages sent to neighbor routers.</dd>
+<dt><em>helloMaxAge</em> (integer, default=3)</dt>
+<dd>Time in seconds after which a neighbor is declared lost if no HELLO is received.</dd>
+<dt><em>raInterval</em> (integer, default=30)</dt>
+<dd>Interval in seconds between Router-Advertisements sent to all routers in a stable network.</dd>
+<dt><em>raIntervalFlux</em> (integer, default=4)</dt>
+<dd>Interval in seconds between Router-Advertisements sent to all routers during topology fluctuations.</dd>
+<dt><em>remoteLsMaxAge</em> (integer, default=60)</dt>
+<dd>Time in seconds after which link state is declared stale if no RA is received.</dd>
+<dt><em>mobileAddrMaxAge</em> (integer, default=60)</dt>
+<dd>Deprecated - This value is no longer used in the router.</dd>
+</dl>
+</div>
+<div class="section" id="listener">
+<h3>listener<a class="headerlink" href="#listener" title="Permalink to this headline">.</a></h3>
+<p>Listens for incoming connections to the router.</p>
+<p>Annotations: <strong>addrPort</strong>, <strong>connectionRole</strong>, <strong>sslProfile</strong>.</p>
+<dl class="docutils">
+<dt><em>addr</em> (string, default=&#8216;127.0.0.1&#8217;)</dt>
+<dd>IP address: ipv4 or ipv6 literal or a host name.</dd>
+<dt><em>port</em> (string, default=&#8217;amqp&#8217;)</dt>
+<dd>Port number or symbolic service name.</dd>
+<dt><em>role</em> (One of [&#8216;normal&#8217;, &#8216;inter-router&#8217;, &#8216;on-demand&#8217;], default=&#8217;normal&#8217;)</dt>
+<dd>The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections.</dd>
+<dt><em>certDb</em> (path)</dt>
+<dd>The path to the database that contains the public certificates of trusted certificate authorities (CA).</dd>
+<dt><em>certFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</dd>
+<dt><em>keyFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted private key for the above certificate.</dd>
+<dt><em>passwordFile</em> (path)</dt>
+<dd>If the above private key is password protected, this is the path to a file containing the password that unlocks the certificate key.</dd>
+<dt><em>password</em> (string)</dt>
+<dd>An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the &#8216;password&#8217; option.  Don&#8217;t use both password and passwordFile in the same profile.</dd>
+<dt><em>saslMechanisms</em> (string)</dt>
+<dd>Comma separated list of accepted SASL authentication mechanisms.</dd>
+<dt><em>authenticatePeer</em> (boolean)</dt>
+<dd>yes: Require the peer&#8217;s identity to be authenticated; no: Do not require any authentication.</dd>
+<dt><em>requireEncryption</em> (boolean)</dt>
+<dd>yes: Require the connection to the peer to be encrypted; no: Permit non-encrypted communication with the peer</dd>
+<dt><em>requireSsl</em> (boolean)</dt>
+<dd>yes: Require the use of SSL or TLS on the connection; no: Allow clients to connect without SSL or TLS.</dd>
+<dt><em>trustedCerts</em> (path)</dt>
+<dd>This optional setting can be used to reduce the set of available CAs for client authentication.  If used, this setting must provide a path to a PEM file that contains the trusted certificates.</dd>
+<dt><em>maxFrameSize</em> (integer, default=65536)</dt>
+<dd>Defaults to 65536.  If specified, it is the maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</dd>
+<dt><em>requirePeerAuth</em> (boolean)</dt>
+<dd>Deprecated - This attribute is now controlled by the authenticatePeer attribute.</dd>
+<dt><em>allowUnsecured</em> (boolean)</dt>
+<dd>Deprecated - This attribute is now controlled by the requireEncryption attribute.</dd>
+<dt><em>allowNoSasl</em> (boolean)</dt>
+<dd>Deprecated - This attribute is now controlled by the authenticatePeer attribute.</dd>
+</dl>
+</div>
+<div class="section" id="connector">
+<h3>connector<a class="headerlink" href="#connector" title="Permalink to this headline">.</a></h3>
+<p>Establishes an outgoing connections from the router.</p>
+<p>Annotations: <strong>addrPort</strong>, <strong>connectionRole</strong>, <strong>sslProfile</strong>.</p>
+<dl class="docutils">
+<dt><em>addr</em> (string, default=&#8216;127.0.0.1&#8217;)</dt>
+<dd>IP address: ipv4 or ipv6 literal or a host name.</dd>
+<dt><em>port</em> (string, default=&#8217;amqp&#8217;)</dt>
+<dd>Port number or symbolic service name.</dd>
+<dt><em>role</em> (One of [&#8216;normal&#8217;, &#8216;inter-router&#8217;, &#8216;on-demand&#8217;], default=&#8217;normal&#8217;)</dt>
+<dd>The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections.</dd>
+<dt><em>certDb</em> (path)</dt>
+<dd>The path to the database that contains the public certificates of trusted certificate authorities (CA).</dd>
+<dt><em>certFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</dd>
+<dt><em>keyFile</em> (path)</dt>
+<dd>The path to the file containing the PEM-formatted private key for the above certificate.</dd>
+<dt><em>passwordFile</em> (path)</dt>
+<dd>If the above private key is password protected, this is the path to a file containing the password that unlocks the certificate key.</dd>
+<dt><em>password</em> (string)</dt>
+<dd>An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the &#8216;password&#8217; option.  Don&#8217;t use both password and passwordFile in the same profile.</dd>
+<dt><em>saslMechanisms</em> (string)</dt>
+<dd>Comma separated list of accepted SASL authentication mechanisms.</dd>
+<dt><em>allowRedirect</em> (boolean, default=True)</dt>
+<dd>Allow the peer to redirect this connection to another address.</dd>
+<dt><em>maxFrameSize</em> (integer, default=65536)</dt>
+<dd>Maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</dd>
+</dl>
+</div>
+<div class="section" id="log">
+<h3>log<a class="headerlink" href="#log" title="Permalink to this headline">.</a></h3>
+<p>Configure logging for a particular module. You can use the <cite>UPDATE</cite> operation to change log settings while the router is running.</p>
+<dl class="docutils">
+<dt><em>enable</em> (string, default=&#8217;default&#8217;, required)</dt>
+<dd>Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing &#8216;+&#8217; to enable that level and above. For example &#8216;trace,debug,warning+&#8217; means enable trace, debug, warning, error and critical. The value &#8216;none&#8217; means disable logging for the module. The value &#8216;default&#8217; means use the value from the DEFAULT module.</dd>
+<dt><em>timestamp</em> (boolean)</dt>
+<dd>Include timestamp in log messages.</dd>
+<dt><em>source</em> (boolean)</dt>
+<dd>Include source file and line number in log messages.</dd>
+<dt><em>output</em> (string)</dt>
+<dd>Where to send log messages. Can be &#8216;stderr&#8217;, &#8216;syslog&#8217; or a file name.</dd>
+</dl>
+</div>
+<div class="section" id="fixedaddress">
+<h3>fixedAddress<a class="headerlink" href="#fixedaddress" title="Permalink to this headline">.</a></h3>
+<p>Establishes semantics for addresses starting with a prefix.</p>
+<dl class="docutils">
+<dt><em>prefix</em> (string, required)</dt>
+<dd>The address prefix (always starting with &#8216;/&#8217;).</dd>
+<dt><em>phase</em> (integer)</dt>
+<dd>The phase of a multi-hop address passing through one or more waypoints.</dd>
+<dt><em>fanout</em> (One of [&#8216;multiple&#8217;, &#8216;single&#8217;], default=&#8217;multiple&#8217;)</dt>
+<dd>One of &#8216;multiple&#8217; or &#8216;single&#8217;.  Multiple fanout is a non-competing pattern.  If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address.  Single fanout is a competing pattern where each message is sent to only one consumer.</dd>
+<dt><em>bias</em> (One of [&#8216;closest&#8217;, &#8216;spread&#8217;], default=&#8217;closest&#8217;)</dt>
+<dd>Only if fanout is single.  One of &#8216;closest&#8217; or &#8216;spread&#8217;.  Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.</dd>
+</dl>
+</div>
+<div class="section" id="waypoint">
+<h3>waypoint<a class="headerlink" href="#waypoint" title="Permalink to this headline">.</a></h3>
+<p>A remote node that messages for an address pass through.</p>
+<dl class="docutils">
+<dt><em>address</em> (string, required)</dt>
+<dd>The AMQP address of the waypoint.</dd>
+<dt><em>connector</em> (string, required)</dt>
+<dd>The name of the on-demand connector used to reach the waypoint&#8217;s container.</dd>
+<dt><em>inPhase</em> (integer, default=-1)</dt>
+<dd>The phase of the address as it is routed _to_ the waypoint.</dd>
+<dt><em>outPhase</em> (integer, default=-1)</dt>
+<dd>The phase of the address as it is routed _from_ the waypoint.</dd>
+</dl>
+</div>
+<div class="section" id="linkroutepattern">
+<h3>linkRoutePattern<a class="headerlink" href="#linkroutepattern" title="Permalink to this headline">.</a></h3>
+<p>An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node.</p>
+<dl class="docutils">
+<dt><em>prefix</em> (string, required)</dt>
+<dd>An address prefix to match against target and source addresses.  For Dispatch 0.4, this pattern must be of the form &#8216;&lt;text&gt;.&#8217; and matches any address that contains that prefix.  Note that the prefix <em>must</em> end with a period (.) and <em>must not</em> contain any other periods.</dd>
+<dt><em>connector</em> (string)</dt>
+<dd>The name of the on-demand connector used to reach the target node&#8217;s container.  If this value is not provided, it means that the target container is expected to be connected to a different router in the network.  This prevents links to a link-routable address from being misinterpreted as message-routing links when there is no route to a valid destination available.</dd>
+</dl>
+</div>
+<div class="section" id="console">
+<h3>console<a class="headerlink" href="#console" title="Permalink to this headline">.</a></h3>
+<p>Start a websocket/tcp proxy and http file server to serve the web console</p>
+</div>
+</div>
+<div class="section" id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">.</a></h2>
+<p><em>qdrouterd(8)</em>, <em>qdmanage(8)</em></p>
+<p><a class="reference external" href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+</div>
+</div>
+

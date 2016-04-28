@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Chapter&#160;4.&#160;Examples - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.0.2/index.html">Qpid Java 6.0.2</a></li><li><a href="/releases/qpid-java-6.0.2/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Chapter&#160;4.&#160;Examples</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;4.&#160;Examples</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-JMS-Getting-And-Dependencies-Dependencies.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Examples-PubSub.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="JMS-Client-0-8-Examples"></a>Chapter&#160;4.&#160;Examples</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="JMS-Client-0-8-Examples.html#JMS-Client-0-8-Examples-PTP">4.1. Point to point example</a></span></dt><dt><span class="section"><a href="JMS-Client-0-8-Examples-PubSub.html">4.2. Publish/subscribe example</a></span></dt></dl></div><p>The following programs shows how to send and receive messages using the Qpid JMS client.
+		The first program illustrates a <span class="emphasis"><em>point to point</em></span> example, the second, a
+		pubish/subscribe example. </p><p>Both examples show the use JNDI to obtain connection factory and destination objects which
+		the application needs. In this way the configuration is kept separate from the application
+		code itself.</p><p>The example code will be straightforward for anyone familiar with Java JMS. Readers in
+		need of an introduction are directed towards <a class="link" href="http://docs.oracle.com/javaee/6/tutorial/doc/bncdq.html" target="_top">Oracle's JMS
+			tutorial</a>.</p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Examples-PTP"></a>4.1.&#160;Point to point example</h2></div></div></div><p>In this example, we illustrate point to point messaging. We create a JNDI context
+			using a properties file, use the context to lookup a connection factory, create and
+			start a connection, create a session, and lookup a destination (a queue) from the JNDI
+			context. Then we create a producer and a consumer, send a message with the producer and
+			receive it with the consumer.</p><div class="example"><a id="JMS-Client-0-8-Examples-PTP-Java"></a><p class="title"><strong>Example&#160;4.1.&#160;JMS Example - Point to Point Messaging</strong></p><div class="example-contents"><pre class="programlisting">
+import javax.jms.*;
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import java.util.Properties;
+
+public class Hello {
+
+    public Hello() {
+    }
+
+    public static void main(String[] args) throws Exception {
+        Hello hello = new Hello();
+        hello.runTest();
+    }
+
+    private void runTest() throws Exception {
+      Properties properties = new Properties();
+      properties.load(this.getClass().getResourceAsStream("helloworld.properties"));  <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-properties" id="ptp-java-properties"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a>
+      Context context = new InitialContext(properties);                               <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-context" id="ptp-java-context"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a>
+
+      ConnectionFactory connectionFactory
+          = (ConnectionFactory) context.lookup("qpidConnectionFactory");              <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-connection-factory" id="ptp-java-connection-factory"><span><img alt="3" border="0" src="images/callouts/3.png" /></span></a>
+      Connection connection = connectionFactory.createConnection();                   <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-connection" id="ptp-java-connection"><span><img alt="4" border="0" src="images/callouts/4.png" /></span></a>
+      connection.start();                                                             <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-start" id="ptp-java-start"><span><img alt="5" border="0" src="images/callouts/5.png" /></span></a>
+
+      Session session = connection.createSession(true, Session.SESSION_TRANSACTED);   <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-session" id="ptp-java-session"><span><img alt="6" border="0" src="images/callouts/6.png" /></span></a>
+      Queue queue = (Queue) context.lookup("myqueue");                                <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-destination" id="ptp-java-destination"><span><img alt="7" border="0" src="images/callouts/7.png" /></span></a>
+
+      MessageConsumer messageConsumer = session.createConsumer(queue);                <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-consumer" id="ptp-java-consumer"><span><img alt="8" border="0" src="images/callouts/8.png" /></span></a>
+      MessageProducer messageProducer = session.createProducer(queue);                <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-producer" id="ptp-java-producer"><span><img alt="9" border="0" src="images/callouts/9.png" /></span></a>
+
+      TextMessage message = session.createTextMessage("Hello world!");                <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-send" id="ptp-java-send"><span><img alt="10" border="0" src="images/callouts/10.png" /></span></a>
+      messageProducer.send(message);
+      session.commit();
+
+      message = (TextMessage)messageConsumer.receive();                               <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-receive" id="ptp-java-receive"><span><img alt="11" border="0" src="images/callouts/11.png" /></span></a>
+      session.commit();
+      System.out.println(message.getText());
+
+      connection.close();                                                             <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-close" id="ptp-java-close"><span><img alt="12" border="0" src="images/callouts/12.png" /></span></a>
+      context.close();                                                                <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-jndi-close" id="ptp-java-jndi-close"><span><img alt="13" border="0" src="images/callouts/13.png" /></span></a>
+    }
+}
+	</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-properties"></a><a href="#ptp-java-properties"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a> </p></td><td align="left" valign="top"><p>Loads the JNDI properties file, which specifies the connection factory, queues
+					and topics. See <a class="xref" href="JMS-Client-0-8-JNDI-Properties-Format.html" title="Chapter&#160;6.&#160;JNDI Properties Format">Chapter&#160;6, <em>JNDI Properties Format</em></a> for
+					details.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-context"></a><a href="#ptp-java-context"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates the JNDI initial context.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-connection-factory"></a><a href="#ptp-java-connection-factory"><span><img alt="3" border="0" src="images/callouts/3.png" /></span></a> </p></td><td align="left" valign="top"><p>Looks up a JMS connection factory for Qpid.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-connection"></a><a href="#ptp-java-connection"><span><img alt="4" border="0" src="images/callouts/4.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates a JMS connection. Creating the JMS connections establishes the
+					connection to the Broker.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-start"></a><a href="#ptp-java-start"><span><img alt="5" border="0" src="images/callouts/5.png" /></span></a> </p></td><td align="left" valign="top"><p>Starts the connection, required for the consumption of messages.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-session"></a><a href="#ptp-java-session"><span><img alt="6" border="0" src="images/callouts/6.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates a transactional session.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-destination"></a><a href="#ptp-java-destination"><span><img alt="7" border="0" src="images/callouts/7.png" /></span></a> </p></td><td align="left" valign="top"><p>Looks up a destination for the queue with JNDI name <span class="emphasis"><em>myqueue</em></span>.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-consumer"></a><a href="#ptp-java-consumer"><span><img alt="8" border="0" src="images/callouts/8.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates a consumer that reads messages from the queue<a class="footnote" href="#ftn.d0e191" id="d0e191"><sup class="footnote">[1]</sup></a>.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-producer"></a><a href="#ptp-java-producer"><span><img alt="9" border="0" src="images/callouts/9.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates a producer that sends messages to the queue.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-send"></a><a href="#ptp-java-send"><span><img alt="10" border="0" src="images/callouts/10.png" /></span></a> </p></td><td align="left" valign="top"><p>Creates a new message of type <span class="emphasis"><em>javax.jms.TextMessage</em></span>, publishes the message and commits the
+					session.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-receive"></a><a href="#ptp-java-receive"><span><img alt="11" border="0" src="images/callouts/11.png" /></span></a> </p></td><td align="left" valign="top"><p>Reads the next available message (awaiting indefinitely if necessary) and
+					commits the session.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-close"></a><a href="#ptp-java-close"><span><img alt="12" border="0" src="images/callouts/12.png" /></span></a> </p></td><td align="left" valign="top"><p>Closes the Connection. All sessions owned by the Connection along with their
+					MessageConsumers and MessageProducers are automatically closed. The connection
+					to the Broker is closed as this point.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-jndi-close"></a><a href="#ptp-java-jndi-close"><span><img alt="13" border="0" src="images/callouts/13.png" /></span></a> </p></td><td align="left" valign="top"><p>Closes the JNDI context.</p></td></tr></table></div><p>The contents of the <code class="literal">helloworld.properties</code> file are shown
+			below.</p><div class="example"><a id="JMS-Client-0-8-Examples-PTP-PropertiesFile"></a><p class="title"><strong>Example&#160;4.2.&#160;JMS Example - Point to Point Messaging - JNDI Properties</strong></p><div class="example-contents"><pre class="programlisting">
+java.naming.factory.initial = org.apache.qpid.jndi.PropertiesFileInitialContextFactory
+connectionfactory.qpidConnectionFactory = amqp://guest:guest@clientid/?brokerlist='tcp://localhost:5672' <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-properties-connectionfactory" id="ptp-properties-connectionfactory"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a>
+queue.myqueue = queue1                                                                                   <a class="co" href="JMS-Client-0-8-Examples.html#callout-ptp-properties-destination" id="ptp-properties-destination"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a>
+	</pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-properties-connectionfactory"></a><a href="#ptp-properties-connectionfactory"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a> </p></td><td align="left" valign="top"><p>Defines a connection factory from which Connections can be created. The syntax
+					of a ConnectionURL is given in <a class="xref" href="JMS-Client-0-8-Connection-URL.html" title="Chapter&#160;7.&#160;Connection URLs">Chapter&#160;7, <em>Connection URLs</em></a>.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ptp-properties-destination"></a><a href="#ptp-properties-destination"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a> </p></td><td align="left" valign="top"><p>Defines a queue for which MessageProducers and/or MessageConsumers send and
+					receive messages. The format of these entries is described in <a class="xref" href="JMS-Client-0-8-JNDI-Properties-Format-Queue.html" title="6.2.&#160;Queue">Section&#160;6.2, &#8220;Queue&#8221;</a>.</p></td></tr></table></div></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div class="footnote" id="ftn.d0e191"><p><a class="para" href="#d0e191"><sup class="para">[1] </sup></a>Creating consumer will automatically create the queue on the Broker
+							and bind it to an exchange. Specifically, in this case as the
+								<code class="literal">queue.</code> form is used in the JNDI properties the
+							effect will be to create a queue called <code class="literal">queue1</code> on the
+							Broker, and create a binding between the <code class="literal">amq.direct</code>
+							exchange and this queue using the queue's name. This process is
+							described in detail in <a class="xref" href="JMS-Client-0-8-Client-Understanding-MessageConsumer.html#JMS-Client-0-8-Client-Understanding-MessageConsumer-ConsumerSideEffect" title="5.6.1.&#160;Consumers have Exchange/Queue Declaration and Binding Side Effect">Section&#160;5.6.1, &#8220;Consumers have Exchange/Queue Declaration and Binding Side Effect&#8221;</a></p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="JMS-Client-0-8-JMS-Getting-And-Dependencies-Dependencies.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="JMS-Client-0-8-Examples-PubSub.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">3.2.&#160;Dependencies&#160;</td><td align="center" width="20%"><a accesskey="h" href="JMS-Client-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;4.2.&#160;Publish/subscribe example</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

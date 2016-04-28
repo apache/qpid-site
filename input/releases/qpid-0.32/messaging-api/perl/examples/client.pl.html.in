@@ -1,0 +1,62 @@
+
+<h1>client.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">qpid</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$url</span>               <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">==</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;amqp:tcp:127.0.0.1:5672&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$connectionOptions</span> <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span>  <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+<span class="c1"># creates a new connection instance</span>
+<span class="k">my</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Connection</span><span class="p">(</span> <span class="nv">$url</span><span class="p">,</span> <span class="nv">$connectionOptions</span> <span class="p">);</span>
+
+<span class="nb">eval</span> <span class="p">{</span>
+    <span class="c1"># open the connection and create a session for interacting with it</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">open</span><span class="p">();</span>
+
+    <span class="k">my</span> <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="n">create_session</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$sender</span>  <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_sender</span><span class="p">(</span><span class="s">&quot;service_queue&quot;</span><span class="p">);</span>
+
+    <span class="c1"># create an address and receiver for incoming messages</span>
+    <span class="c1"># the queue will be created always, and will be deleted</span>
+    <span class="c1"># when the receive disconnects</span>
+    <span class="k">my</span> <span class="nv">$receiver</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_receiver</span><span class="p">(</span><span class="s">&quot;#&quot;</span><span class="p">);</span>
+    <span class="k">my</span> <span class="nv">$responseQueue</span> <span class="o">=</span> <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="n">get_address</span><span class="p">();</span>
+    <span class="c1"># Now send some messages...</span>
+
+    <span class="k">my</span> <span class="nv">@s</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="s">&quot;Twas brillig, and the slithy toves&quot;</span><span class="p">,</span>
+        <span class="s">&quot;Did gire and gymble in the wabe.&quot;</span><span class="p">,</span>
+        <span class="s">&quot;All mimsy were the borogroves,&quot;</span><span class="p">,</span>
+        <span class="s">&quot;And the mome raths outgrabe.&quot;</span>
+    <span class="p">);</span>
+
+    <span class="c1"># create the message object, and set a reply-to address</span>
+    <span class="c1"># so that the server knows where to send responses</span>
+    <span class="c1"># the message object will be reused to send each line</span>
+    <span class="k">my</span> <span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Message</span><span class="p">();</span>
+    <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">set_reply_to</span><span class="p">(</span><span class="nv">$responseQueue</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span> <span class="k">my</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">4</span> <span class="p">;</span> <span class="nv">$i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">set_content</span><span class="p">(</span> <span class="nv">$s</span><span class="p">[</span><span class="nv">$i</span><span class="p">]</span> <span class="p">);</span>
+        <span class="nv">$sender</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+
+        <span class="c1"># wait for the response to the last line sent</span>
+        <span class="c1"># the message will be taken directly from the</span>
+        <span class="c1"># broker&#39;s queue rather than waiting for it</span>
+        <span class="c1"># to be queued locally</span>
+        <span class="k">my</span> <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="n">fetch</span><span class="p">();</span>
+        <span class="k">print</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="n">get_content</span><span class="p">()</span> <span class="o">.</span> <span class="s">&quot; -&gt; &quot;</span>
+          <span class="o">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="n">get_content</span><span class="p">()</span> <span class="o">.</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># close the connection</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">die</span> <span class="vg">$@</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="client.pl">Download this file</a></p>

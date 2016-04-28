@@ -1,0 +1,12 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">14.12.&#160;Configuring of Disk Quota-based Flow Control</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Virtual-Host-Configure-Flow-Control.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;14.&#160;Virtual Host XML configuration file</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Host-Transaction-Timeout-Configuring.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Virtual-Host-Configure-Disk-Quotas"></a>14.12.&#160;Configuring of Disk Quota-based Flow Control</h2></div></div></div><p>
+                An example of quota configuration for the BDB message store is provided below.
+        </p><div class="example"><a id="idm140218886612800"></a><p class="title"><strong>Example&#160;14.17.&#160;Configuring a limit on a store</strong></p><div class="example-contents"><pre class="programlisting">
+            
+&lt;store&gt;
+   &lt;class&gt;org.apache.qpid.server.store.berkeleydb.BDBMessageStore&lt;/class&gt;
+   &lt;environment-path&gt;${work}/bdbstore/test&lt;/environment-path&gt;
+   &lt;overfull-size&gt;50000000&lt;/overfull-size&gt;
+   &lt;underfull-size&gt;45000000&lt;/underfull-size&gt;
+&lt;/store&gt;
+            
+            </pre></div></div><br class="example-break" /></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Virtual-Host-Configure-Flow-Control.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Virtual-Hosts-Configuration-File.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Host-Transaction-Timeout-Configuring.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">14.11.&#160;Configuring of Producer Flow Control&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;14.13.&#160;Configuring Transaction Timeouts</td></tr></table></div></div>

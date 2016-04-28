@@ -1,0 +1,155 @@
+
+<h1>spout.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">qpid</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Getopt::</span><span class="n">Long</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Pod::</span><span class="n">Usage</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Time::</span><span class="n">Local</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$url</span>     <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$count</span>   <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$durable</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$id</span>      <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$replyto</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">@properties</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">@entries</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$content</span>           <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$connectionOptions</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$address</span>           <span class="o">=</span> <span class="s">&quot;amq.direct&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$help</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$result</span> <span class="o">=</span> <span class="n">GetOptions</span><span class="p">(</span>
+    <span class="s">&quot;broker|b=s&quot;</span>           <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$url</span><span class="p">,</span>
+    <span class="s">&quot;timeout|t=i&quot;</span>          <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$timeout</span><span class="p">,</span>
+    <span class="s">&quot;count|c=i&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$count</span><span class="p">,</span>
+    <span class="s">&quot;durable|d&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$durable</span><span class="p">,</span>
+    <span class="s">&quot;id|i=s&quot;</span>               <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$id</span><span class="p">,</span>
+    <span class="s">&quot;replyto=s&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$replyto</span><span class="p">,</span>
+    <span class="s">&quot;property|p=s@&quot;</span>        <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">@properties</span><span class="p">,</span>
+    <span class="s">&quot;map|m=s@&quot;</span>             <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">@entries</span><span class="p">,</span>
+    <span class="s">&quot;content=s&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$content</span><span class="p">,</span>
+    <span class="s">&quot;connection-options=s&quot;</span> <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$connectionOptions</span><span class="p">,</span>
+    <span class="s">&quot;help|h&quot;</span>               <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$help</span>
+<span class="p">)</span> <span class="o">||</span> <span class="n">pod2usage</span><span class="p">(</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">);</span>
+
+<span class="n">pod2usage</span><span class="p">(</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">if</span> <span class="nv">$help</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="nv">$#ARGV</span> <span class="ow">ge</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$address</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">setEntries</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="p">(</span><span class="nv">$content</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">@entries</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">my</span> <span class="p">(</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span> <span class="p">)</span> <span class="o">=</span> <span class="nb">split</span><span class="p">(</span> <span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="nv">$_</span> <span class="p">);</span>
+        <span class="nv">$content</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$name</span><span class="p">}</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">setProperties</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="o">=</span> <span class="nv">@_</span><span class="p">;</span>
+
+    <span class="k">foreach</span> <span class="p">(</span><span class="nv">@properties</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">my</span> <span class="p">(</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span> <span class="p">)</span> <span class="o">=</span> <span class="nb">split</span><span class="p">(</span> <span class="s">&quot;=&quot;</span><span class="p">,</span> <span class="nv">$_</span> <span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_property</span><span class="p">(</span> <span class="nv">$name</span><span class="p">,</span> <span class="nv">$value</span> <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># create a connection object</span>
+<span class="k">my</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Connection</span><span class="p">(</span> <span class="nv">$url</span><span class="p">,</span> <span class="nv">$connectionOptions</span> <span class="p">);</span>
+
+<span class="nb">eval</span> <span class="p">{</span>
+    <span class="c1"># open the connection, create a session and then a sender</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">open</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="n">create_session</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$sender</span>  <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_sender</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+
+    <span class="c1"># create a message to be sent</span>
+    <span class="k">my</span> <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Message</span><span class="p">();</span>
+    <span class="n">setProperties</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="nv">@properties</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">@entries</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">my</span> <span class="nv">$content</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="n">setEntries</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_content</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">elsif</span> <span class="p">(</span><span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_content</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_content_type</span><span class="p">(</span><span class="s">&quot;text/plain&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1"># set durable flag</span>
+    <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_durable</span><span class="p">(</span><span class="nv">$durable</span><span class="p">);</span>
+
+    <span class="c1"># if a reply-to address was supplied, then create a receiver from the</span>
+    <span class="c1"># session and wait for a response to be sent</span>
+    <span class="k">my</span> <span class="nv">$receiver</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$replyto</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">my</span> <span class="nv">$responseQueue</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Address</span><span class="p">(</span><span class="nv">$replyto</span><span class="p">);</span>
+        <span class="nv">$receiver</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_receiver</span><span class="p">(</span><span class="nv">$responseQueue</span><span class="p">);</span>
+        <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_reply_to</span><span class="p">(</span><span class="nv">$responseQueue</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">my</span> <span class="nv">$start</span> <span class="o">=</span> <span class="nb">localtime</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">@s</span>     <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="sr"> /[:\s]/</span><span class="p">,</span> <span class="nv">$start</span> <span class="p">);</span>
+    <span class="k">my</span> <span class="nv">$s</span>     <span class="o">=</span> <span class="s">&quot;$s[3]$s[4]$s[5]&quot;</span><span class="p">;</span>
+    <span class="k">my</span> <span class="nv">$n</span>     <span class="o">=</span> <span class="nv">$s</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span>
+        <span class="k">my</span> <span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">;</span>
+        <span class="p">(</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="nv">$count</span> <span class="o">||</span> <span class="nv">$count</span> <span class="o">==</span> <span class="mi">0</span> <span class="p">)</span>
+          <span class="ow">and</span> <span class="p">(</span> <span class="nv">$timeout</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="nb">abs</span><span class="p">(</span> <span class="nv">$n</span> <span class="o">-</span> <span class="nv">$s</span> <span class="p">)</span> <span class="o">&lt;</span> <span class="nv">$timeout</span> <span class="p">)</span> <span class="p">;</span>
+        <span class="nv">$i</span><span class="o">++</span>
+      <span class="p">)</span>
+    <span class="p">{</span>
+
+        <span class="nv">$sender</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">(</span><span class="nv">$message</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$receiver</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">print</span> <span class="s">&quot;Waiting for a response.\n&quot;</span><span class="p">;</span>
+            <span class="k">my</span> <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="n">fetch</span><span class="p">();</span>
+            <span class="k">print</span> <span class="s">&quot;$i -&gt; &quot;</span> <span class="o">.</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="n">get_content</span><span class="p">()</span> <span class="o">.</span> <span class="s">&quot;\n&quot;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">my</span> <span class="nv">$now</span> <span class="o">=</span> <span class="nb">localtime</span><span class="p">;</span>
+        <span class="k">my</span> <span class="nv">@n</span>   <span class="o">=</span> <span class="nb">split</span><span class="p">(</span><span class="sr"> /[:\s]/</span><span class="p">,</span> <span class="nv">$now</span> <span class="p">);</span>
+        <span class="k">my</span> <span class="nv">$n</span>   <span class="o">=</span> <span class="s">&quot;$n[3]$n[4]$n[5]&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">sync</span><span class="p">();</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nb">die</span> <span class="vg">$@</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">__END__</span>
+
+<span class="cp">=head1 NAME</span>
+
+<span class="cp">spout - Send messages to the specified address</span>
+
+<span class="cp">=head1 SYNOPSIS</span>
+
+<span class="cp">  Usage: spout [OPTIONS] ADDRESS</span>
+
+<span class="cp">  Options:</span>
+<span class="cp">  -h, --help                   show this message</span>
+<span class="cp">  -b VALUE, --broker VALUE     url of broker to connect to</span>
+<span class="cp">  -t VALUE, --timeout VALUE    exit after the specified time</span>
+<span class="cp">  -c VALUE, --count VALUE      stop after count messageshave been sent, zero disables</span>
+<span class="cp">  -i VALUE, --id VALUE         use the supplied id instead of generating one</span>
+<span class="cp">  --replyto VALUE              specify reply-to value</span>
+<span class="cp">  -P VALUE, --property VALUE   specify message property</span>
+<span class="cp">  -M VALUE, --map VALUE        specify entry for map content</span>
+<span class="cp">  --content VALUE              specify textual content</span>
+<span class="cp">  --connection-options VALUE   connection options string in the form {name1:value1, name2:value2}</span>
+
+<span class="cp">=cut</span>
+</pre></div>
+
+<p><a href="spout.pl">Download this file</a></p>

@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Qpid::Messaging::Connection - Qpid Ruby Messaging API</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script src="../../js/jquery.js"></script>
+<script src="../../js/darkfish.js"></script>
+
+<link href="../../css/fonts.css" rel="stylesheet">
+<link href="../../css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="../../index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="../../table_of_contents.html#pages">Pages</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Object
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-authenticated_username">#authenticated_username</a>
+    
+    <li ><a href="#method-i-close">#close</a>
+    
+    <li ><a href="#method-i-create_session">#create_session</a>
+    
+    <li ><a href="#method-i-open">#open</a>
+    
+    <li ><a href="#method-i-open-3F">#open?</a>
+    
+    <li ><a href="#method-i-session">#session</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Qpid::Messaging::Connection">
+  <h1 id="class-Qpid::Messaging::Connection" class="class">
+    class Qpid::Messaging::Connection
+  </h1>
+
+  <section class="description">
+    
+<p>A <code>Connection</code> represents a network connection to a remote
+endpoint.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(opts = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a connection object. Raises a MessagingError if an invalid
+connection option is used.</p>
+
+<h2 id="method-c-new-label-Options">Options<span><a href="#method-c-new-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p><code>:url</code> - the URL for the broker</p>
+</li><li>
+<p><code>:options</code> - connection options</p>
+</li></ul>
+
+<h2 id="method-c-new-label-Controlling+Reconnect+Behavior">Controlling Reconnect Behavior<span><a href="#method-c-new-label-Controlling+Reconnect+Behavior">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The following connection options can be used to configure the reconnection
+behavior for this connection.</p>
+<ul><li>
+<p><code>:username</code> - the authentication username</p>
+</li><li>
+<p><code>:password</code> - the authentication password</p>
+</li><li>
+<p><code>:heartbeat</code></p>
+</li><li>
+<p><code>:tcp_nodelay</code></p>
+</li><li>
+<p><code>:sasl_mechanism</code></p>
+</li><li>
+<p><code>:sasl_service</code></p>
+</li><li>
+<p><code>:sasl_min_ssf</code></p>
+</li><li>
+<p><code>:sasl_max_ssf</code></p>
+</li><li>
+<p><code>:transport</code></p>
+</li><li>
+<p><code>:reconnect</code> - indicates whether to attempt reconnections</p>
+</li><li>
+<p><code>:reconnect_timeout</code> - the number of seconds to attempt
+reconnecting</p>
+</li><li>
+<p><code>:reconnect_limit</code> - the number of retries before reporting
+failure</p>
+</li><li>
+<p><code>:reconnect_interval_min</code> - initial delay, in seconds, before
+attempting a reconnection</p>
+</li><li>
+<p><code>:reconnect_interval_max</code> - number of seconds to wait before
+additional reconnect attempts</p>
+</li><li>
+<p><code>:reconnect_interval</code> - shorthand for setting both min and max
+values</p>
+</li><li>
+<p><code>:reconnect_urls</code> - a list of alternate URLs to use for
+reconnection attempts</p>
+</li></ul>
+
+<h2 id="method-c-new-label-Examples">Examples<span><a href="#method-c-new-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># creates a connection to the broker running local *localhost*</span>
+<span class="ruby-identifier">conn</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Connnection</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-comment"># creates a connection to *broker1.domain.com* on port *5672*</span>
+<span class="ruby-identifier">conn</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span> :<span class="ruby-identifier">url</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;amqp:tcp:broker1.domain.com:5672&quot;</span>
+<span class="ruby-comment"># creates a connection to localhost with the specified authentication credentials</span>
+<span class="ruby-identifier">conn</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span> :<span class="ruby-identifier">options</span> =<span class="ruby-operator">&gt;</span> {:<span class="ruby-identifier">username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;login&quot;</span>, :<span class="ruby-identifier">password</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;password&quot;</span>}
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">opts</span> = {})
+  <span class="ruby-ivar">@url</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:url</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;localhost&quot;</span>
+  <span class="ruby-ivar">@options</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span>.<span class="ruby-identifier">stringify</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:options</span>] <span class="ruby-operator">||</span> {})
+  <span class="ruby-ivar">@connection_impl</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:impl</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Cqpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@url</span>, <span class="ruby-ivar">@options</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-authenticated_username" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">authenticated_username</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the username used to authenticate with the connection.</p>
+
+<p>If the connection did not user authentication credentials, then the
+username returned is “anonymous”.</p>
+
+<h2 id="method-i-authenticated_username-label-Examples">Examples<span><a href="#method-i-authenticated_username-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># create a new connection for user &quot;qpiduser&quot;</span>
+<span class="ruby-identifier">conn</span> = <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Connection</span>.<span class="ruby-identifier">new</span> :<span class="ruby-identifier">username</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;qpiduser&quot;</span>
+<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open</span>
+<span class="ruby-comment"># displays the authenticate username</span>
+<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Connected as #{conn.authenticated_username}&quot;</span> <span class="ruby-comment"># should say &#39;qpiduser&#39;</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="authenticated_username-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 171</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">authenticated_username</span>; <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">getAuthenticatedUsername</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">open?</span>; <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-close" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">close</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Closes the connection.</p>
+
+<h2 id="method-i-close-label-Examples">Examples<span><a href="#method-i-close-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># close a connection</span>
+<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">close</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="close-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">close</span>; <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">close</span>; <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create_session" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_session</span><span
+            class="method-args">(args = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new session.</p>
+
+<h2 id="method-i-create_session-label-Arguments">Arguments<span><a href="#method-i-create_session-label-Arguments">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p><code>:name</code> - specifies the name for this session</p>
+</li><li>
+<p><code>:transactional</code> - if <code>true</code> then a creates a
+transaction session (def. <code>false</code>)</p>
+</li></ul>
+
+<h2 id="method-i-create_session-label-Examples">Examples<span><a href="#method-i-create_session-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># create a session named &#39;session1&#39;</span>
+<span class="ruby-identifier">session</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">create_session</span> :<span class="ruby-identifier">name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;session1&quot;</span>
+<span class="ruby-comment"># create a transactional session</span>
+<span class="ruby-identifier">session</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">create_session</span> :<span class="ruby-identifier">transaction</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="create_session-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_session</span>(<span class="ruby-identifier">args</span> = {})
+  <span class="ruby-identifier">name</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">:name</span>] <span class="ruby-operator">||</span> <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">open?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>[<span class="ruby-value">:transactional</span>]
+      <span class="ruby-identifier">session</span> = <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">createTransactionalSession</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">session</span> = <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">createSession</span> <span class="ruby-identifier">name</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-constant">Session</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">session</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">RuntimeError</span>.<span class="ruby-identifier">new</span> <span class="ruby-string">&quot;No connection available.&quot;</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-open" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Establishes the connection.</p>
+
+<h2 id="method-i-open-label-Examples">Examples<span><a href="#method-i-open-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># open a connection if it&#39;s not already open</span>
+<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open?</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="open-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open</span>
+  <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">open</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-open-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">open?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reports whether the connection is open.</p>
+
+<h2 id="method-i-open-3F-label-Examples">Examples<span><a href="#method-i-open-3F-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># close the connection if it&#39;s not already closed</span>
+<span class="ruby-identifier">conn</span>.<span class="ruby-identifier">close</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">open?</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="open-3F-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">open?</span>; <span class="ruby-keyword">true</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">isOpen</span>; <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-session" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">session</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a <a href="Session.html">Session</a> with the given name. Raises an
+exception if no session with the given name exists.</p>
+
+<h2 id="method-i-session-label-Options">Options<span><a href="#method-i-session-label-Options">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p><code>name</code> - the existing session&#39;s name</p>
+</li></ul>
+
+<h2 id="method-i-session-label-Examples">Examples<span><a href="#method-i-session-label-Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<pre class="ruby"><span class="ruby-comment"># retrieve a session named &#39;mysession&#39; from the current connection</span>
+<span class="ruby-identifier">name</span> = <span class="ruby-string">&quot;my-session&quot;</span>
+<span class="ruby-comment"># if no such session exists then catchh the exception raised</span>
+<span class="ruby-keyword">begin</span>
+  <span class="ruby-identifier">session</span> = <span class="ruby-identifier">conn</span>.<span class="ruby-identifier">session</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">rescue</span> <span class="ruby-constant">MessagingException</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">error</span>
+   <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;No such session: #{name}.&quot;</span>
+<span class="ruby-keyword">end</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="session-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/connection.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">session</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-identifier">session_impl</span> = <span class="ruby-ivar">@connection_impl</span>.<span class="ruby-identifier">getSession</span> <span class="ruby-identifier">name</span>
+  <span class="ruby-constant">Qpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Messaging</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>, <span class="ruby-identifier">session_impl</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">session_impl</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

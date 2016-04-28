@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Dispatch Router - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-0.2/index.html">Qpid Dispatch 0.2</a></li><li>Dispatch Router</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="dispatch-router">Dispatch Router</h1>
+
+<p>A lightweight message router, written in C and built on
+<a href="/proton/index.html">Qpid Proton</a>, that provides flexible
+and scalable interconnect between AMQP endpoints or between endpoints
+and brokers.</p>
+
+<p><a href="release-0.1.html">What can you do with Qpid Dispatch 0.1? (old page)</a></p>
+
+<h2 id="overview">Overview</h2>
+
+<p>The Dispatch router is an AMQP router that provides advanced interconnect for AMQP.
+It is <em>not</em> a broker.  It will never assume ownership of a message.  It will,
+however, propagate settlement and disposition across a network such that delivery
+guarantees are met.</p>
+
+<p>The router is meant to be deployed in topologies of multiple routers, preferably with
+redundant paths.  It uses link-state routing protocols and algorithms (similar to OSPF
+or IS-IS from the networking world) to calculate the best path from every point to
+every other point and to recover quickly from failures.  It does not need to use
+clustering for high availability; rather, it relies on redundant paths to provide
+continued connectivity in the face of system or network failure.</p>
+
+<p>A messaging client can make a single AMQP connection into a messaging bus built of
+Dispatch routers and, over that connection, exchange messages with one or more message
+brokers, and at the same time exchange messages directly with other endpoints without
+involving a broker at all.</p>
+
+<h2 id="benefits">Benefits</h2>
+
+<ul>
+<li>Simplifies connectivity
+<ul>
+<li>An endpoint can do all of its messaging through a single transport connection</li>
+<li>Avoid opening holes in firewalls for incoming connections</li>
+</ul></li>
+<li>Simplifies reliability
+<ul>
+<li>Reliability and availability are provided using redundant topology, not server clustering</li>
+<li>Reliable end-to-end messaging without persistent stores</li>
+<li>Use a message broker only when you need store-and-forward semantics</li>
+</ul></li>
+</ul>
+
+<h2 id="features">Features</h2>
+
+<div class="two-column">
+
+<ul>
+<li>Supports arbitrary topology - no restrictions on redundancy</li>
+<li>Automatic route computation - adjusts quickly to changes in topology</li>
+<li>Cost-based route computation</li>
+<li><a href="addressing.html">Rich addressing semantics</a></li>
+<li>Security</li>
+</ul>
+
+</div>
+
+<h2 id="technical-details">Technical Details</h2>
+
+<div class="two-column">
+
+<ul>
+<li><a href="amqp-mapping.html">Usage of AMQP</a></li>
+</ul>
+
+</div>
+
+<h2 id="issues">Issues</h2>
+
+<p>For more information about finding and reporting bugs, see
+<a href="/issues.html">Qpid issues</a>.</p>
+
+<div class="indent">
+  <form id="jira-search-form">
+    <input type="hidden" name="jql" value="project = QPID and component = 'Qpid Dispatch' and text ~ '{}' order by updatedDate desc"/>
+    <input type="text" name="text"/>
+    <button type="submit">Search</button>
+  </form>
+</div>
+
+<div class="two-column">
+
+<ul>
+<li><a href="http://issues.apache.org/jira/issues/?jql=resolution+%3D+EMPTY+and+issuetype+%3D+%22Bug%22+and+component+%3D+%22Qpid+Dispatch%22+and+project+%3D+%22QPID%22">Open bugs</a></li>
+<li><a href="http://issues.apache.org/jira/issues/?jql=resolution+%3D+%22Fixed%22+and+issuetype+%3D+%22Bug%22+and+component+%3D+%22Qpid+Dispatch%22+and+project+%3D+%22QPID%22">Fixed bugs</a></li>
+<li><a href="http://issues.apache.org/jira/issues/?jql=resolution+%3D+EMPTY+and+issuetype+in+%28%22New+Feature%22%2C+%22Improvement%22%29+and+component+%3D+%22Qpid+Dispatch%22+and+project+%3D+%22QPID%22">Requested enhancements</a></li>
+<li><a href="http://issues.apache.org/jira/issues/?jql=resolution+%3D+%22Fixed%22+and+issuetype+in+%28%22New+Feature%22%2C+%22Improvement%22%29+and+component+%3D+%22Qpid+Dispatch%22+and+project+%3D+%22QPID%22">Completed enhancements</a></li>
+<li><a href="http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;priority=3&amp;summary=[Enter%20a%20brief%20description]&amp;components=12320398">Report a bug</a></li>
+<li><a href="http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;priority=3&amp;summary=[Enter%20a%20brief%20description]&amp;components=12320398">Request an enhancement</a></li>
+<li><a href="http://issues.apache.org/jira/browse/QPID/component/12320398">Jira summary page</a></li>
+</ul>
+
+</div>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

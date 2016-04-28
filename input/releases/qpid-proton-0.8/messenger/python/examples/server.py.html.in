@@ -1,0 +1,47 @@
+
+<h1>server.py</h1>
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">optparse</span>
+<span class="kn">from</span> <span class="nn">proton</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s">&quot;usage: %prog &lt;addr_1&gt; ... &lt;addr_n&gt;&quot;</span><span class="p">,</span>
+                               <span class="n">description</span><span class="o">=</span><span class="s">&quot;simple message server&quot;</span><span class="p">)</span>
+
+<span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">args</span><span class="p">:</span>
+  <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;amqp://~0.0.0.0&quot;</span><span class="p">]</span>
+
+<span class="n">mng</span> <span class="o">=</span> <span class="n">Messenger</span><span class="p">()</span>
+<span class="n">mng</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+  <span class="n">mng</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
+  <span class="k">if</span> <span class="n">request</span><span class="o">.</span><span class="n">subject</span><span class="p">:</span>
+    <span class="n">response</span><span class="o">.</span><span class="n">subject</span> <span class="o">=</span> <span class="s">&quot;Re: </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="n">request</span><span class="o">.</span><span class="n">subject</span>
+  <span class="n">response</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">properties</span>
+  <span class="k">print</span> <span class="s">&quot;Dispatched </span><span class="si">%s</span><span class="s"> </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">request</span><span class="o">.</span><span class="n">subject</span><span class="p">,</span> <span class="n">request</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+
+<span class="n">msg</span> <span class="o">=</span> <span class="n">Message</span><span class="p">()</span>
+<span class="n">reply</span> <span class="o">=</span> <span class="n">Message</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="bp">True</span><span class="p">:</span>
+  <span class="k">if</span> <span class="n">mng</span><span class="o">.</span><span class="n">incoming</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+    <span class="n">mng</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+  <span class="k">if</span> <span class="n">mng</span><span class="o">.</span><span class="n">incoming</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">mng</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">reply_to</span><span class="p">:</span>
+      <span class="k">print</span> <span class="n">msg</span><span class="o">.</span><span class="n">reply_to</span>
+      <span class="n">reply</span><span class="o">.</span><span class="n">address</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">reply_to</span>
+      <span class="n">reply</span><span class="o">.</span><span class="n">correlation_id</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">correlation_id</span>
+      <span class="n">reply</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">body</span>
+    <span class="n">dispatch</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">reply</span><span class="p">)</span>
+    <span class="n">mng</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">reply</span><span class="p">)</span>
+    <span class="n">mng</span><span class="o">.</span><span class="n">send</span><span class="p">()</span>
+
+<span class="n">mng</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+</pre></div>
+
+<p><a href="server.py">Download this file</a></p>

@@ -1,0 +1,107 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">13.16.&#160;Performance</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-High-Availability-DisasterRecovery.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;13.&#160;High Availability</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Hosts-Configuration-File.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-High-Availability-Performance"></a>13.16.&#160;Performance</h2></div></div></div><p>The aim of this section is not to provide exact performance metrics relating to HA, as this depends heavily on the test
+    environment, but rather showing an impact of HA on Qpid broker performance in comparison with the Non HA case.</p><p>For testing of impact of HA on a broker performance a special test script was written using Qpid performance test framework.
+    The script opened a number of connections to the Qpid broker, created producers and consumers on separate connections,
+    and published test messages with concurrent producers into a test queue and consumed them with concurrent consumers.
+    The table below shows the number of producers/consumers used in the tests.
+    The overall throughput was collected for each configuration.
+    </p><div class="table"><table border="1">Number of producers/consumers in performance tests<thead><tr>
+          <th>Test</th>
+          <th>Number of producers</th>
+          <th>Number of consumers</th>
+        </tr></thead><tbody><tr>
+          <td>1</td>
+          <td>1</td>
+          <td>1</td>
+        </tr><tr>
+          <td>2</td>
+          <td>2</td>
+          <td>2</td>
+        </tr><tr>
+          <td>3</td>
+          <td>4</td>
+          <td>4</td>
+        </tr><tr>
+          <td>4</td>
+          <td>8</td>
+          <td>8</td>
+        </tr><tr>
+          <td>5</td>
+          <td>16</td>
+          <td>16</td>
+        </tr><tr>
+          <td>6</td>
+          <td>32</td>
+          <td>32</td>
+        </tr><tr>
+          <td>7</td>
+          <td>64</td>
+          <td>64</td>
+        </tr></tbody></table></div><p>The test was run against the following Qpid Broker configurations</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Non HA Broker</p></li><li class="listitem"><p>HA 2 Nodes Cluster with durability <span class="emphasis"><em>SYNC,SYNC,ALL</em></span></p></li><li class="listitem"><p>HA 2 Nodes Cluster with durability <span class="emphasis"><em>WRITE_NO_SYNC,WRITE_NO_SYNC,ALL</em></span></p></li><li class="listitem"><p>HA 2 Nodes Cluster with durability <span class="emphasis"><em>WRITE_NO_SYNC,WRITE_NO_SYNC,ALL</em></span> and <span class="emphasis"><em>coalescing-sync</em></span> Qpid mode</p></li><li class="listitem"><p>HA 2 Nodes Cluster with durability <span class="emphasis"><em>WRITE_NO_SYNC,NO_SYNC,ALL</em></span> and <span class="emphasis"><em>coalescing-sync</em></span> Qpid mode</p></li><li class="listitem"><p>HA 2 Nodes Cluster with durability <span class="emphasis"><em>NO_SYNC,NO_SYNC,ALL</em></span> and <span class="emphasis"><em>coalescing-sync</em></span> Qpid option</p></li></ul></div><p>The evironment used in testing consisted of 2 servers with 4 CPU cores (2x Intel(r) Xeon(R) CPU 5150@2.66GHz), 4GB of RAM
+        and running under OS Red Hat Enterprise Linux AS release 4 (Nahant Update 4). Network bandwidth was 1Gbit.
+    </p><p>We ran Master node on the first server and Replica and clients(both consumers and producers) on the second server.</p><p>In non-HA case Qpid Broker was run on a first server and clients were run on a second server.</p><p>The table below contains the test results we measured on this environment for different Broker configurations.</p><p>Each result is represented by throughput value in KB/second and difference in % between HA configuration and non HA case for the same number of clients.</p><div class="table"><table border="1">Performance Comparison<thead><tr>
+          <td>Test/Broker</td>
+          <td>No HA</td>
+          <td>SYNC, SYNC, ALL</td>
+          <td>WRITE_NO_SYNC, WRITE_NO_SYNC, ALL</td>
+          <td>WRITE_NO_SYNC, WRITE_NO_SYNC, ALL - coalescing-sync</td>
+          <td>WRITE_NO_SYNC, NO_SYNC,ALL - coalescing-sync</td>
+          <td>NO_SYNC, NO_SYNC, ALL - coalescing-sync</td>
+        </tr></thead><tbody><tr>
+          <td>1 (1/1)</td>
+          <td>0.0%</td>
+          <td>-61.4%</td>
+          <td>117.0%</td>
+          <td>-16.02%</td>
+          <td>-9.58%</td>
+          <td>-25.47%</td>
+        </tr><tr>
+          <td>2 (2/2)</td>
+          <td>0.0%</td>
+          <td>-75.43%</td>
+          <td>67.87%</td>
+          <td>-66.6%</td>
+          <td>-69.02%</td>
+          <td>-30.43%</td>
+        </tr><tr>
+          <td>3 (4/4)</td>
+          <td>0.0%</td>
+          <td>-84.89%</td>
+          <td>24.19%</td>
+          <td>-71.02%</td>
+          <td>-69.37%</td>
+          <td>-43.67%</td>
+        </tr><tr>
+          <td>4 (8/8)</td>
+          <td>0.0%</td>
+          <td>-91.17%</td>
+          <td>-22.97%</td>
+          <td>-82.32%</td>
+          <td>-83.42%</td>
+          <td>-55.5%</td>
+        </tr><tr>
+          <td>5 (16/16)</td>
+          <td>0.0%</td>
+          <td>-91.16%</td>
+          <td>-21.42%</td>
+          <td>-86.6%</td>
+          <td>-86.37%</td>
+          <td>-46.99%</td>
+        </tr><tr>
+          <td>6 (32/32)</td>
+          <td>0.0%</td>
+          <td>-94.83%</td>
+          <td>-51.51%</td>
+          <td>-92.15%</td>
+          <td>-92.02%</td>
+          <td>-57.59%</td>
+        </tr><tr>
+          <td>7 (64/64)</td>
+          <td>0.0%</td>
+          <td>-94.2%</td>
+          <td>-41.84%</td>
+          <td>-89.55%</td>
+          <td>-89.55%</td>
+          <td>-50.54%</td>
+        </tr></tbody></table></div><p>The figure below depicts the graphs for the performance test results</p><div class="figure"><a id="idm140218886060608"></a><p class="title"><strong>Figure&#160;13.8.&#160;Test results</strong></p><div class="figure-contents"><div><img alt="Test results" src="images/HA-perftests-results.png" /></div></div></div><br class="figure-break" /><p>On using durability <span class="emphasis"><em>SYNC,SYNC,ALL</em></span> (without coalescing-sync) the performance drops significantly (by 62-95%) in comparison with non HA broker.</p><p>Whilst, on using durability <span class="emphasis"><em>WRITE_NO_SYNC,WRITE_NO_SYNC,ALL</em></span> (without coalescing-sync) the performance drops by only half, but with loss of durability guarantee, so is not recommended.</p><p>In order to have better performance with HA, Qpid Broker comes up with the special mode called <a class="link" href="Java-Broker-High-Availability-DurabilityGuarantee.html#Java-Broker-High-Availability-DurabilityGuarantee_CoalescingSync" title="13.6.2.&#160;Coalescing-sync">coalescing-sync</a>,
+    With this mode enabled, Qpid broker batches the concurrent transaction commits and syncs transaction data into Master disk in one go.
+    As result, the HA performance only drops by 25-60% for durability <span class="emphasis"><em>NO_SYNC,NO_SYNC,ALL</em></span> and by 10-90% for <span class="emphasis"><em>WRITE_NO_SYNC,WRITE_NO_SYNC,ALL</em></span>.</p></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-High-Availability-DisasterRecovery.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Virtual-Hosts-Configuration-File.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">13.15.&#160;Disaster Recovery&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;14.&#160;Virtual Host XML configuration file</td></tr></table></div></div>

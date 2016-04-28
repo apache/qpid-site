@@ -1,0 +1,110 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">6.3.&#160;REST API</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;6.&#160;Management Channels</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-JMX.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Management-Channel-REST-API"></a>6.3.&#160;REST API</h2></div></div></div><p> This section provides a brief overview of the REST interface, which can be used directly to
+    monitor and manage the Broker instance.</p><p>The REST interface support traditional REST model which uses the GET method requests to
+    retrieve the information about broker configured objects, DELETE method requests to delete the
+    configured object, PUT to create or update the configured object and POST to perform the
+    configured objects updates not available with the PUT requests.</p><p>The REST API is versioned with the version number built into the URL. The general form of
+    the URL is <code class="literal">/api/&lt;version&gt;</code>. For convenience the alias
+      <code class="literal">latest</code> signifies the latest supported version. There are also some
+    ancillary services prefixed by <code class="literal">/service</code>.</p><p>The table below lists the available REST services with brief description how they can be
+    used.</p><div class="table"><a id="idm228643963920"></a><p class="title"><strong>Table&#160;6.1.&#160;Rest services</strong></p><div class="table-contents"><table border="1" summary="Rest services"><colgroup><col /><col /><col /><col /><col /><col /></colgroup><thead><tr><th>REST Service URL</th><th>Description</th><th>GET</th><th>PUT</th><th>POST</th><th>DELETE</th></tr></thead><tbody><tr><td>
+            <p>/api/&lt;ver&gt;/broker</p>
+          </td><td>
+            <p>Rest service to manage broker instance</p>
+          </td><td>
+            <p>Retrieves the details of broker configuration</p>
+          </td><td>
+            <p>Updates broker attributes</p>
+          </td><td>
+            <p>Not implemented yet</p>
+          </td><td>
+            <p>Not implemented yet</p>
+          </td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/authenticationprovider</p>
+            <p>/api/&lt;ver&gt;/authenticationprovider/&lt;authentication provider
+              name&gt;</p>
+          </td><td>Rest service to manage authentication providers on the broker</td><td>Retrieves the details about authentication providers</td><td>Creates or updates authentication providers</td><td>Not implemented yet</td><td>Deletes authentication providers</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/accesscontrolprovider</p>
+          </td><td>Rest service to manage access control providers</td><td>Retrieves the details about access control providers</td><td>Creates access control provider</td><td>Not implemented yet</td><td>Deletes access control provider(s)</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/user</p>
+            <p>/api/&lt;ver&gt;/user/&lt;authentication provider name&gt;/&lt;user
+              name&gt;</p>
+          </td><td>Rest service to manage user account</td><td>Retrieves the details about user account</td><td>Creates user account, updates user password</td><td>Not implemented yet</td><td>Deletes user account</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/groupprovider</p>
+            <p>/api/&lt;ver&gt;/groupprovider/&lt;group provider name&gt;</p>
+          </td><td>Rest service to manage group providers</td><td>Retrieves the details about group provider(s)</td><td>Creates group provider</td><td>Not implemented yet</td><td>Deletes groups providers</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/group</p>
+            <p>/api/&lt;ver&gt;/group/&lt;group provider name&gt;/&lt;group name&gt;</p>
+          </td><td>Rest service to manage user group</td><td>Retrieves the details about user group</td><td>Creates group</td><td>Not implemented yet</td><td>Deletes group</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/groupmember</p>
+            <p>/api/&lt;ver&gt;/groupmember/&lt;group provider name &gt;/&lt;group
+              name&gt;/&lt;user name&gt;</p>
+          </td><td>Rest service to manage group member(s)</td><td>Retrieves the details about group member(s)</td><td>Add user to group</td><td>Not implemented yet</td><td>Deletes user from group</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/port</p>
+            <p>/api/&lt;ver&gt;/port/&lt;port name&gt;</p>
+          </td><td>Rest service to manage broker ports(s)</td><td>Retrieves the details about the broker port(s)</td><td>Creates or updates port</td><td>Not implemented yet</td><td>Deletes ports</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/keystore</p>
+          </td><td>Rest service to manage KeyStores</td><td>Retrieves the details about KeyStore</td><td>Creates or updates KeyStore</td><td>Not implemented yet</td><td>Deletes KeyStore(s)</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/truststore</p>
+          </td><td>Rest service to manage TrustStore</td><td>Retrieves the details about TrustStore</td><td>Creates or updates TrustStore</td><td>Not implemented yet</td><td>Deletes TrustStore(s)</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/plugin</p>
+          </td><td>Rest service to manage plugins</td><td>Retrieves the details about plugins</td><td>Updates plugin attributes</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/virtualhostnode</p>
+            <p>/api/&lt;ver&gt;/virtualhostnode/&lt;virtualhostnode name&gt;</p>
+          </td><td>Rest service to manage virtualhost node(s)</td><td>Retrieves the details about the virtualhost node(s)</td><td>Creates/Updates virtualhost node</td><td>Not implemented yet</td><td>Deletes virtualhost node</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/virtualhost</p>
+            <p>/api/&lt;ver&gt;/virtualhost/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;</p>
+          </td><td>Rest service to manage virtualhost(s)</td><td>Retrieves the details about the virtualhost(s)</td><td>Creates/Updates virtualhost</td><td>Not implemented yet</td><td>Deletes virtualhost</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/queue</p>
+            <p>/api/&lt;ver&gt;/queue/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;/&lt;queue name&gt;</p>
+          </td><td>Rest service to manage queue(s)</td><td>Retrieves the details about the queue(s)</td><td>Creates queue</td><td>Not implemented yet</td><td>Deletes queue</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/exchange</p>
+            <p>/api/&lt;ver&gt;/exchange/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;/&lt;exchange name&gt;</p>
+          </td><td>Rest service to manage exchange(s)</td><td>Retrieves the details about the exchange(s)</td><td>Creates exchange</td><td>Not implemented yet</td><td>Deletes exchange</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/binding</p>
+            <p>/api/&lt;ver&gt;/binding/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;/&lt;exchange name&gt;/&lt;queue name&gt;/&lt;binding name&gt;</p>
+          </td><td>Rest service to manage binding(s)</td><td>Retrieves the details about the binding(s)</td><td>Binds a queue to an exchange</td><td>Not implemented yet</td><td>Deletes binding</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/connection</p>
+            <p>/api/&lt;ver&gt;/connection/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;/&lt;connection name&gt;</p>
+          </td><td>Rest service to manage connection(s)</td><td>Retrieves the details about the connection(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/api/&lt;ver&gt;/session</p>
+            <p>/api/&lt;ver&gt;/session/&lt;virtualhostnode name&gt;/&lt;virtualhost
+              name&gt;/&lt;connection name&gt;/&lt;session name&gt;</p>
+          </td><td>Rest service to manage session(s)</td><td>Retrieves the details about the session(s)</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/service/message/&lt;virtualhost name&gt;/&lt;queue name&gt;</p>
+          </td><td>Rest service to manage messages(s)</td><td>Retrieves the details about the messages(s)</td><td>Not implemented yet</td><td>Copies, moves messages</td><td>Deletes messages</td></tr><tr><td>
+            <p>/service/message-content/&lt;virtualhost name&gt;/&lt;queue name&gt;</p>
+          </td><td>Rest service to retrieve message content</td><td>Retrieves the message content</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/service/logrecords</p>
+          </td><td>Rest service to retrieve broker logs</td><td>Retrieves the broker logs</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/service/sasl</p>
+          </td><td>Sasl authentication</td><td>Retrieves user current authentication status and broker supported SASL
+            mechanisms</td><td>Authenticates user using supported SASL mechanisms</td><td>Not implemented yet</td><td>Not implemented yet</td></tr><tr><td>
+            <p>/service/logout</p>
+          </td><td>Log outs</td><td>Log outs user</td><td>Not implemented yet</td><td>Not implemented yet</td><td>Not implemented yet</td></tr></tbody></table></div></div><br class="table-break" /><p>The REST URLs are hierarchical. It is permitted to replace rest URL elements with an
+    "asterisks" in GET requests to denote all object of a particular type. Additionally, trailing
+    object type in the URL hierarchy can be omitted. In this case GET request will return all of the
+    object underneath of the current object.</p><p>For example, for binding URL <code class="literal">http://localhost:8080/api/latest/binding/&lt;vhost
+      node&gt;/&lt;vhost&gt;/&lt;exchange&gt;/&lt;queue&gt;/&lt;binding&gt;</code> replacing of
+      <code class="literal">&lt;exchange&gt;</code> with "asterisks"
+      (<code class="literal">http://localhost:8080/api/&lt;ver&gt;/binding/&lt;vhost
+      node&gt;/&lt;vhost&gt;/*/&lt;queue&gt;/&lt;binding&gt;</code>) will result in the GET
+    response containing the list of bindings for all of the exchanges in the virtualhost having the
+    given name and given queue.</p><p>If <code class="literal">&lt;binding&gt;</code> and <code class="literal">&lt;queue&gt;</code> are omitted in
+    binding REST URL (<code class="literal">http://localhost:8080/api/&lt;ver&gt;/binding/&lt;vhost
+      node&gt;/&lt;vhost&gt;/&lt;exchangename&gt;</code>) the GET request will result in
+    returning all bindings for all queues for the given exchange in the virtual host. </p><div class="example"><a id="idm228643822976"></a><p class="title"><strong>Example&#160;6.1.&#160;Examples of queue creation using curl (authenticating as user admin):</strong></p><div class="example-contents"><pre class="programlisting">
+#create a durable queue
+curl --user admin -X PUT  -d '{"durable":true}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+#create a durable priority queue
+curl --user admin -X PUT  -d '{"durable":true,"type":"priority"}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+            </pre></div></div><br class="example-break" /><div class="example"><a id="idm228643821248"></a><p class="title"><strong>Example&#160;6.2.&#160;Example of binding a queue to an exchange using curl</strong></p><div class="example-contents"><pre class="programlisting">
+curl --user admin -X PUT  -d '{}' http://localhost:8080/api/latest/binding/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;exchangename&gt;/&lt;queue-name&gt;/&lt;binding-name&gt;
+            </pre></div></div><br class="example-break" /><p> NOTE: These curl examples utilise unsecure HTTP transport. To use the examples it is first
+    necessary enable Basic authentication for HTTP within the HTTP Management Configuration (it is
+    off by default). For details see <a class="xref" href="Java-Broker-Management-Managing-Plugin-HTTP.html" title="7.15.&#160;HTTP Plugin">Section&#160;7.15, &#8220;HTTP Plugin&#8221;</a>
+  </p></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Management-Channel.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-JMX.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">6.2.&#160;Web Management Console&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;6.4.&#160;JMX Management</td></tr></table></div></div>

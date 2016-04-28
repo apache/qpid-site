@@ -1,0 +1,39 @@
+
+<h1>sync_client.py</h1>
+<div class="highlight"><pre><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Demonstrates the client side of the synchronous request-response pattern</span>
+<span class="sd">(also known as RPC or Remote Procecure Call) using proton.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+
+<span class="kn">import</span> <span class="nn">optparse</span>
+<span class="kn">from</span> <span class="nn">proton</span> <span class="kn">import</span> <span class="n">Message</span><span class="p">,</span> <span class="n">Url</span><span class="p">,</span> <span class="n">ConnectionException</span><span class="p">,</span> <span class="n">Timeout</span>
+<span class="kn">from</span> <span class="nn">proton.utils</span> <span class="kn">import</span> <span class="n">SyncRequestResponse</span><span class="p">,</span> <span class="n">BlockingConnection</span>
+<span class="kn">from</span> <span class="nn">proton.handlers</span> <span class="kn">import</span> <span class="n">IncomingMessageHandler</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s">&quot;usage: %prog [options]&quot;</span><span class="p">,</span>
+                               <span class="n">description</span><span class="o">=</span><span class="s">&quot;Send requests to the supplied address and print responses.&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;-a&quot;</span><span class="p">,</span> <span class="s">&quot;--address&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s">&quot;localhost:5672/examples&quot;</span><span class="p">,</span>
+                  <span class="n">help</span><span class="o">=</span><span class="s">&quot;address to which messages are sent (default </span><span class="si">%d</span><span class="s">efault)&quot;</span><span class="p">)</span>
+<span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s">&quot;-t&quot;</span><span class="p">,</span> <span class="s">&quot;--timeout&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s">&quot;float&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+                  <span class="n">help</span><span class="o">=</span><span class="s">&quot;Give up after this time out (default </span><span class="si">%d</span><span class="s">efault)&quot;</span><span class="p">)</span>
+<span class="n">opts</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="n">Url</span><span class="p">(</span><span class="n">opts</span><span class="o">.</span><span class="n">address</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">SyncRequestResponse</span><span class="p">(</span><span class="n">BlockingConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="n">opts</span><span class="o">.</span><span class="n">timeout</span><span class="p">),</span> <span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">REQUESTS</span><span class="o">=</span> <span class="p">[</span><span class="s">&quot;Twas brillig, and the slithy toves&quot;</span><span class="p">,</span>
+               <span class="s">&quot;Did gire and gymble in the wabe.&quot;</span><span class="p">,</span>
+               <span class="s">&quot;All mimsy were the borogroves,&quot;</span><span class="p">,</span>
+               <span class="s">&quot;And the mome raths outgrabe.&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">request</span> <span class="ow">in</span> <span class="n">REQUESTS</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="p">))</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">%s</span><span class="s"> =&gt; </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">body</span><span class="p">))</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+<p><a href="sync_client.py">Download this file</a></p>

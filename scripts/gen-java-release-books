@@ -1,0 +1,106 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+import uuid
+from xml.etree import ElementTree
+
+def gen_books(release, source_dir, output_dir):
+    toplevel_pom = join(source_dir, "pom.xml")
+    input_dir = join(source_dir, "doc")
+
+    cpp_broker_book_url = "/releases/qpid-cpp-{{current_cpp_release}}/cpp-broker/book/"
+    # TODO seems programming book is rather in limbo at the moment, neither published with cpp or java?
+    programming_book_url = "/releases/qpid-0.32/programming/book/"
+
+    call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidProgrammingBook={}",
+         toplevel_pom,
+         cpp_broker_book_url,
+         programming_book_url)
+
+    java_broker_input_dir = join(input_dir, "java-broker", "target", "docbkx")
+    jms_client08_input_dir = join(input_dir, "jms-client-0-8", "target", "docbkx")
+
+    java_broker_output_dir = join(output_dir, "java-broker")
+    jms_client08_output_dir = join(output_dir, "jms-client-0-8")
+
+    remove(java_broker_output_dir)
+    remove(jms_client08_output_dir)
+
+    copy(java_broker_input_dir, join(java_broker_output_dir, "book"))
+    copy(jms_client08_input_dir, join(jms_client08_output_dir, "book"))
+
+    output_dirs = [java_broker_output_dir, jms_client08_output_dir]
+
+    for dir in output_dirs:
+        for path in find(dir, "*.html"):
+            print path
+
+            tree = ElementTree.parse(path)
+            elem = tree.find(".//{http://www.w3.org/1999/xhtml}body")
+
+            elem.tag = "div"
+            elem.set("class", "docbook")
+
+            remove_namespace(elem, "http://www.w3.org/1999/xhtml")
+
+            # A hack to preserve docbook's empty anchors in an
+            # IE-compatible way
+
+            target = str(uuid.uuid4())
+
+            for a in tree.iter("a"):
+                if a.text is None:
+                    a.text = target
+
+            content = ElementTree.tostring(elem)
+            content = content.replace(target, "")
+
+            write("{}.in".format(path), content)
+            remove(path)
+
+def infile_replace(filename, old_string, new_string):
+    fileContent = ""
+    with open(filename,'r') as f:
+        fileContent=f.read()
+    if old_string in fileContent:
+        newContent=fileContent.replace(old_string, new_string)
+        with open(filename,'w') as f:
+            f.write(newContent)
+            f.flush()
+
+# From http://homework.nwsnet.de/releases/45be/
+def remove_namespace(doc, namespace):
+    """Remove namespace in the passed document in place."""
+    ns = u'{%s}' % namespace
+    nsl = len(ns)
+    for elem in doc.getiterator():
+        if elem.tag.startswith(ns):
+            elem.tag = elem.tag[nsl:]
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release("java", source_release, checkout_dir)
+
+gen_books(release, source_dir, release_dir)
+
+notice("Books generated")

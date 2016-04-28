@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['nativetomanaged',['NativeToManaged',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1sealed.html#a80c848f831e7de2e16b770af6de5eb2a',1,'Org::Apache::Qpid::Messaging::sealed::NativeToManaged(::qpid::types::Variant::Map &amp;qpidMap, QpidMap^dict)'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1sealed.html#a1f7ca50cbc487a33c98f9cc692441f9f',1,'Org::Apache::Qpid::Messaging::sealed::NativeToManaged(::qpid::types::Variant::List &amp;qpidList, QpidList^managedList)']]],
+  ['nativetomanagedobject',['NativeToManagedObject',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1sealed.html#a1d3dca0110e62e1eaacc72545583346e',1,'Org::Apache::Qpid::Messaging::sealed']]],
+  ['nextreceiver',['NextReceiver',['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#abd7a04f28fc4b73b6cd87e7d62f947db',1,'Org::Apache::Qpid::Messaging::Session::NextReceiver(Receiver^rcvr, Duration^timeout)'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#ad71f9345284e19eb00faf314cc255ffd',1,'Org::Apache::Qpid::Messaging::Session::NextReceiver()'],['../classOrg_1_1Apache_1_1Qpid_1_1Messaging_1_1Session.html#a0c3e40343a4b3c05e1931eeeb043ed42',1,'Org::Apache::Qpid::Messaging::Session::NextReceiver(Duration^timeout)']]],
+  ['notice',['notice',['../namespaceOrg_1_1Apache_1_1Qpid_1_1Messaging.html#afd64742973e90b23b326e86f7755daacaefd2af60c8501931cb9c736b5ad74f65',1,'Org::Apache::Qpid::Messaging']]]
+];

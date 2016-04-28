@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>2.4. Link Routing. - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-master/index.html">Qpid Dispatch Master</a></li><li>2.4. Link Routing.</li></ul>
+
+        <div id="-middle-content">
+          
+  
+  <div class="section" id="link-routing">
+<h1>2.4. Link Routing<a class="headerlink" href="#link-routing" title="Permalink to this headline">.</a></h1>
+<p>This feature was introduced in Qpid Dispatch 0.4.
+This feature was significantly updated in Qpid Dispatch 0.6.</p>
+<p>Link-routing is an alternative strategy for routing messages across a
+network of routers.  With the existing message-routing strategy, each
+router makes a routing decision on a per-message basis when the
+message is delivered.  Link-routing is different because it makes
+routing decisions when link-attach frames arrive.  A link is
+effectively chained across the network of routers from the
+establishing node to the destination node.  Once the link is
+established, the transfer of message deliveries, flow frames, and
+dispositions is performed across the routed link.</p>
+<p>The main benefit to link-routing is that endpoints can use the full link
+protocol to interact with other endpoints in far-flung parts of the
+network.  For example, a client can establish a receiver across the
+network to a queue on a remote broker and use link credit to control
+the flow of messages from the broker.  Similarly, a receiver can
+establish a link to a topic on a remote broker using a server-side
+filter.</p>
+<p>Why would one want to do this?  One reason is to provide client
+isolation.  A network like the following can be deployed:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>                Public Network
+               +-----------------+
+               |      +-----+    |
+               | B1   | Rp  |    |
+               |      +/--\-+    |
+               |      /    \     |
+               |     /      \    |
+               +----/--------\---+
+                   /          \
+                  /            \
+                 /              \
+ Private Net A  /                \ Private Net B
++--------------/--+           +---\-------------+
+|         +---/-+ |           | +--\--+         |
+|  B2     | Ra  | |           | | Rb  |   C1    |
+|         +-----+ |           | +-----+         |
+|                 |           |                 |
+|                 |           |                 |
++-----------------+           +-----------------+
+</pre></div>
+</div>
+<p>The clients in Private Net B can be constrained (by firewall policy)
+to only connect to the Router in their own network.  Using
+link-routing, these clients can access queues, topics, and other AMQP
+services that are in the Public Network or even in Private Net A.</p>
+<p>For example, The router Ra can be configured to expose queues in
+broker B2 to the network.  Client C1 can then establish a connection
+to Rb, the local router, open a subscribing link to &#8220;b2.event-queue&#8221;,
+and receive messages stored on that queue in broker B2.</p>
+<p>C1 is unable to create a TCP/IP connection to B1 because of its
+isolation (and because B2 is itself in a private network).  However,
+with link routing, C1 can interact with B2 using the AMQP link
+protocol.</p>
+<p>Note that in this case, neither C1 nor B2 have been modified in any
+way and neither need be aware of the fact that there is a
+message-router network between them.</p>
+<div class="section" id="configuration">
+<h2>2.4.1. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">.</a></h2>
+<p>Starting with the configured topology shown above, how is link-routing
+configured to support the example described above?</p>
+<p>First, router Ra needs to be told how to make a connection to the
+broker B2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>connector {
+    name: broker
+    role: route-container
+    addr: &lt;B2-url&gt;
+    port: &lt;B2-port&gt;
+    sasl-mechanisms: ANONYMOUS
+}
+</pre></div>
+</div>
+<p>This <em>route-container</em> connector tells the router how to connect to an
+external AMQP container when it is needed.  The name &#8220;broker&#8221; will be
+used later to refer to this connection.</p>
+<p>Now, the router must be configured to route certain addresses to B2:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>linkRoute {
+    prefix: b2
+    dir: in
+    connection: broker
+}
+
+linkRoute {
+    prefix: b2
+    dir: out
+    connection: broker
+}
+</pre></div>
+</div>
+<p>The linkRoute tells router Ra that any sender or receiver that
+is attached with a target or source (respectively) whos address begins
+with &#8220;b2&#8221;, should be routed to the broker B2 (via the route-container
+connector).</p>
+<p>Note that receiving and sending links are configured and routed
+separately.  This allows configuration of link routes for listeners
+only or senders only.  A direction of &#8220;in&#8221; matches client senders
+(i.e. links that carry messages inbound to the router network).
+Direction &#8220;out&#8221; matches client receivers.</p>
+<dl class="docutils">
+<dt>Examples of addresses that &#8220;begin with &#8216;b2&#8217;&#8221; include:</dt>
+<dd><ul class="first last simple">
+<li>b2</li>
+<li>b2.queues</li>
+<li>b2.queues.app1</li>
+</ul>
+</dd>
+</dl>
+<p>When the route-container connector is configured, router Ra establishes a
+connection to the broker.  Once the connection is open, Ra tells the
+other routers (Rp and Rb) that it is a valid destination for
+link-routes to the &#8220;b2&#8221; prefix.  This means that sender or receiver
+links attached to Rb or Rp will be routed via the shortest path to Ra
+where they are then routed outbound to the broker B2.</p>
+<p>On Rp and Rb, it is advisable to add the identical configuration.  It
+is permissible for a linkRoute configuration to reference a connection
+that does not exist.</p>
+<p>This configuration tells the routers that link-routing is intended to
+be available for targets and sources starting with &#8220;b2&#8221;.  This is
+important because it is possible that B2 might be unavailable or shut
+off.  If B2 is unreachable, Ra will not advertize itself as a
+destination for &#8220;b2&#8221; and the other routers might never know that
+&#8220;b2&#8221; was intended for link-routing.</p>
+<p>The above configuration allows Rb and Rp to reject attaches that
+should be routed to B2 with an error message that indicates that there
+is no route available to the destination.</p>
+</div>
+</div>
+
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

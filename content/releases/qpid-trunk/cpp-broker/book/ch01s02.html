@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>ch01s02.html - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-trunk/index.html">Qpid Trunk</a></li><li><a href="/releases/qpid-trunk/cpp-broker/book/index.html">AMQP Messaging Broker (Implemented in C++)</a></li><li>ch01s02.html</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.2.&#160;
+      Cheat Sheet for configuring Queue Options
+    </th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch01.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch01s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm233120416320"></a>1.2.&#160;
+      Cheat Sheet for configuring Queue Options
+    </h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions"></a>1.2.1.&#160;
+            Configuring
+            Queue Options
+          </h3></div></div></div><p>
+            The C++ Broker M4 or later supports the following additional
+            Queue constraints.
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ConfiguringQueueOptions" title="1.2.1.&#160; Configuring Queue Options">Section&#160;1.2.1, &#8220;
+            Configuring
+            Queue Options
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ApplyingQueueSizingConstraints" title="1.2.1.1.&#160; Applying Queue Sizing Constraints">Section&#160;1.2.1.1, &#8220;
+            Applying Queue Sizing Constraints
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-ChangingtheQueueorderingBehaviors-28FIFO-2FLVQ-29" title="1.2.1.2.&#160; Changing the Queue ordering Behaviors (FIFO/LVQ)">Section&#160;1.2.1.2, &#8220;
+            Changing the Queue ordering Behaviors (FIFO/LVQ)
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-Settingadditionalbehaviors" title="1.2.1.3.&#160; Setting additional behaviors">Section&#160;1.2.1.3, &#8220;
+            Setting additional behaviors
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    </p><div class="itemizedlist"><ul class="itemizedlist" type="square"><li class="listitem"><p>
+                        <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-Queueeventgeneration" title="Queue event generation">the section called &#8220;
+            Queue
+            event generation
+          &#8221;</a>
+                      </p></li></ul></div><p>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch01s02.html#CheatSheetforconfiguringQueueOptions-OtherClients" title="1.2.1.4.&#160; Other Clients">Section&#160;1.2.1.4, &#8220;
+            Other
+            Clients
+          &#8221;</a>
+                  </p></li></ul></div><p>
+              </p></li></ul></div><p>
+            The 0.10 C++ Broker supports the following additional Queue configuration options:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+              <a class="xref" href="producer-flow-control.html" title="1.8.&#160; Producer Flow Control">Section&#160;1.8, &#8220;
+    Producer Flow Control
+  &#8221;</a>
+            </p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="CheatSheetforconfiguringQueueOptions-ApplyingQueueSizingConstraints"></a>1.2.1.1.&#160;
+            Applying Queue Sizing Constraints
+          </h4></div></div></div><p>
+            This allows to specify how to size a queue and what to do when
+            the sizing constraints have been reached. The queue size can be
+            limited by the number messages (message depth) or byte depth on
+            the queue.
+          </p><p>
+            Once the Queue meets/ exceeds these constraints the follow
+            policies can be applied
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>REJECT - Reject the published message
+            </p></li><li class="listitem"><p>FLOW_TO_DISK - Flow the messages to disk, to preserve memory
+            </p></li><li class="listitem"><p>RING - start overwriting messages in a ring based on sizing.
+            If head meets tail, advance head
+            </p></li><li class="listitem"><p>RING_STRICT - start overwriting messages in a ring based on
+            sizing. If head meets tail, AND the consumer has the tail message
+            acquired it will reject
+            </p></li></ul></div><p>
+            Examples:
+          </p><p>
+            Create a queue an auto delete queue that will support 100 000
+            bytes, and then REJECT
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setSizePolicy(REJECT,100000,0);
+
+    session.queueDeclare(arg::queue=queue, arg::autoDelete=true, arg::arguments=qo);
+</pre><p>
+            Create a queue that will support 1000 messages into a RING buffer
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setSizePolicy(RING,0,1000);
+
+    session.queueDeclare(arg::queue=queue, arg::arguments=qo);
+</pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="CheatSheetforconfiguringQueueOptions-ChangingtheQueueorderingBehaviors-28FIFO-2FLVQ-29"></a>1.2.1.2.&#160;
+            Changing the Queue ordering Behaviors (FIFO/LVQ)
+          </h4></div></div></div><p>
+            The default ordering in a queue in Qpid is FIFO. However
+            additional ordering semantics can be used namely LVQ (Last Value
+            Queue). Last Value Queue is define as follows.
+          </p><p>
+            If I publish symbols RHT, IBM, JAVA, MSFT, and then publish RHT
+            before the consumer is able to consume RHT, that message will be
+            over written in the queue and the consumer will receive the last
+            published value for RHT.
+          </p><p>
+            Example:
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions qo;
+    qo.setOrdering(LVQ);
+
+    session.queueDeclare(arg::queue=queue, arg::arguments=qo);
+
+    .....
+    string key;
+    qo.getLVQKey(key);
+
+    ....
+    for each message, set the into application headers before transfer
+    message.getHeaders().setString(key,"RHT");
+    
+</pre><p>
+            Notes:
+          </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Messages that are dequeued and the re-queued will have the
+            following exceptions. a.) if a new message has been queued with
+            the same key, the re-queue from the consumer, will combine these
+            two messages. b.) If an update happens for a message of the same
+            key, after the re-queue, it will not update the re-queued
+            message. This is done to protect a client from being able to
+            adversely manipulate the queue.
+            </p></li><li class="listitem"><p>Acquire: When a message is acquired from the queue, no matter
+            it's position, it will behave the same as a dequeue
+            </p></li><li class="listitem"><p>LVQ does not support durable messages. If the queue or
+            messages are declared durable on an LVQ, the durability will be
+            ignored.
+            </p></li></ul></div><p>
+            A fully worked <a class="xref" href="ch01s06.html#LVQ-Example" title="1.6.3.&#160;LVQ Example">Section&#160;1.6.3, &#8220;LVQ Example&#8221;</a> can be found here
+          </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="CheatSheetforconfiguringQueueOptions-Settingadditionalbehaviors"></a>1.2.1.3.&#160;
+            Setting additional behaviors
+          </h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="CheatSheetforconfiguringQueueOptions-Queueeventgeneration"></a>
+            Queue
+            event generation
+          </h5></div></div></div><p>
+            This option is used to determine whether enqueue/dequeue events
+            representing changes made to queue state are generated. These
+            events can then be processed by plugins such as that used for
+            <a class="xref" href="queue-state-replication.html" title="1.7.&#160; Queue State Replication">Section&#160;1.7, &#8220;
+    Queue State Replication
+  &#8221;</a>.
+          </p><p>
+            Example:
+          </p><pre class="programlisting">
+#include "qpid/client/QueueOptions.h"
+
+    QueueOptions options;
+    options.enableQueueEvents(1);
+    session.queueDeclare(arg::queue="my-queue", arg::arguments=options);
+</pre><p>
+            The boolean option indicates whether only enqueue events should
+            be generated. The key set by this is
+            'qpid.queue_event_generation' and the value is and integer value
+            of 1 (to replicate only enqueue events) or 2 (to replicate both
+            enqueue and dequeue events).
+          </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="CheatSheetforconfiguringQueueOptions-OtherClients"></a>1.2.1.4.&#160;
+            Other
+            Clients
+          </h4></div></div></div><p>
+            Note that these options can be set from any client. QueueOptions
+            just correctly formats the arguments passed to the QueueDeclare()
+            method.
+          </p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch01.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch01.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch01s03.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    &#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.3.&#160;
+    Cheat Sheet for configuring Exchange Options
+  </td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

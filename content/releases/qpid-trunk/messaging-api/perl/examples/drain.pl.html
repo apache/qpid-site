@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>drain.pl - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-trunk/index.html">Qpid Trunk</a></li><li><a href="/releases/qpid-trunk/messaging-api/perl/examples/index.html">Perl Messaging API Examples</a></li><li>drain.pl</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>drain.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">qpid</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Getopt::</span><span class="n">Long</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Pod::</span><span class="n">Usage</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$url</span>               <span class="o">=</span> <span class="s">&quot;127.0.0.1&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$timeout</span>           <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$forever</span>           <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$count</span>             <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$connectionOptions</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$address</span>           <span class="o">=</span> <span class="s">&quot;amq.direct&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$help</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$result</span> <span class="o">=</span> <span class="n">GetOptions</span><span class="p">(</span>
+    <span class="s">&quot;broker|b=s&quot;</span>           <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$url</span><span class="p">,</span>
+    <span class="s">&quot;timeout|t=i&quot;</span>          <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$timeout</span><span class="p">,</span>
+    <span class="s">&quot;forever|f&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$forever</span><span class="p">,</span>
+    <span class="s">&quot;connection-options=s&quot;</span> <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$connectionOptions</span><span class="p">,</span>
+    <span class="s">&quot;count|c=i&quot;</span>            <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$count</span><span class="p">,</span>
+    <span class="s">&quot;help|h&quot;</span>               <span class="o">=&gt;</span> <span class="o">\</span><span class="nv">$help</span>
+<span class="p">)</span> <span class="o">||</span> <span class="n">pod2usage</span><span class="p">(</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">=&gt;</span> <span class="mi">0</span> <span class="p">);</span>
+
+<span class="n">pod2usage</span><span class="p">(</span> <span class="o">-</span><span class="n">verbose</span> <span class="o">=&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="k">if</span> <span class="nv">$help</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span> <span class="nv">$#ARGV</span> <span class="ow">ge</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$address</span> <span class="o">=</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">getTimeout</span> <span class="p">{</span>
+
+    <span class="c1"># returns either the named duration FOREVER if the</span>
+    <span class="c1"># forever cmdline argument was used, otherwise creates</span>
+    <span class="c1"># a new Duration of the specified length</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nv">$forever</span><span class="p">)</span>
+      <span class="p">?</span> <span class="nn">qpid::messaging::Duration::</span><span class="n">FOREVER</span>
+      <span class="p">:</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Duration</span><span class="p">(</span> <span class="nv">$timeout</span> <span class="o">*</span> <span class="mi">1000</span> <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">sub </span><span class="nf">printProperties</span> <span class="p">{</span>
+    <span class="k">my</span> <span class="nv">$h</span> <span class="o">=</span> <span class="nb">shift</span><span class="p">();</span>
+    <span class="k">return</span> <span class="sx">qq[{${\(join&#39;, &#39;,map&quot;&#39;$_&#39;: &#39;$h-&gt;{$_}&#39;&quot;,keys%$h)}}]</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1"># create a connection object</span>
+<span class="k">my</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Connection</span><span class="p">(</span> <span class="nv">$url</span><span class="p">,</span> <span class="nv">$connectionOptions</span> <span class="p">);</span>
+
+<span class="nb">eval</span> <span class="p">{</span>
+    <span class="c1"># open the connection, then create a session and receiver</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">open</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$session</span>  <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="n">create_session</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$receiver</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_receiver</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+    <span class="k">my</span> <span class="nv">$timeout</span>  <span class="o">=</span> <span class="n">getTimeout</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$message</span>  <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Message</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$i</span>        <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="k">for</span> <span class="p">(</span> <span class="p">;</span> <span class="p">;</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="nb">eval</span> <span class="p">{</span> <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="n">fetch</span><span class="p">(</span><span class="nv">$timeout</span><span class="p">);</span> <span class="p">};</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">last</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1"># check if the message was on that was redelivered</span>
+        <span class="k">my</span> <span class="nv">$redelivered</span> <span class="o">=</span>
+          <span class="p">(</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_redelivered</span> <span class="p">)</span> <span class="p">?</span> <span class="s">&quot;redelivered=True, &quot;</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+        <span class="k">print</span> <span class="s">&quot;Message(&quot;</span>
+          <span class="o">.</span> <span class="nv">$redelivered</span>
+          <span class="o">.</span> <span class="s">&quot;properties=&quot;</span>
+          <span class="o">.</span> <span class="n">printProperties</span><span class="p">(</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_properties</span><span class="p">()</span> <span class="p">)</span>
+          <span class="o">.</span> <span class="s">&quot;, content=&#39;&quot;</span><span class="p">;</span>
+
+        <span class="c1"># if the message content was a map, then we will print</span>
+        <span class="c1"># it out as a series of name =&gt; value pairs</span>
+        <span class="k">my</span> <span class="nv">$content</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_content_object</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_content_type</span><span class="p">()</span> <span class="ow">eq</span> <span class="s">&quot;amqp/map&quot;</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="nb">map</span> <span class="p">{</span> <span class="k">print</span> <span class="s">&quot;\n$_ =&gt; $content-&gt;{$_}&quot;</span><span class="p">;</span> <span class="p">}</span> <span class="nb">keys</span> <span class="nv">%</span><span class="p">{</span><span class="nv">$content</span><span class="p">};</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="c1"># it&#39;s not a map, so just print the content as a string</span>
+            <span class="k">print</span> <span class="nv">$content</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">print</span> <span class="s">&quot;&#39;)\n&quot;</span><span class="p">;</span>
+
+        <span class="c1"># if the message had a reply-to address, then we&#39;ll send a</span>
+        <span class="c1"># response back letting the send know the message was processed</span>
+        <span class="k">my</span> <span class="nv">$replyto</span> <span class="o">=</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_reply_to</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span> <span class="nv">$replyto</span><span class="o">-&gt;</span><span class="n">get_name</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">print</span> <span class="s">&quot;Replying to &quot;</span> <span class="o">.</span> <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">get_reply_to</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">str</span><span class="p">()</span> <span class="o">.</span> <span class="s">&quot;...\n&quot;</span><span class="p">;</span>
+
+            <span class="c1"># create a temporary sender for the specified queue</span>
+            <span class="k">my</span> <span class="nv">$sender</span> <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_sender</span><span class="p">(</span><span class="nv">$replyto</span><span class="p">);</span>
+            <span class="k">my</span> <span class="nv">$response</span> <span class="o">=</span>
+              <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Message</span><span class="p">(</span><span class="s">&quot;received by the server.&quot;</span><span class="p">);</span>
+            <span class="nv">$sender</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="c1"># acknowledge all messages received on this queue so far</span>
+        <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">acknowledge</span><span class="p">();</span>
+
+        <span class="k">if</span> <span class="p">(</span> <span class="nv">$count</span> <span class="ow">and</span> <span class="p">(</span> <span class="o">++</span><span class="nv">$i</span> <span class="o">==</span> <span class="nv">$count</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">last</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1"># close everything to clean up</span>
+    <span class="nv">$receiver</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nb">die</span> <span class="vg">$@</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">__END__</span>
+
+<span class="cp">=head1 NAME</span>
+
+<span class="cp">drain - Drains messages from the specified address</span>
+
+<span class="cp">=head1 SYNOPSIS</span>
+
+<span class="cp">  Options:</span>
+<span class="cp">  -h, --help                    show this message</span>
+<span class="cp">  -b VALUE, --broker VALUE      url of broker to connect to</span>
+<span class="cp">  -t VALUE, --timeout VALUE     timeout in seconds to wait before exiting</span>
+<span class="cp">  -f, --forever                 ignore timeout and wait forever</span>
+<span class="cp">  --connection-options VALUE    connection options string in the form {name1:value1, name2:value2}</span>
+<span class="cp">  -c VALUE, --count VALUE       number of messages to read before exiting</span>
+
+<span class="cp">=cut</span>
+</pre></div>
+
+<p><a href="drain.pl">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+
+# PHP AMQP Messenger Examples
+
+## Example files
+
+ - [recv.php](recv.php.html)
+ - [send.php](send.php.html)
+
+## More information
+
+ - [Source location](http://svn.apache.org/repos/asf/qpid/proton/branches/0.8/examples/messenger/php)

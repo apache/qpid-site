@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>13.2.&#160;HA offerings of the Java Broker - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.30/index.html">Qpid 0.30</a></li><li><a href="/releases/qpid-0.30/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>13.2.&#160;HA offerings of the Java Broker</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">13.2.&#160;HA offerings of the Java Broker</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-High-Availability.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;13.&#160;High Availability</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-High-Availability-TwoNodeCluster.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-High-Availability-OfferingsOfJavaBroker"></a>13.2.&#160;HA offerings of the Java Broker</h2></div></div></div><p>The Java Broker's HA offering became available at release <span class="bold"><strong>0.18</strong></span>.  HA is provided by way of the HA
+      features built into the <a class="ulink" href="http://www.oracle.com/technetwork/products/berkeleydb/overview/index-093405.html" target="_top">Java Edition of the Berkley Database (BDB JE)</a> and as such
+      is currently only available to Java Broker users who use the optional BDB JE based persistence store. This
+      <span class="bold"><strong>optional</strong></span> store requires the use of BDB JE which is licensed under the Sleepycat Licence, which is
+      not compatible with the Apache Licence and thus BDB JE is not distributed with Qpid. Users who elect to use this optional store for
+      the broker have to provide this dependency.</p><p>HA in the Java Broker provides an <span class="bold"><strong>Active/Passive</strong></span> mode of operation with Virtual hosts being
+      the unit of replication.  The Active node (referred to as the <span class="bold"><strong>Master</strong></span>) accepts all work from all the clients.
+       The Passive nodes (referred to as <span class="bold"><strong>Replicas</strong></span>) are unavailable for work: the only task they must perform is
+       to remain in synch with the Master node by consuming a replication stream containing all data and state.</p><p>If the Master node fails, a Replica node is elected to become the new Master node.  All clients automatically failover
+      <a class="footnote" href="#ftn.idm140304442373600" id="idm140304442373600"><sup class="footnote">[5]</sup></a> to the new Master and continue their work.</p><p>The Java Broker HA solution is incompatible with the HA solution offered by the CPP Broker.  It is not possible to co-locate Java and CPP
+       Brokers within the same cluster.</p><p>HA is not currently available for those using the the <span class="bold"><strong>Derby Store</strong></span> or <span class="bold"><strong>Memory
+      Message Store</strong></span>.</p><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm140304442373600"><p><a class="para" href="#idm140304442373600"><sup class="para">[5] </sup></a>The automatic failover feature is available only for AMQP connections from the Java client.  Management connections (JMX)
+        do not current offer this feature.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-High-Availability.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-High-Availability-TwoNodeCluster.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;13.&#160;High Availability&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;13.3.&#160;Two Node Cluster</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

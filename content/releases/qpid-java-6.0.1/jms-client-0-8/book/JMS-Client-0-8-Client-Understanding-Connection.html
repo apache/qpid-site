@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>5.3.&#160;Connection - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.0.1/index.html">Qpid Java 6.0.1</a></li><li><a href="/releases/qpid-java-6.0.1/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>5.3.&#160;Connection</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">5.3.&#160;Connection</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Client-Understanding-ConnectionFactory.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;5.&#160;Understanding the Qpid JMS client</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Client-Understanding-Session.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Client-Understanding-Connection"></a>5.3.&#160;Connection</h2></div></div></div><p>A Connection represents an open communication channel between application and
+      Broker.</p><p>Connections are created from the ConnectionFactory <a class="footnote" href="#ftn.d0e384" id="d0e384"><sup class="footnote">[3]</sup></a>.</p><p>Each connection utilises a single TCP/IP connection between the process of the application
+      and the process of the Broker. The act of establishing a connection is therefore a relatively
+      expensive operation. It is recommended that the same connection is used for a series of
+      message interactions. Patterns utilising a connection per message should not be used. </p><p>The underlying TCP/IP connection remains open for the lifetime of the JMS connection. It
+      is closed when the application calls <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Connection.html#close()" target="_top">Connection#close()</a>, but it
+      can also be closed if the connection is closed from the Broker side (via a Management
+      operation or broker shutdown or running into conditions which AMQP specifications treats as
+      errors and mandates closing the connection). The JMS connection will also be closed if the
+      underlying TCP/IP connection is broken.</p><p>Qpid connections have failover and heartbeating capabilities. They support SSL and
+      client-auth. These are described in the sub-sections that follow.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-Failover"></a>5.3.1.&#160;Failover</h3></div></div></div><p>Qpid connections support a failover feature. This is the ability to automatically
+        re-establish a failed connection, either to the same Broker, or the next Broker in the
+        broker list.</p><p>This failover process is done in a manner that is mostly transparent to the application.
+        After a successful failover, any existing Connection, Session, MessageConsumer and
+        MessageProducer objects held by the application remain valid.</p><p>If a failover occurs during the scope of a JMS Transaction, any work performed by that
+        transaction is lost. The application is made aware of this loss by way of the <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/TransactionRolledBackException.html" target="_top">TransactionRolledBackException</a> from the <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#commit" target="_top">Session#commit()</a> call.
+        Applications utilising failover must be prepared to catch this exception and respond by
+        either repeating the work of the transaction, or by propagating a rollback to the
+        originating system.</p><p>If, after all retries are exhausted, failover has failed to reconnect the application,
+        the Connection's <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/ExceptionListener.html" target="_top">ExceptionListener</a> will receive a JMSException with a linked exception of <a class="link" href="JMS-Client-0-8-Appendix-Exceptions-AMQDisconnectedException" target="_top">AMQDisconnectedException</a>. Any further use of the JMS objects (Connection, Session
+        etc), will results in a <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/IllegalStateException.html" target="_top">IllegalStateException</a>.</p><p>Configure failover using the Connection URL. Here's an example Connection URL utilising
+        failover between two brokers. Note the use of the broker options <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-Retries"><code class="literal">retries</code></a> and <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-ConnectDelay"><code class="literal">connectdelay</code></a> to control the number of connection attempts to
+        each individual broker, and the delay between each connection attempt. Also note the use of
+        the <span class="emphasis"><em>failover option</em></span>
+        <code class="literal">cyclecount</code> to control the number of times the failover mechanism will
+        traverse the brokerlist.</p><div class="example"><a id="d0e439"></a><p class="title"><strong>Example&#160;5.1.&#160;Connection URL configured for failover</strong></p><div class="example-contents"><pre class="screen">
+amqp://username:password@clientid/test
+            ?brokerlist='tcp://localhost:15672?retries='10'&amp;connectdelay='1000';tcp://localhost:25672?retries='10'&amp;connectdelay='1000''
+            &amp;failover='roundrobin?cyclecount='20''
+        </pre></div></div><br class="example-break" /><p>For full details see <a class="xref" href="JMS-Client-0-8-Connection-URL.html" title="Chapter&#160;7.&#160;Connection URLs">Chapter&#160;7, <em>Connection URLs</em></a></p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>Note, that a single broker failover is enabled by default. If the failover behaviour
+          is not desired it can be switched off by setting a failover option to
+            <code class="literal">nofailover</code> as in the example below </p><div class="example"><a id="d0e453"></a><p class="title"><strong>Example&#160;5.2.&#160;Connection URL configured with nofailover</strong></p><div class="example-contents"><pre class="screen">
+amqp://username:password@clientid/test
+            ?brokerlist='tcp://localhost:15672?failover='nofailover'
+        </pre></div></div><p><br class="example-break" />
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-Heartbeating"></a>5.3.2.&#160;Heartbeating</h3></div></div></div><p>Qpid connections support heartbeating. When enabled, the Qpid JMS client and Broker
+        exchange a heartbeat during periods of inactivity. This allows both peers to discover if the
+        TCP/IP connection becomes inoperable in a timely manner.</p><p>This feature is sometimes useful in applications that must traverse firewalls as the
+        heartbeat prevents connections from being closed during periods when there is no application
+        traffic.</p><p>It is also allows the both the JMS client and the Broker to confirm that the other is
+          <span class="emphasis"><em>minimally</em></span> responsive. (It does nothing however to determine the
+        health of the higher level tiers of application, for this reason, applications may implement
+        an application level heartbeat either in addition to, or instead of the heartbeat.</p><p>If the client ever fails to receive two consecutive heartbeats, the Connection will be
+        automatically closed and the Connection's <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/ExceptionListener.html" target="_top">ExceptionListener</a> will
+        receive a JMSException with a linked exception of AMQDisconnectedException. Any further use
+        of the JMS objects (Connection, Session etc), will results in a <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/IllegalStateException.html" target="_top">IllegalStateException</a>.</p><p>To enable heartbeating either use a Connection URL including the broker option <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-Heartbeat"><code class="literal">heartbeat</code></a>, or use the system property <a class="link" href="JMS-Client-0-8-System-Properties.html#JMS-Client-0-8-System-Properties-Heartbeat"><code class="literal">qpid.heartbeat</code></a>. </p><div class="example"><a id="d0e489"></a><p class="title"><strong>Example&#160;5.3.&#160;Connection URL configured for heartbeating</strong></p><div class="example-contents"><pre class="screen">
+amqp://guest:guest@clientid/?brokerlist='localhost:5672?heartbeat='5''
+        </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-SSL"></a>5.3.3.&#160;SSL</h3></div></div></div><p>The Qpid JMS client supports connections encrypted using Secure Socket Layer (SSL) and
+        SSL-Client Authentication. SSL is configured using Connection URL. To use SSL, SSL must be
+        be configured on the Broker.</p><p>Some example Connection URLs using SSL follow:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Simple SSL when the Broker is secured by a certificate that is signed by a CA which
+            is trusted by the JVM.</p><div class="example"><a id="d0e505"></a><p class="title"><strong>Example&#160;5.4.&#160;Connection URL configured for SSL - CA trusted by JVM</strong></p><div class="example-contents"><pre class="screen">
+amqp://guest:guest@clientid/?brokerlist='localhost:5671'&amp;ssl='true'
+            </pre></div></div><br class="example-break" /></li><li class="listitem"><p>SSL when the Broker is secured by a certificate that is signed by a CA which is NOT
+            trusted by the JVM (such as when a organisation is using a private CA, or self-signed
+            certificates are in use). For this case, we use <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-TrustStore"><code class="literal">trust_store</code></a> and <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-TrustStorePassword"><code class="literal">trust_store_password</code></a> to specify a path a truststore file
+            (containing the certificate of the private-CA) and the truststore password.</p><div class="example"><a id="d0e521"></a><p class="title"><strong>Example&#160;5.5.&#160;Connection URL configured for SSL - CA not trusted by JVM</strong></p><div class="example-contents"><pre class="screen">
+amqp://guest:guest@clientid/?brokerlist='localhost:5671?trust_store='/path/to/acme_org_ca.ts'&amp;trust_store_password='secret''&amp;ssl='true'
+            </pre></div></div><br class="example-break" /></li><li class="listitem"><p>SSL with SSL client-auth. For this case, we use <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-KeyStore"><code class="literal">key_store</code></a> and <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-KeyStorePassword"><code class="literal">key_store_password</code></a> to specify a path a keystore file
+            (containing the certificate of the client) and the keystore password.</p><div class="example"><a id="d0e537"></a><p class="title"><strong>Example&#160;5.6.&#160;Connection URL configured for SSL - SSL client-auth</strong></p><div class="example-contents"><pre class="screen">
+amqp://guest:guest@clientid/?brokerlist='localhost:5671?key_store='/path/to/app1_client_cert.ks'&amp;key_store_password='secret''&amp;ssl='true'
+            </pre></div></div><br class="example-break" /><p>Alternatively we can use <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-ClientCertPath"><code class="literal">client_cert_path</code></a> and <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-ClientCertPrivKeyPath"><code class="literal">client_cert_priv_key_ath</code></a> to specify a path to a certificate file (in PEM or DER format)
+            and the private key information (again in either PEM or DER format) respectively.</p><div class="example"><a id="d0e552"></a><p class="title"><strong>Example&#160;5.7.&#160;Connection URL configured for SSL - SSL client-auth (2)</strong></p><div class="example-contents"><pre class="screen">
+amqp://guest:guest@clientid/?brokerlist='localhost:5671?client_cert_path='/path/to/app1_client.crt'&amp;client_cert_priv_key_path='/path/to/app1_client.key''&amp;ssl='true'
+            </pre></div></div><br class="example-break" /></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-MessageCompression"></a>5.3.4.&#160;Message Compression</h3></div></div></div><p>The client has the ability to transparently compress message payloads on outgoing
+        messages and decompress them on incoming messages. In some environments and with some
+        payloads this feature might offer performance improvements by reducing the number of bytes
+        transmitted over the connection.</p><p>In order to make use of message compression, the Broker must enable the feature too,
+        otherwise the compression options will be ignored.</p><p> To enable message compression on the client use the connection url property <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-ConnectionOptions-CompressMessages"><code class="literal">compressMessages</code></a> (or JVM wide using the system property <a class="link" href="JMS-Client-0-8-System-Properties.html#JMS-Client-0-8-System-Properties-ConnectionCompressMessages"><code class="literal">qpid.connection_compress_messages</code></a>)</p><p>It is also possible to control the threshold at which the client will begin to compress
+        message payloads. See connection url property <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-ConnectionOptions-MessageCompressionThresholdSize"><code class="literal">messageCompressionThresholdSize</code></a> (or JVM wide using the system
+        property <a class="link" href="JMS-Client-0-8-System-Properties.html#JMS-Client-0-8-System-Properties-MessageCompressionThresholdSize"><code class="literal">qpid.message_compression_threshold_size</code></a>)</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The Broker, where necessary, takes care of compressing/decompressing messages of the
+          fly so that clients using message compression can exchange messages with clients not
+          supporting message compression transparently, without application intervention.</p></div></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div class="footnote" id="ftn.d0e384"><p><a class="para" href="#d0e384"><sup class="para">[3] </sup></a>Constructors of the AMQConnection class must not be used.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="JMS-Client-0-8-Client-Understanding-ConnectionFactory.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="JMS-Client-0-8-Client-Understanding.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="JMS-Client-0-8-Client-Understanding-Session.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">5.2.&#160;ConnectionFactory&#160;</td><td align="center" width="20%"><a accesskey="h" href="JMS-Client-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;5.4.&#160;Session</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

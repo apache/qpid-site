@@ -1,0 +1,70 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;2.&#160;Using the Qpid Messaging API</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch01.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="idm223931471312"></a>Chapter&#160;2.&#160;Using the Qpid Messaging API</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="ch02.html#idm223933482320">2.1. A Simple Messaging Program in C++</a></span></dt><dt><span class="section"><a href="ch02s02.html">2.2. A Simple Messaging Program in Python</a></span></dt><dt><span class="section"><a href="ch02s03.html">2.3. A Simple Messaging Program in .NET C#</a></span></dt><dt><span class="section"><a href="section-addresses.html">2.4. Addresses</a></span></dt><dd><dl><dt><span class="section"><a href="section-addresses.html#idm223928857344">2.4.1. Address Strings</a></span></dt><dt><span class="section"><a href="section-addresses.html#idm223928852096">2.4.2. Subjects</a></span></dt><dt><span class="section"><a href="section-addresses.html#idm223928811584">2.4.3. Address String Options</a></span></dt><dt><span class="section"><a href="section-addresses.html#section-address-string-bnf">2.4.4. Address String Grammar</a></span></dt></dl></dd><dt><span class="section"><a href="replay.html">2.5. Sender Capacity and Replay</a></span></dt><dt><span class="section"><a href="prefetch.html">2.6. Receiver Capacity (Prefetch)</a></span></dt><dt><span class="section"><a href="acknowledgements.html">2.7. Acknowledging Received Messages</a></span></dt><dt><span class="section"><a href="ch02s08.html">2.8. Receiving Messages from Multiple Sources</a></span></dt><dt><span class="section"><a href="ch02s09.html">2.9. Transactions</a></span></dt><dt><span class="section"><a href="connections.html">2.10. Connections</a></span></dt><dd><dl><dt><span class="section"><a href="connections.html#connection-url">2.10.1. Connection URLs</a></span></dt><dt><span class="section"><a href="connections.html#connection-options">2.10.2. Connection Options</a></span></dt></dl></dd><dt><span class="section"><a href="section-Maps.html">2.11. Maps and Lists in Message Content</a></span></dt><dd><dl><dt><span class="section"><a href="section-Maps.html#section-Python-Maps">2.11.1. Qpid Maps and Lists in Python</a></span></dt><dt><span class="section"><a href="section-Maps.html#section-cpp-Maps">2.11.2. Qpid Maps and Lists in C++</a></span></dt><dt><span class="section"><a href="section-Maps.html#section-dotnet-Maps">2.11.3. Qpid Maps and Lists in .NET</a></span></dt></dl></dd><dt><span class="section"><a href="ch02s12.html">2.12. The Request / Response Pattern</a></span></dt><dt><span class="section"><a href="ch02s13.html">2.13. Performance Tips</a></span></dt><dt><span class="section"><a href="ch02s14.html">2.14. Cluster Failover</a></span></dt><dt><span class="section"><a href="ch02s15.html">2.15. Logging</a></span></dt><dd><dl><dt><span class="section"><a href="ch02s15.html#idm223928481488">2.15.1. Logging in C++</a></span></dt><dt><span class="section"><a href="ch02s15.html#idm223928476480">2.15.2. Logging in Python</a></span></dt></dl></dd><dt><span class="section"><a href="section-amqp0-10-mapping.html">2.16. The AMQP 0-10 mapping</a></span></dt><dd><dl><dt><span class="section"><a href="section-amqp0-10-mapping.html#section-amqp0-10-message-props">2.16.1. 0-10 Message Property Keys</a></span></dt></dl></dd><dt><span class="section"><a href="Message-Groups-Guide.html">2.17. Using Message Groups</a></span></dt><dd><dl><dt><span class="section"><a href="Message-Groups-Guide.html#messagegroups-setup">2.17.1. Creating Message Group Queues</a></span></dt><dt><span class="section"><a href="Message-Groups-Guide.html#messagegroups-sending">2.17.2. Sending Grouped Messages</a></span></dt><dt><span class="section"><a href="Message-Groups-Guide.html#messagegroups-receiving">2.17.3. Receiving Grouped Messages</a></span></dt></dl></dd></dl></div><p>The Qpid Messaging API is quite simple, consisting of only a
+    handful of core classes.
+    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+          A <em class="firstterm">message</em> consists of a standard set
+          of fields (e.g. <code class="literal">subject</code>,
+          <code class="literal">reply-to</code>), an application-defined set of
+          properties, and message content (the main body of the
+          message).
+        </p></li><li class="listitem"><p>
+          A <em class="firstterm">connection</em> represents a network
+          connection to a remote endpoint.
+        </p></li><li class="listitem"><p>
+          A <em class="firstterm">session</em> provides a sequentially
+          ordered context for sending and receiving
+          <span class="emphasis"><em>messages</em></span>. A session is obtained from a
+          connection.
+        </p></li><li class="listitem"><p>
+	  A <em class="firstterm">sender</em> sends messages to a target
+	  using the <code class="literal">sender.send</code> method. A sender is
+	  obtained from a session for a given target address.
+        </p></li><li class="listitem"><p>
+	  A <em class="firstterm">receiver</em> receives messages from a
+	  source using the <code class="literal">receiver.fetch</code> method.
+	  A receiver is obtained from a session for a given source
+	  address.
+        </p></li></ul></div><p>
+      The following sections show how to use these classes in a
+      simple messaging program.
+    </p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm223933482320"></a>2.1.&#160;A Simple Messaging Program in C++</h2></div></div></div><p>The following C++ program shows how to create a connection,
+      create a session, send messages using a sender, and receive
+      messages using a receiver.</p><div class="example"><a id="idm223934276752"></a><p class="title"><strong>Example&#160;2.1.&#160;"Hello world!" in C++</strong></p><div class="example-contents"><pre class="programlisting" lang="c++" xml:lang="c++">
+	#include &lt;qpid/messaging/Connection.h&gt;
+	#include &lt;qpid/messaging/Message.h&gt;
+	#include &lt;qpid/messaging/Receiver.h&gt;
+	#include &lt;qpid/messaging/Sender.h&gt;
+	#include &lt;qpid/messaging/Session.h&gt;
+
+	#include &lt;iostream&gt;
+
+	using namespace qpid::messaging;
+
+	int main(int argc, char** argv) {
+	std::string broker = argc &gt; 1 ? argv[1] : "localhost:5672";
+	std::string address = argc &gt; 2 ? argv[2] : "amq.topic";
+	std::string connectionOptions = argc &gt; 3 ? argv[3] : "";
+
+	Connection connection(broker, connectionOptions);
+	try {
+        connection.open();  <a class="co" href="ch02.html#callout-cpp-open" id="hello-cpp-open">(1)</a>
+        Session session = connection.createSession(); <a class="co" href="ch02.html#callout-cpp-session" id="hello-cpp-session">(2)</a>
+
+        Receiver receiver = session.createReceiver(address); <a class="co" href="ch02.html#callout-cpp-receiver" id="hello-cpp-receiver">(3)</a>
+        Sender sender = session.createSender(address); <a class="co" href="ch02.html#callout-cpp-sender" id="hello-cpp-sender">(4)</a>
+
+        sender.send(Message("Hello world!"));
+
+        Message message = receiver.fetch(Duration::SECOND * 1); <a class="co" href="ch02.html#callout-cpp-fetch" id="hello-cpp-fetch">(5)</a>
+        std::cout &lt;&lt; message.getContent() &lt;&lt; std::endl;
+        session.acknowledge(); <a class="co" href="ch02.html#callout-cpp-acknowledge" id="hello-cpp-acknowledge">(6)</a>
+
+        connection.close(); <a class="co" href="ch02.html#callout-cpp-close" id="hello-cpp-close">(7)</a>
+        return 0;
+	} catch(const std::exception&amp; error) {
+        std::cerr &lt;&lt; error.what() &lt;&lt; std::endl;
+        connection.close();
+        return 1;
+	}
+	}</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-open"></a><a href="#hello-cpp-open">(1)</a> </p></td><td align="left" valign="top"><p>Establishes the connection with the messaging broker.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-session"></a><a href="#hello-cpp-session">(2)</a> </p></td><td align="left" valign="top"><p>Creates a session object on which messages will be sent and received.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-receiver"></a><a href="#hello-cpp-receiver">(3)</a> </p></td><td align="left" valign="top"><p>Creates a receiver that receives messages from the given address.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-sender"></a><a href="#hello-cpp-sender">(4)</a> </p></td><td align="left" valign="top"><p>Creates a sender that sends to the given address.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-fetch"></a><a href="#hello-cpp-fetch">(5)</a> </p></td><td align="left" valign="top"><p>Receives the next message. The duration is optional, if omitted, will wait indefinitely for the next message.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-acknowledge"></a><a href="#hello-cpp-acknowledge">(6)</a> </p></td><td align="left" valign="top"><p>Acknowledges receipt of all fetched messages on the
+	    session. This informs the broker that the messages were
+	    transferred and processed by the client successfully.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-cpp-close"></a><a href="#hello-cpp-close">(7)</a> </p></td><td align="left" valign="top"><p>Closes the connection, all sessions managed by the connection, and all senders and receivers managed by each session.</p></td></tr></table></div></div></div><br class="example-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch01.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;1.&#160;Introduction&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.2.&#160;A Simple Messaging Program in Python</td></tr></table></div></div>

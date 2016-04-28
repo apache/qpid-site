@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 0.3 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-0.3/index.html">Qpid Dispatch 0.3</a></li><li>Qpid Dispatch 0.3 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-03-release-notes">Qpid Dispatch 0.3 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP message router library. More about
+<a href="/components/dispatch-router/index.html">Qpid Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1">DISPATCH-1</a> - Use Target Address from the link if there is no To field in a message from a producer</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2">DISPATCH-2</a> - Adhere to the AMQP Management Specification for remote management</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-12">DISPATCH-12</a> - Exercise qdstat in the tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-16">DISPATCH-16</a> - Improve logging for dispatch</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-26">DISPATCH-26</a> - Documentation updates for 0.3</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-33">DISPATCH-33</a> - Use session flow control to protect the router's memory</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-34">DISPATCH-34</a> - Multi-Leg Addressing for Broker Integration</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-36">DISPATCH-36</a> - Make max-frame-size configurable per-connector/listener</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-38">DISPATCH-38</a> - Interpret unqualified $management as _local/$management</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-39">DISPATCH-39</a> - Use studlyCaps for standard management property names</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-41">DISPATCH-41</a> - Port the container to Proton Engine's new event API</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-49">DISPATCH-49</a> - Hush doxygen output</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-50">DISPATCH-50</a> - Allow configurable setting of logging levels.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-54">DISPATCH-54</a> - Move message metadata from delivery-annotations to message-annotations</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-63">DISPATCH-63</a> - Daemon operation is needed for SysV-style service execution</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-67">DISPATCH-67</a> - Add listener configuration for allow-no-sasl</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-69">DISPATCH-69</a> - Router container should offer ANONYMOUS-RELAY capability</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-74">DISPATCH-74</a> - Allow changes to logging configuration of a running router.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-80">DISPATCH-80</a> - Management schema: implement annotations and entity inheritance as per AMQP management WD 09</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-81">DISPATCH-81</a> - Remove old management code.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-92">DISPATCH-92</a> - Make dispatch logging configuration more flexible and qpid-like</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-94">DISPATCH-94</a> - Router documentation to Qpid web site for 0.3 release.</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-31">DISPATCH-31</a> - Valgrind reports memory leaks due to stubbed destructors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-37">DISPATCH-37</a> - Various memory leaks</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-40">DISPATCH-40</a> - Qdrouterd segfaults while connecting to neighbour router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-46">DISPATCH-46</a> - dispatch crash when proton gets bad socket</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-51">DISPATCH-51</a> - address semantics don't propagate from one router to another</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-59">DISPATCH-59</a> - Inconsistency on router reconnection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-61">DISPATCH-61</a> - Inconsistent service names for the router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-66">DISPATCH-66</a> - NULL header fields are interpreted as present</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-72">DISPATCH-72</a> - Sporadic core dumps in dispatch tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-73">DISPATCH-73</a> - Disallow inter-router listeners and connectors if role = standalone.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-75">DISPATCH-75</a> - Remove reference to qdstat.conf from qdstat manpage</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-76">DISPATCH-76</a> - qd_log should not evaluate its arguments if log statement is not enabled.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-77">DISPATCH-77</a> - Error decoding an integer message body</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-78">DISPATCH-78</a> - Driver runs at 100% CPU after an unclean disconnect</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-79">DISPATCH-79</a> - Management agent errors after restarting a second router.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-82">DISPATCH-82</a> - Poor error handling by qdmanage and qdstat tools.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-83">DISPATCH-83</a> - Error messages are not displayed if an error occurs when starting in deamon mode </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-85">DISPATCH-85</a> - Remove all direct printing to stdout and stderr.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-86">DISPATCH-86</a> - Management agent should enforce format of identifiers.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-87">DISPATCH-87</a> - Double load of libqpid-dispatch.so</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-88">DISPATCH-88</a> - Python functions invoked without the Python lock being held causes crash</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-91">DISPATCH-91</a> - Configured log levels don't work with Python-based sources</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-93">DISPATCH-93</a> - Multiple log entries in config file prevent qdrouterd from starting</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-95">DISPATCH-95</a> - Connector and listener  identity does not show address and port.</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-65">DISPATCH-65</a> - Packages are needed for Ubuntu Precise (12 LTS)</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+
+  
+  <div class="section" id="console-installation">
+<h1>4.2. Console installation<a class="headerlink" href="#console-installation" title="Permalink to this headline">.</a></h1>
+<div class="section" id="prerequisites">
+<h2>4.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">.</a></h2>
+<p>The following need to be installed before running a console:</p>
+<ul class="simple">
+<li>One or more dispatch routers. See the documentation for the dispatch router for help in starting a router network.</li>
+<li>node.js This is needed to provide a proxy between the console&#8217;s websocket traffic and tcp.</li>
+<li>A web server. This can be any server capable of serving static html/js/css/image files.</li>
+</ul>
+<p>A nodejs proxy is distributed with proton.
+To start the proton&#8217;s nodejs proxy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>cd ~/rh-qpid-proton/examples/javascript/messenger
+node proxy.js &amp;
+</pre></div>
+</div>
+<p>This will start the proxy listening to ws traffic on port 5673 and translating it to tcp on port 5672.
+One of the routers in the network needs to have a listener configured on port 5672. That listener&#8217;s role should be &#8216;normal&#8217;. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>listener {
+   addr: 0.0.0.0
+   role: normal
+   port: amqp
+   saslMechanisms: ANONYMOUS
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-console-files">
+<h2>4.2.2. The console files<a class="headerlink" href="#the-console-files" title="Permalink to this headline">.</a></h2>
+<p>The files for the console are located under the console directory in
+the source tree.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>app/
+bower_components/
+css/
+img/
+index.html
+lib/
+plugin/
+vendor.js
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Copy these files to a directory under the the html or webapps directory of your web server. For example, for apache tomcat the files should be under webapps/dispatch. Then the console is available as::</dt>
+<dd><a class="reference external" href="http://localhost:8080/dispatch">http://localhost:8080/dispatch</a></dd>
+</dl>
+</div>
+</div>
+

@@ -1,0 +1,48 @@
+#!/bin/bash -e
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+DATE=$1
+
+if [[ -z $DATE ]]; then
+    DATE=$(date --date "1 year ago" +%F)
+fi
+
+work_dir=$(mktemp -d)
+temp_list=$work_dir/committers
+
+svn log -r{$DATE}:HEAD -q http://svn.apache.org/repos/asf/qpid | egrep '^r' | cut -d " " -f 3 >> $temp_list
+
+(
+    cd $work_dir
+
+    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-proton.git"
+    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-dispatch.git"
+    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-jms.git"
+    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-interop-test.git"
+
+    (cd qpid-proton.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)
+    (cd qpid-dispatch.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)
+    (cd qpid-jms.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)
+    (cd qpid-interop-test.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)
+)
+
+cat $temp_list | sort | uniq
+
+rm -rf $work_dir

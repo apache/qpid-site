@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Proton 0.12.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.12.0/index.html">Qpid Proton 0.12.0</a></li><li>Qpid Proton 0.12.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-proton-0120-release-notes">Qpid Proton 0.12.0 Release Notes</h1>
+
+<p>Proton is a high-performance, lightweight messaging library. More
+about <a href="/proton/index.html">Qpid Proton</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<p><strong>Note</strong>: This release contains a new C++ binding of the Proton API.
+The documented API is substantially settled, but there are some areas
+that will change in the next release and should be considered unstable
+API:</p>
+
+<ul>
+<li>The <code>proton::connection_engine</code> and the <code>proton::io</code> interfaces</li>
+<li>The <code>find_sessions</code> and <code>find_links</code> methods on <code>connection</code> and
+<code>session</code></li>
+</ul>
+
+<p><strong>Note</strong>: Qpid C++ 0.34 builds will fail against this version of Proton
+unless you set <code>-DCMAKE_CXX_FLAGS=-Wno-error=switch</code>.  A new release
+of Qpid C++ will resolve this problem.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1037">PROTON-1037</a> - Add support for setting/getting message properties</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1039">PROTON-1039</a> - Add support for setting/getting transport headers</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1047">PROTON-1047</a> - go: improved ack handling in electron API, add to  broker example</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1048">PROTON-1048</a> - Proton-C ssl tests on Windows with SChannel</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1052">PROTON-1052</a> - SSL support in C++ reactor client</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1053">PROTON-1053</a> - SASL support in C++ reactor client</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1054">PROTON-1054</a> - Add acceptor context to incoming reactor connections.</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1062">PROTON-1062</a> - proton::engine as a client example</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1066">PROTON-1066</a> - Connection options for C++ binding</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1068">PROTON-1068</a> - c++ remove counted_ptr and context types from public API</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1076">PROTON-1076</a> - C++ binding acceptor context</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1082">PROTON-1082</a> - add ability to specify and inspect properties for link attach frames</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1083">PROTON-1083</a> - [C++] Simplify the messaging events</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1085">PROTON-1085</a> - c++ improve message interface and dynamic value handling</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1088">PROTON-1088</a> - Add convenience functions to obtain the client certificate fingerprint, subject subfields</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1089">PROTON-1089</a> - C++ binding link options</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1092">PROTON-1092</a> - c++: improve proton::message API</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1095">PROTON-1095</a> - Error handling</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1096">PROTON-1096</a> - [proton-j] enable set/get of MessageFormat on the Delivery being sent/received </li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1102">PROTON-1102</a> - C++ binding remove _t suffix for types</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1103">PROTON-1103</a> - C++ binding rename xxx_domain to ssl_xxx_options</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1108">PROTON-1108</a> - Change DISCONNECT event to be called TRANSPORT_CLOSE, introduce TRANSPORT_ERROR event</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1109">PROTON-1109</a> - Improve the C++ binding documentation</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-713">PROTON-713</a> - TransportImpl#setChannelMax does not enforce legal value range, may cause unexpected results</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-829">PROTON-829</a> - Possible reference counting bug in pn_clear_tpwork</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-949">PROTON-949</a> - proton doesn't build with ccache swig</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-995">PROTON-995</a> - Url fails to parse URL</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1000">PROTON-1000</a> - Connection leak on heartbeat-timeouted connections</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1020">PROTON-1020</a> - Typos in the error messages</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1026">PROTON-1026</a> - Invalid queue/destination causes a segmentation fault</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1027">PROTON-1027</a> - Incorrectly handling of invalid addresses</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1031">PROTON-1031</a> - [python] Bump the module version to 0.11.0</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1035">PROTON-1035</a> - [proton-c] Python binding mishandles connection close event</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1040">PROTON-1040</a> - BlockingConnection fails to send heartbeats if timeout is None and no local idle time is specified</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1044">PROTON-1044</a> - Create/Delete of BlockingConnection leaks file descriptors</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1045">PROTON-1045</a> - Use of callbacks to handle accepted endpoints violates design goals.</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1049">PROTON-1049</a> - Reactor needs an alternative to using the URL to pass user authentication information.</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1055">PROTON-1055</a> - Username sent twice during SASL AUTH</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1056">PROTON-1056</a> - Attempting to print an ApplicationEvent raises a NameError</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1059">PROTON-1059</a> - ruby: ruby binding broken in 0.11 release and on master</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1060">PROTON-1060</a> - [Python Binding] API call types for some message properties do not match AMQP specification</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1065">PROTON-1065</a> - dbgheap.c assertion when adding types to message body (through proton::value)</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1067">PROTON-1067</a> - python messenger: cannot acknowledge messages, messenger forces auto-ack or pre-settled.</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1069">PROTON-1069</a> - Windows schannel ssl hang in shutdown sequence</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1074">PROTON-1074</a> - C++ cbinding SSL core dump</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1075">PROTON-1075</a> - Data races detected in go_test_electron</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1077">PROTON-1077</a> - receiver link and transport view of credit can become disjoint when sending link sends flow frames</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1080">PROTON-1080</a> - have container attribute on any relevant event</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1090">PROTON-1090</a> - BlockingConnection client spins at 100% cpu on reconnect</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1093">PROTON-1093</a> - [proton-c++] pragma to hide a warning in GCC introduces a warning in Windows</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1100">PROTON-1100</a> - [proton-j] the transport should not emit other frames before the Open frame has been sent</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1101">PROTON-1101</a> - Proton build broken on Visual Studio 10</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1104">PROTON-1104</a> - reactor hangs on reconnect</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1105">PROTON-1105</a> - enable EventImpl#getTransport() to succeed in more situations</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1107">PROTON-1107</a> - [proton-j] only create the attachments Record on a Delivery if it actually gets used</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1110">PROTON-1110</a> - [proton-j] allow suppressing the synthentic flow event when sending transfers</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1114">PROTON-1114</a> - [proton-j] the transport should not emit other frames after the Close frame has been sent</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1116">PROTON-1116</a> - Potential infinite recursion detected by VC++14 compiler</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1118">PROTON-1118</a> - python setup.py build fails if run from git repo</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1120">PROTON-1120</a> - Memory leak using proton.utils</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1121">PROTON-1121</a> - Zero pointer derefence in pn_sasl_allowed_mechs()</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1123">PROTON-1123</a> - cmake fails under python3 when -DSYSINSTALL_BINDINGS=ON</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1125">PROTON-1125</a> - c++: core dump on empty address in link options</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1127">PROTON-1127</a> - [Windows] qpid-proton-cpp.dll not installed by "make install" target</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-973">PROTON-973</a> - various javadoc errors when building with Java 8</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1084">PROTON-1084</a> - [cpp binding] Add message annotation support</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-1113">PROTON-1113</a> - tidy up some descriptive detail around running the python tests</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

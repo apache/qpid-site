@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch Router Book - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="data:image/png;base64," alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="data:image/png;base64," alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+          <li><a href="/issues.html">Issues</a></li>
+          <li><a href="/source-code.html">Source Code</a></li>
+          <li><a href="/resources.html">More Resources</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <section>
+          <h3>Project</h3>
+
+          <ul>
+            <li><a href="/overview.html">Overview</a></li>
+            <li><a href="/proton/index.html">Qpid Proton</a></li>
+            <li><a href="/contributors.html">Contributors</a></li>
+            <li><a href="/get-involved.html">Get involved</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Software</h3>
+
+          <ul>
+            <li><a href="/download.html">Download</a></li>
+            <li><a href="/documentation.html">Documentation</a></li>
+            <li><a href="/components/index.html">Components</a></li>
+            <li><a href="/releases/index.html">Releases</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>Resources</h3>
+
+          <ul>
+            <li><a href="/discussion.html">Discussion</a></li>
+            <li><a href="/issues.html">Issues</a></li>
+            <li><a href="/source-code.html">Source code</a></li>
+            <li><a href="/resources.html">More resources</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>More</h3>
+
+          <ul>
+            <li><a href="/amqp.html">AMQP</a></li>
+            <li><a href="/developer.html">Developer central</a></li>
+            <li><a href="https://cwiki.apache.org/confluence/display/qpid/">Wiki</a></li>
+          </ul>
+        </section>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <p><a href="/search.html">More ways to search</a></p>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/releases/qpid-dispatch-0.3/index.html">Qpid Dispatch 0.3</a></li><li>Qpid Dispatch Router Book</li></ul>
+        <!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<!--
+ Pandoc template for HTML content to go onto the Qpid web site.
+ Such a fragment is just the contents of the <body> element,
+ the site generation tools will add the <head> etc.
+-->
+
+<div id="header">
+<h1 class="title">Qpid Dispatch Router Book</h1>
+</div>
+<div id="TOC">
+<ul>
+<li><a href="#introduction"><span class="toc-section-number">1</span> Introduction</a><ul>
+<li><a href="#overview"><span class="toc-section-number">1.1</span> Overview</a></li>
+<li><a href="#benefits"><span class="toc-section-number">1.2</span> Benefits</a></li>
+<li><a href="#features"><span class="toc-section-number">1.3</span> Features</a></li>
+</ul></li>
+<li><a href="#using-qpid-dispatch"><span class="toc-section-number">2</span> Using Qpid Dispatch</a><ul>
+<li><a href="#configuration"><span class="toc-section-number">2.1</span> Configuration</a></li>
+<li><a href="#client-compatibility"><span class="toc-section-number">2.2</span> Client Compatibility</a></li>
+<li><a href="#tools"><span class="toc-section-number">2.3</span> Tools</a><ul>
+<li><a href="#qdstat"><span class="toc-section-number">2.3.1</span> qdstat</a></li>
+<li><a href="#qdmanage"><span class="toc-section-number">2.3.2</span> qdmanage</a></li>
+</ul></li>
+<li><a href="#features-and-examples"><span class="toc-section-number">2.4</span> Features and Examples</a><ul>
+<li><a href="#standalone-and-interior-modes"><span class="toc-section-number">2.4.1</span> Standalone and Interior Modes</a></li>
+<li><a href="#mobile-subscribers"><span class="toc-section-number">2.4.2</span> Mobile Subscribers</a></li>
+<li><a href="#dynamic-reply-to"><span class="toc-section-number">2.4.3</span> Dynamic Reply-To</a></li>
+</ul></li>
+<li><a href="#known-issues-and-limitations"><span class="toc-section-number">2.5</span> Known Issues and Limitations</a></li>
+</ul></li>
+<li><a href="#addressing"><span class="toc-section-number">3</span> Addressing</a><ul>
+<li><a href="#routing-patterns"><span class="toc-section-number">3.1</span> Routing patterns</a></li>
+<li><a href="#routing-mechanisms"><span class="toc-section-number">3.2</span> Routing mechanisms</a><ul>
+<li><a href="#message-routing"><span class="toc-section-number">3.2.1</span> Message routing</a></li>
+<li><a href="#link-routing"><span class="toc-section-number">3.2.2</span> Link routing</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#amqp-mapping"><span class="toc-section-number">4</span> AMQP Mapping</a><ul>
+<li><a href="#message-annotations"><span class="toc-section-number">4.1</span> Message Annotations</a></li>
+<li><a href="#sourcetarget-capabilities"><span class="toc-section-number">4.2</span> Source/Target Capabilities</a></li>
+<li><a href="#addresses-and-address-formats"><span class="toc-section-number">4.3</span> Addresses and Address Formats</a><ul>
+<li><a href="#address-patterns"><span class="toc-section-number">4.3.1</span> Address Patterns</a></li>
+<li><a href="#supported-addresses"><span class="toc-section-number">4.3.2</span> Supported Addresses</a></li>
+</ul></li>
+<li><a href="#implementation-of-the-amqp-management-specification"><span class="toc-section-number">4.4</span> Implementation of the AMQP Management Specification</a></li>
+</ul></li>
+<li><a href="#the-qdrouter-management-schema"><span class="toc-section-number">5</span> The qdrouter management schema</a><ul>
+<li><a href="#annotations"><span class="toc-section-number">5.1</span> Annotations</a><ul>
+<li><a href="#addrport"><span class="toc-section-number">5.1.1</span> <code>addrPort</code></a></li>
+<li><a href="#saslmechanisms"><span class="toc-section-number">5.1.2</span> <code>saslMechanisms</code></a></li>
+<li><a href="#connectionrole"><span class="toc-section-number">5.1.3</span> <code>connectionRole</code></a></li>
+<li><a href="#sslprofile"><span class="toc-section-number">5.1.4</span> <code>sslProfile</code></a></li>
+</ul></li>
+<li><a href="#base-entity-type"><span class="toc-section-number">5.2</span> Base Entity Type</a><ul>
+<li><a href="#entity"><span class="toc-section-number">5.2.1</span> <code>entity</code></a></li>
+</ul></li>
+<li><a href="#configuration-entities"><span class="toc-section-number">5.3</span> Configuration Entities</a><ul>
+<li><a href="#configurationentity"><span class="toc-section-number">5.3.1</span> <code>configurationEntity</code></a></li>
+<li><a href="#container"><span class="toc-section-number">5.3.2</span> <code>container</code></a></li>
+<li><a href="#router"><span class="toc-section-number">5.3.3</span> <code>router</code></a></li>
+<li><a href="#listener"><span class="toc-section-number">5.3.4</span> <code>listener</code></a></li>
+<li><a href="#connector"><span class="toc-section-number">5.3.5</span> <code>connector</code></a></li>
+<li><a href="#log"><span class="toc-section-number">5.3.6</span> <code>log</code></a></li>
+<li><a href="#fixedaddress"><span class="toc-section-number">5.3.7</span> <code>fixedAddress</code></a></li>
+<li><a href="#waypoint"><span class="toc-section-number">5.3.8</span> <code>waypoint</code></a></li>
+</ul></li>
+<li><a href="#operational-entities"><span class="toc-section-number">5.4</span> Operational Entities</a><ul>
+<li><a href="#operationalentity"><span class="toc-section-number">5.4.1</span> <code>operationalEntity</code></a></li>
+<li><a href="#router.link"><span class="toc-section-number">5.4.2</span> <code>router.link</code></a></li>
+<li><a href="#router.address"><span class="toc-section-number">5.4.3</span> <code>router.address</code></a></li>
+<li><a href="#router.node"><span class="toc-section-number">5.4.4</span> <code>router.node</code></a></li>
+<li><a href="#connection"><span class="toc-section-number">5.4.5</span> <code>connection</code></a></li>
+<li><a href="#allocator"><span class="toc-section-number">5.4.6</span> <code>allocator</code></a></li>
+</ul></li>
+</ul></li>
+<li><a href="#manual-page-qdrouterd.8"><span class="toc-section-number">6</span> Manual page qdrouterd.8</a><ul>
+<li><a href="#name"><span class="toc-section-number">6.1</span> Name</a></li>
+<li><a href="#synopsis"><span class="toc-section-number">6.2</span> Synopsis</a></li>
+<li><a href="#description"><span class="toc-section-number">6.3</span> Description</a></li>
+<li><a href="#files"><span class="toc-section-number">6.4</span> Files</a></li>
+<li><a href="#see-also"><span class="toc-section-number">6.5</span> See Also</a></li>
+</ul></li>
+<li><a href="#manual-page-qdstat.8"><span class="toc-section-number">7</span> Manual page qdstat.8</a><ul>
+<li><a href="#name-1"><span class="toc-section-number">7.1</span> Name</a></li>
+<li><a href="#synopsis-1"><span class="toc-section-number">7.2</span> Synopsis</a></li>
+<li><a href="#description-1"><span class="toc-section-number">7.3</span> Description</a><ul>
+<li><a href="#connection-options"><span class="toc-section-number">7.3.1</span> Connection Options</a></li>
+</ul></li>
+<li><a href="#see-also-1"><span class="toc-section-number">7.4</span> See Also</a></li>
+</ul></li>
+<li><a href="#manual-page-qdmanage.8"><span class="toc-section-number">8</span> Manual page qdmanage.8</a><ul>
+<li><a href="#name-2"><span class="toc-section-number">8.1</span> Name</a></li>
+<li><a href="#synopsis-2"><span class="toc-section-number">8.2</span> Synopsis</a></li>
+<li><a href="#description-2"><span class="toc-section-number">8.3</span> Description</a></li>
+<li><a href="#operations"><span class="toc-section-number">8.4</span> Operations</a></li>
+<li><a href="#options"><span class="toc-section-number">8.5</span> Options</a><ul>
+<li><a href="#connection-options-1"><span class="toc-section-number">8.5.1</span> Connection Options</a></li>
+</ul></li>
+<li><a href="#files-1"><span class="toc-section-number">8.6</span> Files</a></li>
+<li><a href="#examples"><span class="toc-section-number">8.7</span> Examples</a></li>
+<li><a href="#see-also-2"><span class="toc-section-number">8.8</span> See Also</a></li>
+</ul></li>
+<li><a href="#manual-page-qdrouterd.conf.5"><span class="toc-section-number">9</span> Manual page qdrouterd.conf.5</a><ul>
+<li><a href="#name-3"><span class="toc-section-number">9.1</span> Name</a></li>
+<li><a href="#description-3"><span class="toc-section-number">9.2</span> Description</a></li>
+<li><a href="#annotation-sections"><span class="toc-section-number">9.3</span> Annotation Sections</a><ul>
+<li><a href="#addrport-1"><span class="toc-section-number">9.3.1</span> Addrport</a></li>
+<li><a href="#saslmechanisms-1"><span class="toc-section-number">9.3.2</span> Saslmechanisms</a></li>
+<li><a href="#connectionrole-1"><span class="toc-section-number">9.3.3</span> Connectionrole</a></li>
+<li><a href="#sslprofile-1"><span class="toc-section-number">9.3.4</span> Sslprofile</a></li>
+</ul></li>
+<li><a href="#configuration-sections"><span class="toc-section-number">9.4</span> Configuration Sections</a><ul>
+<li><a href="#container-1"><span class="toc-section-number">9.4.1</span> Container</a></li>
+<li><a href="#router-1"><span class="toc-section-number">9.4.2</span> Router</a></li>
+<li><a href="#listener-1"><span class="toc-section-number">9.4.3</span> Listener</a></li>
+<li><a href="#connector-1"><span class="toc-section-number">9.4.4</span> Connector</a></li>
+<li><a href="#log-1"><span class="toc-section-number">9.4.5</span> Log</a></li>
+<li><a href="#fixedaddress-1"><span class="toc-section-number">9.4.6</span> Fixedaddress</a></li>
+<li><a href="#waypoint-1"><span class="toc-section-number">9.4.7</span> Waypoint</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<h1 id="introduction"><span class="header-section-number">1</span> Introduction</h1>
+<h2 id="overview"><span class="header-section-number">1.1</span> Overview</h2>
+<p>The Dispatch router is an AMQP message message router that provides advanced interconnect capabilities. It allows flexible routing of messages between any AMQP-enabled endpoints, whether they be clients, servers, brokers or any other entity that can send or receive standard AMQP messages.</p>
+<p>A messaging client can make a single AMQP connection into a messaging bus built of Dispatch routers and, over that connection, exchange messages with one or more message brokers, and at the same time exchange messages directly with other endpoints without involving a broker at all.</p>
+<p>The router is an intermediary for messages but it is <em>not</em> a broker. It does not <em>take responsibility for</em> messages. It will, however, propagate settlement and disposition across a network such that delivery guarantees are met. In other words: the router network will deliver the message, possibly via several intermediate routers, <em>and</em> it will route the acknowledgement of that message by the ultimate reciever back across the same path. This means that <em>responsibility</em> for the message is transfered from the original sender to the ultimate receiver <em>as if they were directly connected</em>. However this is done via a flexible network that allows highly configurable routing of the message transparent to both sender and receiver.</p>
+<p>There are some patterns where this enables &quot;brokerless messaging&quot; approaches that are preferable to brokered approaches. In other cases a broker is essential (in particular where you need the separation of responsibility and/or the buffering provided by store-and-forward) but a dispatch network can still be useful to tie brokers and clients together into patterns that are difficult with a single broker.</p>
+<p>For a &quot;brokerless&quot; example, consider the common brokered implementation of the request-response pattern, a client puts a request on a queue and then waits for a reply on another queue. In this case the broker can be a hindrance - the client may want to know immediatly if there is nobody to serve the request, but typically it can only wait for a timeout to discover this. With a dispatch network, the client can be informed immediately if its message cannot be delivered because nobody is listening. When the client receives acknowledgement of the request it knows not just that it is sitting on a queue, but that it has actually been received by the server.</p>
+<p>For an exampe of using dispatch to enhance the use of brokers, consider using an array of brokers to implement a scalable distributed work queue. A dispatch network can make this appear as a single queue, with senders publishing to a single address and receivers subscribing to a single address. The dispatch network can distribute work to any broker in the array and collect work from any broker for any receiver. Brokers can be shut down or added without affecting clients. This elegantly solves the common difficult of &quot;stuck messages&quot; when implementing this pattern with brokers alone. If a receiver is connected to a broker that has no messages, but there are messages on another broker, you have to somehow transfer them or leave them &quot;stuck&quot;. With a dispatch network, <em>all</em> the receivers are connected to <em>all</em> the brokers. If there is a message anywhere it can be delivered to any receiver.</p>
+<p>The router is meant to be deployed in topologies of multiple routers, preferably with redundant paths. It uses link-state routing protocols and algorithms (similar to OSPF or IS-IS from the networking world) to calculate the best path from every point to every other point and to recover quickly from failures. It does not need to use clustering for high availability; rather, it relies on redundant paths to provide continued connectivity in the face of system or network failure. Because it never takes responsibility for messages it is effectively stateless, messages not delivered to their final destination will not be acknowledged to the sender and therefore the sender can re-send such messages if it is disconnected from the network.</p>
+<h2 id="benefits"><span class="header-section-number">1.2</span> Benefits</h2>
+<ul>
+<li>Simplifies connectivity</li>
+<li>An endpoint can do all of its messaging through a single transport connection</li>
+<li>Avoid opening holes in firewalls for incoming connections</li>
+<li>Simplifies reliability</li>
+<li>Reliability and availability are provided using redundant topology, not server clustering</li>
+<li>Reliable end-to-end messaging without persistent stores</li>
+<li>Use a message broker only when you need store-and-forward semantics</li>
+</ul>
+<h2 id="features"><span class="header-section-number">1.3</span> Features</h2>
+<ul>
+<li>Supports arbitrary topology - no restrictions on redundancy</li>
+<li>Automatic route computation - adjusts quickly to changes in topology</li>
+<li>Cost-based route computation</li>
+<li><a href="#addressing">Rich addressing semantics</a></li>
+<li>Security</li>
+</ul>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<h1 id="using-qpid-dispatch"><span class="header-section-number">2</span> Using Qpid Dispatch</h1>
+<h2 id="configuration"><span class="header-section-number">2.1</span> Configuration</h2>
+<p>The default configuration file is installed in <em>install-prefix</em>/etc/qpid/qdrouterd.conf. This configuration file will cause the router to run in standalone mode, listening on the standard AMQP port (5672). Dispatch Router looks for the configuration file in the installed location by default. If you wish to use a different path, the &quot;-c&quot; command line option will instruct Dispatch Router as to which configuration to load.</p>
+<p>To run the router, invoke the executable: o $ qdrouterd [-c my-config-file]</p>
+<p>For more details of the configuration file see the <code>qdrouterd.conf(5)</code> man page.</p>
+<h2 id="client-compatibility"><span class="header-section-number">2.2</span> Client Compatibility</h2>
+<p>Dispatch Router should, in theory, work with any client that is compatible with AMQP 1.0. The following clients have been tested:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Client</em></th>
+<th align="left"><em>Notes</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">qpid::messaging</td>
+<td align="left">The Qpid messaging clients work with Dispatch Router as long as they are configured to use the 1.0 version of the protocol. To enable AMQP 1.0 in the C++ client, use the {protocol:amqp1.0} connection option.</td>
+</tr>
+<tr class="even">
+<td align="left">Proton Messenger</td>
+<td align="left">Messenger works with Dispatch Router.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tools"><span class="header-section-number">2.3</span> Tools</h2>
+<h3 id="qdstat"><span class="header-section-number">2.3.1</span> qdstat</h3>
+<p><em>qdstat</em> is a command line tool that lets you view the status of a Dispatch Router. The following options are useful for seeing that the router is doing:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Option</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">-l</td>
+<td align="left">Print a list of AMQP links attached to the router. Links are unidirectional. Outgoing links are usually associated with a subscription address. The tool distinguishes between <em>endpoint</em> links and <em>router</em> links. Endpoint links are attached to clients using the router. Router links are attached to other routers in a network of routers.</td>
+</tr>
+<tr class="even">
+<td align="left">-a</td>
+<td align="left">Print a list of addresses known to the router.</td>
+</tr>
+<tr class="odd">
+<td align="left">-n</td>
+<td align="left">Print a list of known routers in the network.</td>
+</tr>
+<tr class="even">
+<td align="left">-c</td>
+<td align="left">Print a list of connections to the router.</td>
+</tr>
+</tbody>
+</table>
+<p>For complete details see the <code>qdstat(8)</code> man page and the output of <code>qdstat --help</code>.</p>
+<h3 id="qdmanage"><span class="header-section-number">2.3.2</span> qdmanage</h3>
+<p><em>qdmanage</em> is a general-purpose AMQP management client that allows you to not only view but modify the configuration of a running dispatch router.</p>
+<p>For example you can query all the connection entities in the route r $ qdrouterd query --type connection</p>
+<p>To enable logging debug and higher level messages by default: $ qdrouter update log/DEFAULT enable=debug+</p>
+<p>In fact, everything that can be configured in the configuration file can also be created in a running router via management. For example to create a new listener in a running router: $ qdrouter create type=listener port=5555</p>
+<p>Now you can connect to port 5555, for exampple $ qdrouterd query -b localhost:5555 --type listener</p>
+<p>For complete details see the <code>qdmanage(8)</code> man page and the output of <code>qdmanage --help</code>. Also for details of what can be configured see the <code>qdrouterd.conf(5)</code> man page.</p>
+<h2 id="features-and-examples"><span class="header-section-number">2.4</span> Features and Examples</h2>
+<h3 id="standalone-and-interior-modes"><span class="header-section-number">2.4.1</span> Standalone and Interior Modes</h3>
+<p>The router can operate stand-alone or as a node in a network of routers. The mode is configured in the <em>router</em> section of the configuration file. In stand-alone mode, the router does not attempt to collaborate with any other routers and only routes messages among directly connected endpoints.</p>
+<p>If your router is running in stand-alone mode, <em>qdstat -a</em> will look like the following:</p>
+<pre><code>$ qdstat -a
+Router Addresses
+  class  address      in-proc  local  remote  in  out  thru  to-proc  from-proc
+  ===============================================================================
+  local  $management  Y        0      0       1   0    0     1        0
+  local  temp.AY81ga           1      0       0   0    0     0        0</code></pre>
+<p>Note that there are two known addresses. <em>$management</em> is the address of the router's embedded management agent. <em>temp.AY81ga</em> is the temporary reply-to address of the <em>qdstat</em> client making requests to the agent.</p>
+<p>If you change the mode to interior and restart the processs, the same command will yield two additional addresses which are used for inter-router communication:</p>
+<pre><code>$ qdstat -a
+Router Addresses
+  class  address      in-proc  local  remote  in  out  thru  to-proc  from-proc
+  ===============================================================================
+  local  $management  Y        0      0       1   0    0     1        0
+  local  qdhello      Y        0      0       0   0    0     0        3
+  local  qdrouter     Y        0      0       0   0    0     0        1
+  local  temp.khOpGb           1      0       0   0    0     0        0</code></pre>
+<h3 id="mobile-subscribers"><span class="header-section-number">2.4.2</span> Mobile Subscribers</h3>
+<p>The term &quot;mobile subscriber&quot; simply refers to the fact that a client may connect to the router and subscribe to an address to receive messages sent to that address. No matter where in the network the subscriber attaches, the messages will be routed to the appropriate destination.</p>
+<p>To illustrate a subscription on a stand-alone router, you can use the examples that are provided with Qpid Proton. Using the <em>recv.py</em> example receiver:</p>
+<pre><code>$ recv.py amqp://0.0.0.0/my-address</code></pre>
+<p>This command creates a receiving link subscribed to the specified address. To verify the subscription:</p>
+<pre><code>$ qdstat -a
+Router Addresses
+  class   address      in-proc  local  remote  in  out  thru  to-proc  from-proc
+  ================================================================================
+  local   $management  Y        0      0       1   0    0     1        0
+  mobile  my-address            1      0       0   0    0     0        0
+  local   temp.fDt8_a           1      0       0   0    0     0        0</code></pre>
+<p>You can then, in a separate command window, run a sender to produce messages to that address:</p>
+<pre><code>$ send.py -a amqp://0.0.0.0/my-address</code></pre>
+<h3 id="dynamic-reply-to"><span class="header-section-number">2.4.3</span> Dynamic Reply-To</h3>
+<p>Dynamic reply-to can be used to obtain a reply-to address that routes back to a client's receiving link regardless of how many hops it has to take to get there. To illustrate this feature, see below a simple program (written in C++ against the qpid::messaging API) that queries the management agent of the attached router for a list of other known routers' management addresses.</p>
+<pre><code>#include &lt;qpid/messaging/Address.h&gt;
+#include &lt;qpid/messaging/Connection.h&gt;
+#include &lt;qpid/messaging/Message.h&gt;
+#include &lt;qpid/messaging/Receiver.h&gt;
+#include &lt;qpid/messaging/Sender.h&gt;
+#include &lt;qpid/messaging/Session.h&gt;
+
+using namespace qpid::messaging;
+using namespace qpid::types;
+
+using std::stringstream;
+using std::string;
+
+int main() {
+    const char* url = &quot;amqp:tcp:127.0.0.1:5672&quot;;
+    std::string connectionOptions = &quot;{protocol:amqp1.0}&quot;;
+
+    Connection connection(url, connectionOptions);
+    connection.open();
+    Session session = connection.createSession();
+    Sender sender = session.createSender(&quot;mgmt&quot;);
+
+    // create reply receiver and get the reply-to address
+    Receiver receiver = session.createReceiver(&quot;#&quot;);
+    Address responseAddress = receiver.getAddress();
+
+    Message request;
+    request.setReplyTo(responseAddress);
+    request.setProperty(&quot;x-amqp-to&quot;, &quot;amqp:/_local/$management&quot;);
+    request.setProperty(&quot;operation&quot;, &quot;DISCOVER-MGMT-NODES&quot;);
+    request.setProperty(&quot;type&quot;, &quot;org.amqp.management&quot;);
+    request.setProperty(&quot;name, &quot;self&quot;);
+
+    sender.send(request);
+    Message response = receiver.fetch();
+    Variant content(response.getContentObject());
+    std::cout &lt;&lt; &quot;Response: &quot; &lt;&lt; content &lt;&lt; std::endl &lt;&lt; std::endl;
+
+    connection.close();
+}</code></pre>
+<p>The equivalent program written in Python against the Proton Messenger API:</p>
+<pre><code>from proton import Messenger, Message
+
+def main():
+    host = &quot;0.0.0.0:5672&quot;
+
+    messenger = Messenger()
+    messenger.start()
+    messenger.route(&quot;amqp:/*&quot;, &quot;amqp://%s/$1&quot; % host)
+    reply_subscription = messenger.subscribe(&quot;amqp:/#&quot;)
+    reply_address = reply_subscription.address
+
+    request  = Message()
+    response = Message()
+
+    request.address = &quot;amqp:/_local/$management&quot;
+    request.reply_to = reply_address
+    request.properties = {u&#39;operation&#39; : u&#39;DISCOVER-MGMT-NODES&#39;,
+                          u&#39;type&#39;      : u&#39;org.amqp.management&#39;,
+                          u&#39;name&#39;      : u&#39;self&#39;}
+
+    messenger.put(request)
+    messenger.send()
+    messenger.recv()
+    messenger.get(response)
+
+    print &quot;Response: %r&quot; % response.body
+
+    messenger.stop()
+
+main()</code></pre>
+<h2 id="known-issues-and-limitations"><span class="header-section-number">2.5</span> Known Issues and Limitations</h2>
+<p>This is an early test release. It is expected that users will find bugs and other various instabilities. The main goal of this release is to prove that the process can be run and that users can demonstrate basic functionality as described in this document. Nevertheless, the following are known issues with the 0.1 release:</p>
+<ul>
+<li>Subscriber addresses are not always cleaned up after a consumer disconnects. See <a href="https://issues.apache.org/jira/browse/QPID-4964">https://issues.apache.org/jira/browse/QPID-4964</a>.</li>
+<li>Dispatch Router does not currently use the target address of a client's sender link to route messages. It only looks at the &quot;to&quot; field in the message's headers. See <a href="https://issues.apache.org/jira/browse/QPID-5175">https://issues.apache.org/jira/browse/QPID-5175</a>.</li>
+<li>All subscription sources are treated as multicast addresses. There is currently no facility for provisioning different types of addresses. Multicast means that if there are multiple subscribers to the same address, they will all receive a copy of each message sent to that address.</li>
+<li>SSL connectors and listeners are supported but very lightly (and not recently) tested.</li>
+<li>SASL authentication is not currently integrated into any authentication framework. Use ANONYMOUS for testing.</li>
+</ul>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<h1 id="addressing"><span class="header-section-number">3</span> Addressing</h1>
+<p>AMQP addresses are used to control the flow of messages across a network of routers. Addresses are used in a number of different places in the AMQP 1.0 protocol. They can be used in a specific message in the <code>to</code> and <code>reply-to</code> fields of a message's properties. They are also used during the creation of links in the <code>address</code> field of a <code>source</code> or a <code>target</code>.</p>
+<p>Addresses designate various kinds of entities in a messaging network:</p>
+<ul>
+<li>Endpoint processes that consume data or offer a service</li>
+<li>Topics that match multiple consumers to multiple producers</li>
+<li>Entities within a messaging broker:</li>
+<li>Queues</li>
+<li>Durable Topics</li>
+<li>Exchanges</li>
+</ul>
+<p>The syntax of an AMQP address is opaque as far as the router network is concerned. A syntactical structure may be used by the administrator that creates addresses, but the router treats them as opaque strings. Routers consider addresses to be mobile such that any address may be directly connected to any router in a network and may move around the topology. In cases where messages are broadcast to or balanced across multiple consumers, an address may be connected to multiple routers in the network.</p>
+<p>Addresses have semantics associated with them. When an address is created in the network, it is assigned a set of semantics (and access rules) during a process called provisioning. The semantics of an address control how routers behave when they see the address being used.</p>
+<p>Address semantics include the following considerations:</p>
+<ul>
+<li><em>Routing pattern</em> - direct, multicast, balanced</li>
+<li><em>Routing mechanism</em> - message routed, link routed</li>
+<li><em>Undeliverable action</em> - drop, hold and retry, redirect</li>
+<li><em>Reliability</em> - N destinations, etc.</li>
+</ul>
+<h2 id="routing-patterns"><span class="header-section-number">3.1</span> Routing patterns</h2>
+<p>Routing patterns constrain the paths that a message can take across a network.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Pattern</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>Direct</em></td>
+<td align="left">Direct routing allows for only one consumer to use an address at a time. Messages (or links) follow the lowest cost path across the network from the sender to the one receiver.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>Multicast</em></td>
+<td align="left">Multicast routing allows multiple consumers to use the same address at the same time. Messages are routed such that each consumer receives a copy of the message.</td>
+</tr>
+<tr class="odd">
+<td align="left"><em>Balanced</em></td>
+<td align="left">Balanced routing also allows multiple consumers to use the same address. In this case, messages (or links) are routed to exactly one of the consumers, and the network attempts to balance the traffic load across the set of consumers using the same address.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="routing-mechanisms"><span class="header-section-number">3.2</span> Routing mechanisms</h2>
+<p>The fact that addresses can be used in different ways suggests that message routing can be accomplished in different ways. Before going into the specifics of the different routing mechanisms, it would be good to first define what is meant by the term <em>routing</em>:</p>
+<blockquote>
+<p>In a network built of multiple routers connected by connections (i.e., nodes and edges in a graph), <em>routing</em> determines which connection to use to send a message directly to its destination or one step closer to its destination.</p>
+</blockquote>
+<p>Each router serves as the terminus of a collection of incoming and outgoing links. Some of the links are designated for message routing, and others are designated for link routing. In both cases, the links either connect directly to endpoints that produce and consume messages, or they connect to other routers in the network along previously established connections.</p>
+<h3 id="message-routing"><span class="header-section-number">3.2.1</span> Message routing</h3>
+<p>Message routing occurs upon delivery of a message and is done based on the address in the message's <code>to</code> field.</p>
+<p>When a delivery arrives on an incoming message-routing link, the router extracts the address from the delivered message's <code>to</code> field and looks the address up in its routing table. The lookup results in zero or more outgoing links onto which the message shall be resent.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Delivery</em></th>
+<th align="left"><em>Handling</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><em>pre-settled</em></td>
+<td align="left">If the arriving delivery is pre-settled (i.e., fire and forget), the incoming delivery shall be settled by the router, and the outgoing deliveries shall also be pre-settled. In other words, the pre-settled nature of the message delivery is propagated across the network to the message's destination.</td>
+</tr>
+<tr class="even">
+<td align="left"><em>unsettled</em></td>
+<td align="left">Unsettled delivery is also propagated across the network. Because unsettled delivery records cannot be discarded, the router tracks the incoming deliveries and keeps the association of the incoming deliveries to the resulting outgoing deliveries. This kept association allows the router to continue to propagate changes in delivery state (settlement and disposition) back and forth along the path which the message traveled.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="link-routing"><span class="header-section-number">3.2.2</span> Link routing</h3>
+<p>Link routing occurs when a new link is attached to the router across one of its AMQP connections. It is done based on the <code>target.address</code> field of an inbound link and the <code>source.address</code> field of an outbound link.</p>
+<p>Link routing uses the same routing table that message routing uses. The difference is that the routing occurs during the link-attach operation, and link attaches are propagated along the appropriate path to the destination. What results is a chain of links, connected end-to-end, from source to destination. It is similar to a <em>virtual circuit</em> in a telecom system.</p>
+<p>Each router in the chain holds pairs of link termini that are tied together. The router then simply exchanges all deliveries, delivery state changes, and link state changes between the two termini.</p>
+<p>The endpoints that use the link chain do not see any difference in behavior between a link chain and a single point-to-point link. All of the features available in the link protocol (flow control, transactional delivery, etc.) are available over a routed link-chain.</p>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<h1 id="amqp-mapping"><span class="header-section-number">4</span> AMQP Mapping</h1>
+<p>Dispatch Router is an AMQP router and as such, it provides extensions, codepoints, and semantics for routing over AMQP. This page documents the details of Dispatch Router's use of AMQP.</p>
+<h2 id="message-annotations"><span class="header-section-number">4.1</span> Message Annotations</h2>
+<p>The following Message Annotation fields are defined by Dispatch Router:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Field</em></th>
+<th align="left"><em>Type</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><span style="white-space: nowrap;">x-opt-qd.ingress</span></td>
+<td align="left">string</td>
+<td align="left">The identity of the ingress router for a message-routed message. The ingress router is the first router encountered by a transiting message. The router will, if this field is present, leave it unaltered. If the field is not present, the router shall insert the field with its own identity.</td>
+</tr>
+<tr class="even">
+<td align="left"><span style="white-space: nowrap;">x-opt-qd.trace</span></td>
+<td align="left">list of string</td>
+<td align="left">The list of routers through which this message-routed message has transited. If this field is not present, the router shall do nothing. If the field is present, the router shall append its own identity to the end of the list.</td>
+</tr>
+<tr class="odd">
+<td align="left">x-opt-qd.to</td>
+<td align="left">string</td>
+<td align="left">To-Override for message-routed messages. If this field is present, the address in this field shall be used for routing in lieu of the <em>to</em> field in the message properties. A router may append, remove, or modify this annotation field depending on the policy in place for routing the message.</td>
+</tr>
+<tr class="even">
+<td align="left">x-opt-qd.class</td>
+<td align="left">string</td>
+<td align="left">Message class. This is used to allow the router to provide separate paths for different classes of traffic.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sourcetarget-capabilities"><span class="header-section-number">4.2</span> Source/Target Capabilities</h2>
+<p>The following Capability values are used in Sources and Targets.</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Capability</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">qd.router</td>
+<td align="left">This capability is added to sources and targets that are used for inter-router message exchange.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="addresses-and-address-formats"><span class="header-section-number">4.3</span> Addresses and Address Formats</h2>
+<p>The following AMQP addresses and address patterns are used within Dispatch Router.</p>
+<h3 id="address-patterns"><span class="header-section-number">4.3.1</span> Address Patterns</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Pattern</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>_local/&lt;addr&gt;</code></td>
+<td align="left">An address that references a locally attached endpoint. Messages using this address pattern shall not be routed over more than one link.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_topo/&lt;area&gt;/&lt;router&gt;/&lt;addr&gt;</code></td>
+<td align="left">An address that references an endpoint attached to a specific router node in the network topology. Messages with addresses that follow this pattern shall be routed along the shortest path to the specified router. Note that addresses of this form are a-priori routable in that the address itself contains enough information to route the message to its destination.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>&lt;addr&gt;</code></td>
+<td align="left">A mobile address. An address of this format represents an endpoint or a set of distinct endpoints that are attached to the network in arbitrary locations. It is the responsibility of the router network to determine which router nodes are valid destinations for mobile addresses.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="supported-addresses"><span class="header-section-number">4.3.2</span> Supported Addresses</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left"><em>Address</em></th>
+<th align="left"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><code>_local/$management</code></td>
+<td align="left">The management agent on the attached router/container. This address would be used by an endpoint that is a management client/console/tool wishing to access management data from the attached container.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_topo/0/Router.E/agent</code></td>
+<td align="left">The management agent at Router.E in area 0. This address would be used by a management client wishing to access management data from a specific container that is reachable within the network.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_local/qdhello</code></td>
+<td align="left">The router entity in each of the connected routers. This address is used to communicate with neighbor routers and is exclusively for the HELLO discovery protocol.</td>
+</tr>
+<tr class="even">
+<td align="left"><code>_local/qdrouter</code></td>
+<td align="left">The router entity in each of the connected routers. This address is used by a router to communicate with other routers in the network.</td>
+</tr>
+<tr class="odd">
+<td align="left"><code>_topo/0/Router.E/qdxrouter</code></td>
+<td align="left">The router entity at the specifically indicated router. This address form is used by a router to communicate with a specific router that may or may not be a neighbor.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation-of-the-amqp-management-specification"><span class="header-section-number">4.4</span> Implementation of the AMQP Management Specification</h2>
+<p>Qpid Dispatch is manageable remotely via AMQP. It is compliant with the emerging AMQP Management specification (draft 9).</p>
+<p>Differences from the specification:</p>
+<ul>
+<li>The &quot;name&quot; attribute is not required when an entity is created. If not supplied it will be set to the same value as the system-generated &quot;identity&quot; attribute. Otherwise it is treated as per the standard.</li>
+<li>The REGISTER operation is not implementd. The router has its own mechansm to discover peers that does not require this operation.</li>
+<li>The DEREGISTER operation is not implementd. The router has its own mechansm to discover peers that does not require this operation.</li>
+</ul>
+<h1 id="the-qdrouter-management-schema"><span class="header-section-number">5</span> The qdrouter management schema</h1>
+<p>The schema <code>qdrouterd.json</code> is a JSON format file that defines annotations and entity types of the Qpid Dispatch Router management model. The model is based on the AMQP management specification.</p>
+<p>The schema is a JSON map with the following keys:</p>
+<ul>
+<li>&quot;description&quot;: documentation string for the schema</li>
+<li>&quot;prefix&quot;: Prefix prepended to schema names when they are exposed to AMQP management clients.</li>
+<li>&quot;annotations&quot;: map of annotation names to definitions (see below)</li>
+<li>&quot;entityTypes&quot;: map of entity type names to definitions (see below)</li>
+</ul>
+<p>Annotation and entity type definition maps have the following keys:</p>
+<ul>
+<li>&quot;description&quot;: documentation string.</li>
+<li>&quot;operations&quot;: list of allowed operation names.</li>
+<li>&quot;attributes&quot;: map of attribute names to attribute definitions (see below)</li>
+</ul>
+<p>Entity type definitions also have these fields:</p>
+<ul>
+<li>&quot;extends&quot;: Name of base type. The new type includes operations and attributes from the base type.</li>
+<li>&quot;annotations&quot;: List of annotation names. The new type includes operations and attributes from all the annotations.</li>
+</ul>
+<p>Attribute definition maps have the following fields:</p>
+<ul>
+<li>&quot;type&quot;: one of the following:</li>
+<li>&quot;String&quot;: a unicode string value.</li>
+<li>&quot;Integer&quot;: an integer value.</li>
+<li>&quot;Boolean&quot;: a true/false value.</li>
+<li></li>
+<li>&quot;default&quot;: a default can be a literal value or a reference to another attribute in the form <code>$attributeName</code>.</li>
+</ul>
+<p>There is the following hierarchy among entity types:</p>
+<p><code>entity</code>: The base of all entity types. - <code>configurationEntity</code>: base for all types that hold <em>configuration information</em>.</p>
+<p>Configuration information is supplied in advance and expresse <em>intent</em>. For example &quot;I want the router to listen on port N&quot;. All the entities that can be used in the configuration file extend <code>configurationEntity</code>.</p>
+<ul>
+<li><code>operationalEntity</code>: base for all types that hold <em>operational information</em>.</li>
+</ul>
+<p>Operational information reflects the actual current state of the router. For example, &quot;how many addresses are presently active?&quot; All the entities queried by the <code>qdstat</code> tool extend <code>operationalEntity</code>.</p>
+<p>The two types are often related. For example <code>listener</code> and <code>connector</code> extend <code>configurationEntity</code>, they express the intent to make or receive connections. <code>connection</code> extends <code>operationalEntity</code>, it holds information the actual connection status.</p>
+<p>The rest of this section provides the schema documentation in readable format.</p>
+<h2 id="annotations"><span class="header-section-number">5.1</span> Annotations</h2>
+<h3 id="addrport"><span class="header-section-number">5.1.1</span> <code>addrPort</code></h3>
+<p>Attributes for internet address and port.</p>
+<p>Used by <code>listener</code>, <code>connector</code>.</p>
+<dl>
+<dt><code>addr</code> (String, default=0.0.0.0)</dt>
+<dd><p>Host address: ipv4 or ipv6 literal or a host name.</p>
+</dd>
+<dt><code>port</code> (String, default=amqp)</dt>
+<dd><p>Port number or symbolic service name.</p>
+</dd>
+</dl>
+<h3 id="saslmechanisms"><span class="header-section-number">5.1.2</span> <code>saslMechanisms</code></h3>
+<p>Attribute for a list of SASL mechanisms.</p>
+<p>Used by <code>listener</code>, <code>connector</code>.</p>
+<dl>
+<dt><code>saslMechanisms</code> (String, required)</dt>
+<dd>Comma separated list of accepted SASL authentication mechanisms.
+</dd>
+</dl>
+<h3 id="connectionrole"><span class="header-section-number">5.1.3</span> <code>connectionRole</code></h3>
+<p>Attribute for the role of a connection.</p>
+<p>Used by <code>listener</code>, <code>connector</code>.</p>
+<dl>
+<dt><code>role</code> (One of [normal, inter-router, on-demand], default=normal)</dt>
+<dd>The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection. In the inter-router role, the connection is assumed to be to another router in the network. Inter-router discovery and routing protocols can only be used over interRouter connections.
+</dd>
+</dl>
+<h3 id="sslprofile"><span class="header-section-number">5.1.4</span> <code>sslProfile</code></h3>
+<p>Attributes for setting TLS/SSL configuration for connections.</p>
+<p>Used by <code>listener</code>, <code>connector</code>.</p>
+<dl>
+<dt><code>certDb</code> (String)</dt>
+<dd><p>The path to the database that contains the public certificates of trusted certificate authorities (CAs).</p>
+</dd>
+<dt><code>certFile</code> (String)</dt>
+<dd><p>The path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</p>
+</dd>
+<dt><code>keyFile</code> (String)</dt>
+<dd><p>The path to the file containing the PEM-formatted private key for the above certificate.</p>
+</dd>
+<dt><code>passwordFile</code> (String)</dt>
+<dd><p>If the above private key is password protected, this is the path to a file containing the password that unlocks the certificate key.</p>
+</dd>
+<dt><code>password</code> (String)</dt>
+<dd><p>An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file. This option can be used by supplying the password in the 'password' option. Don't use both password and passwordFile in the same profile.</p>
+</dd>
+</dl>
+<h2 id="base-entity-type"><span class="header-section-number">5.2</span> Base Entity Type</h2>
+<h3 id="entity"><span class="header-section-number">5.2.1</span> <code>entity</code></h3>
+<p>Base entity type for all entities.</p>
+<dl>
+<dt><code>name</code> (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt><code>identity</code> (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+<dt><code>type</code> (String, required)</dt>
+<dd><p>Management entity type.</p>
+</dd>
+</dl>
+<h2 id="configuration-entities"><span class="header-section-number">5.3</span> Configuration Entities</h2>
+<h3 id="configurationentity"><span class="header-section-number">5.3.1</span> <code>configurationEntity</code></h3>
+<p>Base type for entities containing configuration information.</p>
+<p>Extends: <code>entity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<h3 id="container"><span class="header-section-number">5.3.2</span> <code>container</code></h3>
+<p>Attributes related to the AMQP container.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<dl>
+<dt><code>containerName</code> (String)</dt>
+<dd><p>The name of the AMQP container. If not specified, the container name will be set to a value of the container's choosing. The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</p>
+</dd>
+<dt><code>workerThreads</code> (Integer, default=1)</dt>
+<dd><p>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</p>
+</dd>
+<dt><code>debugDump</code> (String)</dt>
+<dd><p>A file to dump debugging information that can't be logged normally.</p>
+</dd>
+</dl>
+<h3 id="router"><span class="header-section-number">5.3.3</span> <code>router</code></h3>
+<p>Tracks peer routers and computes routes to destinations.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<dl>
+<dt><code>routerId</code> (String)</dt>
+<dd><p>Router's unique identity.</p>
+</dd>
+<dt><code>mode</code> (One of [standalone, interior, edge, endpoint], default=standalone)</dt>
+<dd><p>In standalone mode, the router operates as a single component. It does not participate in the routing protocol and therefore will not coorperate with other routers. In interior mode, the router operates in cooreration with other interior routers in an interconnected network. In edge mode, the router operates with an uplink into an interior router network. Edge routers are typically used as connection concentrators or as security firewalls for access into the interior network.</p>
+</dd>
+<dt><code>area</code> (String)</dt>
+<dd><p>Unused placeholder.</p>
+</dd>
+<dt><code>helloInterval</code> (Integer, default=1)</dt>
+<dd><p>Interval in seconds between HELLO messages sent to neighbor routers.</p>
+</dd>
+<dt><code>helloMaxAge</code> (Integer, default=3)</dt>
+<dd><p>Time in seconds after which a neighbor is declared lost if no HELLO is received.</p>
+</dd>
+<dt><code>raInterval</code> (Integer, default=30)</dt>
+<dd><p>Interval in seconds between Router-Advertisements sent to all routers.</p>
+</dd>
+<dt><code>remoteLsMaxAge</code> (Integer, default=60)</dt>
+<dd><p>Time in seconds after which link state is declared stale if no RA is received.</p>
+</dd>
+<dt><code>mobileAddrMaxAge</code> (Integer, default=60)</dt>
+<dd><p>Time in seconds after which mobile addresses are declared stale if no RA is received.</p>
+</dd>
+<dt><code>addrCount</code> (Integer)</dt>
+<dd><p>Number of addresses known to the router.</p>
+</dd>
+<dt><code>linkCount</code> (Integer)</dt>
+<dd><p>Number of links attached to the router node.</p>
+</dd>
+<dt><code>nodeCount</code> (Integer)</dt>
+<dd><p>Number of known peer router nodes.</p>
+</dd>
+</dl>
+<h3 id="listener"><span class="header-section-number">5.3.4</span> <code>listener</code></h3>
+<p>Listens for incoming connections to the router.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p>Annotations: <code>sslProfile</code> (<code>certDb</code>, <code>certFile</code>, <code>keyFile</code>, <code>passwordFile</code>, <code>password</code>), <code>addrPort</code> (<code>addr</code>, <code>port</code>), <code>saslMechanisms</code> (<code>saslMechanisms</code>), <code>connectionRole</code> (<code>role</code>).</p>
+<dl>
+<dt><code>requirePeerAuth</code> (Boolean, default=True)</dt>
+<dd><p>Only for listeners using SSL. If set to 'yes', attached clients will be required to supply a certificate. If the certificate is not traceable to a CA in the ssl profile's cert-db, authentication fails for the connection.</p>
+</dd>
+<dt><code>trustedCerts</code> (String)</dt>
+<dd><p>This optional setting can be used to reduce the set of available CAs for client authentication. If used, this setting must provide a path to a PEM file that contains the trusted certificates.</p>
+</dd>
+<dt><code>allowUnsecured</code> (Boolean)</dt>
+<dd><p>For listeners using SSL only. If set to 'yes', this option causes the listener to watch the initial network traffic to determine if the client is using SSL or is running in-the-clear. The listener will enable SSL only if the client uis using SSL.</p>
+</dd>
+<dt><code>allowNoSasl</code> (Boolean)</dt>
+<dd><p>If set to 'yes', this option causes the listener to allow clients to connect even if they skip the SASL authentication protocol.</p>
+</dd>
+<dt><code>maxFrameSize</code> (Integer, default=65536)</dt>
+<dd><p>Defaults to 65536. If specified, it is the maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uniterruptible data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
+</dd>
+</dl>
+<h3 id="connector"><span class="header-section-number">5.3.5</span> <code>connector</code></h3>
+<p>Establishes an outgoing connections from the router.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p>Annotations: <code>sslProfile</code> (<code>certDb</code>, <code>certFile</code>, <code>keyFile</code>, <code>passwordFile</code>, <code>password</code>), <code>addrPort</code> (<code>addr</code>, <code>port</code>), <code>saslMechanisms</code> (<code>saslMechanisms</code>), <code>connectionRole</code> (<code>role</code>).</p>
+<dl>
+<dt><code>allowRedirect</code> (Boolean, default=True)</dt>
+<dd><p>Allow the peer to redirect this connection to another address.</p>
+</dd>
+<dt><code>maxFrameSize</code> (Integer, default=65536)</dt>
+<dd><p>Maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uniterruptible data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
+</dd>
+</dl>
+<h3 id="log"><span class="header-section-number">5.3.6</span> <code>log</code></h3>
+<p>Configure logging for a particular module.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<dl>
+<dt><code>module</code> (One of [ROUTER, MESSAGE, SERVER, AGENT, CONTAINER, CONFIG, ERROR, DISPATCH, DEFAULT], required)</dt>
+<dd><p>Module to configure. The special module 'DEFAULT' specifies defaults for all modules.</p>
+</dd>
+<dt><code>enable</code> (String, required, default=default)</dt>
+<dd><p>Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing '+' to enable that level and above. For example 'trace,debug,warning+' means enable trace, debug, warning, error and critical. The value 'none' means disable logging for the module. The value 'default' means use the value from the DEFAULT module.</p>
+</dd>
+<dt><code>timestamp</code> (Boolean)</dt>
+<dd><p>Include timestamp in log messages.</p>
+</dd>
+<dt><code>source</code> (Boolean)</dt>
+<dd><p>Include source file and line number in log messages.</p>
+</dd>
+<dt><code>output</code> (String)</dt>
+<dd><p>Where to send log messages. Can be 'stderr', 'syslog' or a file name.</p>
+</dd>
+</dl>
+<h3 id="fixedaddress"><span class="header-section-number">5.3.7</span> <code>fixedAddress</code></h3>
+<p>Establishes semantics for addresses starting with a prefix.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<dl>
+<dt><code>prefix</code> (String, required)</dt>
+<dd><p>The address prefix (always starting with '/').</p>
+</dd>
+<dt><code>phase</code> (Integer)</dt>
+<dd><p>The phase of a multi-hop address passing through one or more waypoints.</p>
+</dd>
+<dt><code>fanout</code> (One of [multiple, single], default=multiple)</dt>
+<dd><p>One of 'multiple' or 'single'. Multiple fanout is a non-competing pattern. If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address. Single fanout is a competing pattern where each message is sent to only one consumer.</p>
+</dd>
+<dt><code>bias</code> (One of [closest, spread], default=closest)</dt>
+<dd><p>Only if fanout is single. One of 'closest' or 'spread'. Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.</p>
+</dd>
+</dl>
+<h3 id="waypoint"><span class="header-section-number">5.3.8</span> <code>waypoint</code></h3>
+<p>A remote node that messages for an address pass through.</p>
+<p>Extends: <code>configurationEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<dl>
+<dt><code>address</code> (String, required)</dt>
+<dd><p>The AMQP address of the waypoint.</p>
+</dd>
+<dt><code>connector</code> (String, required)</dt>
+<dd><p>The name of the on-demand connector used to reach the waypoint's container.</p>
+</dd>
+<dt><code>inPhase</code> (Integer, default=-1)</dt>
+<dd><p>The phase of the address as it is routed <em>to</em> the waypoint.</p>
+</dd>
+<dt><code>outPhase</code> (Integer, default=-1)</dt>
+<dd><p>The phase of the address as it is routed <em>from</em> the waypoint.</p>
+</dd>
+</dl>
+<h2 id="operational-entities"><span class="header-section-number">5.4</span> Operational Entities</h2>
+<h3 id="operationalentity"><span class="header-section-number">5.4.1</span> <code>operationalEntity</code></h3>
+<p>Base type for entities containing current operational information.</p>
+<p>Extends: <code>entity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<h3 id="router.link"><span class="header-section-number">5.4.2</span> <code>router.link</code></h3>
+<p>Link to another AMQP endpoint: router node, client or other AMQP process.</p>
+<p>Extends: <code>operationalEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p><code>linkName</code> (String)</p>
+<p><code>linkType</code> (One of [endpoint, waypoint, inter-router, inter-area])</p>
+<p><code>linkDir</code> (One of [in, out])</p>
+<p><code>owningAddr</code> (String)</p>
+<p><code>eventFifoDepth</code> (Integer)</p>
+<p><code>msgFifoDepth</code> (Integer)</p>
+<p><code>remoteContainer</code> (String)</p>
+<h3 id="router.address"><span class="header-section-number">5.4.3</span> <code>router.address</code></h3>
+<p>AMQP address managed by the router.</p>
+<p>Extends: <code>operationalEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p><code>inProcess</code> (Boolean)</p>
+<p><code>subscriberCount</code> (Integer)</p>
+<p><code>remoteCount</code> (Integer)</p>
+<p><code>deliveriesIngress</code> (Integer)</p>
+<p><code>deliveriesEgress</code> (Integer)</p>
+<p><code>deliveriesTransit</code> (Integer)</p>
+<p><code>deliveriesToContainer</code> (Integer)</p>
+<p><code>deliveriesFromContainer</code> (Integer)</p>
+<h3 id="router.node"><span class="header-section-number">5.4.4</span> <code>router.node</code></h3>
+<p>AMQP node managed by the router.</p>
+<p>Extends: <code>operationalEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p><code>addr</code> (String)</p>
+<p><code>nextHop</code> (Integer)</p>
+<p><code>routerLink</code> (Integer)</p>
+<p><code>validOrigins</code> (List)</p>
+<h3 id="connection"><span class="header-section-number">5.4.5</span> <code>connection</code></h3>
+<p>Connections to the router's container.</p>
+<p>Extends: <code>operationalEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p><code>container</code> (String)</p>
+<p><code>state</code> (One of [connecting, opening, operational, failed, user])</p>
+<p><code>host</code> (String)</p>
+<p><code>dir</code> (One of [in, out])</p>
+<p><code>role</code> (String)</p>
+<p><code>sasl</code> (String)</p>
+<h3 id="allocator"><span class="header-section-number">5.4.6</span> <code>allocator</code></h3>
+<p>Memory allocation pool.</p>
+<p>Extends: <code>operationalEntity</code> (<code>name</code>, <code>identity</code>, <code>type</code>).</p>
+<p><code>typeSize</code> (Integer)</p>
+<p><code>transferBatchSize</code> (Integer)</p>
+<p><code>localFreeListMax</code> (Integer)</p>
+<p><code>globalFreeListMax</code> (Integer)</p>
+<p><code>totalAllocFromHeap</code> (Integer)</p>
+<p><code>totalFreeToHeap</code> (Integer)</p>
+<p><code>heldByThreads</code> (Integer)</p>
+<p><code>batchesRebalancedToThreads</code> (Integer)</p>
+<p><code>batchesRebalancedToGlobal</code> (Integer)</p>
+<h1 id="manual-page-qdrouterd.8"><span class="header-section-number">6</span> Manual page qdrouterd.8</h1>
+<!-- -*- markdown -*-
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+-->
+
+<h2 id="name"><span class="header-section-number">6.1</span> Name</h2>
+<p>qdrouterd - AMQP message router.</p>
+<h2 id="synopsis"><span class="header-section-number">6.2</span> Synopsis</h2>
+<p>qdrouterd [<em>options</em>]</p>
+<h2 id="description"><span class="header-section-number">6.3</span> Description</h2>
+<p>The Qpid Dispatch router (qdrouterd) is a network daemon that directs AMQP 1.0 messages between endpoints, such as messaging clients and servers. ## Options</p>
+<dl>
+<dt>-c, --config=PATH (/usr/local/etc/qpid-dispatch/qdrouterd.conf)</dt>
+<dd><p>Load configuration from file at PATH</p>
+</dd>
+<dt>-I, --include=PATH (/usr/local/lib/qpid-dispatch/python)</dt>
+<dd><p>Location of Dispatch's Python library</p>
+</dd>
+<dt>-d, --daemon</dt>
+<dd><p>Run process as a SysV-style daemon</p>
+</dd>
+<dt>-P, --pidfile</dt>
+<dd><p>If daemon, the file for the stored daemon pid</p>
+</dd>
+<dt>-U, --user</dt>
+<dd><p>If daemon, the username to run as</p>
+</dd>
+<dt>-h, --help</dt>
+<dd><p>Print this help</p>
+</dd>
+</dl>
+<p>Run <code>qdrouterd --help</code> to see options.</p>
+<h2 id="files"><span class="header-section-number">6.4</span> Files</h2>
+<dl>
+<dt>/usr/local/etc/qpid-dispatch/qdrouterd.conf</dt>
+<dd>Configuration flie.
+</dd>
+</dl>
+<h2 id="see-also"><span class="header-section-number">6.5</span> See Also</h2>
+<p><em>qdrouterd.conf</em>(5), <em>qdstat</em>(8), <em>qdstat.conf</em>(5),</p>
+<p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+<h1 id="manual-page-qdstat.8"><span class="header-section-number">7</span> Manual page qdstat.8</h1>
+<!--*- markdown -*-
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License
+-->
+
+<h2 id="name-1"><span class="header-section-number">7.1</span> Name</h2>
+<p>qdstat - A tool to inspect Dispatch router networks</p>
+<h2 id="synopsis-1"><span class="header-section-number">7.2</span> Synopsis</h2>
+<p>qdrouterd [<em>options</em>]</p>
+<h2 id="description-1"><span class="header-section-number">7.3</span> Description</h2>
+<p><em>qdstat</em> shows status information about networks of Dispatch routers. It can display connections, network nodes and links, and router stats such as memory use. ## Options</p>
+<dl>
+<dt>-h, --help</dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt>--version</dt>
+<dd><p>Print version and exit.</p>
+</dd>
+<dt>-g, --general</dt>
+<dd><p>Show General Router Stats</p>
+</dd>
+<dt>-c, --connections</dt>
+<dd><p>Show Connections</p>
+</dd>
+<dt>-l, --links</dt>
+<dd><p>Show Router Links</p>
+</dd>
+<dt>-n, --nodes</dt>
+<dd><p>Show Router Nodes</p>
+</dd>
+<dt>-a, --address</dt>
+<dd><p>Show Router Addresses</p>
+</dd>
+<dt>-m, --memory</dt>
+<dd><p>Show Broker Memory Stats</p>
+</dd>
+</dl>
+<h3 id="connection-options"><span class="header-section-number">7.3.1</span> Connection Options</h3>
+<dl>
+<dt>-b URL, --bus=URL</dt>
+<dd><p>URL of the messaging bus to connect to (default 0.0.0.0)</p>
+</dd>
+<dt>-r ROUTER-ID, --router=ROUTER-ID</dt>
+<dd><p>Router to be queried</p>
+</dd>
+<dt>-t SECS, --timeout=SECS</dt>
+<dd><p>Maximum time to wait for connection in seconds (default 5)</p>
+</dd>
+<dt>--sasl-mechanism=MECH</dt>
+<dd><p>Force SASL mechanism (e.g. EXTERNAL, ANONYMOUS, PLAIN, CRAM-MD5, DIGEST-MD5, GSSAPI).</p>
+</dd>
+<dt>--ssl-certificate=CERT</dt>
+<dd><p>Client SSL certificate (PEM Format)</p>
+</dd>
+<dt>--ssl-key=KEY</dt>
+<dd><p>Client SSL private key (PEM Format)</p>
+</dd>
+</dl>
+<p>Run <code>qdstat --help</code> to see options.</p>
+<h2 id="see-also-1"><span class="header-section-number">7.4</span> See Also</h2>
+<p><em>qdrouterd</em> (8), <em>qdmanage</em> (8), <em>qdrouterd.conf</em> (5)</p>
+<p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+<h1 id="manual-page-qdmanage.8"><span class="header-section-number">8</span> Manual page qdmanage.8</h1>
+<h2 id="name-2"><span class="header-section-number">8.1</span> Name</h2>
+<p>qdmanage - A management tool for Dispatch routers.</p>
+<h2 id="synopsis-2"><span class="header-section-number">8.2</span> Synopsis</h2>
+<p>qdmanage <em>operation</em> [<em>options...</em>] [<em>arguments...</em>]</p>
+<h2 id="description-2"><span class="header-section-number">8.3</span> Description</h2>
+<p>An AMQP management client for use with qdrouterd. Sends AMQP management operations requests and prints the response in JSON format. This is a generic AMQP management tool and can be used with any standard AMQP managed endpoint, not just with qdrouter.</p>
+<h2 id="operations"><span class="header-section-number">8.4</span> Operations</h2>
+<dl>
+<dt><code>query</code> [<em>ATTR</em>...]</dt>
+<dd><p>Prints the named attributes of all entities. With no arguments prints all attributes. The --type option restricts the result to entities extending the type.</p>
+</dd>
+<dt><code>create</code> [<em>ATTR=VALUE</em>...]</dt>
+<dd><p>Create a new entity with the specified attributes. With the --stdin option, read attributes from stdin. This can be a JSON map of attributes to create a single entity, or a JSON list of maps to create multiple entitiees.</p>
+</dd>
+<dt><code>read</code></dt>
+<dd><p>Print the attributes of an entity specified by the --name or --identity options. With the --stdin option, create entities based on data from stdin. This can be a JSON map of attributes to create a single entity, or a JSON list of maps to create multiple entitiees.</p>
+</dd>
+<dt><code>update</code> [<em>ATTR=VALUE</em>...]</dt>
+<dd><p>Update the attributes of an existing entity. With the --stdin option, read attributes from stdin. This can be a JSON map of attributes to update a single entity, or a JSON list of maps to update multiple entitiees. If an ATTR name is listed with no =VALUE, that attribute will be deleted from the entity.</p>
+</dd>
+<dt><code>delete</code></dt>
+<dd><p>Delete an entity specified by the --name or --identity options.</p>
+</dd>
+<dt><code>get-types</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their base types. With no arguments list all types.</p>
+</dd>
+<dt><code>get-operations</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their operations. With no arguments list all types.</p>
+</dd>
+<dt><code>get-attributes</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their attributes. With no arguments list all types.</p>
+</dd>
+<dt><code>get-annotations</code> [<em>TYPE</em>]</dt>
+<dd><p>List entity types with their annotations. With no arguments list all types.</p>
+</dd>
+<dt><code>get-mgmt-nodes</code></dt>
+<dd>List all other known management nodes connected to this one.
+</dd>
+</dl>
+<h2 id="options"><span class="header-section-number">8.5</span> Options</h2>
+<dl>
+<dt>-h, --help</dt>
+<dd><p>show this help message and exit</p>
+</dd>
+<dt>--version</dt>
+<dd><p>Print version and exit.</p>
+</dd>
+<dt>--type=TYPE</dt>
+<dd><p>Type of entity to operate on.</p>
+</dd>
+<dt>--name=NAME</dt>
+<dd><p>Name of entity to operate on.</p>
+</dd>
+<dt>--identity=ID</dt>
+<dd><p>Identity of entity to operate on.</p>
+</dd>
+<dt>--indent=INDENT</dt>
+<dd><p>Pretty-printing indent. -1 means don't pretty-print (default 2)</p>
+</dd>
+<dt>--stdin</dt>
+<dd><p>Read attributes as JSON map or list of maps from stdin.</p>
+</dd>
+</dl>
+<h3 id="connection-options-1"><span class="header-section-number">8.5.1</span> Connection Options</h3>
+<dl>
+<dt>-b URL, --bus=URL</dt>
+<dd><p>URL of the messaging bus to connect to (default 0.0.0.0)</p>
+</dd>
+<dt>-r ROUTER-ID, --router=ROUTER-ID</dt>
+<dd><p>Router to be queried</p>
+</dd>
+<dt>-t SECS, --timeout=SECS</dt>
+<dd><p>Maximum time to wait for connection in seconds (default 5)</p>
+</dd>
+<dt>--sasl-mechanism=MECH</dt>
+<dd><p>Force SASL mechanism (e.g. EXTERNAL, ANONYMOUS, PLAIN, CRAM-MD5, DIGEST-MD5, GSSAPI).</p>
+</dd>
+<dt>--ssl-certificate=CERT</dt>
+<dd><p>Client SSL certificate (PEM Format)</p>
+</dd>
+<dt>--ssl-key=KEY</dt>
+<dd><p>Client SSL private key (PEM Format)</p>
+</dd>
+</dl>
+<p>Run <code>qdmanage --help</code> to see options.</p>
+<h2 id="files-1"><span class="header-section-number">8.6</span> Files</h2>
+<dl>
+<dt><em>/usr/local/share/doc/qpid-dispatch/qdrouter.json</em></dt>
+<dd>Management schema for qdrouterd.
+</dd>
+<dt><em>/usr/local/share/doc/qpid-dispatch/qdrouter.json.readme.txt</em></dt>
+<dd>Explanation of the management schema.
+</dd>
+</dl>
+<h2 id="examples"><span class="header-section-number">8.7</span> Examples</h2>
+<p>Show the logging configuration</p>
+<pre><code>qdmanage query --type=log</code></pre>
+<p>Enable debug and higher log messages by default:</p>
+<pre><code>qdmanage udpdate name=log/DEFAULT enable=debug+</code></pre>
+<p>Enable trace log messages only for the MESSAGE moudle and direct MESSAGE logs to the file &quot;test.log&quot;</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=trace output=test.log</code></pre>
+<p>Set MESSAGE logging back to the default:</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=default</code></pre>
+<p>Disable MESSAGE logging:</p>
+<pre><code>qdmanage udpdate name=log/MESSAGE enable=none</code></pre>
+<h2 id="see-also-2"><span class="header-section-number">8.8</span> See Also</h2>
+<p><em>qdrouterd</em>(8), <em>qdstat</em>(8), <em>qdrouterd.conf</em>(5)</p>
+<p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+<h1 id="manual-page-qdrouterd.conf.5"><span class="header-section-number">9</span> Manual page qdrouterd.conf.5</h1>
+<h2 id="name-3"><span class="header-section-number">9.1</span> Name</h2>
+<p>qdrouterd.conf - Configuration file for the Qpid Dispatch router</p>
+<h2 id="description-3"><span class="header-section-number">9.2</span> Description</h2>
+<p>The configuration file is made up of sections with this syntax:</p>
+<pre><code>SECTION-NAME {
+    ATTRIBUTE-NAME: ATTRIBUTE-VALUE
+    ATTRIBUTE-NAME: ATTRIBUTE-VALUE
+    ...
+}</code></pre>
+<p>There are two types of sections:</p>
+<p><em>Configuration sections</em> correspond to configuration entities. They can be queried and configured via management tools as well as via the configuration file.</p>
+<p><em>Annotation sections</em> define a group of attribute values that can be included in one or more entity sections.</p>
+<p>For example you can define an &quot;ssl-profile&quot; annotation section with SSL credentials that can be included in multiple &quot;listener&quot; entities. Here's an example, note how the 'ssl-profile' attribute of 'listener' sections references the 'name' attribute of 'ssl-profile' sections.</p>
+<pre><code>ssl-profile {
+    name: ssl-profile-one
+    cert-db: ca-certificate-1.pem
+    cert-file: server-certificate-1.pem
+    key-file: server-private-key.pem
+}
+
+listener {
+    ssl-profile: ssl-profile-one
+    addr: 0.0.0.0
+    port: 20102
+    sasl-mechanisms: ANONYMOUS
+}</code></pre>
+<h2 id="annotation-sections"><span class="header-section-number">9.3</span> Annotation Sections</h2>
+<h3 id="addrport-1"><span class="header-section-number">9.3.1</span> Addrport</h3>
+<p>Attributes for internet address and port.</p>
+<dl>
+<dt>addr (String, default=0.0.0.0)</dt>
+<dd><p>Host address: ipv4 or ipv6 literal or a host name.</p>
+</dd>
+<dt>port (String, default=amqp)</dt>
+<dd><p>Port number or symbolic service name.</p>
+</dd>
+</dl>
+<p>Used by listener, connector.</p>
+<h3 id="saslmechanisms-1"><span class="header-section-number">9.3.2</span> Saslmechanisms</h3>
+<p>Attribute for a list of SASL mechanisms.</p>
+<dl>
+<dt>saslMechanisms (String, required)</dt>
+<dd>Comma separated list of accepted SASL authentication mechanisms.
+</dd>
+</dl>
+<p>Used by listener, connector.</p>
+<h3 id="connectionrole-1"><span class="header-section-number">9.3.3</span> Connectionrole</h3>
+<p>Attribute for the role of a connection.</p>
+<dl>
+<dt>role (One of [normal, inter-router, on-demand], default=normal)</dt>
+<dd>The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection. In the inter-router role, the connection is assumed to be to another router in the network. Inter-router discovery and routing protocols can only be used over interRouter connections.
+</dd>
+</dl>
+<p>Used by listener, connector.</p>
+<h3 id="sslprofile-1"><span class="header-section-number">9.3.4</span> Sslprofile</h3>
+<p>Attributes for setting TLS/SSL configuration for connections.</p>
+<dl>
+<dt>certDb (String)</dt>
+<dd><p>The path to the database that contains the public certificates of trusted certificate authorities (CAs).</p>
+</dd>
+<dt>certFile (String)</dt>
+<dd><p>The path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</p>
+</dd>
+<dt>keyFile (String)</dt>
+<dd><p>The path to the file containing the PEM-formatted private key for the above certificate.</p>
+</dd>
+<dt>passwordFile (String)</dt>
+<dd><p>If the above private key is password protected, this is the path to a file containing the password that unlocks the certificate key.</p>
+</dd>
+<dt>password (String)</dt>
+<dd><p>An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file. This option can be used by supplying the password in the 'password' option. Don't use both password and passwordFile in the same profile.</p>
+</dd>
+</dl>
+<p>Used by listener, connector.</p>
+<h2 id="configuration-sections"><span class="header-section-number">9.4</span> Configuration Sections</h2>
+<h3 id="container-1"><span class="header-section-number">9.4.1</span> Container</h3>
+<p>Attributes related to the AMQP container.</p>
+<dl>
+<dt>containerName (String)</dt>
+<dd><p>The name of the AMQP container. If not specified, the container name will be set to a value of the container's choosing. The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</p>
+</dd>
+<dt>workerThreads (Integer, default=1)</dt>
+<dd><p>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</p>
+</dd>
+<dt>debugDump (String)</dt>
+<dd><p>A file to dump debugging information that can't be logged normally.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<h3 id="router-1"><span class="header-section-number">9.4.2</span> Router</h3>
+<p>Tracks peer routers and computes routes to destinations.</p>
+<dl>
+<dt>routerId (String)</dt>
+<dd><p>Router's unique identity.</p>
+</dd>
+<dt>mode (One of [standalone, interior, edge, endpoint], default=standalone)</dt>
+<dd><p>In standalone mode, the router operates as a single component. It does not participate in the routing protocol and therefore will not coorperate with other routers. In interior mode, the router operates in cooreration with other interior routers in an interconnected network. In edge mode, the router operates with an uplink into an interior router network. Edge routers are typically used as connection concentrators or as security firewalls for access into the interior network.</p>
+</dd>
+<dt>area (String)</dt>
+<dd><p>Unused placeholder.</p>
+</dd>
+<dt>helloInterval (Integer, default=1)</dt>
+<dd><p>Interval in seconds between HELLO messages sent to neighbor routers.</p>
+</dd>
+<dt>helloMaxAge (Integer, default=3)</dt>
+<dd><p>Time in seconds after which a neighbor is declared lost if no HELLO is received.</p>
+</dd>
+<dt>raInterval (Integer, default=30)</dt>
+<dd><p>Interval in seconds between Router-Advertisements sent to all routers.</p>
+</dd>
+<dt>remoteLsMaxAge (Integer, default=60)</dt>
+<dd><p>Time in seconds after which link state is declared stale if no RA is received.</p>
+</dd>
+<dt>mobileAddrMaxAge (Integer, default=60)</dt>
+<dd><p>Time in seconds after which mobile addresses are declared stale if no RA is received.</p>
+</dd>
+<dt>addrCount (Integer)</dt>
+<dd><p>Number of addresses known to the router.</p>
+</dd>
+<dt>linkCount (Integer)</dt>
+<dd><p>Number of links attached to the router node.</p>
+</dd>
+<dt>nodeCount (Integer)</dt>
+<dd><p>Number of known peer router nodes.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<h3 id="listener-1"><span class="header-section-number">9.4.3</span> Listener</h3>
+<p>Listens for incoming connections to the router.</p>
+<dl>
+<dt>requirePeerAuth (Boolean, default=True)</dt>
+<dd><p>Only for listeners using SSL. If set to 'yes', attached clients will be required to supply a certificate. If the certificate is not traceable to a CA in the ssl profile's cert-db, authentication fails for the connection.</p>
+</dd>
+<dt>trustedCerts (String)</dt>
+<dd><p>This optional setting can be used to reduce the set of available CAs for client authentication. If used, this setting must provide a path to a PEM file that contains the trusted certificates.</p>
+</dd>
+<dt>allowUnsecured (Boolean)</dt>
+<dd><p>For listeners using SSL only. If set to 'yes', this option causes the listener to watch the initial network traffic to determine if the client is using SSL or is running in-the-clear. The listener will enable SSL only if the client uis using SSL.</p>
+</dd>
+<dt>allowNoSasl (Boolean)</dt>
+<dd><p>If set to 'yes', this option causes the listener to allow clients to connect even if they skip the SASL authentication protocol.</p>
+</dd>
+<dt>maxFrameSize (Integer, default=65536)</dt>
+<dd><p>Defaults to 65536. If specified, it is the maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uniterruptible data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<p>Annotations sslProfile, addrPort, saslMechanisms, connectionRole.</p>
+<h3 id="connector-1"><span class="header-section-number">9.4.4</span> Connector</h3>
+<p>Establishes an outgoing connections from the router.</p>
+<dl>
+<dt>allowRedirect (Boolean, default=True)</dt>
+<dd><p>Allow the peer to redirect this connection to another address.</p>
+</dd>
+<dt>maxFrameSize (Integer, default=65536)</dt>
+<dd><p>Maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uniterruptible data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<p>Annotations sslProfile, addrPort, saslMechanisms, connectionRole.</p>
+<h3 id="log-1"><span class="header-section-number">9.4.5</span> Log</h3>
+<p>Configure logging for a particular module.</p>
+<dl>
+<dt>module (One of [ROUTER, MESSAGE, SERVER, AGENT, CONTAINER, CONFIG, ERROR, DISPATCH, DEFAULT], required)</dt>
+<dd><p>Module to configure. The special module 'DEFAULT' specifies defaults for all modules.</p>
+</dd>
+<dt>enable (String, required, default=default)</dt>
+<dd><p>Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing '+' to enable that level and above. For example 'trace,debug,warning+' means enable trace, debug, warning, error and critical. The value 'none' means disable logging for the module. The value 'default' means use the value from the DEFAULT module.</p>
+</dd>
+<dt>timestamp (Boolean)</dt>
+<dd><p>Include timestamp in log messages.</p>
+</dd>
+<dt>source (Boolean)</dt>
+<dd><p>Include source file and line number in log messages.</p>
+</dd>
+<dt>output (String)</dt>
+<dd><p>Where to send log messages. Can be 'stderr', 'syslog' or a file name.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<h3 id="fixedaddress-1"><span class="header-section-number">9.4.6</span> Fixedaddress</h3>
+<p>Establishes semantics for addresses starting with a prefix.</p>
+<dl>
+<dt>prefix (String, required)</dt>
+<dd><p>The address prefix (always starting with '/').</p>
+</dd>
+<dt>phase (Integer)</dt>
+<dd><p>The phase of a multi-hop address passing through one or more waypoints.</p>
+</dd>
+<dt>fanout (One of [multiple, single], default=multiple)</dt>
+<dd><p>One of 'multiple' or 'single'. Multiple fanout is a non-competing pattern. If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address. Single fanout is a competing pattern where each message is sent to only one consumer.</p>
+</dd>
+<dt>bias (One of [closest, spread], default=closest)</dt>
+<dd><p>Only if fanout is single. One of 'closest' or 'spread'. Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+<h3 id="waypoint-1"><span class="header-section-number">9.4.7</span> Waypoint</h3>
+<p>A remote node that messages for an address pass through.</p>
+<dl>
+<dt>address (String, required)</dt>
+<dd><p>The AMQP address of the waypoint.</p>
+</dd>
+<dt>connector (String, required)</dt>
+<dd><p>The name of the on-demand connector used to reach the waypoint's container.</p>
+</dd>
+<dt>inPhase (Integer, default=-1)</dt>
+<dd><p>The phase of the address as it is routed <em>to</em> the waypoint.</p>
+</dd>
+<dt>outPhase (Integer, default=-1)</dt>
+<dd><p>The phase of the address as it is routed <em>from</em> the waypoint.</p>
+</dd>
+<dt>name (String, unique)</dt>
+<dd><p>Unique name, can be changed.</p>
+</dd>
+<dt>identity (String, unique)</dt>
+<dd><p>Unique identity, will not change.</p>
+</dd>
+</dl>
+
+
+        <hr/>
+
+        <ul id="-apache-navigation">
+          <li><a href="http://www.apache.org/">Apache</a></li>
+          <li><a href="http://www.apache.org/licenses/">License</a></li>
+          <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+          <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+          <li><a href="http://www.apache.org/security/">Security</a></li>
+          <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="data:image/png;base64," alt="Apache"/></a></li>
+        </ul>
+
+        <p id="-legal">
+          Apache Qpid, Messaging built on AMQP; Copyright &#169; 2013
+          The Apache Software Foundation; Licensed under
+          the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+          License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+          Proton, Apache, the Apache feather logo, and the Apache Qpid
+          project logo are trademarks of The Apache Software
+          Foundation; All other marks mentioned may be trademarks or
+          registered trademarks of their respective owners
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

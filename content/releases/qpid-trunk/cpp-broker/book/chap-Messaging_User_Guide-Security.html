@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>1.5.&#160;Security - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-trunk/index.html">Qpid Trunk</a></li><li><a href="/releases/qpid-trunk/cpp-broker/book/index.html">AMQP Messaging Broker (Implemented in C++)</a></li><li>1.5.&#160;Security</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.5.&#160;Security</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chap-Messaging_User_Guide-Broker_Federation.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch01s06.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="chap-Messaging_User_Guide-Security"></a>1.5.&#160;Security</h2></div></div></div><p>
+		This chapter describes how authentication, rule-based authorization, encryption, and digital signing can be accomplished using Qpid. Authentication is the process of verifying the identity of a user; in Qpid, this is done using the SASL framework. Rule-based authorization is a mechanism for specifying the actions that each user is allowed to perform; in Qpid, this is done using an Access Control List (ACL) that is part of the Qpid broker. Encryption is used to ensure that data is not transferred in a plain-text format that could be intercepted and read. Digital signatures provide proof that a given message was sent by a known sender. Encryption and signing are done using SSL (they can also be done using SASL, but SSL provides stronger encryption).
+	</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect-Messaging_User_Guide-Security-User_Authentication"></a>1.5.1.&#160;User Authentication</h3></div></div></div><p>
+			AMQP uses Simple Authentication and Security Layer (SASL) to authenticate client connections to the broker. SASL is a framework that supports a variety of authentication methods. For secure applications, we suggest <span class="command"><strong>CRAM-MD5</strong></span>, <span class="command"><strong>DIGEST-MD5</strong></span>, or <span class="command"><strong>GSSAPI</strong></span>. The <span class="command"><strong>ANONYMOUS</strong></span> method is not secure. The <span class="command"><strong>PLAIN</strong></span> method is secure only when used together with SSL.
+		</p><p>
+			Both the Qpid broker and Qpid clients use the <a class="ulink" href="http://cyrusimap.web.cmu.edu/" target="_top">Cyrus SASL library</a>, a full-featured authentication framework, which offers many configuration options. This section shows how to configure users for authentication with SASL, which is sufficient when using <span class="command"><strong>SASL PLAIN</strong></span>. If you are not using SSL, you should configure SASL to use <span class="command"><strong>CRAM-MD5</strong></span>, <span class="command"><strong>DIGEST-MD5</strong></span>, or <span class="command"><strong>GSSAPI</strong></span> (which provides Kerberos authentication). For information on configuring these and other options in SASL, see the Cyrus SASL documentation.
+		</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+				The <span class="command"><strong>SASL PLAIN</strong></span> method sends passwords in cleartext, and is vulnerable to man-in-the-middle attacks unless SSL (Secure Socket Layer) is also used (see <a class="xref" href="chap-Messaging_User_Guide-Security.html#sect-Messaging_User_Guide-Security-Encryption_using_SSL" title="1.5.4.&#160;Encryption using SSL">Section&#160;1.5.4, &#8220;Encryption using SSL&#8221;</a>).
+			</p><p>
+				If you are not using SSL, we recommend that you disable <span class="command"><strong>PLAIN</strong></span> authentication in the broker.
+			</p></div><p>
+			The Qpid broker uses the <span class="command"><strong>auth yes|no</strong></span> option to determine whether to use SASL authentication. Turn on authentication by setting <span class="command"><strong>auth</strong></span> to <span class="command"><strong>yes</strong></span> in <code class="filename">/etc/qpidd.conf</code>:
+		</p><pre class="programlisting">
+# /etc/qpidd.conf
+#
+# Set auth to 'yes' or 'no'
+
+auth=yes
+</pre><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-User_Authentication-Configuring_SASL"></a>1.5.1.1.&#160;Configuring SASL</h4></div></div></div><p>
+				On Linux systems, the SASL configuration file is generally found in <code class="filename">/etc/sasl2/qpidd.conf</code> or <code class="filename">/usr/lib/sasl2/qpidd.conf</code>.
+			</p><p>
+				The SASL database contains user names and passwords for SASL. In SASL, a user may be associated with a <em class="firstterm">realm</em>. The Qpid broker authenticates users in the <span class="command"><strong>QPID</strong></span> realm by default, but it can be set to a different realm using the <span class="command"><strong>realm</strong></span> option:
+			</p><pre class="programlisting">
+# /etc/qpidd.conf
+#
+# Set the SASL realm using 'realm='
+
+auth=yes
+realm=QPID
+</pre><p>
+				The SASL database is installed at <code class="filename">/var/lib/qpidd/qpidd.sasldb</code>; initially, it has one user named <span class="command"><strong>guest</strong></span> in the <span class="command"><strong>QPID</strong></span> realm, and the password for this user is <span class="command"><strong>guest</strong></span>.
+			</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+					The user database is readable only by the <code class="systemitem">qpidd</code> user. When run as a daemon, Qpid always runs as the <code class="systemitem">qpidd</code> user. If you start the broker from a user other than the <code class="systemitem">qpidd</code> user, you will need to either reconfigure SASL or turn authentication off.
+				</p></div><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+					The SASL database stores user names and passwords in plain text. If it is compromised so are all of the passwords that it stores. This is the reason that the <code class="systemitem">qpidd</code> user is the only user that can read the database. If you modify permissions, be careful not to expose the SASL database.
+				</p></div><p>
+				Add new users to the database by using the <span class="command"><strong>saslpasswd2</strong></span> command, which specifies a realm and a user ID. A user ID takes the form <span class="command"><strong><em class="replaceable"><code>user-id</code></em>@<em class="replaceable"><code>domain</code></em>.</strong></span>.
+			</p><pre class="screen"># saslpasswd2 -f /var/lib/qpidd/qpidd.sasldb -u <em class="replaceable"><code>realm</code></em> <em class="replaceable"><code>new_user_name</code></em></pre><p>
+				To list the users in the SASL database, use <span class="command"><strong>sasldblistusers2</strong></span>:
+			</p><pre class="screen"># sasldblistusers2 -f /var/lib/qpidd/qpidd.sasldb
+</pre><p>
+				If you are using <span class="command"><strong>PLAIN</strong></span> authentication, users who are in the database can now connect with their user name and password. This is secure only if you are using SSL. If you are using a more secure form of authentication, please consult your SASL documentation for information on configuring the options you need.
+			</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-User_Authentication-Kerberos"></a>1.5.1.2.&#160;Kerberos</h4></div></div></div><p>
+				Both the Qpid broker and Qpid users are 'principals' of the Kerberos server, which means that they are both clients of the Kerberos authentication services.
+			</p><p>
+				To use Kerberos, both the Qpid broker and each Qpid user must be authenticated on the Kerberos server:
+			</p><div class="procedure"><ol class="procedure" type="1"><li class="step"><p>
+						Install the Kerberos workstation software and Cyrus SASL GSSAPI on each machine that runs a qpidd broker or a qpidd messaging client:
+					</p><pre class="screen">$ sudo yum install cyrus-sasl-gssapi krb5-workstation</pre></li><li class="step"><p>
+						Make sure that the Qpid broker is registered in the Kerberos database.
+					</p><p>
+						Traditionally, a Kerberos principal is divided into three parts: the primary, the instance, and the realm. A typical Kerberos V5 has the format <code class="literal">primary/instance@REALM</code>. For a Qpid broker, the primary is <code class="literal">qpidd</code>, the instance is the fully qualified domain name, which you can obtain using <span class="command"><strong>hostname --fqdn</strong></span>, and the REALM is the Kerberos domain realm. By default, this realm is <code class="literal">QPID</code>, but a different realm can be specified in qpid.conf, e.g.:
+</p><pre class="screen">realm=EXAMPLE.COM</pre><p>
+
+					</p><p>
+						For instance, if the fully qualified domain name is <code class="literal">dublduck.example.com</code> and the Kerberos domain realm is <code class="literal">EXAMPLE.COM</code>, then the principal name is <code class="literal">qpidd/dublduck.example.com@EXAMPLE.COM</code>.
+					</p><p>
+						The following script creates a principal for qpidd:
+					</p><pre class="programlisting">
+FDQN=`hostname --fqdn`
+REALM="EXAMPLE.COM"
+kadmin -r $REALM  -q "addprinc -randkey -clearpolicy qpidd/$FQDN"
+</pre><p>
+						Now create a Kerberos keytab file for the Qpid broker. The Qpid broker must have read access to the keytab file. The following script creates a keytab file and allows the broker read access:
+					</p><pre class="programlisting">
+QPIDD_GROUP="qpidd"
+kadmin -r $REALM  -q "ktadd -k /etc/qpidd.keytab qpidd/$FQDN@$REALM"
+chmod g+r /etc/qpidd.keytab
+chgrp $QPIDD_GROUP /etc/qpidd.keytab
+</pre><p>
+						The default location for the keytab file is <code class="filename">/etc/krb5.keytab</code>. If a different keytab file is used, the KRB5_KTNAME environment variable must contain the name of the file, e.g.:
+					</p><pre class="programlisting">
+export KRB5_KTNAME=/etc/qpidd.keytab
+</pre><p>
+						If this is correctly configured, you can now enable kerberos support on the Qpid broker by setting the <code class="varname">auth</code> and <code class="varname">realm</code> options in <code class="filename">/etc/qpidd.conf</code>:
+					</p><pre class="programlisting">
+# /etc/qpidd.conf
+auth=yes
+realm=EXAMPLE.COM
+</pre><p>
+						Restart the broker to activate these settings.
+					</p></li><li class="step"><p>
+						Make sure that each Qpid user is registered in the Kerberos database, and that Kerberos is correctly configured on the client machine. The Qpid user is the account from which a Qpid messaging client is run. If it is correctly configured, the following command should succeed:
+					</p><pre class="screen">$ kinit user@REALM.COM</pre></li></ol></div><p>
+				Java JMS clients require a few additional steps.
+			</p><div class="procedure"><ol class="procedure" type="1"><li class="step"><p>
+						The Java JVM must be run with the following arguments:
+					</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">-Djavax.security.auth.useSubjectCredsOnly=false</span></dt><dd><p>
+									Forces the SASL GASSPI client to obtain the kerberos credentials explicitly instead of obtaining from the "subject" that owns the current thread.
+								</p></dd><dt><span class="term">-Djava.security.auth.login.config=myjas.conf</span></dt><dd><p>
+									Specifies the jass configuration file. Here is a sample JASS configuration file:
+								</p><pre class="programlisting">
+com.sun.security.jgss.initiate {
+    com.sun.security.auth.module.Krb5LoginModule required useTicketCache=true;
+};
+</pre></dd><dt><span class="term">-Dsun.security.krb5.debug=true</span></dt><dd><p>
+									Enables detailed debug info for troubleshooting
+								</p></dd></dl></div></li><li class="step"><p>
+						The client's Connection URL must specify the following Kerberos-specific broker properties:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+								<code class="varname">sasl_mechs</code> must be set to <code class="literal">GSSAPI</code>.
+							</p></li><li class="listitem"><p>
+								<code class="varname">sasl_protocol</code> must be set to the principal for the qpidd broker, e.g. <code class="literal">qpidd</code>/
+							</p></li><li class="listitem"><p>
+								<code class="varname">sasl_server</code> must be set to the host for the SASL server, e.g. <code class="literal">sasl.com</code>.
+							</p></li></ul></div><p>
+						Here is a sample connection URL for a Kerberos connection:
+					</p><pre class="screen">amqp://guest@clientid/testpath?brokerlist='tcp://localhost:5672?sasl_mechs='GSSAPI'&amp;sasl_protocol='qpidd'&amp;sasl_server='&lt;server-host-name&gt;''</pre></li></ol></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect-Messaging_User_Guide-Security-Authorization"></a>1.5.2.&#160;Authorization</h3></div></div></div><p>
+		   In Qpid, Authorization specifies which actions can be performed by each authenticated user using an Access Control List (ACL).
+		 </p><p>
+		   Use the <span class="command"><strong>--acl-file</strong></span> command to load the access control list. The filename should have a <code class="filename">.acl</code> extension:
+		</p><pre class="screen">
+    $ qpidd --acl-file <em class="replaceable"><code>./aclfilename.acl</code></em></pre><p>
+			Each line in an ACL file grants or denies specific rights to a user. If the last line in an ACL file is <code class="literal">acl deny all all</code>, the ACL uses <em class="firstterm">deny mode</em>, and only those rights that are explicitly allowed are granted:
+		</p><pre class="programlisting">
+    acl allow rajith@QPID all all
+    acl deny all all
+</pre><p>
+			On this server, <code class="literal">rajith@QPID</code> can perform any action, but nobody else can. Deny mode is the default, so the previous example is equivalent to the following ACL file:
+		</p><pre class="programlisting">
+    acl allow rajith@QPID all all
+</pre><p>
+		   Alternatively the ACL file may use <em class="firstterm">allow mode</em> by placing:
+		</p><pre class="programlisting">
+    acl allow all all
+</pre><p>
+			as the final line in the ACL file. In <span class="emphasis"><em>allow mode</em></span> all actions by all users are allowed unless otherwise denied by specific ACL rules.
+			The ACL rule which selects <span class="emphasis"><em>deny mode</em></span> or <span class="emphasis"><em>allow mode</em></span> must be the last line in the ACL rule file.
+		</p><p>
+			ACL syntax allows fine-grained access rights for specific actions:
+		</p><pre class="programlisting">
+    acl allow carlt@QPID create exchange name=carl.*
+    acl allow fred@QPID create all
+    acl allow all consume queue
+    acl allow all bind exchange
+    acl deny all all
+</pre><p>
+			An ACL file can define user groups, and assign permissions to them:
+		</p><pre class="programlisting">
+    group admin ted@QPID martin@QPID
+    acl allow admin create all
+    acl deny all all
+</pre><p>
+			An ACL file can define per user connection and queue quotas:
+		</p><pre class="programlisting">
+    group admin ted@QPID martin@QPID
+    group blacklist usera@qpid userb@qpid
+    quota connections 10 admin
+    quota connections  5 all
+    quota connections  0 blacklist
+    quota queues      50 admin
+    quota queues       5 all
+    quota queues       1 test@qpid
+</pre><p>
+			Performance Note: Most ACL queries are performed infrequently. The overhead associated with
+			ACL passing an allow or deny decision on the creation of a queue is negligible
+			compared to actually creating and using the queue. One notable exception is the <span class="command"><strong>publish exchange</strong></span>
+			query. ACL files with no <span class="emphasis"><em>publish exchange</em></span> rules are noted and the broker short circuits the logic
+			associated with the per-messsage <span class="emphasis"><em>publish exchange</em></span> ACL query.
+			However, if an ACL file has any <span class="emphasis"><em>publish exchange</em></span> rules
+			then the broker is required to perform a <span class="emphasis"><em>publish exchange</em></span> query for each message published.
+			Users with performance critical applications are encouraged to structure exchanges, queues, and bindings so that
+			the <span class="emphasis"><em>publish exchange</em></span> ACL rules are unnecessary.
+		</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntax"></a>1.5.2.1.&#160;ACL Syntax</h4></div></div></div><p>
+				ACL rules must be on a single line and follow this syntax:
+</p><pre class="programlisting">
+    user = username[/domain[@realm]]
+    user-list = user1 user2 user3 ...
+    group-name-list = group1 group2 group3 ...
+
+    group &lt;group-name&gt; = [user-list] [group-name-list]
+
+    permission = [allow | allow-log | deny | deny-log]
+    action = [consume | publish | create | access |
+              bind | unbind | delete | purge | update |
+              move | redirect | reroute]
+    object = [queue | exchange | broker | link | method | query]
+    property = [name | durable | owner | routingkey |
+                autodelete | exclusive |type |
+		alternate | queuename | exchangename |
+		schemapackage | schemaclass |
+		queuemaxsizelowerlimit  |
+		queuemaxsizeupperlimit  |
+                queuemaxcountlowerlimit |
+		queuemaxcountupperlimit |
+                filemaxsizelowerlimit   |
+		filemaxsizeupperlimit   |
+                filemaxcountlowerlimit  |
+		filemaxcountupperlimit  |
+                pageslowerlimit         |
+                pagesupperlimit         |
+                pagefactorlowerlimit    |
+                pagefactorupperlimit ]
+
+    acl permission {&lt;group-name&gt;|&lt;user-name&gt;|"all"} {action|"all"} [object|"all"
+                [property=&lt;property-value&gt; ...]]
+
+    quota-spec = [connections | queues]
+    quota quota-spec N {&lt;group-name&gt;|&lt;user-name&gt;|"all"}
+                [{&lt;group-name&gt;|&lt;user-name&gt;|"all"}]
+</pre><p>
+
+				 ACL rules can also include a single object name (or the keyword <em class="parameter"><code>all</code></em>) and one or more property name value pairs in the form <span class="command"><strong>property=value</strong></span>
+			</p><p>
+				The following tables show the possible values for <span class="command"><strong>permission</strong></span>, <span class="command"><strong>action</strong></span>, <span class="command"><strong>object</strong></span>, and <span class="command"><strong>property</strong></span> in an ACL rules file.
+			</p><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rules_permission"></a><p class="title"><strong>Table&#160;1.11.&#160;ACL Rules: permission</strong></p><div class="table-contents"><table border="1" summary="ACL Rules: permission"><colgroup><col /><col /></colgroup><tbody><tr><td>
+								<span class="command"><strong>allow</strong></span>
+							</td><td>
+								<p>
+									Allow the action 
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>allow-log</strong></span>
+							</td><td>
+								<p>
+									Allow the action and log the action in the event log
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>deny</strong></span>
+							</td><td>
+								<p>
+									Deny the action
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>deny-log</strong></span>
+							</td><td>
+								<p>
+									Deny the action and log the action in the event log
+								</p>
+
+							</td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesaction"></a><p class="title"><strong>Table&#160;1.12.&#160;ACL Rules:action</strong></p><div class="table-contents"><table border="1" summary="ACL Rules:action"><colgroup><col /><col /></colgroup><tbody><tr><td>
+								<span class="command"><strong>consume</strong></span>
+							</td><td>
+								<p>
+									Applied when subscriptions are created
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>publish</strong></span>
+							</td><td>
+								<p>
+									Applied on a per message basis
+									to verify that the user has rights to publish to the given
+									exchange with the given routingkey.
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>create</strong></span>
+							</td><td>
+								<p>
+									Applied when an object is created, such as bindings, queues, exchanges, links
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>access</strong></span>
+							</td><td>
+								<p>
+									Applied when an object is read or accessed
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>bind</strong></span>
+							</td><td>
+								<p>
+									Applied when objects are bound together
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>unbind</strong></span>
+							</td><td>
+								<p>
+									Applied when objects are unbound
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>delete</strong></span>
+							</td><td>
+								<p>
+									Applied when objects are deleted
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>purge</strong></span>
+							</td><td>
+								<p>
+									Similar to delete but the action is performed on more than one object
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>update</strong></span>
+							</td><td>
+								<p>
+									Applied when an object is updated
+								</p>
+
+							</td></tr><tr><td>
+                                                                <span class="command"><strong>move</strong></span>
+                                                        </td><td>
+                                                                <p>
+                                                                        When moving messages between queues
+                                                                </p>
+
+                                                        </td></tr><tr><td>
+                                                                <span class="command"><strong>redirect</strong></span>
+                                                        </td><td>
+                                                                <p>
+                                                                        When redirecting messages between queues
+                                                                </p>
+
+                                                        </td></tr><tr><td>
+                                                                <span class="command"><strong>reroute</strong></span>
+                                                        </td><td>
+                                                                <p>
+                                                                        When rerouting messages from a queue to an exchange
+                                                                </p>
+
+                                                        </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesobject"></a><p class="title"><strong>Table&#160;1.13.&#160;ACL Rules:object</strong></p><div class="table-contents"><table border="1" summary="ACL Rules:object"><colgroup><col /><col /></colgroup><tbody><tr><td>
+								<span class="command"><strong>queue</strong></span>
+							</td><td>
+								<p>
+									A queue
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>exchange</strong></span>
+							</td><td>
+								<p>
+									An exchange
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>broker</strong></span>
+							</td><td>
+								<p>
+									The broker
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>link</strong></span>
+							</td><td>
+								<p>
+									A federation or inter-broker link
+								</p>
+
+							</td></tr><tr><td>
+								<span class="command"><strong>method</strong></span>
+							</td><td>
+								<p>
+									Management or agent or broker method
+								</p>
+
+							</td></tr><tr><td>
+                                                                <span class="command"><strong>query</strong></span>
+                                                        </td><td>
+                                                                <p>
+                                                                        Management query (of an object or whole class)
+                                                                </p>
+
+                                                        </td></tr></tbody></table></div></div><br class="table-break" /><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_Rulesproperty"></a><p class="title"><strong>Table&#160;1.14.&#160;ACL Rules:property</strong></p><div class="table-contents"><table border="1" summary="ACL Rules:property"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Property</th><th>Type</th><th>Description</th><th>Usage</th></tr></thead><tbody><tr><td> <span class="command"><strong>name</strong></span> </td><td>String</td><td>Object name, such as a queue name or exchange name.</td><td>&#160;</td></tr><tr><td> <span class="command"><strong>durable</strong></span> </td><td>Boolean</td><td>Indicates the object is durable</td><td>CREATE QUEUE, CREATE EXCHANGE, ACCESS QUEUE, ACCESS EXCHANGE</td></tr><tr><td> <span class="command"><strong>routingkey</strong></span> </td><td>String</td><td>Specifies routing key</td><td>BIND EXCHANGE, UNBIND EXCHANGE, ACCESS EXCHANGE, PUBLISH EXCHANGE</td></tr><tr><td> <span class="command"><strong>autodelete</strong></span> </td><td>Boolean</td><td>Indicates whether or not the object gets deleted when the connection is closed</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>exclusive</strong></span> </td><td>Boolean</td><td>Indicates the presence of an <em class="parameter"><code>exclusive</code></em> flag</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>paging</strong></span> </td><td>Boolean</td><td>Indicates if the queue is paging queue</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>type</strong></span> </td><td>String</td><td>Type of exchange, such as topic, fanout, or xml</td><td>CREATE EXCHANGE, ACCESS EXCHANGE</td></tr><tr><td> <span class="command"><strong>alternate</strong></span> </td><td>String</td><td>Name of the alternate exchange</td><td>CREATE EXCHANGE, CREATE QUEUE, ACCESS EXCHANGE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>queuename</strong></span> </td><td>String</td><td>Name of the queue</td><td>ACCESS EXCHANGE, BIND EXCHANGE, UNBIND EXCHANGE</td></tr><tr><td> <span class="command"><strong>schemapackage</strong></span> </td><td>String</td><td>QMF schema package name</td><td>ACCESS METHOD</td></tr><tr><td> <span class="command"><strong>schemaclass</strong></span> </td><td>String</td><td>QMF schema class name</td><td>ACCESS METHOD</td></tr><tr><td> <span class="command"><strong>queuemaxsizelowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for queue.max_size (memory bytes)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>queuemaxsizeupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for queue.max_size (memory bytes)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>queuemaxcountlowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for queue.max_count (messages)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>queuemaxcountupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for queue.max_count (messages)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>filemaxsizelowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for file.max_size (64kb pages)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>filemaxsizeupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for file.max_size (64kb pages)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>filemaxcountlowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for file.max_count (files)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>filemaxcountupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for file.max_count (files)</td><td>CREATE QUEUE, ACCESS QUEUE</td></tr><tr><td> <span class="command"><strong>pageslowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for number of pages in memory of paged queue</td><td>CREATE QUEUE</td></tr><tr><td> <span class="command"><strong>pagesupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for number of pages in memory of paged queue</td><td>CREATE QUEUE</td></tr><tr><td> <span class="command"><strong>pagefactorlowerlimit</strong></span> </td><td>Integer</td><td>Minimum value for size of one page in paged queue</td><td>CREATE QUEUE</td></tr><tr><td> <span class="command"><strong>pagefactorupperlimit</strong></span> </td><td>Integer</td><td>Maximum value for size of one page in paged queue</td><td>CREATE QUEUE</td></tr></tbody></table></div></div><br class="table-break" /><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_ActionObjectPropertyTuples"></a>ACL Action-Object-Property Tuples</h5></div></div></div><p>
+			    Not every ACL action is applicable to every ACL object. Furthermore, not every property may be
+			    specified for every action-object pair.
+			    The following table enumerates which action and object pairs are allowed.
+			    The table also lists which optional ACL properties are allowed to qualify
+			    action-object pairs.
+			  </p><p>
+			    The <span class="emphasis"><em>access</em></span> action is called with different argument
+			    lists for the <span class="emphasis"><em>exchange</em></span> and <span class="emphasis"><em>queue</em></span> objects.
+			    A separate column shows the AMQP 0.10 method that the Access ACL rule is satisfying.
+			    Write separate rules with the additional arguments for the <span class="emphasis"><em>declare</em></span>
+			    and <span class="emphasis"><em>bind</em></span> methods and include these rules in the ACL file
+			    before the rules for the <span class="emphasis"><em>query</em></span> method.
+			    
+			  </p><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_ActionObject_properties"></a><p class="title"><strong>Table&#160;1.15.&#160;ACL Properties Allowed for each Action and Object</strong></p><div class="table-contents"><table border="1" summary="ACL Properties Allowed for each Action and Object"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Action</th><th>Object</th><th>Properties</th><th>Method</th></tr></thead><tbody><tr><td>access</td><td>broker</td><td>&#160;</td><td class="auto-generated">&#160;</td></tr><tr><td>access</td><td>exchange</td><td>name type alternate durable</td><td>declare</td></tr><tr><td>access</td><td>exchange</td><td>name queuename routingkey</td><td>bound</td></tr><tr><td>access</td><td>exchange</td><td>name</td><td>query</td></tr><tr><td>access</td><td>method</td><td>name schemapackage schemaclass</td><td>&#160;</td></tr><tr><td>access</td><td>query</td><td>name schemaclass</td><td>&#160;</td></tr><tr><td>access</td><td>queue</td><td>name alternate durable exclusive autodelete policy queuemaxsizelowerlimit queuemaxsizeupperlimit queuemaxcountlowerlimit queuemaxcountupperlimit filemaxsizelowerlimit filemaxsizeupperlimit filemaxcountlowerlimit filemaxcountupperlimit</td><td>declare</td></tr><tr><td>access</td><td>queue</td><td>name</td><td>query</td></tr><tr><td>bind</td><td>exchange</td><td>name queuename routingkey</td><td>&#160;</td></tr><tr><td>consume</td><td>queue</td><td>name</td><td>&#160;</td></tr><tr><td>create</td><td>exchange</td><td>name type alternate durable</td><td>&#160;</td></tr><tr><td>create</td><td>link</td><td>name</td><td>&#160;</td></tr><tr><td>create</td><td>queue</td><td>name alternate durable exclusive autodelete policy queuemaxsizelowerlimit queuemaxsizeupperlimit queuemaxcountlowerlimit queuemaxcountupperlimit filemaxsizelowerlimit filemaxsizeupperlimit filemaxcountlowerlimit filemaxcountupperlimit paging pageslowerlimit pagesupperlimit pagefactorlowerlimit pagefactorupperlimit</td><td>&#160;</td></tr><tr><td>delete</td><td>exchange</td><td>name</td><td>&#160;</td></tr><tr><td>delete</td><td>queue</td><td>name</td><td>&#160;</td></tr><tr><td>publish</td><td>exchange</td><td>name routingkey</td><td>&#160;</td></tr><tr><td>purge</td><td>queue</td><td>name</td><td>&#160;</td></tr><tr><td>move</td><td>queue</td><td>name</td><td>queuename</td></tr><tr><td>redirect</td><td>queue</td><td>name</td><td>queuename</td></tr><tr><td>reroute</td><td>queue</td><td>name</td><td>exchangename</td></tr><tr><td>unbind</td><td>exchange</td><td>name queuename routingkey</td><td>&#160;</td></tr><tr><td>update</td><td>broker</td><td>&#160;</td><td>&#160;</td></tr></tbody></table></div></div><br class="table-break" /><p>
+
+			  </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions"></a>1.5.2.2.&#160;ACL Syntactic Conventions</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-comments"></a>Comments</h5></div></div></div><p>
+			    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				  A line starting with the <span class="command"><strong>#</strong></span> character is considered a comment and is ignored.
+				</p></li><li class="listitem"><p>
+				  Embedded comments and trailing comments are not allowed. The <span class="command"><strong>#</strong></span> is commonly found in routing keys and other AMQP literals which occur naturally in ACL rule specifications.
+				</p></li></ul></div><p>
+			  </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-whitespace"></a>White Space</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				Empty lines and lines that contain only whitespace (' ', '\f', '\n', '\r', '\t', '\v') are ignored.
+			      </p></li><li class="listitem"><p>
+				Additional whitespace between and after tokens is allowed.
+			      </p></li><li class="listitem"><p>
+				Group and Acl definitions must start with <span class="command"><strong>group</strong></span> and <span class="command"><strong>acl</strong></span> respectively and with no preceding whitespace.
+			      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-characterset"></a>Character Set</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				ACL files use 7-bit ASCII characters only
+			      </p></li><li class="listitem"><p>
+				Group names may contain only
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><span class="command"><strong>[a-z]</strong></span></li><li class="listitem"><span class="command"><strong>[A-Z]</strong></span></li><li class="listitem"><span class="command"><strong>[0-9]</strong></span></li><li class="listitem"><span class="command"><strong>'-'</strong></span> hyphen</li><li class="listitem"><span class="command"><strong>'_'</strong></span> underscore</li></ul></div><p>
+			      </p></li><li class="listitem"><p>
+				Individual user names may contain only
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><span class="command"><strong>[a-z]</strong></span></li><li class="listitem"><span class="command"><strong>[A-Z]</strong></span></li><li class="listitem"><span class="command"><strong>[0-9]</strong></span></li><li class="listitem"><span class="command"><strong>'-'</strong></span> hyphen</li><li class="listitem"><span class="command"><strong>'_'</strong></span> underscore</li><li class="listitem"><span class="command"><strong>'.'</strong></span> period</li><li class="listitem"><span class="command"><strong>'@'</strong></span> ampersand</li><li class="listitem"><span class="command"><strong>'/'</strong></span> slash</li></ul></div><p>
+			      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-casesensitivity"></a>Case Sensitivity</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				All tokens are case sensitive. <em class="parameter"><code>name1</code></em> is not the same as <em class="parameter"><code>Name1</code></em> and <em class="parameter"><code>create</code></em> is not the same as <em class="parameter"><code>CREATE</code></em>.
+			      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-linecontinuation"></a>Line Continuation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				Group lists can be extended to the following line by terminating the line with the <span class="command"><strong>'\'</strong></span> character. No other ACL file lines may be continued.
+			      </p></li><li class="listitem"><p>
+				Group specification lines may be continued only after the group name or any of the user names included in the group. See example below.
+			      </p></li><li class="listitem"><p>
+				Lines consisting solely of a <span class="command"><strong>'\'</strong></span> character are not permitted.
+			      </p></li><li class="listitem"><p>
+				The <span class="command"><strong>'\'</strong></span> continuation character is recognized only if it is the last character in the line. Any characters after the <span class="command"><strong>'\'</strong></span> are not permitted.
+			      </p></li></ul></div><pre class="programlisting">
+    #
+    # Examples of extending group lists using a trailing '\' character
+    #
+    group group1 name1 name2 \
+    name3 name4 \
+    name5
+
+    group group2 \
+                 group1 \
+                 name6
+    #
+    # The following are illegal:
+    #
+    # '\' must be after group name
+    #
+    group \
+          group3 name7 name8
+    #
+    # No empty extension line
+    #
+    group group4 name9 \
+                       \
+                 name10
+</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-linelength"></a>Line Length</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+				ACL file lines are limited to 1024 characters.
+			      </p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-keywords"></a>ACL File Keywords</h5></div></div></div>
+			  ACL reserves several words for convenience and for context sensitive substitution.
+
+			  <div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-keywords-all"></a>The <span class="command"><strong>all</strong></span> Keyword</h6></div></div></div>
+			    The keyword <span class="command"><strong>all</strong></span> is reserved. It may be used in ACL rules to match all individuals and groups, all actions, or all objects.
+			    <div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">acl allow all create queue</li><li class="listitem">acl allow bob@QPID all queue</li><li class="listitem">acl allow bob@QPID create all</li></ul></div></div><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntactic_Conventions-keywords-userdomain"></a>User Name and Domain Name Keywords</h6></div></div></div><p>
+			      In the C++ Broker 0.20 a simple set of user name and domain name substitution variable keyword tokens is defined. This provides administrators with an easy way to describe private or shared resources.
+			    </p><p>
+			      Symbol substitution is allowed in the ACL file anywhere that text is supplied for a property value.
+			    </p><p>
+			      In the following table an authenticated user named bob.user@QPID.COM has his substitution keywords expanded.
+
+			      </p><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_UsernameSubstitution"></a><p class="title"><strong>Table&#160;1.16.&#160;ACL User Name and Domain Name Substitution Keywords</strong></p><div class="table-contents"><table border="1" summary="ACL User Name and Domain Name Substitution Keywords"><colgroup><col /><col /></colgroup><thead><tr><th>Keyword</th><th>Expansion</th></tr></thead><tbody><tr><td> <span class="command"><strong>${userdomain}</strong></span> </td><td>bob_user_QPID_COM</td></tr><tr><td> <span class="command"><strong>${user}</strong></span> </td><td>bob_user</td></tr><tr><td> <span class="command"><strong>${domain}</strong></span> </td><td>QPID_COM</td></tr></tbody></table></div></div><p><br class="table-break" />
+			    </p><p>
+			      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+				  The original user name has the period &#8220;.&#8221; and ampersand &#8220;@&#8221; characters translated into underscore &#8220;_&#8221;. This allows substitution to work when the substitution keyword is used in a routingkey in the Acl file.
+				</li><li class="listitem">
+				  The Acl processing matches ${userdomain} before matching either ${user} or ${domain}. Rules that specify the combination ${user}_${domain} will never match.
+				</li></ul></div><p>
+			    </p><pre class="programlisting">
+  # Example:
+  #
+  # Administrators can set up Acl rule files that allow every user to create a
+  # private exchange, a private queue, and a private binding between them.
+  # In this example the users are also allowed to create private backup exchanges,
+  # queues and bindings. This effectively provides limits to user's exchange,
+  # queue, and binding creation and guarantees that each user gets exclusive
+  # access to these resources.
+  #
+  #
+  # Create primary queue and exchange:
+  #
+  acl allow all create  queue    name=$\{user}-work alternate=$\{user}-work2
+  acl deny  all create  queue    name=$\{user}-work alternate=*
+  acl allow all create  queue    name=$\{user}-work
+  acl allow all create  exchange name=$\{user}-work alternate=$\{user}-work2
+  acl deny  all create  exchange name=$\{user}-work alternate=*
+  acl allow all create  exchange name=$\{user}-work
+  #
+  # Create backup queue and exchange
+  #
+  acl deny  all create  queue    name=$\{user}-work2 alternate=*
+  acl allow all create  queue    name=$\{user}-work2
+  acl deny  all create  exchange name=$\{user}-work2 alternate=*
+  acl allow all create  exchange name=$\{user}-work2
+  #
+  # Bind/unbind primary exchange
+  #
+  acl allow all bind   exchange name=$\{user}-work routingkey=$\{user} queuename=$\{user}-work
+  acl allow all unbind exchange name=$\{user}-work routingkey=$\{user} queuename=$\{user}-work
+  #
+  # Bind/unbind backup exchange
+  #
+  acl allow all bind   exchange name=$\{user}-work2 routingkey=$\{user} queuename=$\{user}-work2
+  acl allow all unbind exchange name=$\{user}-work2 routingkey=$\{user} queuename=$\{user}-work2
+  #
+  # Access primary exchange
+  #
+  acl allow all access exchange name=$\{user}-work routingkey=$\{user} queuename=$\{user}-work
+  #
+  # Access backup exchange
+  #
+  acl allow all access exchange name=$\{user}-work2 routingkey=$\{user} queuename=$\{user}-work2
+  #
+  # Publish primary exchange
+  #
+  acl allow all publish exchange name=$\{user}-work routingkey=$\{user}
+  #
+  # Publish backup exchange
+  #
+  acl allow all publish exchange name=$\{user}-work2 routingkey=$\{user}
+  #
+  # deny mode
+  #
+  acl deny all all
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntatic_Conventions-wildcards"></a>Wildcards</h5></div></div></div>
+			  ACL privides two types of wildcard matching to provide flexibility in writing rules.
+
+			  <div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntatic_Conventions-wildcards-asterisk"></a>Property Value Wildcard</h6></div></div></div><p>
+			      Text specifying a property value may end with a single trailing <span class="command"><strong>*</strong></span> character.
+			      This is a simple wildcard match indicating that strings which match up to that point are matches for the ACL property rule.
+			      An ACL rule such as
+			    </p><p>
+			      </p><pre class="programlisting">    acl allow bob@QPID create queue name=bob*</pre><p>
+			    </p><p>
+			      allow user bob@QPID to create queues named bob1, bob2, bobQueue3, and so on.
+			    </p></div><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Syntatic_Conventions-wildcards-topickey"></a>Topic Routing Key Wildcard</h6></div></div></div><p>
+			      In the C++ Broker 0.20 the logic governing the ACL Match has changed for each ACL rule that contains a routingkey property.
+			      The routingkey property is matched according to Topic Exchange match logic the broker uses when it distributes messages published to a topic exchange.
+			    </p><p>
+			      Routing keys are hierarchical where each level is separated by a period:
+			      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">weather.usa</li><li class="listitem">weather.europe.germany</li><li class="listitem">weather.europe.germany.berlin</li><li class="listitem">company.engineering.repository</li></ul></div><p>
+			    </p><p>
+			      Within the routing key hierarchy two wildcard characters are defined.
+			      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><span class="command"><strong>*</strong></span> matches one field</li><li class="listitem"><span class="command"><strong>#</strong></span> matches zero or more fields</li></ul></div><p>
+			    </p><p>
+			      Suppose an ACL rule file is:
+			    </p><p>
+			      </p><pre class="programlisting">
+    acl allow-log uHash1@COMPANY publish exchange name=X routingkey=a.#.b
+    acl deny all all
+			      </pre><p>
+			    </p><p>
+			      When user uHash1@COMPANY attempts to publish to exchange X the ACL will return these results:
+
+			      </p><div class="table"><a id="tabl-Messaging_User_Guide-ACL_Syntax-ACL_TopicExchangeMatch"></a><p class="title"><strong>Table&#160;1.17.&#160;Topic Exchange Wildcard Match Examples</strong></p><div class="table-contents"><table border="1" summary="Topic Exchange Wildcard Match Examples"><colgroup><col /><col /></colgroup><thead><tr><th>routingkey in publish to exchange X</th><th>result</th></tr></thead><tbody><tr><td> <span class="command"><strong>a.b</strong></span> </td><td>allow-log</td></tr><tr><td> <span class="command"><strong>a.x.b</strong></span> </td><td>allow-log</td></tr><tr><td> <span class="command"><strong>a.x.y.zz.b</strong></span> </td><td>allow-log</td></tr><tr><td> <span class="command"><strong>a.b.</strong></span> </td><td>deny</td></tr><tr><td> <span class="command"><strong>q.x.b</strong></span> </td><td>deny</td></tr></tbody></table></div></div><p><br class="table-break" />
+
+			    </p></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-ACL_Rule_Matching"></a>1.5.2.3.&#160;ACL Rule Matching</h4></div></div></div><p>
+			   The minimum matching criteria for ACL rules are:
+			   </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">An actor (individually named or group member)</li><li class="listitem">An action</li><li class="listitem">An object</li></ul></div><p>
+			 </p><p>
+			   If a rule does not match the minimum criteria then that rule does not control the ACL allow or deny decision.
+			 </p><p>
+			   ACL rules optionally specify object names and property name=value pairs. If an ACL rule specifies an object name or property values than all of them must match to cause the rule to match.
+			 </p><p>
+			   The following illustration shows how ACL rules are processed to find matching rules.
+</p><pre class="programlisting">
+    # Example of rule matching
+    #
+    # Using this ACL file content:
+
+    (1)  acl deny bob create exchange name=test durable=true passive=true
+    (2)  acl deny bob create exchange name=myEx type=direct
+    (3)  acl allow all all
+
+    #
+    # Lookup 1. id:bob action:create objectType:exchange name=test
+    #           {durable=false passive=false type=direct alternate=}
+    #
+    # ACL Match Processing:
+    #  1. Rule 1 passes minimum criteria with user bob, action create,
+    #     and object exchange.
+    #  2. Rule 1 matches name=test.
+    #  3. Rule 1 does not match the rule's durable=true with the requested
+    #     lookup of durable=false.
+    #  4. Rule 1 does not control the decision and processing continues
+    #     to Rule 2.
+    #  5. Rule 2 passes minimum criteria with user bob, action create,
+    #     and object exchange.
+    #  6. Rule 2 does not match the rule's name=myEx with the requested
+    #     lookup of name=test.
+    #  7. Rule 2 does not control the decision and processing continues
+    #     to Rule 3.
+    #  8. Rule 3 matches everything and the decision is 'allow'.
+    #
+    # Lookup 2. id:bob action:create objectType:exchange name=myEx
+    #           {durable=true passive=true type=direct alternate=}
+    #
+    # ACL Match Processing:
+    #  1. Rule 1 passes minimum criteria with user bob, action create,
+    #     and object exchange.
+    #  2. Rule 1 does not match the rule's name=test with the requested
+    #     lookup of name=myEx.
+    #  3. Rule 1 does not control the decision and processing continues
+    #     to Rule 2.
+    #  4. Rule 2 passes minimum criteria with user bob, action create,
+    #     and object exchange.
+    #  5. Rule 2 matches name=myEx.
+    #  6. Rule 2 matches the rule's type=direct with the requested
+    #     lookup of type=direct.
+    #  7. Rule 2 is the matching rule and the decision is 'deny'.
+    #
+</pre><p>
+			 </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-Specifying_ACL_Permissions"></a>1.5.2.4.&#160;Specifying ACL Permissions</h4></div></div></div><p>
+			   Now that we have seen the ACL syntax, we will provide representative examples and guidelines for ACL files.
+			</p><p>
+				Most ACL files begin by defining groups:
+			</p><pre class="programlisting">
+    group admin ted@QPID martin@QPID
+    group user-consume martin@QPID ted@QPID
+    group group2 kim@QPID user-consume rob@QPID
+    group publisher group2 \
+    tom@QPID andrew@QPID debbie@QPID
+</pre><p>
+				Rules in an ACL file grant or deny specific permissions to users or groups:
+			</p><pre class="programlisting">
+    acl allow carlt@QPID create exchange name=carl.*
+    acl allow rob@QPID create queue
+    acl allow guest@QPID bind exchange name=amq.topic routingkey=stocks.rht.#
+    acl allow user-consume create queue name=tmp.*
+
+    acl allow publisher publish all durable=false
+    acl allow publisher create queue name=RequestQueue
+    acl allow consumer consume queue durable=true
+    acl allow fred@QPID create all
+    acl allow bob@QPID all queue
+    acl allow admin all
+    acl allow all consume queue
+    acl allow all bind exchange
+    acl deny all all
+</pre><p>
+				In the previous example, the last line, <code class="literal">acl deny all all</code>, denies all authorizations that have not been specifically granted. This is the default, but it is useful to include it explicitly on the last line for the sake of clarity. If you want to grant all rights by default, you can specify <code class="literal">acl allow all all</code> in the last line.
+			</p><p>
+			  ACL allows specification of conflicting rules. Be sure to specify the most specific rules first followed by more general rules. Here is an example:
+			</p><p>
+</p><pre class="programlisting">
+    group users alice@QPID bob@QPID charlie@QPID
+    acl deny  charlie@QPID create queue
+    acl allow users        create queue
+    acl deny all all
+</pre><p>
+			</p><p>
+			  In this example users alice and bob would be able to create queues due to their membership in the users group. However, user charlie is denied from creating a queue despite his membership in the users group because a deny rule for him is stated before the allow rule for the users group.
+			</p><p>
+				Do not allow <em class="parameter"><code>guest</code></em> to access and log QMF management methods that could cause security breaches:
+			</p><pre class="programlisting">
+    group allUsers guest@QPID
+    ...
+    acl deny-log allUsers create link
+    acl deny-log allUsers access method name=connect
+    acl deny-log allUsers access method name=echo
+    acl allow all all
+</pre></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect-Messaging_User_Guide-Authorization-Specifying_ACL_Quotas"></a>1.5.3.&#160;User Connection and Queue Quotas</h3></div></div></div>
+		The ACL module enforces various quotas and thereby limits user activity.
+
+		<div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-Specifying_ACL_Connection_Limits"></a>1.5.3.1.&#160;Connection Limits</h4></div></div></div><p>
+		    The ACL module creates broker command line switches that set limits on the number of concurrent connections allowed per user or per client host address. These settings are not specified in the ACL file.
+		  </p><p>
+		    </p><pre class="programlisting">
+    --max-connections           N
+    --connection-limit-per-user N
+    --connection-limit-per-ip   N
+		    </pre><p>
+		  </p><p>
+		    <span class="command"><strong>--max-connections</strong></span> specifies an upper limit for all user connections.
+		  </p><p>
+		    <span class="command"><strong>--connection-limit-per-user</strong></span> specifies an upper limit for each user based on the authenticated user name. This limit is enforced regardless of the client IP address from which the connection originates.
+		  </p><p>
+		    <span class="command"><strong>--connection-limit-per-ip</strong></span> specifies an upper limit for connections for all users based on the originating client IP address. This limit is enforced regardless of the user credentials presented with the connection.
+		    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+			Note that addresses using different transports are counted separately even though the originating host is actually the same physical machine. In the setting illustrated above a host would allow N_IP connections from [::1] IPv6 transport localhost and another N_IP connections from [127.0.0.1] IPv4 transport localhost.
+		      </li><li class="listitem">
+			The connection-limit-per-ip and connection-limit-per-user counts are active simultaneously. From a given client system users may be denied access to the broker by either connection limit.
+		      </li></ul></div><p>
+		  </p><p>
+		    The 0.22 C++ Broker ACL module accepts fine grained per-user connection limits through quota rules in the ACL file.
+		  </p><p>
+		    </p><pre class="programlisting">
+    quota connections 10 admins userX@QPID
+		    </pre><p>
+		  </p><p>
+		    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+			User <code class="literal">all</code> receives the value passed by the command line switch <code class="literal">--connection-limit-per-user</code>.
+		      </li><li class="listitem">
+			Values specified in the ACL rule for user <code class="literal">all</code> overwrite the value specified on the command line if any.
+		      </li><li class="listitem">
+			Connection quotas values are determined by first searching for the authenticated user name. If that user name is not specified then the value for user <code class="literal">all</code>
+			is used. If user <code class="literal">all</code> is not specified then the connection is denied.
+		      </li><li class="listitem">
+			The connection quota values range from 0..65530 inclusive. A value of zero disables connections from that user.
+		      </li><li class="listitem">
+			A user's quota may be specified many times in the ACL rule file. Only the last value specified is retained and enforced.
+		      </li><li class="listitem">
+			Per-user connection quotas are disabled when two conditions are true: 1) No --connection-limit-per-user command line switch and 2) No <code class="literal">quota connections</code>
+			rules in the ACL file. Per-user connections are always counted even if connection quotas are not enforced. This supports ACL file reloading that may subsequently
+			enable per-user connection quotas.
+		      </li><li class="listitem">
+			An ACL file reload may lower a user's connection quota value to a number lower than the user's current connection count. In that case the active connections
+			remain unaffected. New connections are denied until that user closes enough of his connections so that his count falls below the configured limit.
+		      </li></ul></div><p>
+		  </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="sect-Messaging_User_Guide-Authorization-Specifying_ACL_Queue_Limits"></a>1.5.3.2.&#160;Queue Limits</h4></div></div></div><p>
+		    The ACL module creates a broker command line switch that set limits on the number of queues each user is allowed to create. This settings is not specified in the ACL file.
+		  </p><p>
+		    </p><pre class="programlisting">
+    --max-queues-per-user N
+		    </pre><p>
+		  </p><p>
+		    The queue limit is set for all users on the broker.
+		  </p><p>
+		    The 0.22 C++ Broker ACL module accepts fine grained per-user queue limits through quota rules in the ACL file.
+		  </p><p>
+		    </p><pre class="programlisting">
+    quota queues 10 admins userX@QPID
+		    </pre><p>
+		  </p><p>
+		    </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+			User <code class="literal">all</code> receives the value passed by the command line switch <code class="literal">--max-queues-per-user</code>.
+		      </li><li class="listitem">
+			Values specified in the ACL rule for user <code class="literal">all</code> overwrite the value specified on the command line if any.
+		      </li><li class="listitem">
+			Queue quotas values are determined by first searching for the authenticated user name. If that user name is not specified then the value for user <code class="literal">all</code>
+			is used. If user <code class="literal">all</code> is not specified then the queue creation is denied.
+		      </li><li class="listitem">
+			The queue quota values range from 0..65530 inclusive. A value of zero disables queue creation by that user.
+		      </li><li class="listitem">
+			A user's quota may be specified many times in the ACL rule file. Only the last value specified is retained and enforced.
+		      </li><li class="listitem">
+			Per-user queue quotas are disabled when two conditions are true: 1) No --queue-limit-per-user command line switch and 2) No <code class="literal">quota queues</code>
+			rules in the ACL file. Per-user queue creations are always counted even if queue quotas are not enforced. This supports ACL file reloading that may subsequently
+			enable per-user queue quotas.
+		      </li><li class="listitem">
+			An ACL file reload may lower a user's queue quota value to a number lower than the user's current queue count. In that case the active queues
+			remain unaffected. New queues are denied until that user closes enough of his queues so that his count falls below the configured limit.
+		      </li></ul></div><p>
+		  </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="sect-Messaging_User_Guide-Security-Encryption_using_SSL"></a>1.5.4.&#160;Encryption using SSL</h3></div></div></div><p>
+			Encryption and certificate management for <span class="command"><strong>qpidd</strong></span> is provided by Mozilla's Network Security Services Library (NSS).
+		</p><div class="orderedlist"><a id="orde-Messaging_User_Guide-Encryption_using_SSL-Enabling_SSL_for_the_RHM_broker"></a><p class="title"><strong>Enabling SSL for the Qpid broker</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p>
+					You will need a certificate that has been signed by a Certification Authority (CA). This certificate will also need to be trusted by your client. If you require client authentication in addition to server authentication, the client's certificate will also need to be signed by a CA and trusted by the broker.
+				</p><p>
+					In the broker, SSL is provided through the <span class="command"><strong>ssl.so</strong></span> module. This module is installed and loaded by default in Qpid. To enable the module, you need to specify the location of the database containing the certificate and key to use. This is done using the <span class="command"><strong>ssl-cert-db</strong></span> option.
+				</p><p>
+					The certificate database is created and managed by the Mozilla Network Security Services (NSS) <span class="command"><strong>certutil</strong></span> tool. Information on this utility can be found on the <a class="ulink" href="http://www.mozilla.org/projects/security/pki/nss/tools/certutil.html" target="_top">Mozilla website</a>, including tutorials on setting up and testing SSL connections. The certificate database will generally be password protected. The safest way to specify the password is to place it in a protected file, use the password file when creating the database, and specify the password file with the <span class="command"><strong>ssl-cert-password-file</strong></span> option when starting the broker.
+				</p><p>
+					The following script shows how to create a certificate database using certutil:
+				</p><pre class="programlisting">
+mkdir ${CERT_DIR}
+certutil -N -d ${CERT_DIR} -f ${CERT_PW_FILE}
+certutil -S -d ${CERT_DIR} -n ${NICKNAME} -s "CN=${NICKNAME}" -t "CT,," -x -f ${CERT_PW_FILE} -z /usr/bin/certutil
+</pre><p>
+					When starting the broker, set <span class="command"><strong>ssl-cert-password-file</strong></span> to the value of <span class="command"><strong>${CERT_PW_FILE}</strong></span>, set <span class="command"><strong>ssl-cert-db</strong></span> to the value of <span class="command"><strong>${CERT_DIR}</strong></span>, and set <span class="command"><strong>ssl-cert-name</strong></span> to the value of <span class="command"><strong>${NICKNAME}</strong></span>.
+				</p></li><li class="listitem"><p>
+					The following SSL options can be used when starting the broker:
+					</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="command"><strong>--ssl-use-export-policy</strong></span></span></dt><dd><p>
+									Use NSS export policy
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-cert-password-file <em class="replaceable"><code>PATH</code></em></strong></span></span></dt><dd><p>
+									Required. Plain-text file containing password to use for accessing certificate database.
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-cert-db <em class="replaceable"><code>PATH</code></em></strong></span></span></dt><dd><p>
+									Required. Path to directory containing certificate database.
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-cert-name <em class="replaceable"><code>NAME</code></em></strong></span></span></dt><dd><p>
+									Name of the certificate to use. Default is <code class="literal">localhost.localdomain</code>.
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-port <em class="replaceable"><code>NUMBER</code></em></strong></span></span></dt><dd><p>
+									Port on which to listen for SSL connections. If no port is specified, port 5671 is used.
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-require-client-authentication</strong></span></span></dt><dd><p>
+									Require SSL client authentication (i.e. verification of a client certificate) during the SSL handshake. This occurs before SASL authentication, and is independent of SASL.
+								</p><p>
+									This option enables the <code class="literal">EXTERNAL</code> SASL mechanism for SSL connections. If the client chooses the <code class="literal">EXTERNAL</code> mechanism, the client's identity is taken from the validated SSL certificate, using the <code class="literal">CN</code>literal&gt;, and appending any <code class="literal">DC</code>literal&gt;s to create the domain. For instance, if the certificate contains the properties <code class="literal">CN=bob</code>, <code class="literal">DC=acme</code>, <code class="literal">DC=com</code>, the client's identity is <code class="literal">bob@acme.com</code>.
+								</p><p>
+									If the client chooses a different SASL mechanism, the identity take from the client certificate will be replaced by that negotiated during the SASL handshake.
+								</p></dd><dt><span class="term"><span class="command"><strong>--ssl-sasl-no-dict</strong></span></span></dt><dd><p>
+									Do not accept SASL mechanisms that can be compromised by dictionary attacks. This prevents a weaker mechanism being selected instead of <code class="literal">EXTERNAL</code>, which is not vulnerable to dictionary attacks.
+								</p></dd></dl></div><p>
+					 Also relevant is the <span class="command"><strong>--require-encryption</strong></span> broker option. This will cause <span class="command"><strong>qpidd</strong></span> to only accept encrypted connections.
+				</p></li></ol></div><div class="variablelist"><a id="vari-Messaging_User_Guide-Encryption_using_SSL-Enabling_SSL_in_Clients"></a><p class="title"><strong>Enabling SSL in Clients</strong></p><dl class="variablelist"><dt><span class="term">C++ clients:</span></dt><dd><p>
+						</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+									In C++ clients, SSL is implemented in the <span class="command"><strong>sslconnector.so</strong></span> module. This module is installed and loaded by default in Qpid.
+								</p><p>
+									The following options can be specified for C++ clients using environment variables:
+								</p><div class="table"><a id="tabl-Messaging_User_Guide-Enabling_SSL_in_Clients-SSL_Client_Environment_Variables_for_C_clients"></a><p class="title"><strong>Table&#160;1.18.&#160;SSL Client Environment Variables for C++ clients</strong></p><div class="table-contents"><table border="1" summary="SSL Client Environment Variables for C++ clients"><colgroup><col align="left" class="c1" /><col align="left" class="c2" /></colgroup><thead><tr><th align="center" colspan="2">
+													SSL Client Options for C++ clients
+												</th></tr></thead><tbody><tr><td align="left">
+													<span class="command"><strong>QPID_SSL_USE_EXPORT_POLICY</strong></span>
+												</td><td align="left">
+													Use NSS export policy
+												</td></tr><tr><td align="left">
+													<span class="command"><strong>QPID_SSL_CERT_PASSWORD_FILE <em class="replaceable"><code>PATH</code></em></strong></span>
+												</td><td align="left">
+													File containing password to use for accessing certificate database
+												</td></tr><tr><td align="left">
+													<span class="command"><strong>QPID_SSL_CERT_DB <em class="replaceable"><code>PATH</code></em></strong></span>
+												</td><td align="left">
+													Path to directory containing certificate database
+												</td></tr><tr><td align="left">
+													<span class="command"><strong>QPID_SSL_CERT_NAME <em class="replaceable"><code>NAME</code></em></strong></span>
+												</td><td align="left">
+													Name of the certificate to use. When SSL client authentication is enabled, a certificate name should normally be provided.
+												</td></tr></tbody></table></div></div><br class="table-break" /></li><li class="listitem"><p>
+									When using SSL connections, clients must specify the location of the certificate database, a directory that contains the client's certificate and the public key of the Certificate Authority. This can be done by setting the environment variable <span class="command"><strong>QPID_SSL_CERT_DB</strong></span> to the full pathname of the directory. If a connection uses SSL client authentication, the client's password is also needed&#8212;the password should be placed in a protected file, and the <span class="command"><strong>QPID_SSL_CERT_PASSWORD_FILE</strong></span> variable should be set to the location of the file containing this password.
+								</p></li><li class="listitem"><p>
+									To open an SSL enabled connection in the Qpid Messaging API, set the <em class="parameter"><code>protocol</code></em> connection option to <em class="parameter"><code>ssl</code></em>.
+								</p></li></ol></div><p>
+
+					</p></dd><dt><span class="term">Java clients:</span></dt><dd><p>
+						</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+									For both server and client authentication, import the trusted CA to your trust store and keystore and generate keys for them. Create a certificate request using the generated keys and then create a certificate using the request. You can then import the signed certificate into your keystore. Pass the following arguments to the Java JVM when starting your client:
+</p><pre class="programlisting">
+-Djavax.net.ssl.keyStore=/home/bob/ssl_test/keystore.jks
+-Djavax.net.ssl.keyStorePassword=password
+-Djavax.net.ssl.trustStore=/home/bob/ssl_test/certstore.jks
+-Djavax.net.ssl.trustStorePassword=password
+</pre><p>
+
+								</p></li><li class="listitem"><p>
+									For server side authentication only, import the trusted CA to your trust store and pass the following arguments to the Java JVM when starting your client:
+</p><pre class="programlisting">
+-Djavax.net.ssl.trustStore=/home/bob/ssl_test/certstore.jks
+-Djavax.net.ssl.trustStorePassword=password
+</pre><p>
+
+								</p></li><li class="listitem"><p>
+									Java clients must use the SSL option in the connection URL to enable SSL encryption, e.g.
+								</p><pre class="programlisting">amqp://username:password@clientid/test?brokerlist='tcp://localhost:5672?ssl='true''
+</pre></li><li class="listitem"><p>
+									If you need to debug problems in an SSL connection, enable Java's SSL debugging by passing the argument <code class="literal">-Djavax.net.debug=ssl</code> to the Java JVM when starting your client.
+								</p></li></ol></div><p>
+
+					</p></dd></dl></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="chap-Messaging_User_Guide-Broker_Federation.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch01.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch01s06.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.4.&#160;Broker Federation&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.6.&#160;LVQ - Last Value Queue</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Chapter&#160;9.&#160;Queues - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.26/index.html">Qpid 0.26</a></li><li><a href="/releases/qpid-0.26/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>Chapter&#160;9.&#160;Queues</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;9.&#160;Queues</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Exchanges.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Stores.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Queues"></a>Chapter&#160;9.&#160;Queues</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes">9.1. Queue Types</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Introduction">9.1.1. Introduction</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Priority">9.1.2. Priority Queues</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Sorted">9.1.3. Sorted Queues</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-LVQ">9.1.4. Last Value Queues (LVQ)</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Create">9.1.5. Creating a Priority, Sorted or LVQ Queue</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Binding">9.1.6. Binding queues to exchanges</a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Message-Grouping">9.1.7. 
+      Messaging Grouping
+    </a></span></dt><dt><span class="section"><a href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-SetLowPrefetch">9.1.8. Using low pre-fetch with special queue types</a></span></dt></dl></dd></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Queues-OtherTypes"></a>9.1.&#160;Queue Types</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Introduction"></a>9.1.1.&#160;Introduction</h3></div></div></div><p> In addition to the standard queue type where messages are delivered in the same order
+      that they were sent, the Java Broker supports three additional queue types which allows for
+      alternative delivery behaviours. These are
+      <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Priority" title="9.1.2.&#160;Priority Queues">priority-queues</a>,
+      <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Sorted" title="9.1.3.&#160;Sorted Queues">sorted-queues</a>-,
+      <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-LVQ" title="9.1.4.&#160;Last Value Queues (LVQ)">last-value-queues</a> (LVQs).
+      Additionally, Java Broker supports <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-Message-Grouping" title="9.1.7.&#160; Messaging Grouping">message grouping</a>.
+    </p><p> In the following sections, the semantics of each queue type is described, followed by a
+      description of how instances of these queue can be created via <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-CreateUsingConfig" title="9.1.5.3.&#160;Using configuration">configuration</a>, <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-CreateUsingJmsOrJmx" title="9.1.5.2.&#160;Using JMX or AMQP">programmatically</a> or
+        <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-CreateUsingManagement" title="9.1.5.1.&#160;Using Web Management Console">Web Management Console</a>.</p><p>The final section discusses the importance of using a <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-SetLowPrefetch" title="9.1.8.&#160;Using low pre-fetch with special queue types">low client pre-fetch</a> with these queued.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Priority"></a>9.1.2.&#160;Priority Queues</h3></div></div></div><p>In a priority queue, messages on the queue are delivered in an order determined by the
+        <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getJMSPriority()" target="_top">JMS priority message
+        header</a> within the message. By default Qpid supports the 10 priority levels mandated
+      by JMS, with priority value 0 as the lowest priority and 9 as the highest. </p><p>It is possible to reduce the effective number of priorities if desired.</p><p>JMS defines the <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#DEFAULT_PRIORITY" target="_top">
+        default message priority</a> as 4. Messages sent without a specified priority use this
+      default. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Sorted"></a>9.1.3.&#160;Sorted Queues</h3></div></div></div><p>Sorted queues allow the message delivery order to be determined by value of an arbitrary
+        <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getStringProperty()" target="_top">JMS message
+        property</a>. Sort order is alpha-numeric and the property value must have a type
+      java.lang.String.</p><p>Messages sent to a sorted queue without the specified JMS message property will be
+      inserted into the 'last' position in the queue.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-LVQ"></a>9.1.4.&#160;Last Value Queues (LVQ)</h3></div></div></div><p>LVQs (or conflation queues) are special queues that automatically discard any message when
+      a newer message arrives with the same key value. The key is specified by arbitrary <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getPropertyNames()" target="_top">JMS message
+        property</a>.</p><p>An example of an LVQ might be where a queue represents prices on a stock exchange: when
+      you first consume from the queue you get the latest quote for each stock, and then as new
+      prices come in you are sent only these updates. </p><p>Like other queues, LVQs can either be browsed or consumed from. When browsing an
+      individual subscriber does not remove the message from the queue when receiving it. This
+      allows for many subscriptions to browse the same LVQ (i.e. you do not need to create and bind
+      a separate LVQ for each subscriber who wishes to receive the contents of the LVQ).</p><p>Messages sent to an LVQ without the specified property will be delivered as normal and
+      will never be "replaced".</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Create"></a>9.1.5.&#160;Creating a Priority, Sorted or LVQ Queue</h3></div></div></div><p>To create a priority, sorted or LVQ queue, it can be defined in the virtualhost
+      configuration file, can be created programmtically from a client via AMQP (using
+      an extension to JMS), using JMX, using REST interfaces or created in Web Management Console.
+      These methods are described below. </p><p>Once a queue is created you cannot change its type (without deleting it and re-creating).
+      Also note you cannot currently mix the natures of these queue types, for instance, you cannot
+      define a queue which it both an LVQ and a priority-queue.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingManagement"></a>9.1.5.1.&#160;Using Web Management Console</h4></div></div></div><p>On clicking on "Add Queue" button on Virtual Host tab the pop-up dialog to create a queue is displayed.</p><p>For a Simple queue a Queue Type "Standard" should be selected</p><p>For a Priority queue a Queue Type "Priority" and the priority value (10 by default) should be selected.</p><p>For a Sorted queue a Queue Type "Sorted" and Sort Message Property should be specified.</p><p>For a LVQ queue a Queue Type "LVQ" and LVQ Message Property should be specified.</p><p>Additionally, for each type of the queue Flow Control Thresholds and Alert Thresholds can be specified in optional fields.</p><p>Also, a Dead Letter Queue can be configured for the Queue by checking "Create DLQ" check box.
+      The maximum number of delivery retries before message is sent to the DLQ can be specified in "Maximum Delivery Retries" field.
+      However, configuring of maximum delivery retries on a queue without DLQ(AlternateExchange) will result in messages
+      being discarded after the limit is reached.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingJmsOrJmx"></a>9.1.5.2.&#160;Using JMX or AMQP</h4></div></div></div><p>To create a priority, sorted or LVQ queue programmatically from JMX or using a Qpid
+        extension to JMS, pass the appropriate queue-declare arguments.</p><div class="table"><a id="idm140218887416528"></a><p class="title"><strong>Table&#160;9.1.&#160;Queue-declare arguments understood for priority, sorted and LVQ queues</strong></p><div class="table-contents"><table border="1" summary="Queue-declare arguments understood for priority, sorted and LVQ queues"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Queue type</th><th>Argument name</th><th>Argument name</th><th>Argument Description</th></tr></thead><tbody><tr><td>priority</td><td>x-qpid-priorities</td><td>java.lang.Integer</td><td>Specifies a priority queue with given number priorities</td></tr><tr><td>sorted</td><td>qpid.queue_sort_key</td><td>java.lang.String</td><td>Specifies sorted queue with given message property used to sort the
+                entries</td></tr><tr><td>lvq</td><td>qpid.last_value_queue_key</td><td>java.lang.String</td><td>Specifies lvq queue with given message property used to conflate the
+                entries</td></tr></tbody></table></div></div><br class="table-break" /><p>The following example illustrates the creation of the a LVQ queue from a
+        javax.jms.Session object. Note that this utilises a Qpid specific extension to JMS and
+        involves casting the session object back to its Qpid base-class.</p><div class="example"><a id="idm140218887428752"></a><p class="title"><strong>Example&#160;9.1.&#160;Creation of an LVQ using the Qpid extension to JMS</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+arguments.put("qpid.last_value_queue_key","ISIN");
+AMQDestination amqQueue = (AMQDestination) context.lookup("myqueue");
+((AMQSession&lt;?,?&gt;) session).createQueue(
+        AMQShortString.valueOf(amqQueue.getQueueName()),
+        amqQueue.isAutoDelete(),
+        amqQueue.isDurable(),
+        amqQueue.isExclusive(),
+        arguments);
+</pre></div></div><br class="example-break" /><p> The following example illustrates the creation of the sorted queue from a the JMX
+        interface using the ManagedBroker interface. </p><div class="example"><a id="idm140218887430448"></a><p class="title"><strong>Example&#160;9.2.&#160;Creation of a sorted queue using JMX</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String, Object&gt; environment = new HashMap&lt;String, Object&gt;();
+environment.put(JMXConnector.CREDENTIALS, new String[] {"admin","password"});
+// Connect to service
+JMXServiceURL url =  new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:8999/jmxrmi");
+JMXConnector jmxConnector = JMXConnectorFactory.connect(url, environment);
+MBeanServerConnection mbsc =  jmxConnector.getMBeanServerConnection();
+// Object name for ManagedBroker for virtualhost myvhost
+ObjectName objectName = new ObjectName("org.apache.qpid:type=VirtualHost.VirtualHostManager,VirtualHost=myvhost");
+// Get the ManagedBroker object
+ManagedBroker managedBroker = JMX.newMBeanProxy(mbsc, objectName, ManagedBroker.class);;
+
+// Create the queue passing arguments
+Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+arguments.put("qpid.queue_sort_key","myheader");
+managedBroker.createNewQueue("myqueue", null, true, arguments);</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-CreateUsingConfig"></a>9.1.5.3.&#160;Using configuration</h4></div></div></div><p>How to declare queues in the Virtual Host configuration file is described in <a class="xref" href="Java-Broker-Virtual-Host-Declare-Queues.html" title="14.9.&#160;Configuring Queues">Section&#160;14.9, &#8220;Configuring Queues&#8221;</a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Binding"></a>9.1.6.&#160;Binding queues to exchanges</h3></div></div></div><p>Queues can be bound to the broker exchanges in the virtualhost
+      configuration file or programmtically from a client using AMQP bind API (using
+      an extension to JMS), using JMX API, using REST interfaces or Web Management Console.</p><p>A queue can be bound to different exchanges at the same time.
+    Also, a queue can be bound to the same exchange multiple times.
+    Differenent binding keys can be used to bind a queue to the same topic or direct exchanges.</p><p>Binding attributes can be specified on binding creation to allow filtering of messages accepted by the queue using a selector expression
+    or/and specifying whether messages published by its own connection should be delivered to it.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-BindingUsingManagement"></a>9.1.6.1.&#160;Using Web Management Console</h4></div></div></div><p>A queue can be bound to an exchange by clicking on "Add Binding" button on a Queue tab or an Exchange tab.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-BindingUsingJmsOrJmx"></a>9.1.6.2.&#160;Using JMX or AMQP</h4></div></div></div><p>The following example illustrates the creation of queue binding to topic exchange with JMS client.</p><div class="example"><a id="idm140218887613904"></a><p class="title"><strong>Example&#160;9.3.&#160;Binding a queue using JMS</strong></p><div class="example-contents"><pre class="programlisting">ConnectionFactory connectionFactory = ...
+Connection connection = connectionFactory.createConnection();
+AMQSession&lt;?, ?&gt; session = (AMQSession&lt;?,?&gt;)connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+...
+
+AMQShortString queueName = new AMQShortString("testQueue");
+AMQShortString routingKey = new AMQShortString("testRoutingKey");
+AMQDestination destination = (AMQDestination) session.createQueue(queueName.asString());
+
+...
+
+// binding arguments
+Map&lt;String, Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+arguments.put("x-filter-jms-selector", "application='app1'");
+
+// create binding
+session.bindQueue(queueName, routingKey, FieldTable.convertToFieldTable(arguments),
+    new AMQShortString("amq.topic"), destination);</pre></div></div><br class="example-break" /><p> The following example illustrates the creation of queue binding to topic exchange with JMX
+        interface using the ManagedExchange interface. </p><div class="example"><a id="idm140218887616208"></a><p class="title"><strong>Example&#160;9.4.&#160;Binding a queue using JMX</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String, Object&gt; environment = new HashMap&lt;String, Object&gt;();
+environment.put(JMXConnector.CREDENTIALS, new String[] {"admin","password"});
+
+// Connect to service
+JMXServiceURL url =  new JMXServiceURL("service:jmx:rmi:///jndi/rmi://localhost:8999/jmxrmi");
+JMXConnector jmxConnector = JMXConnectorFactory.connect(url, environment);
+MBeanServerConnection mbsc =  jmxConnector.getMBeanServerConnection();
+
+// Object name for topic Exchange MBean for virtualhost 'default'
+ObjectName objectName = new ObjectName("org.apache.qpid:type=VirtualHost.Exchange,"
+    + "VirtualHost=\"default\",name=\"amq.topic\",ExchangeType=topic");
+
+// Get the ManagedExchange object
+ManagedExchange topicExchange = JMX.newMBeanProxy(mbsc, objectName, ManagedExchange.class);;
+
+// Create the binding arguments
+Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+arguments.put("x-filter-jms-selector", "application='app1'");
+
+// create binding
+topicExchange.createNewBinding("queue", "testBindingKey", arguments);</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-BindingUsingConfig"></a>9.1.6.3.&#160;Using configuration</h4></div></div></div><p>How to bind queues in the Virtual Host configuration file is shown in <a class="xref" href="Java-Broker-Virtual-Host-Binding-Queue.html" title="14.10.&#160;Queue Binding">Section&#160;14.10, &#8220;Queue Binding&#8221;</a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-Message-Grouping"></a>9.1.7.&#160;
+      Messaging Grouping
+    </h3></div></div></div><p>
+      The broker allows messaging applications to classify a set of related messages as
+      belonging to a group.  This allows a message producer to indicate to the consumer
+      that a group of messages should be considered a single logical operation with
+      respect to the application.
+    </p><p>
+      The broker can use this group identification to enforce policies controlling how
+      messages from a given group can be distributed to consumers.  For instance, the
+      broker can be configured to guarantee all the messages from a particular group are
+      processed in order across multiple consumers.
+    </p><p>
+      For example, assume we have a shopping application that manages items in a virtual
+      shopping cart.  A user may add an item to their shopping cart, then change their
+      mind and remove it.  If the application sends an <span class="emphasis"><em>add</em></span> message to the broker,
+      immediately followed by a <span class="emphasis"><em>remove</em></span> message, they will be queued in the proper
+      order - <span class="emphasis"><em>add</em></span>, followed by <span class="emphasis"><em>remove</em></span>.
+    </p><p>
+      However, if there are multiple consumers, it is possible that once a consumer
+      acquires the <span class="emphasis"><em>add</em></span> message, a different consumer may acquire the
+      <span class="emphasis"><em>remove</em></span> message.  This allows both messages to be processed in parallel,
+      which could result in a "race" where the <span class="emphasis"><em>remove</em></span> operation is incorrectly
+      performed before the <span class="emphasis"><em>add</em></span> operation.
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-GroupingMessages"></a>9.1.7.1.&#160;
+        Grouping Messages
+      </h4></div></div></div><p>
+        In order to group messages, the application would designate a particular
+        message header as containing a message's <span class="emphasis"><em>group identifier</em></span>.  The group
+        identifier stored in that header field would be a string value set by the message
+        producer.  Messages from the same group would have the same group identifier
+        value. The key that identifies the header must also be known to the message
+        consumers.  This allows the consumers to determine a message's assigned group.
+      </p><p>
+        The header that is used to hold the group identifier, as well as the values used
+        as group identifiers, are totally under control of the application.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-BrokerRole"></a>9.1.7.2.&#160;
+        The Role of the Broker in Message Grouping
+      </h4></div></div></div><p>
+        The broker will apply the following processing on each grouped message:
+        </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">Enqueue a received message on the destination queue.</li><li class="listitem">Determine the message's group by examining the message's group identifier header.</li><li class="listitem">Enforce <span class="emphasis"><em>consumption ordering</em></span> among messages belonging
+          to the same group. <span class="emphasis"><em>Consumption ordering</em></span> means one of two things
+          depending on how the queue has been configured.
+            <div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">In default mode, each group is assigned to a consumer for
+              the lifetime of the consumer.</li><li class="listitem">In C++ compatibility mode (which gives the same behaviour
+              as the C++ Qpid Broker), the Broker enforces a looser guarantee, nameley that all the
+              <span class="emphasis"><em>currently unacknowledged messages</em></span> in a group will be sent to the
+              same consumer.  This means that only one consumer can be processing messages from a particular
+              group at a given time.  When the consumer acknowledges all of its acquired
+              messages, then the broker <span class="emphasis"><em>may</em></span> pass the next pending message
+              from that group to a different consumer.</li></ul></div></li></ul></div><p>
+      </p><p>
+        The absence of a value in the designated header field for grouping as treated as indicative
+        of a lack of desire for the message to be grouped. Messages with such a lack of a value will
+        be distributed to any available consumer.
+      </p><p>
+        Note that message grouping has no effect on queue browsers.
+      </p><p>
+        Note well that distinct message groups would not block each other from delivery.
+        For example, assume a queue contains messages from two different message groups -
+        say group "A" and group "B" - and they are enqueued such that "A"'s messages are
+        in front of "B". If the first message of group "A" is in the process of being
+        consumed by a client, then the remaining "A" messages are blocked, but the
+        messages of the "B" group are available for consumption by other consumers - even
+        though it is "behind" group "A" in the queue.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Queues-OtherTypes-BrokerConfig"></a>9.1.7.3.&#160;
+        Broker Message Grouping Configuration
+      </h4></div></div></div><p>
+        In order for the broker to determine a message's group, the key for the header
+        that contains the group identifier must be provided to the broker via
+        configuration.  This is done on a per-queue basis, when the queue is first
+        configured.
+      </p><p>
+        This means that message group classification is determined by the message's destination
+        queue.
+      </p><p>
+        Specifically, the queue "holds" the header key that is used to find the message's
+        group identifier.  All messages arriving at the queue are expected to use the same
+        header key for holding the identifer.  Once the message is enqueued, the broker
+        looks up the group identifier in the message's header, and classifies the message
+        by its group.
+      </p><p>
+        Message group support is specified by providing one or more of the following settings
+        in the arguments map that is used when declaring the queue (e.g. when calling
+        <code class="code">AMQSession.createQueue()</code>).
+          </p><div class="table"><a id="idm140218887318048"></a><p class="title"><strong>Table&#160;9.2.&#160;Queue Declare Message Group Configuration Arguments</strong></p><div class="table-contents"><table border="1" summary="Queue Declare Message Group Configuration Arguments"><colgroup><col /><col /></colgroup><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>qpid.group_header_key</td><td>The name of the message header that holds the group identifier value.
+                  The values in this header may be of any supported type (i.e. not just strings).
+                  </td></tr><tr><td>qpid.shared_msg_group</td><td>Provide a value of "1" to switch on
+                  <a class="link" href="Java-Broker-Queues.html#Java-Broker-Queues-OtherTypes-BrokerRole" title="9.1.7.2.&#160; The Role of the Broker in Message Grouping">C++ compatibility mode</a></td></tr></tbody></table></div></div><p><br class="table-break" />
+      </p><p>
+        It is important to note that there is no need to provide the actual group
+        identifer values that will be used. The broker learns these values as messages are
+        received.  Also, there is no practical limit - aside from resource limitations -
+        to the number of different groups that the broker can track at run time.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Queues-OtherTypes-SetLowPrefetch"></a>9.1.8.&#160;Using low pre-fetch with special queue types</h3></div></div></div><p>Qpid clients receive buffered messages in batches, sized according to the pre-fetch value.
+      The current default is 500. </p><p>However, if you use the default value you will probably <span class="emphasis"><em>not</em></span> see
+      desirable behaviour when using priority, sorted, lvq or grouped queues. Once the broker has sent a
+      message to the client its delivery order is then fixed, regardless of the special behaviour of
+      the queue. </p><p>For example, if using a priority queue and a prefetch of 100, and 100 messages arrive with
+      priority 2, the broker will send these messages to the client. If then a new message arrives
+      will priority 1, the broker cannot leap frog messages of lower priority. The priority 1 will
+      be delivered at the front of the next batch of messages to be sent to the client.</p><p> So, you need to set the prefetch values for your client (consumer) to make this sensible.
+      To do this set the Java system property <code class="varname">max_prefetch</code> on the client
+      environment (using -D) before creating your consumer. </p><p>A default for all client connections can be set via a system property: </p><pre class="programlisting">
+-Dmax_prefetch=1
+</pre><p> The prefetch can be also be adjusted on a per connection basis by adding a
+      <code class="varname">maxprefetch</code> value to the <a class="ulink" href="/releases/qpid-0.26/programming/book/QpidJNDI.html#section-jms-connection-url" target="_top">Connection URLs</a>
+    </p><pre class="programlisting">
+amqp://guest:guest@client1/development?maxprefetch='1'&amp;brokerlist='tcp://localhost:5672'
+</pre><p>Setting the Qpid pre-fetch to 1 will give exact queue-type semantics as perceived by the
+      client however, this brings a performance cost. You could test with a slightly higher
+      pre-fetch to trade-off between throughput and exact semantics.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Exchanges.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Stores.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;8.&#160;Exchanges&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;10.&#160;Virtual Host Message Stores</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

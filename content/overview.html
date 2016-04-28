@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Overview - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Overview</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="overview">Overview</h1>
+
+<h2 id="the-challenge">The challenge</h2>
+
+<p>Modern large-scale applications are rarely built as monoliths.
+Instead, they are built as distributed network applications, with
+parts of the application in distinct processes and distinct parts of
+the world.</p>
+
+<p>All the same, the parts need to work together to behave as one
+reliable application. They need a way to communicate, and they must
+be able to tolerate failures.</p>
+
+<h2 id="messaging-is-a-better-way">Messaging is a better way</h2>
+
+<p>Modern messaging systems aren't the only way to get processes talking.
+Your application's parts can share a view into a database, or you can
+use HTTP and REST to expose information.  But these approaches have
+some serious drawbacks.  A database is reliable, but it isn't designed
+to intermediate communication.  Its focus is storing data, not moving
+it between processes.  REST helps you communicate efficiently, but it
+offers no reliability.  If the party you're talking to is unavailable,
+the transmission is dropped.</p>
+
+<p>A store-and-forward messaging system gives you efficient, reliable
+communication.  Message brokers take responsibility for ensuring
+messages reach their destination, even if the destination is
+temporarily out of reach.  Messaging APIs manage acknowledgments so
+that no messages are dropped in transit.</p>
+
+<h2 id="proprietary-messaging-solutions">Proprietary messaging solutions</h2>
+
+<p>For decades, the messaging approach to application integration was
+available only from proprietary vendors.  Each vendor had its own
+messaging API and its own wire protocol, and without going to trouble,
+they wouldn't interoperate.  Imagine each web server vendor using its
+own protocol.  That would seem intolerable, but that's precisely the
+situation messaging was in.</p>
+
+<p>With the introduction of the
+<a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a>
+API, things got a little better.  Now we had a standard messaging API.
+But JMS doesn't define a standard wire protocol, and it doesn't help
+you if you're not using Java.</p>
+
+<h2 id="qpid-and-amqp">Qpid and AMQP</h2>
+
+<p><a href="/amqp/index.html">AMQP</a> is the first open standard wire
+protocol for messaging.  AMQP is foremost about the choices it gives
+you.  You can choose any AMQP solution you prefer, and if the one you
+chose doesn't work out, you can switch.  Your application will still
+work.</p>
+
+<p>The Qpid project aims to spur the growth of the AMQP ecosystem.  We
+offer messaging APIs and message brokers for use in your application,
+and core libraries for making AMQP part of your own messaging product.</p>
+
+<ul>
+<li><p><em>Open source</em> - We do our work in the community, and you can gain
+from our contributions just as we can gain from yours.</p></li>
+<li><p><em>Many languages, many platforms</em> - We want AMQP to be available
+everywhere.  That's why we have focused on supporting a wide range
+of programming languages and computing environments.</p></li>
+<li><p><em>Application development</em> - Messaging is essential to reliable
+distributed applications, and we offer the tools you need to build
+one.  Check out our
+<a href="/components/index.html#messaging-apis">messaging APIs</a>.</p></li>
+<li><p><em>Messaging infrastructure</em> - You can design and deploy an AMQP
+network that integrates with other services in your organization.
+See our
+<a href="/components/index.html#messaging-servers">messaging servers</a>.</p></li>
+<li><p><em>Your messaging product</em> - We know that there are many established
+messaging systems, and we want to make it easy for them to speak
+AMQP.  Consider using <a href="/proton/index.html">Qpid Proton</a>
+instead of developing your own protocol support.</p></li>
+</ul>
+
+<h2 id="the-future-of-messaging-is-bigger-still">The future of messaging is bigger still</h2>
+
+<p>Traditional messaging has focused on the back office, with just one
+logical broker at the center of things.  The AMQP 1.0 standard makes
+messaging possible in a new, larger dimension.  The next incarnation
+of messaging will provide a diverse network of messaging
+intermediaries.  It will leverage redundancy in the network to route
+around failures, just as TCP and routers do, and it will allow
+messaging applications to operate at unprecedented scale.</p>
+
+<p>The Qpid community is building the foundations for these new
+technologies.</p>
+
+<h2 id="more-information">More information</h2>
+
+<ul>
+<li><a href="get-involved.html">How to get involved</a></li>
+<li><a href="http://www.apache.org/foundation/press/pr_2009_03_03.html">Qpid is a top-level project at Apache</a></li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

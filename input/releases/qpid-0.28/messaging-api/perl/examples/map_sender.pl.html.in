@@ -1,0 +1,46 @@
+
+<h1>map_sender.pl</h1>
+<div class="highlight"><pre><span class="k">use</span> <span class="n">strict</span><span class="p">;</span>
+<span class="k">use</span> <span class="n">warnings</span><span class="p">;</span>
+<span class="k">use</span> <span class="nn">Data::</span><span class="n">Dumper</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="n">qpid</span><span class="p">;</span>
+
+<span class="k">my</span> <span class="nv">$url</span>     <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;amqp:tcp:127.0.0.1:5672&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$address</span> <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;message_queue; {create: always}&quot;</span><span class="p">;</span>
+<span class="k">my</span> <span class="nv">$connectionOptions</span> <span class="o">=</span> <span class="p">(</span> <span class="nv">@ARGV</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="p">)</span> <span class="p">?</span> <span class="nv">$ARGV</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">:</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+
+<span class="c1"># create a new connection object</span>
+<span class="k">my</span> <span class="nv">$connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Connection</span><span class="p">(</span> <span class="nv">$url</span><span class="p">,</span> <span class="nv">$connectionOptions</span> <span class="p">);</span>
+
+<span class="nb">eval</span> <span class="p">{</span>
+
+    <span class="c1"># open the connection and create a session</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">open</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$session</span> <span class="o">=</span> <span class="nv">$connection</span><span class="o">-&gt;</span><span class="n">create_session</span><span class="p">();</span>
+
+    <span class="c1"># create a sender and connect it to the supplied address string</span>
+    <span class="k">my</span> <span class="nv">$sender</span>  <span class="o">=</span> <span class="nv">$session</span><span class="o">-&gt;</span><span class="n">create_sender</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+
+    <span class="c1"># create a message and set the content to be a map of values</span>
+    <span class="k">my</span> <span class="nv">$message</span> <span class="o">=</span> <span class="k">new</span> <span class="nn">qpid::messaging::</span><span class="n">Message</span><span class="p">();</span>
+    <span class="k">my</span> <span class="nv">$content</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">id</span>      <span class="o">=&gt;</span> <span class="mi">987654321</span><span class="p">,</span>
+        <span class="n">name</span>    <span class="o">=&gt;</span> <span class="s">&quot;Widget&quot;</span><span class="p">,</span>
+        <span class="n">percent</span> <span class="o">=&gt;</span> <span class="nb">sprintf</span><span class="p">(</span> <span class="s">&quot;%.2f&quot;</span><span class="p">,</span> <span class="mf">0.99</span> <span class="p">),</span>
+        <span class="n">colours</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="sx">qw (red </span><span class="n">green</span> <span class="n">white</span><span class="p">)],</span>
+    <span class="p">};</span>
+    <span class="nv">$message</span><span class="o">-&gt;</span><span class="n">set_content</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+
+    <span class="c1"># send the message</span>
+    <span class="nv">$sender</span><span class="o">-&gt;</span><span class="nb">send</span><span class="p">(</span> <span class="nv">$message</span><span class="p">,</span> <span class="mi">1</span> <span class="p">);</span>
+
+    <span class="c1"># close the connection and session</span>
+    <span class="nv">$session</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+    <span class="nv">$connection</span><span class="o">-&gt;</span><span class="nb">close</span><span class="p">();</span>
+<span class="p">};</span>
+
+<span class="nb">die</span> <span class="vg">$@</span> <span class="k">if</span> <span class="p">(</span><span class="vg">$@</span><span class="p">);</span>
+</pre></div>
+
+<p><a href="map_sender.pl">Download this file</a></p>

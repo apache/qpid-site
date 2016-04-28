@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Qpid::Messaging::Address - Qpid Ruby Messaging API</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-The+Address+String">The <code>Address</code> String</a>
+      <li><a href="#label-Options">Options</a>
+    </ul>
+  </nav>
+</div>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>qpid/ruby/lib/qpid_messaging/address.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-address_type">#address_type</a>
+    
+    <li ><a href="#method-i-address_type-3D">#address_type=</a>
+    
+    <li ><a href="#method-i-name">#name</a>
+    
+    <li ><a href="#method-i-name-3D">#name=</a>
+    
+    <li ><a href="#method-i-options">#options</a>
+    
+    <li ><a href="#method-i-options-3D">#options=</a>
+    
+    <li ><a href="#method-i-subject">#subject</a>
+    
+    <li ><a href="#method-i-subject-3D">#subject=</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Qpid.html">Qpid</a>
+  
+    <li><a href="../../Qpid/Messaging.html">Qpid::Messaging</a>
+  
+    <li><a href="../../Qpid/Messaging/Address.html">Qpid::Messaging::Address</a>
+  
+    <li><a href="../../Qpid/Messaging/Connection.html">Qpid::Messaging::Connection</a>
+  
+    <li><a href="../../Qpid/Messaging/Duration.html">Qpid::Messaging::Duration</a>
+  
+    <li><a href="../../Qpid/Messaging/Duration/Cqpid.html">Qpid::Messaging::Duration::Cqpid</a>
+  
+    <li><a href="../../Qpid/Messaging/Message.html">Qpid::Messaging::Message</a>
+  
+    <li><a href="../../Qpid/Messaging/Receiver.html">Qpid::Messaging::Receiver</a>
+  
+    <li><a href="../../Qpid/Messaging/Sender.html">Qpid::Messaging::Sender</a>
+  
+    <li><a href="../../Qpid/Messaging/Session.html">Qpid::Messaging::Session</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Qpid::Messaging::Address</h1>
+
+  <div id="description" class="description">
+    
+<p><a href="Address.html">Address</a> represents an address to which messages
+can be sent or from which they can be received.</p>
+
+<h2 id="label-The+Address+String">The <code>Address</code> String<span><a href="#label-The+Address+String">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>An <code>Address</code> can be described using the following pattern:</p>
+
+<p>&lt;address&gt; [ / &lt;subject&gt; ] ; [ { &lt;key&gt; : &lt;value&gt; , …
+} ]</p>
+
+<p>where <strong>address</strong> is a simple name and
+<strong>subject</strong> is a subject or subject pattern.</p>
+
+<h3 id="label-Options">Options<span><a href="#label-Options">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>The options, enclosed in curly braces, are key:value pairs delimited by a
+comma. The values can be nested maps also enclosed in curly braces. Or they
+can be lists of values, where they are contained within square brackets but
+still comma delimited, such as:</p>
+
+<pre>[value1,value2,value3]</pre>
+
+<p>The following are the list of supported options:</p>
+<dl class="rdoc-list label-list"><dt>create
+<dd>
+<p>Indicates if the address should be created; values are
+<strong>always</strong>, <strong>never</strong>, <strong>sender</strong> or
+<strong>reciever</strong>.</p>
+</dd><dt>assert
+<dd>
+<p>Indicates whether or not to assert any specified node properties; values
+are <strong>always</strong>, <strong>never</strong>,
+<strong>sender</strong> or <strong>receiver</strong>.</p>
+</dd><dt>delete
+<dd>
+<p>Indicates whether or not to delete the addressed node when a sender or
+receiver is cancelled; values are <strong>always</strong>,
+<strong>never</strong>, <strong>sender</strong> or
+<strong>receiver</strong>.</p>
+</dd><dt>node
+<dd>
+<p>A nested map describing properties for the addressed node. Properties are
+<strong>type</strong> (<strong>topic</strong> or <strong>queue</strong>),
+<strong>durable</strong> (a boolean), <strong>x-declare</strong> (a nested
+map of amqp 0.10-specific options) and <strong>x-bindings</strong> (nested
+list which specifies a queue, exchange or a binding key and arguments).</p>
+</dd><dt>link
+<dd>
+<p>A nested map through which properties of the link can be specified;
+properties are <strong>durable</strong>, <strong>reliability</strong>,
+<strong>x-declare</strong>, <strong>x-subscribe</strong> and
+<strong>x-bindings</strong>.</p>
+</dd><dt>mode
+<dd>
+<p>(*For receivers only*) indicates whether the receiver should consume or
+browse messages; values are <strong>consume</strong> (the default) and
+<strong>browse</strong>.</p>
+</dd></dl>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(address, address_impl = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new <code>Address</code> from an address string.</p>
+
+<h4 id="method-c-new-label-Attributes">Attributes<span><a href="#method-c-new-label-Attributes">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>address</code> - the address string</p>
+</li></ul>
+
+<h4 id="method-c-new-label-Examples">Examples<span><a href="#method-c-new-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># create a new address for a queue named &quot;my-queue&quot; that will
+# be created if it doesn&#39;t already exist
+addr = Qpid::Messaging::Address.new &quot;my-queue;{create:always}&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">address</span>, <span class="ruby-identifier">address_impl</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@address_impl</span> = <span class="ruby-identifier">address_impl</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Cqpid</span><span class="ruby-operator">::</span><span class="ruby-constant">Address</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">address</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-address_type" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">address_type</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the type for the <code>Address</code>.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="address_type-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 143</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">address_type</span>; <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">getType</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- address_type-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- address_type-method -->
+
+    
+      <div id="method-i-address_type-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">address_type=</span><span
+            class="method-args">(type)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the type for the <code>Address</code>.</p>
+
+<p>The type of the address determines how <code>Sender</code> and
+<code>Receiver</code> objects are constructed for it. It also affects how a
+reply-to address is encoded.</p>
+
+<p>If no type is specified then it will be determined by querying the broker.
+Explicitly setting the type prevents this.</p>
+
+<p>Values are either <strong>queue</strong> or <strong>topic</strong>.</p>
+
+<h4 id="method-i-address_type-3D-label-Options">Options<span><a href="#method-i-address_type-3D-label-Options">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>type</code> - the address type</p>
+</li></ul>
+
+<h4 id="method-i-address_type-3D-label-Examples">Examples<span><a href="#method-i-address_type-3D-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># creates an queue address
+addr = Qpid::Messaging::Address.new &quot;my-queue;{create:always}&quot;
+addr.address_type = &quot;queue&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="address_type-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">address_type=</span>(<span class="ruby-identifier">type</span>); <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">setType</span>(<span class="ruby-identifier">type</span>); <span class="ruby-keyword">end</span></pre>
+          </div><!-- address_type-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- address_type-3D-method -->
+
+    
+      <div id="method-i-name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the name for the <code>Address</code>.</p>
+
+<h4 id="method-i-name-label-Examples">Examples<span><a href="#method-i-name-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># display the name of the address
+addr = Qpid::Messaging::Address.new &quot;foo;{create:always}&quot;
+# outputs the word &#39;foo&#39;
+puts addr.name</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="name-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name</span>; <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">getName</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-method -->
+
+    
+      <div id="method-i-name-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">name=</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the name for the <code>Address</code>.</p>
+
+<h4 id="method-i-name-3D-label-Examples">Examples<span><a href="#method-i-name-3D-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># create a new address with the name &quot;my-queue&quot;
+addr = Qpid::Messaging::Address.new &quot;my-queue/my-subject;{create:always}&quot;
+# changes the name to &quot;my-new-queue&quot;
+addr.name = &quot;my-new-queue&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="name-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">name=</span>(<span class="ruby-identifier">name</span>); <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">setName</span> <span class="ruby-identifier">name</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- name-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- name-3D-method -->
+
+    
+      <div id="method-i-options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">options</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the options.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="options-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 169</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">options</span>; <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">getOptions</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- options-method -->
+
+    
+      <div id="method-i-options-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">options=</span><span
+            class="method-args">(options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the options for the address.</p>
+
+<p><strong>NOTE:</strong> See the class documentation for more details on
+options.</p>
+
+<h4 id="method-i-options-3D-label-Examples">Examples<span><a href="#method-i-options-3D-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre class="ruby"><span class="ruby-identifier">addr</span>.<span class="ruby-identifier">options</span> = :<span class="ruby-identifier">create</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">always</span>
+<span class="ruby-identifier">addr</span>.<span class="ruby-identifier">options</span> = :<span class="ruby-identifier">create</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">always</span>, :<span class="ruby-identifier">delete</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">always</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="options-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 180</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">options=</span>(<span class="ruby-identifier">options</span> = {}); <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">setOptions</span>(<span class="ruby-identifier">convert_options</span>(<span class="ruby-identifier">options</span>)); <span class="ruby-keyword">end</span></pre>
+          </div><!-- options-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- options-3D-method -->
+
+    
+      <div id="method-i-subject" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">subject</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the subject for the <code>Address</code>.</p>
+
+<h4 id="method-i-subject-label-Examples">Examples<span><a href="#method-i-subject-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># creates a new address with the subject &quot;bar&quot;
+addr = Qpid::Messaging::Address.new &quot;my-queue/bar;{create:always}&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="subject-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">subject</span>; <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">getSubject</span>; <span class="ruby-keyword">end</span></pre>
+          </div><!-- subject-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- subject-method -->
+
+    
+      <div id="method-i-subject-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">subject=</span><span
+            class="method-args">(subject)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Sets the subject for the <code>Address</code>.</p>
+
+<h4 id="method-i-subject-3D-label-Examples">Examples<span><a href="#method-i-subject-3D-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<pre># creates an address with the subject &quot;example&quot;
+addr = Qpid::Messaging::Address.new &quot;my-queue/example;{create:always}&quot;
+# changes the subject to &quot;test&quot;
+addr.subject = &quot;test&quot;</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="subject-3D-source">
+            <pre><span class="ruby-comment"># File qpid/ruby/lib/qpid_messaging/address.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">subject=</span>(<span class="ruby-identifier">subject</span>); <span class="ruby-ivar">@address_impl</span>.<span class="ruby-identifier">setSubject</span>(<span class="ruby-identifier">subject</span>); <span class="ruby-keyword">end</span></pre>
+          </div><!-- subject-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- subject-3D-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

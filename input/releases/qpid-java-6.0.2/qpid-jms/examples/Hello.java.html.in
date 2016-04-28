@@ -1,0 +1,67 @@
+
+<h1>Hello.java</h1>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">org.apache.qpid.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.InputStream</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Properties</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.jms.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.ConnectionFactory</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.Destination</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.MessageConsumer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.MessageProducer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.Session</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.TextMessage</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.naming.Context</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.naming.InitialContext</span><span class="o">;</span>
+
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Hello</span> 
+<span class="o">{</span>
+
+    <span class="kd">public</span> <span class="nf">Hello</span><span class="o">()</span> 
+    <span class="o">{</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">Hello</span> <span class="n">hello</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Hello</span><span class="o">();</span>
+        <span class="n">hello</span><span class="o">.</span><span class="na">runTest</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">runTest</span><span class="o">()</span> 
+    <span class="o">{</span>
+        <span class="k">try</span> <span class="o">(</span><span class="n">InputStream</span> <span class="n">resourceAsStream</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">getClass</span><span class="o">().</span><span class="na">getResourceAsStream</span><span class="o">(</span><span class="s">&quot;hello.properties&quot;</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="n">Properties</span> <span class="n">properties</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Properties</span><span class="o">();</span>
+            <span class="n">properties</span><span class="o">.</span><span class="na">load</span><span class="o">(</span><span class="n">resourceAsStream</span><span class="o">);</span>
+            <span class="n">Context</span> <span class="n">context</span> <span class="o">=</span> <span class="k">new</span> <span class="n">InitialContext</span><span class="o">(</span><span class="n">properties</span><span class="o">);</span>
+
+            <span class="n">ConnectionFactory</span> <span class="n">connectionFactory</span> <span class="o">=</span> <span class="o">(</span><span class="n">ConnectionFactory</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">&quot;qpidConnectionfactory&quot;</span><span class="o">);</span>
+            <span class="n">Connection</span> <span class="n">connection</span> <span class="o">=</span> <span class="n">connectionFactory</span><span class="o">.</span><span class="na">createConnection</span><span class="o">();</span>
+            <span class="n">connection</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+            <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">createSession</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="n">Session</span><span class="o">.</span><span class="na">AUTO_ACKNOWLEDGE</span><span class="o">);</span>
+            <span class="n">Destination</span> <span class="n">destination</span> <span class="o">=</span> <span class="o">(</span><span class="n">Destination</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">lookup</span><span class="o">(</span><span class="s">&quot;topicExchange&quot;</span><span class="o">);</span>
+
+            <span class="n">MessageProducer</span> <span class="n">messageProducer</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createProducer</span><span class="o">(</span><span class="n">destination</span><span class="o">);</span>
+            <span class="n">MessageConsumer</span> <span class="n">messageConsumer</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createConsumer</span><span class="o">(</span><span class="n">destination</span><span class="o">);</span>
+
+            <span class="n">TextMessage</span> <span class="n">message</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="na">createTextMessage</span><span class="o">(</span><span class="s">&quot;Hello world!&quot;</span><span class="o">);</span>
+            <span class="n">messageProducer</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+
+            <span class="n">message</span> <span class="o">=</span> <span class="o">(</span><span class="n">TextMessage</span><span class="o">)</span><span class="n">messageConsumer</span><span class="o">.</span><span class="na">receive</span><span class="o">();</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">message</span><span class="o">.</span><span class="na">getText</span><span class="o">());</span>
+
+            <span class="n">connection</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+            <span class="n">context</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="k">catch</span> <span class="o">(</span><span class="n">Exception</span> <span class="n">exp</span><span class="o">)</span> 
+        <span class="o">{</span>
+            <span class="n">exp</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p><a href="Hello.java">Download this file</a></p>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Source Code - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Source Code</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="source-code">Source Code</h1>
+
+<p>Qpid employs
+<a href="http://en.wikipedia.org/wiki/Revision_control">revision control</a> to
+track and manage changes to its source code.</p>
+
+<h2 id="browse-the-code">Browse the code</h2>
+
+<ul>
+<li><a href="http://svn.apache.org/viewvc/qpid">Browse via ViewVC</a></li>
+<li><a href="https://svn.apache.org/repos/asf/qpid">Browse the source tree directly</a></li>
+<li><form id="-viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form></li>
+</ul>
+
+<h2 id="check-out-the-code">Check out the code</h2>
+
+<p>To access the repository anonymously, use the <code>svn checkout</code> command
+with one of the Subversion URLs below.</p>
+
+<pre><code>Qpid
+% svn checkout http://svn.apache.org/repos/asf/qpid/trunk/qpid qpid
+
+Qpid Java
+% svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
+</code></pre>
+
+<p>When adding files to Subversion, it's important that the appropriate
+Subversion properties are set. The client can do it automatically by
+modifying the <code>auto-props</code> section of the Subversion config file.  Use
+the contents of <a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props">qpid/etc/svn-auto-props</a>.</p>
+
+<div class="two-column">
+
+<section>
+
+<h3 id="qpid">Qpid</h3>
+
+<ul>
+<li><a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/">Anonymous Subversion URL</a></li>
+<li><a href="https://svn.apache.org/repos/asf/qpid/trunk/qpid/">Committer Subversion URL</a></li>
+<li><a href="http://svn.apache.org/viewvc/qpid/trunk/qpid/">Browse via ViewVC</a></li>
+</ul>
+
+</section>
+
+<section>
+
+<h3 id="qpid-java">Qpid Java</h3>
+
+<ul>
+<li><a href="http://svn.apache.org/repos/asf/qpid/java/trunk/">Anonymous Subversion URL</a></li>
+<li><a href="https://svn.apache.org/repos/asf/qpid/java/trunk/">Committer Subversion URL</a></li>
+<li><a href="http://svn.apache.org/viewvc/qpid/java/trunk/">Browse via ViewVC</a></li>
+</ul>
+
+</section>
+
+</div>
+
+<h2 id="install-the-code">Install the code</h2>
+
+<p>Consult the install documentation below.</p>
+
+<ul>
+<li><a href="https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to">How to build Qpid Java</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL">Installing Qpid C++</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/README.txt">Installing Qpid Python</a></li>
+</ul>
+
+<h2 id="git">Git</h2>
+
+<p>Read-only <a href="http://git-scm.com/">Git</a> mirrors are available.  Use one
+of the following commands.</p>
+
+<pre><code>Qpid
+% git clone git://git.apache.org/qpid.git
+
+Qpid Java
+% git clone git://git.apache.org/qpid-java.git
+</code></pre>
+
+<p>If you have commit access, it's also possible to commit back with <code>git
+svn dcommit</code> by following the instructions on the
+<a href="http://www.apache.org/dev/git.html">Git at Apache</a> page.</p>
+
+<h2 id="notifications">Notifications</h2>
+
+<p>The traffic on these lists is automatically generated.  Please do not
+post any messages to them.</p>
+
+<p>To subscribe, send an email with subject "subscribe" to the subscribe
+address.  To unsubscribe, send "unsubscribe" to the unsubscribe
+address.</p>
+
+<h3 id="commits-list">Commits list</h3>
+
+<p>Alerts for changes committed to the Qpid source.  </p>
+
+<ul>
+<li>Send "subscribe" to <a href="&#x6d;&#x61;il&#116;o&#x3a;co&#x6d;&#x6d;i&#116;&#x73;-&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;">co&#x6d;&#x6d;i&#116;&#x73;-&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;</a></li>
+<li>Send "unsubscribe" to <a href="&#x6d;&#x61;il&#116;o&#x3a;co&#x6d;&#x6d;i&#116;&#x73;-u&#110;&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;">co&#x6d;&#x6d;i&#116;&#x73;-u&#110;&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;</a></li>
+<li><a href="http://mail-archives.apache.org/mod_mbox/qpid-commits/">List information</a></li>
+<li><a href="http://qpid.2158936.n2.nabble.com/Apache-Qpid-commits-f7106555.html">Archive</a></li>
+<li><a href="http://mail-archives.apache.org/mod_mbox/qpid-commits/?format=atom">News feed</a></li>
+</ul>
+
+<h3 id="notifications-list">Notifications list</h3>
+
+<p>Alerts for build and test failures from our continuous integration
+servers.</p>
+
+<ul>
+<li>Send "subscribe" to <a href="&#x6d;&#x61;il&#116;o&#x3a;&#110;o&#116;ific&#x61;&#116;io&#110;&#x73;-&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;">&#110;o&#116;ific&#x61;&#116;io&#110;&#x73;-&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;</a></li>
+<li>Send "unsubscribe" to <a href="&#x6d;&#x61;il&#116;o&#x3a;&#110;o&#116;ific&#x61;&#116;io&#110;&#x73;-u&#110;&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;">&#110;o&#116;ific&#x61;&#116;io&#110;&#x73;-u&#110;&#x73;u&#98;&#x73;cri&#98;&#101;&#x40;&#113;&#x70;i&#x64;&#x2e;&#x61;&#x70;&#x61;c&#104;&#101;&#x2e;or&#x67;</a></li>
+<li><a href="http://mail-archives.apache.org/mod_mbox/qpid-notifications/">List information</a></li>
+<li><a href="http://mail-archives.apache.org/mod_mbox/qpid-notifications/?format=atom">News feed</a></li>
+</ul>
+
+<h2 id="more-information">More information</h2>
+
+<ul>
+<li><a href="http://subversion.apache.org/">Subversion project</a></li>
+<li><a href="http://svnbook.red-bean.com/">Subversion manual</a></li>
+<li><a href="http://www.apache.org/dev/version-control.html">Subversion at Apache</a></li>
+<li><a href="http://git-scm.com">Git project</a></li>
+<li><a href="http://git-scm.com/documentation">Git documentation</a></li>
+<li><a href="http://www.apache.org/dev/git.html">Git at Apache</a></li>
+<li><a href="http://jenkins-ci.org/">Jenkins project</a></li>
+<li><a href="https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins">Jenkins documentation</a></li>
+<li><a href="http://ci.apache.org/">Continuous integration at Apache</a></li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

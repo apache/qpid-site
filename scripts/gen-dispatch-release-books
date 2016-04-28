@@ -1,0 +1,46 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+def copy_html_to_in(from_dir, to_dir):
+    html = list_dir(from_dir, "*.html")
+    for h in html:
+        copy(join(from_dir, h), join(to_dir, h+".in"))
+
+def gen_books_and_man(release, source_dir, output_dir):
+    build_dir = join(source_dir, "build")
+    make_dir(build_dir)
+    with working_dir(build_dir):
+        call("cmake ..")
+        call("make")
+        call("make doc")
+
+    # Rename html files as html.in so they'll get the qpid website style.
+    copy_html_to_in(join(build_dir, "doc", "html", "book"), join(output_dir, "book"))
+    copy_html_to_in(join(build_dir, "doc", "html", "man"), join(output_dir, "man"))
+
+## Now do stuff ##
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release_from_git("dispatch", source_release)
+
+gen_books_and_man(release, source_dir, release_dir)
+
+notice("Books generated")

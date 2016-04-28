@@ -1,0 +1,103 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">7.8.&#160;Queues</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Managing-Exchanges.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;7.&#160;Managing Entities</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-Ports.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Management-Managing-Queues"></a>7.8.&#160;Queues</h2></div></div></div><p><a class="link" href="Java-Broker-Concepts-Queues.html" title="4.7.&#160;Queues">Queues</a> are named entities that
+    hold/buffer messages for later delivery to consumer applications.</p><p>Queues can be managed using the HTTP, JMX or AMQP channels.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queues-Types"></a>7.8.1.&#160;Types</h3></div></div></div><p>The Broker supports four different queue types, each with different delivery semantics.</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p><a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Standard" title="7.8.1.1.&#160;Standard">Standard</a> - a simple First-In-First-Out (FIFO) queue</p></li><li class="listitem"><p><a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Priority" title="7.8.1.2.&#160;Priority">Priority</a> - delivery order depends on the priority of each message</p></li><li class="listitem"><p><a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Sorted" title="7.8.1.3.&#160;Sorted Queues">Sorted</a> -
+            delivery order depends on the value of the sorting key property in each message</p></li><li class="listitem"><p><a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-LVQ" title="7.8.1.4.&#160;Last Value Queues (LVQ)">Last Value
+              Queue</a> - also known as an LVQ, retains only the last (newest) message received
+            with a given LVQ key value</p></li></ul></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-Types-Standard"></a>7.8.1.1.&#160;Standard</h4></div></div></div><p>A simple First-In-First-Out (FIFO) queue</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-Types-Priority"></a>7.8.1.2.&#160;Priority</h4></div></div></div><p>In a priority queue, messages on the queue are delivered in an order determined by the
+          <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getJMSPriority()" target="_top">JMS priority message
+          header</a> within the message. By default Qpid supports the 10 priority levels
+        mandated by JMS, with priority value 0 as the lowest priority and 9 as the highest. </p><p>It is possible to reduce the effective number of priorities if desired.</p><p>JMS defines the <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#DEFAULT_PRIORITY" target="_top">
+          default message priority</a> as 4. Messages sent without a specified priority use this
+        default. </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-Types-Sorted"></a>7.8.1.3.&#160;Sorted Queues</h4></div></div></div><p>Sorted queues allow the message delivery order to be determined by value of an arbitrary
+          <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getStringProperty()" target="_top">JMS message
+          property</a>. Sort order is alpha-numeric and the property value must have a type
+        java.lang.String.</p><p>Messages sent to a sorted queue without the specified JMS message property will be
+        inserted into the 'last' position in the queue.</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-Types-LVQ"></a>7.8.1.4.&#160;Last Value Queues (LVQ)</h4></div></div></div><p>LVQs (or conflation queues) are special queues that automatically discard any message
+        when a newer message arrives with the same key value. The key is specified by arbitrary
+          <a class="ulink" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#getPropertyNames()" target="_top">JMS message
+          property</a>.</p><p>An example of an LVQ might be where a queue represents prices on a stock exchange: when
+        you first consume from the queue you get the latest quote for each stock, and then as new
+        prices come in you are sent only these updates. </p><p>Like other queues, LVQs can either be browsed or consumed from. When browsing an
+        individual subscriber does not remove the message from the queue when receiving it. This
+        allows for many subscriptions to browse the same LVQ (i.e. you do not need to create and
+        bind a separate LVQ for each subscriber who wishes to receive the contents of the
+        LVQ).</p><p>Messages sent to an LVQ without the specified property will be delivered as normal and
+        will never be "replaced".</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queues-Attributes"></a>7.8.2.&#160;Attributes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p><span class="emphasis"><em>Name of the queue</em></span>. Message consumers and browsers refer to this
+            name when they wish to subscribe to queue to receive messages from it.</p></li><li class="listitem"><p><span class="emphasis"><em>Type of the queue</em></span>. Can be either <a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Standard" title="7.8.1.1.&#160;Standard">standard</a>, <a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Priority" title="7.8.1.2.&#160;Priority">priority</a>, <a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-Sorted" title="7.8.1.3.&#160;Sorted Queues">sorted</a>, or <a class="link" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Types-LVQ" title="7.8.1.4.&#160;Last Value Queues (LVQ)">lvq</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Durable</em></span>. Whether the queue survives a restart. Messages on a
+            non durable queue do not survive a restart even if they are marked persistent.</p></li><li class="listitem"><p><span class="emphasis"><em>Maximum/Minimum TTL</em></span>. Defines a maximum and minimum
+            time-to-live. Messages arriving with ttl larger than the maximum will be overridden by
+            the maximum. Similarly, messages arriving with tll less than the minimum (or no ttl at
+            all), will be overridden by the minimum.</p><p>Changing these values affects only new arrivals, existing messages already on the
+            queue are not affected.</p></li><li class="listitem"><p><span class="emphasis"><em>Message persistent override</em></span>. Allow message persistent settings
+            of incoming messages to be overridden. Changing this value affects only new arrivals,
+            existing messages on the queue are not affected. </p></li><li class="listitem"><p><span class="emphasis"><em>Queue capacity</em></span>. Queues have the ability to limit the of the
+            cumulative size of all the messages contained within the store. This feature is
+            described in detail <a class="xref" href="Java-Broker-Runtime-Disk-Space-Management.html" title="9.2.&#160;Disk Space Management">Section&#160;9.2, &#8220;Disk Space Management&#8221;</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Alerting Thresholds</em></span>. Queues have the ability to alert on a
+            variety of conditions: total queue depth exceeded a number or size, message age exceeded
+            a threshold, message size exceeded a threshold. These thresholds are soft. See <a class="xref" href="Java-Broker-Appendix-Queue-Alerts.html" title="Appendix&#160;D.&#160;Queue Alerts">Appendix&#160;D, <em>Queue Alerts</em></a></p></li><li class="listitem"><p><span class="emphasis"><em>Maximum Delivery Count/Alternate Exchange</em></span>. See <a class="xref" href="Java-Broker-Runtime-Handling-Undeliverable-Messages.html" title="9.4.&#160;Handing Undeliverable Messages">Section&#160;9.4, &#8220;Handing Undeliverable Messages&#8221;</a></p></li><li class="listitem"><p><span class="emphasis"><em>Message Groups</em></span>. See <a class="xref" href="Java-Broker-Management-Managing-Queues.html#Java-Broker-Management-Managing-Queues-Message-Grouping" title="7.8.6.&#160;Messaging Grouping">Section&#160;7.8.6, &#8220;Messaging Grouping&#8221;</a></p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queue-Children"></a>7.8.3.&#160;Children</h3></div></div></div><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Binding</p></li></ul></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queue-Lifecycle"></a>7.8.4.&#160;Lifecycle</h3></div></div></div><p>Not supported</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queues-QueueDeclareArguments"></a>7.8.5.&#160;Queue Declare Arguments</h3></div></div></div><p>To create a priority, sorted or LVQ queue programmatically from JMX or AMQP, pass the
+      appropriate queue-declare arguments.</p><div class="table"><a id="idm228634691120"></a><p class="title"><strong>Table&#160;7.2.&#160;Queue-declare arguments understood for priority, sorted and LVQ queues</strong></p><div class="table-contents"><table border="1" summary="Queue-declare arguments understood for priority, sorted and LVQ queues"><colgroup><col /><col /><col /><col /></colgroup><thead><tr><th>Queue type</th><th>Argument name</th><th>Argument name</th><th>Argument Description</th></tr></thead><tbody><tr><td>priority</td><td>x-qpid-priorities</td><td>java.lang.Integer</td><td>Specifies a priority queue with given number priorities</td></tr><tr><td>sorted</td><td>qpid.queue_sort_key</td><td>java.lang.String</td><td>Specifies sorted queue with given message property used to sort the
+              entries</td></tr><tr><td>lvq</td><td>qpid.last_value_queue_key</td><td>java.lang.String</td><td>Specifies lvq queue with given message property used to conflate the
+              entries</td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queues-Message-Grouping"></a>7.8.6.&#160;Messaging Grouping</h3></div></div></div><p> The broker allows messaging applications to classify a set of related messages as
+      belonging to a group. This allows a message producer to indicate to the consumer that a group
+      of messages should be considered a single logical operation with respect to the application. </p><p> The broker can use this group identification to enforce policies controlling how messages
+      from a given group can be distributed to consumers. For instance, the broker can be configured
+      to guarantee all the messages from a particular group are processed in order across multiple
+      consumers. </p><p> For example, assume we have a shopping application that manages items in a virtual
+      shopping cart. A user may add an item to their shopping cart, then change their mind and
+      remove it. If the application sends an <span class="emphasis"><em>add</em></span> message to the broker,
+      immediately followed by a <span class="emphasis"><em>remove</em></span> message, they will be queued in the
+      proper order - <span class="emphasis"><em>add</em></span>, followed by <span class="emphasis"><em>remove</em></span>. </p><p> However, if there are multiple consumers, it is possible that once a consumer acquires
+      the <span class="emphasis"><em>add</em></span> message, a different consumer may acquire the
+        <span class="emphasis"><em>remove</em></span> message. This allows both messages to be processed in parallel,
+      which could result in a "race" where the <span class="emphasis"><em>remove</em></span> operation is incorrectly
+      performed before the <span class="emphasis"><em>add</em></span> operation. </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-GroupingMessages"></a>7.8.6.1.&#160;Grouping Messages</h4></div></div></div><p> In order to group messages, the application would designate a particular message header
+        as containing a message's <span class="emphasis"><em>group identifier</em></span>. The group identifier stored
+        in that header field would be a string value set by the message producer. Messages from the
+        same group would have the same group identifier value. The key that identifies the header
+        must also be known to the message consumers. This allows the consumers to determine a
+        message's assigned group. </p><p> The header that is used to hold the group identifier, as well as the values used as
+        group identifiers, are totally under control of the application. </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Managing-Queues-BrokerRole"></a>7.8.6.2.&#160; The Role of the Broker in Message Grouping </h4></div></div></div><p> The broker will apply the following processing on each grouped message: </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>Enqueue a received message on the destination queue.</p></li><li class="listitem"><p>Determine the message's group by examining the message's group identifier
+              header.</p></li><li class="listitem"><p>Enforce <span class="emphasis"><em>consumption ordering</em></span> among messages belonging to the
+              same group. <span class="emphasis"><em>Consumption ordering</em></span> means one of two things
+              depending on how the queue has been configured. </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p> In default mode, a group gets assigned to a single consumer for the lifetime
+                  of that consumer, and the broker will pass all subsequent messages in the group to
+                  that consumer. </p></li><li class="listitem"><p>In 'shared groups' mode (which gives the same behaviour as the Qpid C++
+                  Broker) the broker enforces a looser guarantee, namely that all the
+                    <span class="emphasis"><em>currently unacknowledged messages</em></span> in a group are sent to
+                  the same consumer, but the consumer used may change over time even if the
+                  consumers do not. This means that only one consumer can be processing messages
+                  from a particular group at any given time, however if the consumer acknowledges
+                  all of its acquired messages then the broker <span class="emphasis"><em>may</em></span> pass the
+                  next pending message in that group to a different consumer. </p></li></ul></div></li></ul></div><p>
+      </p><p> The absence of a value in the designated group header field of a message is treated as
+        follows: </p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p> In default mode, failure for a message to specify a group is treated as a desire
+              for the message not to be grouped at all. Such messages will be distributed to any
+              available consumer, without the ordering quarantees imposed by grouping. </p></li><li class="listitem"><p> In 'shared groups' mode (which gives the same behaviour as the Qpid C++ Broker)
+              the broker assigns messages without a group value to a 'default group'. Therefore, all
+              such "unidentified" messages are considered by the broker as part of the same group,
+              which will handled like any other group. The name of this default group is
+              "qpid.no-group", although it can be customised as detailed below. </p></li></ul></div><p>
+      </p><p> Note that message grouping has no effect on queue browsers.</p><p> Note well that distinct message groups would not block each other from delivery. For
+        example, assume a queue contains messages from two different message groups - say group "A"
+        and group "B" - and they are enqueued such that "A"'s messages are in front of "B". If the
+        first message of group "A" is in the process of being consumed by a client, then the
+        remaining "A" messages are blocked, but the messages of the "B" group are available for
+        consumption by other consumers - even though it is "behind" group "A" in the queue. </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Queues-SetLowPrefetch"></a>7.8.7.&#160;Using low pre-fetch with special queue types</h3></div></div></div><p>Qpid clients receive buffered messages in batches, sized according to the pre-fetch value.
+      The current default is 500. </p><p>However, if you use the default value you will probably <span class="emphasis"><em>not</em></span> see
+      desirable behaviour when using priority, sorted, lvq or grouped queues. Once the broker has
+      sent a message to the client its delivery order is then fixed, regardless of the special
+      behaviour of the queue. </p><p>For example, if using a priority queue and a prefetch of 100, and 100 messages arrive with
+      priority 2, the broker will send these messages to the client. If then a new message arrives
+      will priority 1, the broker cannot leap frog messages of lower priority. The priority 1 will
+      be delivered at the front of the next batch of messages to be sent to the client.</p><p> So, you need to set the prefetch values for your client (consumer) to make this sensible.
+      To do this set the Java system property <code class="varname">max_prefetch</code> on the client
+      environment (using -D) before creating your consumer. </p><p>A default for all client connections can be set via a system property: </p><pre class="programlisting">
+-Dmax_prefetch=1
+</pre><p> The prefetch can be also be adjusted on a per connection basis by adding a
+        <code class="varname">maxprefetch</code> value to the <a class="ulink" href="{{site_url}}/releases/qpid-0.32/programming/book/QpidJNDI.html#section-jms-connection-url" target="_top">Connection URLs</a>
+    </p><pre class="programlisting">
+amqp://guest:guest@client1/development?maxprefetch='1'&amp;brokerlist='tcp://localhost:5672'
+</pre><p>Setting the Qpid pre-fetch to 1 will give exact queue-type semantics as perceived by the
+      client however, this brings a performance cost. You could test with a slightly higher
+      pre-fetch to trade-off between throughput and exact semantics.</p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Management-Managing-Exchanges.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Management-Managing-Entities.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-Ports.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">7.7.&#160;Exchanges&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;7.9.&#160;Ports</td></tr></table></div></div>

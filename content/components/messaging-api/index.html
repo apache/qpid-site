@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Messaging API - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/components/index.html">Components</a></li><li>Qpid Messaging API</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-messaging-api">Qpid Messaging API</h1>
+
+<p>A connection-oriented messaging API that supports many languages and
+platforms.</p>
+
+<ul>
+<li><em>Languages</em> - C++, Perl, Python, Ruby, .NET</li>
+<li><em>Platforms</em> - Linux, Windows</li>
+<li><em>AMQP versions</em> - 1.0, 0-10</li>
+<li><em>Downloads</em> - C++, bindings: <a href="http://www.apache.org/dyn/closer.lua/qpid/cpp/0.34/qpid-cpp-0.34.tar.gz">qpid-cpp-0.34.tar.gz</a> [<a href="http://www.apache.org/dist/qpid/cpp/0.34/qpid-cpp-0.34.tar.gz.asc">ASC</a>, <a href="http://www.apache.org/dist/qpid/cpp/0.34/qpid-cpp-0.34.tar.gz.md5">MD5</a>, <a href="http://www.apache.org/dist/qpid/cpp/0.34/qpid-cpp-0.34.tar.gz.sha1">SHA1</a>],<br/>Python: <a href="http://www.apache.org/dyn/closer.lua/qpid/0.32/qpid-python-0.32.tar.gz">qpid-python-0.32.tar.gz</a> [<a href="http://www.apache.org/dist/qpid/0.32/qpid-python-0.32.tar.gz.asc">ASC</a>, <a href="http://www.apache.org/dist/qpid/0.32/qpid-python-0.32.tar.gz.md5">MD5</a>, <a href="http://www.apache.org/dist/qpid/0.32/qpid-python-0.32.tar.gz.sha1">SHA1</a>]</li>
+<li><em>Source location</em> -  <a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/">http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/</a>,<br/> <a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/">http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/</a></li>
+</ul>
+
+<h2 id="documentation">Documentation</h2>
+
+<p>This is the documentation for the current released version.  You can
+find previous versions with our
+<a href="/releases/index.html#past-releases">past releases</a>.</p>
+
+<div class="two-column">
+
+<ul>
+<li><a href="/releases/qpid-0.32/programming/book/ch02.html">Using the Qpid Messaging API</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/cpp/api/index.html">C++ API reference</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/cpp/examples/index.html">C++ examples</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/perl/examples/index.html">Perl examples</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/python/api/index.html">Python API reference</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/python/examples/index.html">Python examples</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/ruby/api/index.html">Ruby API reference</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/ruby/examples/index.html">Ruby examples</a></li>
+<li><a href="/releases/qpid-0.32/programming/book/ch05.html">The .NET Binding for the C++ Messaging Client</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/dotnet/api/index.html">.NET API reference</a></li>
+<li><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/index.html">.NET examples</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/tags/0.32/qpid/cpp/INSTALL">Installing Qpid C++</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/tags/0.32/qpid/python/README.txt">Installing Qpid Python</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/tags/0.32/qpid/cpp/bindings/qpid/ruby/README.rdoc">Installing the Ruby Messaging API</a></li>
+<li><a href="http://svn.apache.org/repos/asf/qpid/tags/0.32/qpid/cpp/bindings/qpid/dotnet/ReadMe.txt">Installing the .NET Messaging API</a></li>
+</ul>
+
+</div>
+
+<h3 id="examples">Examples</h3>
+
+<table>
+<thead>
+<tr>
+  <th>Language</th>
+  <th>Hello World</th>
+  <th>Client</th>
+  <th>Server</th>
+  <th>Spout</th>
+  <th>Drain</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><em>C++</em></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/cpp/examples/hello_world.cpp.html">hello_world.cpp</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/cpp/examples/client.cpp.html">client.cpp</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/cpp/examples/server.cpp.html">server.cpp</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/cpp/examples/spout.cpp.html">spout.cpp</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/cpp/examples/drain.cpp.html">drain.cpp</a></td>
+</tr>
+<tr>
+  <td><em>Perl</em></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/perl/examples/hello_world.pl.html">hello_world.pl</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/perl/examples/client.pl.html">client.pl</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/perl/examples/server.pl.html">server.pl</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/perl/examples/spout.pl.html">spout.pl</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/perl/examples/drain.pl.html">drain.pl</a></td>
+</tr>
+<tr>
+  <td><em>Python</em></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/python/examples/hello.html">hello</a></td>
+  <td></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/python/examples/server.html">server</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/python/examples/spout.html">spout</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/python/examples/drain.html">drain</a></td>
+</tr>
+<tr>
+  <td><em>Ruby</em></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/ruby/examples/hello_world.rb.html">hello_world.rb</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/ruby/examples/client.rb.html">client.rb</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/ruby/examples/server.rb.html">server.rb</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/ruby/examples/spout.rb.html">spout.rb</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/ruby/examples/drain.rb.html">drain.rb</a></td>
+</tr>
+<tr>
+  <td><em>.NET</em></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/csharp.example.helloworld.cs.html">helloworld.cs</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/csharp.example.client.cs.html">client.cs</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/csharp.example.server.cs.html">server.cs</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/csharp.example.spout.cs.html">spout.cs</a></td>
+  <td><a href="/releases/qpid-0.32/messaging-api/dotnet/examples/csharp.example.drain.cs.html">drain.cs</a></td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="issues">Issues</h2>
+
+<p>For more information about finding and reporting bugs, see
+<a href="/issues.html">Qpid issues</a>.</p>
+
+<form id="jira-search-form">
+  <input type="hidden" name="jql" value="project = QPID and component in ('C++ Client', 'Dot Net Client', 'Perl Client', 'Python Client', 'Ruby Client') and text ~ '{}' order by updatedDate desc"/>
+  <input type="text" name="text"/>
+  <button type="submit">Search</button>
+</form>
+
+<div class="two-column">
+
+<ul>
+<li><a href="https://issues.apache.org/jira/issues/?jql=resolution%20%3D%20EMPTY%20and%20issuetype%20%3D%20%22Bug%22%20and%20component%20in%20(%22C%2B%2B%20Client%22%2C%20%22Dot%20Net%20Client%22%2C%20%22Perl%20Client%22%2C%20%22Python%20Client%22%2C%20%22Ruby%20Client%22)%20and%20project%20%3D%20%22QPID%22">Open bugs</a></li>
+<li><a href="https://issues.apache.org/jira/issues/?jql=resolution%20%3D%20Fixed%20and%20issuetype%20%3D%20%22Bug%22%20and%20component%20in%20(%22C%2B%2B%20Client%22%2C%20%22Dot%20Net%20Client%22%2C%20%22Perl%20Client%22%2C%20%22Python%20Client%22%2C%20%22Ruby%20Client%22)%20and%20project%20%3D%20%22QPID%22">Fixed bugs</a></li>
+<li><a href="https://issues.apache.org/jira/issues/?jql=resolution%20%3D%20EMPTY%20and%20issuetype%20in%20(%22New%20Feature%22%2C%20%22Improvement%22)%20and%20component%20in%20(%22C%2B%2B%20Client%22%2C%20%22Dot%20Net%20Client%22%2C%20%22Perl%20Client%22%2C%20%22Python%20Client%22%2C%20%22Ruby%20Client%22)%20and%20project%20%3D%20%22QPID%22">Requested enhancements</a></li>
+<li><a href="https://issues.apache.org/jira/issues/?jql=resolution%20%3D%20Fixed%20and%20issuetype%20in%20(%22New%20Feature%22%2C%20%22Improvement%22)%20and%20component%20in%20(%22C%2B%2B%20Client%22%2C%20%22Dot%20Net%20Client%22%2C%20%22Perl%20Client%22%2C%20%22Python%20Client%22%2C%20%22Ruby%20Client%22)%20and%20project%20%3D%20%22QPID%22">Completed enhancements</a></li>
+<li><a href="http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;priority=3&amp;summary=[Enter%20a%20brief%20description]&amp;components=12311396">Report a bug</a></li>
+<li><a href="http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;priority=3&amp;summary=[Enter%20a%20brief%20description]&amp;components=12311396">Request an enhancement</a></li>
+<li><a href="http://issues.apache.org/jira/browse/QPID/component/12311396">Jira summary page</a></li>
+</ul>
+
+</div>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

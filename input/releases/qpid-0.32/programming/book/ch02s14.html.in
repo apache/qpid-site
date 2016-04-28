@@ -1,0 +1,34 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.14.&#160;Cluster Failover</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch02s13.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s15.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm228614113104"></a>2.14.&#160;Cluster Failover</h2></div></div></div><p>The messaging broker can be run in clustering mode, which provides high reliability through replicating state between brokers in the cluster. If one broker in a cluster fails, clients can choose another broker in the cluster and continue their work. Each broker in the cluster also advertises the addresses of all known brokers
+
+      <a class="footnote" href="#ftn.idm228614111856" id="idm228614111856"><sup class="footnote">[11]</sup></a>
+
+      . A client can use this information to dynamically keep the list of reconnection urls up to date.</p><p>In C++, the <code class="classname">FailoverUpdates</code> class provides this functionality:</p><div class="example"><a id="idm228614110320"></a><p class="title"><strong>Example&#160;2.19.&#160;Tracking cluster membership</strong></p><div class="example-contents"><p>In C++:</p><pre class="programlisting">
+	#include &lt;qpid/messaging/FailoverUpdates.h&gt;
+	...
+	Connection connection("localhost:5672");
+	connection.setOption("reconnect", true);
+	try {
+	connection.open();
+	std::auto_ptr&lt;FailoverUpdates&gt; updates(new FailoverUpdates(connection));
+	
+	</pre><p>In python:</p><pre class="programlisting">
+	import qpid.messaging.util
+	...
+	connection = Connection("localhost:5672")
+	connection.reconnect = True
+	try:
+	connection.open()
+	auto_fetch_reconnect_urls(connection)
+	
+	</pre><p>
+	  In .NET C#:
+	</p><pre class="programlisting">
+	  using Org.Apache.Qpid.Messaging;
+	  ...
+	  connection = new Connection("localhost:5672");
+	  connection.SetOption("reconnect", true);
+	  try {
+	  connection.Open();
+	  FailoverUpdates failover = new FailoverUpdates(connection);
+
+	</pre></div></div><br class="example-break" /><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm228614111856"><p><a class="para" href="#idm228614111856"><sup class="para">[11] </sup></a>This is done via the amq.failover exchange in AMQP 0-10</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch02s13.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch02.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch02s15.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">2.13.&#160;Performance Tips&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.15.&#160;Logging</td></tr></table></div></div>

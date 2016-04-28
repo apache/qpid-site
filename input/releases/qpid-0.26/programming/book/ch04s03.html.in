@@ -1,0 +1,19 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">4.3.&#160;Message Headers</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch04s02.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;4.&#160;Using the Qpid WCF client</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch04s04.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm140493096145840"></a>4.3.&#160;Message Headers</h2></div></div></div><p>AMQP specific message headers can be set on or retrieved
+      from the ServiceModel.Channels.Message using the AmqpProperties
+      type.</p><p>For example, on output:</p><pre class="programlisting">
+AmqpProperties props = new AmqpProperties();
+props.Durable = true;
+props.PropertyMap.Add("my_custom_header", new AmqpString("a custom value"));
+Message msg = Message.CreateMessage(args);
+msg.Properties.Add("AmqpProperties", amqpProperties);
+outputChannel.Send(msg);
+</pre><p>On input the headers can be accessed from the Message or extracted
+      from the operation context</p><pre class="programlisting">
+public void SayHello(string greeting)
+{
+  AmqpProperties props = (AmqpProperties) OperationContext.
+  Current.IncomingMessageProperties["AmqpProperties"];
+  AmqpString extra = (AmqpString) props.PropertyMap["my_custom_header"];
+  Console.WriteLine("Service received: {0} and {1}", greeting, extra);
+}
+</pre></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch04s02.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="QpidWCF.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch04s04.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">4.2.&#160;Endpoints&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;4.4.&#160;Security</td></tr></table></div></div>

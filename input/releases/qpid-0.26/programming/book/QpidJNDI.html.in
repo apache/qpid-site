@@ -1,0 +1,272 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">3.2.&#160;Apache Qpid JNDI Properties for AMQP Messaging</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="QpidJMS.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;3.&#160;Using the Qpid JMS client</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch03s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="QpidJNDI"></a>3.2.&#160;Apache Qpid JNDI Properties for AMQP Messaging</h2></div></div></div><p>
+	Apache Qpid defines JNDI properties that can be used to specify JMS Connections and Destinations. Here is a typical JNDI properties file:
+      </p><div class="example"><a id="idm140493096467872"></a><p class="title"><strong>Example&#160;3.3.&#160;JNDI Properties File</strong></p><div class="example-contents"><pre class="programlisting">
+	java.naming.factory.initial
+	= org.apache.qpid.jndi.PropertiesFileInitialContextFactory
+
+	# connectionfactory.[jndiname] = [ConnectionURL]
+	connectionfactory.qpidConnectionfactory
+	= amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672'
+	# destination.[jndiname] = [address_string]
+	destination.topicExchange = amq.topic
+	</pre></div></div><br class="example-break" /><p>The following sections describe the JNDI properties that Qpid uses.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm140493096465632"></a>3.2.1.&#160;JNDI Properties for Apache Qpid</h3></div></div></div><p>
+	  Apache Qpid supports the properties shown in the following table:
+        </p><div class="table"><a id="idm140493096464512"></a><p class="title"><strong>Table&#160;3.1.&#160;JNDI Properties supported by Apache Qpid</strong></p><div class="table-contents"><table border="1" summary="JNDI Properties supported by Apache Qpid"><colgroup><col /><col /></colgroup><thead><tr><th>
+		  Property
+	        </th><th>
+		  Purpose
+	        </th></tr></thead><tbody><tr><td>
+		  connectionfactory.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    The Connection URL that the connection factory uses to perform connections.
+		  </p>
+	        </td></tr><tr><td>
+		  queue.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS queue, which is implemented as an amq.direct exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  topic.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS topic, which is implemented as an amq.topic exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  destination.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    Can be used for defining all amq destinations,
+		    queues, topics and header matching, using an
+		    address string.
+
+		    <a class="footnote" href="#ftn.idm140493096455232" id="idm140493096455232"><sup class="footnote">[a]</sup></a>
+		  </p>
+	        </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote" id="ftn.idm140493096455232"><p><a class="para" href="#idm140493096455232"><sup class="para">[a] </sup></a>Binding URLs, which were used in
+		    earlier versions of the Qpid Java JMS client, can
+		    still be used instead of address
+		    strings.</p></div></td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="section-jms-connection-url"></a>3.2.2.&#160;Connection URLs</h3></div></div></div><p>
+	  In JNDI properties, a Connection URL specifies properties for a connection. The format for a Connection URL is:
+        </p><pre class="programlisting">amqp://[&lt;user&gt;:&lt;pass&gt;@][&lt;clientid&gt;]&lt;virtualhost&gt;[?&lt;option&gt;='&lt;value&gt;'[&amp;&lt;option&gt;='&lt;value&gt;']]
+        </pre><p>
+	  For instance, the following Connection URL specifies a user name, a password, a client ID, a virtual host ("test"), a broker list with a single broker, and a TCP host with the host name <span class="quote">&#8220;<span class="quote">localhost</span>&#8221;</span> using port 5672:
+        </p><pre class="programlisting">amqp://username:password@clientid/test?brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  Apache Qpid supports the following properties in Connection URLs:
+        </p><div class="table"><a id="idm140493096449200"></a><p class="title"><strong>Table&#160;3.2.&#160;Connection URL Properties</strong></p><div class="table-contents"><table border="1" summary="Connection URL Properties" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  brokerlist
+	        </td><td>
+		  see below
+	        </td><td>
+		  List of one or more broker addresses.
+	        </td></tr><tr><td>
+		  maxprefetch
+	        </td><td>
+		  integer
+	        </td><td>
+		  <p>
+                    The maximum number of pre-fetched messages per consumer. If not specified, default value of 500 is used.
+		  </p>
+		  <p>
+                    Note: You can also set the default per-consumer prefetch value on a client-wide basis by configuring the client using <a class="link" href="ch03s06.html#client-jvm-properties" title="3.6.1.&#160;Qpid JVM Arguments">Java system properties.</a>
+		  </p>
+	        </td></tr><tr><td>
+		  sync_publish
+	        </td><td>
+		  {'persistent' | 'all'}
+	        </td><td>
+		  A sync command is sent after every persistent message to guarantee that it has been received; if the value is 'persistent', this is done only for persistent messages.
+	        </td></tr><tr><td>
+		  sync_ack
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  A sync command is sent after every acknowledgement to guarantee that it has been received.
+	        </td></tr><tr><td>
+		  use_legacy_map_msg_format
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If you are using JMS Map messages and deploying a new client with any JMS client older than 0.8 release, you must set this to true to ensure the older clients can understand the map message encoding.
+	        </td></tr><tr><td>
+		  failover
+	        </td><td>
+		  {'singlebroker' | 'roundrobin' | 'failover_exchange' | 'nofailover' | '&lt;class&gt;'}
+	        </td><td>
+		  <p>
+		    This option controls failover behaviour.  The method <code class="literal">singlebroker</code> uses only the first broker in the list,
+		    <code class="literal">roundrobin</code> will try each broker given in the broker list until a connection is established,
+		    <code class="literal">failover_exchange</code> connects to the initial broker given in the broker URL and will receive membership updates
+		    via the failover exchange. <code class="literal">nofailover</code> disables all retry and failover logic.  Any other value is interpreted as a
+		    classname which must implement the <code class="literal">org.apache.qpid.jms.failover.FailoverMethod</code> interface.
+		  </p>
+		  <p>
+		    The broker list options <code class="literal">retries</code> and <code class="literal">connectdelay</code> (described below) determine the number of times a
+		    connection to a broker will be retried and the the length of time to wait between successive connection attempts before moving on to
+		    the next broker in the list. The failover option <code class="literal">cyclecount</code> controls the number of times to loop through the list of
+		    available brokers before finally giving up.
+		  </p>
+		  <p>
+		    Defaults to <code class="literal">roundrobin</code> if the brokerlist contains multiple brokers, or <code class="literal">singlebroker</code> otherwise.
+		  </p>
+	        </td></tr><tr><td>
+		        ssl
+	        </td><td>
+		        boolean
+	        </td><td>
+	            <p>
+	                If <code class="literal">ssl='true'</code>, use SSL for all broker connections. Overrides any per-broker settings in the brokerlist (see below) entries. If not specified, the brokerlist entry for each given broker is used to determine whether SSL is used.
+	            </p>
+	            <p>
+	                Introduced in version 0.22.
+	            </p>
+	        </td></tr></tbody></table></div></div><br class="table-break" /><p>
+	  Broker lists are specified using a URL in this format:
+        </p><pre class="programlisting">brokerlist=&lt;transport&gt;://&lt;host&gt;[:&lt;port&gt;](?&lt;param&gt;='&lt;value&gt;')(&amp;&lt;param&gt;='&lt;value&gt;')*</pre><p>
+	  For instance, this is a typical broker list:
+        </p><pre class="programlisting">brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  A broker list can contain more than one broker address; if so, the connection is made to the first broker in the list that is available. In general, it is better to use the failover exchange when using multiple brokers, since it allows applications to fail over if a broker goes down.
+	</p><div class="example"><a id="idm140493096419024"></a><p class="title"><strong>Example&#160;3.4.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker, such as security options. This broker list specifies options for a Kerberos connection using GSSAPI:</p><pre class="programlisting">
+	  amqp://guest:guest@test/test?sync_ack='true'
+	  &amp;brokerlist='tcp://ip1:5672?sasl_mechs='GSSAPI''
+	  </pre><p>This broker list specifies SSL options:</p><pre class="programlisting">
+	  amqp://guest:guest@test/test?sync_ack='true'
+	  &amp;brokerlist='tcp://ip1:5672?ssl='true'&amp;ssl_cert_alias='cert1''
+	  </pre><p>
+	    This broker list specifies two brokers using the connectdelay and retries broker options. It also illustrates the failover connection URL
+	    property.
+	  </p><pre class="programlisting">
+
+	  amqp://guest:guest@/test?failover='roundrobin?cyclecount='2''
+	  &amp;brokerlist='tcp://ip1:5672?retries='5'&amp;connectdelay='2000';tcp://ip2:5672?retries='5'&amp;connectdelay='2000''
+	  </pre></div></div><br class="example-break" /><p>The following broker list options are supported.</p><div class="table"><a id="idm140493096413792"></a><p class="title"><strong>Table&#160;3.3.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  heartbeat
+	        </td><td>
+		  integer
+	        </td><td>
+		  Frequency of heartbeat messages (in seconds). A value of 0 disables heartbeating. <p>For compatibility
+                  with old client configuration, option <code class="varname">idle_timeout</code> (in milliseconds) is also supported.</p>
+	        </td></tr><tr><td>
+		  sasl_mechs
+	        </td><td>
+		  --
+	        </td><td>
+		  For secure applications, we suggest CRAM-MD5,
+		  DIGEST-MD5, or GSSAPI. The ANONYMOUS method is not
+		  secure. The PLAIN method is secure only when used
+		  together with SSL. For Kerberos, sasl_mechs must be
+		  set to GSSAPI, sasl_protocol must be set to the
+		  principal for the qpidd broker, e.g. qpidd/, and
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. sasl.com.  SASL External is supported
+		  using SSL certification, e.g.
+		  <code class="literal">ssl='true'&amp;sasl_mechs='EXTERNAL'</code>
+	        </td></tr><tr><td>
+		  sasl_encryption
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">sasl_encryption='true'</code>, the JMS client attempts to negotiate a security layer with the broker using GSSAPI to encrypt the connection. Note that for this to happen, GSSAPI must be selected as the sasl_mech.
+	        </td></tr><tr><td>
+		  sasl_protocol
+	        </td><td>
+		  --
+	        </td><td>
+		  Used only for
+		  Kerberos. <code class="literal">sasl_protocol</code> must be
+		  set to the principal for the qpidd broker,
+		  e.g. <code class="literal">qpidd/</code>
+	        </td></tr><tr><td>
+		  sasl_server
+	        </td><td>
+		  --
+	        </td><td>
+		  For Kerberos, sasl_mechs must be set to GSSAPI,
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. <code class="literal">sasl.com</code>.
+	        </td></tr><tr><td>
+		  trust_store
+	        </td><td>
+		  --
+	        </td><td>
+		  path to trust store
+	        </td></tr><tr><td>
+		  trust_store_password
+	        </td><td>
+		        --
+	        </td><td>
+		  Trust store password
+	        </td></tr><tr><td>
+		  key_store
+	        </td><td>
+		        --
+	        </td><td>
+		  path to key store
+	        </td></tr><tr><td>
+		  key_store_password
+	        </td><td>
+		  --
+	        </td><td>
+		  key store password
+	        </td></tr><tr><td>
+		  ssl
+	        </td><td>
+		  Boolean
+	        </td><td>
+	            <p>If <code class="literal">ssl='true'</code>, the JMS client will encrypt the connection to this broker using SSL.</p>
+
+	            <p>This can also be set/overridden for all brokers using the <a class="link" href="QpidJNDI.html#section-jms-connection-url" title="3.2.2.&#160;Connection URLs">Connection URL</a> options.</p>
+	        </td></tr><tr><td>
+		  ssl_verify_hostname
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  When using SSL you can enable hostname verification
+		  by using <code class="literal">ssl_verify_hostname='true'</code> in the broker
+		  URL.
+	        </td></tr><tr><td>
+		  ssl_cert_alias
+	        </td><td>
+		        --
+	        </td><td>
+		  If multiple certificates are present in the keystore, the alias will be used to extract the correct certificate.
+	        </td></tr><tr><td>
+		  retries
+	        </td><td>
+		  integer
+	        </td><td>
+		  The number of times to retry connection to each broker in the broker list. Defaults to 1.
+	        </td></tr><tr><td>
+		  connectdelay
+	        </td><td>
+		  integer
+	        </td><td>
+		  Length of time (in milliseconds) to wait before attempting to reconnect. Defaults to 0.
+	        </td></tr><tr><td>
+		  connecttimeout
+	        </td><td>
+		  integer
+	        </td><td>
+		  Length of time (in milliseconds) to wait for the socket connection to succeed. A value of 0 represents an infinite timeout, i.e. the connection attempt will block until established or an error occurs.  Defaults to 30000.
+	        </td></tr><tr><td>
+		  tcp_nodelay
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">tcp_nodelay='true'</code>, TCP packet
+		  batching is disabled. Defaults to true since Qpid 0.14.
+	        </td></tr></tbody></table></div></div><br class="table-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="QpidJMS.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="QpidJMS.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch03s03.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;3.&#160;Using the Qpid JMS client&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;3.3.&#160;Java JMS Message Properties</td></tr></table></div></div>

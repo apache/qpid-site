@@ -1,0 +1,64 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">3.5.&#160;Using the command line</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Getting-Started-LogFile.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;3.&#160;Getting Started</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Concepts.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="Java-Broker-Getting-Started-CommandLine"></a>3.5.&#160;Using the command line</h2></div></div></div><p>The Java Broker understands a number of command line options which may be used to customise the configuration.</p><p>
+      For additional details about the broker configuration and related command line arguments see
+      <a class="xref" href="Java-Broker-Initial-Configuration.html" title="Chapter&#160;5.&#160;Initial Configuration">Chapter&#160;5, <em>Initial Configuration</em></a>.
+      The broker is fully configurable via its Web Management Console, for details of this see
+      <a class="xref" href="Java-Broker-Management-Channel-Web-Console.html" title="6.2.&#160;Web Management Console">Section&#160;6.2, &#8220;Web Management Console&#8221;</a>.
+    </p><p>To see usage information for all command line options, use the <code class="option">--help</code> option</p><pre class="programlisting">bin/qpid-server --help</pre><pre class="screen">usage: Qpid [-cic &lt;path&gt;] [-h] [-icp &lt;path&gt;] [-l &lt;file&gt;] [-mm] [-mmhttp &lt;port&gt;]
+            [-mmjmx &lt;port&gt;] [-mmpass &lt;password&gt;] [-mmqv] [-mmrmi &lt;port&gt;] [-os]
+            [-sp &lt;path&gt;] [-st &lt;type&gt;] [-v] [-w &lt;period&gt;]
+ -cic &lt;path&gt;                                    Create a copy of the initial config
+ --create-initial-config &lt;path&gt;                 file, either to an optionally specified
+                                                file path, or as initial-config.json
+                                                in the current directory
+
+ -h,                                            Print this message
+ --help
+
+ -icp  &lt;path&gt;                                   Set the location of initial JSON config
+ --initial-config-path &lt;path&gt;                   to use when creating/overwriting a
+                                                broker configuration store
+
+ -l &lt;file&gt;                                      Use the specified log4j xml configuration
+ --logconfig &lt;file&gt;                             file. By default looks for a file named
+                                                etc/log4j.xml in the same directory as
+                                                the configuration file
+
+ -mm                                            Start broker in management mode,
+ --management-mode                              disabling the AMQP ports
+
+ -mmhttp &lt;port&gt;                                 Override http management port in
+ --management-mode-http-port &lt;port&gt;             management mode
+
+ -mmjmx                                         Override jmx connector port in
+ --management-mode-jmx-connector-port &lt;port&gt;    management mode
+
+ -mmpass  &lt;password&gt;                            Set the password for the management
+ --management-mode-password &lt;password&gt;          mode user mm_admin
+
+ -mmqv                                          Make virtualhosts stay in the quiesced
+ --management-mode-quiesce-virtualhosts         state during management mode.
+
+ -mmrmi &lt;port&gt;                                  Override jmx rmi registry port in
+ --management-mode-rmi-registry-port &lt;port&gt;     management mode
+
+ -os                                            Overwrite the broker configuration store
+ --overwrite-store                              with the current initial configuration
+
+ -prop "&lt;name=value&gt;"                           Set a configuration property to use when
+ --config-property "&lt;name=value&gt;"               resolving variables in the broker
+                                                configuration store, with format
+                                                "name=value"
+
+ -sp &lt;path&gt;                                     Use given configuration store location
+ --store-path &lt;path&gt;
+
+ -st &lt;type&gt;                                     Use given broker configuration store type
+ --store-type &lt;type&gt;
+
+ -v                                             Print the version information and exit
+ --version
+
+ -w &lt;period&gt;                                    Monitor the log file configuration file
+ --logwatch &lt;period&gt;                            for changes. Units are seconds. Zero
+                                                means do not check for changes.
+</pre></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Getting-Started-LogFile.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Getting-Started.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Concepts.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">3.4.&#160;Log file&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;4.&#160;Concepts</td></tr></table></div></div>

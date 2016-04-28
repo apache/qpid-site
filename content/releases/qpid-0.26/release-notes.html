@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid 0.26 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.26/index.html">Qpid 0.26</a></li><li>Qpid 0.26 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-026-release-notes">Qpid 0.26 Release Notes</h1>
+
+<p>Qpid is a cross-platform AMQP messaging system.  It provides message
+brokers written in C++ and Java, and clients for C++, Java, Perl,
+Python, Ruby, and .NET.  More about <a href="/index.html">Qpid</a>.</p>
+
+<p>The full list of changes in the Qpid 0.26 release incorporates
+both the issues worked on during the 0.25 development
+stream and any final touches made during the 0.26 release
+process. A list of these JIRA issues can be found below.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4265">QPID-4265</a> - It's hardly possible to close a receiver that waits for incoming message with Duration::FOREVER</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4463">QPID-4463</a> - SimpleLDAPAuthenticationManager should accept truststore and truststore password configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4534">QPID-4534</a> - Unify client side heartbeat system properties/broker url options </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4640">QPID-4640</a> - Deprecate autoconf/automake build system.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4927">QPID-4927</a> - C++ CMake tests need to use valgrind the same way that the autotools build does</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4940">QPID-4940</a> - Remove unmaintained/obsolete QMF code</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4941">QPID-4941</a> - Remove obsolete/deprecated C++ example code</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4942">QPID-4942</a> - We should only export/install headers files for current C++ APIs</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4952">QPID-4952</a> - Rename the Python swig bindings to qpid_messaging</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5003">QPID-5003</a> - set expiration time on durable subscription queues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5012">QPID-5012</a> - [Java Broker] update optional BDB store to use version 5.0.84 of BDB JE </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5037">QPID-5037</a> - [Java Broker- Web Management Console] Move log viewer into a separate tab and add abilities to download logs and filter log entries in the logs table</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5079">QPID-5079</a> - Only export necessary symbols from the supported client API libraries</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5087">QPID-5087</a> - [Java Broker] Allow the use of separate message stores and configuration stores for the (nonHA) virtualhost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5111">QPID-5111</a> - Improve handling of library dependencies in cmake build</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5112">QPID-5112</a> - Don't bother to look for libraries on windows that are never present there</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5133">QPID-5133</a> - Add an option to the spout examples to enable durable messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5138">QPID-5138</a> - [Java Broker] Implement web management console preferences</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5144">QPID-5144</a> - Include the Python examples with the python-qpid_messaging sources</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5158">QPID-5158</a> - extract the code generation process in the common and broker modules into dedicated build files</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5159">QPID-5159</a> - [Java Broker] create broker-core module</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5160">QPID-5160</a> - [Java] add a qpid-test-utils module instead of making tests in every module rely on the tests dir from the common module</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5166">QPID-5166</a> - Lazily create dispatcher thread in JMS Session implementation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5167">QPID-5167</a> - Allow sync_publish flag to be controlled from the ConnectionFactory connection string</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5178">QPID-5178</a> - Flow detail from Rejected outcome though to MessageRejectedException</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5199">QPID-5199</a> - include headers when calculating message size</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5202">QPID-5202</a> - [Java Broker] Improve exchange documentation in java broker docbook</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5222">QPID-5222</a> - [Java Broker] update optional BDB store to use version 5.0.97 of BDB JE </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5223">QPID-5223</a> - [Java 0-x Client] add system property to set message expiration header as raw TTL value for users of RabbitMQ</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5237">QPID-5237</a> - Self-contained C++ source distribution</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5245">QPID-5245</a> - [AMQP 1.0 JMS] Provide additional information through exceptions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5260">QPID-5260</a> - Miscellaneous CMake Improvements</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5261">QPID-5261</a> - Install DLLs and import libs to more usual place for windows SDK</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5263">QPID-5263</a> - Fix installed boost files on windows</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5274">QPID-5274</a> - CMake in cpp/src is cluttered with windows-specific functions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5277">QPID-5277</a> - Add ability create, delete and list objects of arbitrary types</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5306">QPID-5306</a> - Improve cmake testing structure</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5308">QPID-5308</a> - Make C++ test results reports output XML</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5316">QPID-5316</a> - add paging-dir option to control location of page file for paged queues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5325">QPID-5325</a> - [Java Broker] Add ability to save web management console open tabs in user preferences</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4582">QPID-4582</a> - C++ Broker legacystore self tests fail</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4670">QPID-4670</a> - [AMQP 1.0] dynamic flag on source/target is not handled correctly</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4708">QPID-4708</a> - [AMQP 1.0] failover support (i.e. reconnect=true)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4711">QPID-4711</a> - [AMQP 1.0] translation of structured content between 0-10 and 1.0 encoding</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4730">QPID-4730</a> - Bug for qpid perl binding. The object is overwritten by the return value when a function return an integer.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4875">QPID-4875</a> - [Java] The parsing logic for certificate subjects doesn't work properly in all cases</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4901">QPID-4901</a> - [JMS AMQP 1.0] QueueBrowser hangs on reaching end of the queues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4907">QPID-4907</a> - qpid-tool displays duplicate entries for objects managed by the broker.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4924">QPID-4924</a> - Python language examples based on the Python language bindings</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4944">QPID-4944</a> - HA Sporadic failure in ha_tests:  test_failover_send_receive and test_expected_backup_timeout</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4948">QPID-4948</a> - [AMQP 1.0] browsing queues not supported</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4978">QPID-4978</a> - [AMQP 1.0] support reliability link option</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5002">QPID-5002</a> - durable link should not create autodelete subscription queue by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5011">QPID-5011</a> - C++ Broker ACL allows one connection when user quota is zero</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5015">QPID-5015</a> - QueueFlowLimit tests occassionally fail</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5016">QPID-5016</a> - Legacy store not correctly initialising rmgr</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5025">QPID-5025</a> - DeliveryRecord::committed() doesn't check if delivery is already ended</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5026">QPID-5026</a> - [AMQP 1.0] set address for 'local' terminus in attach</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5029">QPID-5029</a> - WinSDK build tries to handle components that have been removed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5038">QPID-5038</a> - [Java Broker] some message store system tests leak resources (including bdb threads)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5039">QPID-5039</a> - C++ broker compile issue in VS2012</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5040">QPID-5040</a> - [AMQP 1.0] Support for AmqpValue sections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5041">QPID-5041</a> - adding annotations to durable messages causes persistence id to be lost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5050">QPID-5050</a> - Clients calling Connection#stop() (or #close()) from within an ExceptionListener have potential for deadlock</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5051">QPID-5051</a> - swigged ppython tests fail on RHEL5</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5058">QPID-5058</a> - QPID JCA 0.22 on JBoss 5.1 Examples Throw Errors</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5071">QPID-5071</a> - The CMake build system does not rebuild when the Swig descriptors change</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5072">QPID-5072</a> - [C++ broker] SessionManager does not forget sessions when broker drops connection after journal error, leading to memory leak</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5077">QPID-5077</a> - [AMQP 1.0] SASL layer for interlinks assumes synchronous interaction</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5083">QPID-5083</a> - [AMQP 1.0] if sasl implementation is not available client (and interlinking) will fail</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5084">QPID-5084</a> - Track durable queue ownership across broker restarts</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5086">QPID-5086</a> - rollback can stall message delivery</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5089">QPID-5089</a> - Remove Personalized User/Pass from EAP6/JBoss7 Example</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5090">QPID-5090</a> - In 0-10, setting content 'object' to utf8 encoded string should cause content-type to be set to text/plain</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5098">QPID-5098</a> - [AMQP 1.0] Connection::close() doesn't handle failed sessions or links properly</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5101">QPID-5101</a> - C++ Broker windows build is missing SaslFactory::createServer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5102">QPID-5102</a> - C++ Broker windows build needs many xxx_EXTERNs when PROTON is included</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5104">QPID-5104</a> - Python Swig bindings do not expose Message properties in the same manner as the pure Python bindings</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5106">QPID-5106</a> - Queue level message sequencing doesn't work with 1.0 client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5108">QPID-5108</a> - session statistics Tx* not updated any time</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5109">QPID-5109</a> - qpid-config refers to policies no longer supported (ring-strict and flow-to-disk)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5110">QPID-5110</a> - [AMQP 1.0] make handling of incorrectly typed properties more robust</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5113">QPID-5113</a> - JMS Client - JMS Connection exception listener is not notified when AMQ broker is killed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5114">QPID-5114</a> - WinSDK should deliver qpid-send and qpid-receive executables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5122">QPID-5122</a> - Error compling on ARM platforms: cast from 'const char<em>' to 'const size_t</em> {aka const unsigned int*}' increases required alignment of target type [-Werror=cast-align]</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5124">QPID-5124</a> - durable LVQ raises journal error when only transient messages are sent</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5126">QPID-5126</a> - Unable to compile legacy store on ARM platforms</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5129">QPID-5129</a> - Legacy store fails to compile on ARM due to alignment issues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5130">QPID-5130</a> - [AMQP 1.0] x-declare for node ignores the exchange type</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5131">QPID-5131</a> - [AMQP 1.0] xml exchange can't see 1.0 content</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5132">QPID-5132</a> - HA crash in test_tx_join_leave caused by double delete of queue. </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5139">QPID-5139</a> - HA transactions block a thread, can deadlock the broker.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5140">QPID-5140</a> - Python swig bindings - Message.properties missing get/set methods</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5141">QPID-5141</a> - Message::getContentObject() returns void for 0-10 unless content is a map or a list</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5142">QPID-5142</a> - Don't want to pick up swigged client in python tests unless explicitly requested</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5143">QPID-5143</a> - default url shouldn't specify transport</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5146">QPID-5146</a> - [AMQP 1.0] capabilities not handled correctly</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5147">QPID-5147</a> - [AMQP 1.0] improve failure handling</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5148">QPID-5148</a> - [AMQP 1.0] ttl not handled</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5149">QPID-5149</a> - [AMQP 1.0] translation from 1.0 to 0-10 should truncate routing key if necessary</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5150">QPID-5150</a> - [AMQP 1.0] Sending messages over 1.0 to QMF agent crashes broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5151">QPID-5151</a> - [AMQP 1.0] messages sent to exchange over 1.0 are not rerouted to alternate exchange</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5152">QPID-5152</a> - [AMQP 1.0] exchange arguments aren't set when created on attach</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5153">QPID-5153</a> - [AMQP 1.0] specific message properties not read by broker for 1.0 messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5154">QPID-5154</a> - Correct errors in python client API doc</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5155">QPID-5155</a> - CMake does not package Proton library on windows</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5156">QPID-5156</a> - [AMQP 1.0] assert should check node properties</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5165">QPID-5165</a> - No mapping from JMS JMSXGroupID property to AMQP message group-id</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5168">QPID-5168</a> - [AMQP 1.0] make handling of reply-to less sensitive to different schemes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5169">QPID-5169</a> - qpid-tools help typos (CRAM-MD -&gt; CRAM-MD5)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5170">QPID-5170</a> - [AMQP 1.0] outgoing deliveries that are settled without an explicit disposition are not dequeued</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5172">QPID-5172</a> - Thread safety issue in StringTypeConstructor.construct and SymbolTypeConstructor.construct</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5177">QPID-5177</a> - producer.send with sync_publish=true set against activemq blocks and doesn't return</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5182">QPID-5182</a> - The details of custom error-conditions are not being preserved up to the Error object</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5183">QPID-5183</a> - Python client does not release acquired messages on consumer close when session persists</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5184">QPID-5184</a> - [Java 0-x Client] queueSender.send() to RabbitMQ V3.1.3 generates invalid expiration '': no_integer response</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5187">QPID-5187</a> - WinSDK does not package amqpc library</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5188">QPID-5188</a> - WinSDK uses hard-coded qpid directory for source pool</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5190">QPID-5190</a> - Client consistently locks up in both producer.send and connection.close if broker fails at the right moment</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5192">QPID-5192</a> - [Java common and broker-core] add the generated protocol and logging files to the tree, make re-generation triggered upon request</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5194">QPID-5194</a> - Occasionally see ERROR (221): Caught Exception: java.lang.IllegalArgumentException: timeout value is negative</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5195">QPID-5195</a> - [AMQP 1.0 JMS] Client does not properly handle the case where there are not enough channels</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5197">QPID-5197</a> - Remove obsolete --cluster-durable/persistLastNode options</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5198">QPID-5198</a> - wrong exception is thrown if protocol is not recognised</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5200">QPID-5200</a> - Can't disable size limit on individual queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5203">QPID-5203</a> - Python client unexpected exception after ACL denial</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5205">QPID-5205</a> - Viewing an exchange with alternate exchange through the Management UI causes exception in Broker logs.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5206">QPID-5206</a> - [AMQP 1.0 JMS] Occasional null pointer exception seen in org.apache.qpid.amqp_1_0.client.Sender$1.remoteDetached(Sender.java:181)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5215">QPID-5215</a> - Legacystore: Import rest of tests and utilities</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5224">QPID-5224</a> - [Java 0-x Client] connection is abruptly closed when creating consumers against RabbitMQ</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5227">QPID-5227</a> - redelivered flag not always set correctly</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5228">QPID-5228</a> - [AMQP 1.0] can't set alternate-exchange for subscription queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5229">QPID-5229</a> - [AMQP 1.0] release and reject not implemented</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5230">QPID-5230</a> - explicitly release message is not marked as redelivered on subsequent delivery</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5231">QPID-5231</a> - A few tools still reference the old Qpid Swig binding name (cqpid) rather than the new qpid_messaging name</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5232">QPID-5232</a> - [AMQP 1.0] receiver links from exchanges should be unreliable by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5233">QPID-5233</a> - [AMQP 1.0] default sender capacity for 1.0 is different from that for 0-10</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5235">QPID-5235</a> - [AMQP 1.0] store settings aren't passed through for queues created on attach of 1.0 links</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5236">QPID-5236</a> - [AMQP 1.0]: testing for incorrect symbolic descriptor for value sections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5239">QPID-5239</a> - annotations are always sent as strings over 0-10</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5240">QPID-5240</a> - [Java Broker] ExternalAuthenticationManager NPEs/abruptly closes connection when connection attempt made by misconfigured client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5241">QPID-5241</a> - [Java Broker] JMX Management can cause NPE in case of premature shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5242">QPID-5242</a> - [Java Broker] The queue adapter does not return correct values for attributes "messageGroupKey" and "messageGroupSharedGroups"</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5244">QPID-5244</a> - Remove old QMFv1 example agent</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5246">QPID-5246</a> - ACL treats DeleteQueue as a Reject Queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5247">QPID-5247</a> - [AMQP 1.0] Receiver::isClosed() is not implemented</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5248">QPID-5248</a> - [AMQP 1.0] non-autodeleted,non-shared subscription queues should be deleted when receiver is explicitly closed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5251">QPID-5251</a> - [AMQP 1.0] allow create-on-demand through broker configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5253">QPID-5253</a> - [AMQP 1.0] delivery-count is incorrect for browsed message that has never been previously delivered</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5256">QPID-5256</a> - Calling Message::getContentSize() throws InvalidConversion</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5259">QPID-5259</a> - cmake legacy store and linear store messages aren't very helpful if dependencies are missing.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5262">QPID-5262</a> - Install debug versions of MS runtime DLLs</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5265">QPID-5265</a> - [Java Broker] the client version is only logged for 0-8/9/9-1 connections if a clientid is also set</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5266">QPID-5266</a> - [Java Broker] the client product is not logged in the connection open message</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5276">QPID-5276</a> - [AMQP 1.0] node resolution doesn't take into account requested type</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5279">QPID-5279</a> - [AMQP 1.0] 1.0 receiver can consume from someone else's exclusive queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5280">QPID-5280</a> - exclusivity of queue not enforced for bind/unbind</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5282">QPID-5282</a> - Sender timeouts may allow the peer to suffer an AMQFrameDecodingException</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5283">QPID-5283</a> - exclusive declare granted even if queue has existing consumer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5284">QPID-5284</a> - timestamp is not persisted</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5286">QPID-5286</a> - [AMQP 1.0] Receiver::get() doesn't replenish credit</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5287">QPID-5287</a> - .NET binding does not set Assembly version number</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5288">QPID-5288</a> - [AMQP 1.0] Sender::close() hangs when coinciding with connection close by peer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5289">QPID-5289</a> - [AMQP 1.0] error descriptions are not given in exceptions by client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5290">QPID-5290</a> - Attempt to enqueue message larger than page size should not end connection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5291">QPID-5291</a> - [AMQP 1.0] set connection properties from management schema if available</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5292">QPID-5292</a> - connection event not raised, authIdentity not set in mgmt props</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5293">QPID-5293</a> - [AMQP 1.0 JMS] Thread deadlock when closing connection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5294">QPID-5294</a> - [AMQP 1.0 JMS] Thread deadlock due to JVM bug JDK-8022788</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5295">QPID-5295</a> - [AMQP 1.0 JMS] Thread deadlock</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5297">QPID-5297</a> - [Java Broker] make the 1.0 protocol plugin use a single ProtocolEngineCreator</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5299">QPID-5299</a> - [AMQP 1.0] ACL rules should be checked before checking node's existence and returning amqp:not-found error</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5300">QPID-5300</a> - [AMQP 1.0] Some ACL errors are returned as internal error instead of unauthorized error</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5301">QPID-5301</a> - support autodeletion of exchanges</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5304">QPID-5304</a> - Unit test program has bad failure mode if XML_LIB is not set</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5305">QPID-5305</a> - Valgrind reports uninitialised values sent to system call in legacystore</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5309">QPID-5309</a> - PagedQueue page file created as executable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5312">QPID-5312</a> - Paged queue does not deliver all messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5314">QPID-5314</a> - Don't include full path for paging file in paged queue exceptions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5315">QPID-5315</a> - paging out of memory loses persistence id for messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5326">QPID-5326</a> - [Java Broker] Authentication provider attributes data float down whilst scrolling the web management console page</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5327">QPID-5327</a> - [Java Broker] Javascript errors are reported in IE7 and IE11 on opening log viewer tab and preferences dialog</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5328">QPID-5328</a> - browse mode should imply unreliable delivery over 0-10</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5330">QPID-5330</a> - Queue flow limit tests try to invoke a missing qpid-python-test</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5331">QPID-5331</a> - [AMQP 1.0] Connection::close() hangs if a sender link has failed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5341">QPID-5341</a> - Allow use of proton 0.6</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5342">QPID-5342</a> - Java client ignores missing heartbeats</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5344">QPID-5344</a> - [AMQP 1.0 JMS] Thread deadlock related to session close</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5349">QPID-5349</a> - C++ windows packaging does not install qpid-proton.dll library</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5354">QPID-5354</a> - [AMQP 1.0] durable node property not signalled if specified on its own</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5363">QPID-5363</a> - C++ HelloWorld messaging client crash closing AMQP 1.0 connection on Windows</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5385">QPID-5385</a> - Create/Close session in a loop causing connection to be closed and connection.close to hang after that</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5386">QPID-5386</a> - message not coverted correctly if it contains a delivery-annotation section</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5389">QPID-5389</a> - ConnectionHandler may stop writting pending frames if close is called right after the connection is started</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5390">QPID-5390</a> - ConcurrentModificationException when closing a connection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5401">QPID-5401</a> - Linearstore: ARM compile error: cast ... increases required alignment of target type</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5402">QPID-5402</a> - Disable default build of linearstore in cmake</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5417">QPID-5417</a> - ClassCastException when using amqp-1-0-jms-0.24 client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5419">QPID-5419</a> - [JMS Client] The JMS Client fails to start a dispatcher thread for Durable Consumer's</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5421">QPID-5421</a> - HA replication error in stand-alone replication.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5422">QPID-5422</a> - [Java Broker] maven artifacts for broker-core module not being copied by release.sh</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5423">QPID-5423</a> - [Java Broker] binary release packaging  duplicates some plugin dependencies</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5430">QPID-5430</a> - HA primary broker does not go active if there are no replicated queues.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5431">QPID-5431</a> - Qpid c++ client hangs / crashes during reception failover in HA environment (mutual recursion) </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5439">QPID-5439</a> - [AMQP 1.0 JMS client] Client hangs during connection.close()</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5445">QPID-5445</a> - Make install writes to OS-reserved location despite setting prefix</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5450">QPID-5450</a> - [Java Broker] shared message group race between acquiring new messages and acking delivered messages can lead to concurrent delivery</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5453">QPID-5453</a> - Subscription sessions linger</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5456">QPID-5456</a> - [AMQP 1.0] client refuses frames smaller than the frame size it indicated was acceptable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5463">QPID-5463</a> - [AMQP 1.0] assume auto-delete if dynamic flag is set and no lifetime policy supplied</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5488">QPID-5488</a> - Apparent corruption of SSL connection</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4989">QPID-4989</a> - Java performance tests - add documentation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5046">QPID-5046</a> - Change release.sh to use cmake instead of autotools to build the cpp tree</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5157">QPID-5157</a> - remove unused test and build code</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5163">QPID-5163</a> - [Java Broker] move generation of the ACL log messages alongside all the other log message generation in broker-core</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5164">QPID-5164</a> - [Java] remove use of qpid-all.jar from scripts, use classpath wildcard expansion instead</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5193">QPID-5193</a> - [Java] update the source and target values for javac to 1.6</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5207">QPID-5207</a> - [Java Broker] use the Dojo release binary for the management-http plugin build instead of extracting the war</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5243">QPID-5243</a> - [Java Broker] Upgrade dojo toolkit to the latest version (1.9.1)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5255">QPID-5255</a> - 0.26 release tasks</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

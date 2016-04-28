@@ -1,0 +1,55 @@
+var namespaceproton =
+[
+    [ "codec", null, [
+      [ "data", "classproton_1_1codec_1_1data.html", "classproton_1_1codec_1_1data" ],
+      [ "decoder", "classproton_1_1codec_1_1decoder.html", "classproton_1_1codec_1_1decoder" ],
+      [ "encoder", "classproton_1_1codec_1_1encoder.html", "classproton_1_1codec_1_1encoder" ]
+    ] ],
+    [ "io", null, [
+      [ "socket", null, [
+        [ "engine", "classproton_1_1io_1_1socket_1_1engine.html", "classproton_1_1io_1_1socket_1_1engine" ],
+        [ "guard", "structproton_1_1io_1_1socket_1_1guard.html", "structproton_1_1io_1_1socket_1_1guard" ],
+        [ "listener", "classproton_1_1io_1_1socket_1_1listener.html", "classproton_1_1io_1_1socket_1_1listener" ]
+      ] ]
+    ] ],
+    [ "acceptor", "classproton_1_1acceptor.html", "classproton_1_1acceptor" ],
+    [ "annotation_key", "classproton_1_1annotation__key.html", "classproton_1_1annotation__key" ],
+    [ "binary", "classproton_1_1binary.html", "classproton_1_1binary" ],
+    [ "byte_array", "classproton_1_1byte__array.html", "classproton_1_1byte__array" ],
+    [ "condition", "classproton_1_1condition.html", "classproton_1_1condition" ],
+    [ "connection", "classproton_1_1connection.html", "classproton_1_1connection" ],
+    [ "connection_options", "classproton_1_1connection__options.html", "classproton_1_1connection__options" ],
+    [ "container", "classproton_1_1container.html", "classproton_1_1container" ],
+    [ "conversion_error", "structproton_1_1conversion__error.html", "structproton_1_1conversion__error" ],
+    [ "decimal128", "classproton_1_1decimal128.html", "classproton_1_1decimal128" ],
+    [ "decimal32", "classproton_1_1decimal32.html", "classproton_1_1decimal32" ],
+    [ "decimal64", "classproton_1_1decimal64.html", "classproton_1_1decimal64" ],
+    [ "delivery", "classproton_1_1delivery.html", "classproton_1_1delivery" ],
+    [ "duration", "classproton_1_1duration.html", "classproton_1_1duration" ],
+    [ "endpoint", "classproton_1_1endpoint.html", "classproton_1_1endpoint" ],
+    [ "error", "structproton_1_1error.html", "structproton_1_1error" ],
+    [ "handler", "classproton_1_1handler.html", "classproton_1_1handler" ],
+    [ "link", "classproton_1_1link.html", "classproton_1_1link" ],
+    [ "link_iterator", "classproton_1_1link__iterator.html", "classproton_1_1link__iterator" ],
+    [ "link_options", "classproton_1_1link__options.html", "classproton_1_1link__options" ],
+    [ "message", "classproton_1_1message.html", "classproton_1_1message" ],
+    [ "message_id", "classproton_1_1message__id.html", "classproton_1_1message__id" ],
+    [ "receiver", "classproton_1_1receiver.html", "classproton_1_1receiver" ],
+    [ "sasl", "classproton_1_1sasl.html", "classproton_1_1sasl" ],
+    [ "scalar", "classproton_1_1scalar.html", "classproton_1_1scalar" ],
+    [ "scalar_base", "classproton_1_1scalar__base.html", "classproton_1_1scalar__base" ],
+    [ "sender", "classproton_1_1sender.html", "classproton_1_1sender" ],
+    [ "session", "classproton_1_1session.html", "classproton_1_1session" ],
+    [ "session_iterator", "classproton_1_1session__iterator.html", "classproton_1_1session__iterator" ],
+    [ "ssl", "classproton_1_1ssl.html", "classproton_1_1ssl" ],
+    [ "ssl_client_options", "classproton_1_1ssl__client__options.html", "classproton_1_1ssl__client__options" ],
+    [ "ssl_server_options", "classproton_1_1ssl__server__options.html", "classproton_1_1ssl__server__options" ],
+    [ "symbol", "classproton_1_1symbol.html", "classproton_1_1symbol" ],
+    [ "terminus", "classproton_1_1terminus.html", "classproton_1_1terminus" ],
+    [ "timeout_error", "structproton_1_1timeout__error.html", "structproton_1_1timeout__error" ],
+    [ "timestamp", "classproton_1_1timestamp.html", "classproton_1_1timestamp" ],
+    [ "url", "classproton_1_1url.html", "classproton_1_1url" ],
+    [ "url_error", "structproton_1_1url__error.html", null ],
+    [ "uuid", "classproton_1_1uuid.html", "classproton_1_1uuid" ],
+    [ "value", "classproton_1_1value.html", "classproton_1_1value" ]
+];

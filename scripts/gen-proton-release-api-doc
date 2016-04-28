@@ -1,0 +1,112 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+# API docs
+
+def gen_api_doc(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+    remove(component_dir)
+
+    dir = change_dir(source_dir)
+    call("cmake .")
+    call("make all docs")
+    change_dir(dir)
+
+    gen_c_api_doc(release, source_dir, component_dir)
+    gen_cpp_api_doc(release, source_dir, component_dir)
+    gen_java_api_doc(release, source_dir, component_dir)
+    gen_python_api_doc(release, source_dir, component_dir)
+
+def gen_c_api_doc(release, source_dir, component_dir):
+    include_dir = join(source_dir, "proton-c", "include")
+    input_path = join(include_dir, "proton")
+    output_dir = join(component_dir, "c", "api")
+
+    gen_doxygen(release=release,
+                title="Qpid Proton C API",
+                input_paths=(input_path,),
+                strip_paths=(include_dir,),
+                output_dir=output_dir)
+
+def gen_cpp_api_doc(release, source_dir, component_dir):
+    base_dir = join(source_dir, "proton-c", "bindings", "cpp")
+    include_dir = join(base_dir, "include")
+    input_path = join(include_dir, "proton")
+    output_dir = join(component_dir, "cpp", "api")
+    config_file = join(base_dir, "docs", "user.doxygen.in")
+
+    gen_doxygen(release=release,
+                title="Qpid Proton C++ API",
+                input_paths=(input_path,
+                             join(base_dir, "docs"),
+                             join(source_dir, "examples", "cpp", "README.hpp")
+                ),
+                strip_paths=(include_dir,),
+                output_dir=output_dir,
+                example_paths=(join(source_dir, "examples", "cpp"),),
+                config_file=config_file)
+
+def gen_java_api_doc(release, source_dir, component_dir):
+    input_path = join(source_dir, "proton-j", "src", "main", "java")
+    input_namespace = "org.apache.qpid.proton"
+    output_dir = join(component_dir, "java", "api")
+
+    gen_javadoc(release=release,
+                title="Qpid Proton Java API",
+                input_paths=(input_path,),
+                input_namespaces=(input_namespace,),
+                output_dir=output_dir)
+
+def gen_python_api_doc(release, source_dir, component_dir):
+    input_path = join(source_dir, "proton-c", "bindings", "python")
+    input_namespace = "proton"
+    output_dir = join(component_dir, "python", "api")
+
+    gen_epydoc(release=release,
+               title="Qpid Proton Python API",
+               input_paths=(input_path,),
+               input_namespaces=(input_namespace,),
+               output_dir=output_dir)
+
+# Book
+
+def gen_book(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+    input_dir = join(source_dir, "proton-c", "bindings", "python", "tutorial")
+    output_dir = join(component_dir, "python", "book")
+
+    remove(output_dir)
+
+    copy(input_dir, output_dir)
+    touch(join(output_dir, "_transom_ignore_pages"))
+
+    remove(join(output_dir, ".doctrees"))
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = export_release_from_git("proton", source_release)
+
+gen_api_doc(release, source_dir, release_dir)
+gen_book(release, source_dir, release_dir)
+
+notice("API documentation and tutorial generated")

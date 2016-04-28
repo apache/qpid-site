@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Options.cs - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-0.28/index.html">Qpid 0.28</a></li><li><a href="/releases/qpid-0.28/messaging-api/dotnet/examples/index.html">.NET Messaging API Examples</a></li><li>Options.cs</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>Options.cs</h1>
+<div class="highlight"><pre><span class="k">namespace</span> <span class="nn">Org.Apache.Qpid.Messaging.Examples</span>
+<span class="p">{</span>
+    <span class="k">using</span> <span class="nn">System</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Collections</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+    <span class="k">using</span> <span class="nn">System.Collections.ObjectModel</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">class</span> <span class="nc">Options</span>
+    <span class="p">{</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">url</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">address</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">int</span> <span class="n">timeout</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">int</span> <span class="n">count</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">id</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">replyTo</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">properties</span><span class="p">;</span>
+        <span class="k">private</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">entries</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">content</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">string</span> <span class="n">connectionOptions</span><span class="p">;</span>
+        <span class="k">private</span> <span class="kt">bool</span> <span class="n">forever</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="nf">Options</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">url</span> <span class="p">=</span> <span class="s">&quot;amqp:tcp:127.0.0.1:5672&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">address</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">timeout</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">count</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">replyTo</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="n">properties</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+            <span class="n">entries</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;();</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">content</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">connectionOptions</span> <span class="p">=</span> <span class="s">&quot;&quot;</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="n">forever</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+            <span class="n">Parse</span><span class="p">(</span><span class="n">args</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">private</span> <span class="k">void</span> <span class="nf">Parse</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+        <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">argCount</span> <span class="p">=</span> <span class="n">args</span><span class="p">.</span><span class="n">Length</span><span class="p">;</span>
+            <span class="kt">int</span> <span class="n">current</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span>
+
+            <span class="k">while</span> <span class="p">((</span><span class="n">current</span> <span class="p">+</span> <span class="m">1</span><span class="p">)</span> <span class="p">&lt;</span> <span class="n">argCount</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="kt">string</span> <span class="n">arg</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="n">current</span><span class="p">];</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--broker&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">url</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--address&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">address</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--timeout&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">arg</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                    <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="n">timeout</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--count&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="n">arg</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                    <span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="kt">int</span><span class="p">.</span><span class="n">Parse</span><span class="p">(</span><span class="n">arg</span><span class="p">);</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="p">&gt;=</span> <span class="m">0</span><span class="p">)</span>
+                    <span class="p">{</span>
+                        <span class="k">this</span><span class="p">.</span><span class="n">count</span> <span class="p">=</span> <span class="n">i</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--id&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">id</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--reply-to&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">replyTo</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--properties&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">properties</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">]);</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--map&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">entries</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">]);</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--content&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">content</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--connection-options&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">connectionOptions</span> <span class="p">=</span> <span class="n">args</span><span class="p">[++</span><span class="n">current</span><span class="p">];</span>
+                <span class="p">}</span>
+                <span class="k">else</span> <span class="nf">if</span> <span class="p">(</span><span class="n">arg</span> <span class="p">==</span> <span class="s">&quot;--forever&quot;</span><span class="p">)</span>
+                <span class="p">{</span>
+                    <span class="k">this</span><span class="p">.</span><span class="n">forever</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="n">String</span><span class="p">.</span><span class="n">Format</span><span class="p">(</span><span class="s">&quot;unknown argument \&quot;{0}\&quot;&quot;</span><span class="p">,</span> <span class="n">arg</span><span class="p">));</span>
+                <span class="p">}</span>
+
+                <span class="n">current</span><span class="p">++;</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">current</span> <span class="p">==</span> <span class="n">argCount</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">ArgumentException</span><span class="p">(</span><span class="s">&quot;missing argument: address&quot;</span><span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="n">address</span> <span class="p">=</span> <span class="n">args</span><span class="p">[</span><span class="n">current</span><span class="p">];</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Url</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">url</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Address</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">address</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Timeout</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">timeout</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">int</span> <span class="n">Count</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">count</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Id</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">id</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">ReplyTo</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">replyTo</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="n">Collection</span><span class="p">&lt;</span><span class="kt">string</span><span class="p">&gt;</span> <span class="n">Entries</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">entries</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">Content</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="n">content</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">string</span> <span class="n">ConnectionOptions</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">connectionOptions</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="k">public</span> <span class="kt">bool</span> <span class="n">Forever</span>
+        <span class="p">{</span>
+            <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="n">forever</span><span class="p">;</span> <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="Options.cs">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

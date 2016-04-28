@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid C++ 0.34 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-0.34/index.html">Qpid C++ 0.34</a></li><li>Qpid C++ 0.34 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-c-034-release-notes">Qpid C++ 0.34 Release Notes</h1>
+
+<p>A connection-oriented messaging API that supports many languages and
+platforms. A message-oriented middleware message broker written in C++
+that stores, routes, and forwards messages using AMQP.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6492">QPID-6492</a> - When AMQP 1.0 link attach triggers an ACL error, the link should be refused</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6592">QPID-6592</a> - [amqp1.0] Add identifying information to the connection properties advertised to the client</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6256">QPID-6256</a> - Improved control over AMQP versions tried</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6368">QPID-6368</a> - Coverity 1262251 - double free in ~PersistableQueue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6392">QPID-6392</a> - [C++ Broker] [AMQP 1.0] the broker didnt respond to a link detach request</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6397">QPID-6397</a> - [C++ broker] segfault when processing QMF method during periodic processing</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6399">QPID-6399</a> - Windows run_test.ps1 script needs revamp to match run_test</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6409">QPID-6409</a> - Taking address of a 0-length vector throws exception</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6463">QPID-6463</a> - WinSDK script fails - Proton components have moved</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6470">QPID-6470</a> - FieldValue::getFloatingPointValue() converts endian each time it is called</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6484">QPID-6484</a> - AccessViolationException when creating queues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6493">QPID-6493</a> - cmake install (TARGET ...) component syntax is incorrect in the src/CMakeLists.txt</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6511">QPID-6511</a> - [C++ Broker, clients] AMQP 0-10 windows clients can not connect to --no-auth broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6521">QPID-6521</a> - [AMQP 1.0] messages received pre-settled are never settled locally causing memory build up in client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6524">QPID-6524</a> - [C++ broker]: Fix for QPID-5107 incomplete for queues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6526">QPID-6526</a> - [AMQP 1.0]: race condition in creating senders/receivers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6529">QPID-6529</a> - [C++ Client] Fails to compile with Proton 0.10</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6532">QPID-6532</a> - make sasl service name configurable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6548">QPID-6548</a> - SYSV init scripts do not work properly wiht SSL-only broker.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6549">QPID-6549</a> -  <code>service qpidd status</code> returns 1 - hidden error is "ConnectionError: connection-forced: Connection must be encrypted.(320)"</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6551">QPID-6551</a> - [C++ broker]: linearstore raising JERR_LFCR_SEQNUMNOTFOUND after sending many DTX transactions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6559">QPID-6559</a> - NullSaslClient only support ANONYMOUS</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6563">QPID-6563</a> - [amqp1.0] broker does not clean up closed sessions or links</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6568">QPID-6568</a> - [amqp1.0] bump the minimum required proton version to 0.7</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6602">QPID-6602</a> - [AMQP 1.0] prefetch is not always accurate</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

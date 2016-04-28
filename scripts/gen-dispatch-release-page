@@ -1,0 +1,208 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+from datetime import datetime
+
+download_records = (
+    ("qpid-dispatch-{}.tar.gz", "Dispatch router"),
+    )
+
+component_records = (
+    ("dispatch-router", "Dispatch router", "C, Python", "Linux", "1.0"),
+    )
+
+documentation = \
+"""
+<div class="two-column" markdown="1">
+
+ - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb={source_release})
+ - [Dispatch router book](book/book.html)
+ - [qdrouterd](man/qdrouterd.html) - Router daemon
+ - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
+ - [qdstat](man/qdstat.html) - Get router statistics
+ - [qdmanage](man/qdmanage.html) - Manage the router
+
+</div>
+"""
+
+template = \
+"""
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Dispatch {release}
+
+Dispatch is a lightweight AMQP message router library. More about
+[Qpid
+Dispatch]({{{{site_url}}}}/components/dispatch-router/index.html).
+
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
+
+## Downloads
+
+It's important to [verify the
+integrity]({{{{site_url}}}}/download.html#verify-what-you-download) of
+the files you download.
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{downloads}
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [All release artefacts](http://archive.apache.org/dist/qpid/dispatch/{release})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git/tree/refs/tags/{release})
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {{
+      if ("{release}" === "{{{{current_dispatch_release}}}}") {{
+          _modifyCurrentReleaseLinks();
+      }}
+  }});
+</script>
+"""
+
+def gen_release_page(release, issues_release, source_release, release_dir):
+    output_path = join(release_dir, "index.md")
+
+    downloads = list()
+    components = list()
+
+    source_artifact_url = "http://archive.apache.org/dist/qpid/dispatch/{}/{}"
+
+    for artifact, summary in download_records:
+        artifact = artifact.format(release)
+        artifact_url = source_artifact_url.format(release, artifact)
+        sig_url = "http://archive.apache.org/dist/qpid/dispatch/{}/{}.asc".format(release, artifact)
+
+        args = summary, artifact, artifact_url, sig_url
+        downloads.append("| {} | [{}]({}) | [PGP]({}) |".format(*args))
+
+    for key, name, languages, platforms, amqp_versions in component_records:
+        link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)
+        args = link, languages, platforms, amqp_versions
+        components.append("| {} | {} | {} | {} |".format(*args))
+
+    downloads = "\n".join(downloads)
+    components = "\n".join(components)
+
+    jql = "project = DISPATCH AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release=release, source_release=source_release)
+    
+    output = template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+master_template = """
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Dispatch Master
+
+<div class="feature" markdown="1">
+
+## Warning! This is a snapshot of work in progress
+
+Code and documentation found here may be unstable, incorrect, or
+incomplete.  For a smoother experience, see the [current stable
+release]({{{{current_dispatch_release_url}}}}/index.html).
+
+This content was generated at {time} on {day}, {date}.
+
+</div>
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git)
+"""
+
+def gen_master_release_page(release_dir):
+    output_path = join(release_dir, "index.md")
+
+    now = datetime.now()
+
+    day = now.strftime("%A")
+    date = now.strftime("%d %B %Y")
+    time = now.strftime("%H:%M %Z")
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release="master", source_release="master")
+    
+    output = master_template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+
+if release == "master":
+    gen_master_release_page(release_dir)
+else:
+    gen_release_page(release, issues_release, source_release, release_dir)
+
+notice("Release page generated")
