@@ -18,7 +18,15 @@
 # under the License.
 #
 
+import os
 from generate import *
+
+def copy_image_files(from_dir, to_dir):
+    image_files = list_dir(from_dir, "*")
+
+    if image_files:
+        for image_file in image_files:
+            copy(join(from_dir, image_file), join(to_dir, image_file))
 
 def copy_html_to_in(from_dir, to_dir):
     html = list_dir(from_dir, "*.html")
@@ -36,6 +44,9 @@ def gen_books_and_man(release, source_dir, output_dir):
     # Rename html files as html.in so they'll get the qpid website style.
     copy_html_to_in(join(build_dir, "doc", "html", "book"), join(output_dir, "book"))
     copy_html_to_in(join(build_dir, "doc", "html", "man"), join(output_dir, "man"))
+
+    # Copy the image files from the _images folder
+    copy_image_files(join(build_dir, "doc", "html", "_images"), join(output_dir, "_images"))
 
 ## Now do stuff ##
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
