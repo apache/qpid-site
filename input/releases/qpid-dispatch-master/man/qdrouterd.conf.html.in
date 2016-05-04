@@ -93,17 +93,17 @@ listener {
 <h2>Configuration Sections<a class="headerlink" href="#configuration-sections" title="Permalink to this headline">.</a></h2>
 <div class="section" id="container">
 <h3>container<a class="headerlink" href="#container" title="Permalink to this headline">.</a></h3>
-<p>Attributes related to the AMQP container.</p>
+<p>(DEPRECATED)Attributes related to the AMQP container. All container attributes are now available in the router entity. The container entity will be removed in future releases</p>
 <dl class="docutils">
 <dt><em>containerName</em> (string)</dt>
 <dd>The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</dd>
-<dt><em>workerThreads</em> (integer, default=1)</dt>
+<dt><em>workerThreads</em> (integer, default=4)</dt>
 <dd>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</dd>
 <dt><em>debugDump</em> (path)</dt>
 <dd>A file to dump debugging information that can&#8217;t be logged normally.</dd>
 <dt><em>saslConfigPath</em> (path)</dt>
 <dd>Absolute path to the SASL configuration file.</dd>
-<dt><em>saslConfigName</em> (string, default=&#8217;qdrouterd&#8217;)</dt>
+<dt><em>saslConfigName</em> (string)</dt>
 <dd>Name of the SASL configuration.  This string + &#8216;.conf&#8217; is the name of the configuration file.</dd>
 </dl>
 </div>
@@ -111,7 +111,7 @@ listener {
 <h3>router<a class="headerlink" href="#router" title="Permalink to this headline">.</a></h3>
 <p>Tracks peer routers and computes routes to destinations.</p>
 <dl class="docutils">
-<dt><em>routerId</em> (string)</dt>
+<dt><em>routerId</em> (string, required)</dt>
 <dd>Router&#8217;s unique identity.</dd>
 <dt><em>mode</em> (One of [&#8216;standalone&#8217;, &#8216;interior&#8217;], default=&#8217;standalone&#8217;)</dt>
 <dd>In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.</dd>
@@ -127,6 +127,14 @@ listener {
 <dd>Time in seconds after which link state is declared stale if no RA is received.</dd>
 <dt><em>mobileAddrMaxAge</em> (integer, default=60)</dt>
 <dd>(DEPRECATED) This value is no longer used in the router.</dd>
+<dt><em>workerThreads</em> (integer, default=4)</dt>
+<dd>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</dd>
+<dt><em>debugDump</em> (path)</dt>
+<dd>A file to dump debugging information that can&#8217;t be logged normally.</dd>
+<dt><em>saslConfigPath</em> (path)</dt>
+<dd>Absolute path to the SASL configuration file.</dd>
+<dt><em>saslConfigName</em> (string, default=&#8217;qdrouterd&#8217;)</dt>
+<dd>Name of the SASL configuration.  This string + &#8216;.conf&#8217; is the name of the configuration file.</dd>
 </dl>
 </div>
 <div class="section" id="listener">

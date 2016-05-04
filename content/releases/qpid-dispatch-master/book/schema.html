@@ -154,18 +154,18 @@ running using the <cite>qdrouterd(8)</cite> tool&#8217;s <cite>create</cite> ope
 be modified using the <cite>update</cite> operation, see the entity descriptions below.</p>
 <div class="section" id="container">
 <h3>3.4.1.1. container<a class="headerlink" href="#container" title="Permalink to this headline">.</a></h3>
-<p>Attributes related to the AMQP container.</p>
+<p>(DEPRECATED)Attributes related to the AMQP container. All container attributes are now available in the router entity. The container entity will be removed in future releases</p>
 <p>Operations allowed: <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>containerName</em> (string, <cite>CREATE</cite>)</dt>
 <dd>The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</dd>
-<dt><em>workerThreads</em> (integer, default=1, <cite>CREATE</cite>)</dt>
+<dt><em>workerThreads</em> (integer, default=4, <cite>CREATE</cite>)</dt>
 <dd>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</dd>
 <dt><em>debugDump</em> (path, <cite>CREATE</cite>)</dt>
 <dd>A file to dump debugging information that can&#8217;t be logged normally.</dd>
 <dt><em>saslConfigPath</em> (path, <cite>CREATE</cite>)</dt>
 <dd>Absolute path to the SASL configuration file.</dd>
-<dt><em>saslConfigName</em> (string, default=&#8217;qdrouterd&#8217;, <cite>CREATE</cite>)</dt>
+<dt><em>saslConfigName</em> (string, <cite>CREATE</cite>)</dt>
 <dd>Name of the SASL configuration.  This string + &#8216;.conf&#8217; is the name of the configuration file.</dd>
 </dl>
 </div>
@@ -174,7 +174,7 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <p>Tracks peer routers and computes routes to destinations.</p>
 <p>Operations allowed: <cite>READ</cite></p>
 <dl class="docutils">
-<dt><em>routerId</em> (string, <cite>CREATE</cite>)</dt>
+<dt><em>routerId</em> (string, required, <cite>CREATE</cite>)</dt>
 <dd>Router&#8217;s unique identity.</dd>
 <dt><em>mode</em> (One of [&#8216;standalone&#8217;, &#8216;interior&#8217;], default=&#8217;standalone&#8217;, <cite>CREATE</cite>)</dt>
 <dd>In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.</dd>
@@ -198,6 +198,14 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <dd>Number of links attached to the router node.</dd>
 <dt><em>nodeCount</em> (integer)</dt>
 <dd>Number of known peer router nodes.</dd>
+<dt><em>workerThreads</em> (integer, default=4, <cite>CREATE</cite>)</dt>
+<dd>The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .</dd>
+<dt><em>debugDump</em> (path, <cite>CREATE</cite>)</dt>
+<dd>A file to dump debugging information that can&#8217;t be logged normally.</dd>
+<dt><em>saslConfigPath</em> (path, <cite>CREATE</cite>)</dt>
+<dd>Absolute path to the SASL configuration file.</dd>
+<dt><em>saslConfigName</em> (string, default=&#8217;qdrouterd&#8217;, <cite>CREATE</cite>)</dt>
+<dd>Name of the SASL configuration.  This string + &#8216;.conf&#8217; is the name of the configuration file.</dd>
 </dl>
 </div>
 <div class="section" id="listener">
