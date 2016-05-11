@@ -174,6 +174,212 @@ as memory use.</p>
 :   Certificate password, will be prompted if not specifed.</p>
 </div>
 </div>
+<div class="section" id="output-columns">
+<h2>Output Columns<a class="headerlink" href="#output-columns" title="Permalink to this headline">.</a></h2>
+<div class="section" id="qdstat-c">
+<h3>qdstat -c<a class="headerlink" href="#qdstat-c" title="Permalink to this headline">.</a></h3>
+<p>Id
+:   Unique connection identifier</p>
+<p>host
+:   The hostname or internet address of the remotely connected AMQP container</p>
+<p>container
+:   The container-name of the remotely connected AMQP container</p>
+<p>role
+:   The configured role of the connection</p>
+<blockquote>
+<div><ul class="simple">
+<li>normal - Normal connections from client to router</li>
+<li>inter-router - Connection between routers to form a network</li>
+<li>route-container - Connection to/from a Broker or other host to receive link-routes and waypoints</li>
+</ul>
+</div></blockquote>
+<p>dir
+:   The direction of connection establishment</p>
+<blockquote>
+<div><ul class="simple">
+<li>in - The connection was initiated by the remote container</li>
+<li>out - The connection was initiated by this router</li>
+</ul>
+</div></blockquote>
+<p>security
+:   A description of the security/encryption in effect for this connection</p>
+<p>authentication
+:   The method and user-id of the authenticated user for this connection</p>
+</div>
+<div class="section" id="qdstat-l">
+<h3>qdstat -l<a class="headerlink" href="#qdstat-l" title="Permalink to this headline">.</a></h3>
+<p>type
+:   Type of link</p>
+<blockquote>
+<div><ul class="simple">
+<li>router-control - An inter-router link that is reserved for control messages exchanged between routers</li>
+<li>inter-router - An inter-router link that is used for normal message-routed deliveries</li>
+<li>endpoint - A normal link to an external endpoint container</li>
+</ul>
+</div></blockquote>
+<p>dir
+:   The direction of message flow on the link</p>
+<blockquote>
+<div><ul class="simple">
+<li>in - Deliveries flow inbound to the router</li>
+<li>out - Deliveries flow outbound from the router</li>
+</ul>
+</div></blockquote>
+<p>conn id
+:   Unique identifier of the connection over which this link is attached</p>
+<p>id
+:   Unique identifier of this link</p>
+<p>peer
+:   For link-routed links, the unique identifier of the peer link.  In link routing, an inbound link is paired with an outbound link</p>
+<p>class
+:   Class of the address bound to the link</p>
+<p>addr
+:   The address bound to the link</p>
+<p>phs
+:   The phase of the address bound to the link</p>
+<p>cap
+:   The capacity, in deliveries, of the link</p>
+<p>undel
+:   The number of undelivered messages stored on the link&#8217;s FIFO</p>
+<p>unsettled
+:   The number of unsettled deliveries being tracked by the link</p>
+<p>deliveries
+:   The total number of deliveries that have transited this link</p>
+<p>admin
+:   The administrative status of the link</p>
+<blockquote>
+<div><ul class="simple">
+<li>enabled - The link is enabled for normal operation</li>
+<li>disabled - The link is disabled and should be quiescing or stopped (not yet supported)</li>
+</ul>
+</div></blockquote>
+<p>oper
+:   The operational status of the link</p>
+<blockquote>
+<div><ul class="simple">
+<li>up - The link is operational</li>
+<li>down - The link is not attached</li>
+<li>quiescing - The link is in the process of quiescing (not yet supported)</li>
+<li>idle - The link has completed quiescing and is idle (not yet supported)</li>
+</ul>
+</div></blockquote>
+<p>name
+:   The link name (only shown if the -v option is provided)</p>
+</div>
+<div class="section" id="qdstat-n">
+<h3>qdstat -n<a class="headerlink" href="#qdstat-n" title="Permalink to this headline">.</a></h3>
+<p>router-id
+:   Identifier of the router</p>
+<p>next-hop
+:   If this router is not a neighbor, identifies the next-hop neighbor used to reach this router</p>
+<p>link
+:   Unique identifier of the link to the neighbor router</p>
+<p>cost
+:   The topology cost to this remote router (with -v option only)</p>
+<p>neighbors
+:   The list of neighbor routers (the router&#8217;s link-state) (with -v option only)</p>
+<p>valid-origins
+:   The list of origin routers for which the best path to the listed router passes through this router (with -v option only)</p>
+</div>
+<div class="section" id="qdstat-a">
+<h3>qdstat -a<a class="headerlink" href="#qdstat-a" title="Permalink to this headline">.</a></h3>
+<p>class
+:   The class of the listed address</p>
+<blockquote>
+<div><ul class="simple">
+<li>local - Address that is local to this router</li>
+<li>topo - Topological address used for router control messages</li>
+<li>router - A summary router address used to route messages to a remote router&#8217;s local addresses</li>
+<li>mobile - A mobile address for an attached consumer or producer</li>
+</ul>
+</div></blockquote>
+<p>addr
+:   The address text</p>
+<p>phs
+:   For mobile addresses only, the phase of the address.  Direct addresses have only a phase 0.  Waypoint addresses have multiple phases, normally 0 and 1.</p>
+<p>distrib
+:   Distribution method used for this address</p>
+<blockquote>
+<div><ul class="simple">
+<li>multicast - A copy of each message is delivered once to each consumer for the address</li>
+<li>closest - Each message is delivered to only one consumer for the address.  The closest (lowest cost) consumer will be chosen.  If there are multiple lowest-cost consumers, deliveries will be spread across those consumers.</li>
+<li>balanced - Each message is delivered to only one consumer for the address.  The consumer with the fewest outstanding (unsettled) deliveries will be chosen.  The cost of the route to the consumer is a threshold for delivery (i.e. higher cost consumers will only receive deliveries if closer consumers are backed up).</li>
+<li>flood - Used only for router-control traffic.  This is multicast without prevention of duplicate deliveries.</li>
+</ul>
+</div></blockquote>
+<p>in-proc
+:   The number of in-process consumers for this address</p>
+<p>local
+:   The number of local (on this router) consumers for this address</p>
+<p>remote
+:   The number of remote routers that have at least one consumer for this address</p>
+<p>cntnr
+:   The number of locally attached containers that are destinations for link-routes on this address</p>
+<p>in
+:   The number of deliveries for this address that entered the network on this router</p>
+<p>out
+:   The number of deliveries for this address that exited the network on this router</p>
+<p>thru
+:   The number of deliveries for this address that were forwarded to other routers</p>
+<p>to-proc
+:   The number of deliveries for this address that were delivered to an in-process consumer</p>
+<p>from-proc
+:   The number of deliveries for this address that were received from an in-process producer</p>
+</div>
+<div class="section" id="qdstat-linkroutes">
+<h3>qdstat &#8211;linkroutes<a class="headerlink" href="#qdstat-linkroutes" title="Permalink to this headline">.</a></h3>
+<p>prefix
+:   The prefix for matching addresses of routed links</p>
+<p>dir
+:   The direction (from the router&#8217;s perspective) of matching links</p>
+<p>distrib
+:   The distribution method used for routed links</p>
+<blockquote>
+<div><ul class="simple">
+<li>linkBalanced - the only supported distribution for routed links</li>
+</ul>
+</div></blockquote>
+<p>status
+:   Operational status of the link route</p>
+<blockquote>
+<div><ul class="simple">
+<li>active - Route is actively routing attaches (i.e. ready for use)</li>
+<li>inactive - Route is inactive because there is no local destination connected</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="qstat-autolinks">
+<h3>qstat &#8211;autolinks<a class="headerlink" href="#qstat-autolinks" title="Permalink to this headline">.</a></h3>
+<p>addr
+:   The address of the auto link</p>
+<p>dir
+:   The direction of message flow for the auto link</p>
+<blockquote>
+<div><ul class="simple">
+<li>in - Messages flow in from the route-container to the router network</li>
+<li>out - Messages flow out to the route-container from the router network</li>
+</ul>
+</div></blockquote>
+<p>phs
+:   Phase of the address for this auto link</p>
+<p>link
+:   Unique identifier of the link managed by this auto link</p>
+<p>status
+:   The operational status of this auto link</p>
+<blockquote>
+<div><ul class="simple">
+<li>inactive - There is no connected container for this auto link</li>
+<li>attaching - The link is attaching to the container</li>
+<li>failed - The link-attach failed</li>
+<li>active - The link is operational</li>
+<li>quiescing - The link is quiescing (not yet supported)</li>
+<li>idle - The link is idle (not yet supported)</li>
+</ul>
+</div></blockquote>
+<p>lastErr
+:   The description of the last attach failure that occurred on this auto link</p>
+</div>
+</div>
 <div class="section" id="see-also">
 <h2>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">.</a></h2>
 <p><em>qdrouterd(8)</em>, <em>qdmanage(8)</em>, <em>qdrouterd.conf(5)</em></p>

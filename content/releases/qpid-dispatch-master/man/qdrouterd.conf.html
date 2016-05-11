@@ -209,7 +209,7 @@ listener {
 <h2>Configuration Sections<a class="headerlink" href="#configuration-sections" title="Permalink to this headline">.</a></h2>
 <div class="section" id="container">
 <h3>container<a class="headerlink" href="#container" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED)Attributes related to the AMQP container. All container attributes are now available in the router entity. The container entity will be removed in future releases</p>
+<p>(DEPRECATED)Attributes related to the AMQP container. This entity has been deprecated. Use the router entity instead.</p>
 <dl class="docutils">
 <dt><em>containerName</em> (string)</dt>
 <dd>The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.</dd>
@@ -359,6 +359,8 @@ listener {
 <h3>log<a class="headerlink" href="#log" title="Permalink to this headline">.</a></h3>
 <p>Configure logging for a particular module. You can use the <cite>UPDATE</cite> operation to change log settings while the router is running.</p>
 <dl class="docutils">
+<dt><em>module</em> (One of [&#8216;ROUTER&#8217;, &#8216;ROUTER_CORE&#8217;, &#8216;ROUTER_HELLO&#8217;, &#8216;ROUTER_LS&#8217;, &#8216;ROUTER_MA&#8217;, &#8216;MESSAGE&#8217;, &#8216;SERVER&#8217;, &#8216;AGENT&#8217;, &#8216;CONTAINER&#8217;, &#8216;CONFIG&#8217;, &#8216;ERROR&#8217;, &#8216;DISPATCH&#8217;, &#8216;POLICY&#8217;, &#8216;DEFAULT&#8217;], required)</dt>
+<dd>Module to configure. The special module &#8216;DEFAULT&#8217; specifies defaults for all modules.</dd>
 <dt><em>enable</em> (string, default=&#8217;default&#8217;, required)</dt>
 <dd>Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing &#8216;+&#8217; to enable that level and above. For example &#8216;trace,debug,warning+&#8217; means enable trace, debug, warning, error and critical. The value &#8216;none&#8217; means disable logging for the module. The value &#8216;default&#8217; means use the value from the DEFAULT module.</dd>
 <dt><em>timestamp</em> (boolean)</dt>
@@ -371,7 +373,7 @@ listener {
 </div>
 <div class="section" id="fixedaddress">
 <h3>fixedAddress<a class="headerlink" href="#fixedaddress" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) Establishes treatment for addresses starting with a prefix.</p>
+<p>(DEPRECATED) Establishes treatment for addresses starting with a prefix. This entity has been deprecated. Use router.config.address instead</p>
 <dl class="docutils">
 <dt><em>prefix</em> (string, required)</dt>
 <dd>The address prefix (always starting with &#8216;/&#8217;).</dd>
@@ -385,7 +387,7 @@ listener {
 </div>
 <div class="section" id="waypoint">
 <h3>waypoint<a class="headerlink" href="#waypoint" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) A remote node that messages for an address pass through.</p>
+<p>(DEPRECATED) A remote node that messages for an address pass through. This entity has been deprecated. Use router.config.autoLink instead</p>
 <dl class="docutils">
 <dt><em>address</em> (string, required)</dt>
 <dd>The AMQP address of the waypoint.</dd>
@@ -399,7 +401,7 @@ listener {
 </div>
 <div class="section" id="linkroutepattern">
 <h3>linkRoutePattern<a class="headerlink" href="#linkroutepattern" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node.</p>
+<p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node. This entity has been deprecated. Use router.config.linkRoute instead</p>
 <dl class="docutils">
 <dt><em>prefix</em> (string, required)</dt>
 <dd>An address prefix to match against target and source addresses.  This pattern must be of the form &#8216;&lt;text&gt;.&lt;text1&gt;.&lt;textN&gt;&#8217; or &#8216;&lt;text&gt;&#8217; or &#8216;&lt;text&gt;.&#8217; and matches any address that contains that prefix.  For example, if the prefix is set to org.apache (or org.apache.), any address that has the prefix &#8216;org.apache&#8217;  (like org.apache.dev) will match. Note that a prefix must not start with a (.), can end in a (.) and can contain zero or more dots (.).  Any characters between the dots are simply treated as part of the address</dd>

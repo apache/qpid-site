@@ -154,7 +154,7 @@ running using the <cite>qdrouterd(8)</cite> tool&#8217;s <cite>create</cite> ope
 be modified using the <cite>update</cite> operation, see the entity descriptions below.</p>
 <div class="section" id="container">
 <h3>3.4.1.1. container<a class="headerlink" href="#container" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED)Attributes related to the AMQP container. All container attributes are now available in the router entity. The container entity will be removed in future releases</p>
+<p>(DEPRECATED)Attributes related to the AMQP container. This entity has been deprecated. Use the router entity instead.</p>
 <p>Operations allowed: <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>containerName</em> (string, <cite>CREATE</cite>)</dt>
@@ -319,7 +319,7 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <p>Configure logging for a particular module. You can use the <cite>UPDATE</cite> operation to change log settings while the router is running.</p>
 <p>Operations allowed: <cite>UPDATE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
-<dt><em>module</em> (One of [&#8216;ROUTER&#8217;, &#8216;ROUTER_CORE&#8217;, &#8216;ROUTER_HELLO&#8217;, &#8216;ROUTER_LS&#8217;, &#8216;ROUTER_MA&#8217;, &#8216;MESSAGE&#8217;, &#8216;SERVER&#8217;, &#8216;AGENT&#8217;, &#8216;CONTAINER&#8217;, &#8216;CONFIG&#8217;, &#8216;ERROR&#8217;, &#8216;DISPATCH&#8217;, &#8216;POLICY&#8217;, &#8216;DEFAULT&#8217;], required)</dt>
+<dt><em>module</em> (One of [&#8216;ROUTER&#8217;, &#8216;ROUTER_CORE&#8217;, &#8216;ROUTER_HELLO&#8217;, &#8216;ROUTER_LS&#8217;, &#8216;ROUTER_MA&#8217;, &#8216;MESSAGE&#8217;, &#8216;SERVER&#8217;, &#8216;AGENT&#8217;, &#8216;CONTAINER&#8217;, &#8216;CONFIG&#8217;, &#8216;ERROR&#8217;, &#8216;DISPATCH&#8217;, &#8216;POLICY&#8217;, &#8216;DEFAULT&#8217;], required, <cite>UPDATE</cite>)</dt>
 <dd>Module to configure. The special module &#8216;DEFAULT&#8217; specifies defaults for all modules.</dd>
 <dt><em>enable</em> (string, default=&#8217;default&#8217;, required, <cite>UPDATE</cite>)</dt>
 <dd>Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing &#8216;+&#8217; to enable that level and above. For example &#8216;trace,debug,warning+&#8217; means enable trace, debug, warning, error and critical. The value &#8216;none&#8217; means disable logging for the module. The value &#8216;default&#8217; means use the value from the DEFAULT module.</dd>
@@ -333,7 +333,7 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 </div>
 <div class="section" id="fixedaddress">
 <h3>3.4.1.6. fixedAddress<a class="headerlink" href="#fixedaddress" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) Establishes treatment for addresses starting with a prefix.</p>
+<p>(DEPRECATED) Establishes treatment for addresses starting with a prefix. This entity has been deprecated. Use router.config.address instead</p>
 <p>Operations allowed: <cite>CREATE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>prefix</em> (string, required, <cite>CREATE</cite>)</dt>
@@ -348,7 +348,7 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 </div>
 <div class="section" id="waypoint">
 <h3>3.4.1.7. waypoint<a class="headerlink" href="#waypoint" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) A remote node that messages for an address pass through.</p>
+<p>(DEPRECATED) A remote node that messages for an address pass through. This entity has been deprecated. Use router.config.autoLink instead</p>
 <p>Operations allowed: <cite>CREATE</cite>, <cite>DELETE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>address</em> (string, required, <cite>CREATE</cite>)</dt>
@@ -363,7 +363,7 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 </div>
 <div class="section" id="linkroutepattern">
 <h3>3.4.1.8. linkRoutePattern<a class="headerlink" href="#linkroutepattern" title="Permalink to this headline">.</a></h3>
-<p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node.</p>
+<p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node. This entity has been deprecated. Use router.config.linkRoute instead</p>
 <p>Operations allowed: <cite>CREATE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>prefix</em> (string, required, <cite>CREATE</cite>)</dt>
