@@ -80,22 +80,26 @@ def setup_release_script():
 def get_release_branch_url(module, release):
     project_url = "http://svn.apache.org/repos/asf/qpid"
 
+    release_path_prefix = "branches/"
+    if release.startswith("tags/"):
+      release_path_prefix = ""
+
     if module == "main":
-        path = "branches/{}/qpid".format(release)
+        path = "{}{}/qpid".format(release_path_prefix, release)
 
         if release == "trunk":
             path = "trunk/qpid"
 
         return "{}/{}".format(project_url, path)
     elif module == "cpp":
-        path = "branches/qpid-cpp-{}-rc/qpid".format(release)
+        path = "{}qpid-cpp-{}-rc/qpid".format(release_path_prefix, release)
 
         if release == "trunk":
             path = "trunk/qpid"
         
         return "{}/{}".format(project_url, path)
 
-    path = "{}/branches/{}".format(module, release)
+    path = "{}/{}{}".format(module, release_path_prefix, release)
 
     if release == "trunk":
         path = "{}/trunk".format(module, release)
