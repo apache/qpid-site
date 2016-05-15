@@ -23,9 +23,9 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 <div class="two-column" markdown="1">
 
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
- - [Using the Qpid JMS client (AMQP 0-10)]({{current_release_url}}/programming/book/QpidJMS.html)
+ - [Using the Qpid JMS client (AMQP 0-10)]({{current_java_release_url}}/jms-client-0-10/book/index.html)
  - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)]({{current_java_release_url}}/jms-client-0-8/book/index.html)
- - [Examples (AMQP 0-10)]({{current_release_url}}/qpid-jms/examples/index.html)
+ - [Examples (AMQP 0-10)]({{current_java_release_url}}/qpid-jms/examples/index.html)
  - [Examples (AMQP 0-9-1, 0-9, 0-8)]({{current_java_release_url}}/jms-client-0-8/book/JMS-Client-0-8-Examples.html)
 
 </div>

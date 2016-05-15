@@ -28,27 +28,31 @@ def gen_books(release, source_dir, output_dir):
     input_dir = join(source_dir, "doc")
 
     cpp_broker_book_url = "/releases/qpid-cpp-{{current_cpp_release}}/cpp-broker/book/"
-    # TODO seems programming book is rather in limbo at the moment, neither published with cpp or java?
-    programming_book_url = "/releases/qpid-0.32/programming/book/"
+    jms_client010_book_url = "/releases/qpid-java-{}/jms-client-0-10/book/".format(release)
 
-    call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidProgrammingBook={}",
+    call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidJmsClient010Book={}",
          toplevel_pom,
          cpp_broker_book_url,
-         programming_book_url)
+         jms_client010_book_url)
 
     java_broker_input_dir = join(input_dir, "java-broker", "target", "docbkx")
     jms_client08_input_dir = join(input_dir, "jms-client-0-8", "target", "docbkx")
+    jms_client010_input_dir = join(input_dir, "jms-client-0-10", "target", "docbkx")
+
 
     java_broker_output_dir = join(output_dir, "java-broker")
     jms_client08_output_dir = join(output_dir, "jms-client-0-8")
+    jms_client010_output_dir = join(output_dir, "jms-client-0-10")
 
     remove(java_broker_output_dir)
     remove(jms_client08_output_dir)
+    remove(jms_client010_output_dir)
 
     copy(java_broker_input_dir, join(java_broker_output_dir, "book"))
     copy(jms_client08_input_dir, join(jms_client08_output_dir, "book"))
+    copy(jms_client010_input_dir, join(jms_client010_output_dir, "book"))
 
-    output_dirs = [java_broker_output_dir, jms_client08_output_dir]
+    output_dirs = [java_broker_output_dir, jms_client08_output_dir, jms_client010_output_dir]
 
     for dir in output_dirs:
         for path in find(dir, "*.html"):

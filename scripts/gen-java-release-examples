@@ -28,9 +28,9 @@ def gen_jms(release, source_dir, release_dir):
                      "java", "org", "apache", "qpid", "example")
     output_dir = join(component_dir, "examples")
 
-    release_url = get_release_branch_url("java", release)
-    readme_url = "{}/java/client/README.txt".format(release_url)
-    source_url = "{}/java/client/example/src/main/java/org/apache/qpid/example".format(release_url)
+    release_url = "http://svn.apache.org/repos/asf/qpid/java/tags/{}".format(release)
+    readme_url = "{}/client/README.txt".format(release_url)
+    source_url = "{}/client/example/src/main/java/org/apache/qpid/example".format(release_url)
 
     input_names = list_dir(input_dir, "*.java", "*.properties")
 
