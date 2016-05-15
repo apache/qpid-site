@@ -43,4 +43,4 @@ documentation, see the [release overview](index.html).
  - [QPID-7156](https://issues.apache.org/jira/browse/QPID-7156) - Possible Java Broker crash if connection is formed whilst virtualhost is stopping
  - [QPID-7181](https://issues.apache.org/jira/browse/QPID-7181) - [AMQP 1.0] Selector parsing error causes Java Broker to shutdown
  - [QPID-7186](https://issues.apache.org/jira/browse/QPID-7186) - CancelledKeyException from the accepting thread during Broker shutdown
- - [QPID-7189](https://issues.apache.org/jira/browse/QPID-7189) - [Java Client 0-8..0-10] Client fails to create delegate for AMQP 0.9.1 in response to broker supported protocol received during protocol negotiation
+ - [QPID-7189](https://issues.apache.org/jira/browse/QPID-7189) - [Java Client 0-8..0-10] Client fails to negotiate AMQP connection after downgrading from 0-10 to 0-91

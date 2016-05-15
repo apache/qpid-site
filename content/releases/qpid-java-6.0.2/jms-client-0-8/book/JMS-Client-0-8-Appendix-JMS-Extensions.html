@@ -119,7 +119,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       subject to change and will not be supported in this form for AMQP 1.0. Instead, the reader is
       directed towards the Managment interfaces of the Broker.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Appendix-JMS-Extensions-Queue"></a>C.1.&#160;Queue Management</h2></div></div></div><p>These extensions allow queues to be created or removed.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Appendix-JMS-Extensions-Queue-Creation"></a>C.1.1.&#160;Queue creation</h3></div></div></div><p>The following example illustrates the creation of the a LVQ queue from a
         javax.jms.Session object. Note that this utilises a Qpid specific extension to JMS and
-        involves casting the session object back to its Qpid base-class.</p><div class="example"><a id="d0e2723"></a><p class="title"><strong>Example&#160;C.1.&#160;Creation of an LVQ using the Qpid extension to JMS</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+        involves casting the session object back to its Qpid base-class.</p><div class="example"><a id="d0e2726"></a><p class="title"><strong>Example&#160;C.1.&#160;Creation of an LVQ using the Qpid extension to JMS</strong></p><div class="example-contents"><pre class="programlisting">Map&lt;String,Object&gt; arguments = new HashMap&lt;String, Object&gt;();
 arguments.put("qpid.last_value_queue_key","ISIN");
 AMQDestination amqQueue = (AMQDestination) context.lookup("myqueue");
 ((AMQSession&lt;?,?&gt;) session).createQueue(

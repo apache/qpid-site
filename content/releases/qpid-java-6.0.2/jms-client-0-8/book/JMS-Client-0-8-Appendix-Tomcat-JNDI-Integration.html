@@ -148,22 +148,22 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         </p></li><li class="listitem"><p>
           an instance of <code class="literal">AMQQueue</code> from a <code class="literal">Reference</code> containing reference
           address (<a class="link" href="http://docs.oracle.com/javase/7/docs/api/javax/naming/RefAddr.html" target="_top">javax.naming.RefAddr</a>)
-          <code class="literal">address</code> with content set to either <a class="link" href="/releases/qpid-0.32/programming/book/" target="_top">Address</a> or
+          <code class="literal">address</code> with content set to either <a class="link" href="/releases/qpid-java-6.0.2/jms-client-0-10/book/" target="_top">Address</a> or
           <a class="link" href="JMS-Client-0-8-Binding-URL.html" title="Chapter&#160;8.&#160;Binding URL">Binding URL</a>.
         </p></li><li class="listitem"><p>
           an instance of <code class="literal">AMQTopic</code> from a <code class="literal">Reference</code> containing reference
           address (<a class="link" href="http://docs.oracle.com/javase/7/docs/api/javax/naming/RefAddr.html" target="_top">javax.naming.RefAddr</a>)
-          <code class="literal">address</code> with content set to either <a class="link" href="/releases/qpid-0.32/programming/book/" target="_top">Address</a> or
+          <code class="literal">address</code> with content set to either <a class="link" href="/releases/qpid-java-6.0.2/jms-client-0-10/book/" target="_top">Address</a> or
           <a class="link" href="JMS-Client-0-8-Binding-URL.html" title="Chapter&#160;8.&#160;Binding URL">Binding URL</a>.
         </p></li></ul></div><p>
     </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
         For  <code class="literal">AMQQueue</code> and <code class="literal">AMQTopic</code> prefix <code class="literal">BURL:</code> need
         to be specified for <a class="link" href="JMS-Client-0-8-Binding-URL.html" title="Chapter&#160;8.&#160;Binding URL">Binding URL</a>. Otherwise, client will try
-        to parse content using <a class="link" href="/releases/qpid-0.32/programming/book/" target="_top">Address</a> format.
+        to parse content using <a class="link" href="/releases/qpid-java-6.0.2/jms-client-0-10/book/" target="_top">Address</a> format.
       </p></div><p>
   </p><p>An example below demonstrates how to create JNDI resources in the Tomcat container using Resource declarations in context.xml
     (A Tomcat specific web application configuration file usually added into war under /META-INF/context.xml).
-  </p><div class="example"><a id="d0e3045"></a><p class="title"><strong>Example&#160;E.1.&#160;An example of Tomcat context.xml declaring Qpid JNDI resources</strong></p><div class="example-contents"><pre class="programlisting">
+  </p><div class="example"><a id="d0e3048"></a><p class="title"><strong>Example&#160;E.1.&#160;An example of Tomcat context.xml declaring Qpid JNDI resources</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
 &lt;!DOCTYPE xml&gt;
 &lt;Context&gt;
@@ -197,7 +197,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     20 and 60000 milliseconds accordingly.
   </p><p>
     The client application can find the resources declared in Tomcat context.xml using the code below:
-  </p><div class="example"><a id="d0e3069"></a><p class="title"><strong>Example&#160;E.2.&#160;An example of JNDI lookup for Qpid resources registered in Tomcat JNDI</strong></p><div class="example-contents"><pre class="programlisting">
+  </p><div class="example"><a id="d0e3072"></a><p class="title"><strong>Example&#160;E.2.&#160;An example of JNDI lookup for Qpid resources registered in Tomcat JNDI</strong></p><div class="example-contents"><pre class="programlisting">
     Context context = new InitialContext();
     Context environmentContext = (Context)context.lookup("java:comp/env");
     ...
@@ -215,7 +215,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       removed in future version of client. For backward compatibility, Qpid JNDI resources can be declared using fully
       qualified class names as addresses. That will became unsupported in future version as well.
       An example of Tomcat context.xml with declarations of JNDI resources using deprecated factory and addresses is provided below.
-  </p><div class="example"><a id="d0e3092"></a><p class="title"><strong>Example&#160;E.3.&#160;An example of Tomcat context.xml declaring Qpid JNDI resources using deprecated <code class="literal">ObjectFactory</code> and deprecated addresses</strong></p><div class="example-contents"><pre class="programlisting">
+  </p><div class="example"><a id="d0e3095"></a><p class="title"><strong>Example&#160;E.3.&#160;An example of Tomcat context.xml declaring Qpid JNDI resources using deprecated <code class="literal">ObjectFactory</code> and deprecated addresses</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;?xml version='1.0' encoding='utf-8'?&gt;
 &lt;!DOCTYPE xml&gt;
 &lt;Context&gt;

@@ -116,7 +116,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <div id="-middle-content">
           
 <h1>OptionParser.java</h1>
-<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">org.apache.qpid.example</span><span class="o">;</span>
+<div class="highlight"><pre><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">qpid</span><span class="o">.</span><span class="na">example</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
@@ -233,7 +233,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseOpts</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
     <span class="o">{</span>   
         <span class="n">String</span> <span class="n">prevOpt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
-        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">op</span><span class="o">:</span> <span class="n">args</span><span class="o">)</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="nl">op:</span> <span class="n">args</span><span class="o">)</span>
         <span class="o">{</span>
             <span class="c1">// covers both -h and --help formats</span>
             <span class="k">if</span> <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">))</span>
@@ -244,7 +244,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
                                             <span class="n">op</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
                 
                 <span class="kt">boolean</span> <span class="n">match</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
-                <span class="k">for</span> <span class="o">(</span><span class="n">Option</span> <span class="n">option</span><span class="o">:</span> <span class="n">optDefs</span><span class="o">)</span>
+                <span class="k">for</span> <span class="o">(</span><span class="n">Option</span> <span class="nl">option:</span> <span class="n">optDefs</span><span class="o">)</span>
                 <span class="o">{</span>
                     
                     <span class="k">if</span> <span class="o">((</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">key</span><span class="o">))</span> <span class="o">||</span>
@@ -279,7 +279,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
                     <span class="n">prevOpt</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
                 <span class="o">}</span>
             <span class="o">}</span>
-            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">prevOpt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// this is to catch broker localhost:5672 instead broker=localhost:5672</span>
+            <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">prevOpt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// this is to catch broker localhost:5672 instead broker=localhost:5672</span>
             <span class="o">{</span>
                 <span class="n">String</span> <span class="n">val</span> <span class="o">=</span> <span class="n">extractValue</span><span class="o">(</span><span class="n">op</span><span class="o">);</span>
                 <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">).</span><span class="na">toString</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">))</span>
@@ -295,7 +295,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <span class="k">else</span>
             <span class="o">{</span>
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">optMap</span><span class="o">);</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="n">op</span> <span class="o">+</span> <span class="s">&quot; is not a valid option&quot;</span><span class="o">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="n">op</span> <span class="o">+</span> <span class="s">&quot; is not a valid option&quot;</span><span class="o">);</span>
             <span class="o">}</span>
         <span class="o">}</span>
     <span class="o">}</span>
@@ -306,7 +306,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="o">{</span>
             <span class="k">if</span> <span class="o">(!</span><span class="n">op</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">))</span> 
             <span class="o">{</span>
-                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot; The option &quot;</span> <span class="o">+</span> <span class="n">op</span> <span class="o">+</span> <span class="s">&quot; needs to be inside quotes&quot;</span><span class="o">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot; The option &quot;</span> <span class="o">+</span> <span class="n">op</span> <span class="o">+</span> <span class="s">&quot; needs to be inside quotes&quot;</span><span class="o">);</span>
             <span class="o">}</span>
             
             <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">op</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
@@ -328,7 +328,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="o">{</span>
             <span class="k">return</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">());</span>
         <span class="o">}</span>
-        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()))</span>
+        <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()))</span>
         <span class="o">{</span>
             <span class="k">return</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">());</span>
         <span class="o">}</span>

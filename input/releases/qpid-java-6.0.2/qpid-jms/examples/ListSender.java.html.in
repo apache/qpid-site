@@ -1,6 +1,6 @@
 
 <h1>ListSender.java</h1>
-<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">org.apache.qpid.example</span><span class="o">;</span>
+<div class="highlight"><pre><span class="kn">package</span> <span class="n">org</span><span class="o">.</span><span class="na">apache</span><span class="o">.</span><span class="na">qpid</span><span class="o">.</span><span class="na">example</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
@@ -25,7 +25,7 @@
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span>
     <span class="o">{</span>
         <span class="n">Connection</span> <span class="n">connection</span> <span class="o">=</span>
-            <span class="k">new</span> <span class="n">AMQConnection</span><span class="o">(</span><span class="s">&quot;amqp://guest:guest@test/?brokerlist=&#39;tcp://localhost:5672&#39;&quot;</span><span class="o">);</span>
+            <span class="k">new</span> <span class="nf">AMQConnection</span><span class="o">(</span><span class="s">&quot;amqp://guest:guest@test/?brokerlist=&#39;tcp://localhost:5672&#39;&quot;</span><span class="o">);</span>
 
         <span class="n">Session</span> <span class="n">session</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="na">createSession</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span> <span class="n">Session</span><span class="o">.</span><span class="na">AUTO_ACKNOWLEDGE</span><span class="o">);</span>
         <span class="n">Destination</span> <span class="n">queue</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AMQAnyDestination</span><span class="o">(</span><span class="s">&quot;ADDR:message_queue; {create: always}&quot;</span><span class="o">);</span>

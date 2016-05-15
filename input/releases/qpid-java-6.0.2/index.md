@@ -59,7 +59,7 @@ files you download.
  - [Installing Qpid Java](java-broker/book/Java-Broker-Installation.html)
  - [Java broker book](java-broker/book/index.html)
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
-;; - [Using the Qpid JMS client (AMQP 0-10)](programming/book/QpidJMS.html) ([PDF](programming/programming-book.pdf))
+ - [Using the Qpid JMS client (AMQP 0-10)](jms-client-0-10/book/index.html)
  - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/index.html)
  - [JMS examples (AMQP 0-10)](qpid-jms/examples/index.html)
  - [JMS examples (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
