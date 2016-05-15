@@ -34,7 +34,7 @@ def gen_cpp_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "examples", "messaging")
     output_dir = join(component_dir, "cpp", "examples")
 
-    release_url = get_release_branch_url("main", release)
+    release_url = get_svn_release_url("main", release)
     readme_url = "{}/cpp/examples/README.txt".format(release_url)
     source_url = "{}/cpp/examples/messaging".format(release_url)
 
@@ -53,7 +53,7 @@ def gen_dotnet_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet", "examples")
     output_dir = join(component_dir, "dotnet", "examples")
 
-    release_url = get_release_branch_url("main", release)
+    release_url = get_svn_release_url("main", release)
     source_url = "{}/cpp/bindings/qpid/dotnet/examples".format(release_url)
 
     # The layout of dotnet examples is funky, so some schlepping to
@@ -85,7 +85,7 @@ def gen_python_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "python", "examples", "api")
     output_dir = join(component_dir, "python", "examples")
 
-    release_url = get_release_branch_url("main", release)
+    release_url = get_svn_release_url("main", release)
     readme_url = "{}/python/examples/README.txt".format(release_url)
     source_url = "{}/python/examples".format(release_url)
 
@@ -104,7 +104,7 @@ def gen_ruby_messaging_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "cpp", "bindings", "qpid", "ruby", "examples")
     output_dir = join(component_dir, "ruby", "examples")
 
-    release_url = get_release_branch_url("main", release)
+    release_url = get_svn_release_url("main", release)
     source_url = "{}/cpp/bindings/qpid/ruby/examples".format(release_url)
 
     input_names = list_dir(input_dir, "*.rb")

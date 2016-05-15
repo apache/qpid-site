@@ -77,11 +77,11 @@ def setup_release_script():
 
     return (release, issues_release, source_release, release_dir, checkout_dir)
 
-def get_release_branch_url(module, release):
+def get_svn_release_url(module, release):
     project_url = "http://svn.apache.org/repos/asf/qpid"
 
-    release_path_prefix = "branches/"
-    if release.startswith("tags/"):
+    release_path_prefix = "tags/"
+    if release.startswith("branches/"):
       release_path_prefix = ""
 
     if module == "main":
@@ -134,7 +134,7 @@ def export_release(module, release, checkout_dir):
     remove(export_dir)
     make_dir(split(export_dir)[0])
 
-    uri = get_release_branch_url(module, release)
+    uri = get_svn_release_url(module, release)
 
     if checkout_dir is not None:
         uri = checkout_dir
