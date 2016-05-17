@@ -19,7 +19,7 @@ To start the proton&#8217;s nodejs proxy:</p>
 <p>This will start the proxy listening to ws traffic on port 5673 and translating it to tcp on port 5672.
 One of the routers in the network needs to have a listener configured on port 5672. That listener&#8217;s role should be &#8216;normal&#8217;. For example:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>listener {
-   addr: 0.0.0.0
+   host: 0.0.0.0
    role: normal
    port: amqp
    saslMechanisms: ANONYMOUS

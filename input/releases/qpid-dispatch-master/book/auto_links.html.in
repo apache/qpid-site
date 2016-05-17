@@ -28,7 +28,7 @@ through a pair of queues on a broker:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>connector {
     name: broker
     role: route-container
-    addr: &lt;hostname&gt;
+    host: &lt;hostname&gt;
     port: &lt;port&gt;
     sasl-mechanisms: ANONYMOUS
 }
@@ -149,7 +149,7 @@ multiple brokers share the message-queueing load.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>connector {
     name: broker1
     role: route-container
-    addr: &lt;hostname&gt;
+    host: &lt;hostname&gt;
     port: &lt;port&gt;
     sasl-mechanisms: ANONYMOUS
 }
@@ -157,7 +157,7 @@ multiple brokers share the message-queueing load.</p>
 connector {
     name: broker2
     role: route-container
-    addr: &lt;hostname&gt;
+    host: &lt;hostname&gt;
     port: &lt;port&gt;
     sasl-mechanisms: ANONYMOUS
 }
@@ -203,7 +203,7 @@ to the same address.</p>
 <p>Since configurable entities in the router can also be accessed via the
 management protocol, we can remotely add a shard to the above example
 using <em>qdmanage</em>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage create --type org.apache.qpid.dispatch.connector addr=&lt;host&gt; port=&lt;port&gt; name=broker3
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage create --type org.apache.qpid.dispatch.connector host=&lt;host&gt; port=&lt;port&gt; name=broker3
 qdmanage create --type org.apache.qpid.dispatch.router.config.autoLink addr=queue.first dir=in connection=broker3
 qdmanage create --type org.apache.qpid.dispatch.router.config.autoLink addr=queue.first dir=out connection=broker3
 </pre></div>

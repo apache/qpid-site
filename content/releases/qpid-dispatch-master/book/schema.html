@@ -174,8 +174,10 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <p>Tracks peer routers and computes routes to destinations.</p>
 <p>Operations allowed: <cite>READ</cite></p>
 <dl class="docutils">
-<dt><em>routerId</em> (string, required, <cite>CREATE</cite>)</dt>
-<dd>Router&#8217;s unique identity.</dd>
+<dt><em>routerId</em> (string, <cite>CREATE</cite>)</dt>
+<dd>(DEPRECATED) Router&#8217;s unique identity. This attribute has been deprecated. Use id instead</dd>
+<dt><em>id</em> (string, <cite>CREATE</cite>)</dt>
+<dd>Router&#8217;s unique identity. One of id or routerId is required. The router will fail to start without id or routerId</dd>
 <dt><em>mode</em> (One of [&#8216;standalone&#8217;, &#8216;interior&#8217;], default=&#8217;standalone&#8217;, <cite>CREATE</cite>)</dt>
 <dd>In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.</dd>
 <dt><em>area</em> (string)</dt>
@@ -214,7 +216,9 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <p>Operations allowed: <cite>CREATE</cite>, <cite>DELETE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>addr</em> (string, default=&#8216;127.0.0.1&#8217;, <cite>CREATE</cite>)</dt>
-<dd>IP address: ipv4 or ipv6 literal or a host name.</dd>
+<dd>(DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead</dd>
+<dt><em>host</em> (string, default=&#8216;127.0.0.1&#8217;, <cite>CREATE</cite>)</dt>
+<dd>IP address: ipv4 or ipv6 literal or a host name</dd>
 <dt><em>port</em> (string, default=&#8217;amqp&#8217;, <cite>CREATE</cite>)</dt>
 <dd>Port number or symbolic service name.</dd>
 <dt><em>protocolFamily</em> (One of [&#8216;IPv4&#8217;, &#8216;IPv6&#8217;], <cite>CREATE</cite>)</dt>
@@ -271,7 +275,9 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <p>Operations allowed: <cite>CREATE</cite>, <cite>DELETE</cite>, <cite>READ</cite></p>
 <dl class="docutils">
 <dt><em>addr</em> (string, default=&#8216;127.0.0.1&#8217;, <cite>CREATE</cite>)</dt>
-<dd>IP address: ipv4 or ipv6 literal or a host name.</dd>
+<dd>(DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead</dd>
+<dt><em>host</em> (string, default=&#8216;127.0.0.1&#8217;, <cite>CREATE</cite>)</dt>
+<dd>IP address: ipv4 or ipv6 literal or a host name</dd>
 <dt><em>port</em> (string, default=&#8217;amqp&#8217;, <cite>CREATE</cite>)</dt>
 <dd>Port number or symbolic service name.</dd>
 <dt><em>protocolFamily</em> (One of [&#8216;IPv4&#8217;, &#8216;IPv6&#8217;], <cite>CREATE</cite>)</dt>
@@ -308,6 +314,8 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <dd>[&#8216;in&#8217;, &#8216;out&#8217;, &#8216;both&#8217;, &#8216;no&#8217;] in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations</dd>
 <dt><em>linkCapacity</em> (integer, <cite>CREATE</cite>)</dt>
 <dd>The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.</dd>
+<dt><em>verifyHostName</em> (boolean, default=True, <cite>CREATE</cite>)</dt>
+<dd>yes: Ensures that when initiating a connection (as a client) the host name in the URL to which this connector connects to matches the host name in the digital certificate that the peer sends back as part of the SSL connection; no: Does not perform host name verification</dd>
 <dt><em>saslUsername</em> (string, <cite>CREATE</cite>)</dt>
 <dd>The user name that the connector is using to connect to a peer.</dd>
 <dt><em>saslPassword</em> (string, <cite>CREATE</cite>)</dt>
@@ -461,6 +469,10 @@ be modified using the <cite>update</cite> operation, see the entity descriptions
 <dd>Enable user rule set processing and connection denial.</dd>
 <dt><em>policyFolder</em> (path, <cite>CREATE</cite>)</dt>
 <dd>The path to a folder that holds policyRuleset definition .json files. For a small system the rulesets may all be defined in this file. At a larger scale it is better to have the policy files in their own folder and to have none of the rulesets defined here. All rulesets in all .json files in this folder are processed.</dd>
+<dt><em>defaultApplication</em> (string, <cite>CREATE</cite>)</dt>
+<dd>Application policyRuleset to use for connections with no open.hostname or a hostname that does not match any existing policy. For users that don&#8217;t wish to use open.hostname or any multi-tennancy feature, this default policy can be the only policy in effect for the network.</dd>
+<dt><em>defaultApplicationEnabled</em> (boolean, <cite>CREATE</cite>)</dt>
+<dd>Enable defaultApplication policy fallback logic.</dd>
 </dl>
 <p><em>connectionsProcessed</em> (integer)</p>
 <p><em>connectionsDenied</em> (integer)</p>
@@ -690,7 +702,7 @@ operational attributes.</p>
 <p>Remote router node connected to this router.</p>
 <p>Operations allowed: <cite>READ</cite></p>
 <dl class="docutils">
-<dt><em>routerId</em> (string)</dt>
+<dt><em>id</em> (string)</dt>
 <dd>Remote node identifier.</dd>
 <dt><em>instance</em> (integer)</dt>
 <dd>Remote node boot number.</dd>
