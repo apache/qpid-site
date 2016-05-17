@@ -1,5 +1,4 @@
 
-
   
   <div class="section" id="qdrouterd-conf-manual-page">
 <h1>qdrouterd.conf manual page<a class="headerlink" href="#qdrouterd-conf-manual-page" title="Permalink to this headline">.</a></h1>
@@ -10,11 +9,12 @@
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">.</a></h2>
 <p>The configuration file is made up of sections with this syntax:</p>
-<div class="highlight-python"><pre>SECTION-NAME {
+<div class="highlight-python"><div class="highlight"><pre><span></span>SECTION-NAME {
     ATTRIBUTE-NAME: ATTRIBUTE-VALUE
     ATTRIBUTE-NAME: ATTRIBUTE-VALUE
     ...
-}</pre>
+}
+</pre></div>
 </div>
 <p>There are two types of sections:</p>
 <p><em>Configuration sections</em> correspond to configuration entities. They can be queried and
@@ -25,7 +25,7 @@ one or more entity sections.</p>
 that can be included in multiple &#8220;listener&#8221; entities. Here&#8217;s an example, note
 how the &#8216;ssl-profile&#8217; attribute of &#8216;listener&#8217; sections references the &#8216;name&#8217;
 attribute of &#8216;ssl-profile&#8217; sections.</p>
-<div class="highlight-python"><pre>ssl-profile {
+<div class="highlight-python"><div class="highlight"><pre><span></span>ssl-profile {
     name: ssl-profile-one
     cert-db: ca-certificate-1.pem
     cert-file: server-certificate-1.pem
@@ -37,7 +37,8 @@ listener {
     addr: 0.0.0.0
     port: 20102
     sasl-mechanisms: ANONYMOUS
-}</pre>
+}
+</pre></div>
 </div>
 </div>
 <div class="section" id="annotation-sections">

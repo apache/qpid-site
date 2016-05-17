@@ -115,7 +115,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 
         <div id="-middle-content">
           
-
   
   <div class="section" id="qdmanage-manual-page">
 <h1>qdmanage manual page<a class="headerlink" href="#qdmanage-manual-page" title="Permalink to this headline">.</a></h1>
@@ -189,17 +188,17 @@ formatted output.</dd>
 <p>&#8211;identity=ID
 :   Identity of entity to operate on.</p>
 <p>&#8211;indent=INDENT
-:   Pretty-printing indent. -1 means don&#8217;t pretty-print</p>
+:   Pretty-printing indent. -1 means don&#8217;t pretty-print (default 2)</p>
 <p>&#8211;stdin
-:   Read attributes as JSON map or list of maps from</p>
+:   Read attributes as JSON map or list of maps from stdin.</p>
 <p>&#8211;body=BODY
-:   JSON value to use as body of a non-standard operation</p>
+:   JSON value to use as body of a non-standard operation call.</p>
 <p>&#8211;properties=PROPERTIES
 :   JSON map to use as properties for a non-standard operation call.</p>
 <div class="section" id="connection-options">
 <h3>Connection Options<a class="headerlink" href="#connection-options" title="Permalink to this headline">.</a></h3>
 <p>-b URL, &#8211;bus=URL
-:   URL of the messaging bus to connect to (default</p>
+:   URL of the messaging bus to connect to (default 0.0.0.0)</p>
 <p>-r ROUTER-ID, &#8211;router=ROUTER-ID
 :   Router to be queried</p>
 <p>-t SECS, &#8211;timeout=SECS
@@ -226,20 +225,25 @@ formatted output.</dd>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">.</a></h2>
 <p>Show the logging configuration</p>
-<div class="highlight-python"><pre>qdmanage query --type=log</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage query --type=log
+</pre></div>
 </div>
 <p>Enable debug and higher log messages by default:</p>
-<div class="highlight-python"><pre>qdmanage udpdate name=log/DEFAULT enable=debug+</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage udpdate name=log/DEFAULT enable=debug+
+</pre></div>
 </div>
 <p>Enable trace log messages only for the MESSAGE moudle and direct MESSAGE
 logs to the file &#8220;test.log&#8221;</p>
-<div class="highlight-python"><pre>qdmanage udpdate name=log/MESSAGE enable=trace output=test.log</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage udpdate name=log/MESSAGE enable=trace output=test.log
+</pre></div>
 </div>
 <p>Set MESSAGE logging back to the default:</p>
-<div class="highlight-python"><pre>qdmanage udpdate name=log/MESSAGE enable=default</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage udpdate name=log/MESSAGE enable=default
+</pre></div>
 </div>
 <p>Disable MESSAGE logging:</p>
-<div class="highlight-python"><pre>qdmanage udpdate name=log/MESSAGE enable=none</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>qdmanage udpdate name=log/MESSAGE enable=none
+</pre></div>
 </div>
 </div>
 <div class="section" id="see-also">

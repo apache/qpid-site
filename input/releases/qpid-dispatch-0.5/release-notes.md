@@ -20,7 +20,8 @@
 # Qpid Dispatch 0.5 Release Notes
 
 Dispatch is a lightweight AMQP message router library. More about
-[Qpid Dispatch]({{site_url}}/components/dispatch-router/index.html).
+[Qpid
+Dispatch]({{site_url}}/components/dispatch-router/index.html).
 
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
@@ -33,6 +34,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-101](https://issues.apache.org/jira/browse/DISPATCH-101) - Create a field iterator that is specific to handling address fields
  - [DISPATCH-121](https://issues.apache.org/jira/browse/DISPATCH-121) - Allow pool allocation to be switched for plain allocation at build time.
  - [DISPATCH-123](https://issues.apache.org/jira/browse/DISPATCH-123) - Separate target to build documentation.
+ - [DISPATCH-135](https://issues.apache.org/jira/browse/DISPATCH-135) - Move the qd_delivery_t functionality into the router node
  - [DISPATCH-136](https://issues.apache.org/jira/browse/DISPATCH-136) - qdstat -n doesn't show the local router in the list
  - [DISPATCH-145](https://issues.apache.org/jira/browse/DISPATCH-145) - Add identifying information to the properties map of the Open performative
  - [DISPATCH-149](https://issues.apache.org/jira/browse/DISPATCH-149) - Properly handle different detach/close scenarios for links

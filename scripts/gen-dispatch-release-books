@@ -22,6 +22,7 @@ import os
 from generate import *
 
 def copy_image_files(from_dir, to_dir):
+    if not is_dir(from_dir): return
     image_files = list_dir(from_dir, "*")
 
     if image_files:

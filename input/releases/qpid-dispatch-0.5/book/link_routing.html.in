@@ -1,5 +1,4 @@
 
-
   
   <div class="section" id="link-routing">
 <h1>2.4. Link Routing<a class="headerlink" href="#link-routing" title="Permalink to this headline">.</a></h1>
@@ -20,7 +19,7 @@ network to a queue on a remote broker and use link credit to control
 the flow of messages from the broker.</p>
 <p>Why would one want to do this?  One reason is to provide client
 isolation.  A network like the following can be deployed:</p>
-<div class="highlight-python"><pre>                Public Network
+<div class="highlight-python"><div class="highlight"><pre><span></span>                Public Network
                +-----------------+
                |      +-----+    |
                | B1   | Rp  |    |
@@ -38,7 +37,8 @@ isolation.  A network like the following can be deployed:</p>
 |         +-----+ |           | +-----+         |
 |                 |           |                 |
 |                 |           |                 |
-+-----------------+           +-----------------+</pre>
++-----------------+           +-----------------+
+</pre></div>
 </div>
 <p>The clients in Private Net B can be constrained (by firewall policy)
 to only connect to the Router in their own network.  Using
@@ -61,22 +61,24 @@ message-router network between them.</p>
 configured to support the example described above?</p>
 <p>First, router Ra needs to be told how to make a connection to the
 broker B2:</p>
-<div class="highlight-python"><pre>connector {
+<div class="highlight-python"><div class="highlight"><pre><span></span>connector {
     name: broker
     role: on-demand
     addr: &lt;B2-url&gt;
     port: &lt;B2-port&gt;
     sasl-mechanisms: ANONYMOUS
-}</pre>
+}
+</pre></div>
 </div>
 <p>This <em>on-demand</em> connector tells the router how to connect to an
 external AMQP container when it is needed.  The name &#8220;broker&#8221; will be
 used later to refer to this connection.</p>
 <p>Now, the router must be configured to route certain addresses to B2:</p>
-<div class="highlight-python"><pre>linkRoutePattern {
+<div class="highlight-python"><div class="highlight"><pre><span></span>linkRoutePattern {
     prefix: b2.
     connector: broker
-}</pre>
+}
+</pre></div>
 </div>
 <p>The linkRoutePattern tells router Ra that any sender or receiver that
 is attached with a target or source (respectively) whos address begins
@@ -89,9 +91,10 @@ link-routes to the &#8220;b2.&#8221; prefix.  This means that sender or receiver
 links attached to Rb or Rp will be routed via the shortest path to Ra
 where they are then routed outbound to the broker B2.</p>
 <p>On Rp and Rb, it is advisable to add the following configuration:</p>
-<div class="highlight-python"><pre>linkRoutePattern {
+<div class="highlight-python"><div class="highlight"><pre><span></span>linkRoutePattern {
     prefix: b2.
-}</pre>
+}
+</pre></div>
 </div>
 <p>This configuration tells the routers that link-routing is intended to
 be available for targets and sources starting with &#8220;b2.&#8221;.  This is

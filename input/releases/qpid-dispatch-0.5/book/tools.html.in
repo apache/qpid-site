@@ -1,5 +1,4 @@
 
-
   
   <div class="section" id="tools">
 <h1>2.2. Tools<a class="headerlink" href="#tools" title="Permalink to this headline">.</a></h1>
@@ -46,18 +45,22 @@ are attached to other routers in a network of routbers.</td>
 to not only view but modify the configuration of a running dispatch
 router.</p>
 <p>For example you can query all the connection entities in the router:</p>
-<div class="highlight-python"><pre>$ qdmanage query --type connection</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage query --type connection
+</pre></div>
 </div>
 <p>To enable logging debug and higher level messages by default:</p>
-<div class="highlight-python"><pre>$ qdmanage update log/DEFAULT enable=debug+</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage update log/DEFAULT enable=debug+
+</pre></div>
 </div>
 <p>In fact, everything that can be configured in the configuration file can
 also be created in a running router via management. For example to
 create a new listener in a running router:</p>
-<div class="highlight-python"><pre>$ qdmanage create type=listener port=5555</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage create type=listener port=5555
+</pre></div>
 </div>
 <p>Now you can connect to port 5555, for exampple:</p>
-<div class="highlight-python"><pre>$ qdmanage query -b localhost:5555 --type listener</pre>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage query -b localhost:5555 --type listener
+</pre></div>
 </div>
 <p>For complete details see the <cite>qdmanage(8)</cite> man page and the output of
 <cite>qdmanage &#8211;help</cite>. Also for details of what can be configured see the

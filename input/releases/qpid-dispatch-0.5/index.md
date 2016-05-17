@@ -17,18 +17,11 @@
 ;; under the License.
 ;;
 
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("0.5" === "{{current_dispatch_release}}") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
-
 # Qpid Dispatch 0.5
 
 Dispatch is a lightweight AMQP message router library. More about
-[Qpid Dispatch]({{site_url}}/components/dispatch-router/index.html).
+[Qpid
+Dispatch]({{site_url}}/components/dispatch-router/index.html).
 
 For a detailed list of the changes in this release, see the [release
 notes](release-notes.html).
@@ -36,33 +29,38 @@ notes](release-notes.html).
 ## Downloads
 
 It's important to [verify the
-integrity]({{site_url}}/download.html#verify-what-you-download) of the
-files you download.
+integrity]({{site_url}}/download.html#verify-what-you-download) of
+the files you download.
 
-| Content | Download | Signature |
-| ------- | -------- | --------- |
+| Content | Download | Verify |
+|---------|----------|--------|
 | Dispatch router | [qpid-dispatch-0.5.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz) | [PGP](http://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz.asc) |
-
 
 ## Documentation
 
-<div class="two-column" markdown="1">
-<div class="column" markdown="1">
-- [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README)
-- [Dispatch router book](book/book.html)
-</div>
-<div class="column" markdown="1">
-- [qdrouterd](man/qdrouterd.html) - Router daemon
-- [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
-- [qdstat](man/qdstat.html) - Get router statistics
-- [qdmanage](man/qdmanage.html) - Manage the router
-</div>
-</div>
 
+<div class="two-column" markdown="1">
+
+ - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=0.5)
+ - [Dispatch router book](book/book.html)
+ - [qdrouterd](man/qdrouterd.html) - Router daemon
+ - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
+ - [qdstat](man/qdstat.html) - Get router statistics
+ - [qdmanage](man/qdmanage.html) - Manage the router
+
+</div>
 
 
 ## More information
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/dispatch/0.5)
- - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH+AND+fixVersion+%3D+%270.5%27+ORDER+BY+priority+DESC)
+ - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH+AND+fixVersion+%3D+%270.5%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git/tree/refs/tags/0.5)
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {
+      if ("0.5" === "{{current_dispatch_release}}") {
+          _modifyCurrentReleaseLinks();
+      }
+  });
+</script>
