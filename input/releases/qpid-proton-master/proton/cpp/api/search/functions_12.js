@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['url',['url',['../classproton_1_1url.html#abc5ed2ad3f9365fb31cc1eb625b974d9',1,'proton::url::url()'],['../classproton_1_1url.html#a0e4af14afc0eb77528464757e491f9e3',1,'proton::url::url(const std::string &amp;url_str, bool defaults=true)'],['../classproton_1_1url.html#a5198f82fc9895f6a8399940b84cc3a2d',1,'proton::url::url(const char *url_str, bool defaults=true)'],['../classproton_1_1url.html#a0665da617d0ca28be2721c5f16368dd5',1,'proton::url::url(const url &amp;)']]],
-  ['user',['user',['../classproton_1_1sasl.html#a31d44d41f9aee83ac6fdbe8721eaa42f',1,'proton::sasl']]]
+  ['value',['value',['../classproton_1_1value.html#aefbfa229f1c9e1fc967bff724a010f9e',1,'proton::value::value()'],['../classproton_1_1value.html#ae7acdea6863a3b5100b7ac9e0b4c73e1',1,'proton::value::value(const T &amp;x, typename assignable&lt; T &gt;::type *=0)']]],
+  ['virtual_5fhost',['virtual_host',['../classproton_1_1connection.html#afd5da4a30e24592cc193f4ce3ed99594',1,'proton::connection::virtual_host()'],['../classproton_1_1connection__options.html#a0300a2a68ecca3f684e91e637a45e028',1,'proton::connection_options::virtual_host()']]]
 ];

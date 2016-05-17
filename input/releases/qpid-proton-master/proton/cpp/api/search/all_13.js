@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['value',['value',['../classproton_1_1value.html',1,'proton']]],
-  ['value',['value',['../classproton_1_1value.html#aefbfa229f1c9e1fc967bff724a010f9e',1,'proton::value::value()'],['../classproton_1_1value.html#ae7acdea6863a3b5100b7ac9e0b4c73e1',1,'proton::value::value(const T &amp;x, typename assignable&lt; T &gt;::type *=0)']]],
-  ['verify_5fmode',['verify_mode',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3',1,'proton::ssl']]],
-  ['verify_5fpeer',['VERIFY_PEER',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3adb9333f2461b9f65dcb7346a8ceb185c',1,'proton::ssl']]],
-  ['verify_5fpeer_5fname',['VERIFY_PEER_NAME',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3a57807a2e5ed5e9858db1e84f24e91a0a',1,'proton::ssl']]]
+  ['what',['what',['../classproton_1_1error__condition.html#acecd2618798017fe94c19a79e5edb35a',1,'proton::error_condition']]],
+  ['write_5fbuffer',['write_buffer',['../classproton_1_1io_1_1connection__engine.html#a0e1873d3b36dcba2b3ef6bd09805c9c8',1,'proton::io::connection_engine']]],
+  ['write_5fclose',['write_close',['../classproton_1_1io_1_1connection__engine.html#ad730a1d850ea31f35102b765d0eede4a',1,'proton::io::connection_engine']]],
+  ['write_5fdone',['write_done',['../classproton_1_1io_1_1connection__engine.html#aedf05de753467bf31b70db61c8effc80',1,'proton::io::connection_engine']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['guard',['guard',['../structproton_1_1io_1_1socket_1_1guard.html',1,'proton::io::socket']]]
+  ['finish',['finish',['../namespaceproton_1_1codec.html#structproton_1_1codec_1_1finish',1,'proton::codec']]]
 ];

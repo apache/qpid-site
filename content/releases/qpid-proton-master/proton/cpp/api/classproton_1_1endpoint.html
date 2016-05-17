@@ -90,9 +90,7 @@ $(document).ready(function(){initNavTree('classproton_1_1endpoint.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="classproton_1_1endpoint-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">endpoint<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -111,84 +109,41 @@ Inheritance diagram for endpoint:</div>
   <map id="endpoint_map" name="endpoint_map">
 <area href="classproton_1_1connection.html" title="A connection to a remote AMQP peer. " alt="connection" shape="rect" coords="0,56,74,80"/>
 <area href="classproton_1_1link.html" title="A named channel for sending or receiving messages. " alt="link" shape="rect" coords="84,56,158,80"/>
-<area href="classproton_1_1session.html" title="A container of links. " alt="session" shape="rect" coords="168,56,242,80"/>
-<area href="classproton_1_1receiver.html" title="A link for receiving messages. " alt="receiver" shape="rect" coords="42,112,116,136"/>
-<area href="classproton_1_1sender.html" title="A link for sending messages. " alt="sender" shape="rect" coords="126,112,200,136"/>
+<area href="classproton_1_1session.html" title="A container of senders and receivers. " alt="session" shape="rect" coords="168,56,242,80"/>
+<area href="classproton_1_1receiver.html" title="A channel for receiving messages. " alt="receiver" shape="rect" coords="42,112,116,136"/>
+<area href="classproton_1_1sender.html" title="A channel for sending messages. " alt="sender" shape="rect" coords="126,112,200,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
-Public Types</h2></td></tr>
-<tr class="memitem:a9660be8f45524b15c3931fb752de3b3e"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a></td></tr>
-<tr class="memdesc:a9660be8f45524b15c3931fb752de3b3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">A bit mask of state bit values.  <a href="#a9660be8f45524b15c3931fb752de3b3e">More...</a><br /></td></tr>
-<tr class="separator:a9660be8f45524b15c3931fb752de3b3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a8e6552f9fc799927204b763969513099"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classproton_1_1condition.html">condition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a8e6552f9fc799927204b763969513099">local_condition</a> () const  =0</td></tr>
-<tr class="memdesc:a8e6552f9fc799927204b763969513099"><td class="mdescLeft">&#160;</td><td class="mdescRight">XXX add endpoint state boolean operations.  <a href="#a8e6552f9fc799927204b763969513099">More...</a><br /></td></tr>
-<tr class="separator:a8e6552f9fc799927204b763969513099"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace88a3cd9782a46cdc46191f7f90f16a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace88a3cd9782a46cdc46191f7f90f16a"></a>
-virtual <a class="el" href="classproton_1_1condition.html">condition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#ace88a3cd9782a46cdc46191f7f90f16a">remote_condition</a> () const  =0</td></tr>
-<tr class="memdesc:ace88a3cd9782a46cdc46191f7f90f16a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the error condition of the remote endpoint. <br /></td></tr>
-<tr class="separator:ace88a3cd9782a46cdc46191f7f90f16a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a84e5c2baecd6fd28505eac28ab14bacb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a84e5c2baecd6fd28505eac28ab14bacb"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a84e5c2baecd6fd28505eac28ab14bacb">LOCAL_UNINIT</a></td></tr>
-<tr class="memdesc:a84e5c2baecd6fd28505eac28ab14bacb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local endpoint is uninitialized. <br /></td></tr>
-<tr class="separator:a84e5c2baecd6fd28505eac28ab14bacb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca8e5dcefe432fcb32f48dc0433cf5ca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca8e5dcefe432fcb32f48dc0433cf5ca"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#aca8e5dcefe432fcb32f48dc0433cf5ca">REMOTE_UNINIT</a></td></tr>
-<tr class="memdesc:aca8e5dcefe432fcb32f48dc0433cf5ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remote endpoint is uninitialized. <br /></td></tr>
-<tr class="separator:aca8e5dcefe432fcb32f48dc0433cf5ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9bb5c15062bee80022f56bffcf2868a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa9bb5c15062bee80022f56bffcf2868a"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#aa9bb5c15062bee80022f56bffcf2868a">LOCAL_ACTIVE</a></td></tr>
-<tr class="memdesc:aa9bb5c15062bee80022f56bffcf2868a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local endpoint is active. <br /></td></tr>
-<tr class="separator:aa9bb5c15062bee80022f56bffcf2868a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1f09a6f628fac670f0f92601155e155"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1f09a6f628fac670f0f92601155e155"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#aa1f09a6f628fac670f0f92601155e155">REMOTE_ACTIVE</a></td></tr>
-<tr class="memdesc:aa1f09a6f628fac670f0f92601155e155"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remote endpoint is active. <br /></td></tr>
-<tr class="separator:aa1f09a6f628fac670f0f92601155e155"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f8d870a4ace6dd1be8728f0e3ccf23c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4f8d870a4ace6dd1be8728f0e3ccf23c"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a4f8d870a4ace6dd1be8728f0e3ccf23c">LOCAL_CLOSED</a></td></tr>
-<tr class="memdesc:a4f8d870a4ace6dd1be8728f0e3ccf23c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Local endpoint has been closed. <br /></td></tr>
-<tr class="separator:a4f8d870a4ace6dd1be8728f0e3ccf23c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a37089f32d6a3324908be74116dfe6820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a37089f32d6a3324908be74116dfe6820"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a37089f32d6a3324908be74116dfe6820">REMOTE_CLOSED</a></td></tr>
-<tr class="memdesc:a37089f32d6a3324908be74116dfe6820"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remote endpoint has been closed. <br /></td></tr>
-<tr class="separator:a37089f32d6a3324908be74116dfe6820"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5017b4c4cc25f9c0932455e13fb223d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5017b4c4cc25f9c0932455e13fb223d4"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a5017b4c4cc25f9c0932455e13fb223d4">LOCAL_MASK</a></td></tr>
-<tr class="memdesc:a5017b4c4cc25f9c0932455e13fb223d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask including all LOCAL_ bits (UNINIT, ACTIVE, CLOSED) <br /></td></tr>
-<tr class="separator:a5017b4c4cc25f9c0932455e13fb223d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ee39a5f2e921db5be1c2a0e56035761"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ee39a5f2e921db5be1c2a0e56035761"></a>
-static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a5ee39a5f2e921db5be1c2a0e56035761">REMOTE_MASK</a></td></tr>
-<tr class="memdesc:a5ee39a5f2e921db5be1c2a0e56035761"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mask including all REMOTE_ bits (UNINIT, ACTIVE, CLOSED) <br /></td></tr>
-<tr class="separator:a5ee39a5f2e921db5be1c2a0e56035761"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a580e27d7221fd49d4cb7527972ff186e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a580e27d7221fd49d4cb7527972ff186e"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a580e27d7221fd49d4cb7527972ff186e">uninitialized</a> () const  =0</td></tr>
+<tr class="memdesc:a580e27d7221fd49d4cb7527972ff186e"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the local end is uninitialized. <br /></td></tr>
+<tr class="separator:a580e27d7221fd49d4cb7527972ff186e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6e82b77dfe6fbae3b18e5f14ab7c25b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6e82b77dfe6fbae3b18e5f14ab7c25b"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#ac6e82b77dfe6fbae3b18e5f14ab7c25b">active</a> () const  =0</td></tr>
+<tr class="memdesc:ac6e82b77dfe6fbae3b18e5f14ab7c25b"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the local end is active. <br /></td></tr>
+<tr class="separator:ac6e82b77dfe6fbae3b18e5f14ab7c25b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d80f17e42ec29c1230cdd8098607171"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d80f17e42ec29c1230cdd8098607171"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a3d80f17e42ec29c1230cdd8098607171">closed</a> () const  =0</td></tr>
+<tr class="memdesc:a3d80f17e42ec29c1230cdd8098607171"><td class="mdescLeft">&#160;</td><td class="mdescRight">True if the local and remote ends are closed. <br /></td></tr>
+<tr class="separator:a3d80f17e42ec29c1230cdd8098607171"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a179a891abd20d5fa50b38816bfc30242"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a179a891abd20d5fa50b38816bfc30242"></a>
+virtual class <a class="el" href="classproton_1_1error__condition.html">error_condition</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#a179a891abd20d5fa50b38816bfc30242">error</a> () const  =0</td></tr>
+<tr class="memdesc:a179a891abd20d5fa50b38816bfc30242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the error condition of the remote endpoint. <br /></td></tr>
+<tr class="separator:a179a891abd20d5fa50b38816bfc30242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6ee7eacbde6b379b68d954e44f6e549"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">close</a> ()=0</td></tr>
+<tr class="memdesc:af6ee7eacbde6b379b68d954e44f6e549"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the endpoint.  <a href="#af6ee7eacbde6b379b68d954e44f6e549">More...</a><br /></td></tr>
+<tr class="separator:af6ee7eacbde6b379b68d954e44f6e549"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fcddcba5b74ba7766ac6f125469644"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1endpoint.html#ad4fcddcba5b74ba7766ac6f125469644">close</a> (const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;)=0</td></tr>
+<tr class="memdesc:ad4fcddcba5b74ba7766ac6f125469644"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the endpoint with an error condition.  <a href="#ad4fcddcba5b74ba7766ac6f125469644">More...</a><br /></td></tr>
+<tr class="separator:ad4fcddcba5b74ba7766ac6f125469644"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The base class for session, connection, and link. </p>
-</div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a class="anchor" id="a9660be8f45524b15c3931fb752de3b3e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef int <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c3931fb752de3b3e">state</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A bit mask of state bit values. </p>
-<p>A state mask is matched against an endpoint as follows: If the state mask contains both local and remote flags, then an exact match against those flags is performed. If state contains only local or only remote flags, then a match occurs if any of the local or remote flags are set respectively.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection.html#af304203ffaff9415b7884f53507b72dc" title="Return links on this connection matching the state mask. ">connection::links</a>, <a class="el" href="classproton_1_1connection.html#aa246b89acfdf85eff5e58f3fceae46dd" title="Return sessions on this connection matching the state mask. ">connection::sessions</a> </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a8e6552f9fc799927204b763969513099"></a>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="af6ee7eacbde6b379b68d954e44f6e549"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -196,10 +151,10 @@ static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="classproton_1_1condition.html">condition</a> local_condition </td>
+          <td class="memname">virtual void close </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -209,10 +164,39 @@ static const <a class="el" href="classproton_1_1endpoint.html#a9660be8f45524b15c
 </table>
 </div><div class="memdoc">
 
-<p>XXX add endpoint state boolean operations. </p>
-<p>Get the local error condition. </p>
+<p>Close the endpoint. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
 
-<p>Implemented in <a class="el" href="classproton_1_1link.html#aaaea8dc733566e78a066d2435f8a60c5">link</a>, <a class="el" href="classproton_1_1connection.html#aaaea8dc733566e78a066d2435f8a60c5">connection</a>, and <a class="el" href="classproton_1_1session.html#aaaea8dc733566e78a066d2435f8a60c5">session</a>.</p>
+<p>Implemented in <a class="el" href="classproton_1_1connection.html#a5ae591df94fc66ccb85cbb6565368bca">connection</a>, <a class="el" href="classproton_1_1link.html#a5ae591df94fc66ccb85cbb6565368bca">link</a>, and <a class="el" href="classproton_1_1session.html#a5ae591df94fc66ccb85cbb6565368bca">session</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4fcddcba5b74ba7766ac6f125469644"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void close </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Close the endpoint with an error condition. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+<p>Implemented in <a class="el" href="classproton_1_1connection.html#a817883d28ce0ac8a29d917d196796f68">connection</a>, <a class="el" href="classproton_1_1link.html#a817883d28ce0ac8a29d917d196796f68">link</a>, and <a class="el" href="classproton_1_1session.html#a817883d28ce0ac8a29d917d196796f68">session</a>.</p>
 
 </div>
 </div>

@@ -93,8 +93,8 @@ $(document).ready(function(){initNavTree('sender_8hpp_source.html','');});
 <div class="title">sender.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROTON_CPP_SENDER_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROTON_CPP_SENDER_H</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROTON_SENDER_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROTON_SENDER_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
@@ -118,41 +118,76 @@ $(document).ready(function(){initNavTree('sender_8hpp_source.html','');});
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;proton/export.hpp&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;proton/delivery.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;proton/link.hpp&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;proton/message.hpp&quot;</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;proton/link.hpp&quot;</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;proton/message.hpp&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;proton/tracker.hpp&quot;</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;proton/types.h&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>pn_connection_t;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classproton_1_1sender.html">   38</a></span>&#160;<span class="keyword">class</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;PN_CPP_CLASS_EXTERN <a class="code" href="classproton_1_1sender.html">sender</a> : <span class="keyword">public</span> <a class="code" href="classproton_1_1link.html">link</a></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classproton_1_1sender.html">sender</a>(pn_link_t* s) : <a class="code" href="classproton_1_1link.html">link</a>(s) {}</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classproton_1_1sender.html">sender</a>() : <a class="code" href="classproton_1_1link.html">link</a>(0) {}</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    PN_CPP_EXTERN <a class="code" href="classproton_1_1delivery.html">delivery</a> send(<span class="keyword">const</span> <a class="code" href="classproton_1_1message.html">message</a> &amp;m);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classproton_1_1link.html">link</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classproton_1_1session.html">session</a>;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span>messaging_adapter;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">struct </span>pn_connection_t;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">template</span> &lt;<span class="keyword">class</span> T&gt; <span class="keyword">class </span>thread_safe;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classproton_1_1sender.html">   40</a></span>&#160;<span class="keyword">class</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;PN_CPP_CLASS_EXTERN <a class="code" href="classproton_1_1sender.html">sender</a> : <span class="keyword">public</span> <a class="code" href="classproton_1_1link.html">link</a> {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    PN_CPP_EXTERN <a class="code" href="classproton_1_1sender.html">sender</a>(pn_link_t* s);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classproton_1_1sender.html#ae8473244d5665777c846fa88eba39252">   48</a></span>&#160;    <a class="code" href="classproton_1_1sender.html#ae8473244d5665777c846fa88eba39252">sender</a>() {}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    PN_CPP_EXTERN <span class="keywordtype">void</span> open();</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    PN_CPP_EXTERN <span class="keywordtype">void</span> open(<span class="keyword">const</span> <a class="code" href="classproton_1_1sender__options.html">sender_options</a> &amp;opts);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#endif // PROTON_CPP_SENDER_H</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    PN_CPP_EXTERN <a class="code" href="classproton_1_1tracker.html">tracker</a> send(<span class="keyword">const</span> <a class="code" href="classproton_1_1message.html">message</a> &amp;m);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    PN_CPP_EXTERN <span class="keyword">class </span><a class="code" href="classproton_1_1source.html">source</a> <a class="code" href="classproton_1_1source.html">source</a>() const;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    PN_CPP_EXTERN <span class="keyword">class </span><a class="code" href="classproton_1_1target.html">target</a> <a class="code" href="classproton_1_1target.html">target</a>() const;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    PN_CPP_EXTERN <span class="keywordtype">void</span> return_credit();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span>internal::factory&lt;sender&gt;;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span>sender_iterator;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classproton_1_1thread__safe.html">thread_safe</a>&lt;sender&gt;;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">class </span>sender_iterator : <span class="keyword">public</span> internal::iter_base&lt;sender, sender_iterator&gt; {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    sender_iterator(sender snd, pn_session_t* s = 0) :</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        internal::iter_base&lt;sender, sender_iterator&gt;(snd), session_(s) {}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    sender_iterator() :</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        internal::iter_base&lt;sender, sender_iterator&gt;(0), session_(0) {}</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    PN_CPP_EXTERN sender_iterator operator++();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    pn_session_t* session_;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span>connection;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keyword">friend</span> <span class="keyword">class </span>session;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">typedef</span> internal::iter_range&lt;sender_iterator&gt; sender_range;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif // PROTON_SENDER_HPP</span></div>
 <div class="ttc" id="classproton_1_1message_html"><div class="ttname"><a href="classproton_1_1message.html">proton::message</a></div><div class="ttdoc">An AMQP message. </div><div class="ttdef"><b>Definition:</b> message.hpp:49</div></div>
-<div class="ttc" id="classproton_1_1sender_html"><div class="ttname"><a href="classproton_1_1sender.html">proton::sender</a></div><div class="ttdoc">A link for sending messages. </div><div class="ttdef"><b>Definition:</b> sender.hpp:38</div></div>
-<div class="ttc" id="classproton_1_1link_html"><div class="ttname"><a href="classproton_1_1link.html">proton::link</a></div><div class="ttdoc">A named channel for sending or receiving messages. </div><div class="ttdef"><b>Definition:</b> link.hpp:46</div></div>
-<div class="ttc" id="classproton_1_1session_html"><div class="ttname"><a href="classproton_1_1session.html">proton::session</a></div><div class="ttdoc">A container of links. </div><div class="ttdef"><b>Definition:</b> session.hpp:42</div></div>
-<div class="ttc" id="classproton_1_1delivery_html"><div class="ttname"><a href="classproton_1_1delivery.html">proton::delivery</a></div><div class="ttdoc">A message transfer. </div><div class="ttdef"><b>Definition:</b> delivery.hpp:36</div></div>
-<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The proton namespace. </div><div class="ttdef"><b>Definition:</b> acceptor.hpp:31</div></div>
+<div class="ttc" id="classproton_1_1sender_html"><div class="ttname"><a href="classproton_1_1sender.html">proton::sender</a></div><div class="ttdoc">A channel for sending messages. </div><div class="ttdef"><b>Definition:</b> sender.hpp:40</div></div>
+<div class="ttc" id="classproton_1_1sender_html_ae8473244d5665777c846fa88eba39252"><div class="ttname"><a href="classproton_1_1sender.html#ae8473244d5665777c846fa88eba39252">proton::sender::sender</a></div><div class="ttdeci">sender()</div><div class="ttdoc">Create an empty sender. </div><div class="ttdef"><b>Definition:</b> sender.hpp:48</div></div>
+<div class="ttc" id="classproton_1_1sender__options_html"><div class="ttname"><a href="classproton_1_1sender__options.html">proton::sender_options</a></div><div class="ttdoc">Options for creating a sender. </div><div class="ttdef"><b>Definition:</b> sender_options.hpp:64</div></div>
+<div class="ttc" id="classproton_1_1link_html"><div class="ttname"><a href="classproton_1_1link.html">proton::link</a></div><div class="ttdoc">A named channel for sending or receiving messages. </div><div class="ttdef"><b>Definition:</b> link.hpp:56</div></div>
+<div class="ttc" id="classproton_1_1source_html"><div class="ttname"><a href="classproton_1_1source.html">proton::source</a></div><div class="ttdoc">The source node is where messages originate. </div><div class="ttdef"><b>Definition:</b> source.hpp:41</div></div>
+<div class="ttc" id="classproton_1_1tracker_html"><div class="ttname"><a href="classproton_1_1tracker.html">proton::tracker</a></div><div class="ttdoc">A tracker for a sent message. </div><div class="ttdef"><b>Definition:</b> tracker.hpp:37</div></div>
+<div class="ttc" id="classproton_1_1target_html"><div class="ttname"><a href="classproton_1_1target.html">proton::target</a></div><div class="ttdoc">The target is the destination node of a sent or received message. </div><div class="ttdef"><b>Definition:</b> target.hpp:40</div></div>
+<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The main Proton namespace. </div><div class="ttdef"><b>Definition:</b> annotation_key.hpp:28</div></div>
+<div class="ttc" id="classproton_1_1thread__safe_html"><div class="ttname"><a href="classproton_1_1thread__safe.html">proton::thread_safe</a></div><div class="ttdoc">Experimental - A thread-safe object wrapper. </div><div class="ttdef"><b>Definition:</b> connection.hpp:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

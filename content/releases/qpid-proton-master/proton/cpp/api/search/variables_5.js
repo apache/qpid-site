@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['remote_5factive',['REMOTE_ACTIVE',['../classproton_1_1endpoint.html#aa1f09a6f628fac670f0f92601155e155',1,'proton::endpoint']]],
-  ['remote_5fclosed',['REMOTE_CLOSED',['../classproton_1_1endpoint.html#a37089f32d6a3324908be74116dfe6820',1,'proton::endpoint']]],
-  ['remote_5fmask',['REMOTE_MASK',['../classproton_1_1endpoint.html#a5ee39a5f2e921db5be1c2a0e56035761',1,'proton::endpoint']]],
-  ['remote_5funinit',['REMOTE_UNINIT',['../classproton_1_1endpoint.html#aca8e5dcefe432fcb32f48dc0433cf5ca',1,'proton::endpoint']]]
+  ['second',['SECOND',['../classproton_1_1duration.html#aced1c394edccf069b2748d46965fb562',1,'proton::duration']]],
+  ['size',['size',['../structproton_1_1io_1_1mutable__buffer.html#a854352f53b148adc24983a58a1866d66',1,'proton::io::mutable_buffer::size()'],['../structproton_1_1io_1_1const__buffer.html#a854352f53b148adc24983a58a1866d66',1,'proton::io::const_buffer::size()']]]
 ];

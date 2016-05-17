@@ -20,28 +20,54 @@
  */
 
 #include "proton/connection.hpp"
-#include "proton/container.hpp"
-#include "proton/handler.hpp"
+#include "proton/default_container.hpp"
+#include "proton/messaging_handler.hpp"
+#include "proton/receiver_options.hpp"
+#include "proton/source_options.hpp"
 #include "proton/url.hpp"
-#include "proton/link_options.hpp"
 
 #include <iostream>
 
-#include "fake_cpp11.hpp"
+#include <proton/config.hpp>
 
-class selected_recv : public proton::handler {
+namespace {
+
+    // Example custom function to configure an AMQP filter,
+    // specifically an APACHE.ORG:SELECTOR
+    // (http://www.amqp.org/specification/1.0/filters)
+
+    void set_filter(proton::source_options &opts, const std::string& selector_str) {
+        proton::source::filter_map map;
+        proton::symbol filter_key("selector");
+        proton::value filter_value;
+        // The value is a specific AMQP "described type": binary string with symbolic descriptor
+        proton::codec::encoder enc(filter_value);
+        enc << proton::codec::start::described()
+            << proton::symbol("apache.org:selector-filter:string")
+            << proton::binary(selector_str)
+            << proton::codec::finish();
+        // In our case, the map has this one element
+        map[filter_key] = filter_value;
+        opts.filters(map);
+    }
+}
+
+
+class selected_recv : public proton::messaging_handler {
   private:
     proton::url url;
 
   public:
-    selected_recv(const proton::url& u) : url(u) {}
+    selected_recv(const std::string& u) : url(u) {}
 
-    void on_container_start(proton::container &c) override {
+    void on_container_start(proton::container &c) PN_CPP_OVERRIDE {
+        proton::source_options opts;
+        set_filter(opts, "colour = 'green'");
         proton::connection conn = c.connect(url);
-        conn.open_receiver(url.path(), proton::link_options().selector("colour = 'green'"));
+        conn.open_receiver(url.path(), proton::receiver_options().source(opts));
     }
 
-    void on_message(proton::delivery &d, proton::message &m) override {
+    void on_message(proton::delivery &, proton::message &m) PN_CPP_OVERRIDE {
         std::cout << m.body() << std::endl;
     }
 };
@@ -51,7 +77,7 @@ int main(int argc, char **argv) {
         std::string url = argc > 1 ? argv[1] : "127.0.0.1:5672/examples";
 
         selected_recv recv(url);
-        proton::container(recv).run();
+        proton::default_container(recv).run();
 
         return 0;
     } catch (const std::exception& e) {

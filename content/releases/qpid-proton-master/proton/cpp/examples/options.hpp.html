@@ -126,6 +126,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;stdexcept&gt;</span><span class="cp"></span>
 
+<span class="k">namespace</span> <span class="n">example</span> <span class="p">{</span>
 
 <span class="k">struct</span> <span class="nl">bad_option</span> <span class="p">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span> <span class="p">{</span>
     <span class="n">bad_option</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">{}</span>
@@ -189,7 +190,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="k">virtual</span> <span class="o">~</span><span class="n">option</span><span class="p">()</span> <span class="p">{}</span>
 
         <span class="k">virtual</span> <span class="kt">bool</span> <span class="n">parse</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="k">const</span> <span class="o">*</span> <span class="k">const</span> <span class="o">*</span> <span class="n">argv</span><span class="p">,</span> <span class="kt">int</span> <span class="o">&amp;</span><span class="n">i</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">print_default</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span> <span class="p">{};</span>
+        <span class="k">virtual</span> <span class="kt">void</span> <span class="nf">print_default</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">const</span> <span class="p">{}</span>
 
       <span class="k">friend</span> <span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="k">operator</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">ostream</span><span class="o">&amp;</span> <span class="n">os</span><span class="p">,</span> <span class="k">const</span> <span class="n">option</span><span class="o">&amp;</span> <span class="n">op</span><span class="p">)</span> <span class="p">{</span>
           <span class="n">os</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;  &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">op</span><span class="p">.</span><span class="n">short_</span><span class="p">;</span>
@@ -268,6 +269,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="n">opts</span> <span class="n">opts_</span><span class="p">;</span>
     <span class="kt">bool</span> <span class="n">help_</span><span class="p">;</span>
 <span class="p">};</span>
+<span class="p">}</span>
 
 <span class="cp">#endif </span><span class="c1">// OPTIONS_HPP</span>
 </pre></div>

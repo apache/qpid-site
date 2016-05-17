@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['timeout_5ferror',['timeout_error',['../structproton_1_1timeout__error.html#a62ed6422b084746ba8f6779997e047f8',1,'proton::timeout_error']]],
-  ['timestamp',['timestamp',['../classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d',1,'proton::timestamp']]],
-  ['transport',['transport',['../classproton_1_1connection.html#a89faad37d419b75c47031ddf530b0ab6',1,'proton::connection']]],
-  ['ttl',['ttl',['../classproton_1_1message.html#a3ae8a20748fb23fc17a7c221f435a326',1,'proton::message::ttl() const '],['../classproton_1_1message.html#a62106618909df7a4a43e88316a9e9d61',1,'proton::message::ttl(duration)']]],
-  ['type',['type',['../classproton_1_1scalar__base.html#a6a70b946e3620c70eac8e97f7f33fb27',1,'proton::scalar_base::type()'],['../classproton_1_1terminus.html#af6958d1d6aa10e3237c1008810c400ed',1,'proton::terminus::type() const '],['../classproton_1_1terminus.html#a3d63b492e769dd60f923f9d5f91f5af7',1,'proton::terminus::type(enum type)']]],
-  ['type_5fname',['type_name',['../namespaceproton.html#a777b2887e8ee3a66e56ca9468007b586',1,'proton']]]
+  ['uninitialized',['uninitialized',['../classproton_1_1connection.html#ac148c054a035b462f4483f38078374bf',1,'proton::connection::uninitialized()'],['../classproton_1_1endpoint.html#a580e27d7221fd49d4cb7527972ff186e',1,'proton::endpoint::uninitialized()'],['../classproton_1_1link.html#ac148c054a035b462f4483f38078374bf',1,'proton::link::uninitialized()'],['../classproton_1_1session.html#ac148c054a035b462f4483f38078374bf',1,'proton::session::uninitialized()']]],
+  ['update',['update',['../classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604',1,'proton::connection_options::update()'],['../classproton_1_1receiver__options.html#a7bbed67f2faac1cd6a5c490dac90bda3',1,'proton::receiver_options::update()'],['../classproton_1_1sender__options.html#a16b609dbb6a9df5ab7e719f0de05026b',1,'proton::sender_options::update()']]],
+  ['url',['url',['../classproton_1_1url.html#a2ac6e124f5c2a7a3c8464099b5c4fde7',1,'proton::url::url(const std::string &amp;url_str)'],['../classproton_1_1url.html#a0665da617d0ca28be2721c5f16368dd5',1,'proton::url::url(const url &amp;)']]],
+  ['user',['user',['../classproton_1_1message.html#af4b975322eaf2f3c218590b73d711d79',1,'proton::message::user(const std::string &amp;user)'],['../classproton_1_1message.html#a31d44d41f9aee83ac6fdbe8721eaa42f',1,'proton::message::user() const '],['../classproton_1_1sasl.html#a31d44d41f9aee83ac6fdbe8721eaa42f',1,'proton::sasl::user()'],['../classproton_1_1url.html#a31d44d41f9aee83ac6fdbe8721eaa42f',1,'proton::url::user()']]]
 ];

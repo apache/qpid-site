@@ -6,7 +6,6 @@ var classproton_1_1annotation__key =
     [ "operator=", "classproton_1_1annotation__key.html#adf5c253dc7ca30bb66f6fe057527660c", null ],
     [ "operator=", "classproton_1_1annotation__key.html#aa20857e13b7782626fe3adeda0ef445a", null ],
     [ "operator=", "classproton_1_1annotation__key.html#acde842b82d257271f07a642d344aeaa4", null ],
-    [ "type", "classproton_1_1annotation__key.html#a6a70b946e3620c70eac8e97f7f33fb27", null ],
     [ "coerce", "classproton_1_1annotation__key.html#ab73c44b530463fda5e11bc403ca9edd3", null ],
     [ "get", "classproton_1_1annotation__key.html#ace2642bea7a7ab2d830f42390eb4a604", null ],
     [ "get", "classproton_1_1annotation__key.html#aab3f78c82556a26b3c2e8736a7d0c777", null ]

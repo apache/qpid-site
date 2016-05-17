@@ -2,9 +2,9 @@ var NAVTREE =
 [
   [ "Qpid Proton C++ API", "index.html", [
     [ "Introduction", "index.html", null ],
-    [ "AMQP and C++ types", "types.html", null ],
-    [ "Tutorial", "tutorial.html", null ],
-    [ "Modules", "modules.html", "modules" ],
+    [ "IO integration", "io_page.html", null ],
+    [ "Multithreaded Proton", "mt_page.html", null ],
+    [ "AMQP and C++ types", "types_page.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -36,10 +36,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-".html",
-"classproton_1_1decimal64.html#ad319fc54a93a2c7058c70e40428ed2e2",
-"classproton_1_1scalar__base.html#a085a31aed84d3c8d710102131bae556e",
-"namespacemembers_enum.html"
+"amqp__types_8hpp_source.html",
+"classproton_1_1default__container.html#a53c748f26c3bd7c50ac14d419f440935",
+"classproton_1_1receiver.html#ac148c054a035b462f4483f38078374bf",
+"classproton_1_1value.html#a035d5cba647aad8df637622977f71c9a"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

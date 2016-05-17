@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lifetime_5fpolicy',['lifetime_policy',['../classproton_1_1link__options.html#ad111ab21d33decca8c96f90f72cb9a82',1,'proton::link_options']]]
+  ['modes',['modes',['../structproton_1_1delivery__mode.html#a811fe196a5d9d37857c2f8adeeaac3c6',1,'proton::delivery_mode']]]
 ];

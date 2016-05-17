@@ -1,12 +1,7 @@
 var classproton_1_1codec_1_1encoder =
 [
     [ "encoder", "classproton_1_1codec_1_1encoder.html#a3c0a094e7f852de0a4197c0fdab85004", null ],
-    [ "encoder", "classproton_1_1codec_1_1encoder.html#af349ef49ff5e1e7d8e4c820af93c1263", null ],
-    [ "append", "classproton_1_1codec_1_1encoder.html#a2063391a2df2e01d257a0deea850258f", null ],
-    [ "appendn", "classproton_1_1codec_1_1encoder.html#aa93b3077282a673a1cbb7eed3b08993f", null ],
-    [ "clear", "classproton_1_1codec_1_1encoder.html#ac8bb3912a3ce86b15842e79d0b421204", null ],
-    [ "copy", "classproton_1_1codec_1_1encoder.html#aad84d11869f8165c7fd3db0a6546beb5", null ],
-    [ "empty", "classproton_1_1codec_1_1encoder.html#ac6e61de369e994009e36f344f99c15ad", null ],
+    [ "encoder", "classproton_1_1codec_1_1encoder.html#a6da1725854567e26466e4824df73d178", null ],
     [ "encode", "classproton_1_1codec_1_1encoder.html#a05b307b3735c19f17f1fadf74921cd8b", null ],
     [ "encode", "classproton_1_1codec_1_1encoder.html#ac2131a7ce711f2e6a84ebe1d47cc5777", null ],
     [ "encode", "classproton_1_1codec_1_1encoder.html#ad236fe917e7543c22425a12bddbdc821", null ],
@@ -30,10 +25,9 @@ var classproton_1_1codec_1_1encoder =
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#afdab0295f119a4badf63a947d508ef97", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#abc4b560a005e9160693c85aae05086a0", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a2d41565e7410ec7a72097da5b399fd79", null ],
-    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a79c97aab9f563c515301adb35951b752", null ],
+    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a05456936c708e084bb2d7aea4b5449ae", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a1a22fc8bfea6eee79c2af6e1c66f8f59", null ],
-    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a50df2bc8b5e10a44954eba818f498670", null ],
+    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a041e90045de495b728fb95bbed97a531", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#ae899d62164114228541da27e80372bc2", null ],
-    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a4ffe2e23e17b2c241074e52944916e8a", null ],
-    [ "rewind", "classproton_1_1codec_1_1encoder.html#ab8734e666421c9fe3b6380a818c6c727", null ]
+    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a4ffe2e23e17b2c241074e52944916e8a", null ]
 ];

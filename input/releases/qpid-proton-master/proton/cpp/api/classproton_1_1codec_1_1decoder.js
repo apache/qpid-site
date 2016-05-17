@@ -1,14 +1,9 @@
 var classproton_1_1codec_1_1decoder =
 [
     [ "decoder", "classproton_1_1codec_1_1decoder.html#ac9222fed91a5066887b42f471de0be8a", null ],
-    [ "decoder", "classproton_1_1codec_1_1decoder.html#a58898fd54f3f647f5ab0da3a83664ddb", null ],
-    [ "append", "classproton_1_1codec_1_1decoder.html#a2063391a2df2e01d257a0deea850258f", null ],
-    [ "appendn", "classproton_1_1codec_1_1decoder.html#aa93b3077282a673a1cbb7eed3b08993f", null ],
-    [ "clear", "classproton_1_1codec_1_1decoder.html#ac8bb3912a3ce86b15842e79d0b421204", null ],
-    [ "copy", "classproton_1_1codec_1_1decoder.html#aad84d11869f8165c7fd3db0a6546beb5", null ],
+    [ "decoder", "classproton_1_1codec_1_1decoder.html#adaca283b3eeb8861b7f7e8e94f784810", null ],
     [ "decode", "classproton_1_1codec_1_1decoder.html#a2db9ebfc344a8b1718099047639e32b2", null ],
     [ "decode", "classproton_1_1codec_1_1decoder.html#a8a2c9746655f00930f1d609b2bb9ff17", null ],
-    [ "empty", "classproton_1_1codec_1_1decoder.html#ac6e61de369e994009e36f344f99c15ad", null ],
     [ "more", "classproton_1_1codec_1_1decoder.html#aba1201662b7dccd64b782cb43e40d3e0", null ],
     [ "next_type", "classproton_1_1codec_1_1decoder.html#af3a00236ce433d05e26c0eb2ed5dfcd0", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#adc575dd1b25a7601cc71fe8e80457f43", null ],
@@ -34,13 +29,12 @@ var classproton_1_1codec_1_1decoder =
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#ac2168ca4c037368477131b6f35c7cee6", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#adbca8b4d1f0521a386cd81c92d24c667", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#aa4708f111d1c046cb1184f5877df3735", null ],
-    [ "operator>>", "classproton_1_1codec_1_1decoder.html#adafa91410b40da59f895133cdbcd5e69", null ],
+    [ "operator>>", "classproton_1_1codec_1_1decoder.html#a93c5ccb222d57853fd0f97f2b6cbdf62", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#affae6ad78f8a4884bcb1a37e2119f00a", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a010d92fa617e5921f73b80bac0bc5690", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a29037b1d70f61e041b2d5be7c67b577d", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#ac6c6ddca9af56625b28bc7989b02f24b", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a92c526a77d6aa412e17051a2cfeb7210", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#ad96e5571bbd7384096ca07a8a9368ffc", null ],
-    [ "rewind", "classproton_1_1codec_1_1decoder.html#ab8734e666421c9fe3b6380a818c6c727", null ],
     [ "message", "classproton_1_1codec_1_1decoder.html#a085a31aed84d3c8d710102131bae556e", null ]
 ];

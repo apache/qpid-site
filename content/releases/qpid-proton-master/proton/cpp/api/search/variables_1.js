@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['forever',['FOREVER',['../classproton_1_1duration.html#acebdd3ee364870f89665ca128e97a4d7',1,'proton::duration']]]
+  ['data',['data',['../structproton_1_1io_1_1mutable__buffer.html#a91a70b77df95bd8b0830b49a094c2acb',1,'proton::io::mutable_buffer::data()'],['../structproton_1_1io_1_1const__buffer.html#a8f64897c7ccc5c13f276d1d07c4e7095',1,'proton::io::const_buffer::data()']]]
 ];

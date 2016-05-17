@@ -93,8 +93,8 @@ $(document).ready(function(){initNavTree('sasl_8hpp_source.html','');});
 <div class="title">sasl.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROTON_CPP_SASL_H</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROTON_CPP_SASL_H</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROTON_SASL_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROTON_SASL_HPP</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> *</span></div>
@@ -119,67 +119,64 @@ $(document).ready(function(){initNavTree('sasl_8hpp_source.html','');});
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;proton/export.hpp&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;proton/config.hpp&quot;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;proton/sasl.h&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html">   33</a></span>&#160;<span class="keyword">class </span><a class="code" href="classproton_1_1sasl.html">sasl</a> {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(pn_sasl_t* s) : object_(s) {}</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#if PN_CPP_HAS_CPP11</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>() = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(<span class="keyword">const</span> <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(<a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp; operator=(<a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">   48</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">outcome</a> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">   49</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = PN_SASL_NONE,   </div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">   50</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">OK</a> = PN_SASL_OK,       </div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">   51</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">AUTH</a> = PN_SASL_AUTH,   </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">   52</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">SYS</a> = PN_SASL_SYS,     </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">   53</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">PERM</a> = PN_SASL_PERM,   </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">   54</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">TEMP</a> = PN_SASL_TEMP    </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    };</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    PN_CPP_EXTERN <span class="keyword">enum</span> <a class="code" href="classproton_1_1sasl.html#ae450d5ece6b6ea827b26fae2a892a4f3">outcome</a> <a class="code" href="classproton_1_1sasl.html#ae450d5ece6b6ea827b26fae2a892a4f3">outcome</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    PN_CPP_EXTERN std::string <a class="code" href="classproton_1_1sasl.html#a31d44d41f9aee83ac6fdbe8721eaa42f">user</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    PN_CPP_EXTERN std::string <a class="code" href="classproton_1_1sasl.html#ab3e41c9a32534900c35ea46a45635c4c">mech</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> allow_insecure_mechs(<span class="keywordtype">bool</span>);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> allow_insecure_mechs();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">void</span> allowed_mechs(<span class="keyword">const</span> std::string &amp;);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> config_name(<span class="keyword">const</span> std::string&amp;);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> config_path(<span class="keyword">const</span> std::string&amp;);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    pn_sasl_t* <span class="keyword">const</span> object_;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code" href="classproton_1_1connection__options.html">connection_options</a>;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span>transport;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;proton/internal/object.hpp&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;proton/sasl.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html">   36</a></span>&#160;<span class="keyword">class </span><a class="code" href="classproton_1_1sasl.html">sasl</a> {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(pn_sasl_t* s) : object_(s) {}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#if PN_CPP_HAS_DELETED_FUNCTIONS</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>() = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(<span class="keyword">const</span> <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>&amp; operator=(<a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#if PN_CPP_HAS_DEFAULTED_FUNCTIONS</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classproton_1_1sasl.html">sasl</a>(<a class="code" href="classproton_1_1sasl.html">sasl</a>&amp;&amp;) = <span class="keywordflow">default</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">   53</a></span>&#160;    <span class="keyword">enum</span> <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">outcome</a> {</div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">   54</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a> = PN_SASL_NONE,   </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">   55</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">OK</a> = PN_SASL_OK,       </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">   56</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">AUTH</a> = PN_SASL_AUTH,   </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">   57</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">SYS</a> = PN_SASL_SYS,     </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">   58</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">PERM</a> = PN_SASL_PERM,   </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">   59</a></span>&#160;        <a class="code" href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">TEMP</a> = PN_SASL_TEMP    </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    PN_CPP_EXTERN <span class="keyword">enum</span> <a class="code" href="classproton_1_1sasl.html#ae450d5ece6b6ea827b26fae2a892a4f3">outcome</a> <a class="code" href="classproton_1_1sasl.html#ae450d5ece6b6ea827b26fae2a892a4f3">outcome</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    PN_CPP_EXTERN std::string <a class="code" href="classproton_1_1sasl.html#a31d44d41f9aee83ac6fdbe8721eaa42f">user</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    PN_CPP_EXTERN std::string <a class="code" href="classproton_1_1sasl.html#ab3e41c9a32534900c35ea46a45635c4c">mech</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    pn_sasl_t* <span class="keyword">const</span> object_;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">friend</span> <span class="keyword">class </span>internal::factory&lt;<a class="code" href="classproton_1_1sasl.html">sasl</a>&gt;;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;} <span class="comment">// proton</span></div>
 <div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="preprocessor">#endif // PROTON_CPP_SASL_H</span></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">proton::sasl::SYS</a></div><div class="ttdoc">Failed due to a system error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:52</div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">proton::sasl::PERM</a></div><div class="ttdoc">Failed due to unrecoverable error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:53</div></div>
-<div class="ttc" id="classproton_1_1sasl_html"><div class="ttname"><a href="classproton_1_1sasl.html">proton::sasl</a></div><div class="ttdoc">SASL information. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:33</div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">proton::sasl::AUTH</a></div><div class="ttdoc">Failed due to bad credentials. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:51</div></div>
-<div class="ttc" id="classproton_1_1connection__options_html"><div class="ttname"><a href="classproton_1_1connection__options.html">proton::connection_options</a></div><div class="ttdoc">Options for creating a connection. </div><div class="ttdef"><b>Definition:</b> connection_options.hpp:68</div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">proton::sasl::OK</a></div><div class="ttdoc">Authentication succeeded. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:50</div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">proton::sasl::TEMP</a></div><div class="ttdoc">Failed due to transient error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:54</div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">proton::sasl::NONE</a></div><div class="ttdoc">Negotiation not completed. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:49</div></div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // PROTON_SASL_HPP</span></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda69a8d053cf3b5b28fa0c7dde6f883e10">proton::sasl::SYS</a></div><div class="ttdoc">Failed due to a system error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:57</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf">proton::sasl::PERM</a></div><div class="ttdoc">Failed due to unrecoverable error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:58</div></div>
+<div class="ttc" id="classproton_1_1sasl_html"><div class="ttname"><a href="classproton_1_1sasl.html">proton::sasl</a></div><div class="ttdoc">SASL information. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:36</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda8b22fbb60fcbd7a4a5e1e6ff6ee38218">proton::sasl::AUTH</a></div><div class="ttdoc">Failed due to bad credentials. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:56</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda2bc49ec37d6a5715dd23e85f1ff5bb59">proton::sasl::OK</a></div><div class="ttdoc">Authentication succeeded. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:55</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acda5937389a60030a604f0efdf5e3927325">proton::sasl::TEMP</a></div><div class="ttdoc">Failed due to transient error. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:59</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdac157bdf0b85a40d2619cbc8bc1ae5fe2">proton::sasl::NONE</a></div><div class="ttdoc">Negotiation not completed. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:54</div></div>
 <div class="ttc" id="classproton_1_1sasl_html_ab3e41c9a32534900c35ea46a45635c4c"><div class="ttname"><a href="classproton_1_1sasl.html#ab3e41c9a32534900c35ea46a45635c4c">proton::sasl::mech</a></div><div class="ttdeci">std::string mech() const </div><div class="ttdoc">Get the mechanism. </div></div>
 <div class="ttc" id="classproton_1_1sasl_html_a31d44d41f9aee83ac6fdbe8721eaa42f"><div class="ttname"><a href="classproton_1_1sasl.html#a31d44d41f9aee83ac6fdbe8721eaa42f">proton::sasl::user</a></div><div class="ttdeci">std::string user() const </div><div class="ttdoc">Get the user name. </div></div>
-<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acd"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">proton::sasl::outcome</a></div><div class="ttdeci">outcome</div><div class="ttdoc">The result of the SASL negotiation. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:48</div></div>
+<div class="ttc" id="classproton_1_1sasl_html_af47997198e7e7301a1cd8602c7f02acd"><div class="ttname"><a href="classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acd">proton::sasl::outcome</a></div><div class="ttdeci">outcome</div><div class="ttdoc">The result of the SASL negotiation. </div><div class="ttdef"><b>Definition:</b> sasl.hpp:53</div></div>
 <div class="ttc" id="classproton_1_1sasl_html_ae450d5ece6b6ea827b26fae2a892a4f3"><div class="ttname"><a href="classproton_1_1sasl.html#ae450d5ece6b6ea827b26fae2a892a4f3">proton::sasl::outcome</a></div><div class="ttdeci">enum outcome outcome() const </div><div class="ttdoc">Get the outcome. </div></div>
-<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The proton namespace. </div><div class="ttdef"><b>Definition:</b> acceptor.hpp:31</div></div>
+<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The main Proton namespace. </div><div class="ttdef"><b>Definition:</b> annotation_key.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

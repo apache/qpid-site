@@ -93,64 +93,68 @@ $(document).ready(function(){initNavTree('timestamp_8hpp_source.html','');});
 <div class="title">timestamp.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef TIMESTAMP_HPP</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define TIMESTAMP_HPP</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * Licensed to the Apache Software Foundation (ASF) under one</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * or more contributor license agreements.  See the NOTICE file</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * distributed with this work for additional information</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * regarding copyright ownership.  The ASF licenses this file</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * to you under the Apache License, Version 2.0 (the</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * &quot;License&quot;); you may not use this file except in compliance</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * with the License.  You may obtain a copy of the License at</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *   http://www.apache.org/licenses/LICENSE-2.0</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * software distributed under the License is distributed on an</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * KIND, either express or implied.  See the License for the</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * specific language governing permissions and limitations</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * under the License.</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &quot;proton/duration.hpp&quot;</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html">   26</a></span>&#160;<span class="keyword">class </span><a class="code" href="classproton_1_1timestamp.html">timestamp</a> : <span class="keyword">private</span> comparable&lt;timestamp&gt; {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">   28</a></span>&#160;    <span class="keyword">typedef</span> int64_t <a class="code" href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">numeric_type</a>; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    PN_CPP_EXTERN <span class="keyword">static</span> <a class="code" href="classproton_1_1timestamp.html">timestamp</a> <a class="code" href="classproton_1_1timestamp.html#a8a432817c74685a518a08ede48d1db34">now</a>(); </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">   31</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">timestamp</a>(numeric_type <a class="code" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">ms</a> = 0) : ms_(<a class="code" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">ms</a>) {} </div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">   32</a></span>&#160;    <a class="code" href="classproton_1_1timestamp.html">timestamp</a>&amp; <a class="code" href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">operator=</a>(numeric_type <a class="code" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">ms</a>) { ms_ = <a class="code" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">ms</a>; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }  </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">   33</a></span>&#160;    numeric_type <a class="code" href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">milliseconds</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ms_; } </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">   34</a></span>&#160;    numeric_type <a class="code" href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">ms</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ms_; }           </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    numeric_type ms_;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(timestamp x, timestamp y) { <span class="keywordflow">return</span> x.ms() == y.ms(); }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator&lt;(timestamp x, timestamp y) { <span class="keywordflow">return</span> x.ms() &lt; y.ms(); }</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">inline</span> timestamp operator+(timestamp ts, duration d) { <span class="keywordflow">return</span> timestamp(ts.ms() + d.ms()); }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">inline</span> duration operator-(timestamp t0, timestamp t1) { <span class="keywordflow">return</span> duration(t0.ms() - t1.ms()); }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">inline</span> timestamp operator+(duration d, timestamp ts) { <span class="keywordflow">return</span> ts + d; }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;PN_CPP_EXTERN std::ostream&amp; <a class="code" href="namespaceproton.html#ae6fabe30961a3d3280bb8445e743b21c">operator&lt;&lt;</a>(std::ostream&amp;, timestamp);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif // TIMESTAMP_HPP</span></div>
-<div class="ttc" id="classproton_1_1timestamp_html_a9d99d74acbdd9e73e7bfa74e9886cbb6"><div class="ttname"><a href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">proton::timestamp::operator=</a></div><div class="ttdeci">timestamp &amp; operator=(numeric_type ms)</div><div class="ttdoc">Assign from milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:32</div></div>
-<div class="ttc" id="namespaceproton_html_ae6fabe30961a3d3280bb8445e743b21c"><div class="ttname"><a href="namespaceproton.html#ae6fabe30961a3d3280bb8445e743b21c">proton::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const binary &amp;)</div><div class="ttdoc">Print binary value. </div></div>
-<div class="ttc" id="classproton_1_1timestamp_html_a8bdbf450cae4ec7457523cfebef08398"><div class="ttname"><a href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">proton::timestamp::milliseconds</a></div><div class="ttdeci">numeric_type milliseconds() const </div><div class="ttdoc">Get milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:33</div></div>
-<div class="ttc" id="classproton_1_1timestamp_html_a7dd3e30aaca70057a02dca7cc5eb5b4d"><div class="ttname"><a href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">proton::timestamp::timestamp</a></div><div class="ttdeci">timestamp(numeric_type ms=0)</div><div class="ttdoc">Construct from milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:31</div></div>
-<div class="ttc" id="classproton_1_1timestamp_html_af55ebfb91b3132031de3f8cef94d785d"><div class="ttname"><a href="classproton_1_1timestamp.html#af55ebfb91b3132031de3f8cef94d785d">proton::timestamp::ms</a></div><div class="ttdeci">numeric_type ms() const </div><div class="ttdoc">Get milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:34</div></div>
-<div class="ttc" id="classproton_1_1timestamp_html_a8a432817c74685a518a08ede48d1db34"><div class="ttname"><a href="classproton_1_1timestamp.html#a8a432817c74685a518a08ede48d1db34">proton::timestamp::now</a></div><div class="ttdeci">static timestamp now()</div><div class="ttdoc">Current wall-clock time. </div></div>
-<div class="ttc" id="classproton_1_1timestamp_html_a44829e89515fec974f57f37bbdbfaeb2"><div class="ttname"><a href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">proton::timestamp::numeric_type</a></div><div class="ttdeci">int64_t numeric_type</div><div class="ttdoc">Numeric type holding milliseconds value. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:28</div></div>
-<div class="ttc" id="classproton_1_1timestamp_html"><div class="ttname"><a href="classproton_1_1timestamp.html">proton::timestamp</a></div><div class="ttdoc">64 bit timestamp in milliseconds since the epoch 00:00:00 (UTC), 1 January 1970. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:26</div></div>
-<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The proton namespace. </div><div class="ttdef"><b>Definition:</b> acceptor.hpp:31</div></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PROTON_TIMESTAMP_HPP</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PROTON_TIMESTAMP_HPP</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Licensed to the Apache Software Foundation (ASF) under one</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * or more contributor license agreements.  See the NOTICE file</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * distributed with this work for additional information</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * regarding copyright ownership.  The ASF licenses this file</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * to you under the Apache License, Version 2.0 (the</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> * &quot;License&quot;); you may not use this file except in compliance</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment"> * with the License.  You may obtain a copy of the License at</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"> *   http://www.apache.org/licenses/LICENSE-2.0</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * Unless required by applicable law or agreed to in writing,</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * software distributed under the License is distributed on an</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * KIND, either express or implied.  See the License for the</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * specific language governing permissions and limitations</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * under the License.</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;proton/duration.hpp&quot;</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceproton.html">proton</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classproton_1_1timestamp.html">timestamp</a> : <span class="keyword">private</span> internal::comparable&lt;timestamp&gt; {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">   33</a></span>&#160;    <span class="keyword">typedef</span> int64_t <a class="code" href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">numeric_type</a>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    PN_CPP_EXTERN <span class="keyword">static</span> <a class="code" href="classproton_1_1timestamp.html">timestamp</a> <a class="code" href="classproton_1_1timestamp.html#a8a432817c74685a518a08ede48d1db34">now</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">   39</a></span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">timestamp</a>(numeric_type ms = 0) : ms_(ms) {}</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">   42</a></span>&#160;    <a class="code" href="classproton_1_1timestamp.html">timestamp</a>&amp; <a class="code" href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">operator=</a>(numeric_type ms) { ms_ = ms; <span class="keywordflow">return</span> *<span class="keyword">this</span>; }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">   45</a></span>&#160;    numeric_type <a class="code" href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">milliseconds</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> ms_; }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    numeric_type ms_;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator==(timestamp x, timestamp y) { <span class="keywordflow">return</span> x.milliseconds() == y.milliseconds(); }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">inline</span> <span class="keywordtype">bool</span> operator&lt;(timestamp x, timestamp y) { <span class="keywordflow">return</span> x.milliseconds() &lt; y.milliseconds(); }</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">inline</span> timestamp operator+(timestamp ts, duration d) { <span class="keywordflow">return</span> timestamp(ts.milliseconds() + d.milliseconds()); }</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">inline</span> duration operator-(timestamp t0, timestamp t1) { <span class="keywordflow">return</span> duration(t0.milliseconds() - t1.milliseconds()); }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">inline</span> timestamp operator+(duration d, timestamp ts) { <span class="keywordflow">return</span> ts + d; }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;PN_CPP_EXTERN std::ostream&amp; <a class="code" href="namespaceproton.html#ae6fabe30961a3d3280bb8445e743b21c">operator&lt;&lt;</a>(std::ostream&amp;, timestamp);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;} <span class="comment">// proton</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#endif // PROTON_TIMESTAMP_HPP</span></div>
+<div class="ttc" id="classproton_1_1timestamp_html_a9d99d74acbdd9e73e7bfa74e9886cbb6"><div class="ttname"><a href="classproton_1_1timestamp.html#a9d99d74acbdd9e73e7bfa74e9886cbb6">proton::timestamp::operator=</a></div><div class="ttdeci">timestamp &amp; operator=(numeric_type ms)</div><div class="ttdoc">Assign from milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:42</div></div>
+<div class="ttc" id="namespaceproton_html_ae6fabe30961a3d3280bb8445e743b21c"><div class="ttname"><a href="namespaceproton.html#ae6fabe30961a3d3280bb8445e743b21c">proton::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const binary &amp;)</div><div class="ttdoc">Print a binary value. </div></div>
+<div class="ttc" id="classproton_1_1timestamp_html_a8bdbf450cae4ec7457523cfebef08398"><div class="ttname"><a href="classproton_1_1timestamp.html#a8bdbf450cae4ec7457523cfebef08398">proton::timestamp::milliseconds</a></div><div class="ttdeci">numeric_type milliseconds() const </div><div class="ttdoc">Get milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:45</div></div>
+<div class="ttc" id="classproton_1_1timestamp_html_a7dd3e30aaca70057a02dca7cc5eb5b4d"><div class="ttname"><a href="classproton_1_1timestamp.html#a7dd3e30aaca70057a02dca7cc5eb5b4d">proton::timestamp::timestamp</a></div><div class="ttdeci">timestamp(numeric_type ms=0)</div><div class="ttdoc">Construct from milliseconds. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:39</div></div>
+<div class="ttc" id="classproton_1_1timestamp_html_a8a432817c74685a518a08ede48d1db34"><div class="ttname"><a href="classproton_1_1timestamp.html#a8a432817c74685a518a08ede48d1db34">proton::timestamp::now</a></div><div class="ttdeci">static timestamp now()</div><div class="ttdoc">The current wall-clock time. </div></div>
+<div class="ttc" id="classproton_1_1timestamp_html_a44829e89515fec974f57f37bbdbfaeb2"><div class="ttname"><a href="classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2">proton::timestamp::numeric_type</a></div><div class="ttdeci">int64_t numeric_type</div><div class="ttdoc">A numeric type holding a milliseconds value. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:33</div></div>
+<div class="ttc" id="classproton_1_1timestamp_html"><div class="ttname"><a href="classproton_1_1timestamp.html">proton::timestamp</a></div><div class="ttdoc">A 64-bit timestamp in milliseconds since the Unix epoch. </div><div class="ttdef"><b>Definition:</b> timestamp.hpp:30</div></div>
+<div class="ttc" id="namespaceproton_html"><div class="ttname"><a href="namespaceproton.html">proton</a></div><div class="ttdoc">The main Proton namespace. </div><div class="ttdef"><b>Definition:</b> annotation_key.hpp:28</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

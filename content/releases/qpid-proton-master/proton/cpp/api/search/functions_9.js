@@ -1,13 +1,7 @@
 var searchData=
 [
-  ['lifetime_5fpolicy',['lifetime_policy',['../classproton_1_1link__options.html#af937f3c5149deff1166defa548161e46',1,'proton::link_options']]],
-  ['link',['link',['../classproton_1_1delivery.html#aca9726355bb7d42b75d374b5cc459040',1,'proton::delivery']]],
-  ['link_5foptions',['link_options',['../classproton_1_1container.html#abe6a163dd9a95e0ef869c8d3bd265b1d',1,'proton::container::link_options()'],['../classproton_1_1link__options.html#a0982bce7a239e29891b9edd12c79310e',1,'proton::link_options::link_options()'],['../classproton_1_1link__options.html#aac5f3c7602f40c9761783fc2811d0288',1,'proton::link_options::link_options(const link_options &amp;)']]],
-  ['links',['links',['../classproton_1_1connection.html#af304203ffaff9415b7884f53507b72dc',1,'proton::connection::links()'],['../classproton_1_1session.html#af304203ffaff9415b7884f53507b72dc',1,'proton::session::links()']]],
-  ['listen',['listen',['../classproton_1_1container.html#ab5a976cc459568f13da407a038591ca2',1,'proton::container']]],
-  ['listener',['listener',['../classproton_1_1io_1_1socket_1_1listener.html#ac7d29e395fadfacad9f98bf70e5608fe',1,'proton::io::socket::listener']]],
-  ['local_5faddress',['local_address',['../classproton_1_1link__options.html#a532e4ce92da37e5785001b470a99776b',1,'proton::link_options']]],
-  ['local_5fcondition',['local_condition',['../classproton_1_1connection.html#aaaea8dc733566e78a066d2435f8a60c5',1,'proton::connection::local_condition()'],['../classproton_1_1endpoint.html#a8e6552f9fc799927204b763969513099',1,'proton::endpoint::local_condition()'],['../classproton_1_1link.html#aaaea8dc733566e78a066d2435f8a60c5',1,'proton::link::local_condition()'],['../classproton_1_1session.html#aaaea8dc733566e78a066d2435f8a60c5',1,'proton::session::local_condition()']]],
-  ['local_5fsource',['local_source',['../classproton_1_1link.html#a2246ba119cbaa626fb423e1ba80f84c5',1,'proton::link']]],
-  ['local_5ftarget',['local_target',['../classproton_1_1link.html#a1e65cc5198f2c2e57d28815f401eb7d9',1,'proton::link']]]
+  ['link',['link',['../classproton_1_1link.html#ad29b379b3621ec393ac9f28b4ba8b010',1,'proton::link']]],
+  ['link_5fname',['link_name',['../classproton_1_1io_1_1link__namer.html#ae87e7c07b97273644b32c03abff30a77',1,'proton::io::link_namer']]],
+  ['listen',['listen',['../classproton_1_1container.html#a27d60b6665f37220d9be70f11ab69654',1,'proton::container::listen(const std::string &amp;url, listen_handler &amp;lh)=0'],['../classproton_1_1container.html#a2fd8da2aa0f1891ea29a39330eb177dc',1,'proton::container::listen(const std::string &amp;url, const connection_options &amp;)'],['../classproton_1_1container.html#af2f7d413dc10dff5cae3396ce9d47688',1,'proton::container::listen(const std::string &amp;url)'],['../classproton_1_1default__container.html#a7bb03676cface6b9310a7849fb9348a2',1,'proton::default_container::listen()']]],
+  ['listener',['listener',['../classproton_1_1listener.html#a59dc4506a73a3d4ae084b5fc1d014814',1,'proton::listener']]]
 ];

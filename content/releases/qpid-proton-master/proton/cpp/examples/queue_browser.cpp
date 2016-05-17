@@ -20,33 +20,34 @@
  */
 
 #include "proton/connection.hpp"
-#include "proton/container.hpp"
-#include "proton/handler.hpp"
+#include "proton/default_container.hpp"
+#include "proton/delivery.hpp"
+#include "proton/messaging_handler.hpp"
+#include "proton/receiver_options.hpp"
+#include "proton/source_options.hpp"
 #include "proton/url.hpp"
-#include "proton/link_options.hpp"
 
 #include <iostream>
 
-#include "fake_cpp11.hpp"
+#include <proton/config.hpp>
 
-class browser : public proton::handler {
+using proton::source_options;
+
+class browser : public proton::messaging_handler {
   private:
     proton::url url;
 
   public:
-    browser(const proton::url& u) : url(u) {}
+    browser(const std::string& u) : url(u) {}
 
-    void on_container_start(proton::container &c) override {
+    void on_container_start(proton::container &c) PN_CPP_OVERRIDE {
         proton::connection conn = c.connect(url);
-        conn.open_receiver(url.path(), proton::link_options().browsing(true));
+        source_options browsing = source_options().distribution_mode(proton::source::COPY);
+        conn.open_receiver(url.path(), proton::receiver_options().source(browsing));
     }
 
-    void on_message(proton::delivery &d, proton::message &m) override {
+    void on_message(proton::delivery &, proton::message &m) PN_CPP_OVERRIDE {
         std::cout << m.body() << std::endl;
-
-        if (d.link().queued() == 0 && d.link().drained() > 0) {
-            d.connection().close();
-        }
     }
 };
 
@@ -55,7 +56,7 @@ int main(int argc, char **argv) {
         std::string url = argc > 1 ? argv[1] : "127.0.0.1:5672/examples";
 
         browser b(url);
-        proton::container(b).run();
+        proton::default_container(b).run();
 
         return 0;
     } catch (const std::exception& e) {

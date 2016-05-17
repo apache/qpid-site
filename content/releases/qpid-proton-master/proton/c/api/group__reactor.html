@@ -393,17 +393,18 @@ PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><b>pn_record_s
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retrieve the host address assigned to a reactor connection.</p>
-<p>This may be used to retrieve the host address used by the reactor to establish the outgoing socket connection.</p>
+<p>Retrieve the peer host address for a reactor connection.</p>
+<p>This may be used to retrieve the host address used by the reactor to establish the outgoing socket connection. In the case of an accepted connection the returned value is the address of the remote.</p>
+<dl class="section note"><dt>Note</dt><dd>Note that the returned address may be in numeric IP format.</dd></dl>
 <p>The pointer returned by this operation is valid until either the address is changed via <a class="el" href="group__reactor.html#gaaeba5aac4f320c26f2d01810940083eb">pn_reactor_set_connection_host()</a> or the connection object is freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">reactor</td><td>the reactor that owns the connection. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">connection</td><td>the connection created by <a class="el" href="group__reactor.html#gaf65b1a1c90a15d2cf7e840c7e6c8d82f">pn_reactor_connection()</a> </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">connection</td><td>the reactor connection </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>a C string containing the address in URL format or NULL if no address assigned. <a class="el" href="group__url.html#gab239da092ed86cb75e24e4d3b092c943">pn_url_parse()</a> may be used to create a Proton pn_url_t instance from the returned value. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>a C string containing the address in URL format or NULL if no address available. <a class="el" href="group__url.html#gab239da092ed86cb75e24e4d3b092c943">pn_url_parse()</a> may be used to create a Proton pn_url_t instance from the returned value. </dd></dl>
 
 </div>
 </div>
@@ -442,8 +443,8 @@ PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><b>pn_record_s
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Change the host address used by the connection.</p>
-<p>The address is used by the reactor's iohandler to create an outgoing socket connection. This must be set prior to opening the connection.</p>
+<p>Change the host address used by an outgoing reactor connection.</p>
+<p>The address is used by the reactor's iohandler to create an outgoing socket connection. This must be set prior to (re)opening the connection.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">reactor</td><td>the reactor that owns the connection. </td></tr>

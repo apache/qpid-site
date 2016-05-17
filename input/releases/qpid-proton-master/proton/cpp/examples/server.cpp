@@ -22,8 +22,9 @@
 #include "options.hpp"
 
 #include "proton/connection.hpp"
-#include "proton/container.hpp"
-#include "proton/handler.hpp"
+#include "proton/default_container.hpp"
+#include "proton/messaging_handler.hpp"
+#include "proton/tracker.hpp"
 #include "proton/url.hpp"
 
 #include <iostream>
@@ -31,9 +32,9 @@
 #include <string>
 #include <cctype>
 
-#include "fake_cpp11.hpp"
+#include <proton/config.hpp>
 
-class server : public proton::handler {
+class server : public proton::messaging_handler {
   private:
     typedef std::map<std::string, proton::sender> sender_map;
     proton::url url;
@@ -43,7 +44,7 @@ class server : public proton::handler {
   public:
     server(const std::string &u) : url(u) {}
 
-    void on_container_start(proton::container &c) override {
+    void on_container_start(proton::container &c) PN_CPP_OVERRIDE {
         connection = c.connect(url);
         connection.open_receiver(url.path());
 
@@ -53,19 +54,18 @@ class server : public proton::handler {
     std::string to_upper(const std::string &s) {
         std::string uc(s);
         size_t l = uc.size();
-
-        for (size_t i=0; i<l; i++) uc[i] = std::toupper(uc[i]);
-
+        for (size_t i=0; i<l; i++)
+            uc[i] = static_cast<char>(std::toupper(uc[i]));
         return uc;
     }
 
-    void on_message(proton::delivery &d, proton::message &m) override {
+    void on_message(proton::delivery &, proton::message &m) PN_CPP_OVERRIDE {
         std::cout << "Received " << m.body() << std::endl;
 
         std::string reply_to = m.reply_to();
         proton::message reply;
 
-        reply.address(reply_to);
+        reply.to(reply_to);
         reply.body(to_upper(proton::get<std::string>(m.body())));
         reply.correlation_id(m.correlation_id());
 
@@ -79,7 +79,7 @@ class server : public proton::handler {
 
 int main(int argc, char **argv) {
     std::string address("amqp://0.0.0.0:5672/examples");
-    options opts(argc, argv);
+    example::options opts(argc, argv);
 
     opts.add_value(address, 'a', "address", "listen on URL", "URL");
 
@@ -87,10 +87,10 @@ int main(int argc, char **argv) {
         opts.parse();
 
         server srv(address);
-        proton::container(srv).run();
+        proton::default_container(srv).run();
 
         return 0;
-    } catch (const bad_option& e) {
+    } catch (const example::bad_option& e) {
         std::cout << opts << std::endl << e.what() << std::endl;
     } catch (const std::exception& e) {
         std::cerr << e.what() << std::endl;

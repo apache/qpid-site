@@ -7,7 +7,6 @@ var classproton_1_1message__id =
     [ "operator=", "classproton_1_1message__id.html#aed980fe37bb256dba6b312cc2e9082bb", null ],
     [ "operator=", "classproton_1_1message__id.html#a782793e9b93fc85f7f7a0e74dc468521", null ],
     [ "operator=", "classproton_1_1message__id.html#a0e4798868734cc90ea4e9ed3ca870d3d", null ],
-    [ "type", "classproton_1_1message__id.html#a6a70b946e3620c70eac8e97f7f33fb27", null ],
     [ "coerce", "classproton_1_1message__id.html#a8965a5e1c4122df8aee11e971ceabd07", null ],
     [ "get", "classproton_1_1message__id.html#a8e96d12c2968550ffea0e57fc6ca2c7d", null ],
     [ "get", "classproton_1_1message__id.html#a9df1e3d65a418435d46c08f9cb2948de", null ],

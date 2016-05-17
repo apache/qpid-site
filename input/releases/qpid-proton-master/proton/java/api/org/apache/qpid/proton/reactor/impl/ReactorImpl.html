@@ -148,6 +148,10 @@ implements <a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.htm
 <th class="colLast" scope="col">Field and Description</th>
 </tr>
 <tr class="altColor">
+<td class="colFirst"><code>protected static java.lang.String</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/reactor/impl/ReactorImpl.html#CONNECTION_PEER_ADDRESS_KEY">CONNECTION_PEER_ADDRESS_KEY</a></span></code>&nbsp;</td>
+</tr>
+<tr class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../../org/apache/qpid/proton/engine/ExtendableAccessor.html" title="class in org.apache.qpid.proton.engine">ExtendableAccessor</a>&lt;<a href="../../../../../../org/apache/qpid/proton/engine/Event.html" title="interface in org.apache.qpid.proton.engine">Event</a>,<a href="../../../../../../org/apache/qpid/proton/engine/Handler.html" title="interface in org.apache.qpid.proton.engine">Handler</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/reactor/impl/ReactorImpl.html#ROOT">ROOT</a></span></code>&nbsp;</td>
 </tr>
@@ -399,10 +403,23 @@ implements <a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.htm
 <a name="ROOT">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>ROOT</h4>
 <pre>public static final&nbsp;<a href="../../../../../../org/apache/qpid/proton/engine/ExtendableAccessor.html" title="class in org.apache.qpid.proton.engine">ExtendableAccessor</a>&lt;<a href="../../../../../../org/apache/qpid/proton/engine/Event.html" title="interface in org.apache.qpid.proton.engine">Event</a>,<a href="../../../../../../org/apache/qpid/proton/engine/Handler.html" title="interface in org.apache.qpid.proton.engine">Handler</a>&gt; ROOT</pre>
+</li>
+</ul>
+<a name="CONNECTION_PEER_ADDRESS_KEY">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>CONNECTION_PEER_ADDRESS_KEY</h4>
+<pre>protected static final&nbsp;java.lang.String CONNECTION_PEER_ADDRESS_KEY</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../../constant-values.html#org.apache.qpid.proton.reactor.impl.ReactorImpl.CONNECTION_PEER_ADDRESS_KEY">Constant Field Values</a></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -968,8 +985,8 @@ implements <a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.htm
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.html#getConnectionAddress-org.apache.qpid.proton.engine.Connection-">Reactor</a></code></span></div>
 <div class="block">Get the address used by the connection
  <p>
- This method will retrieve the Connection's address as set by
- <a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.html#setConnectionHost-org.apache.qpid.proton.engine.Connection-java.lang.String-int-"><code>Reactor.setConnectionHost(Connection, String, int)</code></a>.</div>
+ This may be used to retrieve the remote peer address.
+ Note that the returned address may be in numeric IP format.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.html#getConnectionAddress-org.apache.qpid.proton.engine.Connection-">getConnectionAddress</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/reactor/Reactor.html" title="interface in org.apache.qpid.proton.reactor">Reactor</a></code></dd>
