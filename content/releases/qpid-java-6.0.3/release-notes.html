@@ -120,6 +120,8 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 broker written in Java that stores, routes, and forwards messages
 using AMQP.</p>
 
+<p><strong>Note</strong>: This release addresses security vulnerabilities CVE-2016-3094 and CVE-2016-4432.</p>
+
 <p>For more information about this release, including download links and
 documentation, see the <a href="index.html">release overview</a>.</p>
 
@@ -131,7 +133,6 @@ documentation, see the <a href="index.html">release overview</a>.</p>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7211">QPID-7211</a> - [Java Broker, WMC] Do not transfer inherited context variables</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7216">QPID-7216</a> - [Java Broker, WMC] add new ManagedOperation to retrieve Connections less verbose</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7255">QPID-7255</a> - Support delivery delay</li>
-<li><a href="https://issues.apache.org/jira/browse/QPID-7271">QPID-7271</a> - Improve exception handling for PlainSaslServer</li>
 </ul>
 
 <h2 id="bugs-fixed">Bugs fixed</h2>
@@ -142,11 +143,12 @@ documentation, see the <a href="index.html">release overview</a>.</p>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7231">QPID-7231</a> - Example of REST call to invoke the Queue clear queue operation is incorrect</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7237">QPID-7237</a> - Excessive threads creation when suspending/resuming flow</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7253">QPID-7253</a> - [Java Client 0-10] Application allowed to create new JMS session whilst failover is in progress</li>
-<li><a href="https://issues.apache.org/jira/browse/QPID-7257">QPID-7257</a> - [Java Broker] Correct connection state logging</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7257">QPID-7257</a> - [CVE-2016-4432] [Java Broker] Prevent possibility of by-passed authentication in AMQP 0-8..0-10 protocol implementations</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7260">QPID-7260</a> - apache-release profile fails under JDK 1.8 due to javadoc errors</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7267">QPID-7267</a> - [Java Broker] Content-Length header is set incorrectly when using compression</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7268">QPID-7268</a> - message sent over 0-10 can't be received over 1.0</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-7269">QPID-7269</a> - broker issues disposition for delivery that is already settled</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7271">QPID-7271</a> - [CVE-2016-3094] Prevent DoS from PlainSaslServer</li>
 </ul>
 
 <h2 id="tasks">Tasks</h2>

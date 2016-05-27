@@ -23,6 +23,8 @@ Qpid Java offers an AMQP-fluent implementation of JMS and a message
 broker written in Java that stores, routes, and forwards messages
 using AMQP.
 
+**Note**: This release addresses security vulnerabilities CVE-2016-3094 and CVE-2016-4432.
+
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
@@ -34,7 +36,6 @@ documentation, see the [release overview](index.html).
  - [QPID-7211](https://issues.apache.org/jira/browse/QPID-7211) - [Java Broker, WMC] Do not transfer inherited context variables
  - [QPID-7216](https://issues.apache.org/jira/browse/QPID-7216) - [Java Broker, WMC] add new ManagedOperation to retrieve Connections less verbose
  - [QPID-7255](https://issues.apache.org/jira/browse/QPID-7255) - Support delivery delay
- - [QPID-7271](https://issues.apache.org/jira/browse/QPID-7271) - Improve exception handling for PlainSaslServer
 
 ## Bugs fixed
 
@@ -43,11 +44,12 @@ documentation, see the [release overview](index.html).
  - [QPID-7231](https://issues.apache.org/jira/browse/QPID-7231) - Example of REST call to invoke the Queue clear queue operation is incorrect
  - [QPID-7237](https://issues.apache.org/jira/browse/QPID-7237) - Excessive threads creation when suspending/resuming flow
  - [QPID-7253](https://issues.apache.org/jira/browse/QPID-7253) - [Java Client 0-10] Application allowed to create new JMS session whilst failover is in progress
- - [QPID-7257](https://issues.apache.org/jira/browse/QPID-7257) - [Java Broker] Correct connection state logging
+ - [QPID-7257](https://issues.apache.org/jira/browse/QPID-7257) - [CVE-2016-4432] [Java Broker] Prevent possibility of by-passed authentication in AMQP 0-8..0-10 protocol implementations
  - [QPID-7260](https://issues.apache.org/jira/browse/QPID-7260) - apache-release profile fails under JDK 1.8 due to javadoc errors
  - [QPID-7267](https://issues.apache.org/jira/browse/QPID-7267) - [Java Broker] Content-Length header is set incorrectly when using compression
  - [QPID-7268](https://issues.apache.org/jira/browse/QPID-7268) - message sent over 0-10 can't be received over 1.0
  - [QPID-7269](https://issues.apache.org/jira/browse/QPID-7269) - broker issues disposition for delivery that is already settled
+ - [QPID-7271](https://issues.apache.org/jira/browse/QPID-7271) - [CVE-2016-3094] Prevent DoS from PlainSaslServer
 
 ## Tasks
 
