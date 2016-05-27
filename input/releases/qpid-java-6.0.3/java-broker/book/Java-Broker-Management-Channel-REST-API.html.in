@@ -1,0 +1,139 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">6.3.&#160;REST API</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;6.&#160;Management Channels</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-AMQP-Intrinstic.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Management-Channel-REST-API"></a>6.3.&#160;REST API</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Introduction"></a>6.3.1.&#160;Introduction</h3></div></div></div><p>This section describes the REST API provided by the Java Broker. The REST API is intended
+      for use by developers who wish to automate the management or monitoring of the Qpid Broker. It
+      is also very useful for adhoc monitoring on the command line using tools such as
+        <code class="literal">curl</code>.</p><p>The REST API provides access to all of the Broker's entities using hierarchical paths
+      expressed by the URI. Responses are returned in JSON format.</p><p>The <code class="literal">GET</code> method request retrieves information about an object, the
+        <code class="literal">DELETE</code> method requests the removal of one, and the <code class="literal">PUT</code>
+      or <code class="literal">POST</code> methods perform updates or create new objects. The
+        <code class="literal">POST</code> method is also used to invoke operations.</p><p>The REST API is versioned with the version number embedded withinthe URI. The general form
+      of the URI is <code class="literal">/api/&lt;version&gt;</code> where &lt;version&gt; is a major model
+      version prefixed with "v", for example, v3. For convenience the alias
+        <code class="literal">latest</code> (<code class="literal">/api/latest</code>) signifies the latest supported
+      version.</p><p>There are also some ancillary services under URI <code class="literal">/service</code> used for
+      authentication and logout.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-APIDocs"></a>6.3.2.&#160;REST API documentation</h3></div></div></div><p>REST API documentation is available on-line from any Java Broker at location
+        <code class="literal">/apidocs</code>. It is also linked from the menu of the Web Management Console.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Authentication"></a>6.3.3.&#160;Authentication</h3></div></div></div><p>Before you can use the REST API, you must authenticate. Authentication decisions are made
+      by the <a class="link" href="Java-Broker-Concepts-Authentication-Providers.html" title="4.9.&#160;Authentication Providers">authentication
+        provider</a> associated with HTTP <a class="link" href="Java-Broker-Concepts-Ports.html" title="4.8.&#160;Ports">port</a>
+      on which you connect.</p><p>You may authenticate using <a class="link" href="https://www.ietf.org/rfc/rfc4422.txt" target="_top">SASL</a>
+        (<code class="literal">/service/sasl</code>) or <a class="link" href="https://tools.ietf.org/html/rfc2617" target="_top">HTTP
+        Basic Authentication</a>. The latter is convienent when using tools such as
+        <code class="literal">curl</code> on the command line. This is illustrated in the examples
+      below.</p><p>For SASL authentication use a <code class="literal">GET</code> request to
+        <code class="literal">/service/sasl</code> to get a list of supported SASL mechanisms, and use
+        <code class="literal">PUT</code> to the same URL to perform the SASL negotiation.</p><p>It is possible to end an authenticated session using
+      <code class="literal">/service/logout</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Create"></a>6.3.4.&#160;Configured Object creation</h3></div></div></div><p>Methods PUT or POST can be used to create ConfiguredObject.</p><p> ConfiguredObject can be created by submitting PUT request against ConfiguredObject full
+      URI (the one ending with configured object name) or by submitting PUT/POST request against
+      parent URI. The request encoding should be json (application/json) and request body should
+      contain attributes values in json format. On successful completion of operation a response
+      should be returned having response status code set to 201 and response header "Location" set
+      to ConfiguredObject full URI. If object with a such name/id already exist and POST/PUT
+      requests is made against parent URI, an error response should be returned having response code
+      409 (conflict) and body containing the json with the reason of operation failure. If object
+      with a such name/id already exist and and PUT request is made against ConfiguredObject full
+      URI, then ConfiguredObject update should be performed and http status code 200 should be
+      returned. If ConfiguredObject cannot be created because of validation failure(s) the response
+      should have http status code set 422 (Unprocessible Entity) and body should contain json with
+      the reason of operation failure. On any other failure to create ConfiguredObject the response
+      should have status code set to 400 (Bad Request) and payload should contain a json with error
+      explaining the exact reason of failure. </p><div class="example"><a id="d0e2064"></a><p class="title"><strong>Example&#160;6.1.&#160;Examples of REST calls for Queue creation</strong></p><div class="example-contents"><p> To create Queue with name "my-queue" on a virtual host with name "vh" (which is
+        contained within virtual host node with name "vhn") either of the following requests should
+        be made: </p><pre class="screen">PUT /api/latest/queue/vhn/vh HTTP/1.1</pre><pre class="screen">POST /api/latest/queue/vhn/vh HTTP/1.1</pre><pre class="screen">PUT /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><p> Response code 201 should be returned on successful queue creation. Response header
+        "Location" should be set to "/api/latest/queue/test/my-queue". If queue with name "my-queue"
+        already exists and either of 2 first requests above were used, an error response with
+        response code 409 (conflict) and body containing json with message that queue exists should
+        be returned. If queue with name "my-queue" exists and last request is used, then Queue
+        update should occur. </p></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Update"></a>6.3.5.&#160;Configured Object update</h3></div></div></div><p>Methods PUT or POST can be used to update ConfiguredObject.</p><p> ConfiguredObject can be updated by submitting PUT or POST request against
+      ConfiguredObject full URI (the one ending with configured object name). The request encoding
+      should be json (application/json) and request body should contain a ConfiguredObject json
+      (with all or only modified attributes). On successful completion of operation a response code
+      200 should be returned. If ConfiguredObject does not exists and PUT method is used, such
+      object should be created (201 response will be returned in this case). If ConfiguredObject
+      does not exists and POST method is used, an error response should be returned having response
+      status code 404 and payload with json explaining the problem. If any error occur on update, a
+      response with response code 400 or 422 or 404 should be sent back to the client containing
+      json body with error details. </p><div class="example"><a id="d0e2084"></a><p class="title"><strong>Example&#160;6.2.&#160;Examples of REST calls for Queue update</strong></p><div class="example-contents"><p>To update Queue with name "my-queue" on a virtual host with name "vh" (contained in
+        virtual host node with name "vhn") either of the following requests can be made:</p><pre class="screen">POST /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><pre class="screen">POST /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Delete"></a>6.3.6.&#160;Configured Object deletion</h3></div></div></div><p>Method DELETE can be used to delete ConfiguredObject. Alternatively, ConfiguredObject can
+      be deleted with update request having desiredState attribute set to value "DELETED". POST or
+      PUT methods can be used in this case.</p><p>On successful completion of operation a response code 200 should be returned.</p><p>With DELETE method object ConfiguredObject in following ways:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>by submitting DELETE request using ConfiguredObject full URI (the one ending with
+          configured object name)</p></li><li class="listitem"><p>by submitting DELETE request using parent URI and providing parameters having the same
+          names as children attributes, for example, id, name, etc. Multiple children can be deleted
+          in a such way. Many "id" parameters can be specified in such requests. Only children with
+          matching attribute values will be deleted.</p></li></ul></div><div class="example"><a id="d0e2109"></a><p class="title"><strong>Example&#160;6.3.&#160;Examples of REST calls for Queue deletion</strong></p><div class="example-contents"><p>To delete Queue with name "my-queue" on a virtual host with name "vh" (contained in
+        virtual host node with name "vhn") either of the following requests can be made:</p><pre class="screen">DELETE /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><pre class="screen">DELETE /api/latest/queue/vhn/vh?name=my-queue HTTP/1.1</pre><pre class="screen">DELETE /api/latest/queue/vhn/vh?id=real-queue-id HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Get"></a>6.3.7.&#160;Retrieving Configured Object details</h3></div></div></div><p>Method GET is used to retrieve ConfiguredObject attributes values and children
+      hierarchy.</p><p>A particular ConfiguredObject details can be retrieved using full ConfiguredObject URI
+      (the one ending with configured object name)</p><p>A collection of ConfiguredObjects can be retrieved using parent URI. Request parameters
+      (having the same name as attributes) can be used to filter the returned configured
+      objects.</p><p>The REST URI (/api/latest/&gt;category&lt;/*) are hierarchical. It is permitted to replace
+      REST URI elements with an "asterisks" in GET requests to denote all object of a particular
+      type. Additionally, trailing object type in the URL hierarchy can be omitted. In this case GET
+      request will return all of the object underneath of the current object.</p><p>For example, for binding URL <code class="literal">http://localhost:8080/api/latest/binding/&lt;vhost
+        node&gt;/&lt;vhost&gt;/&lt;exchange&gt;/&lt;queue&gt;/&lt;binding&gt;</code> replacing of
+        <code class="literal">&lt;exchange&gt;</code> with "asterisks"
+        (<code class="literal">http://localhost:8080/api/&lt;ver&gt;/binding/&lt;vhost
+        node&gt;/&lt;vhost&gt;/*/&lt;queue&gt;/&lt;binding&gt;</code>) will result in the GET
+      response containing the list of bindings for all of the exchanges in the virtualhost having
+      the given name and given queue.</p><p>If <code class="literal">&lt;binding&gt;</code> and <code class="literal">&lt;queue&gt;</code> are omitted in
+      binding REST URL (<code class="literal">http://localhost:8080/api/&lt;ver&gt;/binding/&lt;vhost
+        node&gt;/&lt;vhost&gt;/&lt;exchangename&gt;</code>) the GET request will result in
+      returning all bindings for all queues for the given exchange in the virtual host. </p><p>Additional parameters supported in GET requests:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">depth</span></dt><dd><p>To restrict the depth of hierarchy of configured objects to return in
+            response</p></dd><dt><span class="term">actuals</span></dt><dd><p>If set to "true" attribute actual values are returned instead of effective</p></dd><dt><span class="term">includeSysContext</span></dt><dd><p>If set to "true" all system context variables are returned</p></dd><dt><span class="term">inheritedActuals</span></dt><dd><p>If set to "true" actual values for all inherited context is returned.</p></dd><dt><span class="term">oversize</span></dt><dd><p>Sets the maximum length for values of over-sized attributes to trim</p></dd><dt><span class="term">extractInitialConfig</span></dt><dd><p>If set to "true", the returned json can be used as initial configuration.</p></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Operations"></a>6.3.8.&#160;Configured Object operations</h3></div></div></div><p>Method POST is used to invoke Configured Objects operations. Some operations support
+      parameters. Pass parameters using a JSON request body containing a map with a map entry for
+      each parameter. </p><div class="example"><a id="d0e2197"></a><p class="title"><strong>Example&#160;6.4.&#160;Example REST call invoking the operation clear queue</strong></p><div class="example-contents"><p>To clear the queue with name "my-queue" on a virtual host with name "vh".</p><pre class="screen">POST api/latest/queue/vhn/vh/my-queue/clearQueue HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Status-Codes"></a>6.3.9.&#160;HTTP status codes returned by REST interfaces</h3></div></div></div><div class="table"><a id="d0e2207"></a><p class="title"><strong>Table&#160;6.1.&#160;HTTP status codes returned by REST interfaces</strong></p><div class="table-contents"><table border="1" summary="HTTP status codes returned by REST interfaces"><colgroup><col /><col /></colgroup><thead><tr><th>Status code</th><th>Description</th></tr></thead><tbody><tr><td>
+              <p>200</p>
+            </td><td>
+              <p>REST request is successfully completed. This status code can be returned by
+                update, delete and get requests.</p>
+            </td></tr><tr><td>
+              <p>201</p>
+            </td><td>
+              <p>New configured object is created. It is returned by REST PUT and POST requests
+                for creation of configured objects.</p>
+            </td></tr><tr><td>
+              <p>400</p>
+            </td><td>
+              <p>REST request cannot be performed due to errors in request. It can be returned
+                from create, update and delete requests. The details of a problem are provided in
+                the response payload in json format.</p>
+            </td></tr><tr><td>
+              <p>401</p>
+            </td><td>
+              <p>The request requires user authentication</p>
+            </td></tr><tr><td>
+              <p>403</p>
+            </td><td>
+              <p>Execution of request is not allowed due to failure to authorize user
+                operation.</p>
+            </td></tr><tr><td>
+              <p>404</p>
+            </td><td>
+              <p> The requested configured object cannot be found. This status code can be
+                returned from POST update requests if configured object does not exist. The reason
+                for the status code is provided in the response payload in json format. </p>
+            </td></tr><tr><td>
+              <p>409</p>
+            </td><td>
+              <p>The request can not be performed because its execution can create conflicts in
+                the broker. This status code can be returned from POST/PUT create requests against
+                parent URI if configured object with requested name or id already exists. The status
+                code 409 can also be returned if removal or update of configured object can violate
+                system integrity. The reason for the status code is provided in the response payload
+                in json format. </p>
+            </td></tr><tr><td>
+              <p>422</p>
+            </td><td>
+              <p>The request can not be performed because provided information either incomplete
+                or invalid. This status code can be returned from create or update requests. The
+                reason for the status code is provided in the response payload in json
+                format.</p>
+            </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Examples"></a>6.3.10.&#160;Examples of REST requests with curl</h3></div></div></div><div class="example"><a id="d0e2309"></a><p class="title"><strong>Example&#160;6.5.&#160;Examples of queue creation using curl (authenticating as user admin):</strong></p><div class="example-contents"><pre class="programlisting">
+#create a durable queue
+curl --user admin -X PUT  -d '{"durable":true}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+#create a durable priority queue
+curl --user admin -X PUT  -d '{"durable":true,"type":"priority"}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+            </pre></div></div><br class="example-break" /><div class="example"><a id="d0e2314"></a><p class="title"><strong>Example&#160;6.6.&#160;Example of binding a queue to an exchange using curl</strong></p><div class="example-contents"><pre class="programlisting">
+curl --user admin -X PUT  -d '{}' http://localhost:8080/api/latest/binding/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;exchangename&gt;/&lt;queue-name&gt;/&lt;binding-name&gt;
+            </pre></div></div><br class="example-break" /><p> NOTE: These curl examples utilise unsecure HTTP transport. To use the examples it is
+      first necessary enable Basic authentication for HTTP within the HTTP Management Configuration
+      (it is off by default). For details see <a class="xref" href="Java-Broker-Management-Managing-Plugin-HTTP.html" title="7.16.&#160;HTTP Plugin">Section&#160;7.16, &#8220;HTTP Plugin&#8221;</a>
+    </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Management-Channel.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-AMQP-Intrinstic.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">6.2.&#160;Web Management Console&#160;</td><td align="center" width="20%"><a accesskey="h" href="AMQP-Messaging-Broker-Java-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;6.4.&#160;AMQP Intrinstic Management</td></tr></table></div></div>
