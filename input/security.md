@@ -31,15 +31,15 @@ Qpid are available for each Component separately:
 
  - [Java Broker]({{site_url}}/components/java-broker/security.html)
  - [C++ Broker]({{site_url}}/components/cpp-broker/security.html)
- - [Dispatch Router]({{site_url}}/components/dispatch-router/security.html)
+;; - [Dispatch Router]({{site_url}}/components/dispatch-router/security.html)
 
 </section>
 <section markdown="1">
 
  - [Proton]({{site_url}}/proton/security.html)
- - [JMS Client (AMQP 1.0)]({{site_url}}/components/jms/security-1.0.html)
- - [JMS Client (AMQP 0.x)]({{site_url}}/components/jms/security-0-x.html)
- - [Messaging API]({{site_url}}/components/messaging-api/security.html)
+;; - [JMS Client (AMQP 1.0)]({{site_url}}/components/jms/security-1.0.html)
+;; - [JMS Client (AMQP 0.x)]({{site_url}}/components/jms/security-0-x.html)
+;; - [Messaging API]({{site_url}}/components/messaging-api/security.html)
 
 </section>
 </div>
