@@ -36,7 +36,7 @@
       <td>0.30 and earlier</td>
       <td>0.32 and later</td>
       <td>qpidd can be crashed by unauthenticated user
-	<a id="CVE_2015_0224_details_toggle" href="javascript:toggleDiv({divId:'CVE_2015_0224_details', controlId:'CVE_2015_0224_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+	<a id="CVE_2015_0224_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2015_0224_details', controlId:'CVE_2015_0224_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
 	<div style="display:none;" id="CVE_2015_0224_details">
 	  <p>Description: In CVE-2015-0203 it was announced that
 	    certain unexpected protocol sequences cause the broker
@@ -71,7 +71,7 @@
       <td>0.30 and earlier</td>
       <td>0.32 and later</td>
       <td>anonymous access to qpidd cannot be prevented
-	<a id="CVE_2015_0223_details_toggle" href="javascript:toggleDiv({divId:'CVE_2015_0223_details', controlId:'CVE_2015_0223_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+	<a id="CVE_2015_0223_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2015_0223_details', controlId:'CVE_2015_0223_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
 	<div style="display:none;" id="CVE_2015_0223_details">
 	  <p>Description: An attacker can gain access to qpidd as an
 	  anonymous user, even if the ANONYMOUS mechanism is
@@ -99,7 +99,7 @@
       <td>0.30 and earlier</td>
       <td>0.32 and later</td>
       <td>qpidd can be crashed by authenticated user
-	<a id="CVE_2015_0203_details_toggle" href="javascript:toggleDiv({divId:'CVE_2015_0203_details', controlId:'CVE_2015_0203_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+	<a id="CVE_2015_0203_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2015_0203_details', controlId:'CVE_2015_0203_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
 	<div style="display:none;" id="CVE_2015_0203_details">
 	  <p>Description: Certain unexpected protocol sequences cause
 	  the broker process to crash due to insufficient
@@ -148,7 +148,7 @@
       <td>0.30 and earlier</td>
       <td>0.32 and later</td>
       <td>qpidd can be induced to make http requests
-	<a id="CVE_2014_3629_details_toggle" href="javascript:toggleDiv({divId:'CVE_2014_3629_details', controlId:'CVE_2014_3629_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+	<a id="CVE_2014_3629_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2014_3629_details', controlId:'CVE_2014_3629_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
 	<div style="display:none;" id="CVE_2014_3629_details">
 	  <p>Description: The XML exchange type is an optional,
 	  dynamically loaded module for qpidd that allows creation of

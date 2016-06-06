@@ -38,7 +38,7 @@
       <td>6.0.2 and earlier</td>
       <td><a href="{{site_url}}/releases/qpid-java-6.0.3/">6.0.3</a></td>
       <td>
-        Authentication Bypass. <a id="CVE_2016_4432_details_toggle" href="javascript:toggleDiv({divId:'CVE_2016_4432_details', controlId:'CVE_2016_4432_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+        Authentication Bypass. <a id="CVE_2016_4432_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2016_4432_details', controlId:'CVE_2016_4432_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
         <div style="display:none;" id="CVE_2016_4432_details">
           <p>Versions Affected: Qpid Java Broker versions 6.0.2 and
           earlier</p>
@@ -76,7 +76,7 @@
       <td><a href="{{site_url}}/releases/qpid-java-6.0.3/">6.0.3</a></td>
       <td>
         Denial of Service.
-        <a id="CVE_2016_3094_details_toggle" href="javascript:toggleDiv({divId:'CVE_2016_3094_details', controlId:'CVE_2016_3094_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+        <a id="CVE_2016_3094_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2016_3094_details', controlId:'CVE_2016_3094_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
         <div style="display:none;" id="CVE_2016_3094_details">
           <p>Versions Affected: Qpid Java Broker versions 6.0.0,
           6.0.1, and 6.0.2</p>
