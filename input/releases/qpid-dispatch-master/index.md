@@ -27,7 +27,7 @@ Code and documentation found here may be unstable, incorrect, or
 incomplete.  For a smoother experience, see the [current stable
 release]({{current_dispatch_release_url}}/index.html).
 
-This content was generated at 16:27  on Wednesday, 25 May 2016.
+This content was generated at 10:11  on Tuesday, 07 June 2016.
 
 </div>
 
