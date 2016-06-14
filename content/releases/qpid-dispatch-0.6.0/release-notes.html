@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 0.6.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-0.6.0/index.html">Qpid Dispatch 0.6.0</a></li><li>Qpid Dispatch 0.6.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-060-release-notes">Qpid Dispatch 0.6.0 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP message router library. More about
+<a href="/components/dispatch-router/index.html">Qpid
+Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-10">DISPATCH-10</a> - Add link-cost for route computation</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-57">DISPATCH-57</a> - Balance deliveries adaptively across all competing consumers in the network</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-144">DISPATCH-144</a> - Configurable heartbeats for listeners and connectors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-148">DISPATCH-148</a> - Strip qpid-dispatch-specific message annotations on ingress/egress</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-159">DISPATCH-159</a> - Enhance the address prefix used for link routing to support different patterns</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-163">DISPATCH-163</a> - Add username and password for authentication of connectors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-164">DISPATCH-164</a> - Remove connector state-machine from the server module</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-165">DISPATCH-165</a> - Discriminate between sending and receiving links when matching link-route patterns</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-166">DISPATCH-166</a> - Use test-controlled SASL configuration for system tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-170">DISPATCH-170</a> - qdrouterd should not require a restart after the destination broker restarts</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-178">DISPATCH-178</a> - Route proton trace messages to the dispatch router log file instead of console</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-179">DISPATCH-179</a> - Refactor Router Core</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-180">DISPATCH-180</a> - Add a system test to test the 'linkRoutePattern' attribute of qdrouterd.conf</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-188">DISPATCH-188</a> - Dispatch needs a policy mechanism to limit user connections and activity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-190">DISPATCH-190</a> - Expose the Protocol Family for the configuration of listeners and connectors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-193">DISPATCH-193</a> - Updates to the Container API</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-194">DISPATCH-194</a> - Move libqpid-dispatch.so out of /lib</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-197">DISPATCH-197</a> - Provide list of current link routing</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-199">DISPATCH-199</a> - Add Dockerfiles that launches the dispatch router inside a container for RHEL and Debian based systems</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-200">DISPATCH-200</a> - Flexible mapping from x.509 certificates to an identity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-203">DISPATCH-203</a> - Improve loop-prevention to drop messages before they are improperly forwarded</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-217">DISPATCH-217</a> - Make the UI more consistant with other hawtio plugins </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-228">DISPATCH-228</a> - In ctools, add a variant of DEQ_* to allow membership in multiple lists</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-230">DISPATCH-230</a> - New connection role: route-container</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-232">DISPATCH-232</a> - Add capability to delete listeners and connectors via the qdmanage DELETE operation</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-242">DISPATCH-242</a> - Add options to qdstat to display autoLinks and linkRoutes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-253">DISPATCH-253</a> - Configurable link-capacity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-256">DISPATCH-256</a> - Documentation Updates for 0.6</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-265">DISPATCH-265</a> - Improvements to Detecting Routers with Duplicate IDs</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-277">DISPATCH-277</a> - Improve defaults for router configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-286">DISPATCH-286</a> - Prefix delimiters:  allow slashes as well as periods</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-300">DISPATCH-300</a> - Deprecate the ContainerEntity and move its attributes to RouterEntity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-303">DISPATCH-303</a> - Block all remote access to the "console" entity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-305">DISPATCH-305</a> - Don't tie inter-router flow credit to unsettled deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-306">DISPATCH-306</a> - Deprecate addr and routerId attributes in qdrouter schema and replace them with host and id respectively</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-331">DISPATCH-331</a> - Allow for a default policy to apply when open.hostname doesn't match an existing policy</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-32">DISPATCH-32</a> - Undeliverable messages should get released.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-43">DISPATCH-43</a> - Router control messages delayed by inter-router message traffic</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-47">DISPATCH-47</a> - qdrouterd doesn't know where its libraries are</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-53">DISPATCH-53</a> - waypoints are not robust if targets not set up in advance.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-58">DISPATCH-58</a> - Router/Broker interaction - Unroutable/released messages are continually resent</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-111">DISPATCH-111</a> - helloworld example hangs when run against a broker via link-routing</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-126">DISPATCH-126</a> - Link-route behavior doesn't honor the semantics assigned to the address prefix</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-127">DISPATCH-127</a> - Messages from waypoints to remote routers are not delivered</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-155">DISPATCH-155</a> - Allow multiple connectors to the same broker</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-168">DISPATCH-168</a> - A message sent to $management without a reply-to field causes a crash</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-171">DISPATCH-171</a> - SSL Domain objects are leaked.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-172">DISPATCH-172</a> - QDStat system test never tests SASL EXTERNAL</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-173">DISPATCH-173</a> - Half-closed connections spin on "writable" until they close</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-174">DISPATCH-174</a> - Improper use of ref-counted object references in container</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-175">DISPATCH-175</a> - Router continues to forward messages to the broker even when the broker is not available</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-176">DISPATCH-176</a> - Messages sent got lost when one of the brokers went down </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-183">DISPATCH-183</a> - plaintext sasl password being written to the dispatch router log</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-191">DISPATCH-191</a> - router not replying to detach frame</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-196">DISPATCH-196</a> - Remove endpoint mode from router documentation</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-198">DISPATCH-198</a> - Message module doesn't parse AMQP-Value bodies that are strings or symbols</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-207">DISPATCH-207</a> - When a message body of [ ] is sent from rhea it is rejected as an invalid body </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-208">DISPATCH-208</a> - Closest semantics forwards improperly in multi-router network</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-215">DISPATCH-215</a> - The topology diagram initially draws off the bottom of the visible page.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-218">DISPATCH-218</a> - Dispatch system tests run very slowly if connected to a VPN</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-219">DISPATCH-219</a> - System test security configuration for installed/built tests.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-222">DISPATCH-222</a> - For Dispatch 0.6 release move up the minimum required version of qpid proton to 0.12.0</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-223">DISPATCH-223</a> - Unknown connector name is not properly printed in error messages</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-225">DISPATCH-225</a> - Sending UPDATE log request with relative path crashes router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-226">DISPATCH-226</a> - The default role is not applied when creating a connector</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-231">DISPATCH-231</a> - Router should not issue credit for unavailable targets</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-234">DISPATCH-234</a> - undeliverable-here set to true for messages from waypoints if there is no receiver</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-237">DISPATCH-237</a> - Dispatch Router overwrites delivery tag for link-routed deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-238">DISPATCH-238</a> - Need more documentation for qdstat output</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-240">DISPATCH-240</a> - qdstat : leading "/" character effects a wrong showed address</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-241">DISPATCH-241</a> - Bias "spread" config with leading "/" on address has a "multicast" behavior</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-245">DISPATCH-245</a> - Various Bugs found by Coverity</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-247">DISPATCH-247</a> - Policy gets username from transport</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-248">DISPATCH-248</a> - Policy self test uses python features not supported by RHEL 6 (python 2.6)</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-250">DISPATCH-250</a> - Router crash when deleting connector</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-254">DISPATCH-254</a> - Router crash after several management requests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-259">DISPATCH-259</a> - qdstat man-page doc is no good</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-261">DISPATCH-261</a> - Bind error on one port causes bind error on other ports</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-262">DISPATCH-262</a> - oslo.messaging RPC fanout crashes qdrouterd</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-263">DISPATCH-263</a> - Router crash when requesting log</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-264">DISPATCH-264</a> - printf formats for 64-bit quantities need to be 64/32-bit safe</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-267">DISPATCH-267</a> - Policy does not increment denial statistics</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-268">DISPATCH-268</a> - Delivery from waypoint queue can stall when messages are released</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-269">DISPATCH-269</a> - Policy denial logs at wrong level</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-271">DISPATCH-271</a> - Handle single router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-272">DISPATCH-272</a> - Re-enable the connection cross-section popup</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-273">DISPATCH-273</a> - The entity view is missing information for some entities</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-275">DISPATCH-275</a> - Prevent javascript alert errors when navigating to console from a bookmark </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-278">DISPATCH-278</a> - Deleting amqp listener using qdmanage crashes the router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-279">DISPATCH-279</a> - Policy crash when application name is null</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-281">DISPATCH-281</a> - Hostname not sent in open frame on connectors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-282">DISPATCH-282</a> - Prevent topology updates when adding a new router node</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-283">DISPATCH-283</a> - Start the overview page with the Router tree node expanded</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-284">DISPATCH-284</a> - The management schema no longer exposes a way to associate links with their connections</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-285">DISPATCH-285</a> - qdmanage returns an empty list when you QUERY for certain entities</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-287">DISPATCH-287</a> - Policy does not allow configuration for unspecified Open hostname</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-288">DISPATCH-288</a> - Driver - Wakeup pipe was seen to block on read, deadlocking the driver.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-289">DISPATCH-289</a> - Unit tests failing on Solaris</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-290">DISPATCH-290</a> - Adapt CMakeLists.txt and code so that qpid-dispatch can be compiled on Solaris</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-292">DISPATCH-292</a> - some router.link attributes should be graphable</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-293">DISPATCH-293</a> - The $ character can't be used inside a prefix for linkRoute</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-294">DISPATCH-294</a> - Crash in the core-thread due to an address referencing a link on a closed connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-295">DISPATCH-295</a> - Router aborted on assertion failed after socker closing by client</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-298">DISPATCH-298</a> - router spinning on shutdown (in qdr_del_connection_ref)</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-299">DISPATCH-299</a> - After policy rejects a connection queued Begin causes a crash</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-304">DISPATCH-304</a> - Console PNG images not showing up in documentation</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-309">DISPATCH-309</a> - Mobile addresses get the wrong distribution when mapped to remote routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-310">DISPATCH-310</a> - Use router.id instead of container.containerName</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-312">DISPATCH-312</a> - Closest distribution fails to react to loss of a remote destination</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-319">DISPATCH-319</a> - Discrepancy between origin router's path and other routers' valid-origins</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-320">DISPATCH-320</a> - SSL enabled connector does not do hostname verification</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-321">DISPATCH-321</a> - Dispatch does not send out SASL-OUTCOME frame on sasl failure</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-334">DISPATCH-334</a> - Proton sequence error during backpressure with balanced distribution</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-335">DISPATCH-335</a> - link routes aren't balanced over remote routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-338">DISPATCH-338</a> - Incorrect default distribution for addresses</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-339">DISPATCH-339</a> - The change from 'routerId' to 'id' and 'addr' to 'host' configuration option is not backwards compatible</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-340">DISPATCH-340</a> - Test inter_router_plain_over_ssl fails to find SSL connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-342">DISPATCH-342</a> - qdrouterd.conf doc calls out router.config.{address,linkRoute,autoLink}</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-343">DISPATCH-343</a> - Router stops accepting connections after load from parallel senders</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-356">DISPATCH-356</a> - Creating and deleting a listener on already listening port causes router to crash</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-368">DISPATCH-368</a> - Router in bad state in two inter-connected routers</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-307">DISPATCH-307</a> - misc fixups for console plugin build</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-308">DISPATCH-308</a> - console documentation needs updated</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
