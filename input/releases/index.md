@@ -50,6 +50,7 @@ the
  - [Qpid Proton 0.11.0](qpid-proton-0.11.0/index.html), November 2015
  - [Qpid Proton 0.10](qpid-proton-0.10/index.html), August 2015
  - [Qpid JMS 0.5.0](qpid-jms-0.5.0/index.html), August 2015
+ - [Qpid Dispatch 0.5](qpid-dispatch-0.5/index.html), September 2015
  - [Qpid Dispatch 0.4](qpid-dispatch-0.4/index.html), April 2015
  - [Qpid JMS 0.4.0](qpid-jms-0.4.0/index.html), August 2015
  - [Qpid JMS 0.3.0](qpid-jms-0.3.0/index.html), June 2015
