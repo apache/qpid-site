@@ -16,13 +16,34 @@
 }
 </pre></div>
 </div>
-<p>There are two types of sections:</p>
-<p><em>Configuration sections</em> correspond to configuration entities. They can be queried and
-configured via management tools as well as via the configuration file.</p>
-<p><em>Annotation sections</em> define a group of attribute values that can be included in
-one or more entity sections.</p>
-<p>For example you can define an &#8220;sslProfile&#8221; annotation section with SSL credentials
-that can be included in multiple &#8220;listener&#8221; entities. Here&#8217;s an example, note
+<p>For example you can define a router using the &#8220;router&#8221; section</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>router {
+    mode: standalone
+    id: Router.A
+    ...
+}
+</pre></div>
+</div>
+<p>or define a listener using the &#8220;listener&#8221; section</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>listener {
+    host: 0.0.0.0
+    port: 20102
+    saslMechanisms: ANONYMOUS
+    ...
+}
+</pre></div>
+</div>
+<p>or define a connector using the &#8220;connector&#8221; section</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>connector {
+    role: inter-router
+    host: 0.0.0.0
+    port: 20003
+    saslMechanisms: ANONYMOUS
+    ...
+}
+</pre></div>
+</div>
+<p>&#8220;sslProfile&#8221; section with SSL credentials can be included in multiple &#8220;listener&#8221; or &#8220;connector&#8221; entities. Here&#8217;s an example, note
 how the &#8216;sslProfile&#8217; attribute of &#8216;listener&#8217; sections references the &#8216;name&#8217;
 attribute of &#8216;sslProfile&#8217; sections.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span>sslProfile {
