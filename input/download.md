@@ -23,8 +23,7 @@
 [Qpid packages](packages.html) and [Qpid via Maven](maven.html).*
 
 Qpid's source artefacts are produced as part of our community release
-process. The downloads on this page are from our current releases,
-{{current_release_link}}, {{current_proton_release_link}},
+process. The downloads on this page are from our current releases, {{current_proton_release_link}},
 {{current_dispatch_release_link}}, {{current_jms_release_link}}, {{current_java_release_link}} and {{current_cpp_release_link}}. You can also see our
 [past releases]({{site_url}}/releases/index.html#past-releases).
 
@@ -35,12 +34,10 @@ It is important to [verify the integrity](#verify-what-you-download) of the file
 | Content | Download | Verify |
 | ------- | -------- | ------ |
 | [Qpid Proton]({{site_url}}/proton/index.html) | [qpid-proton-{{current_proton_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/proton/{{current_proton_release}}/qpid-proton-{{current_proton_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/proton/{{current_proton_release}}/qpid-proton-{{current_proton_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/proton/{{current_proton_release}}/qpid-proton-{{current_proton_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/proton/{{current_proton_release}}/qpid-proton-{{current_proton_release}}.tar.gz.sha1) |
-| [Qpid JMS]({{site_url}}/components/jms/index.html) (AMQP 1.0) | [apache-qpid-jms-{{current_jms_release}}-bin.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz)\*^ | [ASC](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.sha1) |
+| [Qpid JMS]({{site_url}}/components/jms/index.html) (AMQP 1.0) | [apache-qpid-jms-{{current_jms_release}}-bin.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz)\* | [ASC](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-bin.tar.gz.sha1) |
 | [Qpid AMQP 0-x JMS Client]({{site_url}}/components/jms/amqp-0-x.html) | [qpid-client-{{current_java_release}}-bin.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz)\* | [ASC](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.sha1) |
 | [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) (C++, bindings) | [qpid-cpp-{{current_cpp_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.sha1) |
 | [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) (Python) | [qpid-python-{{current_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.sha1) |
-
-^For the earlier Qpid {{current_release}} AMQP 1.0 JMS client, see [here]({{site_url}}/components/jms/amqp-1.0-prototype.html).
 
 ## Messaging servers
 

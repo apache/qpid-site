@@ -33,8 +33,6 @@ The following dependencies can be added to the POM for your Maven build to utili
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
-If you are looking for the older AMQP 1.0 JMS client, see [here]({{site_url}}/components/jms/amqp-1.0-prototype.html).
-
 ## Qpid AMQP 0-x JMS Client
 
 <div class="highlight"><pre>

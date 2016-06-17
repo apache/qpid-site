@@ -68,6 +68,7 @@ publish:
 	@echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
 	@echo "Use git to commit and push the changes."
 	@echo "Keep in mind that you may need to git add new files."
+	@echo "Also keep in mind to git rm matching files from content/ that have been removed from input/."
 
 .PHONY: devel-publish
 devel-publish: TAG := "head"

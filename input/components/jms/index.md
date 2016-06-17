@@ -81,6 +81,5 @@ For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
 ## Resources
 
  - [AMQP 0-x JMS Client](amqp-0-x.html)
- - [Earlier AMQP 1.0 JMS client](amqp-1.0-prototype.html)
 
 </div>
