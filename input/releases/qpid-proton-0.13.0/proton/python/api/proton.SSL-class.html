@@ -1,0 +1,691 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>proton.SSL</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="proton-module.html">Package&nbsp;proton</a> ::
+        Class&nbsp;SSL
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="proton.SSL-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class SSL</h1><p class="nomargin-top"><span class="codelink"><a href="proton-pysrc.html#SSL">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_proton_s_2" name="uml_class_diagram_for_proton_s_2">
+<area shape="rect" id="node1_29" href="proton.SSL-class.html#SHA1" title="proton.SSL.SHA1" alt="" coords="17,30,367,50"/>
+<area shape="rect" id="node1_30" href="proton.SSL-class.html#SHA256" title="proton.SSL.SHA256" alt="" coords="17,50,367,70"/>
+<area shape="rect" id="node1_31" href="proton.SSL-class.html#SHA512" title="proton.SSL.SHA512" alt="" coords="17,70,367,90"/>
+<area shape="rect" id="node1_32" href="proton.SSL-class.html#MD5" title="proton.SSL.MD5" alt="" coords="17,90,367,110"/>
+<area shape="rect" id="node1_33" href="proton.SSL-class.html#CERT_COUNTRY_NAME" title="proton.SSL.CERT_COUNTRY_NAME" alt="" coords="17,110,367,130"/>
+<area shape="rect" id="node1_34" href="proton.SSL-class.html#CERT_STATE_OR_PROVINCE" title="proton.SSL.CERT_STATE_OR_PROVINCE" alt="" coords="17,130,367,150"/>
+<area shape="rect" id="node1_35" href="proton.SSL-class.html#CERT_CITY_OR_LOCALITY" title="proton.SSL.CERT_CITY_OR_LOCALITY" alt="" coords="17,150,367,170"/>
+<area shape="rect" id="node1_36" href="proton.SSL-class.html#CERT_ORGANIZATION_NAME" title="proton.SSL.CERT_ORGANIZATION_NAME" alt="" coords="17,170,367,190"/>
+<area shape="rect" id="node1_37" href="proton.SSL-class.html#CERT_ORGANIZATION_UNIT" title="proton.SSL.CERT_ORGANIZATION_UNIT" alt="" coords="17,190,367,210"/>
+<area shape="rect" id="node1_38" href="proton.SSL-class.html#CERT_COMMON_NAME" title="proton.SSL.CERT_COMMON_NAME" alt="" coords="17,210,367,230"/>
+<area shape="rect" id="node1_39" href="proton.SSL-class.html#remote_subject" title="proton.SSL.remote_subject" alt="" coords="17,230,367,250"/>
+<area shape="rect" id="node1_40" href="proton.SSL-class.html#RESUME_UNKNOWN" title="proton.SSL.RESUME_UNKNOWN" alt="" coords="17,250,367,270"/>
+<area shape="rect" id="node1_41" href="proton.SSL-class.html#RESUME_NEW" title="proton.SSL.RESUME_NEW" alt="" coords="17,270,367,290"/>
+<area shape="rect" id="node1_42" href="proton.SSL-class.html#RESUME_REUSED" title="proton.SSL.RESUME_REUSED" alt="" coords="17,290,367,310"/>
+<area shape="rect" id="node1_43" href="proton.SSL-class.html#peer_hostname" title="Manage the expected name of the remote peer." alt="" coords="17,310,367,330"/>
+<area shape="rect" id="node1_44" href="proton.SSL-class.html#present" title="proton.SSL.present" alt="" coords="17,333,367,353"/>
+<area shape="rect" id="node1_45" href="proton.SSL-class.html#__new__" title="Enforce a singleton SSL object per Transport" alt="" coords="17,353,367,373"/>
+<area shape="rect" id="node1_46" href="proton.SSL-class.html#cipher_name" title="proton.SSL.cipher_name" alt="" coords="17,373,367,393"/>
+<area shape="rect" id="node1_47" href="proton.SSL-class.html#protocol_name" title="proton.SSL.protocol_name" alt="" coords="17,393,367,413"/>
+<area shape="rect" id="node1_48" href="proton.SSL-class.html#get_cert_subject_subfield" title="proton.SSL.get_cert_subject_subfield" alt="" coords="17,413,367,433"/>
+<area shape="rect" id="node1_49" href="proton.SSL-class.html#get_cert_subject" title="proton.SSL.get_cert_subject" alt="" coords="17,433,367,453"/>
+<area shape="rect" id="node1_50" href="proton.SSL-class.html#get_cert_common_name" title="proton.SSL.get_cert_common_name" alt="" coords="17,453,367,473"/>
+<area shape="rect" id="node1_51" href="proton.SSL-class.html#get_cert_organization" title="proton.SSL.get_cert_organization" alt="" coords="17,473,367,493"/>
+<area shape="rect" id="node1_52" href="proton.SSL-class.html#get_cert_organization_unit" title="proton.SSL.get_cert_organization_unit" alt="" coords="17,493,367,513"/>
+<area shape="rect" id="node1_53" href="proton.SSL-class.html#get_cert_locality_or_city" title="proton.SSL.get_cert_locality_or_city" alt="" coords="17,513,367,533"/>
+<area shape="rect" id="node1_54" href="proton.SSL-class.html#get_cert_country" title="proton.SSL.get_cert_country" alt="" coords="17,533,367,553"/>
+<area shape="rect" id="node1_55" href="proton.SSL-class.html#get_cert_state_or_province" title="proton.SSL.get_cert_state_or_province" alt="" coords="17,553,367,573"/>
+<area shape="rect" id="node1_56" href="proton.SSL-class.html#get_cert_fingerprint" title="proton.SSL.get_cert_fingerprint" alt="" coords="17,573,367,593"/>
+<area shape="rect" id="node1_57" href="proton.SSL-class.html#resume_status" title="proton.SSL.resume_status" alt="" coords="17,613,367,633"/>
+<area shape="rect" id="node1" href="proton.SSL-class.html" title="proton.SSL" alt="" coords="5,5,379,639"/>
+</map>
+  <img src="uml_class_diagram_for_proton_s_2.png" alt='' usemap="#uml_class_diagram_for_proton_s_2" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="cipher_name"></a><span class="summary-sig-name">cipher_name</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.cipher_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="protocol_name"></a><span class="summary-sig-name">protocol_name</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.protocol_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_subject_subfield"></a><span class="summary-sig-name">get_cert_subject_subfield</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">subfield_name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_subject_subfield">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_subject"></a><span class="summary-sig-name">get_cert_subject</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_subject">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_common_name"></a><span class="summary-sig-name">get_cert_common_name</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_common_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_organization"></a><span class="summary-sig-name">get_cert_organization</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_organization">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_organization_unit"></a><span class="summary-sig-name">get_cert_organization_unit</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_organization_unit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_locality_or_city"></a><span class="summary-sig-name">get_cert_locality_or_city</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_locality_or_city">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_country"></a><span class="summary-sig-name">get_cert_country</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_country">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_state_or_province"></a><span class="summary-sig-name">get_cert_state_or_province</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_state_or_province">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_fingerprint"></a><span class="summary-sig-name">get_cert_fingerprint</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">fingerprint_length</span>,
+        <span class="summary-sig-arg">digest_name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_fingerprint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_fingerprint_sha1"></a><span class="summary-sig-name">get_cert_fingerprint_sha1</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_fingerprint_sha1">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_fingerprint_sha256"></a><span class="summary-sig-name">get_cert_fingerprint_sha256</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_fingerprint_sha256">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_fingerprint_sha512"></a><span class="summary-sig-name">get_cert_fingerprint_sha512</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_fingerprint_sha512">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_cert_fingerprint_md5"></a><span class="summary-sig-name">get_cert_fingerprint_md5</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.get_cert_fingerprint_md5">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="resume_status"></a><span class="summary-sig-name">resume_status</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.resume_status">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__delattr__</code>,
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__hash__</code>,
+      <code>__init__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__repr__</code>,
+      <code>__setattr__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Static Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="present"></a><span class="summary-sig-name">present</span>()</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.present">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">a new object with type S, a subtype of T</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.SSL-class.html#__new__" class="summary-sig-name">__new__</a>(<span class="summary-sig-arg">cls</span>,
+        <span class="summary-sig-arg">transport</span>,
+        <span class="summary-sig-arg">domain</span>,
+        <span class="summary-sig-arg">session_details</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Enforce a singleton SSL object per Transport</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#SSL.__new__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHA1"></a><span class="summary-name">SHA1</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHA256"></a><span class="summary-name">SHA256</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHA512"></a><span class="summary-name">SHA512</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MD5"></a><span class="summary-name">MD5</span> = <code title="3">3</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_COUNTRY_NAME"></a><span class="summary-name">CERT_COUNTRY_NAME</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_STATE_OR_PROVINCE"></a><span class="summary-name">CERT_STATE_OR_PROVINCE</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_CITY_OR_LOCALITY"></a><span class="summary-name">CERT_CITY_OR_LOCALITY</span> = <code title="2">2</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_ORGANIZATION_NAME"></a><span class="summary-name">CERT_ORGANIZATION_NAME</span> = <code title="3">3</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_ORGANIZATION_UNIT"></a><span class="summary-name">CERT_ORGANIZATION_UNIT</span> = <code title="4">4</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CERT_COMMON_NAME"></a><span class="summary-name">CERT_COMMON_NAME</span> = <code title="5">5</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="RESUME_UNKNOWN"></a><span class="summary-name">RESUME_UNKNOWN</span> = <code title="0">0</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="RESUME_NEW"></a><span class="summary-name">RESUME_NEW</span> = <code title="1">1</code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="RESUME_REUSED"></a><span class="summary-name">RESUME_REUSED</span> = <code title="2">2</code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.SSL-class.html#remote_subject" class="summary-name">remote_subject</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.SSL-class.html#peer_hostname" class="summary-name">peer_hostname</a><br />
+      Manage the expected name of the remote peer.
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__new__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__new__</span>(<span class="sig-arg">cls</span>,
+        <span class="sig-arg">transport</span>,
+        <span class="sig-arg">domain</span>,
+        <span class="sig-arg">session_details</span>=<span class="sig-default">None</span>)</span>
+    <br /><em class="fname">Static Method</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#SSL.__new__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Enforce a singleton SSL object per Transport</p>
+  <dl class="fields">
+    <dt>Returns: a new object with type S, a subtype of T</dt>
+    <dt>Overrides:
+        object.__new__
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Property Details</span></td>
+</tr>
+</table>
+<a name="remote_subject"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_subject</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_subject(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="peer_hostname"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">peer_hostname</h3>
+  <p>Manage the expected name of the remote peer.  Used to authenticate the
+  remote.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.SSL-class.html#_get_peer_hostname" class="summary-sig-name" onclick="show_private();">_get_peer_hostname</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.SSL-class.html#_set_peer_hostname" class="summary-sig-name" onclick="show_private();">_set_peer_hostname</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">hostname</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jun 16 06:27:18 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
