@@ -1,0 +1,4550 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch Router Book - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-master/index.html">Qpid Dispatch Master</a></li><li>Qpid Dispatch Router Book</li></ul>
+
+        <div id="-middle-content">
+          <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.8" />
+<title>Qpid Dispatch Router Book</title>
+<style type="text/css">
+/* Shared CSS for AsciiDoc xhtml11 and html5 backends */
+
+/* Default font. */
+body {
+  font-family: Georgia,serif;
+}
+
+/* Title font. */
+h1, h2, h3, h4, h5, h6,
+div.title, caption.title,
+thead, p.table.header,
+#toctitle,
+#author, #revnumber, #revdate, #revremark,
+#footer {
+  font-family: Arial,Helvetica,sans-serif;
+}
+
+body {
+  margin: 1em 5% 1em 5%;
+}
+
+a {
+  color: blue;
+  text-decoration: underline;
+}
+a:visited {
+  color: fuchsia;
+}
+
+em {
+  font-style: italic;
+  color: navy;
+}
+
+strong {
+  font-weight: bold;
+  color: #083194;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #527bbd;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+h1, h2, h3 {
+  border-bottom: 2px solid silver;
+}
+h2 {
+  padding-top: 0.5em;
+}
+h3 {
+  float: left;
+}
+h3 + * {
+  clear: left;
+}
+h5 {
+  font-size: 1.0em;
+}
+
+div.sectionbody {
+  margin-left: 0;
+}
+
+hr {
+  border: 1px solid silver;
+}
+
+p {
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+ul, ol, li > p {
+  margin-top: 0;
+}
+ul > li     { color: #aaa; }
+ul > li > * { color: black; }
+
+.monospaced, code, pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: inherit;
+  color: navy;
+  padding: 0;
+  margin: 0;
+}
+
+
+#author {
+  color: #527bbd;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+#email {
+}
+#revnumber, #revdate, #revremark {
+}
+
+#footer {
+  font-size: small;
+  border-top: 2px solid silver;
+  padding-top: 0.5em;
+  margin-top: 4.0em;
+}
+#footer-text {
+  float: left;
+  padding-bottom: 0.5em;
+}
+#footer-badges {
+  float: right;
+  padding-bottom: 0.5em;
+}
+
+#preamble {
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+div.imageblock, div.exampleblock, div.verseblock,
+div.quoteblock, div.literalblock, div.listingblock, div.sidebarblock,
+div.admonitionblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.admonitionblock {
+  margin-top: 2.0em;
+  margin-bottom: 2.0em;
+  margin-right: 10%;
+  color: #606060;
+}
+
+div.content { /* Block element content. */
+  padding: 0;
+}
+
+/* Block element titles. */
+div.title, caption.title {
+  color: #527bbd;
+  font-weight: bold;
+  text-align: left;
+  margin-top: 1.0em;
+  margin-bottom: 0.5em;
+}
+div.title + * {
+  margin-top: 0;
+}
+
+td div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content div.title:first-child {
+  margin-top: 0.0em;
+}
+div.content + div.title {
+  margin-top: 0.0em;
+}
+
+div.sidebarblock > div.content {
+  background: #ffffee;
+  border: 1px solid #dddddd;
+  border-left: 4px solid #f0f0f0;
+  padding: 0.5em;
+}
+
+div.listingblock > div.content {
+  border: 1px solid #dddddd;
+  border-left: 5px solid #f0f0f0;
+  background: #f8f8f8;
+  padding: 0.5em;
+}
+
+div.quoteblock, div.verseblock {
+  padding-left: 1.0em;
+  margin-left: 1.0em;
+  margin-right: 10%;
+  border-left: 5px solid #f0f0f0;
+  color: #888;
+}
+
+div.quoteblock > div.attribution {
+  padding-top: 0.5em;
+  text-align: right;
+}
+
+div.verseblock > pre.content {
+  font-family: inherit;
+  font-size: inherit;
+}
+div.verseblock > div.attribution {
+  padding-top: 0.75em;
+  text-align: left;
+}
+/* DEPRECATED: Pre version 8.2.7 verse style literal block. */
+div.verseblock + div.attribution {
+  text-align: left;
+}
+
+div.admonitionblock .icon {
+  vertical-align: top;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #527bbd;
+  padding-right: 0.5em;
+}
+div.admonitionblock td.content {
+  padding-left: 0.5em;
+  border-left: 3px solid #dddddd;
+}
+
+div.exampleblock > div.content {
+  border-left: 3px solid #dddddd;
+  padding-left: 0.5em;
+}
+
+div.imageblock div.content { padding-left: 0; }
+span.image img { border-style: none; }
+a.image:visited { color: white; }
+
+dl {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+dt {
+  margin-top: 0.5em;
+  margin-bottom: 0;
+  font-style: normal;
+  color: navy;
+}
+dd > *:first-child {
+  margin-top: 0.1em;
+}
+
+ul, ol {
+    list-style-position: outside;
+}
+ol.arabic {
+  list-style-type: decimal;
+}
+ol.loweralpha {
+  list-style-type: lower-alpha;
+}
+ol.upperalpha {
+  list-style-type: upper-alpha;
+}
+ol.lowerroman {
+  list-style-type: lower-roman;
+}
+ol.upperroman {
+  list-style-type: upper-roman;
+}
+
+div.compact ul, div.compact ol,
+div.compact p, div.compact p,
+div.compact div, div.compact div {
+  margin-top: 0.1em;
+  margin-bottom: 0.1em;
+}
+
+tfoot {
+  font-weight: bold;
+}
+td > div.verse {
+  white-space: pre;
+}
+
+div.hdlist {
+  margin-top: 0.8em;
+  margin-bottom: 0.8em;
+}
+div.hdlist tr {
+  padding-bottom: 15px;
+}
+dt.hdlist1.strong, td.hdlist1.strong {
+  font-weight: bold;
+}
+td.hdlist1 {
+  vertical-align: top;
+  font-style: normal;
+  padding-right: 0.8em;
+  color: navy;
+}
+td.hdlist2 {
+  vertical-align: top;
+}
+div.hdlist.compact tr {
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.comment {
+  background: yellow;
+}
+
+.footnote, .footnoteref {
+  font-size: 0.8em;
+}
+
+span.footnote, span.footnoteref {
+  vertical-align: super;
+}
+
+#footnotes {
+  margin: 20px 0 20px 0;
+  padding: 7px 0 0 0;
+}
+
+#footnotes div.footnote {
+  margin: 0 0 5px 0;
+}
+
+#footnotes hr {
+  border: none;
+  border-top: 1px solid silver;
+  height: 1px;
+  text-align: left;
+  margin-left: 0;
+  width: 20%;
+  min-width: 100px;
+}
+
+div.colist td {
+  padding-right: 0.5em;
+  padding-bottom: 0.3em;
+  vertical-align: top;
+}
+div.colist td img {
+  margin-top: 0.3em;
+}
+
+@media print {
+  #footer-badges { display: none; }
+}
+
+#toc {
+  margin-bottom: 2.5em;
+}
+
+#toctitle {
+  color: #527bbd;
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-top: 1.0em;
+  margin-bottom: 0.1em;
+}
+
+div.toclevel0, div.toclevel1, div.toclevel2, div.toclevel3, div.toclevel4 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+div.toclevel2 {
+  margin-left: 2em;
+  font-size: 0.9em;
+}
+div.toclevel3 {
+  margin-left: 4em;
+  font-size: 0.9em;
+}
+div.toclevel4 {
+  margin-left: 6em;
+  font-size: 0.9em;
+}
+
+span.aqua { color: aqua; }
+span.black { color: black; }
+span.blue { color: blue; }
+span.fuchsia { color: fuchsia; }
+span.gray { color: gray; }
+span.green { color: green; }
+span.lime { color: lime; }
+span.maroon { color: maroon; }
+span.navy { color: navy; }
+span.olive { color: olive; }
+span.purple { color: purple; }
+span.red { color: red; }
+span.silver { color: silver; }
+span.teal { color: teal; }
+span.white { color: white; }
+span.yellow { color: yellow; }
+
+span.aqua-background { background: aqua; }
+span.black-background { background: black; }
+span.blue-background { background: blue; }
+span.fuchsia-background { background: fuchsia; }
+span.gray-background { background: gray; }
+span.green-background { background: green; }
+span.lime-background { background: lime; }
+span.maroon-background { background: maroon; }
+span.navy-background { background: navy; }
+span.olive-background { background: olive; }
+span.purple-background { background: purple; }
+span.red-background { background: red; }
+span.silver-background { background: silver; }
+span.teal-background { background: teal; }
+span.white-background { background: white; }
+span.yellow-background { background: yellow; }
+
+span.big { font-size: 2em; }
+span.small { font-size: 0.6em; }
+
+span.underline { text-decoration: underline; }
+span.overline { text-decoration: overline; }
+span.line-through { text-decoration: line-through; }
+
+div.unbreakable { page-break-inside: avoid; }
+
+
+/*
+ * xhtml11 specific
+ *
+ * */
+
+div.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+div.tableblock > table {
+  border: 3px solid #527bbd;
+}
+thead, p.table.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.table {
+  margin-top: 0;
+}
+/* Because the table frame attribute is overriden by CSS in most browsers. */
+div.tableblock > table[frame="void"] {
+  border-style: none;
+}
+div.tableblock > table[frame="hsides"] {
+  border-left-style: none;
+  border-right-style: none;
+}
+div.tableblock > table[frame="vsides"] {
+  border-top-style: none;
+  border-bottom-style: none;
+}
+
+
+/*
+ * html5 specific
+ *
+ * */
+
+table.tableblock {
+  margin-top: 1.0em;
+  margin-bottom: 1.5em;
+}
+thead, p.tableblock.header {
+  font-weight: bold;
+  color: #527bbd;
+}
+p.tableblock {
+  margin-top: 0;
+}
+table.tableblock {
+  border-width: 3px;
+  border-spacing: 0px;
+  border-style: solid;
+  border-color: #527bbd;
+  border-collapse: collapse;
+}
+th.tableblock, td.tableblock {
+  border-width: 1px;
+  padding: 4px;
+  border-style: solid;
+  border-color: #527bbd;
+}
+
+table.tableblock.frame-topbot {
+  border-left-style: hidden;
+  border-right-style: hidden;
+}
+table.tableblock.frame-sides {
+  border-top-style: hidden;
+  border-bottom-style: hidden;
+}
+table.tableblock.frame-none {
+  border-style: hidden;
+}
+
+th.tableblock.halign-left, td.tableblock.halign-left {
+  text-align: left;
+}
+th.tableblock.halign-center, td.tableblock.halign-center {
+  text-align: center;
+}
+th.tableblock.halign-right, td.tableblock.halign-right {
+  text-align: right;
+}
+
+th.tableblock.valign-top, td.tableblock.valign-top {
+  vertical-align: top;
+}
+th.tableblock.valign-middle, td.tableblock.valign-middle {
+  vertical-align: middle;
+}
+th.tableblock.valign-bottom, td.tableblock.valign-bottom {
+  vertical-align: bottom;
+}
+
+
+/*
+ * manpage specific
+ *
+ * */
+
+body.manpage h1 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  border-top: 2px solid silver;
+  border-bottom: 2px solid silver;
+}
+body.manpage h2 {
+  border-style: none;
+}
+body.manpage div.sectionbody {
+  margin-left: 3em;
+}
+
+@media print {
+  body.manpage div#toc { display: none; }
+}
+
+
+</style>
+<script type="text/javascript">
+/*<![CDATA[*/
+var asciidoc = {  // Namespace.
+
+/////////////////////////////////////////////////////////////////////
+// Table Of Contents generator
+/////////////////////////////////////////////////////////////////////
+
+/* Author: Mihai Bazon, September 2002
+ * http://students.infoiasi.ro/~mishoo
+ *
+ * Table Of Content generator
+ * Version: 0.4
+ *
+ * Feel free to use this script under the terms of the GNU General Public
+ * License, as long as you do not remove or alter this notice.
+ */
+
+ /* modified by Troy D. Hanson, September 2006. License: GPL */
+ /* modified by Stuart Rackham, 2006, 2009. License: GPL */
+
+// toclevels = 1..4.
+toc: function (toclevels) {
+
+  function getText(el) {
+    var text = "";
+    for (var i = el.firstChild; i != null; i = i.nextSibling) {
+      if (i.nodeType == 3 /* Node.TEXT_NODE */) // IE doesn't speak constants.
+        text += i.data;
+      else if (i.firstChild != null)
+        text += getText(i);
+    }
+    return text;
+  }
+
+  function TocEntry(el, text, toclevel) {
+    this.element = el;
+    this.text = text;
+    this.toclevel = toclevel;
+  }
+
+  function tocEntries(el, toclevels) {
+    var result = new Array;
+    var re = new RegExp('[hH]([1-'+(toclevels+1)+'])');
+    // Function that scans the DOM tree for header elements (the DOM2
+    // nodeIterator API would be a better technique but not supported by all
+    // browsers).
+    var iterate = function (el) {
+      for (var i = el.firstChild; i != null; i = i.nextSibling) {
+        if (i.nodeType == 1 /* Node.ELEMENT_NODE */) {
+          var mo = re.exec(i.tagName);
+          if (mo && (i.getAttribute("class") || i.getAttribute("className")) != "float") {
+            result[result.length] = new TocEntry(i, getText(i), mo[1]-1);
+          }
+          iterate(i);
+        }
+      }
+    }
+    iterate(el);
+    return result;
+  }
+
+  var toc = document.getElementById("toc");
+  if (!toc) {
+    return;
+  }
+
+  // Delete existing TOC entries in case we're reloading the TOC.
+  var tocEntriesToRemove = [];
+  var i;
+  for (i = 0; i < toc.childNodes.length; i++) {
+    var entry = toc.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div'
+     && entry.getAttribute("class")
+     && entry.getAttribute("class").match(/^toclevel/))
+      tocEntriesToRemove.push(entry);
+  }
+  for (i = 0; i < tocEntriesToRemove.length; i++) {
+    toc.removeChild(tocEntriesToRemove[i]);
+  }
+
+  // Rebuild TOC entries.
+  var entries = tocEntries(document.getElementById("content"), toclevels);
+  for (var i = 0; i < entries.length; ++i) {
+    var entry = entries[i];
+    if (entry.element.id == "")
+      entry.element.id = "_toc_" + i;
+    var a = document.createElement("a");
+    a.href = "#" + entry.element.id;
+    a.appendChild(document.createTextNode(entry.text));
+    var div = document.createElement("div");
+    div.appendChild(a);
+    div.className = "toclevel" + entry.toclevel;
+    toc.appendChild(div);
+  }
+  if (entries.length == 0)
+    toc.parentNode.removeChild(toc);
+},
+
+
+/////////////////////////////////////////////////////////////////////
+// Footnotes generator
+/////////////////////////////////////////////////////////////////////
+
+/* Based on footnote generation code from:
+ * http://www.brandspankingnew.net/archive/2005/07/format_footnote.html
+ */
+
+footnotes: function () {
+  // Delete existing footnote entries in case we're reloading the footnodes.
+  var i;
+  var noteholder = document.getElementById("footnotes");
+  if (!noteholder) {
+    return;
+  }
+  var entriesToRemove = [];
+  for (i = 0; i < noteholder.childNodes.length; i++) {
+    var entry = noteholder.childNodes[i];
+    if (entry.nodeName.toLowerCase() == 'div' && entry.getAttribute("class") == "footnote")
+      entriesToRemove.push(entry);
+  }
+  for (i = 0; i < entriesToRemove.length; i++) {
+    noteholder.removeChild(entriesToRemove[i]);
+  }
+
+  // Rebuild footnote entries.
+  var cont = document.getElementById("content");
+  var spans = cont.getElementsByTagName("span");
+  var refs = {};
+  var n = 0;
+  for (i=0; i<spans.length; i++) {
+    if (spans[i].className == "footnote") {
+      n++;
+      var note = spans[i].getAttribute("data-note");
+      if (!note) {
+        // Use [\s\S] in place of . so multi-line matches work.
+        // Because JavaScript has no s (dotall) regex flag.
+        note = spans[i].innerHTML.match(/\s*\[([\s\S]*)]\s*/)[1];
+        spans[i].innerHTML =
+          "[<a id='_footnoteref_" + n + "' href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+        spans[i].setAttribute("data-note", note);
+      }
+      noteholder.innerHTML +=
+        "<div class='footnote' id='_footnote_" + n + "'>" +
+        "<a href='#_footnoteref_" + n + "' title='Return to text'>" +
+        n + "</a>. " + note + "</div>";
+      var id =spans[i].getAttribute("id");
+      if (id != null) refs["#"+id] = n;
+    }
+  }
+  if (n == 0)
+    noteholder.parentNode.removeChild(noteholder);
+  else {
+    // Process footnoterefs.
+    for (i=0; i<spans.length; i++) {
+      if (spans[i].className == "footnoteref") {
+        var href = spans[i].getElementsByTagName("a")[0].getAttribute("href");
+        href = href.match(/#.*/)[0];  // Because IE return full URL.
+        n = refs[href];
+        spans[i].innerHTML =
+          "[<a href='#_footnote_" + n +
+          "' title='View footnote' class='footnote'>" + n + "</a>]";
+      }
+    }
+  }
+},
+
+install: function(toclevels) {
+  var timerId;
+
+  function reinstall() {
+    asciidoc.footnotes();
+    if (toclevels) {
+      asciidoc.toc(toclevels);
+    }
+  }
+
+  function reinstallAndRemoveTimer() {
+    clearInterval(timerId);
+    reinstall();
+  }
+
+  timerId = setInterval(reinstall, 500);
+  if (document.addEventListener)
+    document.addEventListener("DOMContentLoaded", reinstallAndRemoveTimer, false);
+  else
+    window.onload = reinstallAndRemoveTimer;
+}
+
+}
+asciidoc.install(2);
+/*]]>*/
+</script>
+</head>
+<body class="book">
+<div id="header">
+<h1>Qpid Dispatch Router Book</h1>
+<div id="toc">
+  <div id="toctitle">Table of Contents</div>
+  <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="overview">1.1. Overview</h3>
+<div class="paragraph"><p>The Dispatch router is an AMQP message router that provides
+advanced interconnect capabilities. It allows flexible routing of
+messages between any AMQP-enabled endpoints, whether they be clients,
+servers, brokers or any other entity that can send or receive standard
+AMQP messages.</p></div>
+<div class="paragraph"><p>A messaging client can make a single AMQP connection into a messaging
+bus built of Dispatch routers and, over that connection, exchange
+messages with one or more message brokers, and at the same time exchange
+messages directly with other endpoints without involving a broker at
+all.</p></div>
+<div class="paragraph"><p>The router is an intermediary for messages but it is <em>not</em> a broker. It
+does not <em>take responsibility for</em> messages. It will, however, propagate
+settlement and disposition across a network such that delivery
+guarantees are met. In other words: the router network will deliver the
+message, possibly via several intermediate routers, <em>and</em> it will route
+the acknowledgement of that message by the ultimate receiver back across
+the same path. This means that <em>responsibility</em> for the message is
+transfered from the original sender to the ultimate receiver <em>as if
+they were directly connected</em>. However this is done via a flexible
+network that allows highly configurable routing of the message
+transparent to both sender and receiver.</p></div>
+<div class="paragraph"><p>There are some patterns where this enables "brokerless messaging"
+approaches that are preferable to brokered approaches. In other cases a
+broker is essential (in particular where you need the separation of
+responsibility and/or the buffering provided by store-and-forward) but a
+dispatch network can still be useful to tie brokers and clients together
+into patterns that are difficult with a single broker.</p></div>
+<div class="paragraph"><p>For a "brokerless" example, consider the common brokered implementation
+of the request-response pattern, a client puts a request on a queue and
+then waits for a reply on another queue. In this case the broker can be
+a hindrance - the client may want to know immediatly if there is nobody
+to serve the request, but typically it can only wait for a timeout to
+discover this. With a dispatch network, the client can be informed
+immediately if its message cannot be delivered because nobody is
+listening. When the client receives acknowledgement of the request it
+knows not just that it is sitting on a queue, but that it has actually
+been received by the server.</p></div>
+<div class="paragraph"><p>For an exampe of using dispatch to enhance the use of brokers, consider
+using an array of brokers to implement a scalable distributed work
+queue. A dispatch network can make this appear as a single queue, with
+senders publishing to a single address and receivers subscribing to a
+single address. The dispatch network can distribute work to any broker
+in the array and collect work from any broker for any receiver. Brokers
+can be shut down or added without affecting clients. This elegantly
+solves the common difficulty of "stuck messages" when implementing this
+pattern with brokers alone. If a receiver is connected to a broker that
+has no messages, but there are messages on another broker, you have to
+somehow transfer them or leave them "stuck". With a dispatch network,
+<em>all</em> the receivers are connected to <em>all</em> the brokers. If there is a
+message anywhere it can be delivered to any receiver.</p></div>
+<div class="paragraph"><p>The router is meant to be deployed in topologies of multiple routers,
+preferably with redundant paths. It uses link-state routing protocols
+and algorithms (similar to OSPF or IS-IS from the networking world) to
+calculate the best path from every point to every other point and to
+recover quickly from failures. It does not need to use clustering for
+high availability; rather, it relies on redundant paths to provide
+continued connectivity in the face of system or network failure. Because
+it never takes responsibility for messages it is effectively stateless.
+Messages not delivered to their final destination will not be
+acknowledged to the sender and therefore the sender can re-send such
+messages if it is disconnected from the network.</p></div>
+</div>
+<div class="sect2">
+<h3 id="benefits">1.2. Benefits</h3>
+<div class="paragraph"><p>Simplifies connectivity</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+An endpoint can do all of its messaging through a single transport
+connection
+</p>
+</li>
+<li>
+<p>
+Avoid opening holes in firewalls for incoming connections
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Provides messaging connectivity where there is no TCP/IP connectivity</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+A server or broker can be in a private IP network (behind a NAT
+firewall) and be accessible by messaging endpoints in other networks
+(learn more).
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Simplifies reliability</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Reliability and availability are provided using redundant topology,
+not server clustering
+</p>
+</li>
+<li>
+<p>
+Reliable end-to-end messaging without persistent stores
+</p>
+</li>
+<li>
+<p>
+Use a message broker only when you need store-and-forward semantics
+</p>
+</li>
+</ul></div>
+</div>
+<div class="sect2">
+<h3 id="features">1.3. Features</h3>
+<div class="ulist"><ul>
+<li>
+<p>
+Can be deployed stand-alone or in a network of routers
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Supports arbitrary network topology - no restrictions on redundancy
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Automatic route computation - adjusts quickly to changes in topology
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+</li>
+<li>
+<p>
+Provides remote access to brokers or other AMQP servers
+</p>
+</li>
+<li>
+<p>
+Security
+</p>
+</li>
+</ul></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-qpid-dispatch">2. Using Qpid Dispatch</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="configuration">2.1. Configuration</h3>
+<div class="paragraph"><p>The default configuration file is installed in
+<em>install-prefix/etc/qpid-dispatch/qdrouterd.conf</em>. This configuration file will
+cause the router to run in standalone mode, listening on the standard
+AMQP port (5672). Dispatch Router looks for the configuration file in
+the installed location by default. If you wish to use a different path,
+the "-c" command line option will instruct Dispatch Router as to which
+configuration to load.</p></div>
+<div class="paragraph"><p>To run the router, invoke the executable: qdrouterd [-c my-config-file]</p></div>
+<div class="paragraph"><p>For more details of the configuration file see the <em>qdrouterd.conf(5)</em> man
+page.</p></div>
+</div>
+<div class="sect2">
+<h3 id="tools">2.2. Tools</h3>
+<div class="sect3">
+<h4 id="qdstat">2.2.1. qdstat</h4>
+<div class="paragraph"><p><em>qdstat</em> is a command line tool that lets you view the status of a
+Dispatch Router. The following options are useful for seeing what the
+router is doing:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="17%" />
+<col width="83%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Option</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">-l</p></td>
+<td align="left" valign="top"><p class="table">Print a list of AMQP links attached to the router. Links are
+unidirectional. Outgoing links are usually associated with a
+subscription address. The tool distinguishes between <em>endpoint</em> links
+and <em>router</em> links. Endpoint links are attached to clients using the
+router. Router links are attached to other routers in a network of
+routbers.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">-a</p></td>
+<td align="left" valign="top"><p class="table">Print a list of addresses known to the router.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">-n</p></td>
+<td align="left" valign="top"><p class="table">Print a list of known routers in the network.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">-c</p></td>
+<td align="left" valign="top"><p class="table">Print a list of connections to the router.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">--autolinks</p></td>
+<td align="left" valign="top"><p class="table">Print a list of configured auto-links.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">--linkroutes</p></td>
+<td align="left" valign="top"><p class="table">Print a list of configures link-routes.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="paragraph"><p>For complete details see the <em>qdstat(8)</em> man page and the output of
+<code>qdstat --help</code>.</p></div>
+</div>
+<div class="sect3">
+<h4 id="qdmanage">2.2.2. qdmanage</h4>
+<div class="paragraph"><p><em>qdmanage</em> is a general-purpose AMQP management client that allows you
+to not only view but modify the configuration of a running dispatch
+router.</p></div>
+<div class="paragraph"><p>For example you can query all the connection entities in the router:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdmanage query --type connection</code></pre>
+</div></div>
+<div class="paragraph"><p>To enable logging debug and higher level messages by default:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdmanage update log/DEFAULT enable=debug+</code></pre>
+</div></div>
+<div class="paragraph"><p>In fact, everything that can be configured in the configuration file can
+also be created in a running router via management. For example to
+create a new listener in a running router:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdmanage create type=listener port=5555</code></pre>
+</div></div>
+<div class="paragraph"><p>Now you can connect to port 5555, for exampple:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdmanage query -b localhost:5555 --type listener</code></pre>
+</div></div>
+<div class="paragraph"><p>For complete details see the <em>qdmanage(8)</em> man page and the output of
+<code>qdmanage --help</code>. Also for details of what can be configured see the
+<em>qdrouterd.conf(5)</em> man page.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="basic-usage-and-examples">2.3. Basic Usage and Examples</h3>
+<div class="sect3">
+<h4 id="standalone-and-interior-modes">2.3.1. Standalone and Interior Modes</h4>
+<div class="paragraph"><p>The router can operate stand-alone or as a node in a network of routers.
+The mode is configured in the <em>router</em> section of the configuration
+file. In stand-alone mode, the router does not attempt to collaborate
+with any other routers and only routes messages among directly connected
+endpoints.</p></div>
+<div class="paragraph"><p>If your router is running in stand-alone mode, <em>qdstat -a</em> will look
+like the following:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat -a
+Router Addresses
+  class   addr                   phs  distrib  in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
+  ===============================================================================================================
+  local   $_management_internal       closest  1        0      0       0      0   0    0     0        0
+  local   $displayname                closest  1        0      0       0      0   0    0     0        0
+  mobile  $management            0    closest  1        0      0       0      1   0    0     1        0
+  local   $management                 closest  1        0      0       0      0   0    0     0        0
+  local   temp.1GThUllfR7N+BDP        closest  0        1      0       0      0   0    0     0        0</code></pre>
+</div></div>
+<div class="paragraph"><p>Note that there are a number of known addresses. <em>$management</em> is the
+address of the router&#8217;s embedded management agent.
+<em>temp.1GThUllfR7N+BDP</em> is the temporary reply-to address of the <em>qdstat</em>
+client making requests to the agent.</p></div>
+<div class="paragraph"><p>If you change the mode to interior and restart the processs, the same
+command will yield additional addresses which are used for inter-router
+communication:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat -a
+Router Addresses
+  class   addr                   phs  distrib    in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
+  =================================================================================================================
+  local   $_management_internal       closest    1        0      0       0      0   0    0     0        0
+  local   $displayname                closest    1        0      0       0      0   0    0     0        0
+  mobile  $management            0    closest    1        0      0       0      1   0    0     1        0
+  local   $management                 closest    1        0      0       0      0   0    0     0        0
+  local   qdhello                     flood      1        0      0       0      0   0    0     0        10
+  local   qdrouter                    flood      1        0      0       0      0   0    0     0        0
+  topo    qdrouter                    flood      1        0      0       0      0   0    0     0        1
+  local   qdrouter.ma                 multicast  1        0      0       0      0   0    0     0        0
+  topo    qdrouter.ma                 multicast  1        0      0       0      0   0    0     0        0
+  local   temp.wfx54+zf+YWQF3T        closest    0        1      0       0      0   0    0     0        0</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="mobile-subscribers">2.3.2. Mobile Subscribers</h4>
+<div class="paragraph"><p>The term "mobile subscriber" simply refers to the fact that a client may
+connect to the router and subscribe to an address to receive messages
+sent to that address. No matter where in the network the subscriber
+attaches, the messages will be routed to the appropriate destination.</p></div>
+<div class="paragraph"><p>To illustrate a subscription on a stand-alone router, you can use the
+examples that are provided with Qpid Proton. Using the <em>simple_recv.py</em>
+example receiver:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ python ./simple_recv.py -a 127.0.0.1/my-address</code></pre>
+</div></div>
+<div class="paragraph"><p>This command creates a receiving link subscribed to the specified
+address. To verify the subscription:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat -a
+Router Addresses
+  class   addr                   phs  distrib  in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
+  ===============================================================================================================
+  local   $_management_internal       closest  1        0      0       0      0   0    0     0        0
+  local   $displayname                closest  1        0      0       0      0   0    0     0        0
+  mobile  $management            0    closest  1        0      0       0      2   0    0     2        0
+  local   $management                 closest  1        0      0       0      0   0    0     0        0
+  mobile  my-address             0    closest  0        1      0       0      0   0    0     0        0
+  local   temp.75_d2X23x_KOT51        closest  0        1      0       0      0   0    0     0        0</code></pre>
+</div></div>
+<div class="paragraph"><p>You can then, in a separate command window, run a sender to produce
+messages to that address:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ python ./simple_send.py -a 127.0.0.1/my-address</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="dynamic-reply-to">2.3.3. Dynamic Reply-To</h4>
+<div class="paragraph"><p>Dynamic reply-to can be used to obtain a reply-to address that routes
+back to a client&#8217;s receiving link regardless of how many hops it has to
+take to get there. To illustrate this feature, see below a simple
+program (written in C++ against the qpid::messaging API) that queries
+the management agent of the attached router for a list of other known
+routers' management addresses.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>#include &lt;qpid/messaging/Address.h&gt;
+#include &lt;qpid/messaging/Connection.h&gt;
+#include &lt;qpid/messaging/Message.h&gt;
+#include &lt;qpid/messaging/Receiver.h&gt;
+#include &lt;qpid/messaging/Sender.h&gt;
+#include &lt;qpid/messaging/Session.h&gt;
+
+using namespace qpid::messaging;
+using namespace qpid::types;
+
+using std::stringstream;
+using std::string;
+
+int main() {
+    const char* url = "amqp:tcp:127.0.0.1:5672";
+    std::string connectionOptions = "{protocol:amqp1.0}";
+
+    Connection connection(url, connectionOptions);
+    connection.open();
+    Session session = connection.createSession();
+    Sender sender = session.createSender("mgmt");
+
+    // create reply receiver and get the reply-to address
+    Receiver receiver = session.createReceiver("#");
+    Address responseAddress = receiver.getAddress();
+
+    Message request;
+    request.setReplyTo(responseAddress);
+    request.setProperty("x-amqp-to", "amqp:/_local/$management");
+    request.setProperty("operation", "DISCOVER-MGMT-NODES");
+    request.setProperty("type", "org.amqp.management");
+    request.setProperty("name, "self");
+
+    sender.send(request);
+    Message response = receiver.fetch();
+    Variant content(response.getContentObject());
+    std::cout &lt;&lt; "Response: " &lt;&lt; content &lt;&lt; std::endl &lt;&lt; std::endl;
+
+    connection.close();
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>The equivalent program written in Python against the Proton Messenger
+API:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>from proton import Messenger, Message
+
+def main():
+    host = "0.0.0.0:5672"
+
+    messenger = Messenger()
+    messenger.start()
+    messenger.route("amqp:/*", "amqp://%s/$1" % host)
+    reply_subscription = messenger.subscribe("amqp:/#")
+    reply_address = reply_subscription.address
+
+    request  = Message()
+    response = Message()
+
+    request.address = "amqp:/_local/$management"
+    request.reply_to = reply_address
+    request.properties = {u'operation' : u'DISCOVER-MGMT-NODES',
+                          u'type'      : u'org.amqp.management',
+                          u'name'      : u'self'}
+
+    messenger.put(request)
+    messenger.send()
+    messenger.recv()
+    messenger.get(response)
+
+    print "Response: %r" % response.body
+
+    messenger.stop()
+
+main()</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="link-routing">2.4. Link Routing</h3>
+<div class="paragraph"><p>This feature was introduced in Qpid Dispatch 0.4. This feature was
+significantly updated in Qpid Dispatch 0.6.</p></div>
+<div class="paragraph"><p>Link-routing is an alternative strategy for routing messages across a
+network of routers. With the existing message-routing strategy, each
+router makes a routing decision on a per-message basis when the message
+is delivered. Link-routing is different because it makes routing
+decisions when link-attach frames arrive. A link is effectively chained
+across the network of routers from the establishing node to the
+destination node. Once the link is established, the transfer of message
+deliveries, flow frames, and dispositions is performed across the routed
+link.</p></div>
+<div class="paragraph"><p>The main benefit to link-routing is that endpoints can use the full link
+protocol to interact with other endpoints in far-flung parts of the
+network.  For example, a client can establish a receiver across the
+network to a queue on a remote broker and use link credit to control
+the flow of messages from the broker.  Similarly, a receiver can
+establish a link to a topic on a remote broker using a server-side
+filter.</p></div>
+<div class="paragraph"><p>Why would one want to do this?  One reason is to provide client
+isolation.  A network like the following can be deployed:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>                        Public Network
+                       +-----------------+
+                       |      +-----+    |
+                       | B1   | Rp  |    |
+                       |      +/--\-+    |
+                       |      /    \     |
+                       |     /      \    |
+                       +----/--------\---+
+                           /          \
+                          /            \
+                         /              \
+         Private Net A  /                \ Private Net B
+        +--------------/--+           +---\-------------+
+        |         +---/-+ |           | +--\--+         |
+        |  B2     | Ra  | |           | | Rb  |   C1    |
+        |         +-----+ |           | +-----+         |
+        |                 |           |                 |
+        |                 |           |                 |
+        +-----------------+           +-----------------+</code></pre>
+</div></div>
+<div class="paragraph"><p>The clients in Private Net B can be constrained (by firewall policy)
+to only connect to the Router in their own network.  Using
+link-routing, these clients can access queues, topics, and other AMQP
+services that are in the Public Network or even in Private Net A.</p></div>
+<div class="paragraph"><p>For example, The router Ra can be configured to expose queues in
+broker B2 to the network.  Client C1 can then establish a connection
+to Rb, the local router, open a subscribing link to "b2.event-queue",
+and receive messages stored on that queue in broker B2.</p></div>
+<div class="paragraph"><p>C1 is unable to create a TCP/IP connection to B1 because of its
+isolation (and because B2 is itself in a private network). However, with
+link routing, C1 can interact with B2 using the AMQP link protocol.</p></div>
+<div class="paragraph"><p>Note that in this case, neither C1 nor B2 have been modified in any way
+and neither need be aware of the fact that there is a message-router
+network between them.</p></div>
+<div class="sect3">
+<h4 id="link-routing-configuration">2.4.1. Configuration</h4>
+<div class="paragraph"><p>Starting with the configured topology shown above, how is link-routing
+configured to support the example described above?</p></div>
+<div class="paragraph"><p>First, router Ra needs to be told how to make a connection to the broker
+B2:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>connector {
+    name: broker
+    role: route-container
+    host: &lt;B2-url&gt;
+    port: &lt;B2-port&gt;
+    saslMechanisms: ANONYMOUS
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>This <em>route-container</em> connector tells the router how to connect to an
+external AMQP container when it is needed. The name "broker" will be
+used later to refer to this connection.</p></div>
+<div class="paragraph"><p>Now, the router must be configured to route certain addresses to B2:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>linkRoute {
+    prefix: b2
+    dir: in
+    connection: broker
+}
+
+linkRoute {
+    prefix: b2
+    dir: out
+    connection: broker
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>The linkRoute tells router Ra that any sender or receiver that is
+attached with a target or source (respectively) whos address begins with
+"b2", should be routed to the broker B2 (via the route-container
+connector).</p></div>
+<div class="paragraph"><p>Note that receiving and sending links are configured and routed
+separately. This allows configuration of link routes for listeners only
+or senders only. A direction of "in" matches client senders (i.e. links
+that carry messages inbound to the router network). Direction "out"
+matches client receivers.</p></div>
+<div class="paragraph"><p>Examples of addresses that "begin with <em>b2</em>" include:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+b2
+</p>
+</li>
+<li>
+<p>
+b2.queues
+</p>
+</li>
+<li>
+<p>
+b2.queues.app1
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>When the route-container connector is configured, router Ra establishes
+a connection to the broker. Once the connection is open, Ra tells the
+other routers (Rp and Rb) that it is a valid destination for link-routes
+to the "b2" prefix. This means that sender or receiver links attached to
+Rb or Rp will be routed via the shortest path to Ra where they are then
+routed outbound to the broker B2.</p></div>
+<div class="paragraph"><p>On Rp and Rb, it is advisable to add the identical configuration. It is
+permissible for a linkRoute configuration to reference a connection that
+does not exist.</p></div>
+<div class="paragraph"><p>This configuration tells the routers that link-routing is intended to be
+available for targets and sources starting with "b2". This is important
+because it is possible that B2 might be unavailable or shut off. If B2
+is unreachable, Ra will not advertize itself as a destination for "b2"
+and the other routers might never know that "b2" was intended for
+link-routing.</p></div>
+<div class="paragraph"><p>The above configuration allows Rb and Rp to reject attaches that should
+be routed to B2 with an error message that indicates that there is no
+route available to the destination.</p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="indirect-waypoints-and-auto-links">2.5. Indirect Waypoints and Auto-Links</h3>
+<div class="paragraph"><p>This feature was introduced in Qpid Dispatch 0.6. It is a significant
+improvement on an earlier somewhat experimental feature called
+Waypoints.</p></div>
+<div class="paragraph"><p>Auto-link is a feature of Qpid Dispatch Router that enables a router to
+actively attach a link to a node on an external AMQP container. The
+obvious application for this feature is to route messages through a
+queue on a broker, but other applications are possible as well.</p></div>
+<div class="paragraph"><p>An auto-link manages the lifecycle of one AMQP link. If messages are to
+be routed to and from a queue on a broker, then two auto-links are
+needed: one for sending messages to the queue and another for receiving
+messages from the queue. The container to which an auto-link attempts to
+attach may be identified in one of two ways:</p></div>
+<div class="quoteblock">
+<div class="content">
+<div class="ulist"><ul>
+<li>
+<p>
+The name of the connector/listener that resulted in the connection of
+the container, or
+</p>
+</li>
+<li>
+<p>
+The AMQP container-id of the remote container.
+</p>
+</li>
+</ul></div>
+</div>
+<div class="attribution">
+</div></div>
+<div class="sect3">
+<h4 id="queue-waypoint-example">2.5.1. Queue Waypoint Example</h4>
+<div class="paragraph"><p>Here is an example configuration for routing messages deliveries through
+a pair of queues on a broker:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>connector {
+    name: broker
+    role: route-container
+    host: &lt;hostname&gt;
+    port: &lt;port&gt;
+    saslMechanisms: ANONYMOUS
+}
+
+address {
+    prefix: queue
+    waypoint: yes
+}
+
+autoLink {
+    addr: queue.first
+    dir: in
+    connection: broker
+}
+
+autoLink {
+    addr: queue.first
+    dir: out
+    connection: broker
+}
+
+autoLink {
+    addr: queue.second
+    dir: in
+    connection: broker
+}
+
+autoLink {
+    addr: queue.second
+    dir: out
+    connection: broker
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>The <code>address</code> entity identifies a namespace <em>queue.</em> that will be used
+for routing messages through queues via autolinks. The four <code>autoLink</code> entities
+identify the head and tail of two queues on the broker that will be connected
+via auto-links.</p></div>
+<div class="paragraph"><p>If there is no broker connected, the auto-links shall remain
+<em>inactive</em>. This can be observed by using the <code>qdstat</code> tool:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat --autolinks
+AutoLinks
+  addr          dir  phase  link  status    lastErr
+  ===================================================
+  queue.first   in   1            inactive
+  queue.first   out  0            inactive
+  queue.second  in   1            inactive
+  queue.second  out  0            inactive</code></pre>
+</div></div>
+<div class="paragraph"><p>If a broker comes online with a queue called <em>queue.first</em>, the
+auto-links will attempt to activate:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat --autolinks
+AutoLinks
+  addr          dir  phase  link  status  lastErr
+  ======================================================================
+  queue.first   in   1      6     active
+  queue.first   out  0      7     active
+  queue.second  in   1            failed  Node not found: queue.second
+  queue.second  out  0            failed  Node not found: queue.second</code></pre>
+</div></div>
+<div class="paragraph"><p>Note that two of the auto-links are in <em>failed</em> state because the queue
+does not exist on the broker.</p></div>
+<div class="paragraph"><p>If we now use the Qpid Proton example application <code>simple_send.py</code> to send
+three messages to <em>queue.first</em> via the router:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ python simple_send.py -a 127.0.0.1/queue.first -m3
+all messages confirmed</code></pre>
+</div></div>
+<div class="paragraph"><p>and then look at the address statistics on the router:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat -a
+Router Addresses
+  class   addr           phs  distrib   in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
+  ========================================================================================================
+  mobile  queue.first    1    balanced  0        0      0       0      0   0    0     0        0
+  mobile  queue.first    0    balanced  0        1      0       0      3   3    0     0        0</code></pre>
+</div></div>
+<div class="paragraph"><p>we see that <em>queue.first</em> appears twice in the list of addresses. The
+<code>phs</code>, or phase column shows that there are two phases for the
+address. Phase <em>0</em> is for routing message deliveries from producers to
+the tail of the queue (the <code>out</code> auto-link associated with the queue).
+Phase 1 is for routing deliveries from the head of the queue to
+subscribed consumers.</p></div>
+<div class="paragraph"><p>Note that three deliveries have been counted in the "in" and "out"
+columns for phase <em>0</em>. The "in" column represents the three messages
+that arrived from <code>simple_send.py</code> and the <code>out</code> column represents the three
+deliveries to the queue on the broker.</p></div>
+<div class="paragraph"><p>If we now use <code>simple_recv.py</code> to receive three messages from this address:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ python simple_recv.py -a 127.0.0.1:5672/queue.first -m3
+{u'sequence': int32(1)}
+{u'sequence': int32(2)}
+{u'sequence': int32(3)}</code></pre>
+</div></div>
+<div class="paragraph"><p>We receive the three queued messages. Looking at the addresses again, we
+see that phase 1 was used to deliver those messages from the queue to
+the consumer.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>$ qdstat -a
+Router Addresses
+  class   addr           phs  distrib   in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
+  ========================================================================================================
+  mobile  queue.first    1    balanced  0        0      0       0      3   3    0     0        0
+  mobile  queue.first    0    balanced  0        1      0       0      3   3    0     0        0</code></pre>
+</div></div>
+<div class="paragraph"><p>Note that even in a multi-router network, and with multiple producers
+and consumers for <em>queue.first</em>, all deliveries will be routed through
+the queue on the connected broker.</p></div>
+</div>
+<div class="sect3">
+<h4 id="sharded-queue-example">2.5.2. Sharded Queue Example</h4>
+<div class="paragraph"><p>Here is an extension of the above example to illustrate how Qpid
+Dispatch Router can be used to create a distributed queue in which
+multiple brokers share the message-queueing load.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>connector {
+    name: broker1
+    role: route-container
+    host: &lt;hostname&gt;
+    port: &lt;port&gt;
+    saslMechanisms: ANONYMOUS
+}
+
+connector {
+    name: broker2
+    role: route-container
+    host: &lt;hostname&gt;
+    port: &lt;port&gt;
+    saslMechanisms: ANONYMOUS
+}
+
+address {
+    prefix: queue
+    waypoint: yes
+}
+
+autoLink {
+    addr: queue.first
+    dir: in
+    connection: broker1
+}
+
+autoLink {
+    addr: queue.first
+    dir: out
+    connection: broker1
+}
+
+autoLink {
+    addr: queue.first
+    dir: in
+    connection: broker2
+}
+
+autoLink {
+    addr: queue.first
+    dir: out
+    connection: broker2
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>In the above configuration, there are two instances of <em>queue.first</em> on
+brokers 1 and 2. Message traffic from producers to address <em>queue.first</em>
+shall be balanced between the two instance and messages from the queues
+shall be balanced across the collection of subscribers to the same
+address.</p></div>
+</div>
+<div class="sect3">
+<h4 id="dynamically-adding-shards">2.5.3. Dynamically Adding Shards</h4>
+<div class="paragraph"><p>Since configurable entities in the router can also be accessed via the
+management protocol, we can remotely add a shard to the above example
+using <code>qdmanage</code>:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>qdmanage create --type org.apache.qpid.dispatch.connector host=&lt;host&gt; port=&lt;port&gt; name=broker3
+qdmanage create --type org.apache.qpid.dispatch.router.config.autoLink addr=queue.first dir=in connection=broker3
+qdmanage create --type org.apache.qpid.dispatch.router.config.autoLink addr=queue.first dir=out connection=broker3</code></pre>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="technical-details-and-specifications">3. Technical Details and Specifications</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="client-compatibility">3.1. Client Compatibility</h3>
+<div class="paragraph"><p>Dispatch Router should, in theory, work with any client that is
+compatible with AMQP 1.0. The following clients have been tested:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="22%" />
+<col width="78%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Client</em> </th>
+<th align="left" valign="top"><em>Notes</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">qpid::messaging</p></td>
+<td align="left" valign="top"><p class="table">The Qpid messaging clients work with Dispatch Router
+as long as they are configured to use the 1.0 version of the protocol.
+To enable AMQP 1.0 in the C++ client, use the {protocol:amqp1.0}
+connection option.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Proton Reactor</p></td>
+<td align="left" valign="top"><p class="table">The Proton Reactor API is compatible with Dispatch
+Router.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Proton Messenger</p></td>
+<td align="left" valign="top"><p class="table">Messenger works with Dispatch Router.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="addressing">3.2. Addressing</h3>
+<div class="paragraph"><p>AMQP addresses are used to control the flow of messages across a network
+of routers. Addresses are used in a number of different places in the
+AMQP 1.0 protocol. They can be used in a specific message in the <code>to</code>
+and <code>reply-to</code> fields of a message&#8217;s properties. They are also used
+during the creation of links in the <code>address</code> field of a <code>source</code> or
+a <code>target</code>.</p></div>
+<div class="paragraph"><p>Addresses designate various kinds of entities in a messaging network:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Endpoint processes that consume data or offer a service
+</p>
+</li>
+<li>
+<p>
+Topics that match multiple consumers to multiple producers
+</p>
+</li>
+<li>
+<p>
+Entities within a messaging broker:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+Queues
+</p>
+</li>
+<li>
+<p>
+Durable Topics
+</p>
+</li>
+<li>
+<p>
+Exchanges
+</p>
+</li>
+</ul></div>
+</li>
+</ul></div>
+<div class="paragraph"><p>The syntax of an AMQP address is opaque as far as the router network is
+concerned. A syntactical structure may be used by the administrator that
+creates addresses, but the router treats them as opaque strings. Routers
+consider addresses to be mobile such that any address may be directly
+connected to any router in a network and may move around the topology.
+In cases where messages are broadcast to or balanced across multiple
+consumers, an address may be connected to multiple routers in the
+network.</p></div>
+<div class="paragraph"><p>Addresses have semantics associated with them. When an address is
+created in the network, it is assigned a set of semantics (and access
+rules) during a process called provisioning. The semantics of an address
+control how routers behave when they see the address being used.</p></div>
+<div class="paragraph"><p>Address semantics include the following considerations:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>Routing pattern</em> - direct, multicast, balanced
+</p>
+</li>
+<li>
+<p>
+<em>Undeliverable action</em> - drop, hold and retry, redirect
+</p>
+</li>
+<li>
+<p>
+<em>Reliability</em> - N destinations, etc.
+</p>
+</li>
+</ul></div>
+<div class="sect3">
+<h4 id="routing-patterns">3.2.1. Routing patterns</h4>
+<div class="paragraph"><p>Routing patterns constrain the paths that a message can take across a
+network.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="18%" />
+<col width="82%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Pattern</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><em>Direct</em></p></td>
+<td align="left" valign="top"><p class="table">Direct routing allows for only one consumer to use an address
+at a time. Messages (or links) follow the lowest cost path across the
+network from the sender to the one receiver.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><em>Multicast</em></p></td>
+<td align="left" valign="top"><p class="table">Multicast routing allows multiple consumers to use the
+same address at the same time. Messages are routed such that each
+consumer receives a copy of the message.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><em>Balanced</em></p></td>
+<td align="left" valign="top"><p class="table">Balanced routing also allows multiple consumers to use the
+same address. In this case, messages are routed to exactly one of the
+consumers, and the network attempts to balance the traffic load across
+the set of consumers using the same address.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="routing-mechanisms">3.2.2. Routing mechanisms</h4>
+<div class="paragraph"><p>The fact that addresses can be used in different ways suggests that
+message routing can be accomplished in different ways. Before going into
+the specifics of the different routing mechanisms, it would be good to
+first define what is meant by the term <em>routing</em>:</p></div>
+<div class="quoteblock">
+<div class="content">
+<div class="paragraph"><p>In a network built of multiple routers connected by connections (i.e.,
+nodes and edges in a graph), <em>routing</em> determines which connection to
+use to send a message directly to its destination or one step closer to
+its destination.</p></div>
+</div>
+<div class="attribution">
+</div></div>
+<div class="paragraph"><p>Each router serves as the terminus of a collection of incoming and
+outgoing links. The links either connect directly to endpoints that
+produce and consume messages, or they connect to other routers in the
+network along previously established connections.</p></div>
+<div class="sect4">
+<h5 id="message-routing">Message routing</h5>
+<div class="paragraph"><p>Message routing occurs upon delivery of a message and is done based on
+the address in the message&#8217;s <code>to</code> field.</p></div>
+<div class="paragraph"><p>When a delivery arrives on an incoming link, the router extracts the
+address from the delivered message&#8217;s <code>to</code> field and looks the address up
+in its routing table. The lookup results in zero or more outgoing links
+onto which the message shall be resent.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="20%" />
+<col width="80%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Delivery</em> </th>
+<th align="left" valign="top"><em>Handling</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><em>pre-settled</em></p></td>
+<td align="left" valign="top"><p class="table">If the arriving delivery is pre-settled (i.e., fire and
+forget), the incoming delivery shall be settled by the router, and the
+outgoing deliveries shall also be pre-settled. In other words, the
+pre-settled nature of the message delivery is propagated across the
+network to the message&#8217;s destination.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><em>unsettled</em></p></td>
+<td align="left" valign="top"><p class="table">Unsettled delivery is also propagated across the network.
+Because unsettled delivery records cannot be discarded, the router
+tracks the incoming deliveries and keeps the association of the incoming
+deliveries to the resulting outgoing deliveries. This kept association
+allows the router to continue to propagate changes in delivery state
+(settlement and disposition) back and forth along the path which the
+message traveled.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="amqp-mapping">3.3. AMQP Mapping</h3>
+<div class="paragraph"><p>Dispatch Router is an AMQP router and as such, it provides extensions,
+code-points, and semantics for routing over AMQP. This page documents the
+details of Dispatch Router&#8217;s use of AMQP.</p></div>
+<div class="sect3">
+<h4 id="message-annotations">3.3.1. Message Annotations</h4>
+<div class="paragraph"><p>The following Message Annotation fields are defined by Dispatch Router:</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="23%" />
+<col width="19%" />
+<col width="58%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Field</em> </th>
+<th align="left" valign="top"><em>Type</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">x-opt-qd.ingress</p></td>
+<td align="left" valign="top"><p class="table">string</p></td>
+<td align="left" valign="top"><p class="table">The identity of the ingress router for a
+message-routed message. The ingress router is the first router
+encountered by a transiting message. The router will, if this field is
+present, leave it unaltered. If the field is not present, the router
+shall insert the field with its own identity.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">x-opt-qd.trace</p></td>
+<td align="left" valign="top"><p class="table">list of string</p></td>
+<td align="left" valign="top"><p class="table">The list of routers through which this
+message-routed message has transited. If this field is not present, the
+router shall do nothing. If the field is present, the router shall
+append its own identity to the end of the list.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">x-opt-qd.to</p></td>
+<td align="left" valign="top"><p class="table">string</p></td>
+<td align="left" valign="top"><p class="table">To-Override for message-routed messages. If this
+field is present, the address in this field shall be used for routing in
+lieu of the <em>to</em> field in the message properties. A router may append,
+remove, or modify this annotation field depending on the policy in place
+for routing the message.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">x-opt-qd.phase</p></td>
+<td align="left" valign="top"><p class="table">integer</p></td>
+<td align="left" valign="top"><p class="table">The address-phase, if not zero, for messages
+flowing between routers.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="sourcetarget-capabilities">3.3.2. Source/Target Capabilities</h4>
+<div class="paragraph"><p>The following Capability values are used in Sources and Targets.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="19%" />
+<col width="81%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Capability</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">qd.router</p></td>
+<td align="left" valign="top"><p class="table">This capability is added to sources and targets that are
+used for inter-router message exchange. This capability denotes a link
+used for router-control messages flowing between routers.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">qd.router-data</p></td>
+<td align="left" valign="top"><p class="table">This capability is added to sources and targets that
+are used for inter-router message exchange. This capability denotes a
+link used for user messages being message-routed across an inter-router
+connection.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="dynamic-node-properties">3.3.3. Dynamic-Node-Properties</h4>
+<div class="paragraph"><p>The following dynamic-node-properties are used by Dispatch in Sources.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="23%" />
+<col width="77%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Property</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">x-opt-qd.address</p></td>
+<td align="left" valign="top"><p class="table">The node address describing the destination desired
+for a dynamic source. If this is absent, the router will terminate any
+dynamic receivers. If this address is present, the router will use the
+address to route the dynamic link attach to the proper destination
+container.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="addresses-and-address-formats">3.3.4. Addresses and Address Formats</h4>
+<div class="paragraph"><p>The following AMQP addresses and address patterns are used within
+Dispatch Router.</p></div>
+<div class="sect4">
+<h5 id="address-patterns">Address Patterns</h5>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="38%" />
+<col width="62%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Pattern</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_local/&lt;addr&gt;</code></p></td>
+<td align="left" valign="top"><p class="table">An address that references a locally attached endpoint.
+Messages using this address pattern shall not be routed over more than
+one link.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_topo/0/&lt;router&gt;/&lt;addr&gt;</code></p></td>
+<td align="left" valign="top"><p class="table">An address that references an endpoint attached to a specific router
+node in the network topology. Messages with addresses that follow this
+pattern shall be routed along the shortest path to the specified router.
+Note that addresses of this form are a-priori routable in that the
+address itself contains enough information to route the message to its
+destination.</p>
+<p class="table">The <em>0</em> component immediately preceding the router-id is a placeholder
+for an <em>area</em> which may be used in the future if area routing is
+implemented.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>&lt;addr&gt;</code></p></td>
+<td align="left" valign="top"><p class="table">A mobile address. An address of this format represents an
+endpoint or a set of distinct endpoints that are attached to the network
+in arbitrary locations. It is the responsibility of the router network
+to determine which router nodes are valid destinations for mobile
+addresses.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="supported-addresses">Supported Addresses</h5>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<col width="36%" />
+<col width="64%" />
+<thead>
+<tr>
+<th align="left" valign="top"><em>Address</em> </th>
+<th align="left" valign="top"><em>Description</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><code>$management</code></p></td>
+<td align="left" valign="top"><p class="table">The management agent on the attached router/container.
+This address would be used by an endpoint that is a management
+client/console/tool wishing to access management data from the attached
+container.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_topo/0/Router.E/$management</code></p></td>
+<td align="left" valign="top"><p class="table">The management agent at Router.E in area
+0. This address would be used by a management client wishing to access
+management data from a specific container that is reachable within the
+network.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_local/qdhello</code></p></td>
+<td align="left" valign="top"><p class="table">The router entity in each of the connected routers.
+This address is used to communicate with neighbor routers and is
+exclusively for the HELLO discovery protocol.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_local/qdrouter</code></p></td>
+<td align="left" valign="top"><p class="table">The router entity in each of the connected routers.
+This address is used by a router to communicate with other routers in
+the network.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><code>_topo/0/Router.E/qdrouter</code></p></td>
+<td align="left" valign="top"><p class="table">The router entity at the specifically
+indicated router. This address form is used by a router to communicate
+with a specific router that may or may not be a neighbor.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="implementation-of-the-amqp-management-specification">3.3.5. Implementation of the AMQP Management Specification</h4>
+<div class="paragraph"><p>Qpid Dispatch is manageable remotely via AMQP. It is compliant with the
+emerging AMQP Management specification (draft 9).</p></div>
+<div class="paragraph"><p>Differences from the specification:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+The <code>name</code> attribute is not required when an entity is created. If
+   not supplied it will be set to the same value as the system-generated
+   "identity" attribute. Otherwise it is treated as per the standard.
+</p>
+</li>
+<li>
+<p>
+The <code>REGISTER</code> and <code>DEREGISTER</code> operations are not implemented. The router
+   automatically discovers peer routers via the router network and makes
+   their management addresses available via the standard <code>GET-MGMT-NODES</code>
+   operation.
+= Management Schema
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>This chapter documents the set of <strong>management entity types</strong> that define
+configuration and management of a Dispatch Router. A management entity type has
+a set of <strong>attributes</strong> that can be read, some attributes can also be
+updated. Some entity types also support <strong>operations</strong> that can be called.</p></div>
+<div class="paragraph"><p>All management entity types have the following standard attributes:</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+type
+</dt>
+<dd>
+<p>
+  The fully qualified type of the entity,
+  e.g. <code>org.apache.qpid.dispatch.router</code>. This document uses the short name
+  without the <code>org.apache.qpid.dispatch</code> prefix e.g. <code>router</code>. The dispatch
+  tools will accept the short or long name.
+</p>
+</dd>
+<dt class="hdlist1">
+name
+</dt>
+<dd>
+<p>
+  A user-generated identity for the entity.  This can be used in other entities
+  that need to refer to the named entity.
+</p>
+</dd>
+<dt class="hdlist1">
+identity
+</dt>
+<dd>
+<p>
+  A system-generated identity of the entity. It includes
+  the short type name and some identifying information. E.g. <code>log/AGENT</code> or
+  <code>listener/localhost:amqp</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>There are two main categories of management entity type.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Configuration Entities
+</dt>
+<dd>
+<p>
+  Parameters that can be set in the configuration file
+  (see <code>qdrouterd.conf(5)</code> man page) or set at run-time with the <code>qdmanage(8)</code>
+  tool.
+</p>
+</dd>
+<dt class="hdlist1">
+Operational Entities
+</dt>
+<dd>
+<p>
+   Run-time status values that can be queried using <code>qdstat(8)</code> or <code>qdmanage(8)</code> tools.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuration_entities">3.4. Configuration Entities</h3>
+<div class="paragraph"><p>Configuration entities define the attributes allowed in the configuration file
+(see <code>qdrouterd.conf(5)</code>) but you can also create entities once the router is
+running using the <code>qdrouterd(8)</code> tool&#8217;s <code>create</code> operation. Some entities can also
+be modified using the <code>update</code> operation, see the entity descriptions below.</p></div>
+<div class="sect3">
+<h4 id="_container">3.4.1. container</h4>
+<div class="paragraph"><p>(DEPRECATED)Attributes related to the AMQP container. This entity has been deprecated. Use the router entity instead.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>containerName</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>workerThreads</em> (integer, default=4, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugDump</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A file to dump debugging information that can&#8217;t be logged normally.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigPath</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Absolute path to the SASL configuration file.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigName</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Name of the SASL configuration.  This string + <em>.conf</em> is the name of the configuration file.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_router">3.4.2. router</h4>
+<div class="paragraph"><p>Tracks peer routers and computes routes to destinations.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>routerId</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Router&#8217;s unique identity. This attribute has been deprecated. Use id instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>id</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Router&#8217;s unique identity. One of id or routerId is required. The router will fail to start without id or routerId
+</p>
+</dd>
+<dt class="hdlist1">
+<em>mode</em> (One of [<em>standalone</em>, <em>interior</em>], default=<em>standalone</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>area</em> (string)
+</dt>
+<dd>
+<p>
+  Unused placeholder.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloInterval</em> (integer, default=1, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Interval in seconds between HELLO messages sent to neighbor routers.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloMaxAge</em> (integer, default=3, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Time in seconds after which a neighbor is declared lost if no HELLO is received.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raInterval</em> (integer, default=30, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Interval in seconds between Router-Advertisements sent to all routers in a stable network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raIntervalFlux</em> (integer, default=4, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Interval in seconds between Router-Advertisements sent to all routers during topology fluctuations.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>remoteLsMaxAge</em> (integer, default=60, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Time in seconds after which link state is declared stale if no RA is received.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>mobileAddrMaxAge</em> (integer, default=60, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This value is no longer used in the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>addrCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of addresses known to the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of links attached to the router node.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>nodeCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of known peer router nodes.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>workerThreads</em> (integer, default=4, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugDump</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A file to dump debugging information that can&#8217;t be logged normally.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigPath</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Absolute path to the SASL configuration file.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigName</em> (string, default=<em>qdrouterd</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Name of the SASL configuration.  This string + <em>.conf</em> is the name of the configuration file.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_listener">3.4.3. listener</h4>
+<div class="paragraph"><p>Listens for incoming connections to the router.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>addr</em> (string, default=<em>127.0.0.1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>host</em> (string, default=<em>127.0.0.1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  IP address: ipv4 or ipv6 literal or a host name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>port</em> (string, default=<em>amqp</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Port number or symbolic service name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>], <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  [<em>IPv4</em>, <em>IPv6</em>] IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6.  If not specified, the protocol family will be automatically determined from the address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>cost</em> (integer, default=<em>1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  For the <em>inter-router</em> role only.  This value assigns a cost metric to the inter-router connection.  The default (and minimum) value is one.  Higher values represent higher costs.  The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certDb</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the database that contains the public certificates of trusted certificate authorities (CA).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>keyFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted private key for the above certificate.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>passwordFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>password</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the <em>password</em> option.  Don&#8217;t use both password and passwordFile in the same profile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>uidFormat</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>displayNameFile</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the unique id to dispay name mapping
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslProfileName</em> (string)
+</dt>
+<dd>
+<p>
+  The name of the ssl profile. This is for internal use only. Use the <em>name</em> attribute to assign a name to an sslProfile section
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslMechanisms</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Space separated list of accepted SASL authentication mechanisms.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>authenticatePeer</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  yes: Require the peer&#8217;s identity to be authenticated; no: Do not require any authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requireEncryption</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  yes: Require the connection to the peer to be encrypted; no: Permit non-encrypted communication with the peer
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requireSsl</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  yes: Require the use of SSL or TLS on the connection; no: Allow clients to connect without SSL or TLS.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>trustedCerts</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  This optional setting can be used to reduce the set of available CAs for client authentication.  If used, this setting must provide the absolute path to a PEM file that contains the trusted certificates.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxFrameSize</em> (integer, default=16384, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Defaults to 16384.  If specified, it is the maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>idleTimeoutSeconds</em> (integer, default=16, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The idle timeout, in seconds, for connections through this listener.  If no frames are received on the connection for this time interval, the connection shall be closed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requirePeerAuth</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowUnsecured</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the requireEncryption attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowNoSasl</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>stripAnnotations</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>], default=<em>both</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>] in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkCapacity</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_connector">3.4.4. connector</h4>
+<div class="paragraph"><p>Establishes an outgoing connection from the router.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>addr</em> (string, default=<em>127.0.0.1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>host</em> (string, default=<em>127.0.0.1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  IP address: ipv4 or ipv6 literal or a host name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>port</em> (string, default=<em>amqp</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Port number or symbolic service name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>], <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  [<em>IPv4</em>, <em>IPv6</em>] IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6.  If not specified, the protocol family will be automatically determined from the address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>cost</em> (integer, default=<em>1</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  For the <em>inter-router</em> role only.  This value assigns a cost metric to the inter-router connection.  The default (and minimum) value is one.  Higher values represent higher costs.  The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certDb</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the database that contains the public certificates of trusted certificate authorities (CA).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>keyFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted private key for the above certificate.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>passwordFile</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>password</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the <em>password</em> option.  Don&#8217;t use both password and passwordFile in the same profile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>uidFormat</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>displayNameFile</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the unique id to dispay name mapping
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslProfileName</em> (string)
+</dt>
+<dd>
+<p>
+  The name of the ssl profile. This is for internal use only. Use the <em>name</em> attribute to assign a name to an sslProfile section
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslMechanisms</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Space separated list of accepted SASL authentication mechanisms.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowRedirect</em> (boolean, default=True, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Allow the peer to redirect this connection to another address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxFrameSize</em> (integer, default=65536, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>idleTimeoutSeconds</em> (integer, default=16, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The idle timeout, in seconds, for connections through this connector.  If no frames are received on the connection for this time interval, the connection shall be closed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>stripAnnotations</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>], default=<em>both</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>] in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkCapacity</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>verifyHostName</em> (boolean, default=True, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  yes: Ensures that when initiating a connection (as a client) the host name in the URL to which this connector connects to matches the host name in the digital certificate that the peer sends back as part of the SSL connection; no: Does not perform host name verification
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslUsername</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The user name that the connector is using to connect to a peer.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslPassword</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The password that the connector is using to connect to a peer.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_log">3.4.5. log</h4>
+<div class="paragraph"><p>Configure logging for a particular module. You can use the <code>UPDATE</code> operation to change log settings while the router is running.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>UPDATE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>DEFAULT</em>], required, <code>UPDATE</code>)
+</dt>
+<dd>
+<p>
+  Module to configure. The special module <em>DEFAULT</em> specifies defaults for all modules.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>enable</em> (string, default=<em>default</em>, required, <code>UPDATE</code>)
+</dt>
+<dd>
+<p>
+  Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing <em>+</em> to enable that level and above. For example <em>trace,debug,warning+</em> means enable trace, debug, warning, error and critical. The value <em>none</em> means disable logging for the module. The value <em>default</em> means use the value from the DEFAULT module.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>timestamp</em> (boolean, <code>UPDATE</code>)
+</dt>
+<dd>
+<p>
+  Include timestamp in log messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>source</em> (boolean, <code>UPDATE</code>)
+</dt>
+<dd>
+<p>
+  Include source file and line number in log messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>output</em> (string, <code>UPDATE</code>)
+</dt>
+<dd>
+<p>
+  Where to send log messages. Can be <em>stderr</em>, <em>syslog</em> or a file name.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_fixedaddress">3.4.6. fixedAddress</h4>
+<div class="paragraph"><p>(DEPRECATED) Establishes treatment for addresses starting with a prefix. This entity has been deprecated. Use address instead</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The address prefix (always starting with <em>/</em>).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>phase</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The phase of a multi-hop address passing through one or more waypoints.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>fanout</em> (One of [<em>multiple</em>, <em>single</em>], default=<em>multiple</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  One of <em>multiple</em> or <em>single</em>.  Multiple fanout is a non-competing pattern.  If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address.  Single fanout is a competing pattern where each message is sent to only one consumer.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>bias</em> (One of [<em>closest</em>, <em>spread</em>], default=<em>closest</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Only if fanout is single.  One of <em>closest</em> or <em>spread</em>.  Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_waypoint">3.4.7. waypoint</h4>
+<div class="paragraph"><p>(DEPRECATED) A remote node that messages for an address pass through. This entity has been deprecated. Use autoLink instead</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>address</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The AMQP address of the waypoint.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connector</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The name of the on-demand connector used to reach the waypoint&#8217;s container.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>inPhase</em> (integer, default=-1, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The phase of the address as it is routed <em>to</em> the waypoint.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>outPhase</em> (integer, default=-1, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The phase of the address as it is routed <em>from</em> the waypoint.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_linkroutepattern">3.4.8. linkRoutePattern</h4>
+<div class="paragraph"><p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node. This entity has been deprecated. Use linkRoute instead</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  An address prefix to match against target and source addresses.  This pattern must be of the form <em>&lt;text&gt;.&lt;text1&gt;.&lt;textN&gt;</em> or <em>&lt;text&gt;</em> or <em>&lt;text&gt;.</em> and matches any address that contains that prefix.  For example, if the prefix is set to org.apache (or org.apache.), any address that has the prefix <em>org.apache</em>  (like org.apache.dev) will match. Note that a prefix must not start with a (.), can end in a (.) and can contain zero or more dots (.).  Any characters between the dots are simply treated as part of the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>], default=<em>both</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Link direction for match: <em>in</em> matches only links inbound to the client; <em>out</em> matches only links outbound from the client; <em>both</em> matches any link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connector</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The name of the on-demand connector used to reach the target node&#8217;s container.  If this value is not provided, it means that the target container is expected to be connected to a different router in the network.  This prevents links to a link-routable address from being misinterpreted as message-routing links when there is no route to a valid destination available.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_address">3.4.9. address</h4>
+<div class="paragraph"><p>Entity type for address configuration.  This is used to configure the treatment of message-routed deliveries within a particular address-space.  The configuration controls distribution and address phasing.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The address prefix for the configured settings
+</p>
+</dd>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>multicast</em>, <em>closest</em>, <em>balanced</em>], default=<em>balanced</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Treatment of traffic associated with the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>waypoint</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Designates this address space as being used for waypoints.  This will cause the proper address-phasing to be used.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>ingressPhase</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Advanced - Override the ingress phase for this address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>egressPhase</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Advanced - Override the egress phase for this address
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_linkroute">3.4.10. linkRoute</h4>
+<div class="paragraph"><p>Entity type for link-route configuration.  This is used to identify remote containers that shall be destinations for routed link-attaches.  The link-routing configuration applies to an addressing space defined by a prefix.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The address prefix for the configured settings
+</p>
+</dd>
+<dt class="hdlist1">
+<em>containerId</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  ContainerID for the target container
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connection</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The name from a connector or listener
+</p>
+</dd>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>linkBalanced</em>], default=<em>linkBalanced</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Treatment of traffic associated with the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The permitted direction of links: <em>in</em> means client senders; <em>out</em> means client receivers
+</p>
+</dd>
+<dt class="hdlist1">
+<em>operStatus</em> (One of [<em>inactive</em>, <em>active</em>])
+</dt>
+<dd>
+<p>
+  The operational status of this linkRoute: inactive - The remote container is not connected; active - the remote container is connected and ready to accept link routed attachments.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_autolink">3.4.11. autoLink</h4>
+<div class="paragraph"><p>Entity type for configuring auto-links.  Auto-links are links whose lifecycle is managed by the router.  These are typically used to attach to waypoints on remote containers (brokers, etc.).</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>addr</em> (string, required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The address of the provisioned object
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The direction of the link to be created.  In means into the router, out means out of the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>phase</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The address phase for this link.  Defaults to <em>0</em> for <em>out</em> links and <em>1</em> for <em>in</em> links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>containerId</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  ContainerID for the target container
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connection</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The name from a connector or listener
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkRef</em> (string)
+</dt>
+<dd>
+<p>
+  Reference to the org.apache.qpid.dispatch.router.link if the link exists
+</p>
+</dd>
+<dt class="hdlist1">
+<em>operStatus</em> (One of [<em>inactive</em>, <em>attaching</em>, <em>failed</em>, <em>active</em>, <em>quiescing</em>, <em>idle</em>])
+</dt>
+<dd>
+<p>
+  The operational status of this autoLink: inactive - The remote container is not connected; attaching - the link is attaching to the remote node; failed - the link attach failed; active - the link is attached and operational; quiescing - the link is transitioning to idle state; idle - the link is attached but there are no deliveries flowing and no unsettled deliveries.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>lastError</em> (string)
+</dt>
+<dd>
+<p>
+  The error description from the last attach failure
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_console">3.4.12. console</h4>
+<div class="paragraph"><p>Start a websocket/tcp proxy and http file server to serve the web console</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>listener</em> (string)
+</dt>
+<dd>
+<p>
+  The name of the listener to send the proxied tcp traffic to.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>wsport</em> (integer, default=5673)
+</dt>
+<dd>
+<p>
+  port on which to listen for websocket traffic
+</p>
+</dd>
+<dt class="hdlist1">
+<em>proxy</em> (string)
+</dt>
+<dd>
+<p>
+  The full path to the proxy program to run.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>home</em> (string)
+</dt>
+<dd>
+<p>
+  The full path to the html/css/js files for the console.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>args</em> (string)
+</dt>
+<dd>
+<p>
+  Optional args to pass the proxy program for logging, authentication, etc.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_policy">3.4.13. policy</h4>
+<div class="paragraph"><p>Defines global connection limit</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>maximumConnections</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Global maximum number of concurrent client connections allowed. Zero implies no limit. This limit is always enforced even if no other policy settings have been defined.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>enableAccessRules</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Enable user rule set processing and connection denial.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>policyFolder</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  The absolute path to a folder that holds policyRuleset definition .json files. For a small system the rulesets may all be defined in this file. At a larger scale it is better to have the policy files in their own folder and to have none of the rulesets defined here. All rulesets in all .json files in this folder are processed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>defaultApplication</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Application policyRuleset to use for connections with no open.hostname or a hostname that does not match any existing policy. For users that don&#8217;t wish to use open.hostname or any multi-tennancy feature, this default policy can be the only policy in effect for the network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>defaultApplicationEnabled</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Enable defaultApplication policy fallback logic.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connectionsProcessed</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>connectionsDenied</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>connectionsCurrent</em> (integer)
+</dt>
+<dd>
+<p>
+=== policyRuleset
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Per application definition of the locations from which users may connect and the groups to which users belong.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>applicationName</em> (string, required)
+</dt>
+<dd>
+<p>
+  The application name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnections</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed. Zero implies no limit.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnPerUser</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed for any single user. Zero implies no limit.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnPerHost</em> (integer, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed for any remote host. Zero implies no limit.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>userGroups</em> (map, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A map where each key is a user group name and the corresponding value is a CSV string naming the users in that group. Users who are assigned to one or more groups are deemed <em>restricted</em>. Restricted users are subject to connection ingress policy and are assigned policy settings based on the assigned user groups. Unrestricted users may be allowed or denied. If unrestricted users are allowed to connect then they are assigned to user group default.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>ingressHostGroups</em> (map, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A map where each key is an ingress host group name and the corresponding value is a CSV string naming the IP addresses or address ranges in that group. IP addresses may be FQDN strings or numeric IPv4 or IPv6 host addresses. A host range is two host addresses of the same address family separated with a hyphen.  The wildcard host address <em>*</em> represents any host address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>ingressPolicies</em> (map, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A map where each key is a user group name and the corresponding value is a CSV string naming the ingress host group names that restrict the ingress host for the user group. Users who are members of the user group are allowed to connect only from a host in one of the named ingress host groups.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connectionAllowDefault</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Unrestricted users, those who are not members of a defined user group, are allowed to connect to this application. Unrestricted users are assigned to the <em>default</em> user group and receive <em>default</em> settings.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>settings</em> (map, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A map where each key is a user group name and the value is a map of the corresponding settings for that group.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_operational_entities">3.5. Operational Entities</h3>
+<div class="paragraph"><p>Operational entities provide statistics and other run-time attributes of the router.
+The <code>qdstat(8)</code> tool provides a convenient way to query run-time statistics.
+You can also use the general-purpose management tool <code>qdmanage(8)</code> to query
+operational attributes.</p></div>
+<div class="sect3">
+<h4 id="_org_amqp_management">3.5.1. org.amqp.management</h4>
+<div class="paragraph"><p>The standard AMQP management node interface.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>QUERY</code>, <code>GET-TYPES</code>, <code>GET-ANNOTATIONS</code>, <code>GET-OPERATIONS</code>, <code>GET-ATTRIBUTES</code>, <code>GET-MGMT-NODES</code>, <code>READ</code></p></div>
+<div class="sect4">
+<h5 id="_operation_get_types">Operation GET-TYPES</h5>
+<div class="paragraph"><p>Get the set of entity types and their inheritance relationships</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of the entity types (strings) that it extends.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_attributes">Operation GET-ATTRIBUTES</h5>
+<div class="paragraph"><p>Get the set of entity types and the annotations they implement</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is a list (of strings) of attributes on that entity type.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_operations">Operation GET-OPERATIONS</h5>
+<div class="paragraph"><p>Get the set of entity types and the operations they support</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of operation names (strings) that it supports.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_annotations">Operation GET-ANNOTATIONS</h5>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of annotations (strings) that it  implements.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_query">Operation QUERY</h5>
+<div class="paragraph"><p>Query for attribute values of multiple entities.</p></div>
+<div class="paragraph"><div class="title">Request body (map)</div><p>A map containing the key <code>attributeNames</code> with value a list of (string) attribute names to return. If the list or the map is empty or the body is missing all attributes are returned.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>count</em> (integer)
+</dt>
+<dd>
+<p>
+  If set, specifies the number of entries from the result set to return. If not set return all from <code>offset</code>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>offset</em> (integer)
+</dt>
+<dd>
+<p>
+  If set, specifies the number of the first element of the result set to be returned.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map with two entries. <code>attributeNames</code> is a list of the attribute names returned. <code>results</code> is a list of lists each containing the attribute values for a single entity in the same order as the names in the <code>attributeNames</code> entry. If an attribute name is not applicable for an entity then the corresponding value is <code>null</code></p></div>
+<div class="dlist"><div class="title">Response properties</div><dl>
+<dt class="hdlist1">
+<em>count</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of results returned
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_mgmt_nodes">Operation GET-MGMT-NODES</h5>
+<div class="paragraph"><p>Get the addresses of all management nodes known to this router</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (list)</div><p>A list of addresses (strings) of management nodes known to this management node.</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_management">3.5.2. management</h4>
+<div class="paragraph"><p>Qpid dispatch router extensions to the standard org.amqp.management interface.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>GET-SCHEMA</code>, <code>GET-JSON-SCHEMA</code>, <code>GET-LOG</code>, <code>PROFILE</code>, <code>QUERY</code>, <code>GET-TYPES</code>, <code>GET-ANNOTATIONS</code>, <code>GET-OPERATIONS</code>, <code>GET-ATTRIBUTES</code>, <code>GET-MGMT-NODES</code>, <code>READ</code></p></div>
+<div class="sect4">
+<h5 id="_operation_get_schema_json">Operation GET-SCHEMA-JSON</h5>
+<div class="paragraph"><p>Get the qdrouterd schema for this router in JSON format</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>indent</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of spaces to indent the formatted result. If not specified, the result is in minimal format, no unnecessary spaces or newlines.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (string)</div><p>The qdrouter schema as a JSON string.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_log">Operation GET-LOG</h5>
+<div class="paragraph"><p>Get recent log entries from the router.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>limit</em> (integer)
+</dt>
+<dd>
+<p>
+  Maximum number of log entries to get.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (string)</div><p>A list of log entries where each entry is a list of: module name(string), level name(string), message text(string), file name(string or None), line number(integer or None) , timestamp(integer)</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_schema">Operation GET-SCHEMA</h5>
+<div class="paragraph"><p>Get the qdrouterd schema for this router in AMQP map format</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>The qdrouter schema as a map.</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_router_link">3.5.3. router.link</h4>
+<div class="paragraph"><p>Link to another AMQP endpoint: router node, client or other AMQP process.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>UPDATE</code>, <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>adminStatus</em> (One of [<em>enabled</em>, <em>disabled</em>], default=<em>enabled</em>, <code>UPDATE</code>)
+</dt>
+<dt class="hdlist1">
+<em>operStatus</em> (One of [<em>up</em>, <em>down</em>, <em>quiescing</em>, <em>idle</em>])
+</dt>
+<dt class="hdlist1">
+<em>linkName</em> (string)
+</dt>
+<dd>
+<p>
+  Name assigned to the link in the Attach.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkType</em> (One of [<em>endpoint</em>, <em>router-control</em>, <em>inter-router</em>])
+</dt>
+<dd>
+<p>
+  Type of link: endpoint: a link to a normally connected endpoint; inter-router: a link to another router in the network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkDir</em> (One of [<em>in</em>, <em>out</em>])
+</dt>
+<dd>
+<p>
+  Direction of delivery flow over the link, inbound or outbound to or from the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>owningAddr</em> (string)
+</dt>
+<dd>
+<p>
+  Address assigned to this link during attach: The target for inbound links or the source for outbound links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>capacity</em> (integer)
+</dt>
+<dd>
+<p>
+  The capacity, in deliveries, for the link.  The number of undelivered plus unsettled deliveries shall not exceed the capacity.  This is enforced by link flow control.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>peer</em> (string)
+</dt>
+<dd>
+<p>
+  Identifier of the paired link if this is an attach-routed link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>undeliveredCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of undelivered messages pending for the link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>unsettledCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of unsettled deliveries awaiting settlement on the link
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveryCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The total number of deliveries that have traversed this link.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_router_address">3.5.4. router.address</h4>
+<div class="paragraph"><p>AMQP address managed by the router.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>flood</em>, <em>multicast</em>, <em>closest</em>, <em>balanced</em>, <em>linkBalanced</em>])
+</dt>
+<dd>
+<p>
+  Forwarding treatment for the address: flood - messages delivered to all subscribers along all available paths (this will cause duplicate deliveries if there are redundant paths); multi - one copy of each message delivered to all subscribers; anyClosest - messages delivered to only the closest subscriber; anyBalanced - messages delivered to one subscriber with load balanced across subscribers; linkBalanced - for link-routing, link attaches balanced across destinations.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>inProcess</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of in-process subscribers for this address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>subscriberCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of local subscribers for this address (i.e. attached to this router)
+</p>
+</dd>
+<dt class="hdlist1">
+<em>remoteCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of remote routers that have at least one subscriber to this address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>containerCount</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of attached containers that serve this route address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveriesIngress</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of deliveries to this address that entered the router network on this router
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveriesEgress</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of deliveries to this address that exited the router network on this router
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveriesTransit</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of deliveries to this address that transited this router to another router
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveriesToContainer</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of deliveries to this address that were given to an in-process subscriber
+</p>
+</dd>
+<dt class="hdlist1">
+<em>deliveriesFromContainer</em> (integer)
+</dt>
+<dd>
+<p>
+  The number of deliveries to this address that were originated from an in-process entity
+</p>
+</dd>
+<dt class="hdlist1">
+<em>key</em> (string)
+</dt>
+<dd>
+<p>
+  Internal unique (to this router) key to identify the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>remoteHostRouters</em> (list)
+</dt>
+<dd>
+<p>
+  List of remote routers on which there is a destination for this address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>transitOutstanding</em> (list)
+</dt>
+<dd>
+<p>
+  List of numbers of outstanding deliveries across a transit (inter-router) link for this address.  This is for balanced distribution only.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>trackedDeliveries</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of transit deliveries being tracked for this address (for balanced distribution).
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_router_node">3.5.5. router.node</h4>
+<div class="paragraph"><p>Remote router node connected to this router.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>id</em> (string)
+</dt>
+<dd>
+<p>
+  Remote node identifier.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>instance</em> (integer)
+</dt>
+<dd>
+<p>
+  Remote node boot number.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkState</em> (list)
+</dt>
+<dd>
+<p>
+  List of remote node&#8217;s neighbours.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>nextHop</em> (string)
+</dt>
+<dd>
+<p>
+  Neighbour ID of next hop to remote node from here.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>validOrigins</em> (list)
+</dt>
+<dd>
+<p>
+  List of valid origin nodes for messages arriving via the re mote node, used for duplicate elimination in redundant networks.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>address</em> (string)
+</dt>
+<dd>
+<p>
+  Address of the remote node
+</p>
+</dd>
+<dt class="hdlist1">
+<em>routerLink</em> (entityId)
+</dt>
+<dd>
+<p>
+  Local link to remote node
+</p>
+</dd>
+<dt class="hdlist1">
+<em>cost</em> (integer)
+</dt>
+<dd>
+<p>
+  Reachability cost
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_connection">3.5.6. connection</h4>
+<div class="paragraph"><p>Connections to the router&#8217;s container.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>container</em> (string)
+</dt>
+<dd>
+<p>
+  The container for this connection
+</p>
+</dd>
+<dt class="hdlist1">
+<em>opened</em> (boolean)
+</dt>
+<dd>
+<p>
+  The connection has been opened (i.e. AMQP OPEN)
+</p>
+</dd>
+<dt class="hdlist1">
+<em>host</em> (string)
+</dt>
+<dd>
+<p>
+  IP address and port number in the form addr:port.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>])
+</dt>
+<dd>
+<p>
+  Direction of connection establishment in or out of the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>role</em> (string)
+</dt>
+<dt class="hdlist1">
+<em>isAuthenticated</em> (boolean)
+</dt>
+<dd>
+<p>
+  Indicates whether the identity of the connection&#8217;s user is authentic.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>isEncrypted</em> (boolean)
+</dt>
+<dd>
+<p>
+  Indicates whether the connection content is encrypted.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sasl</em> (string)
+</dt>
+<dd>
+<p>
+  SASL mechanism in effect for authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>user</em> (string)
+</dt>
+<dd>
+<p>
+  Identity of the authenticated user.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>ssl</em> (boolean)
+</dt>
+<dd>
+<p>
+  True iff SSL/TLS is in effect for this connection.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslProto</em> (string)
+</dt>
+<dd>
+<p>
+  SSL protocol name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslCipher</em> (string)
+</dt>
+<dd>
+<p>
+  SSL cipher name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslSsf</em> (integer)
+</dt>
+<dd>
+<p>
+  SSL strength factor in effect
+</p>
+</dd>
+<dt class="hdlist1">
+<em>properties</em> (map)
+</dt>
+<dd>
+<p>
+  Connection properties supplied by the peer.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_allocator">3.5.7. allocator</h4>
+<div class="paragraph"><p>Memory allocation pool.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>typeName</em> (string)
+</dt>
+<dt class="hdlist1">
+<em>typeSize</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>transferBatchSize</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>localFreeListMax</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>globalFreeListMax</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>totalAllocFromHeap</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>totalFreeToHeap</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>heldByThreads</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>batchesRebalancedToThreads</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>batchesRebalancedToGlobal</em> (integer)
+</dt>
+<dd>
+<p>
+=== policyStats
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Per application connection and access statistics.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>applicationName</em> (string)
+</dt>
+<dd>
+<p>
+  The application name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connectionsApproved</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>connectionsDenied</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>connectionsCurrent</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>perUserState</em> (map)
+</dt>
+<dd>
+<p>
+  A map where the key is the authenticated user name and the value is a list of the user&#8217;s connections.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>perHostState</em> (map)
+</dt>
+<dd>
+<p>
+  A map where the key is the host name and the value is a list of the host&#8217;s connections.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sessionDenied</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>senderDenied</em> (integer)
+</dt>
+<dt class="hdlist1">
+<em>receiverDenied</em> (integer)
+</dt>
+<dd>
+<p>
+== Management Operations
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>The <em>qdstat(8)</em> and <em>qdmanage(8)</em> tools allow you to view or modify management entity
+attributes. They work by invoking <strong>management operations</strong>. You can invoke these operations
+from any AMQP client by sending a message with the appropriate properties and body to the
+<em>$management</em> address. The message should have a <em>reply-to</em> address indicating where the
+response should be sent.</p></div>
+</div>
+<div class="sect3">
+<h4 id="_operations_for_all_entity_types">3.5.8. Operations for all entity types</h4>
+<div class="sect4">
+<h5 id="_operation_read">Operation READ</h5>
+<div class="paragraph"><p>Read attributes of an entity</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>type</em> (string)
+</dt>
+<dd>
+<p>
+  Type of desired entity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>name</em> (string)
+</dt>
+<dd>
+<p>
+  Name of desired entity. Must supply name or identity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Identity of desired entity. Must supply name or identity.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>Attributes of the entity</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_create">Operation CREATE</h5>
+<div class="paragraph"><p>Create a new entity.</p></div>
+<div class="paragraph"><div class="title">Request body (map, required)</div><p>Attributes for the new entity. Can include name and/or type.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>type</em> (string, required)
+</dt>
+<dd>
+<p>
+  Type of new entity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>name</em> (string)
+</dt>
+<dd>
+<p>
+  Name of new entity. Optional, defaults to identity.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>Attributes of the entity</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_update">Operation UPDATE</h5>
+<div class="paragraph"><p>Update attributes of an entity</p></div>
+<div class="paragraph"><div class="title">Request body (map)</div><p>Attributes to update for the entity. Can include name or identity.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>type</em> (string)
+</dt>
+<dd>
+<p>
+  Type of desired entity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>name</em> (string)
+</dt>
+<dd>
+<p>
+  Name of desired entity. Must supply name or identity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Identity of desired entity. Must supply name or identity.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>Updated attributes of the entity</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_delete">Operation DELETE</h5>
+<div class="paragraph"><p>Delete an entity</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>type</em> (string)
+</dt>
+<dd>
+<p>
+  Type of desired entity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>name</em> (string)
+</dt>
+<dd>
+<p>
+  Name of desired entity. Must supply name or identity.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Identity of desired entity. Must supply name or identity.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_operations_for_em_org_amqp_management_em_entity_type">3.5.9. Operations for <em>org.amqp.management</em> entity type</h4>
+<div class="sect4">
+<h5 id="_operation_get_types_2">Operation GET-TYPES</h5>
+<div class="paragraph"><p>Get the set of entity types and their inheritance relationships</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of the entity types (strings) that it extends.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_attributes_2">Operation GET-ATTRIBUTES</h5>
+<div class="paragraph"><p>Get the set of entity types and the annotations they implement</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is a list (of strings) of attributes on that entity type.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_operations_2">Operation GET-OPERATIONS</h5>
+<div class="paragraph"><p>Get the set of entity types and the operations they support</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of operation names (strings) that it supports.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_annotations_2">Operation GET-ANNOTATIONS</h5>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map where each key is an entity type name (string) and the corresponding value is the list of annotations (strings) that it  implements.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_query_2">Operation QUERY</h5>
+<div class="paragraph"><p>Query for attribute values of multiple entities.</p></div>
+<div class="paragraph"><div class="title">Request body (map)</div><p>A map containing the key <code>attributeNames</code> with value a list of (string) attribute names to return. If the list or the map is empty or the body is missing all attributes are returned.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>count</em> (integer)
+</dt>
+<dd>
+<p>
+  If set, specifies the number of entries from the result set to return. If not set return all from <code>offset</code>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>entityType</em> (string)
+</dt>
+<dd>
+<p>
+  If set, restrict query results to entities that extend (directly or indirectly) this type
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>offset</em> (integer)
+</dt>
+<dd>
+<p>
+  If set, specifies the number of the first element of the result set to be returned.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>A map with two entries. <code>attributeNames</code> is a list of the attribute names returned. <code>results</code> is a list of lists each containing the attribute values for a single entity in the same order as the names in the <code>attributeNames</code> entry. If an attribute name is not applicable for an entity then the corresponding value is <code>null</code></p></div>
+<div class="dlist"><div class="title">Response properties</div><dl>
+<dt class="hdlist1">
+<em>count</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of results returned
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_mgmt_nodes_2">Operation GET-MGMT-NODES</h5>
+<div class="paragraph"><p>Get the addresses of all management nodes known to this router</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (list)</div><p>A list of addresses (strings) of management nodes known to this management node.</p></div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_operations_for_em_management_em_entity_type">3.5.10. Operations for <em>management</em> entity type</h4>
+<div class="sect4">
+<h5 id="_operation_get_schema_json_2">Operation GET-SCHEMA-JSON</h5>
+<div class="paragraph"><p>Get the qdrouterd schema for this router in JSON format</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>indent</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of spaces to indent the formatted result. If not specified, the result is in minimal format, no unnecessary spaces or newlines.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (string)</div><p>The qdrouter schema as a JSON string.</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_log_2">Operation GET-LOG</h5>
+<div class="paragraph"><p>Get recent log entries from the router.</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>limit</em> (integer)
+</dt>
+<dd>
+<p>
+  Maximum number of log entries to get.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (string)</div><p>A list of log entries where each entry is a list of: module name(string), level name(string), message text(string), file name(string or None), line number(integer or None) , timestamp(integer)</p></div>
+</div>
+<div class="sect4">
+<h5 id="_operation_get_schema_2">Operation GET-SCHEMA</h5>
+<div class="paragraph"><p>Get the qdrouterd schema for this router in AMQP map format</p></div>
+<div class="dlist"><div class="title">Request properties</div><dl>
+<dt class="hdlist1">
+<em>identity</em> (string)
+</dt>
+<dd>
+<p>
+  Set to the value <code>self</code>
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><div class="title">Response body (map)</div><p>The qdrouter schema as a map.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="console">4. Console</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="console-overview">4.1. Console overview</h3>
+<div class="paragraph"><p>The console is an HTML based web site that displays information about a
+qpid dispatch router network.</p></div>
+<div class="paragraph"><p>The console requires an HTML web server that can serve static html,
+javascript, style sheets, and images.</p></div>
+<div class="paragraph"><p>The current version of the is read-only. The ability to call management
+methods that change the running of the router network is planned for a
+future version of console.</p></div>
+<div class="paragraph"><p>The console only provides limited information about the clients that are
+attached to the router network and is therfore more appropriate for
+administrators needing to know the layout and health of the router
+network.</p></div>
+</div>
+<div class="sect2">
+<h3 id="console-installation">4.2. Console installation</h3>
+<div class="sect3">
+<h4 id="prerequisites">4.2.1. Prerequisites</h4>
+<div class="paragraph"><p>The following need to be installed before running a console:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+One or more dispatch routers. See the documentation for the dispatch
+router for help in starting a router network.
+</p>
+</li>
+<li>
+<p>
+node.js This is needed to provide a proxy between the console&#8217;s
+websocket traffic and tcp.
+</p>
+</li>
+<li>
+<p>
+A web server. This can be any server capable of serving static
+html/js/css/image files.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>A nodejs proxy is distributed with proton. To start the proton&#8217;s nodejs
+proxy:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>cd ~/rh-qpid-proton/examples/javascript/messenger
+ node proxy.js &amp;</code></pre>
+</div></div>
+<div class="paragraph"><p>This will start the proxy listening to ws traffic on port 5673 and
+translating it to tcp on port 5672. One of the routers in the network
+needs to have a listener configured on port 5672. That listener&#8217;s role
+should be <em>normal</em>. For example:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>listener {
+   host: 0.0.0.0
+   role: normal
+   port: amqp
+   saslMechanisms: ANONYMOUS
+}</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="the-console-files">4.2.2. The console files</h4>
+<div class="paragraph"><p>The files for the console are located under the console directory in the
+source tree: app/ bower_components/ css/ img/ index.html lib/ plugin/
+vendor.js</p></div>
+<div class="paragraph"><p>Copy these files to a directory under the the html or webapps directory
+of your web server. For example, for apache tomcat the files should be
+under webapps/dispatch. Then the console is available as <em>http://localhost:8080/dispatch</em></p></div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="console-operation">4.3. Console operation</h3>
+<div class="sect3">
+<h4 id="logging-in-to-a-router-network">4.3.1. Logging in to a router network</h4>
+<div class="paragraph"><p>The console communicates to the router network using the proton
+javascript bindings. When run from a web page, the proton bindings use
+web sockets to send and receive commands. However, the dispatch router
+requires tcp. Therefore a web-sockets to tcp proxy is used.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="console_login.png" alt="image" />
+</span></p></div>
+<div class="paragraph"><p>Enter the address of a proxy that is connected to a router in the
+network.</p></div>
+<div class="paragraph"><p>User name and password are not used at this time.</p></div>
+<div class="paragraph"><p>The Autostart checkbox, when checked, will automatically log in with the
+previous host:port the next time you start the console.</p></div>
+</div>
+<div class="sect3">
+<h4 id="overview-page">4.3.2. Overview page</h4>
+<div class="paragraph"><p>On the overview page, aggregate information about routers, addresses,
+and connections is displayed.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="console_overview.png" alt="image" />
+</span></p></div>
+</div>
+<div class="sect3">
+<h4 id="topology-page">4.3.3. Topology page</h4>
+<div class="paragraph"><p>This page displays the router network in a graphical form showing how
+the routers are connected and information about the individual routers
+and links.</p></div>
+<div class="paragraph"><p><span class="image">
+<img src="console_topology.png" alt="image" />
+</span></p></div>
+</div>
+<div class="sect3">
+<h4 id="router-entity-details-page">4.3.4. Router entity details page</h4>
+<div class="paragraph"><p><span class="image">
+<img src="console_entity.png" alt="image" />
+</span></p></div>
+<div class="paragraph"><p>Displays detailed information about entities such as routers, links,
+addresses, memory.</p></div>
+<div class="paragraph"><p>Numeric attributes can be graphed by clicking on the graph icon.</p></div>
+</div>
+<div class="sect3">
+<h4 id="charts-page">4.3.5. Charts page</h4>
+<div class="paragraph"><p><span class="image">
+<img src="console_charts.png" alt="image" />
+</span></p></div>
+<div class="paragraph"><p>This page displays graphs of numeric values that are on the entity
+details page.</p></div>
+</div>
+<div class="sect3">
+<h4 id="schema-page">4.3.6. Schema page</h4>
+<div class="paragraph"><p><span class="image">
+<img src="console_schema.png" alt="image" />
+</span></p></div>
+<div class="paragraph"><p>This page displays the json schema that is used to manage the router
+network.
+:leveloffset: 0</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footnotes"><hr /></div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2016-06-23 12:32:19 EDT
+</div>
+</div>
+</body>
+</html>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

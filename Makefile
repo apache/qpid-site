@@ -17,8 +17,6 @@
 # under the License.
 #
 
-export PYTHONPATH = python
-
 OUTPUT_DIR := output
 SITE_URL := file://$(abspath ${OUTPUT_DIR})
 
