@@ -31,19 +31,14 @@ def gen_books_and_man(release, source_dir, output_dir):
 
     build_doc = join(build_dir, "doc")
 
-    # Rename .html to .html.in to get site style.
-    for f in list_dir(build_doc, "*.html"):
-        if not f == "index.html": # Use gen-dispatch-release-page index.
-            copy(join(build_doc, f), join(output_dir, f) + ".in")
-
-    # Copy other doc files.
-    for f in list_dir(build_doc, "*.html", "*.pdf", "*.png"):
-        if not f == "index.html": # Use gen-dispatch-release-page index.
+    # .html.in files are raw HTML bodies, the render script will apply the site style.
+    for f in list_dir(build_doc, "*.html.in",  "*.pdf", "*.png"):
+        if not f == "index.html.in": # Use gen-dispatch-release-page index.
             copy(join(build_doc, f), join(output_dir, f))
 
 ## Now do stuff ##
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
-source_dir = export_release_from_git("dispatch", source_release)
+source_dir = checkout_dir or export_release_from_git("dispatch", source_release)
 
 gen_books_and_man(release, source_dir, release_dir)
 
