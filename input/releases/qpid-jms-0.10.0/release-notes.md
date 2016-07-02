@@ -26,6 +26,9 @@ engine.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note**: This release addresses a security vulnerability in the JMS client,
+CVE-2016-4974, see the [Security]({{site_url}}/security.html) pages for more details.
+
 [jms]: http://en.wikipedia.org/wiki/Java_Message_Service
 
 
@@ -37,7 +40,7 @@ documentation, see the [release overview](index.html).
  - [QPIDJMS-176](https://issues.apache.org/jira/browse/QPIDJMS-176) - Cleanup creation of the anonymous fallback producer when remote does not support anonymous relay.
  - [QPIDJMS-177](https://issues.apache.org/jira/browse/QPIDJMS-177) - Make the policy objects used in the client more extensable and give more control over their controlled  behaviors
  - [QPIDJMS-185](https://issues.apache.org/jira/browse/QPIDJMS-185) - update to Proton 0.13.0
- - [QPIDJMS-188](https://issues.apache.org/jira/browse/QPIDJMS-188) - Further ObjectMessage improvements
+ - [QPIDJMS-188](https://issues.apache.org/jira/browse/QPIDJMS-188) - [CVE-2016-4974] allow whitelisting trusted content for deserialization from ObjectMessage
 
 ## Bugs fixed
 

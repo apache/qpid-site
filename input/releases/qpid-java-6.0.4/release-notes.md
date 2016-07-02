@@ -26,12 +26,14 @@ using AMQP.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note**: This release addresses a security vulnerability in the JMS client,
+CVE-2016-4974, see the [Security]({{site_url}}/security.html) pages for more details.
 
 ## New features and improvements
 
  - [QPID-7291](https://issues.apache.org/jira/browse/QPID-7291) - [Java Broker] [Documentation] Add documentation for ManagedCertificateStore and SiteSpecificTrustStore
  - [QPID-7305](https://issues.apache.org/jira/browse/QPID-7305) - [Java Broker] Queue operations copy/move/delete should take an optional JMS selector argument
- - [QPID-7323](https://issues.apache.org/jira/browse/QPID-7323) - [Java Client] Improvements to the ObjectMessage implementation
+ - [QPID-7323](https://issues.apache.org/jira/browse/QPID-7323) - [CVE-2016-4974] [Java Client] add whitelisting of trusted content for deserialization from ObjectMessage
 
 ## Bugs fixed
 

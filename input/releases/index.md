@@ -26,10 +26,10 @@ the
 
 ## Current releases
 
- - [Qpid JMS 0.10.0](qpid-jms-0.9.0/index.html), July 2016
+ - [Qpid JMS 0.10.0](qpid-jms-0.10.0/index.html), July 2016
  - [Qpid Java 6.0.4](qpid-java-6.0.4/index.html), July 2016
  - [Qpid Proton 0.13.0](qpid-proton-0.13.0/index.html), June 2016
- - [Qpid Dispatch 0.6](qpid-dispatch-0.5/index.html), June 2016
+ - [Qpid Dispatch 0.6.0](qpid-dispatch-0.6.0/index.html), June 2016
  - [Qpid C++ 0.34](qpid-cpp-0.34/index.html), June 2015
  - [Qpid 0.32](qpid-0.32/index.html), March 2015
 

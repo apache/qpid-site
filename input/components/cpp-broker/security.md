@@ -187,3 +187,5 @@
 </table>
 
 </section>
+
+See the main [Security]({{site_url}}/security.html) page for general information and details for other components.
