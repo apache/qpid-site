@@ -24,7 +24,6 @@ from generate import *
 
 def gen_api_doc(release, source_dir, release_dir):
     component_dir = join(release_dir, "proton")
-    remove(component_dir)
 
     dir = change_dir(source_dir)
     call("cmake .")
@@ -41,6 +40,8 @@ def gen_c_api_doc(release, source_dir, component_dir):
     input_path = join(include_dir, "proton")
     output_dir = join(component_dir, "c", "api")
 
+    remove(output_dir)
+    
     gen_doxygen(release=release,
                 title="Qpid Proton C API",
                 input_paths=(input_path,),
@@ -54,6 +55,8 @@ def gen_cpp_api_doc(release, source_dir, component_dir):
     output_dir = join(component_dir, "cpp", "api")
     config_file = join(base_dir, "docs", "user.doxygen.in")
 
+    remove(output_dir)
+    
     gen_doxygen(release=release,
                 title="Qpid Proton C++ API",
                 input_paths=(input_path,
@@ -71,6 +74,8 @@ def gen_java_api_doc(release, source_dir, component_dir):
     input_namespace = "org.apache.qpid.proton"
     output_dir = join(component_dir, "java", "api")
 
+    remove(output_dir)
+    
     gen_javadoc(release=release,
                 title="Qpid Proton Java API",
                 input_paths=(input_path,),
@@ -82,6 +87,8 @@ def gen_python_api_doc(release, source_dir, component_dir):
     input_namespace = "proton"
     output_dir = join(component_dir, "python", "api")
 
+    remove(output_dir)
+    
     gen_epydoc(release=release,
                title="Qpid Proton Python API",
                input_paths=(input_path,),
