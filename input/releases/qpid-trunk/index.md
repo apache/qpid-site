@@ -47,7 +47,7 @@ This content was generated at 20:26  on Wednesday, 12 November 2014.
 
 ### Java Broker
 
- - [Java broker book](java-broker/book/index.html) ([PDF](java-broker/java-broker-book.pdf))
+ - [Java broker book](java-broker/book/index.html)
 
 ### QMF
  
@@ -66,7 +66,7 @@ This content was generated at 20:26  on Wednesday, 12 November 2014.
 
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Using the Qpid JMS client (AMQP 0-10)](programming/book/QpidJMS.html) ([PDF](programming/programming-book.pdf))
- - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/index.html) ([PDF](jms-client-0-8/jms_client08-book.pdf))
+ - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/index.html)
  - [Examples (AMQP 1.0)](http://svn.apache.org/repos/asf/qpid/trunk/qpid/java/amqp-1-0-client-jms/example)
  - [Examples (AMQP 0-10)](qpid-jms/examples/index.html) 
  - [Examples (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
