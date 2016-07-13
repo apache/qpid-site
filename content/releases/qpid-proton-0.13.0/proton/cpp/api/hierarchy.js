@@ -85,7 +85,6 @@ var hierarchy =
     [ "event_loop", "classproton_1_1event__loop.html", null ],
     [ "exception", null, [
       [ "runtime_error", null, [
-        [ "bad_option", "structexample_1_1bad__option.html", null ],
         [ "error", "structproton_1_1error.html", [
           [ "conversion_error", "structproton_1_1conversion__error.html", null ],
           [ "timeout_error", "structproton_1_1timeout__error.html", null ],
@@ -99,13 +98,8 @@ var hierarchy =
     [ "listen_handler", "classproton_1_1listen__handler.html", null ],
     [ "listener", "classproton_1_1listener.html", null ],
     [ "message", "classproton_1_1message.html", null ],
-    [ "messaging_handler", "classproton_1_1messaging__handler.html", [
-      [ "broker_handler", "classbroker__handler.html", null ]
-    ] ],
+    [ "messaging_handler", "classproton_1_1messaging__handler.html", null ],
     [ "mutable_buffer", "structproton_1_1io_1_1mutable__buffer.html", null ],
-    [ "options", "classexample_1_1options.html", null ],
-    [ "queue", "classqueue.html", null ],
-    [ "queues", "classqueues.html", null ],
     [ "receiver_options", "classproton_1_1receiver__options.html", null ],
     [ "sasl", "classproton_1_1sasl.html", null ],
     [ "sender_options", "classproton_1_1sender__options.html", null ],

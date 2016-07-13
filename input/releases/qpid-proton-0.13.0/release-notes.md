@@ -25,27 +25,6 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
-**Note:** Qpid C++ 0.34 builds will fail against this version of
-Proton unless you set `-DCMAKE_CXX_FLAGS=-Wno-error=switch`. A new
-release of Qpid C++ will resolve this problem.
-
-**Note:** Users are advised to avoid any use of
-`pn_connection_set_hostname()` to set the transport address on Proton
-reactor connections.  A new reactor method has been introduced to deal
-with this: `pn_reactor_connection_to_host(<reactor>, <host>, <port>,
-<handler>)`.  The `pn_reactor_connection(<reactor>, <handler>)`
-function has been deprecated in favor of this new interface.
-
-**Note:** If the reactor connection's hostname is used to configure
-the transport address (see above), then the C reactor may fail to
-connect if the hostname does not include a ":<port>" suffix.  Using
-the connection's hostname as the transport address is discouraged. Use
-the new reactor connection factory method
-`pn_reactor_connection_to_host()` instead.
-
-**Note:** The python `Container.connect()` method now takes an
-optional parameter with the keyword `virtual_host`. This can be used
-to set the `hostname` attribute in the open frame sent by the client.
 
 ## New features and improvements
 

@@ -3,8 +3,6 @@ var searchData=
   ['accept',['accept',['../classproton_1_1delivery.html#aadb9f3b844fb4cf98288cd3c60a3af91',1,'proton::delivery::accept()'],['../classproton_1_1io_1_1connection__engine.html#a8a5938806dc28d71c3ed5f89cc537ddd',1,'proton::io::connection_engine::accept()']]],
   ['active',['active',['../classproton_1_1connection.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::connection::active()'],['../classproton_1_1endpoint.html#ac6e82b77dfe6fbae3b18e5f14ab7c25b',1,'proton::endpoint::active()'],['../classproton_1_1link.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::link::active()'],['../classproton_1_1session.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::session::active()']]],
   ['add_5fcredit',['add_credit',['../classproton_1_1receiver.html#a84d3a001340d11201e03c6ed7c763641',1,'proton::receiver']]],
-  ['add_5fflag',['add_flag',['../classexample_1_1options.html#a89f7f8df4c3dcc4dab494496cb823770',1,'example::options']]],
-  ['add_5fvalue',['add_value',['../classexample_1_1options.html#ad8360e7aa7a1519854a7348373306ea5',1,'example::options']]],
   ['address',['address',['../classproton_1_1source.html#a977efa04715923ca4fa290a6ec90c830',1,'proton::source::address()'],['../classproton_1_1source__options.html#a36fa9e64134459cfe70707e0439ba850',1,'proton::source_options::address()'],['../classproton_1_1target.html#a977efa04715923ca4fa290a6ec90c830',1,'proton::target::address()'],['../classproton_1_1target__options.html#a39a0acbf2c7de97e77df483ca9c4c6a9',1,'proton::target_options::address()']]],
   ['amqp',['AMQP',['../classproton_1_1url.html#af0f2c496befc10e2fc0cf4999a733b4c',1,'proton::url']]],
   ['amqps',['AMQPS',['../classproton_1_1url.html#a2756fc4457346e3df1cc83fbfac6275b',1,'proton::url']]],

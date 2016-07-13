@@ -1,8 +1,6 @@
 var searchData=
 [
-  ['bad_5foption',['bad_option',['../structexample_1_1bad__option.html',1,'example']]],
   ['binary',['binary',['../classproton_1_1binary.html',1,'proton']]],
-  ['broker_5fhandler',['broker_handler',['../classbroker__handler.html',1,'']]],
   ['byte_5farray',['byte_array',['../classproton_1_1byte__array.html',1,'proton']]],
   ['byte_5farray_3c_2016_20_3e',['byte_array&lt; 16 &gt;',['../classproton_1_1byte__array.html',1,'proton']]],
   ['byte_5farray_3c_204_20_3e',['byte_array&lt; 4 &gt;',['../classproton_1_1byte__array.html',1,'proton']]],
