@@ -8,11 +8,11 @@ var namespaceproton =
     [ "connection", "classproton_1_1connection.html", "classproton_1_1connection" ],
     [ "connection_options", "classproton_1_1connection__options.html", "classproton_1_1connection__options" ],
     [ "container", "classproton_1_1container.html", "classproton_1_1container" ],
+    [ "container_ref", "classproton_1_1container__ref.html", "classproton_1_1container__ref" ],
     [ "conversion_error", "structproton_1_1conversion__error.html", "structproton_1_1conversion__error" ],
     [ "decimal128", "classproton_1_1decimal128.html", "classproton_1_1decimal128" ],
     [ "decimal32", "classproton_1_1decimal32.html", "classproton_1_1decimal32" ],
     [ "decimal64", "classproton_1_1decimal64.html", "classproton_1_1decimal64" ],
-    [ "default_container", "classproton_1_1default__container.html", "classproton_1_1default__container" ],
     [ "delivery", "classproton_1_1delivery.html", "classproton_1_1delivery" ],
     [ "delivery_mode", "structproton_1_1delivery__mode.html", "structproton_1_1delivery__mode" ],
     [ "duration", "classproton_1_1duration.html", "classproton_1_1duration" ],
@@ -54,5 +54,6 @@ var namespaceproton =
     [ "url", "classproton_1_1url.html", "classproton_1_1url" ],
     [ "url_error", "structproton_1_1url__error.html", null ],
     [ "uuid", "classproton_1_1uuid.html", "classproton_1_1uuid" ],
-    [ "value", "classproton_1_1value.html", "classproton_1_1value" ]
+    [ "value", "classproton_1_1value.html", "classproton_1_1value" ],
+    [ "void_function0", "classproton_1_1void__function0.html", "classproton_1_1void__function0" ]
 ];

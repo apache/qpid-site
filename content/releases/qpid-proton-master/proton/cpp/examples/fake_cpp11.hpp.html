@@ -122,15 +122,13 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 
 
 <span class="c1">/// These definitions allow us to use some new C++11 features in previous compilers</span>
-<span class="c1">/// by defining the new keywords to macro replace with nothing.</span>
 <span class="c1">///</span>
-<span class="c1">/// This is a bit of a hack and works with this small controlled source base because</span>
-<span class="c1">/// we know we don&#39;t use any of the new context sensitive keywords anywhere.</span>
-<span class="c1">///</span>
-<span class="c1">/// It is not recommended to copy this - just use C++11/C++14 instead!</span>
+<span class="c1">/// It is strongly recommended not to copy this - just use C++11/C++14 instead!</span>
 
 <span class="cp">#if __cplusplus &lt; 201103L</span>
-<span class="cp">#define override</span>
+<span class="cp">#define OVERRIDE</span>
+<span class="cp">#else</span>
+<span class="cp">#define OVERRIDE override</span>
 <span class="cp">#endif</span>
 
 
@@ -147,7 +145,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <li><a href="http://www.apache.org/licenses/">License</a></li>
             <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
             <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
-            <li><a href="http://www.apache.org/security/">Security</a></li>
+            <li><a href="/security.html">Security</a></li>
             <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
           </ul>
 

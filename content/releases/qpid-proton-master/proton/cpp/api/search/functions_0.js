@@ -8,5 +8,5 @@ var searchData=
   ['assert_5ftype_5fequal',['assert_type_equal',['../namespaceproton.html#aa77887032372174b09ee779f5df12056',1,'proton']]],
   ['auto_5faccept',['auto_accept',['../classproton_1_1receiver__options.html#a9b9ad83418de47f87c6c7062eaefb5b6',1,'proton::receiver_options']]],
   ['auto_5fsettle',['auto_settle',['../classproton_1_1receiver__options.html#af313abfa8d5b19e4b61c779907eb9980',1,'proton::receiver_options::auto_settle()'],['../classproton_1_1sender__options.html#a087eda4a18c293de85107fcfbb7ff31f',1,'proton::sender_options::auto_settle()']]],
-  ['auto_5fstop',['auto_stop',['../classproton_1_1container.html#a74bcb386eb5f833bceb6ec86caf1d546',1,'proton::container::auto_stop()'],['../classproton_1_1default__container.html#a2fd137c99aa9642a54fe36616be40c98',1,'proton::default_container::auto_stop()']]]
+  ['auto_5fstop',['auto_stop',['../classproton_1_1container.html#a74bcb386eb5f833bceb6ec86caf1d546',1,'proton::container::auto_stop()'],['../classproton_1_1container__ref.html#a175e67f96d38f64d55228503d82a1d80',1,'proton::container_ref::auto_stop()']]]
 ];

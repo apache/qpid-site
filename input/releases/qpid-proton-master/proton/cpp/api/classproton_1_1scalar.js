@@ -6,5 +6,6 @@ var classproton_1_1scalar =
     [ "empty", "classproton_1_1scalar.html#ac6e61de369e994009e36f344f99c15ad", null ],
     [ "operator=", "classproton_1_1scalar.html#a7166ca618a14fe7e669059cb2ebbdb8f", null ],
     [ "coerce", "classproton_1_1scalar.html#a59517f5cda18ae5c612f0c760398fe1d", null ],
+    [ "coerce", "classproton_1_1scalar.html#a31eda8feb7c15956a8c9091737505789", null ],
     [ "get", "classproton_1_1scalar.html#a61968283b9e1fc067dcad67e9fe58f6a", null ]
 ];

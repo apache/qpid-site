@@ -1,7 +1,7 @@
 var classproton_1_1message =
 [
-    [ "annotation_map", "classproton_1_1message.html#a9e6632424a9202af17b1665ccf975377", null ],
-    [ "property_map", "classproton_1_1message.html#ab5d677a9545b923706388b12699115cb", null ],
+    [ "annotation_map", "classproton_1_1message_1_1annotation__map.html", null ],
+    [ "property_map", "classproton_1_1message_1_1property__map.html", null ],
     [ "message", "classproton_1_1message.html#aba502b8bb024cc38b45756fdf581f915", null ],
     [ "message", "classproton_1_1message.html#a583555130839030cf9aa09d81ff1eb1b", null ],
     [ "message", "classproton_1_1message.html#aa99aeff68b6093da4e3c11ecf898376d", null ],

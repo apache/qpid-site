@@ -1,7 +1,7 @@
 var searchData=
 [
+  ['make_5fauto_5fdefault_5fcontainer',['make_auto_default_container',['../namespaceproton.html#a2dba1a95c3f87d5ffa09f07b6b42824c',1,'proton']]],
   ['make_5fthread_5fsafe',['make_thread_safe',['../namespaceproton.html#a8cdc51abe42497af9f9b2966d1abdfa4',1,'proton']]],
-  ['make_5fthread_5funsafe',['make_thread_unsafe',['../namespaceproton.html#a3ece4ab235d201f4f5a9c9b654ecbbf6',1,'proton']]],
   ['max_5fframe_5fsize',['max_frame_size',['../classproton_1_1connection.html#a14f31d608d52352f9e3fb0fa114d0c58',1,'proton::connection::max_frame_size()'],['../classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686',1,'proton::connection_options::max_frame_size()']]],
   ['max_5fsessions',['max_sessions',['../classproton_1_1connection.html#a31b6fd31cd4fa9c7dbdc3456f739b380',1,'proton::connection::max_sessions()'],['../classproton_1_1connection__options.html#af66706fdb4a2f3f4d9943be9ee4b1347',1,'proton::connection_options::max_sessions()']]],
   ['mech',['mech',['../classproton_1_1sasl.html#ab3e41c9a32534900c35ea46a45635c4c',1,'proton::sasl']]],

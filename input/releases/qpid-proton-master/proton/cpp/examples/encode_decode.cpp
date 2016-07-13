@@ -145,7 +145,7 @@ static void insert_stream_operators() {
       << proton::codec::finish();
     print(v);
 
-    // Create a mixed-type list of the values [42, false, "x"].
+    // Create a mixed-type list of the values [42, 0, "x"].
     proton::codec::encoder e2(v);
     e2 << proton::codec::start::list()
        << int32_t(42) << false << proton::symbol("x")

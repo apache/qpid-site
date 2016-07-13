@@ -5,6 +5,15 @@ var hierarchy =
         [ "symbol", "classproton_1_1symbol.html", null ]
       ] ]
     ] ],
+    [ "cached_map< annotation_key, value >", null, [
+      [ "message::annotation_map", "classproton_1_1message_1_1annotation__map.html", null ]
+    ] ],
+    [ "cached_map< std::string, scalar >", null, [
+      [ "message::property_map", "classproton_1_1message_1_1property__map.html", null ]
+    ] ],
+    [ "cached_map< symbol, value >", null, [
+      [ "source::filter_map", "classproton_1_1source_1_1filter__map.html", null ]
+    ] ],
     [ "comparable< byte_array< N > >", null, [
       [ "byte_array< 16 >", "classproton_1_1byte__array.html", [
         [ "decimal128", "classproton_1_1decimal128.html", null ],
@@ -70,9 +79,10 @@ var hierarchy =
     [ "connection_options", "classproton_1_1connection__options.html", null ],
     [ "const_buffer", "structproton_1_1io_1_1const__buffer.html", null ],
     [ "container", "classproton_1_1container.html", [
-      [ "default_container", "classproton_1_1default__container.html", null ],
-      [ "container_impl_base", "classproton_1_1io_1_1container__impl__base.html", null ]
+      [ "container_ref< std::auto_ptr< container > >", "classproton_1_1container__ref.html", null ],
+      [ "container_ref< Ptr >", "classproton_1_1container__ref.html", null ]
     ] ],
+    [ "container_impl_base", "classproton_1_1io_1_1container__impl__base.html", null ],
     [ "decoder", "classproton_1_1codec_1_1decoder.html", null ],
     [ "delivery_mode", "structproton_1_1delivery__mode.html", null ],
     [ "encoder", "classproton_1_1codec_1_1encoder.html", null ],
@@ -93,7 +103,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "finish", "namespaceproton_1_1codec.html#structproton_1_1codec_1_1finish", null ],
-    [ "inject_handler", "classproton_1_1inject__handler.html", null ],
     [ "link_namer", "classproton_1_1io_1_1link__namer.html", null ],
     [ "listen_handler", "classproton_1_1listen__handler.html", null ],
     [ "listener", "classproton_1_1listener.html", null ],
@@ -110,7 +119,6 @@ var hierarchy =
     [ "ssl_client_options", "classproton_1_1ssl__client__options.html", null ],
     [ "ssl_server_options", "classproton_1_1ssl__server__options.html", null ],
     [ "start", "namespaceproton_1_1codec.html#structproton_1_1codec_1_1start", null ],
-    [ "state_guard", "structproton_1_1codec_1_1state__guard.html", null ],
     [ "target_options", "classproton_1_1target__options.html", null ],
     [ "terminus", "classproton_1_1terminus.html", [
       [ "source", "classproton_1_1source.html", null ],
@@ -123,5 +131,8 @@ var hierarchy =
     ] ],
     [ "vector< T >", null, [
       [ "binary", "classproton_1_1binary.html", null ]
+    ] ],
+    [ "void_function0", "classproton_1_1void__function0.html", [
+      [ "inject_handler", "classproton_1_1inject__handler.html", null ]
     ] ]
 ];

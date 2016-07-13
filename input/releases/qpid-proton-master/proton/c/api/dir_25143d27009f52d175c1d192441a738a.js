@@ -4,6 +4,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "codec.h", "codec_8h.html", "codec_8h" ],
     [ "condition.h", "condition_8h.html", "condition_8h" ],
     [ "connection.h", "connection_8h.html", "connection_8h" ],
+    [ "connection_engine.h", "connection__engine_8h.html", "connection__engine_8h" ],
     [ "delivery.h", "delivery_8h.html", "delivery_8h" ],
     [ "disposition.h", "disposition_8h.html", "disposition_8h" ],
     [ "engine.h", "engine_8h.html", null ],
