@@ -4,8 +4,8 @@
 
 To setup paths in your environment, source the `config.sh` script.
 
-    ~$ cd site/
-    site$ source config.sh
+    ~$ cd qpid-site/
+    [qpid-site]$ source config.sh
 
 ## Project layout
 
@@ -29,20 +29,20 @@ Some notable files in `input/`:
 After that most everything is accomplished by running make targets.
 These are the important ones:
 
-    site$ make render             # Renders input/* to output/
-    site$ make clean              # Removes output/
-    site$ make publish            # Renders input/* to content/ in preparation
+    [qpid-site]$ make render      # Renders input/* to output/
+    [qpid-site]$ make clean       # Removes output/
+    [qpid-site]$ make publish     # Renders input/* to content/ in preparation
                                   # for a live site update
 
 ## Adding content
 
 1. Use your editor to create or edit a file under `input/`
 
-        site$ emacs input/somepage.md
+        [qpid-site]$ emacs input/somepage.md
 
 2. Render the site
 
-        site$ make render
+        [qpid-site]$ make render
 
 3. To look at the result in your browser, navigate to
 
@@ -105,10 +105,10 @@ working.
     # Usage: make check-links [INTERNAL=1] [EXTERNAL=0]
 
     # Check internal links only
-    site$ make check-links
+    [qpid-site]$ make check-links
 
     # Check external links as well
-    site$ make check-links EXTERNAL=1
+    [qpid-site]$ make check-links EXTERNAL=1
 
 ## Generating release content
 
@@ -119,19 +119,19 @@ for a new release.
     # Usage: make gen-$module-release RELEASE=$VERSION [CHECKOUT_DIR=$DIR]
 
     # For new Qpid C++ releases
-    site$ make gen-cpp-release RELEASE=$VERSION
+    [qpid-site]$ make gen-cpp-release RELEASE=$VERSION
 
     # For new Qpid Java releases
-    site$ make gen-java-release RELEASE=$VERSION
+    [qpid-site]$ make gen-java-release RELEASE=$VERSION
 
     # For new Qpid JMS releases
-    site$ make gen-jms-release RELEASE=$VERSION
+    [qpid-site]$ make gen-jms-release RELEASE=$VERSION
 
     # For new Qpid Proton releases
-    site$ make gen-proton-release RELEASE=$VERSION
+    [qpid-site]$ make gen-proton-release RELEASE=$VERSION
 
     # For new Qpid Dispatch releases
-    site$ make gen-dispatch-release RELEASE=$VERSION
+    [qpid-site]$ make gen-dispatch-release RELEASE=$VERSION
 
 These will produce a new tree of release content under
 `input/releases/`.  The content includes API docs, examples, and
