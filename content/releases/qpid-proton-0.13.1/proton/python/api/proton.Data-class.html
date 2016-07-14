@@ -1,0 +1,2817 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>proton.Data</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="proton-module.html">Package&nbsp;proton</a> ::
+        Class&nbsp;Data
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="proton.Data-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Data</h1><p class="nomargin-top"><span class="codelink"><a href="proton-pysrc.html#Data">source&nbsp;code</a></span></p>
+<p>The <a href="proton.Data-class.html" class="link">Data</a> class 
+  provides an interface for decoding, extracting, creating, and encoding 
+  arbitrary AMQP data. A <a href="proton.Data-class.html" 
+  class="link">Data</a> object contains a tree of AMQP values. Leaf nodes 
+  in this tree correspond to scalars in the AMQP type system such as <a 
+  href="proton.Data-class.html#INT" class="link">ints</a> or <a 
+  href="proton.Data-class.html#STRING" class="link">strings</a>. Non-leaf 
+  nodes in this tree correspond to compound values in the AMQP type system 
+  such as <a href="proton.Data-class.html#LIST" class="link">lists</a>, <a 
+  href="proton.Data-class.html#MAP" class="link">maps</a>, <a 
+  href="proton.Data-class.html#ARRAY" class="link">arrays</a>, or <a 
+  href="proton.Data-class.html#DESCRIBED" class="link">described 
+  values</a>. The root node of the tree is the <a 
+  href="proton.Data-class.html" class="link">Data</a> object itself and can
+  have an arbitrary number of children.</p>
+  <p>A <a href="proton.Data-class.html" class="link">Data</a> object 
+  maintains the notion of the current sibling node and a current parent 
+  node. Siblings are ordered within their parent. Values are accessed 
+  and/or added by using the <a href="proton.Data-class.html#next" 
+  class="link">next</a>, <a href="proton.Data-class.html#prev" 
+  class="link">prev</a>, <a href="proton.Data-class.html#enter" 
+  class="link">enter</a>, and <a href="proton.Data-class.html#exit" 
+  class="link">exit</a> methods to navigate to the desired location in the 
+  tree and using the supplied variety of put_*/get_* methods to access or 
+  add a value of the desired type.</p>
+  <p>The put_* methods will always add a value <i>after</i> the current 
+  node in the tree. If the current node has a next sibling the put_* method
+  will overwrite the value on this node. If there is no current node or the
+  current node has no next sibling then one will be added. The put_* 
+  methods always set the added/modified node to the current node. The get_*
+  methods read the value of the current node and do not change which node 
+  is current.</p>
+  <p>The following types of scalar values are supported:</p>
+  <ul>
+    <li>
+      <a href="proton.Data-class.html#NULL" class="link">NULL</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#BOOL" class="link">BOOL</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#UBYTE" class="link">UBYTE</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#USHORT" class="link">USHORT</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#SHORT" class="link">SHORT</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#UINT" class="link">UINT</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#INT" class="link">INT</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#ULONG" class="link">ULONG</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#LONG" class="link">LONG</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#FLOAT" class="link">FLOAT</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#DOUBLE" class="link">DOUBLE</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#BINARY" class="link">BINARY</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#STRING" class="link">STRING</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#SYMBOL" class="link">SYMBOL</a>
+    </li>
+  </ul>
+  <p>The following types of compound values are supported:</p>
+  <ul>
+    <li>
+      <a href="proton.Data-class.html#DESCRIBED" class="link">DESCRIBED</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#ARRAY" class="link">ARRAY</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#LIST" class="link">LIST</a>
+    </li>
+    <li>
+      <a href="proton.Data-class.html#MAP" class="link">MAP</a>
+    </li>
+  </ul>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__init__"></a><span class="summary-sig-name">__init__</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">capacity</span>=<span class="summary-sig-default">16</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="__del__"></a><span class="summary-sig-name">__del__</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.__del__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="clear"></a><span class="summary-sig-name">clear</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears the data object.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.clear">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#rewind" class="summary-sig-name">rewind</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Clears current node and sets the parent to the root node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.rewind">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#next" class="summary-sig-name">next</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Advances the current node to its next sibling and returns its type.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.next">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#prev" class="summary-sig-name">prev</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Advances the current node to its previous sibling and returns its 
+      type.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.prev">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#enter" class="summary-sig-name">enter</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Sets the parent node to the current node and clears the current node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.enter">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="exit"></a><span class="summary-sig-name">exit</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Sets the current node to the parent node and the parent node to its 
+      own parent.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.exit">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="lookup"></a><span class="summary-sig-name">lookup</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.lookup">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="narrow"></a><span class="summary-sig-name">narrow</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.narrow">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="widen"></a><span class="summary-sig-name">widen</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.widen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="type"></a><span class="summary-sig-name">type</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the type of the current node.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.type">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="encoded_size"></a><span class="summary-sig-name">encoded_size</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns the size in bytes needed to encode the data in AMQP format.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.encoded_size">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="encode"></a><span class="summary-sig-name">encode</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a representation of the data encoded in AMQP format.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.encode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#decode" class="summary-sig-name">decode</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">encoded</span>)</span><br />
+      Decodes the first value from supplied AMQP data and returns the 
+      number of bytes consumed.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.decode">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_list" class="summary-sig-name">put_list</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Puts a list value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_list">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_map" class="summary-sig-name">put_map</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Puts a map value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_map">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_array" class="summary-sig-name">put_array</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">described</span>,
+        <span class="summary-sig-arg">element_type</span>)</span><br />
+      Puts an array value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_array">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_described" class="summary-sig-name">put_described</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Puts a described value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_described">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_null"></a><span class="summary-sig-name">put_null</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Puts a null value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_null">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_bool" class="summary-sig-name">put_bool</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">b</span>)</span><br />
+      Puts a boolean value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_bool">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_ubyte" class="summary-sig-name">put_ubyte</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ub</span>)</span><br />
+      Puts an unsigned byte value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_ubyte">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_byte" class="summary-sig-name">put_byte</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">b</span>)</span><br />
+      Puts a signed byte value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_byte">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_ushort" class="summary-sig-name">put_ushort</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">us</span>)</span><br />
+      Puts an unsigned short value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_ushort">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_short" class="summary-sig-name">put_short</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span><br />
+      Puts a signed short value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_short">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_uint" class="summary-sig-name">put_uint</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ui</span>)</span><br />
+      Puts an unsigned int value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_uint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_int" class="summary-sig-name">put_int</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">i</span>)</span><br />
+      Puts a signed int value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_int">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_char" class="summary-sig-name">put_char</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">c</span>)</span><br />
+      Puts a char value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_char">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_ulong" class="summary-sig-name">put_ulong</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">ul</span>)</span><br />
+      Puts an unsigned long value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_ulong">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_long" class="summary-sig-name">put_long</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">l</span>)</span><br />
+      Puts a signed long value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_long">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_timestamp" class="summary-sig-name">put_timestamp</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">t</span>)</span><br />
+      Puts a timestamp value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_timestamp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_float" class="summary-sig-name">put_float</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">f</span>)</span><br />
+      Puts a float value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_float">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_double" class="summary-sig-name">put_double</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span><br />
+      Puts a double value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_double">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_decimal32" class="summary-sig-name">put_decimal32</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span><br />
+      Puts a decimal32 value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_decimal32">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_decimal64" class="summary-sig-name">put_decimal64</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span><br />
+      Puts a decimal64 value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_decimal64">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_decimal128" class="summary-sig-name">put_decimal128</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span><br />
+      Puts a decimal128 value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_decimal128">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_uuid" class="summary-sig-name">put_uuid</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">u</span>)</span><br />
+      Puts a UUID value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_uuid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_binary" class="summary-sig-name">put_binary</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">b</span>)</span><br />
+      Puts a binary value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_binary">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_string" class="summary-sig-name">put_string</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span><br />
+      Puts a unicode value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#put_symbol" class="summary-sig-name">put_symbol</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span><br />
+      Puts a symbolic value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_symbol">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#get_list" class="summary-sig-name">get_list</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a list, return the number of elements, 
+      otherwise return zero.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_list">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#get_map" class="summary-sig-name">get_map</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a map, return the number of child elements, 
+      otherwise return zero.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_map">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#get_array" class="summary-sig-name">get_array</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an array, return a tuple of the element count,
+      a boolean indicating whether the array is described, and the type of 
+      each element, otherwise return (0, False, None).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_array">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#is_described" class="summary-sig-name">is_described</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Checks if the current node is a described value.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.is_described">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="is_null"></a><span class="summary-sig-name">is_null</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Checks if the current node is a null.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.is_null">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_bool"></a><span class="summary-sig-name">get_bool</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a boolean, returns its value, returns False 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_bool">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_ubyte"></a><span class="summary-sig-name">get_ubyte</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an unsigned byte, returns its value, returns 0
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_ubyte">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_byte"></a><span class="summary-sig-name">get_byte</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a signed byte, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_byte">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_ushort"></a><span class="summary-sig-name">get_ushort</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an unsigned short, returns its value, returns 
+      0 otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_ushort">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_short"></a><span class="summary-sig-name">get_short</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a signed short, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_short">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_uint"></a><span class="summary-sig-name">get_uint</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an unsigned int, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_uint">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_int"></a><span class="summary-sig-name">get_int</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a signed int, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_int">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_char"></a><span class="summary-sig-name">get_char</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a char, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_char">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_ulong"></a><span class="summary-sig-name">get_ulong</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an unsigned long, returns its value, returns 0
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_ulong">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_long"></a><span class="summary-sig-name">get_long</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an signed long, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_long">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_timestamp"></a><span class="summary-sig-name">get_timestamp</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a timestamp, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_timestamp">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_float"></a><span class="summary-sig-name">get_float</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a float, returns its value, raises 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_float">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_double"></a><span class="summary-sig-name">get_double</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a double, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_double">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_decimal32"></a><span class="summary-sig-name">get_decimal32</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a decimal32, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_decimal32">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_decimal64"></a><span class="summary-sig-name">get_decimal64</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a decimal64, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_decimal64">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_decimal128"></a><span class="summary-sig-name">get_decimal128</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a decimal128, returns its value, returns 0 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_decimal128">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_uuid"></a><span class="summary-sig-name">get_uuid</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a UUID, returns its value, returns None 
+      otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_uuid">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_binary"></a><span class="summary-sig-name">get_binary</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is binary, returns its value, returns 
+      &quot;&quot; otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_binary">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_string"></a><span class="summary-sig-name">get_string</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a string, returns its value, returns 
+      &quot;&quot; otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_string">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_symbol"></a><span class="summary-sig-name">get_symbol</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is a symbol, returns its value, returns 
+      &quot;&quot; otherwise.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_symbol">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="copy"></a><span class="summary-sig-name">copy</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">src</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.copy">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="format"></a><span class="summary-sig-name">format</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.format">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="dump"></a><span class="summary-sig-name">dump</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.dump">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_dict"></a><span class="summary-sig-name">put_dict</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_dict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_dict"></a><span class="summary-sig-name">get_dict</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_dict">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_sequence"></a><span class="summary-sig-name">put_sequence</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">s</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_sequence">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_sequence"></a><span class="summary-sig-name">get_sequence</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_sequence">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_py_described"></a><span class="summary-sig-name">get_py_described</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_py_described">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_py_described"></a><span class="summary-sig-name">put_py_described</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">d</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_py_described">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Data-class.html#get_py_array" class="summary-sig-name">get_py_array</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      If the current node is an array, return an Array object representing 
+      the array and its contents.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_py_array">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_py_array"></a><span class="summary-sig-name">put_py_array</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">a</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_py_array">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="put_object"></a><span class="summary-sig-name">put_object</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">obj</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.put_object">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="get_object"></a><span class="summary-sig-name">get_object</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.get_object">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS METHODS ==================== -->
+<a name="section-ClassMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="type_name"></a><span class="summary-sig-name">type_name</span>(<span class="summary-sig-arg">type</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Data.type_name">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="NULL"></a><span class="summary-name">NULL</span> = <code title="1">1</code><br />
+      A null value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BOOL"></a><span class="summary-name">BOOL</span> = <code title="2">2</code><br />
+      A boolean value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="UBYTE"></a><span class="summary-name">UBYTE</span> = <code title="3">3</code><br />
+      An unsigned byte value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BYTE"></a><span class="summary-name">BYTE</span> = <code title="4">4</code><br />
+      A signed byte value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="USHORT"></a><span class="summary-name">USHORT</span> = <code title="5">5</code><br />
+      An unsigned short value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SHORT"></a><span class="summary-name">SHORT</span> = <code title="6">6</code><br />
+      A short value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="UINT"></a><span class="summary-name">UINT</span> = <code title="7">7</code><br />
+      An unsigned int value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="INT"></a><span class="summary-name">INT</span> = <code title="8">8</code><br />
+      A signed int value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="CHAR"></a><span class="summary-name">CHAR</span> = <code title="9">9</code><br />
+      A character value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ULONG"></a><span class="summary-name">ULONG</span> = <code title="10">10</code><br />
+      An unsigned long value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LONG"></a><span class="summary-name">LONG</span> = <code title="11">11</code><br />
+      A signed long value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="TIMESTAMP"></a><span class="summary-name">TIMESTAMP</span> = <code title="12">12</code><br />
+      A timestamp value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="FLOAT"></a><span class="summary-name">FLOAT</span> = <code title="13">13</code><br />
+      A float value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DOUBLE"></a><span class="summary-name">DOUBLE</span> = <code title="14">14</code><br />
+      A double value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DECIMAL32"></a><span class="summary-name">DECIMAL32</span> = <code title="15">15</code><br />
+      A DECIMAL32 value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DECIMAL64"></a><span class="summary-name">DECIMAL64</span> = <code title="16">16</code><br />
+      A DECIMAL64 value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DECIMAL128"></a><span class="summary-name">DECIMAL128</span> = <code title="17">17</code><br />
+      A DECIMAL128 value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="UUID"></a><span class="summary-name">UUID</span> = <code title="18">18</code><br />
+      A UUID value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="BINARY"></a><span class="summary-name">BINARY</span> = <code title="19">19</code><br />
+      A binary string.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="STRING"></a><span class="summary-name">STRING</span> = <code title="20">20</code><br />
+      A unicode string.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="SYMBOL"></a><span class="summary-name">SYMBOL</span> = <code title="21">21</code><br />
+      A symbolic string.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="DESCRIBED"></a><span class="summary-name">DESCRIBED</span> = <code title="22">22</code><br />
+      A described value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="ARRAY"></a><span class="summary-name">ARRAY</span> = <code title="23">23</code><br />
+      An array value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="LIST"></a><span class="summary-name">LIST</span> = <code title="24">24</code><br />
+      A list value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a name="MAP"></a><span class="summary-name">MAP</span> = <code title="25">25</code><br />
+      A map value.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Data-class.html#type_names" class="summary-name">type_names</a> = <code title="{1: 'null',
+ 2: 'bool',
+ 3: 'ubyte',
+ 4: 'byte',
+ 5: 'ushort',
+ 6: 'short',
+ 7: 'uint',
+ 8: 'int',
+..."><code class="variable-group">{</code>1<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">null</code><code class="variable-quote">'</code><code class="variable-op">, </code>2<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bool</code><code class="variable-quote">'</code><code class="variable-op">, </code>3<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">ubyte</code><code class="variable-quote">'</code><code class="variable-op">, </code>4<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">byte</code><code class="variable-quote">'</code><code class="variable-op">, </code>5<code class="variable-op">: </code><code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Data-class.html#put_mappings" class="summary-name">put_mappings</a> = <code title="{None.__class__: lambda s, _: s.put_null(), bool: put_bool, ubyte: put\
+_ubyte, ushort: put_ushort, uint: put_uint, ulong: put_ulong, byte: pu\
+t_byte, short: put_short, int32: put_int, long: put_long, float32: put\
+_float, float: put_double, decimal32: put_decimal32, decimal64: put_de\
+cimal64, decimal128: put_decimal128, char: put_char, timestamp: put_ti\
+mestamp, uuid.UUID: put_uuid, bytes: put_binary, unicode: put_string, \
+symbol: put_symbol, list: put_sequence, tuple: put_sequence, dict: put\
+_dict, Described: put_py_described, Array: put_py_array}">{None.__class__: lambda s, _: s.put_null(), boo<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Data-class.html#get_mappings" class="summary-name">get_mappings</a> = <code title="{NULL: lambda s: None, BOOL: get_bool, BYTE: get_byte, UBYTE: get_ubyt\
+e, SHORT: get_short, USHORT: get_ushort, INT: get_int, UINT: get_uint,\
+ CHAR: get_char, LONG: get_long, ULONG: get_ulong, TIMESTAMP: get_time\
+stamp, FLOAT: get_float, DOUBLE: get_double, DECIMAL32: get_decimal32,\
+ DECIMAL64: get_decimal64, DECIMAL128: get_decimal128, UUID: get_uuid,\
+ BINARY: get_binary, STRING: get_string, SYMBOL: get_symbol, DESCRIBED\
+: get_py_described, ARRAY: get_py_array, LIST: get_sequence, MAP: get_\
+dict}">{NULL: lambda s: None, BOOL: get_bool, BYTE: ge<code class="variable-ellipsis">...</code></code>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="rewind"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">rewind</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.rewind">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Clears current node and sets the parent to the root node.  Clearing 
+  the current node sets it _before_ the first node, calling next() will 
+  advance to the first node.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="next"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">next</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.next">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Advances the current node to its next sibling and returns its type. If
+  there is no next sibling the current node remains unchanged and None is 
+  returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="prev"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">prev</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.prev">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Advances the current node to its previous sibling and returns its 
+  type. If there is no previous sibling the current node remains unchanged 
+  and None is returned.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="enter"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">enter</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.enter">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Sets the parent node to the current node and clears the current node. 
+  Clearing the current node sets it _before_ the first child, call next() 
+  advances to the first child.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="decode"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">decode</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">encoded</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.decode">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Decodes the first value from supplied AMQP data and returns the number
+  of bytes consumed.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>encoded</code></strong> (binary) - AMQP encoded binary data</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_list"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_list</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_list">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a list value. Elements may be filled by entering the list node 
+  and putting element values.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>data = Data()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_list()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(1)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(2)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(3)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_map"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_map</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_map">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a map value. Elements may be filled by entering the map node and 
+  putting alternating key value pairs.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>data = Data()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_map()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_string(<span class="py-string">&quot;key&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_string(<span class="py-string">&quot;value&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_array"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_array</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">described</span>,
+        <span class="sig-arg">element_type</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_array">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts an array value. Elements may be filled by entering the array node
+  and putting the element values. The values must all be of the specified 
+  array element type. If an array is described then the first child value 
+  of the array is the descriptor and may be of any type.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>data = Data()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_array(False, Data.INT)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(1)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(2)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_int(3)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()
+<span class="py-prompt">&gt;&gt;&gt;</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_array(True, Data.DOUBLE)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_symbol(<span class="py-string">&quot;array-descriptor&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_double(1.1)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_double(1.2)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_double(1.3)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>described</code></strong> (bool) - specifies whether the array is described</li>
+        <li><strong class="pname"><code>element_type</code></strong> (int) - the type of the array elements</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_described"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_described</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_described">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a described value. A described node has two children, the 
+  descriptor and the value. These are specified by entering the node and 
+  putting the desired values.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>data = Data()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_described()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_symbol(<span class="py-string">&quot;value-descriptor&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.put_string(<span class="py-string">&quot;the value&quot;</span>)
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_bool"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_bool</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_bool">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a boolean value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>b</code></strong> - a boolean value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_ubyte"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_ubyte</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ub</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_ubyte">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts an unsigned byte value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ub</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_byte"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_byte</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_byte">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a signed byte value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>b</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_ushort"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_ushort</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">us</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_ushort">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts an unsigned short value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>us</code></strong> - an integral value.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_short"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_short</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_short">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a signed short value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>s</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_uint"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_uint</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ui</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_uint">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts an unsigned int value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ui</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_int"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_int</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">i</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_int">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a signed int value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>i</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_char"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_char</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">c</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_char">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a char value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>c</code></strong> - a single character</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_ulong"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_ulong</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">ul</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_ulong">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts an unsigned long value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>ul</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_long"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_long</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">l</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_long">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a signed long value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>l</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_timestamp"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_timestamp</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">t</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_timestamp">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a timestamp value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>t</code></strong> - an integral value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_float"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_float</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">f</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_float">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a float value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>f</code></strong> - a floating point value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_double"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_double</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">d</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_double">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a double value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>d</code></strong> - a floating point value.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_decimal32"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_decimal32</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">d</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_decimal32">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a decimal32 value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>d</code></strong> - a decimal32 value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_decimal64"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_decimal64</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">d</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_decimal64">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a decimal64 value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>d</code></strong> - a decimal64 value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_decimal128"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_decimal128</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">d</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_decimal128">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a decimal128 value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>d</code></strong> - a decimal128 value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_uuid"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_uuid</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">u</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_uuid">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a UUID value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>u</code></strong> - a uuid value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_binary"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_binary</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">b</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_binary">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a binary value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>b</code></strong> (binary) - a binary value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_string"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_string</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_string">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a unicode value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>s</code></strong> (unicode) - a unicode value</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_symbol"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">put_symbol</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">s</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.put_symbol">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Puts a symbolic value.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>s</code></strong> (string) - the symbol name</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_list"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_list</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.get_list">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If the current node is a list, return the number of elements, 
+  otherwise return zero. List elements can be accessed by entering the 
+  list.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>count = data.get_list()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> i <span class="py-keyword">in</span> range(count):
+<span class="py-more">... </span>  type = data.next()
+<span class="py-more">... </span>  <span class="py-keyword">if</span> type == Data.STRING:
+<span class="py-more">... </span>    <span class="py-keyword">print</span> data.get_string()
+<span class="py-more">... </span>  <span class="py-keyword">elif</span> type == ...:
+<span class="py-more">... </span>    ...
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_map"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_map</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.get_map">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If the current node is a map, return the number of child elements, 
+  otherwise return zero. Key value pairs can be accessed by entering the 
+  map.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span>count = data.get_map()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> i <span class="py-keyword">in</span> range(count/2):
+<span class="py-more">... </span>  type = data.next()
+<span class="py-more">... </span>  <span class="py-keyword">if</span> type == Data.STRING:
+<span class="py-more">... </span>    <span class="py-keyword">print</span> data.get_string()
+<span class="py-more">... </span>  <span class="py-keyword">elif</span> type == ...:
+<span class="py-more">... </span>    ...
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_array"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_array</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.get_array">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If the current node is an array, return a tuple of the element count, 
+  a boolean indicating whether the array is described, and the type of each
+  element, otherwise return (0, False, None). Array data can be accessed by
+  entering the array.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># read an array of strings with a symbolic descriptor</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>count, described, type = data.get_array()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.next()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> <span class="py-string">&quot;Descriptor:&quot;</span>, data.get_symbol()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">for</span> i <span class="py-keyword">in</span> range(count):
+<span class="py-more">... </span>   data.next()
+<span class="py-more">... </span>   <span class="py-keyword">print</span> <span class="py-string">&quot;Element:&quot;</span>, data.get_string()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="is_described"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">is_described</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.is_described">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Checks if the current node is a described value. The descriptor and 
+  value may be accessed by entering the described value.</p>
+<pre class="py-doctest">
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-comment"># read a symbolically described string</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>assert data.is_described() <span class="py-comment"># will error if the current node is not described</span>
+<span class="py-prompt">&gt;&gt;&gt; </span>data.enter()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.next()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> data.get_symbol()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.next()
+<span class="py-prompt">&gt;&gt;&gt; </span><span class="py-keyword">print</span> data.get_string()
+<span class="py-prompt">&gt;&gt;&gt; </span>data.exit()</pre>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_py_array"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">get_py_array</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Data.get_py_array">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>If the current node is an array, return an Array object representing 
+  the array and its contents. Otherwise return None. This is a convenience 
+  wrapper around get_array, enter, etc.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== CLASS VARIABLE DETAILS ==================== -->
+<a name="section-ClassVariableDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variable Details</span></td>
+</tr>
+</table>
+<a name="type_names"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">type_names</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+<code class="variable-group">{</code>1<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">null</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 2<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">bool</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 3<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">ubyte</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 4<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">byte</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 5<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">ushort</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 6<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">short</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 7<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">uint</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+ 8<code class="variable-op">: </code><code class="variable-quote">'</code><code class="variable-string">int</code><code class="variable-quote">'</code><code class="variable-op">,</code>
+<code class="variable-ellipsis">...</code>
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="put_mappings"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">put_mappings</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{None.__class__: lambda s, _: s.put_null(), bool: put_bool, ubyte: put<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_ubyte, ushort: put_ushort, uint: put_uint, ulong: put_ulong, byte: pu<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+t_byte, short: put_short, int32: put_int, long: put_long, float32: put<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_float, float: put_double, decimal32: put_decimal32, decimal64: put_de<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+cimal64, decimal128: put_decimal128, char: put_char, timestamp: put_ti<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+mestamp, uuid.UUID: put_uuid, bytes: put_binary, unicode: put_string, <span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+symbol: put_symbol, list: put_sequence, tuple: put_sequence, dict: put<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+_dict, Described: put_py_described, Array: put_py_array}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="get_mappings"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">get_mappings</h3>
+  
+  <dl class="fields">
+  </dl>
+  <dl class="fields">
+    <dt>Value:</dt>
+      <dd><table><tr><td><pre class="variable">
+{NULL: lambda s: None, BOOL: get_bool, BYTE: get_byte, UBYTE: get_ubyt<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+e, SHORT: get_short, USHORT: get_ushort, INT: get_int, UINT: get_uint,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ CHAR: get_char, LONG: get_long, ULONG: get_ulong, TIMESTAMP: get_time<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+stamp, FLOAT: get_float, DOUBLE: get_double, DECIMAL32: get_decimal32,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ DECIMAL64: get_decimal64, DECIMAL128: get_decimal128, UUID: get_uuid,<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+ BINARY: get_binary, STRING: get_string, SYMBOL: get_symbol, DESCRIBED<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+: get_py_described, ARRAY: get_py_array, LIST: get_sequence, MAP: get_<span class="variable-linewrap"><img src="crarr.png" alt="\" /></span>
+dict}
+</pre></td></tr></table>
+</dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Thu Jul 14 12:17:49 2016
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

@@ -31,6 +31,61 @@
   </thead>
   <tbody>
     <tr>
+      <td>CVE-2016-4467</td>
+      <td>Medium</td>
+      <td>0.8 through 0.13.0 (inclusive)</td>
+      <td>0.13.1 and later</td>
+      <td>Failure to verify that the server host name matches the certificate host name on Windows
+        <a id="CVE_2016_4467_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2016_4467_details', controlId:'CVE_2016_4467_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+        <div style="display:none;" id="CVE_2016_4467_details">
+
+          <p>Messaging applications using the Proton C library to
+          provide SSL/TLS authentication on Windows can falsely
+          authenticate a server whose name does not match the server
+          name in the connection specifier.  Proton C bindings are
+          affected to a greater or lesser degree depending on how
+          they use the underlying Proton C library.</p>
+
+          <p>In Proton C, this can only happen if
+          PN_SSL_VERIFY_PEER_NAME has been specified as the
+          verification mode and pn_ssl_set_peer_hostname() has not
+          been called at all or has been called with a NULL value for
+          a particular pn_ssl_t object.</p>
+
+          <p>In the Proton C++ binding, this will always happen unless
+          the application has separately specified a virtual_host name
+          for an SSL/TLS connection.</p>
+
+          <p>In the Proton Python and Ruby bindings, this will only
+          happen if the application has separately specified a NULL
+          virtual_host name for an SSL/TLS connection after creating
+          the connection but before the authentication step.</p>
+
+          <p>This issue only occurs on Windows versions of Proton that
+          use the default SChannel-based security layer.</p>
+
+          <p>In any of the preceding cases, it is possible for a
+          man-in-the-middle attacker to spoof an SSL/TLS server if
+          they had a certificate that was valid for any of the
+          application's Certificate Authorities.</p>
+
+          <p>Resolution: Proton release 0.13.1 resolves this issue in
+          the SChannel-based security layer by obtaining a default
+          non-NULL peer hostname from the associated connection
+          address when initialized and by always failing hostname
+          verification if PN_SSL_VERIFY_PEER_NAME has been specified
+          along with a NULL peer hostname.  This resolution matches
+          the associated behaviour of the OpenSSL-based security
+          layer.</p>
+
+          <p>References: <a
+          href="https://issues.apache.org/jira/browse/PROTON-1228">PROTON-1228</a>
+          and <a
+          href="https://issues.apache.org/jira/browse/PROTON-1233">PROTON-1233</a>.</p>
+        </div>
+      </td>
+    </tr>
+    <tr>
       <td>CVE-2016-2166</td>
       <td>Moderate</td>
       <td>0.9 through 0.12.0 (inclusive)</td>
