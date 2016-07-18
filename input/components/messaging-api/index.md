@@ -26,7 +26,7 @@ platforms.
   - *Platforms* - Linux, Windows
   - *AMQP versions* - 1.0, 0-10
   - *Downloads* - C++, bindings: [qpid-cpp-{{current_cpp_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz) \[[ASC](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.sha1)],<br/>Python: [qpid-python-{{current_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz) \[[ASC](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/{{current_release}}/qpid-python-{{current_release}}.tar.gz.sha1)]
-  - *Source location* -  <http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/>,<br/> <http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/>
+  - *Source location* -  <https://git-wip-us.apache.org/repos/asf/qpid-cpp.git>,<br/> <https://git-wip-us.apache.org/repos/asf/qpid-python.git>
 
 ## Documentation
 

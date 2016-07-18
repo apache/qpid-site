@@ -49,7 +49,7 @@ files you download.
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 - [Dispatch router book](book.html) ([PDF](book.pdf))
-- [Installing Qpid Dispatch](http://svn.apache.org/repos/asf/qpid/dispatch/brances/0.3/README)
+- [Installing Qpid Dispatch](http://svn.apache.org/repos/asf/qpid/dispatch/branches/0.3/README)
 </div>
 <div class="column" markdown="1">
 - [qdrouterd](qdrouterd.8.html) - Router daemon

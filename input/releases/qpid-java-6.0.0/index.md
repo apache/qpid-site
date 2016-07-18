@@ -72,7 +72,6 @@ files you download.
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/java/6.0.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%276.0.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository branch](http://svn.apache.org/repos/asf/qpid/java/branches/6.0.0)
  - [Source repository tag](http://svn.apache.org/repos/asf/qpid/java/tags/6.0.0)
 
 <script type="text/javascript">

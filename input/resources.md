@@ -34,7 +34,6 @@ would like your blog linked here.
  - [AMQP Illustrated](https://chugrolke.wordpress.com/) by Chuck Rolke
  - [Dial M for Messaging](http://dialmformessaging.blogspot.com/) by Mick Goulish
  - [NETPROTOTALK](https://netprototalk.wordpress.com/) by Ted Ross
- - [Rajith's Column](http://rajith.2rlabs.com/) by Rajith Attapattu
  - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/)
  - [The Infobahn Offramp](http://mcpierce.blogspot.com/search/label/messaging) by Darryl Pierce
 

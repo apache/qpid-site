@@ -26,5 +26,5 @@
 
 ## More information
 
- - [README](https://github.com/apache/qpid-proton/tree/0.13.1/examples/cpp/README.hpp)
+ - [README](https://github.com/apache/qpid-proton/tree/0.13.1/examples/cpp/README.dox)
  - [Source location](https://github.com/apache/qpid-proton/tree/0.13.1/examples/cpp)

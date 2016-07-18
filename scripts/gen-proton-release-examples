@@ -48,11 +48,9 @@ def gen_cpp_proton_examples(release, source_dir, component_dir):
     input_dir = join(source_dir, "examples", "cpp")
     output_dir = join(component_dir, "cpp", "examples")
     source_url = get_git_release_branch_url("proton", release, "examples/cpp")
-    readme_url = "{}/README.hpp".format(source_url)
+    readme_url = "{}/README.dox".format(source_url)
     input_names = list_dir(input_dir, "*.cpp", "*.hpp")
 
-    #input_names.remove("README.hpp")
-    
     gen_examples(release=release,
                  lang="cpp",
                  title="Proton C++ Examples",

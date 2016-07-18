@@ -40,11 +40,6 @@ with one of the Subversion URLs below.
     Qpid Java
     % svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
 
-When adding files to Subversion, it's important that the appropriate
-Subversion properties are set. The client can do it automatically by
-modifying the `auto-props` section of the Subversion config file.  Use
-the contents of [qpid/etc/svn-auto-props](http://svn.apache.org/repos/asf/qpid/trunk/qpid/etc/svn-auto-props).
-
 <div class="two-column" markdown="1">
 <section markdown="1">
 
@@ -71,10 +66,10 @@ the contents of [qpid/etc/svn-auto-props](http://svn.apache.org/repos/asf/qpid/t
 Consult the install documentation below.
 
  - [How to build Qpid Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp/INSTALL)
- - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/trunk/qpid/python/README.txt)
+ - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
+ - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
 
-## Git
+## Git mirrors of Subversion repositories
 
 Read-only [Git](http://git-scm.com/) mirrors are available.  Use one
 of the following commands.

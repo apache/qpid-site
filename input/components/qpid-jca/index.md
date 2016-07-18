@@ -53,7 +53,7 @@ find previous versions with our
  - [Connect with JBoss EAP 5](http://svn.apache.org/repos/asf/qpid/java/tags/{{current_java_release}}/jca/README-JBOSS.txt)
  - [Connect with JBoss EAP 6](http://svn.apache.org/repos/asf/qpid/java/tags/{{current_java_release}}/jca/README-JBOSS-EAP6.txt)
  - [Connect with Geronimo](http://svn.apache.org/repos/asf/qpid/java/tags/{{current_java_release}}/jca/README-GERONIMO.txt)
- - [Connect with Glassfish](http://svn.apache.org/repos/asf/qpid/tags/{{current_java_release}}/qpid/java/jca/example/README-GLASSFISH.txt)
+ - [Connect with Glassfish](http://svn.apache.org/repos/asf/qpid/java/tags/{{current_java_release}}/jca/example/README-GLASSFISH.txt)
  - [Examples](http://svn.apache.org/repos/asf/qpid/java/tags/{{current_java_release}}/jca/example/)
 
 </div>

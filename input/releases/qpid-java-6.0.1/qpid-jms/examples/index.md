@@ -15,5 +15,5 @@
 
 ## More information
 
- - [README](http://svn.apache.org/repos/asf/qpid/java/branches/6.0.1/java/client/README.txt)
- - [Source location](http://svn.apache.org/repos/asf/qpid/java/branches/6.0.1/java/client/example/src/main/java/org/apache/qpid/example)
+ - [README](http://svn.apache.org/repos/asf/qpid/java/tags/6.0.1/client/README.txt)
+ - [Source location](http://svn.apache.org/repos/asf/qpid/java/tags/6.0.1/client/example/src/main/java/org/apache/qpid/example)

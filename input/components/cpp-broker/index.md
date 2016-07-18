@@ -85,8 +85,8 @@ that stores, routes, and forwards messages using AMQP.
 
 ## Source code
 
- - [Browse via GitHub](https://github.com/apache/qpid/tree/trunk/qpid/cpp)
- - [Subversion repository](https://svn.apache.org/repos/asf/qpid/trunk/qpid/cpp)
+ - [Browse via GitHub](https://github.com/apache/qpid-cpp)
+ - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-cpp.git)
 
 ## Resources
 
