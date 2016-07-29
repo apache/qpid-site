@@ -21,7 +21,7 @@
 
 <section markdown="1">
 
-## Java Broker
+## Broker for Java
 
 <table>
   <thead>
@@ -38,7 +38,7 @@
       <td>
         Authentication Bypass. <a id="CVE_2016_4432_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2016_4432_details', controlId:'CVE_2016_4432_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
         <div style="display:none;" id="CVE_2016_4432_details">
-          <p>Versions Affected: Qpid Java Broker versions 6.0.2 and
+          <p>Versions Affected: Apache Qpid Broker for Java versions 6.0.2 and
           earlier</p>
           <p>Description: The code responsible for handling incoming
           AMQP 0-8, 0-9, 0-91, and 0-10 connections contains a flaw
@@ -53,7 +53,7 @@
           support.<br/>The vulnerability does not apply if the Broker
           is configured to require SSL client authentication for all
           messaging connections.</p>
-          <p>Resolution: Users should upgrade the Qpid Java Broker to
+          <p>Resolution: Users should upgrade the Apache Qpid Broker for Java to
           version 6.0.3 or later (recommended).</p>
           <p>Mitigation: If upgrading is not possible, the
           vulnerability can be mitigated using an ACL file containing
@@ -76,10 +76,10 @@
         Denial of Service.
         <a id="CVE_2016_3094_details_toggle" href="javascript:_toggleDiv({divId:'CVE_2016_3094_details', controlId:'CVE_2016_3094_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
         <div style="display:none;" id="CVE_2016_3094_details">
-          <p>Versions Affected: Qpid Java Broker versions 6.0.0,
+          <p>Versions Affected: Apache Qpid Broker for Java versions 6.0.0,
           6.0.1, and 6.0.2</p>
           <p>Description: A malformed authentication attempt may cause
-          the broker to terminate.  The Qpid Java Broker supports a
+          the broker to terminate.  The Apache Qpid Broker for Java supports a
           number of configurable authentication providers each
           supporting various SASL mechanisms. Some mechanisms need (or
           can be configured to accept) plain-text passwords being sent
@@ -94,7 +94,7 @@
           "PLAIN" mechanism is enabled (by default "PLAIN" will be
           disabled on non-TLS ports, but enabled on TLS
           connections).</p>
-          <p>Mitigation: Users should upgrade their Qpid Java Broker
+          <p>Mitigation: Users should upgrade their Apache Qpid Broker for Java
           to version 6.0.3 or later.  If this is not possible, users
           can disable the PLAIN mechanism for their authentication
           manager on versions 0.32 and later by adding "PLAIN" to the

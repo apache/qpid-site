@@ -120,16 +120,16 @@ improve ours.
 
  - <img class="company-logo" src="{{site_url}}/images/coverity.png"/>
    [Coverity](http://www.coverity.com/) for granting us use of their
-   static analysis tools for Qpid C++ and Java code.
+   static analysis tools for Qpid C++ and Qpid for Java code.
  
  - <img class="company-logo" src="{{site_url}}/images/jprofiler.png"/>
    [ej-technologies](http://www.ej-technologies.com/) for giving us a
-   free team license for profiling Qpid Java code.
+   free team license for profiling Qpid for Java code.
 
  - <img class="company-logo" src="{{site_url}}/images/structure101.jpg"/>
    [Headway Software](http://structure101.com/) for giving us free
    licenses of Structure101 for analyzing and managing the
-   architecture of Qpid Java code.
+   architecture of Qpid for Java code.
 
 ## Apache sponsors
 

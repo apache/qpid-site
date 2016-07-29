@@ -50,10 +50,10 @@ You can find older versions with our
 <div class="flex" markdown="1">
 <section markdown="1">
 
-### Java broker
+### Broker for Java
 
  - [Overview]({{site_url}}/components/java-broker/index.html)
- - [Java broker book]({{current_java_release_url}}/java-broker/book/index.html)
+ - [Broker book]({{current_java_release_url}}/java-broker/book/index.html)
 
 </section>
 <section markdown="1">

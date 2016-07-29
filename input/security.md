@@ -29,7 +29,7 @@ Qpid components are detailed at:
 <div class="flex" markdown="1">
 <section markdown="1">
 
- - [Java Broker]({{site_url}}/components/java-broker/security.html)
+ - [Broker for Java]({{site_url}}/components/java-broker/security.html)
  - [C++ Broker]({{site_url}}/components/cpp-broker/security.html)
 
 </section>

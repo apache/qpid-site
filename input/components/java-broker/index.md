@@ -19,7 +19,7 @@
 
 <div id="-left-column" markdown="1">
 
-# Java Broker
+# Broker for Java
 
 <div class="feature" markdown="1">
 
@@ -60,8 +60,8 @@ that stores, routes, and forwards messages using AMQP.
 
 ## Documentation
 
- - [Java broker book]({{current_java_release_url}}/java-broker/book/index.html)
- - [How to build Qpid Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
+ - [Broker book]({{current_java_release_url}}/java-broker/book/index.html)
+ - [How to build Apache Qpid for Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
 
 </div>
 

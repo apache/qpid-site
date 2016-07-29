@@ -40,7 +40,7 @@ Qpid also offers lists for
 [commits]({{site_url}}/source-code.html#commits-list) and
 [notifications]({{site_url}}/source-code.html#notifications-list).
 
-`NOTE`: The Qpid project offers various components in many different languages. When mailing the lists please be specific about which component, or even which part of a given component, that you are using to better facilitate discussion. For example, "I'm using the Qpid Java &lt;version&gt; broker with the Qpid JMS &lt;version&gt; AMQP 1.0 client" rather than "I'm using the broker and JMS client".
+`NOTE`: The Qpid project offers various components in many different languages. When mailing the lists please be specific about which component, or even which part of a given component, that you are using to better facilitate discussion. For example, "I'm using the Qpid Broker for Java &lt;version&gt; with the Qpid JMS &lt;version&gt; AMQP 1.0 client" rather than "I'm using the broker and JMS client".
 
 ## Chat
 

@@ -50,7 +50,7 @@ The Qpid message brokers are full-featured
 [message-oriented middleware](http://en.wikipedia.org/wiki/Message-oriented_middleware)
 brokers.  They offer specialized queueing behaviors, message
 persistence, and manageability.  Qpid offers pure-Java and native-code
-implementations, the [Java broker](java-broker/index.html) and the
+implementations, the [Broker for Java](java-broker/index.html) and the
 [C++ broker](cpp-broker/index.html).
 
 [Dispatch router](dispatch-router/index.html) is a new kind of
@@ -65,7 +65,7 @@ connecting clients, brokers, and standalone services.
 
 ## Messaging servers
 
- - [Java broker](java-broker/index.html) - A pure-Java AMQP message broker
+ - [Broker for Java](java-broker/index.html) - A pure-Java AMQP message broker
  - [C++ broker](cpp-broker/index.html) - A native-code AMQP message broker
  - [Dispatch router](dispatch-router/index.html) - An AMQP router for scalable messaging interconnect
  
@@ -77,13 +77,13 @@ connecting clients, brokers, and standalone services.
 | --------- | --------- | --------- | ------------- |
 | [C++ broker]({{site_url}}/components/cpp-broker/index.html) | - | Linux, Windows | 1.0, 0-10 |
 | [Dispatch router]({{site_url}}/components/dispatch-router/index.html) | - | Linux | 1.0 |
-| [Java broker]({{site_url}}/components/java-broker/index.html) | - | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
+| [Broker for Java]({{site_url}}/components/java-broker/index.html) | - | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
 | [Qpid JMS]({{site_url}}/components/jms/index.html) | Java | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
 | [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | C++, Perl, Python, Ruby, .NET | Linux, Windows | 1.0, 0-10 |
 | [Qpid Proton]({{site_url}}/proton/index.html) | C, C++, Java, JavaScript, Python, Ruby | JVM, Linux, Windows | 1.0 |
 
 Any Qpid components that share an AMQP version can interoperate.  For
 instance, the brokers are implemented in C++ and Java respectively,
-but they do not require C++ or Java clients for communication.
+but they do not require C++ or JMS clients for communication.
 
 </div>

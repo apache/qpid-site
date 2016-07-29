@@ -48,7 +48,7 @@ help:
 	@echo "gen-dispatch-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid Dispatch release content"
 	@echo "gen-java-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
-	@echo "                Generate Qpid Java release content"
+	@echo "                Generate Qpid for Java release content"
 	@echo "gen-jms-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid JMS release content"
 	@echo "gen-cpp-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"

@@ -23,31 +23,31 @@ from generate import *
 from datetime import datetime
 
 source_artefact_records = (
-    ("qpid-java-{}.tar.gz", "Java broker, Qpid JMS, Qpid JCA"),
+    ("qpid-java-{}.tar.gz", "Qpid Broker for Java, Qpid JMS for AMQP 0-9-1/0-10, Qpid JCA"),
 )
 
 binary_artefact_records = (
-    ("qpid-broker-{}-bin.tar.gz", "Java broker"),
-    ("qpid-client-{}-bin.tar.gz", "Qpid JMS (AMQP 0-10, 0-9-1, 0-9, 0-8)"),
+    ("qpid-broker-{}-bin.tar.gz", "Qpid Broker for Java"),
+    ("qpid-client-{}-bin.tar.gz", "Qpid JMS for AMQP 0-9-1/0-10"),
 )
 
 component_records = (
-    ("java-broker", "Java broker", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
+    ("java-broker", "Qpid Broker for Java", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
     ("qpid-jca", "Qpid JCA", "Java", "JVM", "0-10"),
-    ("jms/amqp-0-x.html","Qpid JMS (AMQP 0-10, 0-9-1, 0-9, 0-8)", "Java", "JVM", "0-10, 0-9-1, 0-9, 0-8")
+    ("jms/amqp-0-x.html","Qpid JMS for AMQP 0-9-1/0-10", "Java", "JVM", "0-10, 0-9-1, 0-9, 0-8")
     )
 
 documentation = \
 """
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Java](java-broker/book/Java-Broker-Installation.html)
- - [Java broker book](java-broker/book/index.html)
+ - [Installing Qpid Broker for Java](java-broker/book/Java-Broker-Installation.html)
+ - [Broker book](java-broker/book/index.html)
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
- - [Using the Qpid JMS client (AMQP 0-10)](jms-client-0-10/book/index.html)
- - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/index.html)
- - [JMS examples (AMQP 0-10)](qpid-jms/examples/index.html)
- - [JMS examples (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
+ - [Using the Qpid JMS client for AMQP 0-10](jms-client-0-10/book/index.html)
+ - [Using the Qpid JMS client for AMQP 0-9-1](jms-client-0-8/book/index.html)
+ - [JMS examples for AMQP 0-10](qpid-jms/examples/index.html)
+ - [JMS examples for AMQP 0-9-1, 0-9, 0-8](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
  - [JCA examples](http://svn.apache.org/repos/asf/qpid/java/trunk/jca/example/)
 
 </div>
@@ -74,9 +74,9 @@ template = \
 ;; under the License.
 ;;
 
-# Qpid Java {release}
+#Qpid for Java {release}
 
-Qpid Java offers an AMQP-fluent implementation of JMS and a message
+Qpid for Java offers an AMQP-fluent implementation of JMS and a message
 broker written in Java that stores, routes, and forwards messages
 using AMQP.  More about [Qpid]({{{{site_url}}}}/index.html).
 
@@ -93,7 +93,7 @@ files you download.
 |---------|----------|--------|
 {source_artefacts}
 
-## Java binaries
+## Binaries
 
 | Content | Download | Verify |
 |---------|----------|--------|
@@ -202,7 +202,7 @@ trunk_template = """
 ;; under the License.
 ;;
 
-# Qpid Java Trunk
+# Qpid for Java Trunk
 
 <div class="feature" markdown="1">
 

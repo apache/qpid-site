@@ -28,7 +28,7 @@ the
 
  - [Qpid Proton 0.13.1](qpid-proton-0.13.1/index.html), July 2016
  - [Qpid JMS 0.10.0](qpid-jms-0.10.0/index.html), July 2016
- - [Qpid Java 6.0.4](qpid-java-6.0.4/index.html), July 2016
+ - [Qpid for Java 6.0.4](qpid-java-6.0.4/index.html), July 2016
  - [Qpid Dispatch 0.6.0](qpid-dispatch-0.6.0/index.html), June 2016
  - [Qpid C++ 0.34](qpid-cpp-0.34/index.html), June 2015
  - [Qpid 0.32](qpid-0.32/index.html), March 2015
@@ -38,15 +38,15 @@ the
 <div class="two-column" markdown="1">
 
  - [Qpid Proton 0.13.0](qpid-proton-0.13.0/index.html), June 2016
- - [Qpid Java 6.0.3](qpid-java-6.0.3/index.html), May 2016
+ - [Qpid for Java 6.0.3](qpid-java-6.0.3/index.html), May 2016
  - [Qpid JMS 0.9.0](qpid-jms-0.9.0/index.html), April 2016
  - [Qpid Proton 0.12.2](qpid-proton-0.12.2/index.html), April 2016
  - [Qpid Java 6.0.2](qpid-java-6.0.2/index.html), April 2016
  - [Qpid Proton 0.12.1](qpid-proton-0.12.1/index.html), March 2016
  - [Qpid JMS 0.8.0](qpid-jms-0.8.0/index.html), February 2016
- - [Qpid Java 6.0.1](qpid-java-6.0.1/index.html), February 2016
+ - [Qpid for Java 6.0.1](qpid-java-6.0.1/index.html), February 2016
  - [Qpid Proton 0.12.0](qpid-proton-0.12.0/index.html), February 2016
- - [Qpid Java 6.0.0](qpid-java-6.0.0/index.html), December 2015
+ - [Qpid for Java 6.0.0](qpid-java-6.0.0/index.html), December 2015
  - [Qpid JMS 0.7.0](qpid-jms-0.7.0/index.html), December 2015
  - [Qpid Proton 0.11.1](qpid-proton-0.11.1/index.html), December 2015
  - [Qpid JMS 0.6.0](qpid-jms-0.6.0/index.html), October 2015
@@ -83,7 +83,7 @@ Warning! These are snapshots of work in progress.
 
  - [Qpid C++ trunk](qpid-cpp-trunk/index.html)
  - [Qpid Dispatch master](qpid-dispatch-master/index.html)
- - [Qpid Java trunk](qpid-java-trunk/index.html)
+ - [Qpid for Java trunk](qpid-java-trunk/index.html)
  - [Qpid JMS master](qpid-jms-master/index.html)
  - [Qpid Proton master](qpid-proton-master/index.html)
 

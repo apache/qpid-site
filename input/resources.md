@@ -69,7 +69,7 @@ Coverity finds defects using static code analysis.  To view these you
 must [sign up with Coverity](https://scan.coverity.com/users/sign_up).
 
  - [Qpid C++ scans](https://scan.coverity.com/projects/6)
- - [Qpid Java scans](https://scan.coverity.com/projects/572)
+ - [Qpid for Java scans](https://scan.coverity.com/projects/572)
 
 </section>
 <section markdown="1">
