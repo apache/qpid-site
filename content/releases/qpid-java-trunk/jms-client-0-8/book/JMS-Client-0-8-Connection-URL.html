@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,7 +111,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Chapter&#160;7.&#160;Connection URLs</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Apache Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Chapter&#160;7.&#160;Connection URLs</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;7.&#160;Connection URLs</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-JNDI-Properties-Format-Destination.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Binding-URL.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="JMS-Client-0-8-Connection-URL"></a>Chapter&#160;7.&#160;Connection URLs</h1></div></div></div><p> In JNDI properties, a Connection URL specifies options for a connection. The format for a
@@ -133,8 +133,23 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
                         extension to the AMQP protocol and will only work against a broker of
                         the 0.32 release or later.)
 					  </p>
-					</td></tr><tr><td> sync_ack </td><td> Boolean </td><td> A sync command is sent after every acknowledgement to guarantee that it
-						has been received. </td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-UseLegacyMap"></a> use_legacy_map_msg_format </td><td> Boolean </td><td> If you are using JMS Map messages and deploying a new client with any
+					</td></tr><tr><td> sync_client_ack </td><td> Boolean </td><td>
+						<p>
+							If set <code class="literal">true</code>, for sessions using <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#CLIENT_ACKNOWLEDGE" target="_top">Session#CLIENT_ACKNOWLEDGE</a>,
+							a sync command is sent after every message <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#acknowledge()" target="_top">Message#acknowledge()</a>.
+							This ensure that the client awaits the successful processing of the acknowledgement by server before continuing.
+						</p>
+						<p>If <code class="literal">false</code>, the sync is not performed.  This will improve performance but will mean
+							duplicate messages are more likely to be received following a failure.
+						</p>
+						<p>
+							Defaults to <code class="literal">true</code>.
+						</p>
+						<p>
+							Note: You can also set the default on a client-wide basis by configuring the
+							client using <a class="link" href="JMS-Client-0-8-System-Properties.html" title="Chapter&#160;10.&#160;System Properties">Java system properties.</a>
+						</p>
+					</td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-UseLegacyMap"></a> use_legacy_map_msg_format </td><td> Boolean </td><td> If you are using JMS Map messages and deploying a new client with any
 						JMS client older than 0.8 release, you must set this to true to ensure the
 						older clients can understand the map message encoding. </td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-Failover"></a> failover </td><td> {'singlebroker' | 'roundrobin'
 						, | 'nofailover' |
@@ -165,15 +180,16 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 							If not specified, the brokerlist entry for each given broker is used to
 							determine whether SSL is used. </p>
 						<p> Introduced in version 0.22. </p>
-					</td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-CompressMessages"></a>compressMessages</td><td>Boolean</td><td><p>Controls whether the client will compress messages before they they are sent.</p></td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-MessageCompressionThresholdSize"></a>messageCompressionThresholdSize</td><td>Integer</td><td><p>The payload size beyond which the client will start to compress message payloads.</p></td></tr></tbody></table></div></div><br class="table-break" /><p> Broker lists are specified using a URL in this format: </p><pre class="programlisting">brokerlist='&lt;transport&gt;://&lt;host&gt;[:&lt;port&gt;][?&lt;param&gt;='&lt;value&gt;'[&amp;&lt;param&gt;='&lt;value&gt;']*]'</pre><p> For instance, this is a typical broker list: </p><pre class="programlisting">brokerlist='tcp://localhost:5672'</pre><p> A broker list can contain more than one broker address separated by semicolons (;). If so, the connection is made to
+					</td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-CompressMessages"></a>compressMessages</td><td>Boolean</td><td><p>Controls whether the client will compress messages before they they are sent.</p></td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-MessageCompressionThresholdSize"></a>messageCompressionThresholdSize</td><td>Integer</td><td><p>The payload size beyond which the client will start to compress message payloads.</p></td></tr><tr><td><a id="JMS-Client-0-8-Connection-URL-ConnectionOptions-populateJMSXUserID"></a>populateJMSXUserID</td><td>boolean</td><td><p>Controls whether a MessageProducer will populate the JMSXUserID value for each sent message using the authenticated username from the connection.
+						It is set to true by default.</p></td></tr></tbody></table></div></div><br class="table-break" /><p> Broker lists are specified using a URL in this format: </p><pre class="programlisting">brokerlist='&lt;transport&gt;://&lt;host&gt;[:&lt;port&gt;][?&lt;param&gt;='&lt;value&gt;'[&amp;&lt;param&gt;='&lt;value&gt;']*]'</pre><p> For instance, this is a typical broker list: </p><pre class="programlisting">brokerlist='tcp://localhost:5672'</pre><p> A broker list can contain more than one broker address separated by semicolons (;). If so, the connection is made to
 		the first broker in the list that is available.
-		</p><div class="example"><a id="d0e1321"></a><p class="title"><strong>Example&#160;7.1.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker. This
+		</p><div class="example"><a id="d0e1343"></a><p class="title"><strong>Example&#160;7.1.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker. This
 			broker list specifies options for configuring heartbeating</p><pre class="programlisting">amqp://guest:guest@test/test?brokerlist='tcp://ip1:5672?heartbeat='5''</pre><p>This broker list specifies some SSL options</p><pre class="programlisting">amqp://guest:guest@test/test?brokerlist='tcp://ip1:5672?ssl='true'&amp;ssl_cert_alias='cert1''</pre><p> This broker list specifies two brokers using the connectdelay and retries broker
 			options. It also illustrates the failover connection URL property. </p><pre class="programlisting">amqp://guest:guest@/test?failover='roundrobin?cyclecount='2''
 	  &amp;brokerlist='tcp://ip1:5672?retries='5'&amp;connectdelay='2000';tcp://ip2:5672?retries='5'&amp;connectdelay='2000''
 	  </pre></div></div><br class="example-break" /><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Broker option quoting</h3><p>Take care with the quoting surrounding broker option values. Each broker option value
 				<span class="emphasis"><em>must</em></span> be surrounded with their own single quotes ('). This is in
-			addition to the quotes surround the connection option value.</p></div><p>The following broker list options are supported.</p><div class="table"><a id="d0e1346"></a><p class="title"><strong>Table&#160;7.2.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th> Option </th><th> Type </th><th> Description </th></tr></thead><tbody><tr><td><a id="JMS-Client-0-8-Connection-URL-BrokerOptions-Heartbeat"></a> heartbeat </td><td> Long </td><td> Frequency of heartbeat messages (in seconds). A value of 0 disables
+			addition to the quotes surround the connection option value.</p></div><p>The following broker list options are supported.</p><div class="table"><a id="d0e1368"></a><p class="title"><strong>Table&#160;7.2.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th> Option </th><th> Type </th><th> Description </th></tr></thead><tbody><tr><td><a id="JMS-Client-0-8-Connection-URL-BrokerOptions-Heartbeat"></a> heartbeat </td><td> Long </td><td> Frequency of heartbeat messages (in seconds). A value of 0 disables
 						heartbeating. <p>For compatibility with old client configuration, option
 								<code class="varname">idle_timeout</code> (in milliseconds) is also
 							supported.</p>

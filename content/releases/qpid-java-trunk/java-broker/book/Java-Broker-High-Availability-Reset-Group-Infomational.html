@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,13 +111,13 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>10.11.&#160;Reset Group Information</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>10.11.&#160;Reset Group Information</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">10.11.&#160;Reset Group Information</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-High-Availability-Backup.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;10.&#160;High Availability</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Backup-And-Recovery.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-High-Availability-Reset-Group-Infomational"></a>10.11.&#160;Reset Group Information</h2></div></div></div><p>BDB JE internally stores details of the group within its database. There are some
       circumstances when resetting this information is useful.</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Copying data between environments (e.g. production to UAT)</p></li><li class="listitem"><p>Some disaster recovery situations where a group must be recreated on new
             hardware</p></li></ul></div><p>This is not an normal operation and is not usually required</p><p>The following command replaces the group table contained within the JE logs files with the
-      provided information. </p><div class="example"><a id="d0e6562"></a><p class="title"><strong>Example&#160;10.1.&#160;Resetting of replication group with <code class="classname">DbResetRepGroup</code></strong></p><div class="example-contents"><div class="cmdsynopsis"><p><code class="command">java</code>   -cp je-5.0.104.jar   com.sleepycat.je.rep.util.DbResetRepGroup   -h <em class="replaceable"><code>path/to/jelogfiles</code></em> <br />  -groupName <em class="replaceable"><code>newgroupname</code></em>   -nodeName <em class="replaceable"><code>newnodename</code></em>   -nodeHostPort <em class="replaceable"><code>newhostname:5000</code></em> </p></div></div></div><br class="example-break" /><p>The modified log files can then by copied into
+      provided information. </p><div class="example"><a id="d0e6708"></a><p class="title"><strong>Example&#160;10.1.&#160;Resetting of replication group with <code class="classname">DbResetRepGroup</code></strong></p><div class="example-contents"><div class="cmdsynopsis"><p><code class="command">java</code>   -cp je-5.0.104.jar   com.sleepycat.je.rep.util.DbResetRepGroup   -h <em class="replaceable"><code>path/to/jelogfiles</code></em> <br />  -groupName <em class="replaceable"><code>newgroupname</code></em>   -nodeName <em class="replaceable"><code>newnodename</code></em>   -nodeHostPort <em class="replaceable"><code>newhostname:5000</code></em> </p></div></div></div><br class="example-break" /><p>The modified log files can then by copied into
         <code class="literal">${QPID_WORK}/&lt;nodename&gt;/config</code> directory of a target Broker. Then
       start the Broker, and add a BDB HA Virtualhost node specify the same group name, node name and
       node address. You will then have a group with a single node, ready to start re-adding

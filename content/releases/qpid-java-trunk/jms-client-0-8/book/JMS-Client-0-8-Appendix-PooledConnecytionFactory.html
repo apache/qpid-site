@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,7 +111,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Appendix&#160;D.&#160;PooledConnectionFactory</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Apache Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Appendix&#160;D.&#160;PooledConnectionFactory</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Appendix&#160;D.&#160;PooledConnectionFactory</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Appendix-JMS-Extensions-Binding.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Appendix-Tomcat-JNDI-Integration.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="JMS-Client-0-8-Appendix-PooledConnecytionFactory"></a>Appendix&#160;D.&#160;PooledConnectionFactory</h1></div></div></div><p>Qpid client provides <code class="literal">PooledConnectionFactory</code> which is a special
@@ -130,7 +130,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     milliseconds. If connection is not used within the specified interval it is closed
     automatically. </p><p>This implementation can be useful in <span class="emphasis"><em>Spring JMS</em></span> based applications. An
     example below demonstrates how to configure <code class="literal">PooledConnectionFactory</code> in the
-    Spring xml configuration. </p><div class="example"><a id="d0e2977"></a><p class="title"><strong>Example&#160;D.1.&#160;Example of configuring <span class="emphasis"><em>PooledConnectionFactory</em></span> in spring xml
+    Spring xml configuration. </p><div class="example"><a id="d0e3045"></a><p class="title"><strong>Example&#160;D.1.&#160;Example of configuring <span class="emphasis"><em>PooledConnectionFactory</em></span> in spring xml
         configuration.</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;bean id="pooledConnectionFactory" class="org.apache.qpid.client.PooledConnectionFactory"&gt;
   &lt;!-- set maximum number of pool connections to 20--&gt;
@@ -144,7 +144,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="emphasis"><em>PooledConnectionFactory</em></span> spring bean can be configured with such
       <span class="emphasis"><em>spring-jms</em></span> beans like
       <span class="emphasis"><em>DefaultMessageListenerContainer</em></span> and <span class="emphasis"><em>JmsTemplate</em></span>. The
-    example below demonstrates how to do that </p><div class="example"><a id="d0e3000"></a><p class="title"><strong>Example&#160;D.2.&#160;Examples of configuring <span class="emphasis"><em>PooledConnectionFactory</em></span> with
+    example below demonstrates how to do that </p><div class="example"><a id="d0e3068"></a><p class="title"><strong>Example&#160;D.2.&#160;Examples of configuring <span class="emphasis"><em>PooledConnectionFactory</em></span> with
           <span class="emphasis"><em>DefaultMessageListenerContainer</em></span> and
         <span class="emphasis"><em>JmsTemplate</em></span>.</strong></p><div class="example-contents"><pre class="programlisting">
 &lt;bean id="jmsProducerTemplate" class="org.springframework.jms.core.JmsTemplate"&gt;

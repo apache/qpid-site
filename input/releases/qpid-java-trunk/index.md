@@ -17,7 +17,7 @@
 ;; under the License.
 ;;
 
-# Qpid Java Trunk
+# Qpid for Java Trunk
 
 <div class="feature" markdown="1">
 
@@ -27,7 +27,7 @@ Code and documentation found here may be unstable, incorrect, or
 incomplete.  For a smoother experience, see the [current stable
 release]({{current_java_release_url}}/index.html).
 
-This content was generated at 23:32  on Saturday, 02 January 2016.
+This content was generated at 14:16  on Monday, 01 August 2016.
 
 </div>
 
@@ -36,13 +36,13 @@ This content was generated at 23:32  on Saturday, 02 January 2016.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Java](java-broker/book/Java-Broker-Installation.html)
- - [Java broker book](java-broker/book/index.html)
+ - [Installing Qpid Broker for Java](java-broker/book/Java-Broker-Installation.html)
+ - [Broker book](java-broker/book/index.html)
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
-;; - [Using the Qpid JMS client (AMQP 0-10)](programming/book/QpidJMS.html) ([PDF](programming/programming-book.pdf))
- - [Using the Qpid JMS client (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/index.html)
- - [JMS examples (AMQP 0-10)](qpid-jms/examples/index.html)
- - [JMS examples (AMQP 0-9-1, 0-9, 0-8)](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
+ - [Using the Qpid JMS client for AMQP 0-10](jms-client-0-10/book/index.html)
+ - [Using the Qpid JMS client for AMQP 0-9-1](jms-client-0-8/book/index.html)
+ - [JMS examples for AMQP 0-10](qpid-jms/examples/index.html)
+ - [JMS examples for AMQP 0-9-1, 0-9, 0-8](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
  - [JCA examples](http://svn.apache.org/repos/asf/qpid/java/trunk/jca/example/)
 
 </div>

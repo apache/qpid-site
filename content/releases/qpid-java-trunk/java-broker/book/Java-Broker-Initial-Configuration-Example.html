@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,23 +111,18 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>5.8.&#160;Example of JSON 'Initial Configuration'</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>5.8.&#160;Example of JSON 'Initial Configuration'</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">5.8.&#160;Example of JSON 'Initial Configuration'</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Initial-Configuration-Configuration-Properties.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;5.&#160;Initial Configuration</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Initial-Configuration-Example"></a>5.8.&#160;Example of JSON 'Initial Configuration'</h2></div></div></div><p> An example of the default 'Initial Configuration' JSON file the broker uses is
-            provided below:</p><div class="example"><a id="d0e1666"></a><p class="title"><strong>Example&#160;5.1.&#160;JSON 'Initial configuration' File</strong></p><div class="example-contents"><pre class="programlisting">
+            provided below:</p><div class="example"><a id="d0e1694"></a><p class="title"><strong>Example&#160;5.1.&#160;JSON 'Initial configuration' File</strong></p><div class="example-contents"><pre class="programlisting">
 {
   "name": "${broker.name}",
-  "modelVersion": "6.0",
+  "modelVersion": "6.1",
   "authenticationproviders" : [ {
     "name" : "passwordFile",
     "type" : "PlainPasswordFile",
-    "path" : "${qpid.home_dir}${file.separator}etc${file.separator}passwd",
-    "preferencesproviders" : [{
-        "name": "fileSystemPreferences",
-        "type": "FileSystemPreferences",
-        "path" : "${qpid.work_dir}${file.separator}user.preferences.json"
-    }]
+    "path" : "${qpid.home_dir}${file.separator}etc${file.separator}passwd"
   } ],
     "brokerloggers" : [ {
     "name" : "logfile",

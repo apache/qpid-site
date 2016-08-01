@@ -1,8 +1,8 @@
 <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.2.&#160;Disk Space Management</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Producer-Transaction-Timeout.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Disk-Space-Management"></a>9.2.&#160;Disk Space Management</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Qpid-Producer-Flow-Control"></a>9.2.1.&#160;Producer Flow Control</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Disk-Space-Management-Producer-Flow-Control-GeneralInformation"></a>9.2.1.1.&#160;General Information</h4></div></div></div><p>
-            The Java Broker supports a flow control mechanism to which can be used to prevent either a single queue
+            The Apache Qpid Broker for Java supports a flow control mechanism to which can be used to prevent either a single queue
             or a virtualhost exceeding configured limits.  These two mechanisms are described
             next.
-        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Disk-Space-Management-Producer-Flow-Control-ServerConfiguration"></a>9.2.1.2.&#160;Server Configuration</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5343"></a>Configuring a Queue to use flow control</h5></div></div></div><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Disk-Space-Management-Producer-Flow-Control-ServerConfiguration"></a>9.2.1.2.&#160;Server Configuration</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5489"></a>Configuring a Queue to use flow control</h5></div></div></div><p>
                 Flow control is enabled on a producer when it sends a message to a Queue
                 which is "overfull". The producer flow control will be rescinded when all
                 Queues on which a producer is blocking become "underfull". A Queue is defined
@@ -12,7 +12,7 @@
             </p><p>
                 The capacity and resume capacity can be specified when the queue is created.  This
                 can be done using the Flow Control Settings within the Queue creation dialogue.
-            </p><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="d0e5356"></a>Broker Log Messages</h6></div></div></div><p>
+            </p><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="d0e5502"></a>Broker Log Messages</h6></div></div></div><p>
                     There are four Broker log messages that may occur if flow control through queue capacity limits is enabled.
                     Firstly, when a capacity limited queue becomes overfull, a log message similar to the following is produced
                 </p><pre class="programlisting">
@@ -23,7 +23,7 @@ MESSAGE [con:2(guest@anonymous(713889609)/test)/ch:1] [con:2(guest@anonymous(713
 MESSAGE [vh(/test)/qu(MyQueue)] [vh(/test)/qu(MyQueue)] QUE-1004 : Underfull : Size : 600 bytes, Resume Capacity : 800
                 </pre><p>And for every channel which becomes unblocked you will see a message similar to: </p><pre class="programlisting">
 MESSAGE [con:2(guest@anonymous(713889609)/test)/ch:1] [con:2(guest@anonymous(713889609)/test)/ch:1] CHN-1006 : Flow Control Removed
-                </pre><p>Obviously the details of connection, virtual host, queue, size, capacity, etc would depend on the configuration in use.</p></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5379"></a>Disk quota-based flow control</h5></div></div></div><p>
+                </pre><p>Obviously the details of connection, virtual host, queue, size, capacity, etc would depend on the configuration in use.</p></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5525"></a>Disk quota-based flow control</h5></div></div></div><p>
                 Flow control can also be triggered when a configured disk quota is exceeded. This is supported by the BDB and
                 Derby virtualhosts.
             </p><p>
@@ -50,7 +50,7 @@ MESSAGE [con:2(guest@anonymous(713889609)/test)/ch:1] [con:2(guest@anonymous(713
                 The Broker will also impose flow control if the filesystem hosting a virtualhost
                 exceeds a <a class="link" href="Java-Broker-Management-Managing-Broker.html#Java-Broker-Management-Managing-Broker-Context-StoreFilesystemMaxUsagePercent">
                     configured percentage.</a>.
-            </p><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="d0e5401"></a>Broker Log Messages for quota flow control</h6></div></div></div><p>
+            </p><div class="section"><div class="titlepage"><div><div><h6 class="title"><a id="d0e5547"></a>Broker Log Messages for quota flow control</h6></div></div></div><p>
                     There are two broker log messages that may occur if flow control through disk quota limits is enabled.
                     When the virtual host is blocked due to exceeding of the disk quota limit the following message
                     appears in the broker log

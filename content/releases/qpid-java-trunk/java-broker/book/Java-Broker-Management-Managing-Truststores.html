@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,15 +111,16 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>7.13.&#160;Truststores</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>7.13.&#160;Truststores</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">7.13.&#160;Truststores</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Managing-Keystores.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;7.&#160;Managing Entities</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-Group-Providers.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Management-Managing-Truststores"></a>7.13.&#160;Truststores</h2></div></div></div><p> A <a class="link" href="Java-Broker-Concepts-Other-Services.html#Java-Broker-Concepts-Truststores" title="4.10.4.&#160;Truststores">Truststore</a> is required by a
         Port in order to SSL client authentication. Some authentication provides also use a
         truststore when connecting to authentication systems that are protected by a private issuer
         SSL certificate.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Truststores-Types"></a>7.13.1.&#160;Types</h3></div></div></div><p>The following truststore types are supported. </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>File Trust Store</em></span>. This type accepts the standard JKS
-                        truststore format undertood by Java and Java tools such as <a class="link" href="http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/keytool.html" target="_top">keytool</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Non Java Trust Store</em></span>. A non java keystore accepts key
-                        material in PEM and DER file formats. </p></li><li class="listitem"><p>TODO</p></li></ul></div><p>
+                        truststore format understood by Java and Java tools such as <a class="link" href="http://docs.oracle.com/javase/7/docs/technotes/tools/solaris/keytool.html" target="_top">keytool</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Non Java Trust Store</em></span>. A non java trust store accepts key
+                        material in PEM and DER file formats. Either a path to the certificate on the server can be specified using the file:// protocol or the certificate can be uploaded with the data:// protocol</p></li><li class="listitem"><p><span class="emphasis"><em>Managed Certificate Store</em></span>. This type accepts key
+                        material in PEM and DER file formats. Contrary to the Non Java Trust Store this store allows the user to add multiple certificates and stores them in the broker configuration.</p></li><li class="listitem"><p><span class="emphasis"><em>Site Specific Trust Store</em></span>. This type will download a certificate from the provided SSL/TLS enabled URL. Note that you must specify both the protocol and the port. Example: https://example.com:443</p></li></ul></div><p>
         </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Truststores-Attributes"></a>7.13.2.&#160;Attributes</h3></div></div></div><p>
             </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Name the truststore</em></span>. Used to identify the
                         truststore.</p></li></ul></div><p>

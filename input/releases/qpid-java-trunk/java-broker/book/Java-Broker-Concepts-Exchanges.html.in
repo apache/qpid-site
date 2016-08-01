@@ -48,8 +48,11 @@
       fields in the arguments table (i.e. an OR match)</p></li></ul></div><p>A field in the bind arguments matches a field in the message if either the field in the bind arguments has no value and a field of the
     same name is present in the message headers or if the field in the bind arguments has a value and a field of the same name exists in the
     message headers and has that same value.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Concepts-Exchanges-UnroutableMessage"></a>4.6.4.&#160;Unrouteable Messages</h3></div></div></div><p>If an exchange is unable to route a message to any queues, the Broker will:
-   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>If using AMQP 0-10 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
-    The alternate exchange routes the message according to its routing algorithm and its binding table.  If the messages is still unroutable,
+   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>If using the AMQP 1.0 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
+     The alternate exchange routes the message according to its routing algorithm and its binding table.  If the message is still unroutable,
+     the message is discarded unless the sending link has requested the <code class="literal">REJECT_UNROUTABLE</code> target capability, or the Exchange has its
+     <code class="literal">unroutableMessageBehaviour</code> attribute set to <code class="literal">REJECT</code>.</p></li><li class="listitem"><p>If using the AMQP 0-10 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
+    The alternate exchange routes the message according to its routing algorithm and its binding table.  If the message is still unroutable,
     the message is discarded.</p></li><li class="listitem"><p>If using AMQP protocols 0-8..0-9-1, and the publisher set the mandatory flag and the<a class="link" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html" title="9.5.&#160;Closing client connections on unroutable mandatory messages">
      close when no route</a> feature did not close the connection, the message is returned to the Producer.</p></li><li class="listitem"><p>Otherwise, the message is discarded.</p></li></ul></div><p>
   </p></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div class="footnote" id="ftn.d0e786"><p><a class="para" href="#d0e786"><sup class="para">[5] </sup></a>

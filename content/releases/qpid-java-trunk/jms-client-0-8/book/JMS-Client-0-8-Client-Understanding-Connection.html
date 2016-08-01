@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,10 +111,10 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>5.3.&#160;Connection</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Apache Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>5.3.&#160;Connection</li></ul>
 
         <div id="-middle-content">
-          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">5.3.&#160;Connection</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Client-Understanding-ConnectionFactory.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;5.&#160;Understanding the Qpid JMS client</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Client-Understanding-Session.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Client-Understanding-Connection"></a>5.3.&#160;Connection</h2></div></div></div><p>A Connection represents an open communication channel between application and
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">5.3.&#160;Connection</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Client-Understanding-ConnectionFactory.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;5.&#160;Understanding the Client</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Client-Understanding-Session.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Client-Understanding-Connection"></a>5.3.&#160;Connection</h2></div></div></div><p>A Connection represents an open communication channel between application and
       Broker.</p><p>Connections are created from the ConnectionFactory <a class="footnote" href="#ftn.d0e384" id="d0e384"><sup class="footnote">[3]</sup></a>.</p><p>Each connection utilises a single TCP/IP connection between the process of the application
       and the process of the Broker. The act of establishing a connection is therefore a relatively
       expensive operation. It is recommended that the same connection is used for a series of
@@ -149,7 +149,7 @@ amqp://username:password@clientid/test
 amqp://username:password@clientid/test
             ?brokerlist='tcp://localhost:15672?failover='nofailover'
         </pre></div></div><p><br class="example-break" />
-        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-Heartbeating"></a>5.3.2.&#160;Heartbeating</h3></div></div></div><p>Qpid connections support heartbeating. When enabled, the Qpid JMS client and Broker
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-Heartbeating"></a>5.3.2.&#160;Heartbeating</h3></div></div></div><p>Qpid connections support heartbeating. When enabled, the Client and Broker
         exchange a heartbeat during periods of inactivity. This allows both peers to discover if the
         TCP/IP connection becomes inoperable in a timely manner.</p><p>This feature is sometimes useful in applications that must traverse firewalls as the
         heartbeat prevents connections from being closed during periods when there is no application
@@ -161,7 +161,7 @@ amqp://username:password@clientid/test
         receive a JMSException with a linked exception of AMQDisconnectedException. Any further use
         of the JMS objects (Connection, Session etc), will results in a <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/IllegalStateException.html" target="_top">IllegalStateException</a>.</p><p>To enable heartbeating either use a Connection URL including the broker option <a class="link" href="JMS-Client-0-8-Connection-URL.html#JMS-Client-0-8-Connection-URL-BrokerOptions-Heartbeat"><code class="literal">heartbeat</code></a>, or use the system property <a class="link" href="JMS-Client-0-8-System-Properties.html#JMS-Client-0-8-System-Properties-Heartbeat"><code class="literal">qpid.heartbeat</code></a>. </p><div class="example"><a id="d0e489"></a><p class="title"><strong>Example&#160;5.3.&#160;Connection URL configured for heartbeating</strong></p><div class="example-contents"><pre class="screen">
 amqp://guest:guest@clientid/?brokerlist='localhost:5672?heartbeat='5''
-        </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-SSL"></a>5.3.3.&#160;SSL</h3></div></div></div><p>The Qpid JMS client supports connections encrypted using Secure Socket Layer (SSL) and
+        </pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Client-Understanding-Connection-SSL"></a>5.3.3.&#160;SSL</h3></div></div></div><p>The Client supports connections encrypted using Secure Socket Layer (SSL) and
         SSL-Client Authentication. SSL is configured using Connection URL. To use SSL, SSL must be
         be configured on the Broker.</p><p>Some example Connection URLs using SSL follow:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Simple SSL when the Broker is secured by a certificate that is signed by a CA which
             is trusted by the JVM.</p><div class="example"><a id="d0e505"></a><p class="title"><strong>Example&#160;5.4.&#160;Connection URL configured for SSL - CA trusted by JVM</strong></p><div class="example-contents"><pre class="screen">

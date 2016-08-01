@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,7 +111,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">AMQP Messaging Broker (Java)</a></li><li>4.6.&#160;Exchanges</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>4.6.&#160;Exchanges</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">4.6.&#160;Exchanges</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Concepts-Virtualhosts.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;4.&#160;Concepts</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Concepts-Queues.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Concepts-Exchanges"></a>4.6.&#160;Exchanges</h2></div></div></div><p>An <span class="emphasis"><em>Exchange</em></span> is a named entity within the <span class="emphasis"><em>Virtualhost</em></span> which receives
@@ -164,8 +164,11 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       fields in the arguments table (i.e. an OR match)</p></li></ul></div><p>A field in the bind arguments matches a field in the message if either the field in the bind arguments has no value and a field of the
     same name is present in the message headers or if the field in the bind arguments has a value and a field of the same name exists in the
     message headers and has that same value.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Concepts-Exchanges-UnroutableMessage"></a>4.6.4.&#160;Unrouteable Messages</h3></div></div></div><p>If an exchange is unable to route a message to any queues, the Broker will:
-   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>If using AMQP 0-10 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
-    The alternate exchange routes the message according to its routing algorithm and its binding table.  If the messages is still unroutable,
+   </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>If using the AMQP 1.0 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
+     The alternate exchange routes the message according to its routing algorithm and its binding table.  If the message is still unroutable,
+     the message is discarded unless the sending link has requested the <code class="literal">REJECT_UNROUTABLE</code> target capability, or the Exchange has its
+     <code class="literal">unroutableMessageBehaviour</code> attribute set to <code class="literal">REJECT</code>.</p></li><li class="listitem"><p>If using the AMQP 0-10 protocol, and an alternate exchange has been set on the exchange, the message is routed to the alternate exchange.
+    The alternate exchange routes the message according to its routing algorithm and its binding table.  If the message is still unroutable,
     the message is discarded.</p></li><li class="listitem"><p>If using AMQP protocols 0-8..0-9-1, and the publisher set the mandatory flag and the<a class="link" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html" title="9.5.&#160;Closing client connections on unroutable mandatory messages">
      close when no route</a> feature did not close the connection, the message is returned to the Producer.</p></li><li class="listitem"><p>Otherwise, the message is discarded.</p></li></ul></div><p>
   </p></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div class="footnote" id="ftn.d0e786"><p><a class="para" href="#d0e786"><sup class="para">[5] </sup></a>

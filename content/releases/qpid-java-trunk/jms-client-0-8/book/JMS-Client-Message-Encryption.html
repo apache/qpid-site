@@ -83,7 +83,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <h3>Servers and tools</h3>
 
             <ul>
-              <li><a href="/components/java-broker/index.html">Java broker</a></li>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
               <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
               <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
             </ul>
@@ -111,7 +111,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Chapter&#160;9.&#160;Message Encryption</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-trunk/index.html">Qpid for Java Trunk</a></li><li><a href="/releases/qpid-java-trunk/jms-client-0-8/book/index.html">Apache Qpid JMS Client for AMQP protocols 0-8, 0-9 and 0-9-1</a></li><li>Chapter&#160;9.&#160;Message Encryption</li></ul>
 
         <div id="-middle-content">
           <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;9.&#160;Message Encryption</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Binding-URL.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-Message-Encryption-Sending.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="JMS-Client-Message-Encryption"></a>Chapter&#160;9.&#160;Message Encryption</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="JMS-Client-Message-Encryption.html#JMS-Client-Message-Encryption-Overview">9.1. Overview</a></span></dt><dt><span class="section"><a href="JMS-Client-Message-Encryption-Sending.html">9.2. Sending an Encrypted Message</a></span></dt><dd><dl><dt><span class="section"><a href="JMS-Client-Message-Encryption-Sending.html#JMS-Client-Message-Encryption-Sending-Setting-TrustStore">9.2.1. Providing the Trust Store</a></span></dt><dt><span class="section"><a href="JMS-Client-Message-Encryption-Sending.html#JMS-Client-Message-Encryption-Sending-Enabling-Encryption">9.2.2. Enabling Encryption</a></span></dt><dt><span class="section"><a href="JMS-Client-Message-Encryption-Sending.html#JMS-Client-Message-Encryption-Sending-Choosing-Recipients">9.2.3. Choosing Recipients</a></span></dt><dt><span class="section"><a href="JMS-Client-Message-Encryption-Sending.html#JMS-Client-Message-Encryption-Sending-Exposing-Properties">9.2.4. Exposing Properties</a></span></dt></dl></dd><dt><span class="section"><a href="JMS-Client-Message-Encryption-Receiving.html">9.3. Receiving an Encrypted Message</a></span></dt><dd><dl><dt><span class="section"><a href="JMS-Client-Message-Encryption-Receiving.html#JMS-Client-Message-Encryption-Sending-Setting-KeyStore">9.3.1. Providing the Key Store</a></span></dt></dl></dd></dl></div><p>
@@ -123,9 +123,9 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         sending, and the recipient(s), upon receiving the message, decrypt it with some secret known only to them.
     </p><p>
         Neither JMS nor AMQP provide any defined mechanism for message encryption, however it is possible for any
-        application to build a message encryption scheme on top of a JMS API. For convenience the Qpid JMS client
+        application to build a message encryption scheme on top of a JMS API. For convenience the Client
         provides a built in mechanism for encryption and decrypting messages. This mechanism is currently only
-        implemented in the Qpid JMS client for AMQP 0-8/0-9/0-9-1/0-10.  If you use a different client you will be
+        implemented in the Client for AMQP 0-8/0-9/0-9-1/0-10. If you use a different client you will be
         unable to read encrypted messages.
     </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-Message-Encryption-Overview"></a>9.1.&#160;Overview</h2></div></div></div><p>
             For each encrypted message which the client sends, a new message-specific secret key is generated. This
@@ -138,7 +138,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             BytesMessage containing the encrypted data.
         </p><p>
             In order to send an encrypted message it is necessary to know the Certificates of the intended recipients.
-            Certificates can be distributed either through out-of-band mechanisms, or the Qpid Java Broker can be used
+            Certificates can be distributed either through out-of-band mechanisms, or the Apache Qpid Broker for Java can be used
             to distribute them to clients.
         </p><p>
             In order to receive an encrypted message it is necessary to have a Certificate (which needs to be

@@ -12,13 +12,13 @@
     </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Types"></a>9.10.2.&#160;Types of Memory</h3></div></div></div><p>
       While Java has a couple of different internal memory types we will focus on the two types that are relevant to the Qpid broker.
       Both of these memory types are taken from the same physical memory (RAM).
-    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5806"></a>9.10.2.1.&#160;Heap</h4></div></div></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5952"></a>9.10.2.1.&#160;Heap</h4></div></div></div><p>
         Normally, all objects are allocated from Java's heap memory.
         Once, nothing references an object it is cleaned up by the Java Garbage Collector and it's memory returned to the heap.
         This works fine for most use cases.
         However, when interacting with other parts of the operating system using Java's heap is not ideal.
         This is where the so called direct memory comes into play.
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5811"></a>9.10.2.2.&#160;Direct</h4></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5957"></a>9.10.2.2.&#160;Direct</h4></div></div></div><p>
         The world ouside of the JVM, in particular the operating system (OS), does not know about Java heap memory and uses other structures like C arrays.
         In order to interact with these systems Java needs to copy data between its own heap memory and these native structures.
         This can become a bottle neck when there is a lot of exchange between Java and the OS like in I/O (both disk and network) heavy applications.
@@ -29,16 +29,16 @@
       This section lists some note worthy users of memory within the broker and where possible lists their usage of heap and direct memory.
       Note that to ensure smooth performance some heap memory should remain unused by the application and be reserved for the JVM to do house keeping and garbage collection.
       <a class="link" href="https://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/util/DbCacheSize.html" target="_top">Some guides</a> advise to reserve up to 30% of heap memory for the JVM.
-    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5830"></a>9.10.3.1.&#160;Broker</h4></div></div></div><p>
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5976"></a>9.10.3.1.&#160;Broker</h4></div></div></div><p>
         The broker itself uses a moderate amount of heap memory (&#8776;15 MB).
         However, each connection and session comes with a heap overhead of about 17 kB and 15 kB respectively.
         In addition, each connection reserves 512 kB direct memory for network I/O.
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5835"></a>9.10.3.2.&#160;Virtual Hosts</h4></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5981"></a>9.10.3.2.&#160;Virtual Hosts</h4></div></div></div><p>
         The amount of memory a Virtual Host uses depends on its type.
         For a JSON Virtual Host Node with a BDB Virtual Host the heap memory usage is approximately 2 MB.
         However, each BDB Virtual Hosts has a mandatory cache in heap memory which has an impact on performance.
         See <a class="link" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Usage-BDB" title="9.10.3.4.&#160;Message Store">below</a> for more information.
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5843"></a>9.10.3.3.&#160;Messages</h4></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5989"></a>9.10.3.3.&#160;Messages</h4></div></div></div><p>
         Messages and their headers are kept in direct memory and have an additional overhead of approximately 1 kB heap memory each.
         This means that most brokers will want to have more direct memory than heap memory.
         When many small messages accumulate on the broker the 1 kB heap memory overhead can become a <a class="link" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory-Heap" title="9.10.4.1.&#160;Low on Heap Memory">limiting factor</a>.
@@ -48,7 +48,7 @@
         For persistent messages this only means freeing the direct memory representation because they always have an on-disk representation to guard against unexpected failure (e.g., a power cut).
         For transient messages this implies additional disk I/O.
         After being flown to disk messages need to be re-read from disk before delivery.
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Usage-BDB"></a>9.10.3.4.&#160;Message Store</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5862"></a>Berkeley DB (BDB)</h5></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Usage-BDB"></a>9.10.3.4.&#160;Message Store</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6008"></a>Berkeley DB (BDB)</h5></div></div></div><p>
           The broker can use Oracle's BDB JE (BDB) as a message store to persist messages by writing them to a database.
           BDB uses a mandatory cache for navigating and organising its database structure.
           Sizing and tuning this cache is a topic of its own and would go beyond the scope of this guide.
@@ -57,9 +57,9 @@
           For those interested, Qpid uses <a class="link" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/CacheMode.html#EVICT_LN" target="_top">EVICT_LN</a> as its default JE cacheMode.
         </p><p>
           Note that due to licensing concerns Qpid does not ship the BDB JE jar files.
-        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5878"></a>Derby</h5></div></div></div><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6024"></a>Derby</h5></div></div></div><p>
           TODO
-        </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5883"></a>9.10.3.5.&#160;HTTP Management</h4></div></div></div><p>
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6029"></a>9.10.3.5.&#160;HTTP Management</h4></div></div></div><p>
         Qpid uses Jetty for the HTTP Management (both REST and Web Management Console).
         When the management plugin is loaded it will allocate the memory it needs and should not require more memory during operation and can thus be largely ignored.
       </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Low-Memory"></a>9.10.4.&#160;Low Memory Conditions</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Low-Memory-Heap"></a>9.10.4.1.&#160;Low on Heap Memory</h4></div></div></div><p>
@@ -83,18 +83,18 @@
         </li></ul></div><p>
       As an example, this would accomodate a broker with 50 connections, each serving 5 sessions, and each session having 1000 messages of 1 kB on queues in the broker.
       This means a total of 250 concurrent sessions and a total of 250000 messages without flowing messages to disk.
-    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Tuning"></a>9.10.6.&#160;Memory Tuning the Broker</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5919"></a>9.10.6.1.&#160;Java Tuning</h4></div></div></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Tuning"></a>9.10.6.&#160;Memory Tuning the Broker</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6065"></a>9.10.6.1.&#160;Java Tuning</h4></div></div></div><p>
         Most of these options are implementation specific. It is assumed you are using Oracle Java 1.7 and Qpid v6.
         </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
             Heap and direct memory can be configured through the <a class="link" href="Java-Broker-Appendix-Environment-Variables.html#Java-Broker-Appendix-Environment-Variables-Qpid-Java-Mem"><code class="literal">QPID_JAVA_MEM</code> environment variable</a>.
           </li></ul></div><p>
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5933"></a>9.10.6.2.&#160;Qpid Tuning</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6079"></a>9.10.6.2.&#160;Qpid Tuning</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
           The system property <code class="literal">qpid.broker.bdbTotalCacheSize</code> sets the total amount of heap memory (in bytes) allocated to BDB caches.
         </li><li class="listitem">
           The system property <code class="literal">broker.flowToDiskThreshold</code> sets the threshold (in bytes) for flowing transient messages to disk.
           Should the broker use more than direct memory it will flow incoming messages to disk.
           Should utilisation fall beneath the threshold it will stop flowing messages to disk.
-        </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5947"></a>9.10.6.3.&#160;Formulas</h4></div></div></div><p>
+        </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6093"></a>9.10.6.3.&#160;Formulas</h4></div></div></div><p>
         We developed a simple formula which estimates the <span class="emphasis"><em>minimum</em></span> memory usage of the broker under certain usage.
         These are rough estimate so we strongly recommend testing your configuration extensively.
         Also, if your machine has more memory available by all means use more memory as it can only improve the performance and stability of your broker.
@@ -107,12 +107,12 @@
           memory<sub>direct</sub> = 2 MB + (200 B + averageSize<sub>msg</sub> *2)*  N<sub>messages</sub> + 512 kB * N<sub>connections</sub>
         </span>
         Where <span class="mathphrase">N</span> denotes the total number of connections/sessions/messages on the broker. Furthermore, for direct memory only the messages that have not been flown to disk are relevant.
-      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5990"></a>9.10.6.4.&#160;Things to Consider</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e5993"></a>Performance</h5></div></div></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6136"></a>9.10.6.4.&#160;Things to Consider</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6139"></a>Performance</h5></div></div></div><p>
           Choosing a smaller direct memory size will lower the threshold for flowing transient messages to disk when messages accumulate on a queue.
           This can have impact on performance in the transient case where otherwise no disk I/O would be involved.
         </p><p>
           Having to little heap memory will result in poor performance due to frequent garbage collection events. See <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory" title="9.10.4.&#160;Low Memory Conditions">Section&#160;9.10.4, &#8220;Low Memory Conditions&#8221;</a> for more details.
-        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6002"></a>OutOfMemoryError</h5></div></div></div><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6148"></a>OutOfMemoryError</h5></div></div></div><p>
           Choosing too low heap memory can cause an OutOfMemoryError which will force the broker to shut down.
           In this sense the available heap memory puts a hard limit on the number of messages you can have in the broker at the same time.
         </p><p>
