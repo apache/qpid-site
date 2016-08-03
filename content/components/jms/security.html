@@ -137,10 +137,15 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <div style="display:none;" id="CVE-2016-4974_details">
             <p>Description: When applications call getObject() on a consumed JMS ObjectMessage they are
             subject to the behaviour of any object deserialization during the process
-            of constructing the body to return. Unless the application has taken outside
+            of constructing the body to return.  Unless the application has taken outside
             steps to limit the deserialization process, they can't protect against
             input that might try to make undesired use of classes available on the
-            application classpath that might be vulnerable to exploitation.</p>
+            application classpath that might be vulnerable to exploitation.
+            In order to exploit this vulnerability, an attacker would need
+            to be able to inject a suitably crafted AMQP message containing the
+            malicious JMS Object Message into the AMQP message network. For this,
+            the attacker would require valid authentication credentials and
+            suitable authorisation.</p>
 
             <p> Mitigation: Users using ObjectMessage can upgrade to
             Qpid JMS client 0.10.0 or later, and use the new
