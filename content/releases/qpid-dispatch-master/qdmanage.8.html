@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>NAME - Apache Qpid&#8482;</title>
+    <title>SYNOPSIS - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,58 +111,82 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-master/index.html">Qpid Dispatch Master</a></li><li>NAME</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-master/index.html">Qpid Dispatch Master</a></li><li>SYNOPSIS</li></ul>
 
         <div id="-middle-content">
-          <h2>NAME</h2>
-<p>qdmanage -
-   management client to control or query qdrouterd(8)
-</p>
-<h2><a name="_synopsis"></a>SYNOPSIS</h2>
-<p><strong>qdmanage</strong> [<b>OPTIONS</b>] <b>OPERATION</b> [<b>ARGUMENTS</b>]</p>
-<h2><a name="_description"></a>DESCRIPTION</h2>
-<p>An AMQP management client for use with qdrouterd. Sends AMQP management
+          <div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><strong>qdmanage</strong> [<em>OPTIONS</em>] <em>OPERATION</em> [<em>ARGUMENTS</em>]</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>An AMQP management client for use with qdrouterd. Sends AMQP management
 operations requests and prints the response in JSON format. This is a
 generic AMQP management tool and can be used with any standard AMQP
-managed endpoint, not just with qdrouter.</p>
-<h2><a name="_options"></a>OPTIONS</h2>
-<p>-h, --help
-:   show this help message and exit</p>
-<p>--version
-:   Print version and exit.</p>
-<p>--type=TYPE
-:   Type of entity to operate on.</p>
-<p>--name=NAME
-:   Name of entity to operate on.</p>
-<p>--identity=ID
-:   Identity of entity to operate on.</p>
-<p>--indent=INDENT
-:   Pretty-printing indent. -1 means don&#8217;t pretty-print (default 2)</p>
-<p>--stdin
-:   Read attributes as JSON map or list of maps from stdin.</p>
-<p>--body=BODY
-:   JSON value to use as body of a non-standard operation call.</p>
-<p>--properties=PROPERTIES
-:   JSON map to use as properties for a non-standard operation call.</p>
-<h3><a name="_connection_options"></a>Connection Options</h3>
-<p>-b URL, --bus=URL
-:   URL of the messaging bus to connect to (default 0.0.0.0)</p>
-<p>-r ROUTER-ID, --router=ROUTER-ID
-:   Router to be queried</p>
-<p>-t SECS, --timeout=SECS
-:   Maximum time to wait for connection in seconds (default 5)</p>
-<p>--ssl-certificate=CERT
-:   Client SSL certificate (PEM Format)</p>
-<p>--ssl-key=KEY
-:   Client SSL private key (PEM Format)</p>
-<p>--ssl-trustfile=TRUSTED-CA-DB
-:   Trusted Certificate Authority Database file (PEM Format)</p>
-<p>--ssl-password=PASSWORD
-:   Certificate password, will be prompted if not specifed.</p>
-<h2><a name="_operations"></a>OPERATIONS</h2>
-<dl>
-<dt>
-<code>query</code> [<b>ATTR</b>&#8230;]
+managed endpoint, not just with qdrouter.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>-h, --help
+:   show this help message and exit</p></div>
+<div class="paragraph"><p>--version
+:   Print version and exit.</p></div>
+<div class="paragraph"><p>--type=TYPE
+:   Type of entity to operate on.</p></div>
+<div class="paragraph"><p>--name=NAME
+:   Name of entity to operate on.</p></div>
+<div class="paragraph"><p>--identity=ID
+:   Identity of entity to operate on.</p></div>
+<div class="paragraph"><p>--indent=INDENT
+:   Pretty-printing indent. -1 means don&#8217;t pretty-print</p></div>
+<div class="paragraph"><p>--stdin
+:   Read attributes as JSON map or list of maps from</p></div>
+<div class="paragraph"><p>--body=BODY
+:   JSON value to use as body of a non-standard operation</p></div>
+<div class="paragraph"><p>--properties=PROPERTIES
+:   JSON map to use as properties for a non-standard operation call.</p></div>
+<div class="sect2">
+<h3 id="_connection_options">Connection Options</h3>
+<div class="paragraph"><p>-b URL, --bus=URL
+:   URL of the messaging bus to connect to (default 0.0.0.0)</p></div>
+<div class="paragraph"><p>-r ROUTER-ID, --router=ROUTER-ID
+:   Router to be queried</p></div>
+<div class="paragraph"><p>-t SECS, --timeout=SECS
+:   Maximum time to wait for connection in seconds (default 5)</p></div>
+<div class="paragraph"><p>--ssl-certificate=CERT
+:   Client SSL certificate (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-key=KEY
+:   Client SSL private key (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-trustfile=TRUSTED-CA-DB
+:   Trusted Certificate Authority Database file (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-password=PASSWORD
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--ssl-password-file=SSL-PASSWORD-FILE
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--sasl-mechanisms=SASL-MECHANISMS
+:   Allowed sasl mechanisms to be supplied during the sasl handshake.</p></div>
+<div class="paragraph"><p>--sasl-username=SASL-USERNAME
+:   User name for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password=SASL-PASSWORD
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password-file=SASL-PASSWORD-FILE
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--ssl-disable-peer-name-verify
+:   Disables SSL peer name verification. WARNING - This option is insecure and must not be used in production environments</p></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operations">OPERATIONS</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>query</code> [<em>ATTR</em>&#8230;]
 </dt>
 <dd>
 <p>
@@ -172,8 +196,8 @@ managed endpoint, not just with qdrouter.</p>
   listed.
 </p>
 </dd>
-<dt>
-<code>create</code> [<b>ATTR=VALUE</b>&#8230;]
+<dt class="hdlist1">
+<code>create</code> [<em>ATTR=VALUE</em>&#8230;]
 </dt>
 <dd>
 <p>
@@ -183,7 +207,7 @@ managed endpoint, not just with qdrouter.</p>
   multiple entities.
 </p>
 </dd>
-<dt>
+<dt class="hdlist1">
 <code>read</code>
 </dt>
 <dd>
@@ -192,8 +216,8 @@ managed endpoint, not just with qdrouter.</p>
   --identity options.
 </p>
 </dd>
-<dt>
-<code>update</code> [<b>ATTR=VALUE</b>&#8230;]
+<dt class="hdlist1">
+<code>update</code> [<em>ATTR=VALUE</em>&#8230;]
 </dt>
 <dd>
 <p>
@@ -203,7 +227,7 @@ managed endpoint, not just with qdrouter.</p>
   update a single entity, or a JSON list of maps to update multiple entities.
 </p>
 </dd>
-<dt>
+<dt class="hdlist1">
 <code>delete</code>
 </dt>
 <dd>
@@ -211,8 +235,8 @@ managed endpoint, not just with qdrouter.</p>
   Delete an entity specified by the --name or --identity options.
 </p>
 </dd>
-<dt>
-<code>get-types</code> [<b>TYPE</b>]
+<dt class="hdlist1">
+<code>get-types</code> [<em>TYPE</em>]
 </dt>
 <dd>
 <p>
@@ -220,8 +244,8 @@ managed endpoint, not just with qdrouter.</p>
   types.
 </p>
 </dd>
-<dt>
-<code>get-operations</code> [<b>TYPE</b>]
+<dt class="hdlist1">
+<code>get-operations</code> [<em>TYPE</em>]
 </dt>
 <dd>
 <p>
@@ -229,8 +253,8 @@ managed endpoint, not just with qdrouter.</p>
   types.
 </p>
 </dd>
-<dt>
-<code>get-attributes</code> [<b>TYPE</b>]
+<dt class="hdlist1">
+<code>get-attributes</code> [<em>TYPE</em>]
 </dt>
 <dd>
 <p>
@@ -238,8 +262,8 @@ managed endpoint, not just with qdrouter.</p>
   types.
 </p>
 </dd>
-<dt>
-<code>get-annotations</code> [<b>TYPE</b>]
+<dt class="hdlist1">
+<code>get-annotations</code> [<em>TYPE</em>]
 </dt>
 <dd>
 <p>
@@ -247,7 +271,7 @@ managed endpoint, not just with qdrouter.</p>
   types.
 </p>
 </dd>
-<dt>
+<dt class="hdlist1">
 <code>get-mgmt-nodes</code>
 </dt>
 <dd>
@@ -255,8 +279,8 @@ managed endpoint, not just with qdrouter.</p>
   List all other known management nodes connected to this one.
 </p>
 </dd>
-<dt>
-<code>get-json-schema</code> [<b>INDENT</b>]
+<dt class="hdlist1">
+<code>get-json-schema</code> [<em>INDENT</em>]
 </dt>
 <dd>
 <p>
@@ -264,18 +288,22 @@ managed endpoint, not just with qdrouter.</p>
   formatted output.
 </p>
 </dd>
-<dt>
-<code>get-log</code> [<b>INDENT</b>]
+<dt class="hdlist1">
+<code>get-log</code> [<em>INDENT</em>]
 </dt>
 <dd>
 <p>
   Get recent log entries from the router.
 </p>
 </dd>
-</dl>
-<h2><a name="_files"></a>FILES</h2>
-<dl>
-<dt>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_files">FILES</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
 /usr/local/share/doc/qpid-dispatch/qdrouter.json
 </dt>
 <dd>
@@ -283,7 +311,7 @@ managed endpoint, not just with qdrouter.</p>
   Management schema for qdrouterd.
 </p>
 </dd>
-<dt>
+<dt class="hdlist1">
 /usr/local/share/doc/qpid-dispatch/qdrouter.json.readme.txt
 </dt>
 <dd>
@@ -291,31 +319,46 @@ managed endpoint, not just with qdrouter.</p>
   Explanation of the management schema.
 </p>
 </dd>
-</dl>
-<h2><a name="_examples"></a>EXAMPLES</h2>
-<p><b>Show the logging configuration</b></p>
-<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">EXAMPLES</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Show the logging configuration</div>
+<div class="content">
 <pre><code>qdmanage query --type=log</code></pre>
-</td></tr></table>
-<p><b>Enable debug and higher log messages by default:</b></p>
-<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td>
+</div></div>
+<div class="listingblock">
+<div class="title">Enable debug and higher log messages by default:</div>
+<div class="content">
 <pre><code>qdmanage update name=log/DEFAULT enable=debug+</code></pre>
-</td></tr></table>
-<p><b>Enable trace log messages only for the MESSAGE module and direct MESSAGE logs to the file "test.log"</b></p>
-<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td>
+</div></div>
+<div class="listingblock">
+<div class="title">Enable trace log messages only for the MESSAGE module and direct MESSAGE logs to the file "test.log"</div>
+<div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=trace output=test.log</code></pre>
-</td></tr></table>
-<p><b>Set MESSAGE logging back to the default</b></p>
-<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td>
+</div></div>
+<div class="listingblock">
+<div class="title">Set MESSAGE logging back to the default</div>
+<div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=default</code></pre>
-</td></tr></table>
-<p><b>Disable MESSAGE logging</b></p>
-<table border="0" bgcolor="#e8e8e8" width="100%" cellpadding="10"><tr><td>
+</div></div>
+<div class="listingblock">
+<div class="title">Disable MESSAGE logging</div>
+<div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=none</code></pre>
-</td></tr></table>
-<h2><a name="_see_also"></a>SEE ALSO</h2>
-<p><b>qdrouterd(8)</b>, <b>qdstat(8)</b>, <b>qdrouterd.conf(5)</b></p>
-<p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>qdrouterd(8)</em>, <em>qdstat(8)</em>, <em>qdrouterd.conf(5)</em></p></div>
+<div class="paragraph"><p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p></div>
+</div>
+</div>
 
 
           <hr/>
