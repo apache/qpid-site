@@ -29,12 +29,29 @@ def gen_books_and_man(release, source_dir, output_dir):
         call("make")
         call("make doc")
 
-    build_doc = join(build_dir, "doc")
+    book_build_dir = join(build_dir, "doc", "html", "book")
 
-    # .html.in files are raw HTML bodies, the render script will apply the site style.
-    for f in list_dir(build_doc, "*.html.in",  "*.pdf", "*.png"):
-        if not f == "index.html.in": # Use gen-dispatch-release-page index.
-            copy(join(build_doc, f), join(output_dir, f))
+    for f in list_dir(book_build_dir, "*.html"):
+        input_file = join(book_build_dir, f)
+        output_file = join(output_dir, "book", "{}.in".format(f))
+
+        copy(input_file, output_file)
+
+    book_image_dir = join(build_dir, "doc", "html", "_images")
+
+    for f in list_dir(book_image_dir, "*"):
+        input_file = join(book_image_dir, f)
+        output_file = join(output_dir, "_images", f)
+
+        copy(input_file, output_file)
+
+    man_build_dir = join(build_dir, "doc", "html", "man")
+
+    for f in list_dir(man_build_dir, "*.html"):
+        input_file = join(man_build_dir, f)
+        output_file = join(output_dir, "man", "{}.in".format(f))
+
+        copy(input_file, output_file)
 
 ## Now do stuff ##
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
