@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid Dispatch Master - Apache Qpid&#8482;</title>
+    <title>2.2. Tools. - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,43 +111,85 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid Dispatch Master</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-0.6.1/index.html">Qpid Dispatch 0.6.1</a></li><li>2.2. Tools.</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-dispatch-master">Qpid Dispatch Master</h1>
-
-<div class="feature">
-
-<h2 id="warning-this-is-a-snapshot-of-work-in-progress">Warning! This is a snapshot of work in progress</h2>
-
-<p>Code and documentation found here may be unstable, incorrect, or
-incomplete.  For a smoother experience, see the <a href="/releases/qpid-dispatch-0.6.1/index.html">current stable
-release</a>.</p>
-
-<p>This content was generated at 09:51  on Monday, 08 August 2016.</p>
-
+          
+  
+  <div class="section" id="tools">
+<h1>2.2. Tools<a class="headerlink" href="#tools" title="Permalink to this headline">.</a></h1>
+<div class="section" id="qdstat">
+<h2>2.2.1. qdstat<a class="headerlink" href="#qdstat" title="Permalink to this headline">.</a></h2>
+<p><em>qdstat</em> is a command line tool that lets you view the status of a
+Dispatch Router. The following options are useful for seeing what the
+router is doing:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head"><em>Option</em></th>
+<th class="head"><em>Description</em></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>-l</td>
+<td>Print a list of AMQP links attached to the router. Links are
+unidirectional. Outgoing links are usually associated with a subscription
+address. The tool distinguishes between <em>endpoint</em> links and <em>router</em>
+links. Endpoint links are attached to clients using the router. Router links
+are attached to other routers in a network of routbers.</td>
+</tr>
+<tr class="row-odd"><td>-a</td>
+<td>Print a list of addresses known to the router.</td>
+</tr>
+<tr class="row-even"><td>-n</td>
+<td>Print a list of known routers in the network.</td>
+</tr>
+<tr class="row-odd"><td>-c</td>
+<td>Print a list of connections to the router.</td>
+</tr>
+<tr class="row-even"><td>&#8211;autolinks</td>
+<td>Print a list of configured auto-links.</td>
+</tr>
+<tr class="row-odd"><td>&#8211;linkroutes</td>
+<td>Print a list of configures link-routes.</td>
+</tr>
+</tbody>
+</table>
+<p>For complete details see the <cite>qdstat(8)</cite> man page and the output of
+<cite>qdstat &#8211;help</cite>.</p>
+</div>
+<div class="section" id="qdmanage">
+<h2>2.2.2. qdmanage<a class="headerlink" href="#qdmanage" title="Permalink to this headline">.</a></h2>
+<p><em>qdmanage</em> is a general-purpose AMQP management client that allows you
+to not only view but modify the configuration of a running dispatch
+router.</p>
+<p>For example you can query all the connection entities in the router:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage query --type connection
+</pre></div>
+</div>
+<p>To enable logging debug and higher level messages by default:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage update log/DEFAULT enable=debug+
+</pre></div>
+</div>
+<p>In fact, everything that can be configured in the configuration file can
+also be created in a running router via management. For example to
+create a new listener in a running router:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage create type=listener port=5555
+</pre></div>
+</div>
+<p>Now you can connect to port 5555, for exampple:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>$ qdmanage query -b localhost:5555 --type listener
+</pre></div>
+</div>
+<p>For complete details see the <cite>qdmanage(8)</cite> man page and the output of
+<cite>qdmanage &#8211;help</cite>. Also for details of what can be configured see the
+<cite>qdrouterd.conf(5)</cite> man page.</p>
+</div>
 </div>
 
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
-
-<ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master">Installing Qpid Dispatch</a></li>
-<li><a href="book.html">Dispatch Router User Guide</a> (<a href="book.pdf">PDF</a>)</li>
-<li><a href="qdrouterd.8.html">qdrouterd(8)</a> - Router daemon</li>
-<li><a href="qdrouterd.conf.5.html">qdrouterd.conf(5)</a> - Daemon configuration</li>
-<li><a href="qdstat.8.html">qdstat(8)</a> - Get router statistics</li>
-<li><a href="qdmanage.8.html">qdmanage(8)</a> - Manage the router</li>
-</ul>
-
-</div>
-
-<h2 id="more-information">More information</h2>
-
-<ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git">Source repository</a></li>
-</ul>
 
 
           <hr/>

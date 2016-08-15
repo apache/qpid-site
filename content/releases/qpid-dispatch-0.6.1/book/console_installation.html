@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid Dispatch Master - Apache Qpid&#8482;</title>
+    <title>4.2. Console installation. - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,43 +111,49 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid Dispatch Master</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-0.6.1/index.html">Qpid Dispatch 0.6.1</a></li><li>4.2. Console installation.</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-dispatch-master">Qpid Dispatch Master</h1>
-
-<div class="feature">
-
-<h2 id="warning-this-is-a-snapshot-of-work-in-progress">Warning! This is a snapshot of work in progress</h2>
-
-<p>Code and documentation found here may be unstable, incorrect, or
-incomplete.  For a smoother experience, see the <a href="/releases/qpid-dispatch-0.6.1/index.html">current stable
-release</a>.</p>
-
-<p>This content was generated at 09:51  on Monday, 08 August 2016.</p>
-
+          
+  
+  <div class="section" id="console-installation">
+<h1>4.2. Console installation<a class="headerlink" href="#console-installation" title="Permalink to this headline">.</a></h1>
+<div class="section" id="prerequisites">
+<h2>4.2.1. Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">.</a></h2>
+<p>The following need to be installed before running a console:</p>
+<ul class="simple">
+<li>One or more dispatch routers. See the documentation for the dispatch router for help in starting a router network.</li>
+<li>A websockets to tcp proxy.</li>
+<li>A web server. This can be any server capable of serving static html/js/css/image files.</li>
+</ul>
+<p>To install a websockets to tcp  proxy:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>sudo dnf install python-websockify
+websockify localhost:5673 localhost:5672
+</pre></div>
+</div>
+<p>This will start the proxy listening to ws traffic on port 5673 and translating it to tcp on port 5672.
+One of the routers in the network needs to have a listener configured on port 5672. That listener&#8217;s role should be &#8216;normal&#8217;. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>listener {
+   host: 0.0.0.0
+   role: normal
+   port: amqp
+   saslMechanisms: ANONYMOUS
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="the-console-files">
+<h2>4.2.2. The console files<a class="headerlink" href="#the-console-files" title="Permalink to this headline">.</a></h2>
+<dl class="docutils">
+<dt>The files for the console are located under the console/stand-alone directory in the source tree.::</dt>
+<dd>index.html
+plugin/</dd>
+<dt>Copy these files to a directory under the the html or webapps directory of your web server. For example, for apache tomcat the files should be under webapps/dispatch. Then the console is available as::</dt>
+<dd><a class="reference external" href="http://localhost:8080/dispatch">http://localhost:8080/dispatch</a></dd>
+</dl>
+</div>
 </div>
 
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
-
-<ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master">Installing Qpid Dispatch</a></li>
-<li><a href="book.html">Dispatch Router User Guide</a> (<a href="book.pdf">PDF</a>)</li>
-<li><a href="qdrouterd.8.html">qdrouterd(8)</a> - Router daemon</li>
-<li><a href="qdrouterd.conf.5.html">qdrouterd.conf(5)</a> - Daemon configuration</li>
-<li><a href="qdstat.8.html">qdstat(8)</a> - Get router statistics</li>
-<li><a href="qdmanage.8.html">qdmanage(8)</a> - Manage the router</li>
-</ul>
-
-</div>
-
-<h2 id="more-information">More information</h2>
-
-<ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git">Source repository</a></li>
-</ul>
 
 
           <hr/>
