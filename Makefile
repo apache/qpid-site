@@ -116,6 +116,9 @@ gen-jms-release: gen-jms-release-page gen-jms-release-notes gen-jms-release-docs
 .PHONY: gen-cpp-release
 gen-cpp-release: gen-cpp-release-page gen-cpp-release-notes gen-cpp-release-api-doc gen-cpp-release-examples gen-cpp-release-books
 
+.PHONY: gen-python-release
+gen-python-release: gen-python-release-page gen-python-release-notes gen-python-release-api-doc gen-python-release-examples
+
 gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
 gen-proton-release-%: 
 	scripts/gen-proton-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
@@ -135,6 +138,10 @@ gen-jms-release-%:
 gen-cpp-release-%: RELEASE_DIR := input/releases/qpid-cpp-${RELEASE}
 gen-cpp-release-%:
 	scripts/gen-cpp-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+
+gen-python-release-%: RELEASE_DIR := input/releases/qpid-python-${RELEASE}
+gen-python-release-%:
+	scripts/gen-python-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
 .PHONY: update-plano
 update-plano:

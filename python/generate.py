@@ -399,7 +399,7 @@ def render_release_notes(project, release):
 def _fetch_issues(project, release):
     query = list()
 
-    if project in ("qpid-cpp", "qpid-java"):
+    if project in ("qpid-cpp", "qpid-java", "qpid-python"):
         project = "qpid"
 
     query.append("project = '{}'".format(project))

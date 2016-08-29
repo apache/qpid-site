@@ -1,0 +1,213 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+from datetime import datetime
+
+source_artefact_records = (
+    ("qpid-python-{}.tar.gz", "Qpid Messaging API (Python)"),
+)
+
+component_records = (
+    ("messaging-api", "Qpid Messaging API", "Python", "Linux, Windows", "0-10"),
+)
+
+documentation = \
+"""
+<div class="two-column" markdown="1">
+
+ - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md;hb=HEAD)
+ - [Python API reference](messaging-api/api/index.html)
+ - [Python examples](messaging-api/examples/index.html)
+
+</div>
+"""
+
+template = \
+"""
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Python {release}
+
+Qpid Python offers a connection-oriented AMQP messaging API. More
+about [Qpid]({{{{site_url}}}}/index.html).
+
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
+
+It's important to [verify the
+integrity]({{{{site_url}}}}/download.html#verify-what-you-download) of the
+files you download.
+
+## Source archives
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{source_artefacts}
+
+## Components
+
+| Component | Languages | Platforms | AMQP versions |
+|-----------|-----------|-----------|---------------|
+{components}
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=tag;h={release})
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {{
+      if ("{release}" === "{{{{current_python_release}}}}") {{
+          _modifyCurrentReleaseLinks();
+      }}
+  }});
+</script>
+"""
+
+def gen_release_page(release, issues_release, source_release, release_dir):
+    output_path = join(release_dir, "index.md")
+
+    components = list()
+
+    source_artefacts = list()
+    source_artefact_url = "http://archive.apache.org/dist/qpid/{}/{}"
+
+    for artefact, summary in source_artefact_records:
+        artefact = artefact.format(release)
+        artefact_url = source_artefact_url.format(release, artefact)
+        asc_url = "{}.asc".format(artefact_url)
+        md5_url = "{}.md5".format(artefact_url)
+        sha1_url = "{}.sha1".format(artefact_url)
+
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha1_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args)
+
+        source_artefacts.append(row)
+
+    for key, name, languages, platforms, amqp_versions in component_records:
+        link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)
+        args = link, languages, platforms, amqp_versions
+        components.append("| {} | {} | {} | {} |".format(*args))
+
+    source_artefacts = "\n".join(source_artefacts)
+    components = "\n".join(components)
+
+    jql = "project = QPID AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    vars = locals()
+    vars["documentation"] = documentation
+
+    output = template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+master_template = """
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Python Documentation
+
+<div class="feature" markdown="1">
+
+## Warning! This is a snapshot of work in progress
+
+Documentation found here may be unstable, incorrect, or incomplete.
+For a smoother experience, see the [current stable
+release]({{{{current_python_release_url}}}}/index.html).
+
+This content was generated at {time} on {day}, {date}.
+
+</div>
+
+{documentation}
+
+## More information
+
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-python.git)
+"""
+
+def gen_master_release_page(release_dir):
+    output_path = join(release_dir, "index.md")
+
+    now = datetime.now()
+
+    day = now.strftime("%A")
+    date = now.strftime("%d %B %Y")
+    time = now.strftime("%H:%M %Z")
+
+    vars = locals()
+    vars["documentation"] = documentation
+    
+    output = master_template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+
+if release == "master":
+    gen_master_release_page(release_dir)
+else:
+    gen_release_page(release, issues_release, source_release, release_dir)
+
+notice("Release page generated")
