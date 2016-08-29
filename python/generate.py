@@ -114,7 +114,8 @@ def get_git_release_branch_url(module, release, path=""):
     to.
     """
     modules = {
-        "proton": "https://github.com/apache/qpid-proton/tree"
+        "cpp": "https://github.com/apache/qpid-cpp/tree",
+        "proton": "https://github.com/apache/qpid-proton/tree",
     }
 
     if release == "trunk":

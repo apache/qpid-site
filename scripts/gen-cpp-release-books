@@ -24,7 +24,7 @@ import uuid
 from xml.etree import ElementTree
 
 def gen_books(release, source_dir, output_dir):
-    input_dir = join(source_dir, "doc", "book")
+    input_dir = join(source_dir, "docs", "book")
 
     stylesheet = """<?xml version='1.0'?>
     <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
@@ -85,7 +85,7 @@ def remove_namespace(doc, namespace):
 ## Now do stuff ##
 
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
-source_dir = export_release("cpp", source_release, checkout_dir)
+source_dir = export_release_from_git("cpp", source_release)
 
 gen_books(release, source_dir, release_dir)
 

@@ -25,12 +25,12 @@ def gen_messaging_api(release, source_dir, release_dir):
     remove(component_dir)
 
     gen_cpp_messaging_api(release, source_dir, component_dir)
-    gen_dotnet_messaging_api(release, source_dir, component_dir)
-    gen_python_messaging_api(release, source_dir, component_dir)
-    gen_ruby_messaging_api(release, source_dir, component_dir)
+    #gen_dotnet_messaging_api(release, source_dir, component_dir)
+    #gen_python_messaging_api(release, source_dir, component_dir)
+    #gen_ruby_messaging_api(release, source_dir, component_dir)
 
 def gen_cpp_messaging_api(release, source_dir, component_dir):
-    include_dir = join(source_dir, "cpp", "include")
+    include_dir = join(source_dir, "include")
     input_paths = (
         join(source_dir, "cpp", "docs", "api", "doxygen_mainpage.h"),
         join(include_dir, "qpid", "messaging"),
@@ -45,7 +45,7 @@ def gen_cpp_messaging_api(release, source_dir, component_dir):
                 output_dir=output_dir)
 
 def gen_dotnet_messaging_api(release, source_dir, component_dir):
-    include_dir = join(source_dir, "cpp", "bindings", "qpid", "dotnet", "src")
+    include_dir = join(source_dir, "bindings", "qpid", "dotnet", "src")
     input_paths = (include_dir,)
     output_dir = join(component_dir, "dotnet", "api")
 
@@ -67,7 +67,7 @@ def gen_python_messaging_api(release, source_dir, component_dir):
                output_dir=output_dir)
 
 def gen_ruby_messaging_api(release, source_dir, component_dir):
-    base_input_path = join(source_dir, "cpp", "bindings")
+    base_input_path = join(source_dir, "bindings")
     input_path = join("qpid", "ruby", "lib")
     output_dir = join(component_dir, "ruby", "api")
 
@@ -83,7 +83,7 @@ def gen_ruby_messaging_api(release, source_dir, component_dir):
 ## Now do stuff ##
 
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
-source_dir = export_release("cpp", source_release, checkout_dir)
+source_dir = export_release_from_git("cpp", source_release)
 
 gen_messaging_api(release, source_dir, release_dir)
 
