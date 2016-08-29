@@ -26,6 +26,7 @@ the
 
 ## Current releases
 
+ - [Qpid Python 1.35.0](qpid-python-1.35.0/index.html), August 2016
  - [Qpid Proton 0.14.0](qpid-proton-0.14.0/index.html), August 2016
  - [Qpid JMS 0.10.0](qpid-jms-0.10.0/index.html), July 2016
  - [Qpid for Java 6.0.4](qpid-java-6.0.4/index.html), July 2016

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid C++ 1.35.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-python-1.35.0/index.html">Qpid Python 1.35.0</a></li><li>Qpid C++ 1.35.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-c-1350-release-notes">Qpid C++ 1.35.0 Release Notes</h1>
+
+<p>Qpid C++ offers a connection-oriented messaging API supporting many
+programming languages and a message broker written in C++ that stores,
+routes, and forwards messages using AMQP.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6475">QPID-6475</a> - 08..09 Send connection.close before closing socket</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6567">QPID-6567</a> - Support producer side flow control in the 0-8/9/9-1 Python client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6839">QPID-6839</a> - When the Selector thread hits an unknown exception it should log the exception and traceback.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7053">QPID-7053</a> - Exception Notifier Callback</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6297">QPID-6297</a> - Python client (qpid.messaging) raises KeyError insead of reconnecting</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6326">QPID-6326</a> - [ACL] Python client demands unnecessary permission / performs unnecessary actions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6405">QPID-6405</a> - Python client does not report version to peer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6445">QPID-6445</a> - Qpid python client hangs when message with routing key longer than 255 is sent (mutual recursion)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6473">QPID-6473</a> - Remove remaining Python &lt;= 2.5 raise syntax (i.e. raise "...") from connection08.py</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6474">QPID-6474</a> - 08..09 Python client connection leaks threads</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7064">QPID-7064</a> - Document Asynchronous Error Notification API on Connection, Session, Receiver, and Sender objects</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7222">QPID-7222</a> - Python test qpid_tests.broker_0_10.message.MessageTests.test_release_order fails sporadically against java broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7251">QPID-7251</a> - [Python Client for AMQP 0-8...0-91] Setting of SASL mechanism (other then PLAIN) explicitly does not work in python client for AMQP 0-8...0-91</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7258">QPID-7258</a> - [Python Client for AMQP 0-8...0-9-1] Perform hostname verification of ssl/tls connections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7259">QPID-7259</a> - qpid_tests.broker_0_10.message.MessageTests.test_window_flow_messages occasionally fails against the Java Broker</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
