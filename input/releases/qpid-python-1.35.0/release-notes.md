@@ -17,11 +17,10 @@
 ;; under the License.
 ;;
 
-# Qpid C++ 1.35.0 Release Notes
+# Qpid Python 1.35.0 Release Notes
 
-Qpid C++ offers a connection-oriented messaging API supporting many
-programming languages and a message broker written in C++ that stores,
-routes, and forwards messages using AMQP.
+Qpid Python includes an AMQP messaging library and a suite of tests
+for AMQP conformance.
 
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
