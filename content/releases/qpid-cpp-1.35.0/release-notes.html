@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid C++ 1.35.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-1.35.0/index.html">Qpid C++ 1.35.0</a></li><li>Qpid C++ 1.35.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-c-1350-release-notes">Qpid C++ 1.35.0 Release Notes</h1>
+
+<p>Qpid C++ offers a connection-oriented messaging API supporting many
+programming languages and a message broker written in C++ that stores,
+routes, and forwards messages using AMQP.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-2549">QPID-2549</a> - Port qpid to FreeBSD</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-4397">QPID-4397</a> - C++ Broker Improve log statement for expired messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6391">QPID-6391</a> - [C++ Broker] [AMQP 1.0] add support for a 'no-local' filter</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6665">QPID-6665</a> - update hello_world.cpp example to use setContentObject</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6730">QPID-6730</a> - Make the journal flush timeout configurable in the C++ broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6757">QPID-6757</a> - [linearstore] Add qpid-txtest mode to qpid-qls-analyze which extracts message number from message body</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6783">QPID-6783</a> - qpidd should dynamically set the SASL service name based on protocol.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7130">QPID-7130</a> - qpid C++ with SSL authentication returning dummy string from Connection::getAuthenticatedUsername()</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7171">QPID-7171</a> - Allow disable-auto-decode to be set via env var or conf file</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5855">QPID-5855</a> - JAVA Client Can not recieve message with qpid ha cluster "Session exception occured while trying to commit"</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6308">QPID-6308</a> - [C++ Messaging] Server example never sends utf8 responses</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6435">QPID-6435</a> - No error info logged for io errors with ssl</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6577">QPID-6577</a> - HA - backup broker messages are larger than primary messages.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6639">QPID-6639</a> - Incoming connection using "cut-through" ANONYMOUS SASL fails</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6648">QPID-6648</a> - Spelling, grammar errors in qpid::messaging::Receiver API doc</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6654">QPID-6654</a> - mgmt-disable option set to false causes segv on CentOS 6.3</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6659">QPID-6659</a> - [AMQP 1.0] qpid::messaging can't handle multi-frame transfers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6660">QPID-6660</a> - [AMQP 1.0] broker attempts to process incoming messages for closed session</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6661">QPID-6661</a> - [AMQP 1.0] heartbeat anomalies</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6668">QPID-6668</a> - [C++] INSTALL-WINDOWS is out of date</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6698">QPID-6698</a> - [amqp1.0] connections drop when heartbeat is used and the time of day changes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6714">QPID-6714</a> - Add support for JMSHeaders in selectors</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6717">QPID-6717</a> - selector can match incorrectly due to different type for values</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6718">QPID-6718</a> - parsing errors for integer literals in selectors</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6790">QPID-6790</a> - qpidd crashes in the interop_tests unit test.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6834">QPID-6834</a> - allow lifetime of delete-on-close in queue policy</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6858">QPID-6858</a> - Port all python swig input files to support python 3 and 2</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6870">QPID-6870</a> - [AMQP 1.0]: qpidd does not honour the undeliverable-here field of MODIFIED disposition</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6924">QPID-6924</a> - Qpidd fails to compile against trunk 0.12-SNAPSHOT proton-c</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6966">QPID-6966</a> - C++ broker and client to support TLS1.1 and TLS1.2 by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7010">QPID-7010</a> - assertion failure if disposition sent for previously settled delivery</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7020">QPID-7020</a> - uint16 AMQP0-10 message properties decoded as uint8</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7100">QPID-7100</a> - qpid-perftest divide by zero when mode is shared and nsubs is zero</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7127">QPID-7127</a> - [C++ broker] Setting large idle timeout cause confuses timers in the C++ broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7131">QPID-7131</a> - snd-settle-mode advertised is always 'mixed'</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7134">QPID-7134</a> - [C++ client] Message::setContent("") does not work</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7137">QPID-7137</a> - Abi tests fail with new libstdc++ abi</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7145">QPID-7145</a> - auto_ptr is deprecated from C++11 and onwards and its use causes a warning with GCC 6</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7147">QPID-7147</a> - When compiling with C++11/14 bind() use gets found as std::bind()</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7149">QPID-7149</a> - [HA] active HA broker memory leak when ring queue discards overflow messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7182">QPID-7182</a> - [C++ broker] high CPU usage on backup brokers following QPID-7149 scenario</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7225">QPID-7225</a> - PriorityQueue doesn't check that released message is acquired</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7233">QPID-7233</a> - qpid-receive uses 0 prefetch unless an explicit message count is provided</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7234">QPID-7234</a> - client does not update credit for expired messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7235">QPID-7235</a> - Observers should have a virtual destructor</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7240">QPID-7240</a> - acquired messages are not evicted from priority-ring queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7250">QPID-7250</a> - Durable message that exceeds page queue size prevents broker restart</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7302">QPID-7302</a> - race between auto-delete and re-declare/consume </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7306">QPID-7306</a> - Fix memory bugs and race conditions found in a Qpid HA deployment</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7324">QPID-7324</a> - [AMQP 1.0] support 'undeliverable-here' field for MODIFIED outcome</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7326">QPID-7326</a> - Memory bloat on HA primary broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7329">QPID-7329</a> - [AMQP 1.0]: support message-annotations field for MODIFIED outcome</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7357">QPID-7357</a> - c++ HA Backup crash during re-connect in failover</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7361">QPID-7361</a> - [AMQP-1.0] sender sometimes waits for credit without flushing buffered transfers to disk</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7373">QPID-7373</a> - memory leak in broker with idle worker threads</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7376">QPID-7376</a> - fetch with capacity=0 can hang or timeout if fetched message expires client-side</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7383">QPID-7383</a> - [linearstore] Overwrite-before-return causes latencies for clients</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

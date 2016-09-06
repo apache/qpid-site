@@ -36,9 +36,9 @@ You can find older versions with our
 ### Qpid Messaging API
 
  - [Overview]({{site_url}}/components/messaging-api/index.html)
- - [Using the Qpid Messaging API]({{current_release_url}}/programming/book/ch02.html) ([PDF]({{current_release_url}}/programming/programming-book.pdf))
- - [C++ API reference]({{current_release_url}}/messaging-api/cpp/api/index.html)
- - [C++ examples]({{current_release_url}}/messaging-api/cpp/examples/index.html)
+ - [Using the Qpid Messaging API]({{site_url}}/releases/qpid-0.32/programming/book/ch02.html) ([PDF]({{site_url}}/releases/qpid-0.32/programming/programming-book.pdf))
+ - [C++ API reference]({{current_cpp_release_url}}/messaging-api/cpp/api/index.html)
+ - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
 
 </section>
 </div>
@@ -79,5 +79,5 @@ You can find older versions with our
 ## More information
 
  - [Past and current releases]({{site_url}}/releases/index.html)
- - [Development snapshots]({{site_url}}/releases/index.html#development-snapshots)
+;; - [Development snapshots]({{site_url}}/releases/index.html#development-snapshots)
  - [Components]({{site_url}}/components/index.html)

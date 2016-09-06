@@ -36,13 +36,13 @@ find previous versions with our
 
 <div class="two-column" markdown="1">
 
- - [Using the Qpid Messaging API]({{current_release_url}}/programming/book/ch02.html)
- - [C++ API reference]({{current_release_url}}/messaging-api/cpp/api/index.html)
- - [C++ examples]({{current_release_url}}/messaging-api/cpp/examples/index.html)
+ - [Using the Qpid Messaging API]({{site_url}}/releases/qpid-0.32/programming/book/ch02.html)
+ - [C++ API reference]({{current_cpp_release_url}}/messaging-api/cpp/api/annotated.html)
+ - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
  - [Python API reference]({{current_python_release_url}}/messaging-api/api/index.html)
  - [Python examples]({{current_python_release_url}}/messaging-api/examples/index.html)
- - [Installing Qpid C++](http://svn.apache.org/repos/asf/qpid/tags/{{current_release}}/qpid/cpp/INSTALL)
- - [Installing Qpid Python](http://svn.apache.org/repos/asf/qpid/tags/{{current_release}}/qpid/python/README.txt)
+ - [Installing Qpid C++](https://raw.githubusercontent.com/apache/qpid-cpp/master/INSTALL.txt)
+ - [Installing Qpid Python](https://raw.githubusercontent.com/apache/qpid-python/master/README.md)
 
 </div>
 
@@ -50,7 +50,7 @@ find previous versions with our
 
   | Language | Hello World | Client | Server | Spout | Drain |
   | - | - | - | - | - | - |
-  | *C++* | [hello_world.cpp]({{current_release_url}}/messaging-api/cpp/examples/hello_world.cpp.html) | [client.cpp]({{current_release_url}}/messaging-api/cpp/examples/client.cpp.html) | [server.cpp]({{current_release_url}}/messaging-api/cpp/examples/server.cpp.html) | [spout.cpp]({{current_release_url}}/messaging-api/cpp/examples/spout.cpp.html) | [drain.cpp]({{current_release_url}}/messaging-api/cpp/examples/drain.cpp.html) |
+  | *C++* | [hello_world.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/hello_world.cpp.html) | [client.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/client.cpp.html) | [server.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/server.cpp.html) | [spout.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/spout.cpp.html) | [drain.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/drain.cpp.html) |
   | *Python* | [hello]({{current_python_release_url}}/messaging-api/examples/hello.html) |  | [server]({{current_python_release_url}}/messaging-api/examples/server.html) | [spout]({{current_python_release_url}}/messaging-api/examples/spout.html) | [drain]({{current_python_release_url}}/messaging-api/examples/drain.html) |
 
 ## Issues
