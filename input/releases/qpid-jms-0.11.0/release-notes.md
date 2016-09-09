@@ -33,7 +33,6 @@ documentation, see the [release overview](index.html).
 
  - [QPIDJMS-187](https://issues.apache.org/jira/browse/QPIDJMS-187) - remove deprecated configuration options
  - [QPIDJMS-191](https://issues.apache.org/jira/browse/QPIDJMS-191) - Add a WebSocket based transport to the client
- - [QPIDJMS-194](https://issues.apache.org/jira/browse/QPIDJMS-194) - Update to Proton 0.13.1
 
 ## Bugs fixed
 
@@ -49,7 +48,6 @@ documentation, see the [release overview](index.html).
 
 ## Tasks
 
- - [QPIDJMS-193](https://issues.apache.org/jira/browse/QPIDJMS-193) - Update ActiveMQ test dependency to 5.13.3
  - [QPIDJMS-200](https://issues.apache.org/jira/browse/QPIDJMS-200) - Update to ActiveMQ 5.14.0 release for testing
  - [QPIDJMS-202](https://issues.apache.org/jira/browse/QPIDJMS-202) - Update to Proton 0.14.0
  - [QPIDJMS-203](https://issues.apache.org/jira/browse/QPIDJMS-203) - Update Netty to latest bugfix release 4.0.41.Final
