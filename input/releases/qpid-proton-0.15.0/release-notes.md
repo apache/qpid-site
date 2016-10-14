@@ -36,6 +36,9 @@ documentation, see the [release overview](index.html).
  - [PROTON-1293](https://issues.apache.org/jira/browse/PROTON-1293) - Support username and password in electron go binding
  - [PROTON-1294](https://issues.apache.org/jira/browse/PROTON-1294) - c++ examples: remove un-necessary 64 bit integers.
  - [PROTON-1301](https://issues.apache.org/jira/browse/PROTON-1301) - add pn_condition_format for formatted descriptions
+ - [PROTON-1302](https://issues.apache.org/jira/browse/PROTON-1302) - Don't depend on proton-c for OS services (use std library)
+ - [PROTON-1303](https://issues.apache.org/jira/browse/PROTON-1303) - Don't use the proton-c url parser
+ - [PROTON-1304](https://issues.apache.org/jira/browse/PROTON-1304) - SSL code shouldn't need to know the time (shouldn't use the platform dependent parts of proton-c)
  - [PROTON-1306](https://issues.apache.org/jira/browse/PROTON-1306) - Go simplified client/server example
  - [PROTON-1308](https://issues.apache.org/jira/browse/PROTON-1308) - Support Idle Timeout setting in electron Transport  
 
