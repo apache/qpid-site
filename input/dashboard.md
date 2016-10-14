@@ -79,7 +79,6 @@
 
  - [Components]({{site_url}}/components/index.html)
  - [Releases]({{site_url}}/releases/index.html)
- - [Devel snapshots]({{site_url}}/releases/index.html#development-snapshots)
 
 </section>
 </section>
