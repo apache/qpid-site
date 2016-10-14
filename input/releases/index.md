@@ -70,12 +70,6 @@ the
  - [Qpid Dispatch 0.3](qpid-dispatch-0.3/index.html), January 2015
  - [Qpid Proton 0.8](qpid-proton-0.8/index.html), October 2014
  - [Qpid 0.30](qpid-0.30/index.html), September 2014
- - [Qpid 0.28](qpid-0.28/index.html), June 2014
- - [Qpid Dispatch 0.2](qpid-dispatch-0.2/index.html), April 2014
- - [Qpid Proton 0.7](qpid-proton-0.7/index.html), April 2014
- - [Qpid 0.26](qpid-0.26/index.html), February 2014
- - [Qpid Proton 0.6](qpid-proton-0.6/index.html), January 2014
- - [Qpid Dispatch 0.1](qpid-dispatch-0.1/index.html), January 2014
 
 </div>
 
