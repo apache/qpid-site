@@ -22,7 +22,7 @@ qpid_release = _Release("Qpid", "qpid", "0.32")
 cpp_release = _Release("Qpid C++", "qpid-cpp", "1.35.0")
 python_release = _Release("Qpid Python", "qpid-python", "1.35.0")
 dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.6.1")
-java_release = _Release("Qpid for Java", "qpid-java", "6.0.4")
+java_release = _Release("Qpid for Java", "qpid-java", "6.0.5")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.11.1")
 proton_release = _Release("Qpid Proton", "qpid-proton", "0.15.0")
 
