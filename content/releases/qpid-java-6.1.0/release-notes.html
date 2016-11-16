@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid for Java 6.1.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.1.0/index.html">Qpid for Java 6.1.0</a></li><li>Qpid for Java 6.1.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-for-java-610-release-notes">Qpid for Java 6.1.0 Release Notes</h1>
+
+<p>Qpid for Java 6.1 brings with it the following headline changes</p>
+
+<ul>
+<li>Management REST API is enhanced with new methods and features
+<ul>
+<li>Query API is added allowing to search attributes of Broker and Virtual Host configured objects matching given filtering criteria</li>
+<li>Support for Cross Origin Resource Sharing is added</li>
+<li>New user preferences API is reimplemented from scratch</li>
+<li>Message publishing via REST API is added</li>
+<li>Message content retrieving API is improved</li>
+</ul></li>
+<li>New message consumer features are added
+<ul>
+<li>Consumer priorities</li>
+<li>Experimental support for pulling consumers</li>
+</ul></li>
+<li>New features are added into Web Management Console
+<ul>
+<li>Dashboard and Query UI</li>
+<li>Improved message content preview</li>
+</ul></li>
+<li>Over 100 bug fixes and improvements</li>
+</ul>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6703">QPID-6703</a> - Add optional mechanism to associate a temporary queue lifetime with that of it connection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6764">QPID-6764</a> - Message age alerting is inappropriate on the enqueue path</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6805">QPID-6805</a> - Update Broker/Client documentation with changes made  for v6</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6852">QPID-6852</a> - Allow perftests to be conveniently run against Qpid JMS AMQP 1.0 client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6866">QPID-6866</a> - Paginate connections table on virtualhost tab</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6915">QPID-6915</a> - Remove JMX support from Java Broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6916">QPID-6916</a> - Refactor system test suite to no longer assume exclusive use of port 15672 etc</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6917">QPID-6917</a> - Make web SASL pluggable in web management UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6927">QPID-6927</a> - Improve usability of Web Management Console when monitoring large deployments</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6932">QPID-6932</a> - Enhance model object to expose key JVM statistics such as heap memory, garbage collection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6940">QPID-6940</a> - [Java Broker] [AMQP 1.0] The Delivery object does not need to retain a list of associated transfers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6945">QPID-6945</a> - [Java Broker] Provide only one way to get content data from a Message</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6953">QPID-6953</a> - [Java Broker] Refactor AMQP 0-8/9/9-1 implementation to always use QpidByteBuffer for encoding output</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6954">QPID-6954</a> - [Java Broker] Add the ability to define "policies" for node auto-creation based on address</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6961">QPID-6961</a> - Use maven to generate Java Broker and (legacy) Java Client docbook</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6962">QPID-6962</a> - [Java Broker] Add ability to limit max message size on a per VirtualHost basis</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6965">QPID-6965</a> - Make preemptive HTTP authentication pluggable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6967">QPID-6967</a> - [Java Broker] Add SCRAM-SHA1/256 sasl support to authentication managers which store the password in cleartext</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6969">QPID-6969</a> - [Java Broker] Provide SQL-like querying functionality through the HTTP Management API</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6971">QPID-6971</a> - [Java] [AMQP 0-8/9/9-1] Use QpidByteBuffer rather than MarkableDataInput for decoding</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6982">QPID-6982</a> - [Java Broker] Refactor VirtualHost to remove unnecessary methods</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6983">QPID-6983</a> - [Web Management Console] Add UI support for queries</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6984">QPID-6984</a> - [Web Management Console] Allow queries to be saved for later use</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6993">QPID-6993</a> - [Java Broker] Improve security of SCRAM-* authentication managers by not storing the salted passwords</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6995">QPID-6995</a> - [Java Broker] Keystores should warn of pending certificate expiration</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7006">QPID-7006</a> - Expose BDB JE cleanLog/checkpoint as an model operations of the BDBVH/BDBHAVHN</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7007">QPID-7007</a> - Add the ability to mutate JE configuration properties at runtime</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7009">QPID-7009</a> - BDD HA: DbPing call should have an independent timeout control</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7015">QPID-7015</a> - Add system test that ensure ability to login correctly with Scram-SHA based authentication providers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7017">QPID-7017</a> - Include Queue UUID in QUE-1001/1002 operational log message</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7019">QPID-7019</a> - BDB JE turn on log file upgrade migration by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7027">QPID-7027</a> - [Java Broker] Make HTTP Management interactive login pluggable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7028">QPID-7028</a> - [Java Broker] Add OAuth2 AuthenticationProvider</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7029">QPID-7029</a> - [Java Broker] Add OAuth2 PreemptiveAuthenticator</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7030">QPID-7030</a> - [Java Broker] Add OAuth2 HttpRequestInteractiveAuthenticator</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7031">QPID-7031</a> - [Java Broker] Add Pluggable OAuth2 AuthenticationProvider Backend for CloudFoundry</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7032">QPID-7032</a> - [Java Broker] Add information about the selected TLS protocol and cipher suite on Connection objects</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7035">QPID-7035</a> - [Java Broker] SCRAM implementation should make iteration count configurable</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7036">QPID-7036</a> - [Java Broker] Add ability to set the ClientCertRecorder trust store on the port in UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7037">QPID-7037</a> - [Java Broker] Add UI for exposing trust stores as message sources</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7038">QPID-7038</a> - [Java Perftests] Speedup Performance test execution</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7039">QPID-7039</a> - [Java Broker] Allow overriding of default initial configuration location via system property</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7041">QPID-7041</a> - Add system test for preemptive SSL client auth authentication against HTTP management</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7045">QPID-7045</a> - [Java Broker] Add OAuth2 SASL mechanism</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7046">QPID-7046</a> - Single-shot preemptively authenticated calls to the REST API should automatically expire the HTTP session</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7047">QPID-7047</a> - SaslServlet should invalidate the HTTP session in the event of authentication/authorisation failure</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7048">QPID-7048</a> - Log a warning if an AMQPPort does not have one or more virtual host aliases</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7049">QPID-7049</a> - [Java Broker] Provide a mechanism to inject attribute/statistic definitions into types at runtime</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7055">QPID-7055</a> - Improve GroupProvider API</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7056">QPID-7056</a> - [Java Broker/Client] Allow overriding of TLS cipher suites preferences</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7058">QPID-7058</a> - [Java Client] Log the current connection state when connection establishment times out</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7063">QPID-7063</a> - [Java Broker] SimpleLdap Authentication Provider should be able to override enabled cipher suites and TLS protocols from context variables for TLS connections to LDAP servers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7066">QPID-7066</a> - [Java Broker] Add a validValuePattern attribute to ManagedAttribute</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7068">QPID-7068</a> - Drive AbstractConfiguredObject#validationChange from reflection rather than attribute metadata</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7069">QPID-7069</a> - [Java Broker] Add CloudFoundry specific GroupProvider</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7079">QPID-7079</a> - [Java Broker] Add connection state logging on idle timeout to 0-10 onnections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7086">QPID-7086</a> - [Java Broker, Web Management Console] Add ability to set context variables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7094">QPID-7094</a> - [Java Broker] Add tests for OAuth2</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7110">QPID-7110</a> - Create UI for virtual host alias</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7111">QPID-7111</a> - Create UI for the Oauth2 authentication provider</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7112">QPID-7112</a> - Create UI for the CloudFoundry Group Provider</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7113">QPID-7113</a> - [Java Broker] Add ability to select cipher suite during TLS negotiation based on Broker side cipher suite order</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7116">QPID-7116</a> - Ability to utilise group information from a LDAP compatible directory</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7118">QPID-7118</a> - Web Management Operator Dashboard</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7129">QPID-7129</a> - [Java Broker] BDB store should not attempt to load config from properties files</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7133">QPID-7133</a> - [Java Broker Documentation] Rename HA designated primary to match UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7135">QPID-7135</a> - [Java Broker] Add posibility to reload ACL files</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7151">QPID-7151</a> - [Java Broker] Improve error handling in OAuth2 AuthenticationProvider </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7152">QPID-7152</a> - [Java Broker, Documentation] Add documentation for OAuth2 authentication</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7157">QPID-7157</a> - [Java Broker] Change metadata for management attributes having enum types to list all possible enum values in validValues property</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7158">QPID-7158</a> - [Java Broker] Change type of datetime management attributes from Long to java.util.Date</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7159">QPID-7159</a> - [Java Client] Disabling user ids in AMQP messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7162">QPID-7162</a> - Simple refactoring AbstractAMQPConnection &amp; sub-classes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7165">QPID-7165</a> - Allow query results to be sorted and paginated</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7177">QPID-7177</a> - Add support for where clauses including time/date based functions such as now(), dateadd(), date()</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7188">QPID-7188</a> - [Java Broker] [AMQP1.0] Define a target capability to define how a target will respond when receiving a message it cannot route</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7198">QPID-7198</a> - LDAP and OAUTH2 Authentication Providers should cache authentication results for a short period</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7204">QPID-7204</a> - [Java systests] Add ability into system tests to override test, client and broker system properties from properties file</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7206">QPID-7206</a> - [Java Broker] Query API does not support conditions with fileds of enum type</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7209">QPID-7209</a> - [Java Broker, WMC] Enable HTTP compression by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7211">QPID-7211</a> - [Java Broker, WMC] Do not transfer inherited context variables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7213">QPID-7213</a> - [Java Broker, WMC] Only transmit data for visible tab</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7214">QPID-7214</a> - [Java Broker, WMC] Do not use depth=2 in the REST request in Broker.js</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7215">QPID-7215</a> - [Java Broker, WMC] WMC should use query to retrieve connections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7217">QPID-7217</a> - [Java Broker, WMC] Copyright footer should not be fixed at the bottom of the viewport</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7221">QPID-7221</a> - [Java Broker] On VirtualHost creation ManagedAttribute queue.deadLetterQueueEnabled should be initialised by context variable instead of referencing it</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7228">QPID-7228</a> - [Java Broker, Documentation] HA Backup documentation should mention that you cannot use a backup of one node to recover another</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7238">QPID-7238</a> - [Java Broker, WMC] Share data from structure service amongst UI elements</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7247">QPID-7247</a> - Implement preferences model and REST API</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7248">QPID-7248</a> - Extend the UI to allow queries to be saved, retrieved and re-run</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7249">QPID-7249</a> - [Java Tests] Handle failures in AMQQueueDeferredOrderingTest correctly </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7255">QPID-7255</a> - Support delivery delay</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7274">QPID-7274</a> - [Java Client] Asynchronous client acknowledgements</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7276">QPID-7276</a> - [Java Broker] Message delay UI improvements</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7284">QPID-7284</a> - [Java Performance Tests] json_config_tool should recursively descend into configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7291">QPID-7291</a> - [Java Broker] [Documentation] Add documentation for ManagedCertificateStore and SiteSpecificTrustStore</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7300">QPID-7300</a> - [Java Broker] The REST API should support Cross Origin Resource Sharing (CORS)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7303">QPID-7303</a> - [Java Broker] Add operation returning the authenticated user principal and groups</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7305">QPID-7305</a> - [Java Broker] Queue operations copy/move/delete should take an optional JMS selector argument</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7308">QPID-7308</a> - [Java Broker] Improve Query UI functionality and look </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7314">QPID-7314</a> - [Java Broker, Documentation] Apidocs should expose derivedAttributes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7318">QPID-7318</a> - [Java Broker] Refactor existing ACL plugin code</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7323">QPID-7323</a> - [CVE-2016-4974] [Java Client] add whitelisting of trusted content for deserialization from ObjectMessage</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7330">QPID-7330</a> - [Java Broker] Preference Strore Integration</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7331">QPID-7331</a> - [Java Broker] Preference Store JSON backend</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7332">QPID-7332</a> - [Java Broker] Preference Store BDB backend</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7333">QPID-7333</a> - [Java Broker] Preference Store Recoverer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7336">QPID-7336</a> - [Java Broker] Add createdDate to Preference object</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7337">QPID-7337</a> - [Java Broker] Preference Store JDBC/Derby backend</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7338">QPID-7338</a> - Use maven release plugin's tagNameFormat to avoid manual release step</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7340">QPID-7340</a> - Implement purge user managed operation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7344">QPID-7344</a> - [Java Broker] Deprecate support for ACL checking based on the "immediate" flag</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7346">QPID-7346</a> - [Java Broker] Improve Principals to record their origin</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7352">QPID-7352</a> - [Java Broker] Principal serialisation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7360">QPID-7360</a> - [Java Broker] [Web Management Console] Replace usages of the old preference system with the new one</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7362">QPID-7362</a> - [Java Broker] Remove old preferences API and UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7365">QPID-7365</a> - [Java Broker] Allow SystemConfig to be used for other models - not just Brokers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7366">QPID-7366</a> - [Java Broker] Add Management operation to VirtualHost to allow publishing of messages through management</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7372">QPID-7372</a> - [Java Broker] Remove hard dependency on logback from broker-core</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7374">QPID-7374</a> - Reimplement producer transaction timeout feature to utilise an IO ticker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7379">QPID-7379</a> - [Java Broker] Provide a mechanism to extract messages from a vhost message store and replay them into a new vhost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7380">QPID-7380</a> - [Java Broker] Managed Operations returning potentially confidential information should not be permitted by default on insecure connections</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7381">QPID-7381</a> - [Java Broker] Support consumer priorities</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7409">QPID-7409</a> - Support preview of maps/list message content</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7411">QPID-7411</a> - Remove backup.sh from bdbstore module</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7422">QPID-7422</a> - [Java Tests] Make test timeouts configurable via system properties</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7426">QPID-7426</a> - [Java Client] Rename methods and variables in 0-8 Session and Consumer to better reflect their purpose</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7433">QPID-7433</a> - Add minimal maven module to invoke TCK</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7435">QPID-7435</a> - Avoid BDB fetching dummy single byte database entries during message instance recovery</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7437">QPID-7437</a> - [BDB] Avoid storing unnecessary single byte with message enqueue records</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7438">QPID-7438</a> - ACL provider and AutoGeneratedSelfSignedKeyStore modify configured state without using the configuration task executor</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7447">QPID-7447</a> - Java Broker tuning improvements for v6.1 release</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7448">QPID-7448</a> - [Java Client] Stop ClientDecoder from doing deep recursion</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7449">QPID-7449</a> - [Java Broker] Cache the ACL result for the system-user ACL provider</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7453">QPID-7453</a> - [Java Broker] Hand off selection task only if connection tasks need to be processed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7454">QPID-7454</a> - [Java Broker] Queue Message Durability default (and others) should be overridable by context variables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7460">QPID-7460</a> - [Java Broker] Improve performance of the Json Config store with large numbers of object</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7462">QPID-7462</a> - [Java Broker] Add experimental "pull" consumers to the broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7466">QPID-7466</a> - [Java Broker, Java Client for AMQP 0-8 to 0-10] Improve documentation for end-to-end encryption</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7471">QPID-7471</a> - [Java Broker] MessageConverter should respect mimeType</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7478">QPID-7478</a> - Add managed operation to reset statistics</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5738">QPID-5738</a> - [Java Broker] AbstractConfigureObject#setAttribute() does not validate attributes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-5816">QPID-5816</a> - [Java Client 0-10] If a resolved destination is used to create a consumer on a new connection created after destination was resolved, the client does not try to create the destination on the broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6096">QPID-6096</a> - java broker doesn't indicate that port is already in use</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6377">QPID-6377</a> - Connection's taskpool not shutdown if Connection is closed from the broker side</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6753">QPID-6753</a> - Duplicate heartbeat reply</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6803">QPID-6803</a> - ByteBuffer slices/duplicates contribute significantly to garbage overhead in busy Brokers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6817">QPID-6817</a> - [Java Broker] On abrupt connection close from client side when Broker is delivering messages to consumer the delivered messages might not be released as part of close in some unlucky circumstances</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6883">QPID-6883</a> - [Java Broker] In web management console Edit button is disabled for authentication providers: SCRAM-SHA-1, SCRAM-SHA-256, Plain, MD5</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6894">QPID-6894</a> - [Java Broker] VirtualHostNode of type REDIRECTOR cannot be stopped through web UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6901">QPID-6901</a> - Fix inconsistent channel log subject for 0-10 and 1.0</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6910">QPID-6910</a> - [Java Broker] Restore building of zip distribution bundle  for Qpid Java Broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6936">QPID-6936</a> - [Java Broker] Generation of Java Broker doc book in PDF format fails with exceptions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6938">QPID-6938</a> - [Java Broker] [Java Client] Disable TLSv1 support by default</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6939">QPID-6939</a> - [Java Broker] [AMQP 1.0] Ensure all outstanding bytes get processed when received() is called on the connection</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6950">QPID-6950</a> - [Java Broker] Starting embedded broker with http-management plugin using Broker#startup(BrokerOptions)  requires Thread.UncaughtExceptionHandler to be set</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6951">QPID-6951</a> - [Java Client] AMQSession.deregisterConsumer() leaks Memory</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6957">QPID-6957</a> - [Java Tests] LastValueQueueTest sporadically fails on cpp profile</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6958">QPID-6958</a> - [Java Broker] A confusing exception is reported for Virtual Host type declared in the configuration store but with implementation not available in the classpath</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6959">QPID-6959</a> - [Java Broker] Cannot mutate BDB HA environment and modify such settings like priority, designating primary, etc when environment is in restarting state</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6968">QPID-6968</a> - [Java Broker] Decoding of pipelined AMQP 0-9.x frames can fail when multiple frames are received as part of the same byte buffer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6972">QPID-6972</a> - BDB HA: Node may remain detached from group following loss of quorum</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6975">QPID-6975</a> - NonBlockingConnectionTLSDelegate won't read to stream end if SSLEngine is closed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6979">QPID-6979</a> - AttributeValueConverter's Certificate handling code assumes unix line endings</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6994">QPID-6994</a> - [Java Broker] AMQP connection close might fail to delete temporary queue after close of VirtualHost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6996">QPID-6996</a> - Can't make a node master twice (during a single Broker lifetime)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6997">QPID-6997</a> - [Java Broker, BDBStore] HA JE Transaction commit might end up in NullPointerException when commit is invoked when majority is lost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6999">QPID-6999</a> - [Java Broker, BDBStore, HA] In replicated environment JE transactions aborted on committing can cause Broker shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7001">QPID-7001</a> - [Java Broker] NullPointerException can be thrown from Port IO Thread</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7002">QPID-7002</a> - [Java Broker] REST API throws NullPointerException when requesting all consumers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7008">QPID-7008</a> - [Java Broker] Add message user-id verification to 0-10 and 1-0 protocols</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7016">QPID-7016</a> - BDB JE cleaner can make no progress allowing for unbounded store growth</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7021">QPID-7021</a> - BDB hot backup (takeBackupNoLock) may fail with IOException</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7022">QPID-7022</a> - [Java Broker] Fix Web Management Console javascript issues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7023">QPID-7023</a> - BDB HA: JE Cleaner warnings written to qpid log during apparently normal operation </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7024">QPID-7024</a> - BDB HA - Group change thread-pool sized to availableProcessors +1</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7033">QPID-7033</a> - [Java Broker] Busy IO thread pools may cause client connections to be unfairly closed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7050">QPID-7050</a> - [Java Broker] State change executor shutdown can delay closing of virtual host node when state change functionality is performed in parallel with replication environment facade close</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7052">QPID-7052</a> - [Java Performance Tests] In tests based on message number limit all consumed messages should be processed as normal reagrardless whether they arrive before or after StartDataCollectionCommand</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7057">QPID-7057</a> - [Java Client] The performance of the client connecting over TLS is significantly lower than before</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7060">QPID-7060</a> - [Java Broker] [0-10] Connection close disassociates virtualhost before closing sessions and connection model object</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7061">QPID-7061</a> - [Java Broker] Web management console help URL is set to wrong location</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7065">QPID-7065</a> - [Java Broker] Wrong RegEx prohibits HA VHNs with dash ("-") in host address</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7067">QPID-7067</a> - Scram SHA upgrader loses the original password</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7080">QPID-7080</a> - MultiNodeTest#testQuorumOverride may fail sporadically</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7081">QPID-7081</a> - [Java Broker] On broker startup with IBM JDK a log message "Cannot find com.sun.management.HotSpotDiagnosticMXBean MXBean" is repeated multiple times</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7082">QPID-7082</a> - [Java Broker] Created AccessControllerContext for SystemTasks should not reference current context</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7096">QPID-7096</a> - [Java Broker] Add minor release version to REST API version</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7097">QPID-7097</a> - [Java Broker, HA] Broker configuration thread is used to perform notifications about removal of BDB HA VirtualHost when VH is closed in response to environment state transition events</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7101">QPID-7101</a> - Guard CancelledKeyException to deal with the case where the Port is shutdown before the the connection has finally closed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7108">QPID-7108</a> - [Java Broker] Test BDBHAVirtualHostNodeTest.testIntruderProtection is failing sporadically</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7114">QPID-7114</a> - [Java Broker] ConnectionBuilder should set protocol and cipher suites on all code paths</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7120">QPID-7120</a> - [Java Broker] Test AbruptClientDisconnectTest.testMessagingOnAbruptConnectivityLostWhilstConsuming fails sporadically</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7122">QPID-7122</a> - CloseOnNoRouteForMandatoryMessageTest.testNoRoute_brokerClosesConnection fails sporadically on slow CI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7124">QPID-7124</a> - [Java Broker] IndexOutOfBoundsException when attempting to create an object through the REST API with no path</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7126">QPID-7126</a> - [Java Broker] A broker with multiple HTTP ports does not separate session attributes for requests on different ports</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7132">QPID-7132</a> - qpid-server does not properly quote dirname $0 argument</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7136">QPID-7136</a> - [Java Broker] [BDB HA] [AMQP 1.0] Connection to a replica throws an uncaught exception which closes the broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7154">QPID-7154</a> - Dead lettering of a message may timeout at store level, causing unexpected Broker shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7155">QPID-7155</a> - [Java Broker] Idle timeout ticker times out connection before heartbeating is negotiated</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7156">QPID-7156</a> - Possible Java Broker crash if connection is formed whilst virtualhost is stopping</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7160">QPID-7160</a> - No X509TrustManager implementation available when using truststore captured by SiteSpecificTrustStore</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7174">QPID-7174</a> - [JavaBroker] Broker fails to open ManagedPeerCertificateTrustStore containing certificates added via port</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7181">QPID-7181</a> - [AMQP 1.0] Selector parsing error causes Java Broker to shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7185">QPID-7185</a> - ReplicatedEnvironmentFacadeTest.testReplicationGroupListenerHearsNodeRemoved fails sporadically on Apache CI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7186">QPID-7186</a> - CancelledKeyException from the accepting thread during Broker shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7189">QPID-7189</a> - [Java Client 0-8..0-10] Client fails to negotiate AMQP connection after downgrading from 0-10 to 0-91</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7195">QPID-7195</a> - Ensure socket is closed if Socket#connect times out or fails</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7196">QPID-7196</a> - [Java Broker] ConcurrentModificationException can occur on Broker startup when virtual host is activated</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7203">QPID-7203</a> - Model loses audit information </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7208">QPID-7208</a> - Failure to add a certificate to a managed truststore not reported a second time in some browsers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7223">QPID-7223</a> - [Java Broker] Broker does not decrement consumer statistics "unacknowledgedBytes" and "unacknowledgedMessages" after receiving message.release command for 0.10 AMQP protocol</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7224">QPID-7224</a> - Exposed truststores should exclude/include based on virtualhostnode rather than virtualhost</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7226">QPID-7226</a> - [Java Broker] [BDB HA] BDBHAVirtualHostNodeTest.testIntruderConnected test failed with ReplicaConsistencyException </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7231">QPID-7231</a> - Example of REST call to invoke the Queue clear queue operation is incorrect</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7237">QPID-7237</a> - Excessive threads creation when suspending/resuming flow</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7253">QPID-7253</a> - [Java Client 0-10] Application allowed to create new JMS session whilst failover is in progress</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7257">QPID-7257</a> - [CVE-2016-4432] [Java Broker] Prevent possibility of by-passed authentication in AMQP 0-8..0-10 protocol implementations</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7267">QPID-7267</a> - [Java Broker] Content-Length header is set incorrectly when using compression</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7268">QPID-7268</a> - message sent over 0-10 can't be received over 1.0</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7269">QPID-7269</a> - broker issues disposition for delivery that is already settled</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7270">QPID-7270</a> - [Java Broker] Fix broker side TLS cipher suite order</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7271">QPID-7271</a> - [CVE-2016-3094] Prevent DoS within PlainSaslServer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7273">QPID-7273</a> - The same JVM property names are used on client and broker sides for setting protocol and cipher suite white and black lists</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7278">QPID-7278</a> - [Java Broker] broker crashes when creating a JDBC VirtualHost with invalid JDBC Url</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7279">QPID-7279</a> - [Java Broker] with config encryption creating a JDBC VirtualHost fails</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7282">QPID-7282</a> - Java Broker should always send server-final message (if required) to the client on succesful SASL negotiation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7287">QPID-7287</a> - Query parser fails silently with expression such as a + b</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7288">QPID-7288</a> - Dgrid flicker during refreshes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7297">QPID-7297</a> - [Java Client] Using socket:// address to supply a preexisting existing socket to the client fails on the 0-10 path</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7298">QPID-7298</a> - [Java Broker] [0-8..0-91] Broker sends unsolicited ExchangeDeclareOk in response to declares of exchanges with reserved names </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7299">QPID-7299</a> - [Web Management Console] Usabiity issues with new dgrid data tables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7301">QPID-7301</a> - [Java Client] [Java Broker] JMS Selector parsing will not fail if a valid selector is followed by invalid text</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7313">QPID-7313</a> - [Java Broker] Connection close REST request can hang when client application does not reply with ConnectionCloseOk to broker ConnectionClose command</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7320">QPID-7320</a> - Management actor missing from operational logs</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7327">QPID-7327</a> - [Java Broker] Deleting Redirector VirtualHost results in IllegalStateException</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7328">QPID-7328</a> - [Java Broker, WMC] The Help Menu link in the WMC is broken</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7342">QPID-7342</a> - [Java Broker] ForbiddingAuthorisationFilter carelessly matches request paths</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7347">QPID-7347</a> - [Java Broker, WMC] Opening a BDBHA Replica VirtualHost tab results in a 404 error</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7363">QPID-7363</a> - [Java Broker] Unhandled 'Message store is not open exception' during Broker shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7368">QPID-7368</a> - CancelledKeyException from accepting socket during Broker shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7382">QPID-7382</a> - Message dialogue tries to inline the text of a text message content regardless of the its length</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7386">QPID-7386</a> - [Java Broker, WMC] Session Cookie should set the HttpOnly flag</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7387">QPID-7387</a> - [Java Broker, AMQP 0-8..0-91] Correct handling of consumer credit</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7394">QPID-7394</a> - [0-8..0-91] Prefetch accounting incorrect when session rolled back / recovered</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7398">QPID-7398</a> - [Java Broker] Initialise UserPreference object for new ConfiguredObjects</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7401">QPID-7401</a> - [Java Broker] Ensure getContextValue is only called after model has been resolved</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7408">QPID-7408</a> - REST API streams compressed message content without a Content-Encoding header</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7412">QPID-7412</a> - [Java Broker] Set default max message size to 100 MB</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7413">QPID-7413</a> - [Java Broker, WMC] Fix minor defects and usability issues in query and dashboard UI</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7414">QPID-7414</a> - [Java Broker] File based authentication providers PlainPasswordFile and Base64MD5PasswordFile should guard against colons in usernames and passwords</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7417">QPID-7417</a> - [Java Broker] Ensure message instance listeners only fire on state changes of the associated object</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7440">QPID-7440</a> - [Java Broker] Stop ProtocolOutputConverterImpl from leaking QpidByteBuffers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7451">QPID-7451</a> - [Java Broker] MessageTransferMessage should cache message size</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7455">QPID-7455</a> - [Java Broker] Object references in configuration files should be able to use context variables</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7456">QPID-7456</a> - [Java Broker, WMC] Fix edit dialogue of BDB HA VHNs</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7465">QPID-7465</a> - [Java Broker] Stop ServerEncoder on AMQP 0-10 from unnecessarily allocating ByteBuffers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7474">QPID-7474</a> - [Java Broker] Guard against NPE in StatisticsReportingTask</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7477">QPID-7477</a> - [Java Broker] Recovery of Broker preferences should happen without holding VirtualHostPrincipal</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7479">QPID-7479</a> - [Java Broker] Memory estimation formula fails to account for objects that comprise a persistent messages</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7480">QPID-7480</a> - Incorrect error message when editing "number of connection threads" of a virtual host</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7481">QPID-7481</a> - Statistics gathering screen label uses wrong unit</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7482">QPID-7482</a> - Heartbeat screen label uses wrong units</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7483">QPID-7483</a> - [Java Broker, WMC] Address minor UI issues</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7485">QPID-7485</a> - [Java Broker] Make the path attribute immutable on file based authentication/group providers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7488">QPID-7488</a> - [Java Broker, WMC] Clicking on any of dashboard widget titlebar icons  (collapse pane, edit, goto, or close) triggers widget dragging in IE</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7489">QPID-7489</a> - [Java Broker] Only return false from AbstractQueue#attemptDelivery if remaining messages on queue can actually be consumed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7490">QPID-7490</a> - [Java Broker] Stop CreditCreditManager from spuriously notifying subscribers of credit increases</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7503">QPID-7503</a> - [Java Broker, Web Management Console] Query widget ignores the selection of the same conditions which are already selected on another open Query widget</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-6925">QPID-6925</a> - [Java] Generate source bundle on releasing a new version of java components</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7239">QPID-7239</a> - [Java Broker] Apply JavaScript code style to WMC</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7335">QPID-7335</a> - [Java Broker] Ensure thread correctness of UserPreferences and PreferenceStore</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7341">QPID-7341</a> - Names such as "Apache Qpid Java" cause trademark violations</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7356">QPID-7356</a> - Change default configuration provided by initial-config.json to model version 6.1</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7469">QPID-7469</a> - [Java Broker] Improve VirtualHost#publishMessage</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7470">QPID-7470</a> - [Java Broker] Address javax.xml.bind.DatatypeConverter shortcomings</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7502">QPID-7502</a> - [Java Broker] Add documentation for Query API</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
