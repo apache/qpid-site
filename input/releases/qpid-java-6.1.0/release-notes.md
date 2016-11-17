@@ -21,18 +21,17 @@
 
 Qpid for Java 6.1 brings with it the following headline changes
 
-* Management REST API is enhanced with new methods and features
- * Query API is added allowing to search attributes of Broker and Virtual Host configured objects matching given filtering criteria
- * Support for Cross Origin Resource Sharing is added
- * New user preferences API is reimplemented from scratch
- * Message publishing via REST API is added
- * Message content retrieving API is improved
-* New message consumer features are added
- * Consumer priorities
- * Experimental support for pulling consumers
-* New features are added into Web Management Console
- * Dashboard and Query UI
- * Improved message content preview
+* Support for consumer priorities
+* Leverages the TLS cipher suite ordering abilities of JDK 1.8 to offer improved TLS performance
+* New authentication/authorization features
+ * Support for OAUTH2 authentication with out of the box support for many public OAUTH2 services (including Google, Github, and Facebook)
+ * Support for the utilisation of group information from Directory Services (LDAP) for access control purposes
+* Improvements to the Web Management Console
+ * New Dashboard and Query UI features allow an operator to better understand a Broker's state
+* Enhancements to the Management REST API
+ * Support for Cross Origin Resource Sharing (CORS)
+ * Support for message publishing via REST API
+ * Query API allows developers and operators to better monitor the Broker
 * Over 100 bug fixes and improvements
 
 For more information about this release, including download links and
