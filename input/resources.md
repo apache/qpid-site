@@ -32,7 +32,6 @@ would like your blog linked here.
  - [AMQP Essentials refcard](https://dzone.com/refcardz/amqp-essentials) by Paolo Patierno
  - [AMQP overview and links](https://paolopatierno.wordpress.com/2015/08/30/amqp-isnt-so-scary-if-you-know-how-to-start/) by Paolo Patierno
  - [AMQP Illustrated](https://chugrolke.wordpress.com/) by Chuck Rolke
- - [Dial M for Messaging](http://dialmformessaging.blogspot.com/) by Mick Goulish
  - [NETPROTOTALK](https://netprototalk.wordpress.com/) by Ted Ross
  - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/)
  - [The Infobahn Offramp](http://mcpierce.blogspot.com/search/label/messaging) by Darryl Pierce
