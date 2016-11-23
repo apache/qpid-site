@@ -29,15 +29,21 @@ def gen_books_and_man(release, source_dir, output_dir):
         call("make")
         call("make doc")
 
-    book_build_dir = join(build_dir, "doc", "html", "book")
+    book_build_dir = join(build_dir, "doc", "book")
 
-    for f in list_dir(book_build_dir, "*.html"):
+    for f in list_dir(book_build_dir, "*.html.in"):
         input_file = join(book_build_dir, f)
-        output_file = join(output_dir, "book", "{}.in".format(f))
+        output_file = join(output_dir, "book", f)
 
         copy(input_file, output_file)
 
-    book_image_dir = join(build_dir, "doc", "html", "_images")
+    for f in list_dir(book_build_dir, "*.png"):
+        input_file = join(book_build_dir, f)
+        output_file = join(output_dir, "book", f)
+
+        copy(input_file, output_file)
+
+    book_image_dir = join(build_dir, "doc", "_images")
 
     for f in list_dir(book_image_dir, "*"):
         input_file = join(book_image_dir, f)
@@ -45,11 +51,11 @@ def gen_books_and_man(release, source_dir, output_dir):
 
         copy(input_file, output_file)
 
-    man_build_dir = join(build_dir, "doc", "html", "man")
+    man_build_dir = join(build_dir, "doc", "man")
 
-    for f in list_dir(man_build_dir, "*.html"):
+    for f in list_dir(man_build_dir, "*.html.in"):
         input_file = join(man_build_dir, f)
-        output_file = join(output_dir, "man", "{}.in".format(f))
+        output_file = join(output_dir, "man", f)
 
         copy(input_file, output_file)
 
