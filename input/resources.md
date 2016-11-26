@@ -75,12 +75,15 @@ must [sign up with Coverity](https://scan.coverity.com/users/sign_up).
 ## Related projects
 
  - [AMQP.Net Lite](https://github.com/Azure/amqpnetlite)
- - [ActiveMQ Artemis and AMQP using Qpid Proton](https://activemq.apache.org/artemis/)
- - [ActiveMQ and AMQP using Qpid Proton](http://activemq.apache.org/amqp.html)
- - [Apache Axis and AMQP using Qpid](http://axis.apache.org/axis2/c/core/docs/axis2c_manual.html#amqptrans)
- - [Apache Camel and AMQP using Qpid](http://camel.apache.org/amqp.html)
+ - [ActiveMQ and AMQP](http://activemq.apache.org/amqp.html)
+ - [ActiveMQ Artemis](https://activemq.apache.org/artemis/)
+ - [Apache Axis and AMQP](http://axis.apache.org/axis2/c/core/docs/axis2c_manual.html#amqptrans)
+ - [Apache Camel and AMQP](http://camel.apache.org/amqp.html)
+ - [Apache Spark Streaming connector for AMQP](https://github.com/radanalyticsio/streaming-amqp)
+ - [Kafka AMQP bridge](https://github.com/rhiot/amqp-kafka-bridge)
  - [Vert.x AMQP bridge](https://github.com/vert-x3/vertx-amqp-bridge)
-
+ - [Vert.x Proton](https://github.com/vert-x3/vertx-proton)
+ 
 </section>
 <section markdown="1">
 
