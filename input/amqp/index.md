@@ -70,3 +70,4 @@ whose aim is to help you make your application speak AMQP.
  - [OASIS AMQP technical committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp)
  - [ISO 19464](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=64955)
  - [AMQP on Wikipedia](http://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol)
+ - [Awesome AMQP links](https://github.com/xinchen10/awesome-amqp)

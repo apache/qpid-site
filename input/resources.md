@@ -27,12 +27,11 @@
 [Contact us]({{site_url}}/discussion.html) if you write about Qpid and
 would like your blog linked here.
 
-
-
  - [AMQP Essentials refcard](https://dzone.com/refcardz/amqp-essentials) by Paolo Patierno
- - [AMQP overview and links](https://paolopatierno.wordpress.com/2015/08/30/amqp-isnt-so-scary-if-you-know-how-to-start/) by Paolo Patierno
  - [AMQP Illustrated](https://chugrolke.wordpress.com/) by Chuck Rolke
+ - [Awesome AMQP links](https://github.com/xinchen10/awesome-amqp) by Xin Chen
  - [NETPROTOTALK](https://netprototalk.wordpress.com/) by Ted Ross
+ - [Paolo Patierno's AMQP blog posts](https://paolopatierno.wordpress.com/?s=amqp)
  - [Steve Huston's Networked Programming Blog](http://stevehuston.wordpress.com/)
  - [The Infobahn Offramp](http://mcpierce.blogspot.com/search/label/messaging) by Darryl Pierce
 
@@ -80,7 +79,7 @@ must [sign up with Coverity](https://scan.coverity.com/users/sign_up).
  - [ActiveMQ and AMQP using Qpid Proton](http://activemq.apache.org/amqp.html)
  - [Apache Axis and AMQP using Qpid](http://axis.apache.org/axis2/c/core/docs/axis2c_manual.html#amqptrans)
  - [Apache Camel and AMQP using Qpid](http://camel.apache.org/amqp.html)
- - [Vert.x AMQP service](https://github.com/vert-x3/vertx-amqp-service)
+ - [Vert.x AMQP bridge](https://github.com/vert-x3/vertx-amqp-bridge)
 
 </section>
 <section markdown="1">
