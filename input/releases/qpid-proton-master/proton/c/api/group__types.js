@@ -1,5 +1,5 @@
 var group__types =
 [
-    [ "Primitive Types", "group__primitives.html", "group__primitives" ],
-    [ "Abstract Types", "group__abstract.html", null ]
+    [ "AMQP data types", "group__amqp__types.html", "group__amqp__types" ],
+    [ "API data types", "group__api__types.html", "group__api__types" ]
 ];

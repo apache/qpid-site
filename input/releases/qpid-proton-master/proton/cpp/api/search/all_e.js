@@ -1,9 +1,9 @@
 var searchData=
 [
   ['random',['random',['../classproton_1_1uuid.html#aadb818b767351748ca49e8404a3c4a77',1,'proton::uuid']]],
-  ['read_5fbuffer',['read_buffer',['../classproton_1_1io_1_1connection__engine.html#af477c1401cee5a0cf3bc8d6f4d2be805',1,'proton::io::connection_engine']]],
-  ['read_5fclose',['read_close',['../classproton_1_1io_1_1connection__engine.html#aaa622a6fed072f5b4935881efb42ba5c',1,'proton::io::connection_engine']]],
-  ['read_5fdone',['read_done',['../classproton_1_1io_1_1connection__engine.html#a3f86a4f778e8c9303e6c0f127e52a5e2',1,'proton::io::connection_engine']]],
+  ['read_5fbuffer',['read_buffer',['../classproton_1_1io_1_1connection__driver.html#af477c1401cee5a0cf3bc8d6f4d2be805',1,'proton::io::connection_driver']]],
+  ['read_5fclose',['read_close',['../classproton_1_1io_1_1connection__driver.html#aaa622a6fed072f5b4935881efb42ba5c',1,'proton::io::connection_driver']]],
+  ['read_5fdone',['read_done',['../classproton_1_1io_1_1connection__driver.html#a3f86a4f778e8c9303e6c0f127e52a5e2',1,'proton::io::connection_driver']]],
   ['received',['RECEIVED',['../classproton_1_1transfer.html#adc6e5733fc3c22f0a7b2914188c49c90a1cf265da0334753368223d47f242a8df',1,'proton::transfer']]],
   ['receiver',['receiver',['../classproton_1_1delivery.html#ad94696eb7d2907efd72e021c2513ed48',1,'proton::delivery::receiver()'],['../classproton_1_1receiver.html#a24b1f20b28b31ee266f387d1fe31b627',1,'proton::receiver::receiver()']]],
   ['receiver',['receiver',['../classproton_1_1receiver.html',1,'proton']]],

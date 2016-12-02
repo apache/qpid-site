@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['introduction',['Introduction',['../index.html',1,'']]],
-  ['io_20integration',['IO integration',['../io_page.html',1,'']]]
+  ['multithreaded_20proton_20applications',['Multithreaded Proton applications',['../mt_page.html',1,'']]]
 ];

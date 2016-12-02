@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('event_8h.html','');});
 <div class="title">event.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Protocol and transport events.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;proton/import_export.h&gt;</code><br />
 <code>#include &lt;proton/type_compat.h&gt;</code><br />
 <code>#include &lt;proton/object.h&gt;</code><br />
@@ -107,12 +110,16 @@ $(document).ready(function(){initNavTree('event_8h.html','');});
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga87f3028b4888632bbd56fb71ac737ae8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a></td></tr>
+<tr class="memdesc:ga87f3028b4888632bbd56fb71ac737ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification of a state change in the protocol engine.  <a href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">More...</a><br /></td></tr>
 <tr class="separator:ga87f3028b4888632bbd56fb71ac737ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a></td></tr>
+<tr class="memdesc:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - A batch of events to handle.  <a href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">More...</a><br /></td></tr>
+<tr class="separator:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:ga4876e2eed24a4d4e4c52b99842103cda"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a> { <br />
-&#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa1f5eec218463ae8e4f962fcc8eb2e657">PN_EVENT_NONE</a> = 0, 
+&#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa1f5eec218463ae8e4f962fcc8eb2e657">PN_EVENT_NONE</a>, 
 <a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa95e9355638399ee20a697f3f494ab7db">PN_REACTOR_INIT</a>, 
 <a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa5548649935a6aab6e6547c9036f685ff">PN_REACTOR_QUIESCED</a>, 
 <a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaad164b6566815866ed2c1d981e02bacb0">PN_REACTOR_FINAL</a>, 
@@ -153,62 +160,98 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa7c7278de5bcbf3b42b3e692ca21f6c5a">PN_TRANSPORT_ERROR</a>, 
 <br />
 &#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa98facd13835b4a1d8e878d6f13c10a51">PN_TRANSPORT_HEAD_CLOSED</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaafeca7b216c6adaa6f26b338443715018">PN_TRANSPORT_WRITE_CLOSED</a>, 
 <a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa205d07df6cd3d07b37a89f046b1184db">PN_TRANSPORT_TAIL_CLOSED</a>, 
-<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa1ca722ce3c0b2c13a33636cded8430ba">PN_TRANSPORT_CLOSED</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa12d81068a6a24cafc311fbabad00da34">PN_TRANSPORT_READ_CLOSED</a>, 
+<br />
+&#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa1ca722ce3c0b2c13a33636cded8430ba">PN_TRANSPORT_CLOSED</a>, 
 <b>PN_SELECTABLE_INIT</b>, 
-<br />
-&#160;&#160;<b>PN_SELECTABLE_UPDATED</b>, 
+<b>PN_SELECTABLE_UPDATED</b>, 
 <b>PN_SELECTABLE_READABLE</b>, 
-<b>PN_SELECTABLE_WRITABLE</b>, 
+<br />
+&#160;&#160;<b>PN_SELECTABLE_WRITABLE</b>, 
 <b>PN_SELECTABLE_ERROR</b>, 
+<b>PN_SELECTABLE_EXPIRED</b>, 
+<b>PN_SELECTABLE_FINAL</b>, 
 <br />
-&#160;&#160;<b>PN_SELECTABLE_EXPIRED</b>, 
-<b>PN_SELECTABLE_FINAL</b>
+&#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa28a2bfee806bbc1fe31499c8eec39db0">PN_CONNECTION_WAKE</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa0602b15957883e7d00ccdff4abca992c">PN_LISTENER_ACCEPT</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaad5920df168cd28daaf253cad789d8aca">PN_LISTENER_CLOSE</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaaee05826a80e94b5b86c4544e4715f499">PN_PROACTOR_INTERRUPT</a>, 
 <br />
- }</td></tr>
+&#160;&#160;<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa4afa8c2da61f4c665c669fbe37b1c5fe">PN_PROACTOR_TIMEOUT</a>, 
+<a class="el" href="group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaa894e93f167ef39e28a07c9cdf6b1181b">PN_PROACTOR_INACTIVE</a>
+<br />
+ }<tr class="memdesc:ga4876e2eed24a4d4e4c52b99842103cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event type.  <a href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">More...</a><br /></td></tr>
+</td></tr>
 <tr class="separator:ga4876e2eed24a4d4e4c52b99842103cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gaede985de776fb37eaf3d2a34af60a5dc"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaede985de776fb37eaf3d2a34af60a5dc">pn_event_type_name</a> (<a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a> type)</td></tr>
-<tr class="separator:gaede985de776fb37eaf3d2a34af60a5dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa880eb8a610de74e5d34bc0a4c239ada"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaa880eb8a610de74e5d34bc0a4c239ada">pn_collector</a> (void)</td></tr>
-<tr class="separator:gaa880eb8a610de74e5d34bc0a4c239ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaff9695d4c47feea83a5762cec75d6ccf"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaff9695d4c47feea83a5762cec75d6ccf">pn_collector_free</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
-<tr class="separator:gaff9695d4c47feea83a5762cec75d6ccf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad1f005d4eae73f8d81e2df08da151f53"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gad1f005d4eae73f8d81e2df08da151f53">pn_collector_release</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
-<tr class="separator:gad1f005d4eae73f8d81e2df08da151f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa2f79fd9dd3cd78fb8edef78a70048c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gafa2f79fd9dd3cd78fb8edef78a70048c">pn_collector_put</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector, const <a class="el" href="structpn__class__t.html">pn_class_t</a> *clazz, void *context, <a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a> type)</td></tr>
-<tr class="separator:gafa2f79fd9dd3cd78fb8edef78a70048c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga93fe9a4d042d37ade5cd00b3cc1cb59f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga93fe9a4d042d37ade5cd00b3cc1cb59f">pn_collector_peek</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
-<tr class="separator:ga93fe9a4d042d37ade5cd00b3cc1cb59f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa555f47b96943d506be173d3bfbb0e2f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaa555f47b96943d506be173d3bfbb0e2f">pn_collector_pop</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
-<tr class="separator:gaa555f47b96943d506be173d3bfbb0e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ca84a1786d2707cfcfe821bdcf19d15"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga5ca84a1786d2707cfcfe821bdcf19d15">pn_collector_more</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
-<tr class="separator:ga5ca84a1786d2707cfcfe821bdcf19d15"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6f4ad7aa02de3d8e3d9006d1ff274585"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga6f4ad7aa02de3d8e3d9006d1ff274585">pn_event_type</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga6f4ad7aa02de3d8e3d9006d1ff274585"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7cde0db3bb43614323ff1aee87bf45aa"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const <a class="el" href="structpn__class__t.html">pn_class_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga7cde0db3bb43614323ff1aee87bf45aa">pn_event_class</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga7cde0db3bb43614323ff1aee87bf45aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae7306ffd931c65d9acab76fde75fbd53"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gae7306ffd931c65d9acab76fde75fbd53">pn_event_context</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:gae7306ffd931c65d9acab76fde75fbd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7ac86262676e6ced40bacc2ca85d205e"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__reactor.html#gaeab23d956ba5662b87f2a3b498af28b6">pn_handler_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga7ac86262676e6ced40bacc2ca85d205e">pn_event_root</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga7ac86262676e6ced40bacc2ca85d205e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd51118bb12d11911fb189ace39fa20f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gabd51118bb12d11911fb189ace39fa20f">pn_event_connection</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:gabd51118bb12d11911fb189ace39fa20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5e61979e9bb2c76529c9b62a0a65a67d"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__session.html#ga38ccb93b8f5c2892adafce5d5f0fbcd9">pn_session_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga5e61979e9bb2c76529c9b62a0a65a67d">pn_event_session</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga5e61979e9bb2c76529c9b62a0a65a67d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2a289b44f0bb585f419f355e0e7bff81"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__link.html#ga89dad3aa7934329a7ff467c636687bc0">pn_link_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga2a289b44f0bb585f419f355e0e7bff81">pn_event_link</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga2a289b44f0bb585f419f355e0e7bff81"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaadfc49bb1943bf56058bfe7affa5a380"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__delivery.html#gacdfce854066c0a4ff4db9f9a0478f340">pn_delivery_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaadfc49bb1943bf56058bfe7affa5a380">pn_event_delivery</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:gaadfc49bb1943bf56058bfe7affa5a380"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5c8c7f4d2b79cb08e2f77fad9746fbc5"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga5c8c7f4d2b79cb08e2f77fad9746fbc5">pn_event_transport</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:ga5c8c7f4d2b79cb08e2f77fad9746fbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab2f4a048e116b4831f6d5300e39d0b7f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_record_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gab2f4a048e116b4831f6d5300e39d0b7f">pn_event_attachments</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
-<tr class="separator:gab2f4a048e116b4831f6d5300e39d0b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3a85c046c11ce692c23b9566b022d54b"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga3a85c046c11ce692c23b9566b022d54b">pn_event_type_name</a> (<a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a> type)</td></tr>
+<tr class="memdesc:ga3a85c046c11ce692c23b9566b022d54b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a human readable name for an event type.  <a href="group__event.html#ga3a85c046c11ce692c23b9566b022d54b">More...</a><br /></td></tr>
+<tr class="separator:ga3a85c046c11ce692c23b9566b022d54b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c7754316e257d4ce7660730953000ac"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga7c7754316e257d4ce7660730953000ac">pn_collector</a> (void)</td></tr>
+<tr class="memdesc:ga7c7754316e257d4ce7660730953000ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a collector.  <a href="group__event.html#ga7c7754316e257d4ce7660730953000ac">More...</a><br /></td></tr>
+<tr class="separator:ga7c7754316e257d4ce7660730953000ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2312e5cb8fc9e4bff94d7ab9d4b15c08"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga2312e5cb8fc9e4bff94d7ab9d4b15c08">pn_collector_free</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga2312e5cb8fc9e4bff94d7ab9d4b15c08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a collector.  <a href="group__event.html#ga2312e5cb8fc9e4bff94d7ab9d4b15c08">More...</a><br /></td></tr>
+<tr class="separator:ga2312e5cb8fc9e4bff94d7ab9d4b15c08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04e6edffd24e5c865ac1f6b3529469e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga04e6edffd24e5c865ac1f6b3529469e4">pn_collector_release</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga04e6edffd24e5c865ac1f6b3529469e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Release a collector.  <a href="group__event.html#ga04e6edffd24e5c865ac1f6b3529469e4">More...</a><br /></td></tr>
+<tr class="separator:ga04e6edffd24e5c865ac1f6b3529469e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1857c64d3f8549209b0b8ec91bf81e89"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga1857c64d3f8549209b0b8ec91bf81e89">pn_collector_put</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector, const pn_class_t *clazz, void *context, <a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a> type)</td></tr>
+<tr class="memdesc:ga1857c64d3f8549209b0b8ec91bf81e89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place a new event on a collector.  <a href="group__event.html#ga1857c64d3f8549209b0b8ec91bf81e89">More...</a><br /></td></tr>
+<tr class="separator:ga1857c64d3f8549209b0b8ec91bf81e89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga672d5ec725787815cae9b7bc739cd6f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga672d5ec725787815cae9b7bc739cd6f9">pn_collector_peek</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga672d5ec725787815cae9b7bc739cd6f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the head event contained by a collector.  <a href="group__event.html#ga672d5ec725787815cae9b7bc739cd6f9">More...</a><br /></td></tr>
+<tr class="separator:ga672d5ec725787815cae9b7bc739cd6f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7a4a24eb162059737f44e7520a0c1a54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga7a4a24eb162059737f44e7520a0c1a54">pn_collector_pop</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga7a4a24eb162059737f44e7520a0c1a54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clear the head event on a collector.  <a href="group__event.html#ga7a4a24eb162059737f44e7520a0c1a54">More...</a><br /></td></tr>
+<tr class="separator:ga7a4a24eb162059737f44e7520a0c1a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga554801c4fb87ae7518772a4492f307e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga554801c4fb87ae7518772a4492f307e0">pn_collector_next</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga554801c4fb87ae7518772a4492f307e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the next event to be handled.  <a href="group__event.html#ga554801c4fb87ae7518772a4492f307e0">More...</a><br /></td></tr>
+<tr class="separator:ga554801c4fb87ae7518772a4492f307e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9304e9c2e85cb5de23c81ae7cd8a9077"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga9304e9c2e85cb5de23c81ae7cd8a9077">pn_collector_prev</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:ga9304e9c2e85cb5de23c81ae7cd8a9077"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the same event as the previous call to <a class="el" href="group__event.html#ga554801c4fb87ae7518772a4492f307e0" title="Return the next event to be handled. ">pn_collector_next()</a>  <a href="group__event.html#ga9304e9c2e85cb5de23c81ae7cd8a9077">More...</a><br /></td></tr>
+<tr class="separator:ga9304e9c2e85cb5de23c81ae7cd8a9077"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf731be5b6c0d15173fd4d9a3b132121"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gabf731be5b6c0d15173fd4d9a3b132121">pn_collector_more</a> (<a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a> *collector)</td></tr>
+<tr class="memdesc:gabf731be5b6c0d15173fd4d9a3b132121"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if there are more events after the current event.  <a href="group__event.html#gabf731be5b6c0d15173fd4d9a3b132121">More...</a><br /></td></tr>
+<tr class="separator:gabf731be5b6c0d15173fd4d9a3b132121"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gacaea54ca51885933b4987c131a3d1b0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga4876e2eed24a4d4e4c52b99842103cda">pn_event_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gacaea54ca51885933b4987c131a3d1b0d">pn_event_type</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:gacaea54ca51885933b4987c131a3d1b0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of an event.  <a href="group__event.html#gacaea54ca51885933b4987c131a3d1b0d">More...</a><br /></td></tr>
+<tr class="separator:gacaea54ca51885933b4987c131a3d1b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f3f0a01db5cce634c5d0ccd5d9b50be"><td class="memItemLeft" align="right" valign="top">const pn_class_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga1f3f0a01db5cce634c5d0ccd5d9b50be">pn_event_class</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga1f3f0a01db5cce634c5d0ccd5d9b50be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the class associated with the event context.  <a href="group__event.html#ga1f3f0a01db5cce634c5d0ccd5d9b50be">More...</a><br /></td></tr>
+<tr class="separator:ga1f3f0a01db5cce634c5d0ccd5d9b50be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaecda1dea7e3a01c4ba246043ea438b19"><td class="memItemLeft" align="right" valign="top">
+void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaecda1dea7e3a01c4ba246043ea438b19">pn_event_context</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:gaecda1dea7e3a01c4ba246043ea438b19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the context associated with an event. <br /></td></tr>
+<tr class="separator:gaecda1dea7e3a01c4ba246043ea438b19"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f2c6a0fdf86a43e7e9874fcd2ccaf52"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga4f2c6a0fdf86a43e7e9874fcd2ccaf52">pn_event_connection</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga4f2c6a0fdf86a43e7e9874fcd2ccaf52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the connection associated with an event.  <a href="group__event.html#ga4f2c6a0fdf86a43e7e9874fcd2ccaf52">More...</a><br /></td></tr>
+<tr class="separator:ga4f2c6a0fdf86a43e7e9874fcd2ccaf52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf4af0bfbe0e0a8e432f0e803df14ecb5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__session.html#ga38ccb93b8f5c2892adafce5d5f0fbcd9">pn_session_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gaf4af0bfbe0e0a8e432f0e803df14ecb5">pn_event_session</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:gaf4af0bfbe0e0a8e432f0e803df14ecb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the session associated with an event.  <a href="group__event.html#gaf4af0bfbe0e0a8e432f0e803df14ecb5">More...</a><br /></td></tr>
+<tr class="separator:gaf4af0bfbe0e0a8e432f0e803df14ecb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75f230ef55f03a1f943df79279f8d111"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__link.html#ga89dad3aa7934329a7ff467c636687bc0">pn_link_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga75f230ef55f03a1f943df79279f8d111">pn_event_link</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga75f230ef55f03a1f943df79279f8d111"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the link associated with an event.  <a href="group__event.html#ga75f230ef55f03a1f943df79279f8d111">More...</a><br /></td></tr>
+<tr class="separator:ga75f230ef55f03a1f943df79279f8d111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga10fa6f53bdabe0851ebb2d8a0bf6a52c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__delivery.html#gacdfce854066c0a4ff4db9f9a0478f340">pn_delivery_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga10fa6f53bdabe0851ebb2d8a0bf6a52c">pn_event_delivery</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga10fa6f53bdabe0851ebb2d8a0bf6a52c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the delivery associated with an event.  <a href="group__event.html#ga10fa6f53bdabe0851ebb2d8a0bf6a52c">More...</a><br /></td></tr>
+<tr class="separator:ga10fa6f53bdabe0851ebb2d8a0bf6a52c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga14525ae84870388141898bbf57f2b151"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga14525ae84870388141898bbf57f2b151">pn_event_transport</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga14525ae84870388141898bbf57f2b151"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the transport associated with an event.  <a href="group__event.html#ga14525ae84870388141898bbf57f2b151">More...</a><br /></td></tr>
+<tr class="separator:ga14525ae84870388141898bbf57f2b151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5989cf0c187bd12899596fe06931476e"><td class="memItemLeft" align="right" valign="top">pn_record_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga5989cf0c187bd12899596fe06931476e">pn_event_attachments</a> (<a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *event)</td></tr>
+<tr class="memdesc:ga5989cf0c187bd12899596fe06931476e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get any attachments associated with an event.  <a href="group__event.html#ga5989cf0c187bd12899596fe06931476e">More...</a><br /></td></tr>
+<tr class="separator:ga5989cf0c187bd12899596fe06931476e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3fbf151357d3101ac294cb675348c76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76">pn_event_batch_next</a> (<a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a> *batch)</td></tr>
+<tr class="memdesc:gac3fbf151357d3101ac294cb675348c76"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - Remove the next event from the batch and return it.  <a href="group__event.html#gac3fbf151357d3101ac294cb675348c76">More...</a><br /></td></tr>
+<tr class="separator:gac3fbf151357d3101ac294cb675348c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Event API for the proton Engine. </p>
+<div class="textblock"><p>Protocol and transport events. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

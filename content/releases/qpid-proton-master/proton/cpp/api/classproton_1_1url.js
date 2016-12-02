@@ -13,5 +13,6 @@ var classproton_1_1url =
     [ "port", "classproton_1_1url.html#a0e60714e27670ed3bb5ab96715b8b740", null ],
     [ "port_int", "classproton_1_1url.html#a6f265f3f5954d9a7dd262b11bb5c32a4", null ],
     [ "scheme", "classproton_1_1url.html#aacd8c2f1287d7c2e541397cd62612f8d", null ],
-    [ "user", "classproton_1_1url.html#a31d44d41f9aee83ac6fdbe8721eaa42f", null ]
+    [ "user", "classproton_1_1url.html#a31d44d41f9aee83ac6fdbe8721eaa42f", null ],
+    [ "to_string", "classproton_1_1url.html#a348cf3a521a7c6de31462917c8ab4364", null ]
 ];

@@ -1,12 +1,11 @@
 var NAVTREE =
 [
   [ "Qpid Proton C API", "index.html", [
-    [ "Todo List", "todo.html", null ],
+    [ "Introduction", "index.html", null ],
     [ "Deprecated List", "deprecated.html", null ],
     [ "Modules", "modules.html", "modules" ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
-      [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
         [ "Variables", "functions_vars.html", null ]
@@ -22,19 +21,20 @@ var NAVTREE =
         [ "Enumerator", "globals_eval.html", null ],
         [ "Macros", "globals_defs.html", null ]
       ] ]
-    ] ]
+    ] ],
+    [ "Examples", "examples.html", "examples" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
 "annotated.html",
-"group__data.html#ga5d6cf528776e8b6ad6d67caf095986bf",
-"group__event.html#ga5c8c7f4d2b79cb08e2f77fad9746fbc5",
-"group__message.html#ga5878b877a0b119f9eb6a7a02bdda6358",
-"group__reactor.html#ga6ed8bb04f81f5d4a3eede9c6c83dfc2a",
-"group__ssl.html#ggae5e33024ed6af3432d4c76d1484d7ecbada1e3837cc900bd6419de72c25b253cc",
-"messenger_8h.html#ad139854875a7857a3dc1a0f93de718d9"
+"group__connection.html#gabc8d505108a850837a0d2fb204875390",
+"group__delivery.html#ga1b7d56bd985e12a524c5cc5bc969bbdf",
+"group__event.html#gga4876e2eed24a4d4e4c52b99842103cdaaeacdc45bfe24b2a9da2aeed7b6effac5",
+"group__messenger.html#ga118fb0c2384257dff5d72eea787e4a0c",
+"group__session.html#gaa45a8aa758334528a86cb7914ebe8545",
+"group__transport.html#gac14e93cc5e8bc949fe7a0800ebd6e052"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

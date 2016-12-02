@@ -2,7 +2,7 @@ var searchData=
 [
   ['codec',['codec',['../namespaceproton_1_1codec.html',1,'proton']]],
   ['io',['io',['../namespaceproton_1_1io.html',1,'proton']]],
-  ['password',['password',['../classproton_1_1url.html#a8a6e6289dec0db675c85065e13b38528',1,'proton::url']]],
+  ['password',['password',['../classproton_1_1connection__options.html#a198b0c6afff08415952fe7311cd7faa7',1,'proton::connection_options::password()'],['../classproton_1_1url.html#a8a6e6289dec0db675c85065e13b38528',1,'proton::url::password()']]],
   ['path',['path',['../classproton_1_1url.html#a9b67b266207227062c7a2961ef85293a',1,'proton::url']]],
   ['perm',['PERM',['../classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf',1,'proton::sasl']]],
   ['port',['port',['../classproton_1_1url.html#a0e60714e27670ed3bb5ab96715b8b740',1,'proton::url']]],

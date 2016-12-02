@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -139,46 +139,106 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getConnection--">getConnection</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getIncomingBytes--">getIncomingBytes</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getDesiredCapabilities--">getDesiredCapabilities</a></span>()</code>
+<div class="block">Gets the local session desired capabilities.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getIncomingCapacity--">getIncomingCapacity</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getIncomingBytes--">getIncomingBytes</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getOutgoingBytes--">getOutgoingBytes</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getIncomingCapacity--">getIncomingCapacity</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getOfferedCapabilities--">getOfferedCapabilities</a></span>()</code>
+<div class="block">Gets the local session offered capabilities.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getOutgoingBytes--">getOutgoingBytes</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>long</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getOutgoingWindow--">getOutgoingWindow</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getProperties--">getProperties</a></span>()</code>
+<div class="block">Gets the local session properties.</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getRemoteDesiredCapabilities--">getRemoteDesiredCapabilities</a></span>()</code>
+<div class="block">Gets the remote session desired capabilities, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getRemoteOfferedCapabilities--">getRemoteOfferedCapabilities</a></span>()</code>
+<div class="block">Gets the remote session offered capabilities, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#getRemoteProperties--">getRemoteProperties</a></span>()</code>
+<div class="block">Gets the remote session properties, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Session.html" title="interface in org.apache.qpid.proton.engine">Session</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#next-java.util.EnumSet-java.util.EnumSet-">next</a></span>(java.util.EnumSet&lt;<a href="../../../../../org/apache/qpid/proton/engine/EndpointState.html" title="enum in org.apache.qpid.proton.engine">EndpointState</a>&gt;&nbsp;local,
     java.util.EnumSet&lt;<a href="../../../../../org/apache/qpid/proton/engine/EndpointState.html" title="enum in org.apache.qpid.proton.engine">EndpointState</a>&gt;&nbsp;remote)</code>&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Receiver.html" title="interface in org.apache.qpid.proton.engine">Receiver</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#receiver-java.lang.String-">receiver</a></span>(java.lang.String&nbsp;name)</code>
 <div class="block">Returns a newly created receiver endpoint</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Sender.html" title="interface in org.apache.qpid.proton.engine">Sender</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#sender-java.lang.String-">sender</a></span>(java.lang.String&nbsp;name)</code>
 <div class="block">Returns a newly created sender endpoint</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">setDesiredCapabilities</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;desiredCapabilities)</code>
+<div class="block">Sets the local session desired capabilities, to be conveyed to the peer via the Begin frame
+ when opening the session.</div>
+</td>
+</tr>
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setIncomingCapacity-int-">setIncomingCapacity</a></span>(int&nbsp;bytes)</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i16" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">setOfferedCapabilities</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;offeredCapabilities)</code>
+<div class="block">Sets the local session offered capabilities, to be conveyed to the peer via the Begin frame
+ when opening the session.</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setOutgoingWindow-long-">setOutgoingWindow</a></span>(long&nbsp;outgoingWindowSize)</code>
 <div class="block">Sets the outgoing window size.</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setProperties-java.util.Map-">setProperties</a></span>(java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;&nbsp;properties)</code>
+<div class="block">Sets the local session properties, to be conveyed to the peer via the Begin frame when
+ attaching the session to the session.</div>
 </td>
 </tr>
 </table>
@@ -297,7 +357,7 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 <a name="setOutgoingWindow-long-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>setOutgoingWindow</h4>
 <pre>void&nbsp;setOutgoingWindow(long&nbsp;outgoingWindowSize)</pre>
@@ -305,6 +365,150 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>outgoingWindowSize</code> - the outgoing window size</dd>
+</dl>
+</li>
+</ul>
+<a name="setProperties-java.util.Map-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setProperties</h4>
+<pre>void&nbsp;setProperties(java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;&nbsp;properties)</pre>
+<div class="block">Sets the local session properties, to be conveyed to the peer via the Begin frame when
+ attaching the session to the session.
+
+ Must be called during session setup, i.e. before calling the <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html#open--"><code>Endpoint.open()</code></a> method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>properties</code> - the properties map to send, or null for none.</dd>
+</dl>
+</li>
+</ul>
+<a name="getProperties--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getProperties</h4>
+<pre>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;&nbsp;getProperties()</pre>
+<div class="block">Gets the local session properties.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the properties map, or null if none was set.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setProperties-java.util.Map-"><code>setProperties(Map)</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getRemoteProperties--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRemoteProperties</h4>
+<pre>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;&nbsp;getRemoteProperties()</pre>
+<div class="block">Gets the remote session properties, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the properties Map conveyed by the peer, or null if there was none.</dd>
+</dl>
+</li>
+</ul>
+<a name="setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOfferedCapabilities</h4>
+<pre>void&nbsp;setOfferedCapabilities(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;offeredCapabilities)</pre>
+<div class="block">Sets the local session offered capabilities, to be conveyed to the peer via the Begin frame
+ when opening the session.
+
+ Must be called during session setup, i.e. before calling the <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html#open--"><code>Endpoint.open()</code></a> method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>offeredCapabilities</code> - the offered capabilities array to send, or null for none.</dd>
+</dl>
+</li>
+</ul>
+<a name="getOfferedCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOfferedCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getOfferedCapabilities()</pre>
+<div class="block">Gets the local session offered capabilities.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the offered capabilities array, or null if none was set.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-"><code>setOfferedCapabilities(Symbol[])</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getRemoteOfferedCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRemoteOfferedCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getRemoteOfferedCapabilities()</pre>
+<div class="block">Gets the remote session offered capabilities, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the offered capabilities array conveyed by the peer, or null if there was none.</dd>
+</dl>
+</li>
+</ul>
+<a name="setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDesiredCapabilities</h4>
+<pre>void&nbsp;setDesiredCapabilities(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;desiredCapabilities)</pre>
+<div class="block">Sets the local session desired capabilities, to be conveyed to the peer via the Begin frame
+ when opening the session.
+
+ Must be called during session setup, i.e. before calling the <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html#open--"><code>Endpoint.open()</code></a> method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>desiredCapabilities</code> - the desired capabilities array to send, or null for none.</dd>
+</dl>
+</li>
+</ul>
+<a name="getDesiredCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDesiredCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getDesiredCapabilities()</pre>
+<div class="block">Gets the local session desired capabilities.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the desired capabilities array, or null if none was set.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../org/apache/qpid/proton/engine/Session.html#setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-"><code>setDesiredCapabilities(Symbol[])</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getRemoteDesiredCapabilities--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getRemoteDesiredCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getRemoteDesiredCapabilities()</pre>
+<div class="block">Gets the remote session desired capabilities, as conveyed from the peer via the Begin frame
+ when opening the session.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the desired capabilities array conveyed by the peer, or null if there was none.</dd>
 </dl>
 </li>
 </ul>

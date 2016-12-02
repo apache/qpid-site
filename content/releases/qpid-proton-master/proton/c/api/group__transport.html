@@ -90,192 +90,209 @@ $(document).ready(function(){initNavTree('group__transport.html','');});
 
 <div class="header">
   <div class="summary">
-<a href="#groups">Modules</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#typedef-members">Typedefs</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">Transport<div class="ingroups"><a class="el" href="group__engine.html">Engine</a></div></div>  </div>
+<div class="title">Transport<div class="ingroups"><a class="el" href="group__core.html">Core</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>A network channel supporting an AMQP connection.  
+<a href="#details">More...</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="groups"></a>
-Modules</h2></td></tr>
-<tr class="memitem:group__sasl"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html">SASL</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:group__ssl"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html">SSL</a></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:gae8f32e46e94953bab10bee530eee9044"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gae8f32e46e94953bab10bee530eee9044">PN_TRACE_OFF</a>&#160;&#160;&#160;(0)</td></tr>
+<tr class="memitem:gae8f32e46e94953bab10bee530eee9044"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae8f32e46e94953bab10bee530eee9044"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gae8f32e46e94953bab10bee530eee9044">PN_TRACE_OFF</a></td></tr>
+<tr class="memdesc:gae8f32e46e94953bab10bee530eee9044"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn logging off entirely. <br /></td></tr>
 <tr class="separator:gae8f32e46e94953bab10bee530eee9044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8">PN_TRACE_RAW</a>&#160;&#160;&#160;(1)</td></tr>
+<tr class="memitem:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gafde0eb3c73fb98816f4238d42d48f3d8"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8">PN_TRACE_RAW</a></td></tr>
+<tr class="memdesc:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log raw binary data into/out of the transport. <br /></td></tr>
 <tr class="separator:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab8e04b4c128379ff27e6b801c0bce494"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494">PN_TRACE_FRM</a>&#160;&#160;&#160;(2)</td></tr>
+<tr class="memitem:gab8e04b4c128379ff27e6b801c0bce494"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gab8e04b4c128379ff27e6b801c0bce494"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494">PN_TRACE_FRM</a></td></tr>
+<tr class="memdesc:gab8e04b4c128379ff27e6b801c0bce494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log frames into/out of the transport. <br /></td></tr>
 <tr class="separator:gab8e04b4c128379ff27e6b801c0bce494"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7065ad65f95c995a24e416edc95aead4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4">PN_TRACE_DRV</a>&#160;&#160;&#160;(4)</td></tr>
+<tr class="memitem:ga7065ad65f95c995a24e416edc95aead4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4">PN_TRACE_DRV</a></td></tr>
+<tr class="memdesc:ga7065ad65f95c995a24e416edc95aead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log driver related events, e.g.  <a href="#ga7065ad65f95c995a24e416edc95aead4">More...</a><br /></td></tr>
 <tr class="separator:ga7065ad65f95c995a24e416edc95aead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3bde88d15fcfda400a36d8f9e5d51688"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga3bde88d15fcfda400a36d8f9e5d51688"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3bde88d15fcfda400a36d8f9e5d51688">PN_TRACE_EVT</a></td></tr>
+<tr class="memdesc:ga3bde88d15fcfda400a36d8f9e5d51688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log events. <br /></td></tr>
+<tr class="separator:ga3bde88d15fcfda400a36d8f9e5d51688"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:ga4695788da8491f0c7104bfe36634ff94"><td class="memItemLeft" align="right" valign="top">typedef int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga4695788da8491f0c7104bfe36634ff94">pn_trace_t</a></td></tr>
+<tr class="memdesc:ga4695788da8491f0c7104bfe36634ff94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the trace flags for an AMQP transport.  <a href="#ga4695788da8491f0c7104bfe36634ff94">More...</a><br /></td></tr>
 <tr class="separator:ga4695788da8491f0c7104bfe36634ff94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a>) (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *message)</td></tr>
+<tr class="memitem:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="gae9b49fcbf6397e6916eb4e1357c90ff3"></a>
+typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a>) (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *message)</td></tr>
+<tr class="memdesc:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for customizing logging behaviour. <br /></td></tr>
 <tr class="separator:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a></td></tr>
+<tr class="memdesc:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">An AMQP Transport object.  <a href="#gac26eda05f649bbf0399f3d8d78d12fa8">More...</a><br /></td></tr>
 <tr class="separator:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:gad75d8d99018bc22c2d23ef8e820e7a6d"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gad75d8d99018bc22c2d23ef8e820e7a6d">pn_transport</a> (void)</td></tr>
-<tr class="separator:gad75d8d99018bc22c2d23ef8e820e7a6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0f9cecc86a7185e6c9f25ead5c46b82b"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0f9cecc86a7185e6c9f25ead5c46b82b">pn_transport_set_server</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga0f9cecc86a7185e6c9f25ead5c46b82b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa1b0a748aad3cc35684ee095978dbd58"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa1b0a748aad3cc35684ee095978dbd58">pn_transport_free</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gaa1b0a748aad3cc35684ee095978dbd58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafa71f9e73acbe139941b9ebe754b3241"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafa71f9e73acbe139941b9ebe754b3241">pn_transport_get_user</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gafa71f9e73acbe139941b9ebe754b3241"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafc2157ad11690d0b0679aa34db1a1d5a"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafc2157ad11690d0b0679aa34db1a1d5a">pn_transport_require_auth</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, bool required)</td></tr>
-<tr class="separator:gafc2157ad11690d0b0679aa34db1a1d5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab35340b55e7a5cc6420ee8426c8e10ed"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab35340b55e7a5cc6420ee8426c8e10ed">pn_transport_is_authenticated</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gab35340b55e7a5cc6420ee8426c8e10ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadfc4a4be3de102890cc5c0ee4c1d8481"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gadfc4a4be3de102890cc5c0ee4c1d8481">pn_transport_require_encryption</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, bool required)</td></tr>
-<tr class="separator:gadfc4a4be3de102890cc5c0ee4c1d8481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e5deef63ba7b1483a6fadec65c1c3b5"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga8e5deef63ba7b1483a6fadec65c1c3b5">pn_transport_is_encrypted</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga8e5deef63ba7b1483a6fadec65c1c3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d0ad8e3e702ed47088789e33bf0c457"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__condition.html#ga11eb7db7d2c205169fe3d47c996a95a5">pn_condition_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2d0ad8e3e702ed47088789e33bf0c457">pn_transport_condition</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga2d0ad8e3e702ed47088789e33bf0c457"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga00a271caac7d531ae795d78db81199e9"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_error_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga00a271caac7d531ae795d78db81199e9">pn_transport_error</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga00a271caac7d531ae795d78db81199e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad07706c1e7db90d1b5d0ad6caf4c5892"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gad07706c1e7db90d1b5d0ad6caf4c5892">pn_transport_bind</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *connection)</td></tr>
-<tr class="separator:gad07706c1e7db90d1b5d0ad6caf4c5892"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf0e4c15f27f610ca4c5d64c0f4e95f07"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaf0e4c15f27f610ca4c5d64c0f4e95f07">pn_transport_unbind</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gaf0e4c15f27f610ca4c5d64c0f4e95f07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaee7ed090a3fa99d9f46d145939af893b"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaee7ed090a3fa99d9f46d145939af893b">pn_transport_trace</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__transport.html#ga4695788da8491f0c7104bfe36634ff94">pn_trace_t</a> trace)</td></tr>
-<tr class="separator:gaee7ed090a3fa99d9f46d145939af893b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaad5defb0c74cea7e7224c13edfc86c47"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaad5defb0c74cea7e7224c13edfc86c47">pn_transport_set_tracer</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a> tracer)</td></tr>
-<tr class="separator:gaad5defb0c74cea7e7224c13edfc86c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga99b48ee38d0bc21855eee158f8584aca"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga99b48ee38d0bc21855eee158f8584aca">pn_transport_get_tracer</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga99b48ee38d0bc21855eee158f8584aca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga9016acfea374d8b58183158b8d857ee8"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga9016acfea374d8b58183158b8d857ee8">pn_transport_get_context</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga9016acfea374d8b58183158b8d857ee8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga493c8b24e44413338e7afc52aef8d2fd"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga493c8b24e44413338e7afc52aef8d2fd">pn_transport_set_context</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, void *context)</td></tr>
-<tr class="separator:ga493c8b24e44413338e7afc52aef8d2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2dfb9c5a747cf45f2bb40fd1001cc54d"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_record_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2dfb9c5a747cf45f2bb40fd1001cc54d">pn_transport_attachments</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga2dfb9c5a747cf45f2bb40fd1001cc54d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa0e8f0ac87011ef42d91a215c94d8e7c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa0e8f0ac87011ef42d91a215c94d8e7c">pn_transport_log</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *message)</td></tr>
-<tr class="separator:gaa0e8f0ac87011ef42d91a215c94d8e7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6475de6019c60e6d7f4f8f971c980162"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga6475de6019c60e6d7f4f8f971c980162">pn_transport_vlogf</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *fmt, va_list ap)</td></tr>
-<tr class="separator:ga6475de6019c60e6d7f4f8f971c980162"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga81f66ece6523ad3e6f0426b1dbb53e5e"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga81f66ece6523ad3e6f0426b1dbb53e5e">pn_transport_logf</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *fmt,...)</td></tr>
-<tr class="separator:ga81f66ece6523ad3e6f0426b1dbb53e5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga36ff89334941ed67b98af731e5696844"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga36ff89334941ed67b98af731e5696844">pn_transport_get_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga36ff89334941ed67b98af731e5696844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga470514642911834717ec0cd2a0cdab3f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga470514642911834717ec0cd2a0cdab3f">pn_transport_set_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, uint16_t channel_max)</td></tr>
-<tr class="separator:ga470514642911834717ec0cd2a0cdab3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0842d4831299a6aa87075620e8bba436"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0842d4831299a6aa87075620e8bba436">pn_transport_remote_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga0842d4831299a6aa87075620e8bba436"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga93bb966654732ecdd07557dc3307a7e2"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga93bb966654732ecdd07557dc3307a7e2">pn_transport_get_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga93bb966654732ecdd07557dc3307a7e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2974d2551737553bc953232f3bd6438c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2974d2551737553bc953232f3bd6438c">pn_transport_set_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, uint32_t size)</td></tr>
-<tr class="separator:ga2974d2551737553bc953232f3bd6438c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb38ead1b320bdb0572d819712fd84c5"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaeb38ead1b320bdb0572d819712fd84c5">pn_transport_get_remote_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gaeb38ead1b320bdb0572d819712fd84c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d650c473958ae118701d8aefd96aaa1"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_millis_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2d650c473958ae118701d8aefd96aaa1">pn_transport_get_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga2d650c473958ae118701d8aefd96aaa1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadd73956f25923eff0ca93784d943d349"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gadd73956f25923eff0ca93784d943d349">pn_transport_set_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, pn_millis_t timeout)</td></tr>
-<tr class="separator:gadd73956f25923eff0ca93784d943d349"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabae92ce766617943d51fdab7504b867c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_millis_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gabae92ce766617943d51fdab7504b867c">pn_transport_get_remote_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gabae92ce766617943d51fdab7504b867c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6e1cdd7040dbd032b9e31a2c5900a314"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga6e1cdd7040dbd032b9e31a2c5900a314">pn_transport_input</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *bytes, size_t available)</td></tr>
-<tr class="separator:ga6e1cdd7040dbd032b9e31a2c5900a314"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3d1d51b1aea73388a8d4a11e49119817"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3d1d51b1aea73388a8d4a11e49119817">pn_transport_output</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, char *bytes, size_t size)</td></tr>
-<tr class="separator:ga3d1d51b1aea73388a8d4a11e49119817"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0cdcc7fc4f5459687083dcb46796e0dd"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0cdcc7fc4f5459687083dcb46796e0dd">pn_transport_capacity</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga0cdcc7fc4f5459687083dcb46796e0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga51a02f24b448365039da44744f4e65a6"><td class="memItemLeft" align="right" valign="top">PN_EXTERN char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga51a02f24b448365039da44744f4e65a6">pn_transport_tail</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga51a02f24b448365039da44744f4e65a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d769e6c83f9f6f740648798c3d668ff"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2d769e6c83f9f6f740648798c3d668ff">pn_transport_push</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *src, size_t size)</td></tr>
-<tr class="separator:ga2d769e6c83f9f6f740648798c3d668ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa9a5bd5aef7c5dadbc67a236ad1b3447"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, size_t size)</td></tr>
-<tr class="separator:gaa9a5bd5aef7c5dadbc67a236ad1b3447"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaab1f8bacfea4934f0f9dae50488f6aac"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaab1f8bacfea4934f0f9dae50488f6aac">pn_transport_close_tail</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gaab1f8bacfea4934f0f9dae50488f6aac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0fa738666a89b80dfbe381c2768b1d7f"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0fa738666a89b80dfbe381c2768b1d7f">pn_transport_pending</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga0fa738666a89b80dfbe381c2768b1d7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac92129f1805ec946d5a792ae4a1b3327"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac92129f1805ec946d5a792ae4a1b3327">pn_transport_head</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gac92129f1805ec946d5a792ae4a1b3327"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga10a9c4fc00faf70adedc76a941b1cfe9"><td class="memItemLeft" align="right" valign="top">PN_EXTERN ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga10a9c4fc00faf70adedc76a941b1cfe9">pn_transport_peek</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, char *dst, size_t size)</td></tr>
-<tr class="separator:ga10a9c4fc00faf70adedc76a941b1cfe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaeb3c887ab8b0cbf90a0f50dcb799debb"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaeb3c887ab8b0cbf90a0f50dcb799debb">pn_transport_pop</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, size_t size)</td></tr>
-<tr class="separator:gaeb3c887ab8b0cbf90a0f50dcb799debb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga3aee76a664f84898b7a979075ac0e2b8"><td class="memItemLeft" align="right" valign="top">PN_EXTERN int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3aee76a664f84898b7a979075ac0e2b8">pn_transport_close_head</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga3aee76a664f84898b7a979075ac0e2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0a651e6b090ec7c3f86b1d5133372995"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0a651e6b090ec7c3f86b1d5133372995">pn_transport_quiesced</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga0a651e6b090ec7c3f86b1d5133372995"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga69b8c9a7dbdef76644711274b6f61987"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga69b8c9a7dbdef76644711274b6f61987">pn_transport_closed</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga69b8c9a7dbdef76644711274b6f61987"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2be777fea1b19677ac50072c487d9ad1"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_timestamp_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2be777fea1b19677ac50072c487d9ad1">pn_transport_tick</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, pn_timestamp_t now)</td></tr>
-<tr class="separator:ga2be777fea1b19677ac50072c487d9ad1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga5ceae486fe78521728d05b9c4db7d5f7"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga5ceae486fe78521728d05b9c4db7d5f7">pn_transport_get_frames_output</a> (const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga5ceae486fe78521728d05b9c4db7d5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad5614b4c311ab84a21213f60011a6840"><td class="memItemLeft" align="right" valign="top">PN_EXTERN uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gad5614b4c311ab84a21213f60011a6840">pn_transport_get_frames_input</a> (const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:gad5614b4c311ab84a21213f60011a6840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d2c338ec9d913391f1364bf3e701eae"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2d2c338ec9d913391f1364bf3e701eae">pn_transport_connection</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga2d2c338ec9d913391f1364bf3e701eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9833d93faf6a6ed68039e4a909cdd77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaf9833d93faf6a6ed68039e4a909cdd77">pn_transport</a> (void)</td></tr>
+<tr class="memdesc:gaf9833d93faf6a6ed68039e4a909cdd77"><td class="mdescLeft">&#160;</td><td class="mdescRight">Factory for creating a transport.  <a href="#gaf9833d93faf6a6ed68039e4a909cdd77">More...</a><br /></td></tr>
+<tr class="separator:gaf9833d93faf6a6ed68039e4a909cdd77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac5bebd26c0942bc17d7fad36577110f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac5bebd26c0942bc17d7fad36577110f8">pn_transport_set_server</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gac5bebd26c0942bc17d7fad36577110f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure a transport as a server.  <a href="#gac5bebd26c0942bc17d7fad36577110f8">More...</a><br /></td></tr>
+<tr class="separator:gac5bebd26c0942bc17d7fad36577110f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6ab28051242631d9bea4814e8670ab90"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga6ab28051242631d9bea4814e8670ab90">pn_transport_free</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga6ab28051242631d9bea4814e8670ab90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free a transport object.  <a href="#ga6ab28051242631d9bea4814e8670ab90">More...</a><br /></td></tr>
+<tr class="separator:ga6ab28051242631d9bea4814e8670ab90"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6b2750a2d313c65aabe5dc8a99f1de58"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga6b2750a2d313c65aabe5dc8a99f1de58">pn_transport_get_user</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga6b2750a2d313c65aabe5dc8a99f1de58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the authenticated user.  <a href="#ga6b2750a2d313c65aabe5dc8a99f1de58">More...</a><br /></td></tr>
+<tr class="separator:ga6b2750a2d313c65aabe5dc8a99f1de58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga285b4cced59c665ae178adf26128d3fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga285b4cced59c665ae178adf26128d3fc">pn_transport_require_auth</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, bool required)</td></tr>
+<tr class="memdesc:ga285b4cced59c665ae178adf26128d3fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether a non-authenticated transport connection is allowed.  <a href="#ga285b4cced59c665ae178adf26128d3fc">More...</a><br /></td></tr>
+<tr class="separator:ga285b4cced59c665ae178adf26128d3fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8a60f6a48e4bd2d090f5bd264cf7f90d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga8a60f6a48e4bd2d090f5bd264cf7f90d">pn_transport_is_authenticated</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga8a60f6a48e4bd2d090f5bd264cf7f90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether the transport connection is authenticated.  <a href="#ga8a60f6a48e4bd2d090f5bd264cf7f90d">More...</a><br /></td></tr>
+<tr class="separator:ga8a60f6a48e4bd2d090f5bd264cf7f90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaeb7e30ead4a6ab080d0005379be20e34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaeb7e30ead4a6ab080d0005379be20e34">pn_transport_require_encryption</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, bool required)</td></tr>
+<tr class="memdesc:gaeb7e30ead4a6ab080d0005379be20e34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set whether a non encrypted transport connection is allowed.  <a href="#gaeb7e30ead4a6ab080d0005379be20e34">More...</a><br /></td></tr>
+<tr class="separator:gaeb7e30ead4a6ab080d0005379be20e34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga737021ca419e948932071aad2ad38c5b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga737021ca419e948932071aad2ad38c5b">pn_transport_is_encrypted</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga737021ca419e948932071aad2ad38c5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell whether the transport connection is encrypted.  <a href="#ga737021ca419e948932071aad2ad38c5b">More...</a><br /></td></tr>
+<tr class="separator:ga737021ca419e948932071aad2ad38c5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac458d9fdb684f9501e89b96fc51f5c34"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__condition.html#ga11eb7db7d2c205169fe3d47c996a95a5">pn_condition_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac458d9fdb684f9501e89b96fc51f5c34">pn_transport_condition</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gac458d9fdb684f9501e89b96fc51f5c34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get additional information about the condition of the transport.  <a href="#gac458d9fdb684f9501e89b96fc51f5c34">More...</a><br /></td></tr>
+<tr class="separator:gac458d9fdb684f9501e89b96fc51f5c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaede0bc2a0038ccdc7e1b193e322147fa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__error.html#ga24a289d5b32c9bd8a775600a5af83d52">pn_error_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaede0bc2a0038ccdc7e1b193e322147fa">pn_transport_error</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="separator:gaede0bc2a0038ccdc7e1b193e322147fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1a769e2e6c900c78c710407296cb4e13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga1a769e2e6c900c78c710407296cb4e13">pn_transport_bind</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *connection)</td></tr>
+<tr class="memdesc:ga1a769e2e6c900c78c710407296cb4e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binds the transport to an AMQP connection.  <a href="#ga1a769e2e6c900c78c710407296cb4e13">More...</a><br /></td></tr>
+<tr class="separator:ga1a769e2e6c900c78c710407296cb4e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2a66ff267333651eb166f3f6fa4ede50"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2a66ff267333651eb166f3f6fa4ede50">pn_transport_unbind</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga2a66ff267333651eb166f3f6fa4ede50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unbinds a transport from its AMQP connection.  <a href="#ga2a66ff267333651eb166f3f6fa4ede50">More...</a><br /></td></tr>
+<tr class="separator:ga2a66ff267333651eb166f3f6fa4ede50"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa83f8c30fc0e7518c6ef214bb7b4ea56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa83f8c30fc0e7518c6ef214bb7b4ea56">pn_transport_trace</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__transport.html#ga4695788da8491f0c7104bfe36634ff94">pn_trace_t</a> trace)</td></tr>
+<tr class="memdesc:gaa83f8c30fc0e7518c6ef214bb7b4ea56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update a transports trace flags.  <a href="#gaa83f8c30fc0e7518c6ef214bb7b4ea56">More...</a><br /></td></tr>
+<tr class="separator:gaa83f8c30fc0e7518c6ef214bb7b4ea56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7eb7915459eb433e68ff5ce80c5020a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga7eb7915459eb433e68ff5ce80c5020a7">pn_transport_set_tracer</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a> tracer)</td></tr>
+<tr class="memdesc:ga7eb7915459eb433e68ff5ce80c5020a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the tracing function used by a transport.  <a href="#ga7eb7915459eb433e68ff5ce80c5020a7">More...</a><br /></td></tr>
+<tr class="separator:ga7eb7915459eb433e68ff5ce80c5020a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga30d129d04a387ea34515c1641b83521b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga30d129d04a387ea34515c1641b83521b">pn_transport_get_tracer</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga30d129d04a387ea34515c1641b83521b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the tracing function used by a transport.  <a href="#ga30d129d04a387ea34515c1641b83521b">More...</a><br /></td></tr>
+<tr class="separator:ga30d129d04a387ea34515c1641b83521b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga000b2b9ab82139defb1a103f220ec58e"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga000b2b9ab82139defb1a103f220ec58e">pn_transport_get_context</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="separator:ga000b2b9ab82139defb1a103f220ec58e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac22041ff85d1a1f5287ac2ba826edb74"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac22041ff85d1a1f5287ac2ba826edb74">pn_transport_set_context</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, void *context)</td></tr>
+<tr class="separator:gac22041ff85d1a1f5287ac2ba826edb74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabdd6d56837a028097b1676350d65a864"><td class="memItemLeft" align="right" valign="top">pn_record_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gabdd6d56837a028097b1676350d65a864">pn_transport_attachments</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gabdd6d56837a028097b1676350d65a864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the attachments that are associated with a transport object.  <a href="#gabdd6d56837a028097b1676350d65a864">More...</a><br /></td></tr>
+<tr class="separator:gabdd6d56837a028097b1676350d65a864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad603e8d72578bcedd2d9235f74f28f37"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gad603e8d72578bcedd2d9235f74f28f37">pn_transport_log</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *message)</td></tr>
+<tr class="memdesc:gad603e8d72578bcedd2d9235f74f28f37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message using a transport's logging mechanism.  <a href="#gad603e8d72578bcedd2d9235f74f28f37">More...</a><br /></td></tr>
+<tr class="separator:gad603e8d72578bcedd2d9235f74f28f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac773c1b9226783f36e2f2d4770e90e3f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac773c1b9226783f36e2f2d4770e90e3f">pn_transport_vlogf</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *fmt, va_list ap)</td></tr>
+<tr class="memdesc:gac773c1b9226783f36e2f2d4770e90e3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a printf formatted message using a transport's logging mechanism.  <a href="#gac773c1b9226783f36e2f2d4770e90e3f">More...</a><br /></td></tr>
+<tr class="separator:gac773c1b9226783f36e2f2d4770e90e3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga26cff9ffda93e2ffc8606e19eefe7f84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga26cff9ffda93e2ffc8606e19eefe7f84">pn_transport_logf</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *fmt,...)</td></tr>
+<tr class="memdesc:ga26cff9ffda93e2ffc8606e19eefe7f84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a printf formatted message using a transport's logging mechanism.  <a href="#ga26cff9ffda93e2ffc8606e19eefe7f84">More...</a><br /></td></tr>
+<tr class="separator:ga26cff9ffda93e2ffc8606e19eefe7f84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac14e93cc5e8bc949fe7a0800ebd6e052"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac14e93cc5e8bc949fe7a0800ebd6e052">pn_transport_get_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gac14e93cc5e8bc949fe7a0800ebd6e052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum allowed channel for a transport.  <a href="#gac14e93cc5e8bc949fe7a0800ebd6e052">More...</a><br /></td></tr>
+<tr class="separator:gac14e93cc5e8bc949fe7a0800ebd6e052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8f080d7fb1e7fea2c93391d0b8f59773"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga8f080d7fb1e7fea2c93391d0b8f59773">pn_transport_set_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, uint16_t channel_max)</td></tr>
+<tr class="memdesc:ga8f080d7fb1e7fea2c93391d0b8f59773"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the maximum allowed channel number for a transport.  <a href="#ga8f080d7fb1e7fea2c93391d0b8f59773">More...</a><br /></td></tr>
+<tr class="separator:ga8f080d7fb1e7fea2c93391d0b8f59773"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaff7c08aeb92596ad9d269468d1557647"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaff7c08aeb92596ad9d269468d1557647">pn_transport_remote_channel_max</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gaff7c08aeb92596ad9d269468d1557647"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum allowed channel of a transport's remote peer.  <a href="#gaff7c08aeb92596ad9d269468d1557647">More...</a><br /></td></tr>
+<tr class="separator:gaff7c08aeb92596ad9d269468d1557647"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga46552ed46e59de6530d2eee03707a51b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga46552ed46e59de6530d2eee03707a51b">pn_transport_get_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga46552ed46e59de6530d2eee03707a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum frame size of a transport.  <a href="#ga46552ed46e59de6530d2eee03707a51b">More...</a><br /></td></tr>
+<tr class="separator:ga46552ed46e59de6530d2eee03707a51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga51573625b6940884fed214b615f42e0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga51573625b6940884fed214b615f42e0f">pn_transport_set_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, uint32_t size)</td></tr>
+<tr class="memdesc:ga51573625b6940884fed214b615f42e0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the maximum frame size of a transport.  <a href="#ga51573625b6940884fed214b615f42e0f">More...</a><br /></td></tr>
+<tr class="separator:ga51573625b6940884fed214b615f42e0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga351823e18e043576078f361d7dfe1cce"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga351823e18e043576078f361d7dfe1cce">pn_transport_get_remote_max_frame</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga351823e18e043576078f361d7dfe1cce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum frame size of a transport's remote peer.  <a href="#ga351823e18e043576078f361d7dfe1cce">More...</a><br /></td></tr>
+<tr class="separator:ga351823e18e043576078f361d7dfe1cce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6980396c3d890b86656167c3a063eee7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga6980396c3d890b86656167c3a063eee7">pn_transport_get_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga6980396c3d890b86656167c3a063eee7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the idle timeout for a transport.  <a href="#ga6980396c3d890b86656167c3a063eee7">More...</a><br /></td></tr>
+<tr class="separator:ga6980396c3d890b86656167c3a063eee7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafb1c98602d17524eb40e48bf610362d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafb1c98602d17524eb40e48bf610362d7">pn_transport_set_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a> timeout)</td></tr>
+<tr class="memdesc:gafb1c98602d17524eb40e48bf610362d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the idle timeout for a transport.  <a href="#gafb1c98602d17524eb40e48bf610362d7">More...</a><br /></td></tr>
+<tr class="separator:gafb1c98602d17524eb40e48bf610362d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabdcbd5d08c5b5cd3603dee74421985b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gabdcbd5d08c5b5cd3603dee74421985b5">pn_transport_get_remote_idle_timeout</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gabdcbd5d08c5b5cd3603dee74421985b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the idle timeout for a transport's remote peer.  <a href="#gabdcbd5d08c5b5cd3603dee74421985b5">More...</a><br /></td></tr>
+<tr class="separator:gabdcbd5d08c5b5cd3603dee74421985b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga93f5efd9d63ebd1b1498fdace388ec3d"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga93f5efd9d63ebd1b1498fdace388ec3d">pn_transport_input</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *bytes, size_t available)</td></tr>
+<tr class="separator:ga93f5efd9d63ebd1b1498fdace388ec3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae72fdee3b8aae3cb484b0ed98c2b802e"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gae72fdee3b8aae3cb484b0ed98c2b802e">pn_transport_output</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, char *bytes, size_t size)</td></tr>
+<tr class="separator:gae72fdee3b8aae3cb484b0ed98c2b802e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa079bb5f5b9ea10734c9d8af26fba333"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa079bb5f5b9ea10734c9d8af26fba333">pn_transport_capacity</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gaa079bb5f5b9ea10734c9d8af26fba333"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the amount of free space for input following the transport's tail pointer.  <a href="#gaa079bb5f5b9ea10734c9d8af26fba333">More...</a><br /></td></tr>
+<tr class="separator:gaa079bb5f5b9ea10734c9d8af26fba333"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4a9e6c6b207c41647ff988b5ae090d85"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga4a9e6c6b207c41647ff988b5ae090d85">pn_transport_tail</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga4a9e6c6b207c41647ff988b5ae090d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the transport's tail pointer.  <a href="#ga4a9e6c6b207c41647ff988b5ae090d85">More...</a><br /></td></tr>
+<tr class="separator:ga4a9e6c6b207c41647ff988b5ae090d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga50c63f26b8b16f45e6e7912ca54de94b"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga50c63f26b8b16f45e6e7912ca54de94b">pn_transport_push</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *src, size_t size)</td></tr>
+<tr class="memdesc:ga50c63f26b8b16f45e6e7912ca54de94b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the supplied bytes into the tail of the transport.  <a href="#ga50c63f26b8b16f45e6e7912ca54de94b">More...</a><br /></td></tr>
+<tr class="separator:ga50c63f26b8b16f45e6e7912ca54de94b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1f52a6f11322873e74b9daf004269a91"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91">pn_transport_process</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, size_t size)</td></tr>
+<tr class="memdesc:ga1f52a6f11322873e74b9daf004269a91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process input data following the tail pointer.  <a href="#ga1f52a6f11322873e74b9daf004269a91">More...</a><br /></td></tr>
+<tr class="separator:ga1f52a6f11322873e74b9daf004269a91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8304f8719610e384aa9a3f5f3c98289"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gaa8304f8719610e384aa9a3f5f3c98289">pn_transport_close_tail</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gaa8304f8719610e384aa9a3f5f3c98289"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate that the input has reached End Of Stream (EOS).  <a href="#gaa8304f8719610e384aa9a3f5f3c98289">More...</a><br /></td></tr>
+<tr class="separator:gaa8304f8719610e384aa9a3f5f3c98289"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga81adf1fd6fa28054f2f80c424aa98122"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga81adf1fd6fa28054f2f80c424aa98122">pn_transport_pending</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga81adf1fd6fa28054f2f80c424aa98122"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of pending output bytes following the transport's head pointer.  <a href="#ga81adf1fd6fa28054f2f80c424aa98122">More...</a><br /></td></tr>
+<tr class="separator:ga81adf1fd6fa28054f2f80c424aa98122"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ef8b0032b2a012c697e853e363338ea"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3ef8b0032b2a012c697e853e363338ea">pn_transport_head</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga3ef8b0032b2a012c697e853e363338ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the transport's head pointer.  <a href="#ga3ef8b0032b2a012c697e853e363338ea">More...</a><br /></td></tr>
+<tr class="separator:ga3ef8b0032b2a012c697e853e363338ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga09a0d15514ca9a14eb40f12425a52797"><td class="memItemLeft" align="right" valign="top">ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga09a0d15514ca9a14eb40f12425a52797">pn_transport_peek</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, char *dst, size_t size)</td></tr>
+<tr class="memdesc:ga09a0d15514ca9a14eb40f12425a52797"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies <code>size</code> bytes from the head of the transport to the <code>dst</code> pointer.  <a href="#ga09a0d15514ca9a14eb40f12425a52797">More...</a><br /></td></tr>
+<tr class="separator:ga09a0d15514ca9a14eb40f12425a52797"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga31470f0b0dbfd2c8c2929cc170858dc9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga31470f0b0dbfd2c8c2929cc170858dc9">pn_transport_pop</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, size_t size)</td></tr>
+<tr class="memdesc:ga31470f0b0dbfd2c8c2929cc170858dc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes <code>size</code> bytes of output from the pending output queue following the transport's head pointer.  <a href="#ga31470f0b0dbfd2c8c2929cc170858dc9">More...</a><br /></td></tr>
+<tr class="separator:ga31470f0b0dbfd2c8c2929cc170858dc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8d0c7878d3d8ecda627678a6ec55072"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab8d0c7878d3d8ecda627678a6ec55072">pn_transport_close_head</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gab8d0c7878d3d8ecda627678a6ec55072"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indicate that the output has closed.  <a href="#gab8d0c7878d3d8ecda627678a6ec55072">More...</a><br /></td></tr>
+<tr class="separator:gab8d0c7878d3d8ecda627678a6ec55072"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab8d9e4729b8835d3740de8d2c78831ef"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab8d9e4729b8835d3740de8d2c78831ef">pn_transport_quiesced</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:gab8d9e4729b8835d3740de8d2c78831ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a transport has buffered data.  <a href="#gab8d9e4729b8835d3740de8d2c78831ef">More...</a><br /></td></tr>
+<tr class="separator:gab8d9e4729b8835d3740de8d2c78831ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga55c589d9b3e69057b130036c3c2173df"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga55c589d9b3e69057b130036c3c2173df">pn_transport_closed</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga55c589d9b3e69057b130036c3c2173df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a transport is closed.  <a href="#ga55c589d9b3e69057b130036c3c2173df">More...</a><br /></td></tr>
+<tr class="separator:ga55c589d9b3e69057b130036c3c2173df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0f2abc6827e9370c0aebb2e5dd7535a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd">pn_timestamp_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga0f2abc6827e9370c0aebb2e5dd7535a9">pn_transport_tick</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, <a class="el" href="group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd">pn_timestamp_t</a> now)</td></tr>
+<tr class="memdesc:ga0f2abc6827e9370c0aebb2e5dd7535a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process any pending transport timer events.  <a href="#ga0f2abc6827e9370c0aebb2e5dd7535a9">More...</a><br /></td></tr>
+<tr class="separator:ga0f2abc6827e9370c0aebb2e5dd7535a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3887e8d8c60d06df9978947edaf4d461"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3887e8d8c60d06df9978947edaf4d461">pn_transport_get_frames_output</a> (const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga3887e8d8c60d06df9978947edaf4d461"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of frames output by a transport.  <a href="#ga3887e8d8c60d06df9978947edaf4d461">More...</a><br /></td></tr>
+<tr class="separator:ga3887e8d8c60d06df9978947edaf4d461"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga92ce0b44ab956c182d646824b4e9ed61"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga92ce0b44ab956c182d646824b4e9ed61">pn_transport_get_frames_input</a> (const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga92ce0b44ab956c182d646824b4e9ed61"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the number of frames input by a transport.  <a href="#ga92ce0b44ab956c182d646824b4e9ed61">More...</a><br /></td></tr>
+<tr class="separator:ga92ce0b44ab956c182d646824b4e9ed61"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b98f594e012c24e7b17dcc91e3d4caf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga2b98f594e012c24e7b17dcc91e3d4caf">pn_transport_connection</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga2b98f594e012c24e7b17dcc91e3d4caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the AMQP Connection associated with the transport.  <a href="#ga2b98f594e012c24e7b17dcc91e3d4caf">More...</a><br /></td></tr>
+<tr class="separator:ga2b98f594e012c24e7b17dcc91e3d4caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<p>A network channel supporting an AMQP connection. </p>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="ga7065ad65f95c995a24e416edc95aead4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PN_TRACE_DRV&#160;&#160;&#160;(4)</td>
+          <td class="memname">#define PN_TRACE_DRV</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Log driver related events, e.g. initialization, end of stream, etc. </p>
 
-</div>
-</div>
-<a class="anchor" id="gab8e04b4c128379ff27e6b801c0bce494"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PN_TRACE_FRM&#160;&#160;&#160;(2)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Log frames into/out of the transport. </p>
-
-</div>
-</div>
-<a class="anchor" id="gae8f32e46e94953bab10bee530eee9044"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PN_TRACE_OFF&#160;&#160;&#160;(0)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Turn logging off entirely. </p>
-
-</div>
-</div>
-<a class="anchor" id="gafde0eb3c73fb98816f4238d42d48f3d8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define PN_TRACE_RAW&#160;&#160;&#160;(1)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Log raw binary data into/out of the transport. </p>
+<p>Log driver related events, e.g. </p>
+<p>initialization, end of stream, etc. </p>
 
 </div>
 </div>
@@ -289,27 +306,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Holds the trace flags for an AMQP transport.</p>
+
+<p>Holds the trace flags for an AMQP transport. </p>
 <p>The trace flags for an AMQP transport control what sort of information is logged by an AMQP transport. The following bits can be set:</p>
 <ul>
-<li><a class="el" href="group__transport.html#gae8f32e46e94953bab10bee530eee9044">PN_TRACE_OFF</a></li>
-<li><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8">PN_TRACE_RAW</a></li>
-<li><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494">PN_TRACE_FRM</a></li>
-<li><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4">PN_TRACE_DRV</a> </li>
+<li><a class="el" href="group__transport.html#gae8f32e46e94953bab10bee530eee9044" title="Turn logging off entirely. ">PN_TRACE_OFF</a></li>
+<li><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8" title="Log raw binary data into/out of the transport. ">PN_TRACE_RAW</a></li>
+<li><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494" title="Log frames into/out of the transport. ">PN_TRACE_FRM</a></li>
+<li><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4" title="Log driver related events, e.g. ">PN_TRACE_DRV</a></li>
+<li><a class="el" href="group__transport.html#ga3bde88d15fcfda400a36d8f9e5d51688" title="Log events. ">PN_TRACE_EVT</a> </li>
 </ul>
-
-</div>
-</div>
-<a class="anchor" id="gae9b49fcbf6397e6916eb4e1357c90ff3"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void(* pn_tracer_t) (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport, const char *message)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Callback for customizing logging behaviour. </p>
 
 </div>
 </div>
@@ -322,18 +328,19 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>An AMQP Transport object.</p>
+
+<p>An AMQP Transport object. </p>
 <p>A pn_transport_t encapsulates the transport related state of all AMQP endpoint objects associated with a physical network connection at a given point in time. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="gad75d8d99018bc22c2d23ef8e820e7a6d"></a>
+<a class="anchor" id="gaf9833d93faf6a6ed68039e4a909cdd77"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a>* pn_transport </td>
+          <td class="memname"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a>* pn_transport </td>
           <td>(</td>
           <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
@@ -341,8 +348,10 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Factory for creating a transport. A transport is used by a connection to interface with the network. There can only be one connection associated with a transport. See <a class="el" href="group__transport.html#gad07706c1e7db90d1b5d0ad6caf4c5892">pn_transport_bind()</a>.</p>
-<p>Initially a transport is configured to be a client transport. Use <a class="el" href="group__transport.html#ga0f9cecc86a7185e6c9f25ead5c46b82b">pn_transport_set_server()</a> to configure the transport as a server transport.</p>
+
+<p>Factory for creating a transport. </p>
+<p>A transport is used by a connection to interface with the network. There can only be one connection associated with a transport. See <a class="el" href="group__transport.html#ga1a769e2e6c900c78c710407296cb4e13" title="Binds the transport to an AMQP connection. ">pn_transport_bind()</a>.</p>
+<p>Initially a transport is configured to be a client transport. Use <a class="el" href="group__transport.html#gac5bebd26c0942bc17d7fad36577110f8" title="Configure a transport as a server. ">pn_transport_set_server()</a> to configure the transport as a server transport.</p>
 <p>A client transport initiates outgoing connections.</p>
 <p>A client transport must be configured with the protocol layers to use and cannot configure itself automatically.</p>
 <p>A server transport accepts incoming connections. It can automatically configure itself to include the various protocol layers depending on the incoming protocol headers.</p>
@@ -350,12 +359,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2dfb9c5a747cf45f2bb40fd1001cc54d"></a>
+<a class="anchor" id="gabdd6d56837a028097b1676350d65a864"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN pn_record_t* pn_transport_attachments </td>
+          <td class="memname">pn_record_t* pn_transport_attachments </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -363,7 +372,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the attachments that are associated with a transport object.</p>
+
+<p>Get the attachments that are associated with a transport object. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport whose attachments are to be returned. </td></tr>
@@ -374,12 +384,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad07706c1e7db90d1b5d0ad6caf4c5892"></a>
+<a class="anchor" id="ga1a769e2e6c900c78c710407296cb4e13"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_bind </td>
+          <td class="memname">int pn_transport_bind </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -397,17 +407,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Binds the transport to an AMQP connection.</p>
+
+<p>Binds the transport to an AMQP connection. </p>
 <dl class="section return"><dt>Returns</dt><dd>an error code, or 0 on success </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga0cdcc7fc4f5459687083dcb46796e0dd"></a>
+<a class="anchor" id="gaa079bb5f5b9ea10734c9d8af26fba333"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_capacity </td>
+          <td class="memname">ssize_t pn_transport_capacity </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -415,8 +426,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the amount of free space for input following the transport's tail pointer.</p>
-<p>If the engine is in an exceptional state such as encountering an error condition or reaching the end of stream state, a negative value will be returned indicating the condition. If an error is indicated, futher details can be obtained from <a class="el" href="group__transport.html#ga00a271caac7d531ae795d78db81199e9">pn_transport_error</a>. Calls to <a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> may alter the value of this pointer. See <a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> for details.</p>
+
+<p>Get the amount of free space for input following the transport's tail pointer. </p>
+<p>If the engine is in an exceptional state such as encountering an error condition or reaching the end of stream state, a negative value will be returned indicating the condition. If an error is indicated, futher details can be obtained from <a class="el" href="group__transport.html#gaede0bc2a0038ccdc7e1b193e322147fa">pn_transport_error</a>. Calls to <a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91" title="Process input data following the tail pointer. ">pn_transport_process</a> may alter the value of this pointer. See <a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91" title="Process input data following the tail pointer. ">pn_transport_process</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -427,12 +439,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga3aee76a664f84898b7a979075ac0e2b8"></a>
+<a class="anchor" id="gab8d0c7878d3d8ecda627678a6ec55072"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_close_head </td>
+          <td class="memname">int pn_transport_close_head </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -440,7 +452,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Indicate that the output has closed.</p>
+
+<p>Indicate that the output has closed. </p>
 <p>This tells the transport that no more output will be popped.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -452,12 +465,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaab1f8bacfea4934f0f9dae50488f6aac"></a>
+<a class="anchor" id="gaa8304f8719610e384aa9a3f5f3c98289"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_close_tail </td>
+          <td class="memname">int pn_transport_close_tail </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -465,7 +478,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Indicate that the input has reached End Of Stream (EOS).</p>
+
+<p>Indicate that the input has reached End Of Stream (EOS). </p>
 <p>This tells the transport that no more input will be forthcoming.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -477,12 +491,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga69b8c9a7dbdef76644711274b6f61987"></a>
+<a class="anchor" id="ga55c589d9b3e69057b130036c3c2173df"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN bool pn_transport_closed </td>
+          <td class="memname">bool pn_transport_closed </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -490,8 +504,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if a transport is closed.</p>
-<p>A transport is defined to be closed when both the tail and the head are closed. In other words, when both <a class="el" href="group__transport.html#ga0cdcc7fc4f5459687083dcb46796e0dd">pn_transport_capacity()</a> &lt; 0 and <a class="el" href="group__transport.html#ga0fa738666a89b80dfbe381c2768b1d7f">pn_transport_pending()</a> &lt; 0.</p>
+
+<p>Check if a transport is closed. </p>
+<p>A transport is defined to be closed when both the tail and the head are closed. In other words, when both <a class="el" href="group__transport.html#gaa079bb5f5b9ea10734c9d8af26fba333" title="Get the amount of free space for input following the transport&#39;s tail pointer. ">pn_transport_capacity()</a> &lt; 0 and <a class="el" href="group__transport.html#ga81adf1fd6fa28054f2f80c424aa98122" title="Get the number of pending output bytes following the transport&#39;s head pointer. ">pn_transport_pending()</a> &lt; 0.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -502,12 +517,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2d0ad8e3e702ed47088789e33bf0c457"></a>
+<a class="anchor" id="gac458d9fdb684f9501e89b96fc51f5c34"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN <a class="el" href="group__condition.html#ga11eb7db7d2c205169fe3d47c996a95a5">pn_condition_t</a>* pn_transport_condition </td>
+          <td class="memname"><a class="el" href="group__condition.html#ga11eb7db7d2c205169fe3d47c996a95a5">pn_condition_t</a>* pn_transport_condition </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -515,7 +530,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get additional information about the condition of the transport.</p>
+
+<p>Get additional information about the condition of the transport. </p>
 <p>When a PN_TRANSPORT_ERROR event occurs, this operation can be used to access the details of the error condtion.</p>
 <p>The pointer returned by this operation is valid until the transport object is freed.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -525,15 +541,16 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the transport's condition object </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a68">broker.c</a>, <a class="el" href="receive_8c-example.html#a40">receive.c</a>, and <a class="el" href="send_8c-example.html#a55">send.c</a>.</dd>
+</dl>
 </div>
 </div>
-<a class="anchor" id="ga2d2c338ec9d913391f1364bf3e701eae"></a>
+<a class="anchor" id="ga2b98f594e012c24e7b17dcc91e3d4caf"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN <a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a>* pn_transport_connection </td>
+          <td class="memname"><a class="el" href="group__connection.html#ga886351d81ff3a977a284a206526c5aff">pn_connection_t</a>* pn_transport_connection </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -541,7 +558,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Access the AMQP Connection associated with the transport.</p>
+
+<p>Access the AMQP Connection associated with the transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -552,12 +570,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga00a271caac7d531ae795d78db81199e9"></a>
+<a class="anchor" id="gaede0bc2a0038ccdc7e1b193e322147fa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN pn_error_t* pn_transport_error </td>
+          <td class="memname"><a class="el" href="group__error.html#ga24a289d5b32c9bd8a775600a5af83d52">pn_error_t</a>* pn_transport_error </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -565,16 +583,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000010">Deprecated:</a></b></dt><dd></dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000013">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gaa1b0a748aad3cc35684ee095978dbd58"></a>
+<a class="anchor" id="ga6ab28051242631d9bea4814e8670ab90"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_free </td>
+          <td class="memname">void pn_transport_free </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -582,7 +600,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Free a transport object.</p>
+
+<p>Free a transport object. </p>
 <p>When a transport is freed, it is automatically unbound from its associated connection.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -593,12 +612,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga36ff89334941ed67b98af731e5696844"></a>
+<a class="anchor" id="gac14e93cc5e8bc949fe7a0800ebd6e052"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint16_t pn_transport_get_channel_max </td>
+          <td class="memname">uint16_t pn_transport_get_channel_max </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -606,10 +625,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the maximum allowed channel for a transport. This will be the minimum of</p><ol type="1">
+
+<p>Get the maximum allowed channel for a transport. </p>
+<p>This will be the minimum of</p><ol type="1">
 <li>limit imposed by this proton implementation</li>
 <li>limit imposed by remote peer</li>
-<li>limit imposed by this application, using <a class="el" href="group__transport.html#ga470514642911834717ec0cd2a0cdab3f">pn_transport_set_channel_max()</a></li>
+<li>limit imposed by this application, using <a class="el" href="group__transport.html#ga8f080d7fb1e7fea2c93391d0b8f59773" title="Set the maximum allowed channel number for a transport. ">pn_transport_set_channel_max()</a></li>
 </ol>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -621,12 +642,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga9016acfea374d8b58183158b8d857ee8"></a>
+<a class="anchor" id="ga000b2b9ab82139defb1a103f220ec58e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void* pn_transport_get_context </td>
+          <td class="memname">void* pn_transport_get_context </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -634,8 +655,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000014">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Get the application context that is associated with a transport object.</p>
-<p>The application context for a transport may be set using <a class="el" href="group__transport.html#ga493c8b24e44413338e7afc52aef8d2fd">pn_transport_set_context</a>.</p>
+<p>The application context for a transport may be set using <a class="el" href="group__transport.html#gac22041ff85d1a1f5287ac2ba826edb74">pn_transport_set_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport whose context is to be returned. </td></tr>
@@ -646,12 +668,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gad5614b4c311ab84a21213f60011a6840"></a>
+<a class="anchor" id="ga92ce0b44ab956c182d646824b4e9ed61"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint64_t pn_transport_get_frames_input </td>
+          <td class="memname">uint64_t pn_transport_get_frames_input </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -659,7 +681,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the number of frames input by a transport.</p>
+
+<p>Get the number of frames input by a transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -670,12 +693,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga5ceae486fe78521728d05b9c4db7d5f7"></a>
+<a class="anchor" id="ga3887e8d8c60d06df9978947edaf4d461"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint64_t pn_transport_get_frames_output </td>
+          <td class="memname">uint64_t pn_transport_get_frames_output </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -683,7 +706,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the number of frames output by a transport.</p>
+
+<p>Get the number of frames output by a transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -694,12 +718,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2d650c473958ae118701d8aefd96aaa1"></a>
+<a class="anchor" id="ga6980396c3d890b86656167c3a063eee7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN pn_millis_t pn_transport_get_idle_timeout </td>
+          <td class="memname"><a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a> pn_transport_get_idle_timeout </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -707,7 +731,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the idle timeout for a transport.</p>
+
+<p>Get the idle timeout for a transport. </p>
 <p>A zero idle timeout means heartbeats are disabled.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -719,12 +744,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga93bb966654732ecdd07557dc3307a7e2"></a>
+<a class="anchor" id="ga46552ed46e59de6530d2eee03707a51b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint32_t pn_transport_get_max_frame </td>
+          <td class="memname">uint32_t pn_transport_get_max_frame </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -732,7 +757,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the maximum frame size of a transport.</p>
+
+<p>Get the maximum frame size of a transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -743,12 +769,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gabae92ce766617943d51fdab7504b867c"></a>
+<a class="anchor" id="gabdcbd5d08c5b5cd3603dee74421985b5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN pn_millis_t pn_transport_get_remote_idle_timeout </td>
+          <td class="memname"><a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a> pn_transport_get_remote_idle_timeout </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -756,7 +782,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the idle timeout for a transport's remote peer.</p>
+
+<p>Get the idle timeout for a transport's remote peer. </p>
 <p>A zero idle timeout means heartbeats are disabled.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -768,12 +795,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaeb38ead1b320bdb0572d819712fd84c5"></a>
+<a class="anchor" id="ga351823e18e043576078f361d7dfe1cce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint32_t pn_transport_get_remote_max_frame </td>
+          <td class="memname">uint32_t pn_transport_get_remote_max_frame </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -781,7 +808,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the maximum frame size of a transport's remote peer.</p>
+
+<p>Get the maximum frame size of a transport's remote peer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -792,12 +820,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga99b48ee38d0bc21855eee158f8584aca"></a>
+<a class="anchor" id="ga30d129d04a387ea34515c1641b83521b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN <a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a> pn_transport_get_tracer </td>
+          <td class="memname"><a class="el" href="group__transport.html#gae9b49fcbf6397e6916eb4e1357c90ff3">pn_tracer_t</a> pn_transport_get_tracer </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -805,7 +833,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the tracning function used by a transport.</p>
+
+<p>Get the tracing function used by a transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -816,12 +845,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gafa71f9e73acbe139941b9ebe754b3241"></a>
+<a class="anchor" id="ga6b2750a2d313c65aabe5dc8a99f1de58"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN const char* pn_transport_get_user </td>
+          <td class="memname">const char* pn_transport_get_user </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -829,8 +858,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Retrieve the authenticated user</p>
-<p>This is usually used at the the server end to find the name of the authenticated user. On the client it will merely return whatever user was passed in to the <a class="el" href="group__connection.html#ga167a317ed0316c37e28a11e4e97d6a53">pn_connection_set_user()</a> API of the bound connection.</p>
+
+<p>Retrieve the authenticated user. </p>
+<p>This is usually used at the the server end to find the name of the authenticated user. On the client it will merely return whatever user was passed in to the <a class="el" href="group__connection.html#gafb84dd2ef7551ad864be08cb31010d19" title="Set the authentication username for a client connection. ">pn_connection_set_user()</a> API of the bound connection.</p>
 <p>The returned value is only reliable after the PN_TRANSPORT_AUTHENTICATED event has been received.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -842,12 +872,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gac92129f1805ec946d5a792ae4a1b3327"></a>
+<a class="anchor" id="ga3ef8b0032b2a012c697e853e363338ea"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN const char* pn_transport_head </td>
+          <td class="memname">const char* pn_transport_head </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -855,8 +885,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the transport's head pointer.</p>
-<p>This pointer references queued output data. The <a class="el" href="group__transport.html#ga0fa738666a89b80dfbe381c2768b1d7f">pn_transport_pending</a> function reports how many bytes of output data follow this pointer. Calls to <a class="el" href="group__transport.html#gaeb3c887ab8b0cbf90a0f50dcb799debb">pn_transport_pop</a> may alter this pointer and any data it references. See <a class="el" href="group__transport.html#gaeb3c887ab8b0cbf90a0f50dcb799debb">pn_transport_pop</a> for details.</p>
+
+<p>Get the transport's head pointer. </p>
+<p>This pointer references queued output data. The <a class="el" href="group__transport.html#ga81adf1fd6fa28054f2f80c424aa98122" title="Get the number of pending output bytes following the transport&#39;s head pointer. ">pn_transport_pending</a> function reports how many bytes of output data follow this pointer. Calls to <a class="el" href="group__transport.html#ga31470f0b0dbfd2c8c2929cc170858dc9" title="Removes size bytes of output from the pending output queue following the transport&#39;s head pointer...">pn_transport_pop</a> may alter this pointer and any data it references. See <a class="el" href="group__transport.html#ga31470f0b0dbfd2c8c2929cc170858dc9" title="Removes size bytes of output from the pending output queue following the transport&#39;s head pointer...">pn_transport_pop</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -867,12 +898,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga6e1cdd7040dbd032b9e31a2c5900a314"></a>
+<a class="anchor" id="ga93f5efd9d63ebd1b1498fdace388ec3d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_input </td>
+          <td class="memname">ssize_t pn_transport_input </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -896,16 +927,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000012">Deprecated:</a></b></dt><dd></dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000016">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="gab35340b55e7a5cc6420ee8426c8e10ed"></a>
+<a class="anchor" id="ga8a60f6a48e4bd2d090f5bd264cf7f90d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN bool pn_transport_is_authenticated </td>
+          <td class="memname">bool pn_transport_is_authenticated </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -913,7 +944,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tell whether the transport connection is authenticated</p>
+
+<p>Tell whether the transport connection is authenticated. </p>
 <p>Note that this property may not be stable until the PN_CONNECTION_REMOTE_OPEN event is received.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -925,12 +957,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga8e5deef63ba7b1483a6fadec65c1c3b5"></a>
+<a class="anchor" id="ga737021ca419e948932071aad2ad38c5b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN bool pn_transport_is_encrypted </td>
+          <td class="memname">bool pn_transport_is_encrypted </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -938,7 +970,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Tell whether the transport connection is encrypted</p>
+
+<p>Tell whether the transport connection is encrypted. </p>
 <p>Note that this property may not be stable until the PN_CONNECTION_REMOTE_OPEN event is received.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -950,12 +983,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaa0e8f0ac87011ef42d91a215c94d8e7c"></a>
+<a class="anchor" id="gad603e8d72578bcedd2d9235f74f28f37"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_log </td>
+          <td class="memname">void pn_transport_log </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -973,7 +1006,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Log a message using a transport's logging mechanism.</p>
+
+<p>Log a message using a transport's logging mechanism. </p>
 <p>This can be useful in a debugging context as the log message will be prefixed with the transport's identifier.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -985,12 +1019,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga81f66ece6523ad3e6f0426b1dbb53e5e"></a>
+<a class="anchor" id="ga26cff9ffda93e2ffc8606e19eefe7f84"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_logf </td>
+          <td class="memname">void pn_transport_logf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1014,7 +1048,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Log a printf formatted message using a transport's logging mechanism.</p>
+
+<p>Log a printf formatted message using a transport's logging mechanism. </p>
 <p>This can be useful in a debugging context as the log message will be prefixed with the transport's identifier.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1026,12 +1061,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga3d1d51b1aea73388a8d4a11e49119817"></a>
+<a class="anchor" id="gae72fdee3b8aae3cb484b0ed98c2b802e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_output </td>
+          <td class="memname">ssize_t pn_transport_output </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1055,16 +1090,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000013">Deprecated:</a></b></dt><dd></dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000017">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga10a9c4fc00faf70adedc76a941b1cfe9"></a>
+<a class="anchor" id="ga09a0d15514ca9a14eb40f12425a52797"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_peek </td>
+          <td class="memname">ssize_t pn_transport_peek </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1088,8 +1123,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Copies <code>size</code> bytes from the head of the transport to the <code>dst</code> pointer.</p>
-<p>It is an error to call this with a value of <code>size</code> that is greater than the value reported by <a class="el" href="group__transport.html#ga0fa738666a89b80dfbe381c2768b1d7f">pn_transport_pending</a>.</p>
+
+<p>Copies <code>size</code> bytes from the head of the transport to the <code>dst</code> pointer. </p>
+<p>It is an error to call this with a value of <code>size</code> that is greater than the value reported by <a class="el" href="group__transport.html#ga81adf1fd6fa28054f2f80c424aa98122" title="Get the number of pending output bytes following the transport&#39;s head pointer. ">pn_transport_pending</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1102,12 +1138,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0fa738666a89b80dfbe381c2768b1d7f"></a>
+<a class="anchor" id="ga81adf1fd6fa28054f2f80c424aa98122"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_pending </td>
+          <td class="memname">ssize_t pn_transport_pending </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1115,8 +1151,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the number of pending output bytes following the transport's head pointer.</p>
-<p>If the engine is in an exceptional state such as encountering an error condition or reaching the end of stream state, a negative value will be returned indicating the condition. If an error is indicated, further details can be obtained from <a class="el" href="group__transport.html#ga00a271caac7d531ae795d78db81199e9">pn_transport_error</a>. Calls to <a class="el" href="group__transport.html#gaeb3c887ab8b0cbf90a0f50dcb799debb">pn_transport_pop</a> may alter the value of this pointer. See <a class="el" href="group__transport.html#gaeb3c887ab8b0cbf90a0f50dcb799debb">pn_transport_pop</a> for details.</p>
+
+<p>Get the number of pending output bytes following the transport's head pointer. </p>
+<p>If the engine is in an exceptional state such as encountering an error condition or reaching the end of stream state, a negative value will be returned indicating the condition. If an error is indicated, further details can be obtained from <a class="el" href="group__transport.html#gaede0bc2a0038ccdc7e1b193e322147fa">pn_transport_error</a>. Calls to <a class="el" href="group__transport.html#ga31470f0b0dbfd2c8c2929cc170858dc9" title="Removes size bytes of output from the pending output queue following the transport&#39;s head pointer...">pn_transport_pop</a> may alter the value of this pointer. See <a class="el" href="group__transport.html#ga31470f0b0dbfd2c8c2929cc170858dc9" title="Removes size bytes of output from the pending output queue following the transport&#39;s head pointer...">pn_transport_pop</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1127,12 +1164,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaeb3c887ab8b0cbf90a0f50dcb799debb"></a>
+<a class="anchor" id="ga31470f0b0dbfd2c8c2929cc170858dc9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_pop </td>
+          <td class="memname">void pn_transport_pop </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1150,8 +1187,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Removes <code>size</code> bytes of output from the pending output queue following the transport's head pointer.</p>
-<p>Calls to this function may alter the transport's head pointer as well as the number of pending bytes reported by <a class="el" href="group__transport.html#ga0fa738666a89b80dfbe381c2768b1d7f">pn_transport_pending</a>.</p>
+
+<p>Removes <code>size</code> bytes of output from the pending output queue following the transport's head pointer. </p>
+<p>Calls to this function may alter the transport's head pointer as well as the number of pending bytes reported by <a class="el" href="group__transport.html#ga81adf1fd6fa28054f2f80c424aa98122" title="Get the number of pending output bytes following the transport&#39;s head pointer. ">pn_transport_pending</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1162,12 +1200,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaa9a5bd5aef7c5dadbc67a236ad1b3447"></a>
+<a class="anchor" id="ga1f52a6f11322873e74b9daf004269a91"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_process </td>
+          <td class="memname">int pn_transport_process </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1185,8 +1223,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Process input data following the tail pointer.</p>
-<p>Calling this function will cause the transport to consume <code>size</code> bytes of input occupying the free space following the tail pointer. Calls to this function may change the value of <a class="el" href="group__transport.html#ga51a02f24b448365039da44744f4e65a6">pn_transport_tail</a>, as well as the amount of free space reported by <a class="el" href="group__transport.html#ga0cdcc7fc4f5459687083dcb46796e0dd">pn_transport_capacity</a>.</p>
+
+<p>Process input data following the tail pointer. </p>
+<p>Calling this function will cause the transport to consume <code>size</code> bytes of input occupying the free space following the tail pointer. Calls to this function may change the value of <a class="el" href="group__transport.html#ga4a9e6c6b207c41647ff988b5ae090d85" title="Get the transport&#39;s tail pointer. ">pn_transport_tail</a>, as well as the amount of free space reported by <a class="el" href="group__transport.html#gaa079bb5f5b9ea10734c9d8af26fba333" title="Get the amount of free space for input following the transport&#39;s tail pointer. ">pn_transport_capacity</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1198,12 +1237,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2d769e6c83f9f6f740648798c3d668ff"></a>
+<a class="anchor" id="ga50c63f26b8b16f45e6e7912ca54de94b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN ssize_t pn_transport_push </td>
+          <td class="memname">ssize_t pn_transport_push </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1227,8 +1266,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Pushes the supplied bytes into the tail of the transport.</p>
-<p>This is equivalent to copying <code>size</code> bytes afther the tail pointer and then calling <a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> with an argument of <code>size</code>. Only some of the bytes will be copied if there is insufficienty capacity available. Use <a class="el" href="group__transport.html#ga0cdcc7fc4f5459687083dcb46796e0dd">pn_transport_capacity</a> to determine how much capacity the transport has.</p>
+
+<p>Pushes the supplied bytes into the tail of the transport. </p>
+<p>This is equivalent to copying <code>size</code> bytes afther the tail pointer and then calling <a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91" title="Process input data following the tail pointer. ">pn_transport_process</a> with an argument of <code>size</code>. Only some of the bytes will be copied if there is insufficienty capacity available. Use <a class="el" href="group__transport.html#gaa079bb5f5b9ea10734c9d8af26fba333" title="Get the amount of free space for input following the transport&#39;s tail pointer. ">pn_transport_capacity</a> to determine how much capacity the transport has.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1241,12 +1281,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0a651e6b090ec7c3f86b1d5133372995"></a>
+<a class="anchor" id="gab8d9e4729b8835d3740de8d2c78831ef"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN bool pn_transport_quiesced </td>
+          <td class="memname">bool pn_transport_quiesced </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1254,7 +1294,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Check if a transport has buffered data.</p>
+
+<p>Check if a transport has buffered data. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1265,12 +1306,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0842d4831299a6aa87075620e8bba436"></a>
+<a class="anchor" id="gaff7c08aeb92596ad9d269468d1557647"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN uint16_t pn_transport_remote_channel_max </td>
+          <td class="memname">uint16_t pn_transport_remote_channel_max </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1278,7 +1319,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the maximum allowed channel of a transport's remote peer.</p>
+
+<p>Get the maximum allowed channel of a transport's remote peer. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1289,12 +1331,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gafc2157ad11690d0b0679aa34db1a1d5a"></a>
+<a class="anchor" id="ga285b4cced59c665ae178adf26128d3fc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_require_auth </td>
+          <td class="memname">void pn_transport_require_auth </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1312,10 +1354,12 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set whether a non authenticated transport connection is allowed</p>
-<p>There are several ways within the AMQP protocol suite to get unauthenticated connections:</p><ul>
+
+<p>Set whether a non-authenticated transport connection is allowed. </p>
+<p>There are several ways within the AMQP protocol suite to get unauthenticated connections:</p>
+<ul>
 <li>Use no SASL layer (with either no TLS or TLS without client certificates)</li>
-<li>Use an SASL layer but the ANONYMOUS mechanism</li>
+<li>Use a SASL layer but the ANONYMOUS mechanism</li>
 </ul>
 <p>The default if this option is not set is to allow unauthenticated connections.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1325,15 +1369,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a36">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
-<a class="anchor" id="gadfc4a4be3de102890cc5c0ee4c1d8481"></a>
+<a class="anchor" id="gaeb7e30ead4a6ab080d0005379be20e34"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_require_encryption </td>
+          <td class="memname">void pn_transport_require_encryption </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1351,10 +1396,11 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set whether a non encrypted transport connection is allowed</p>
+
+<p>Set whether a non encrypted transport connection is allowed. </p>
 <p>There are several ways within the AMQP protocol suite to get encrypted connections:</p><ul>
-<li>Use TLS/SSL</li>
-<li>Use an SASL with a mechanism that supports saecurity layers</li>
+<li>Use TLS</li>
+<li>Use a SASL with a mechanism that supports saecurity layers</li>
 </ul>
 <p>The default if this option is not set is to allow unencrypted connections.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1367,12 +1413,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga470514642911834717ec0cd2a0cdab3f"></a>
+<a class="anchor" id="ga8f080d7fb1e7fea2c93391d0b8f59773"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_set_channel_max </td>
+          <td class="memname">int pn_transport_set_channel_max </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1390,7 +1436,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the maximum allowed channel number for a transport. Note that this is the maximum channel number allowed, giving a valid channel number range of [0..channel_max]. Therefore the maximum number of simultaineously active channels will be channel_max plus 1. You can call this function more than once to raise and lower the limit your application imposes on max channels for this transport. However, smaller limits may be imposed by this library, or by the remote peer. After the OPEN frame has been sent to the remote peer, further calls to this function will have no effect.</p>
+
+<p>Set the maximum allowed channel number for a transport. </p>
+<p>Note that this is the maximum channel number allowed, giving a valid channel number range of [0..channel_max]. Therefore the maximum number of simultaineously active channels will be channel_max plus 1. You can call this function more than once to raise and lower the limit your application imposes on max channels for this transport. However, smaller limits may be imposed by this library, or by the remote peer. After the OPEN frame has been sent to the remote peer, further calls to this function will have no effect.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1402,12 +1450,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga493c8b24e44413338e7afc52aef8d2fd"></a>
+<a class="anchor" id="gac22041ff85d1a1f5287ac2ba826edb74"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_set_context </td>
+          <td class="memname">void pn_transport_set_context </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1425,8 +1473,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000011">Deprecated:</a></b></dt><dd>Set a new application context for a transport object.</dd></dl>
-<p>The application context for a transport object may be retrieved using <a class="el" href="group__transport.html#ga9016acfea374d8b58183158b8d857ee8">pn_transport_get_context</a>.</p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000015">Deprecated:</a></b></dt><dd></dd></dl>
+<p>Set a new application context for a transport object.</p>
+<p>The application context for a transport object may be retrieved using <a class="el" href="group__transport.html#ga000b2b9ab82139defb1a103f220ec58e">pn_transport_get_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport object </td></tr>
@@ -1437,12 +1486,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gadd73956f25923eff0ca93784d943d349"></a>
+<a class="anchor" id="gafb1c98602d17524eb40e48bf610362d7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_set_idle_timeout </td>
+          <td class="memname">void pn_transport_set_idle_timeout </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1450,7 +1499,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">pn_millis_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c">pn_millis_t</a>&#160;</td>
           <td class="paramname"><em>timeout</em>&#160;</td>
         </tr>
         <tr>
@@ -1460,7 +1509,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the idle timeout for a transport.</p>
+
+<p>Set the idle timeout for a transport. </p>
 <p>A zero idle timeout means heartbeats are disabled.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1469,15 +1519,16 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a39">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
-<a class="anchor" id="ga2974d2551737553bc953232f3bd6438c"></a>
+<a class="anchor" id="ga51573625b6940884fed214b615f42e0f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_set_max_frame </td>
+          <td class="memname">void pn_transport_set_max_frame </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1495,7 +1546,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the maximum frame size of a transport.</p>
+
+<p>Set the maximum frame size of a transport. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1506,12 +1558,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga0f9cecc86a7185e6c9f25ead5c46b82b"></a>
+<a class="anchor" id="gac5bebd26c0942bc17d7fad36577110f8"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_set_server </td>
+          <td class="memname">void pn_transport_set_server </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1519,7 +1571,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Configure a transport as a server</p>
+
+<p>Configure a transport as a server. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1529,12 +1582,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaad5defb0c74cea7e7224c13edfc86c47"></a>
+<a class="anchor" id="ga7eb7915459eb433e68ff5ce80c5020a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_set_tracer </td>
+          <td class="memname">void pn_transport_set_tracer </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1552,7 +1605,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Set the tracing function used by a transport.</p>
+
+<p>Set the tracing function used by a transport. </p>
 <p>The tracing function is called to perform logging. Overriding this function allows embedding applications to divert the engine's logging to a place of their choice.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1564,12 +1618,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga51a02f24b448365039da44744f4e65a6"></a>
+<a class="anchor" id="ga4a9e6c6b207c41647ff988b5ae090d85"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN char* pn_transport_tail </td>
+          <td class="memname">char* pn_transport_tail </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1577,8 +1631,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Get the transport's tail pointer.</p>
-<p>The amount of free space following this pointer is reported by <a class="el" href="group__transport.html#ga0cdcc7fc4f5459687083dcb46796e0dd">pn_transport_capacity</a>. Calls to <a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> may alther the value of this pointer. See <a class="el" href="group__transport.html#gaa9a5bd5aef7c5dadbc67a236ad1b3447">pn_transport_process</a> for details.</p>
+
+<p>Get the transport's tail pointer. </p>
+<p>The amount of free space following this pointer is reported by <a class="el" href="group__transport.html#gaa079bb5f5b9ea10734c9d8af26fba333" title="Get the amount of free space for input following the transport&#39;s tail pointer. ">pn_transport_capacity</a>. Calls to <a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91" title="Process input data following the tail pointer. ">pn_transport_process</a> may alther the value of this pointer. See <a class="el" href="group__transport.html#ga1f52a6f11322873e74b9daf004269a91" title="Process input data following the tail pointer. ">pn_transport_process</a> for details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport </td></tr>
@@ -1589,12 +1644,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ga2be777fea1b19677ac50072c487d9ad1"></a>
+<a class="anchor" id="ga0f2abc6827e9370c0aebb2e5dd7535a9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN pn_timestamp_t pn_transport_tick </td>
+          <td class="memname"><a class="el" href="group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd">pn_timestamp_t</a> pn_transport_tick </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1602,7 +1657,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">pn_timestamp_t&#160;</td>
+          <td class="paramtype"><a class="el" href="group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd">pn_timestamp_t</a>&#160;</td>
           <td class="paramname"><em>now</em>&#160;</td>
         </tr>
         <tr>
@@ -1612,8 +1667,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Process any pending transport timer events.</p>
-<p>This method should be called after all pending input has been processed by the transport (see <a class="el" href="group__transport.html#ga6e1cdd7040dbd032b9e31a2c5900a314">pn_transport_input</a>), and before generating output (see <a class="el" href="group__transport.html#ga3d1d51b1aea73388a8d4a11e49119817">pn_transport_output</a>). It returns the deadline for the next pending timer event, if any are present.</p>
+
+<p>Process any pending transport timer events. </p>
+<p>This method should be called after all pending input has been processed by the transport (see <a class="el" href="group__transport.html#ga93f5efd9d63ebd1b1498fdace388ec3d">pn_transport_input</a>), and before generating output (see <a class="el" href="group__transport.html#gae72fdee3b8aae3cb484b0ed98c2b802e">pn_transport_output</a>). It returns the deadline for the next pending timer event, if any are present.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>the transport to process. </td></tr>
@@ -1625,12 +1681,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaee7ed090a3fa99d9f46d145939af893b"></a>
+<a class="anchor" id="gaa83f8c30fc0e7518c6ef214bb7b4ea56"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_trace </td>
+          <td class="memname">void pn_transport_trace </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1648,8 +1704,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Update a transports trace flags.</p>
-<p>The trace flags for a transport control what sort of information is logged. See <a class="el" href="group__transport.html#ga4695788da8491f0c7104bfe36634ff94">pn_trace_t</a> for more details.</p>
+
+<p>Update a transports trace flags. </p>
+<p>The trace flags for a transport control what sort of information is logged. See <a class="el" href="group__transport.html#ga4695788da8491f0c7104bfe36634ff94" title="Holds the trace flags for an AMQP transport. ">pn_trace_t</a> for more details.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">transport</td><td>a transport object </td></tr>
@@ -1660,12 +1717,12 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="gaf0e4c15f27f610ca4c5d64c0f4e95f07"></a>
+<a class="anchor" id="ga2a66ff267333651eb166f3f6fa4ede50"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN int pn_transport_unbind </td>
+          <td class="memname">int pn_transport_unbind </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em></td><td>)</td>
@@ -1673,17 +1730,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Unbinds a transport from its AMQP connection.</p>
+
+<p>Unbinds a transport from its AMQP connection. </p>
 <dl class="section return"><dt>Returns</dt><dd>an error code, or 0 on success </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ga6475de6019c60e6d7f4f8f971c980162"></a>
+<a class="anchor" id="gac773c1b9226783f36e2f2d4770e90e3f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">PN_EXTERN void pn_transport_vlogf </td>
+          <td class="memname">void pn_transport_vlogf </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *&#160;</td>
           <td class="paramname"><em>transport</em>, </td>
@@ -1707,7 +1765,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Log a printf formatted message using a transport's logging mechanism.</p>
+
+<p>Log a printf formatted message using a transport's logging mechanism. </p>
 <p>This can be useful in a debugging context as the log message will be prefixed with the transport's identifier.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">

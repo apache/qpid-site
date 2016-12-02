@@ -131,21 +131,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender__options.html#a087eda4a18c293de85107fcfbb7ff31f">auto_settle</a> (bool)</td></tr>
 <tr class="memdesc:a087eda4a18c293de85107fcfbb7ff31f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatically settle messages (default is true). <br /></td></tr>
 <tr class="separator:a087eda4a18c293de85107fcfbb7ff31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:affa248d2fe89882f49936eec6bff245d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="affa248d2fe89882f49936eec6bff245d"></a>
-<a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender__options.html#affa248d2fe89882f49936eec6bff245d">source</a> (<a class="el" href="classproton_1_1source__options.html">source_options</a> &amp;)</td></tr>
-<tr class="memdesc:affa248d2fe89882f49936eec6bff245d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for the source node of the sender. <br /></td></tr>
-<tr class="separator:affa248d2fe89882f49936eec6bff245d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c2282c68637f6c5aee95668b523c38c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c2282c68637f6c5aee95668b523c38c"></a>
-<a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender__options.html#a6c2282c68637f6c5aee95668b523c38c">target</a> (<a class="el" href="classproton_1_1target__options.html">target_options</a> &amp;)</td></tr>
-<tr class="memdesc:a6c2282c68637f6c5aee95668b523c38c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for the receiver node of the receiver. <br /></td></tr>
-<tr class="separator:a6c2282c68637f6c5aee95668b523c38c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4bd1e60b98c766f4c822aad783162c0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af4bd1e60b98c766f4c822aad783162c0"></a>
+<a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender__options.html#af4bd1e60b98c766f4c822aad783162c0">source</a> (const <a class="el" href="classproton_1_1source__options.html">source_options</a> &amp;)</td></tr>
+<tr class="memdesc:af4bd1e60b98c766f4c822aad783162c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for the source node of the sender. <br /></td></tr>
+<tr class="separator:af4bd1e60b98c766f4c822aad783162c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d4e83ee43fa1ee99a45f5bbe837ffcc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7d4e83ee43fa1ee99a45f5bbe837ffcc"></a>
+<a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender__options.html#a7d4e83ee43fa1ee99a45f5bbe837ffcc">target</a> (const <a class="el" href="classproton_1_1target__options.html">target_options</a> &amp;)</td></tr>
+<tr class="memdesc:a7d4e83ee43fa1ee99a45f5bbe837ffcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Options for the receiver node of the receiver. <br /></td></tr>
+<tr class="separator:a7d4e83ee43fa1ee99a45f5bbe837ffcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Options for creating a sender. </p>
 <p>Options can be "chained" like this:</p>
 <div class="fragment"><div class="line">l = container.create_sender(url, <a class="code" href="classproton_1_1sender__options.html#a619c789958ede03d0682a1a723cd7658">sender_options</a>().<a class="code" href="classproton_1_1sender__options.html#a0d94e8f4c1746780259f3eb2d1728aff">handler</a>(h).<a class="code" href="classproton_1_1sender__options.html#a087eda4a18c293de85107fcfbb7ff31f">auto_settle</a>(<span class="keyword">false</span>));</div></div><!-- fragment --><p>You can also create an options object with common settings and use it as a base for different connections that have mostly the same settings:</p>
 <div class="fragment"><div class="line"><a class="code" href="classproton_1_1sender__options.html#a619c789958ede03d0682a1a723cd7658">sender_options</a> opts;</div><div class="line">opts.browsing(<span class="keyword">true</span>);</div><div class="line">l1 = container.open_sender(url1, opts.handler(h1));</div><div class="line">c2 = container.open_receiver(url2, opts.handler(h2));</div></div><!-- fragment --><p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a9">broker.cpp</a>, <a class="el" href="broker_8hpp-example.html#_a13">broker.hpp</a>, and <a class="el" href="server_direct_8cpp-example.html#_a9">server_direct.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a11">broker.cpp</a>, <a class="el" href="broker_8hpp-example.html#_a13">broker.hpp</a>, <a class="el" href="mt_2broker_8cpp-example.html#_a9">mt/broker.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#_a9">server_direct.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a2">service_bus.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a0d94e8f4c1746780259f3eb2d1728aff"></a>
 <div class="memitem">

@@ -167,9 +167,6 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1event__loop.html">event_loop</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - A serial execution context.  <a href="classproton_1_1event__loop.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1inject__handler.html">inject_handler</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - A handler for injected code.  <a href="classproton_1_1inject__handler.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1link.html">link</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A named channel for sending or receiving messages.  <a href="classproton_1_1link.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,6 +196,9 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1scalar.html">scalar</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A holder for an instance of any scalar AMQP type.  <a href="classproton_1_1scalar.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1scalar__base.html">scalar_base</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base class for scalar types.  <a href="classproton_1_1scalar__base.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1sender.html">sender</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A channel for sending messages.  <a href="classproton_1_1sender.html#details">More...</a><br /></td></tr>
@@ -326,12 +326,17 @@ std::auto_ptr&lt; <a class="el" href="classproton_1_1container.html">container</
 <tr class="memdesc:a2dba1a95c3f87d5ffa09f07b6b42824c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default container factory for C++03, not recommended unless you only have C++03. <br /></td></tr>
 <tr class="separator:a2dba1a95c3f87d5ffa09f07b6b42824c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a625d9867cd11bbca4b2a8594fa80f932"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a625d9867cd11bbca4b2a8594fa80f932"></a>
-std::auto_ptr&lt; <a class="el" href="classproton_1_1container.html">container</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>make_auto_default_container</b> (const std::string &amp;id=&quot;&quot;)</td></tr>
+std::auto_ptr&lt; <a class="el" href="classproton_1_1container.html">container</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a625d9867cd11bbca4b2a8594fa80f932">make_auto_default_container</a> (const std::string &amp;id=&quot;&quot;)</td></tr>
+<tr class="memdesc:a625d9867cd11bbca4b2a8594fa80f932"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default container factory for C++03, not recommended unless you only have C++03. <br /></td></tr>
 <tr class="separator:a625d9867cd11bbca4b2a8594fa80f932"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a184d0e22e7da9fe7b3d1c8c84ce73f2f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a184d0e22e7da9fe7b3d1c8c84ce73f2f"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a184d0e22e7da9fe7b3d1c8c84ce73f2f">operator&lt;&lt;</a> (std::ostream &amp;, <a class="el" href="classproton_1_1duration.html">duration</a>)</td></tr>
 <tr class="memdesc:a184d0e22e7da9fe7b3d1c8c84ce73f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print duration. <br /></td></tr>
 <tr class="separator:a184d0e22e7da9fe7b3d1c8c84ce73f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1367d11b0ac6a99ea8e7d9a5b8f36b34"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1367d11b0ac6a99ea8e7d9a5b8f36b34"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a1367d11b0ac6a99ea8e7d9a5b8f36b34">to_string</a> (const <a class="el" href="classproton_1_1scalar__base.html">scalar_base</a> &amp;x)</td></tr>
+<tr class="memdesc:a1367d11b0ac6a99ea8e7d9a5b8f36b34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a readable string representation of x for display purposes. <br /></td></tr>
+<tr class="separator:a1367d11b0ac6a99ea8e7d9a5b8f36b34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cdc51abe42497af9f9b2966d1abdfa4"><td class="memTemplParams" colspan="2"><a class="anchor" id="a8cdc51abe42497af9f9b2966d1abdfa4"></a>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:a8cdc51abe42497af9f9b2966d1abdfa4"><td class="memTemplItemLeft" align="right" valign="top">returned&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a8cdc51abe42497af9f9b2966d1abdfa4">make_thread_safe</a> (const T &amp;obj)</td></tr>
@@ -360,6 +365,10 @@ template&lt;&gt; </td></tr>
 <tr class="memitem:a669620a0968de2603fe8922405f1331b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a669620a0968de2603fe8922405f1331b">get&lt; null &gt;</a> (const <a class="el" href="classproton_1_1value.html">value</a> &amp;v, null &amp;)</td></tr>
 <tr class="memdesc:a669620a0968de2603fe8922405f1331b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Special case for <a class="el" href="namespaceproton.html#a669620a0968de2603fe8922405f1331b" title="Special case for get&lt;null&gt;(), just checks that value contains NULL. ">get&lt;null&gt;()</a>, just checks that value contains NULL. <br /></td></tr>
 <tr class="separator:a669620a0968de2603fe8922405f1331b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c46a4cbeb5a6150ab40ea81ee4bfb81"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8c46a4cbeb5a6150ab40ea81ee4bfb81"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a8c46a4cbeb5a6150ab40ea81ee4bfb81">to_string</a> (const <a class="el" href="classproton_1_1value.html">value</a> &amp;x)</td></tr>
+<tr class="memdesc:a8c46a4cbeb5a6150ab40ea81ee4bfb81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return a readable string representation of x for display purposes. <br /></td></tr>
+<tr class="separator:a8c46a4cbeb5a6150ab40ea81ee4bfb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr><td colspan="2"><div class="groupHeader"></div></td></tr>
 <tr class="memitem:aec04001c66a08483b8e23f836da2d621"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aec04001c66a08483b8e23f836da2d621"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html#aec04001c66a08483b8e23f836da2d621">operator&lt;&lt;</a> (std::ostream &amp;, const <a class="el" href="classproton_1_1decimal32.html">decimal32</a> &amp;)</td></tr>

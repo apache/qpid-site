@@ -7,7 +7,7 @@ var classproton_1_1sender__options =
     [ "delivery_mode", "classproton_1_1sender__options.html#ab7dc71a7b5737c2ca642058a296292db", null ],
     [ "handler", "classproton_1_1sender__options.html#a0d94e8f4c1746780259f3eb2d1728aff", null ],
     [ "operator=", "classproton_1_1sender__options.html#a13e6aa698a300681f88a709ccb50c8f6", null ],
-    [ "source", "classproton_1_1sender__options.html#affa248d2fe89882f49936eec6bff245d", null ],
-    [ "target", "classproton_1_1sender__options.html#a6c2282c68637f6c5aee95668b523c38c", null ],
+    [ "source", "classproton_1_1sender__options.html#af4bd1e60b98c766f4c822aad783162c0", null ],
+    [ "target", "classproton_1_1sender__options.html#a7d4e83ee43fa1ee99a45f5bbe837ffcc", null ],
     [ "update", "classproton_1_1sender__options.html#a16b609dbb6a9df5ab7e719f0de05026b", null ]
 ];

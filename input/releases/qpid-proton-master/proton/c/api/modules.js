@@ -1,13 +1,9 @@
 var modules =
 [
-    [ "Data", "group__data.html", "group__data" ],
-    [ "The Connection Engine", "group__connection__engine.html", "group__connection__engine" ],
-    [ "Engine", "group__engine.html", "group__engine" ],
-    [ "Handlers", "group__handlers.html", null ],
-    [ "Message", "group__message.html", "group__message" ],
-    [ "Messenger", "group__messenger.html", "group__messenger" ],
-    [ "Reactor", "group__reactor.html", "group__reactor" ],
-    [ "Selectable", "group__selectable.html", "group__selectable" ],
+    [ "Core", "group__core.html", "group__core" ],
     [ "Types", "group__types.html", "group__types" ],
+    [ "Codec", "group__codec.html", "group__codec" ],
+    [ "IO", "group__io.html", "group__io" ],
+    [ "Messenger", "group__messenger.html", "group__messenger" ],
     [ "URL", "group__url.html", "group__url" ]
 ];

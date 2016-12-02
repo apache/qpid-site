@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":38,"i29":6,"i30":6,"i31":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6,"i11":6,"i12":6,"i13":6,"i14":6,"i15":6,"i16":6,"i17":6,"i18":6,"i19":6,"i20":6,"i21":6,"i22":6,"i23":6,"i24":6,"i25":6,"i26":6,"i27":6,"i28":6,"i29":6,"i30":6,"i31":6,"i32":6,"i33":6,"i34":38,"i35":6,"i36":6,"i37":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -180,122 +180,170 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getCredit--">getCredit</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getCredit--">getCredit</a></span>()</code>
+<div class="block">Gets the credit balance for a link.</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getDesiredCapabilities--">getDesiredCapabilities</a></span>()</code>
+<div class="block">Gets the local link desired capabilities.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getDrain--">getDrain</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getName--">getName</a></span>()</code>
 <div class="block">Returns the name of the link</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getOfferedCapabilities--">getOfferedCapabilities</a></span>()</code>
+<div class="block">Gets the local link offered capabilities.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getProperties--">getProperties</a></span>()</code>
 <div class="block">Gets the local link properties.</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getQueued--">getQueued</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getQueued--">getQueued</a></span>()</code>
+<div class="block">Gets the number of queued messages for a link.</div>
+</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/ReceiverSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">ReceiverSettleMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getReceiverSettleMode--">getReceiverSettleMode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteCredit--">getRemoteCredit</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteCredit--">getRemoteCredit</a></span>()</code>
+<div class="block">Returns a [locally generated] view of credit at the remote peer by considering the
+ current link <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getCredit--"><code>credit</code></a> count as well as the effect of
+ any locally <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getQueued--"><code>queued</code></a> messages.</div>
+</td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i16" class="altColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteDesiredCapabilities--">getRemoteDesiredCapabilities</a></span>()</code>
+<div class="block">Gets the remote link desired capabilities, as conveyed from the peer via the Attach frame
+ when attaching the link to the session.</div>
+</td>
+</tr>
+<tr id="i17" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteOfferedCapabilities--">getRemoteOfferedCapabilities</a></span>()</code>
+<div class="block">Gets the remote link offered capabilities, as conveyed from the peer via the Attach frame
+ when attaching the link to the session.</div>
+</td>
+</tr>
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteProperties--">getRemoteProperties</a></span>()</code>
 <div class="block">Gets the remote link properties, as conveyed from the peer via the Attach frame
  when attaching the link to the session.</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/ReceiverSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">ReceiverSettleMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteReceiverSettleMode--">getRemoteReceiverSettleMode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/SenderSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">SenderSettleMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteSenderSettleMode--">getRemoteSenderSettleMode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/Source.html" title="interface in org.apache.qpid.proton.amqp.transport">Source</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteSource--">getRemoteSource</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/Target.html" title="interface in org.apache.qpid.proton.amqp.transport">Target</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getRemoteTarget--">getRemoteTarget</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/SenderSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">SenderSettleMode</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getSenderSettleMode--">getSenderSettleMode</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Session.html" title="interface in org.apache.qpid.proton.engine">Session</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getSession--">getSession</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/Source.html" title="interface in org.apache.qpid.proton.amqp.transport">Source</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getSource--">getSource</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/amqp/transport/Target.html" title="interface in org.apache.qpid.proton.amqp.transport">Target</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getTarget--">getTarget</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i27" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#getUnsettled--">getUnsettled</a></span>()</code>&nbsp;</td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i28" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Delivery.html" title="interface in org.apache.qpid.proton.engine">Delivery</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#head--">head</a></span>()</code>
 <div class="block">Returns the head delivery on the link.</div>
 </td>
 </tr>
-<tr id="i25" class="rowColor">
+<tr id="i29" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Link.html" title="interface in org.apache.qpid.proton.engine">Link</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#next-java.util.EnumSet-java.util.EnumSet-">next</a></span>(java.util.EnumSet&lt;<a href="../../../../../org/apache/qpid/proton/engine/EndpointState.html" title="enum in org.apache.qpid.proton.engine">EndpointState</a>&gt;&nbsp;local,
     java.util.EnumSet&lt;<a href="../../../../../org/apache/qpid/proton/engine/EndpointState.html" title="enum in org.apache.qpid.proton.engine">EndpointState</a>&gt;&nbsp;remote)</code>&nbsp;</td>
 </tr>
-<tr id="i26" class="altColor">
+<tr id="i30" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">setDesiredCapabilities</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;desiredCapabilities)</code>
+<div class="block">Sets the local link desired capabilities, to be conveyed to the peer via the Attach frame
+ when attaching the link to the session.</div>
+</td>
+</tr>
+<tr id="i31" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">setOfferedCapabilities</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;offeredCapabilities)</code>
+<div class="block">Sets the local link offered capabilities, to be conveyed to the peer via the Attach frame
+ when attaching the link to the session.</div>
+</td>
+</tr>
+<tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setProperties-java.util.Map-">setProperties</a></span>(java.util.Map&lt;<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>,java.lang.Object&gt;&nbsp;properties)</code>
 <div class="block">Sets the local link properties, to be conveyed to the peer via the Attach frame when
  attaching the link to the session.</div>
 </td>
 </tr>
-<tr id="i27" class="rowColor">
+<tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setReceiverSettleMode-org.apache.qpid.proton.amqp.transport.ReceiverSettleMode-">setReceiverSettleMode</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/transport/ReceiverSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">ReceiverSettleMode</a>&nbsp;receiverSettleMode)</code>
 <div class="block">Sets the receiver settle mode.</div>
 </td>
 </tr>
-<tr id="i28" class="altColor">
+<tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setRemoteSenderSettleMode-org.apache.qpid.proton.amqp.transport.SenderSettleMode-">setRemoteSenderSettleMode</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/transport/SenderSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">SenderSettleMode</a>&nbsp;remoteSenderSettleMode)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </td>
 </tr>
-<tr id="i29" class="rowColor">
+<tr id="i35" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setSenderSettleMode-org.apache.qpid.proton.amqp.transport.SenderSettleMode-">setSenderSettleMode</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/transport/SenderSettleMode.html" title="enum in org.apache.qpid.proton.amqp.transport">SenderSettleMode</a>&nbsp;senderSettleMode)</code>
 <div class="block">Sets the sender settle mode.</div>
 </td>
 </tr>
-<tr id="i30" class="altColor">
+<tr id="i36" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setSource-org.apache.qpid.proton.amqp.transport.Source-">setSource</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/transport/Source.html" title="interface in org.apache.qpid.proton.amqp.transport">Source</a>&nbsp;address)</code>
 <div class="block">Sets the source for this link.</div>
 </td>
 </tr>
-<tr id="i31" class="rowColor">
+<tr id="i37" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setTarget-org.apache.qpid.proton.amqp.transport.Target-">setTarget</a></span>(<a href="../../../../../org/apache/qpid/proton/amqp/transport/Target.html" title="interface in org.apache.qpid.proton.amqp.transport">Target</a>&nbsp;address)</code>
 <div class="block">Expected to be used in a similar manner to <a href="../../../../../org/apache/qpid/proton/engine/Link.html#setSource-org.apache.qpid.proton.amqp.transport.Source-"><code>setSource(Source)</code></a></div>
@@ -519,6 +567,17 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 <li class="blockList">
 <h4>getCredit</h4>
 <pre>int&nbsp;getCredit()</pre>
+<div class="block">Gets the credit balance for a link.
+
+ Note that a sending link may still be used to send deliveries even if
+ link credit is/reaches zero, however those deliveries will end up being
+ <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getQueued--"><code>queued</code></a> by the link until enough credit is obtained
+ from the receiver to send them over the wire. In this case the balance
+ reported will go negative.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the credit balance for the link</dd>
+</dl>
 </li>
 </ul>
 <a name="getQueued--">
@@ -528,6 +587,15 @@ extends <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html" tit
 <li class="blockList">
 <h4>getQueued</h4>
 <pre>int&nbsp;getQueued()</pre>
+<div class="block">Gets the number of queued messages for a link.
+
+ Links may queue deliveries for a number of reasons, for example there may be insufficient
+ <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getCredit--"><code>credit</code></a> to send them to the receiver, they may not have yet had a chance
+ to be written to the wire, or the receiving application has simply not yet processed them.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the queued message count for the link</dd>
+</dl>
 </li>
 </ul>
 <a name="getUnsettled--">
@@ -696,6 +764,13 @@ void&nbsp;setRemoteSenderSettleMode(<a href="../../../../../org/apache/qpid/prot
 <li class="blockList">
 <h4>getRemoteCredit</h4>
 <pre>int&nbsp;getRemoteCredit()</pre>
+<div class="block">Returns a [locally generated] view of credit at the remote peer by considering the
+ current link <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getCredit--"><code>credit</code></a> count as well as the effect of
+ any locally <a href="../../../../../org/apache/qpid/proton/engine/Link.html#getQueued--"><code>queued</code></a> messages.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>view of effective remote credit</dd>
+</dl>
 </li>
 </ul>
 <a name="getDrain--">
@@ -719,10 +794,106 @@ void&nbsp;setRemoteSenderSettleMode(<a href="../../../../../org/apache/qpid/prot
 <a name="detached--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>detached</h4>
 <pre>boolean&nbsp;detached()</pre>
+</li>
+</ul>
+<a name="setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setOfferedCapabilities</h4>
+<pre>void&nbsp;setOfferedCapabilities(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;offeredCapabilities)</pre>
+<div class="block">Sets the local link offered capabilities, to be conveyed to the peer via the Attach frame
+ when attaching the link to the session.
+
+ Must be called during link setup, i.e. before calling the <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html#open--"><code>Endpoint.open()</code></a> method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>offeredCapabilities</code> - the offered capabilities array to send, or null for none.</dd>
+</dl>
+</li>
+</ul>
+<a name="getOfferedCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getOfferedCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getOfferedCapabilities()</pre>
+<div class="block">Gets the local link offered capabilities.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the offered capabilities array, or null if none was set.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setOfferedCapabilities-org.apache.qpid.proton.amqp.Symbol:A-"><code>setOfferedCapabilities(Symbol[])</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getRemoteOfferedCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRemoteOfferedCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getRemoteOfferedCapabilities()</pre>
+<div class="block">Gets the remote link offered capabilities, as conveyed from the peer via the Attach frame
+ when attaching the link to the session.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the offered capabilities array conveyed by the peer, or null if there was none.</dd>
+</dl>
+</li>
+</ul>
+<a name="setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setDesiredCapabilities</h4>
+<pre>void&nbsp;setDesiredCapabilities(<a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;desiredCapabilities)</pre>
+<div class="block">Sets the local link desired capabilities, to be conveyed to the peer via the Attach frame
+ when attaching the link to the session.
+
+ Must be called during link setup, i.e. before calling the <a href="../../../../../org/apache/qpid/proton/engine/Endpoint.html#open--"><code>Endpoint.open()</code></a> method.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>desiredCapabilities</code> - the desired capabilities array to send, or null for none.</dd>
+</dl>
+</li>
+</ul>
+<a name="getDesiredCapabilities--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDesiredCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getDesiredCapabilities()</pre>
+<div class="block">Gets the local link desired capabilities.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the desired capabilities array, or null if none was set.</dd>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../../../org/apache/qpid/proton/engine/Link.html#setDesiredCapabilities-org.apache.qpid.proton.amqp.Symbol:A-"><code>setDesiredCapabilities(Symbol[])</code></a></dd>
+</dl>
+</li>
+</ul>
+<a name="getRemoteDesiredCapabilities--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getRemoteDesiredCapabilities</h4>
+<pre><a href="../../../../../org/apache/qpid/proton/amqp/Symbol.html" title="class in org.apache.qpid.proton.amqp">Symbol</a>[]&nbsp;getRemoteDesiredCapabilities()</pre>
+<div class="block">Gets the remote link desired capabilities, as conveyed from the peer via the Attach frame
+ when attaching the link to the session.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the desired capabilities array conveyed by the peer, or null if there was none.</dd>
+</dl>
 </li>
 </ul>
 </li>

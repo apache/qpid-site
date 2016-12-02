@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['accept',['accept',['../classproton_1_1delivery.html#aadb9f3b844fb4cf98288cd3c60a3af91',1,'proton::delivery::accept()'],['../classproton_1_1io_1_1connection__engine.html#a8a5938806dc28d71c3ed5f89cc537ddd',1,'proton::io::connection_engine::accept()']]],
+  ['accept',['accept',['../classproton_1_1delivery.html#aadb9f3b844fb4cf98288cd3c60a3af91',1,'proton::delivery::accept()'],['../classproton_1_1io_1_1connection__driver.html#a8a5938806dc28d71c3ed5f89cc537ddd',1,'proton::io::connection_driver::accept()']]],
   ['active',['active',['../classproton_1_1connection.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::connection::active()'],['../classproton_1_1endpoint.html#ac6e82b77dfe6fbae3b18e5f14ab7c25b',1,'proton::endpoint::active()'],['../classproton_1_1link.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::link::active()'],['../classproton_1_1session.html#a6fd1dc792a0b98e6530a7383d4ef3074',1,'proton::session::active()']]],
   ['add_5fcredit',['add_credit',['../classproton_1_1receiver.html#a84d3a001340d11201e03c6ed7c763641',1,'proton::receiver']]],
   ['address',['address',['../classproton_1_1source.html#a977efa04715923ca4fa290a6ec90c830',1,'proton::source::address()'],['../classproton_1_1source__options.html#a36fa9e64134459cfe70707e0439ba850',1,'proton::source_options::address()'],['../classproton_1_1target.html#a977efa04715923ca4fa290a6ec90c830',1,'proton::target::address()'],['../classproton_1_1target__options.html#a39a0acbf2c7de97e77df483ca9c4c6a9',1,'proton::target_options::address()']]],

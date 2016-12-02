@@ -142,6 +142,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0300a2a68ecca3f684e91e637a45e028"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a0300a2a68ecca3f684e91e637a45e028">virtual_host</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:a0300a2a68ecca3f684e91e637a45e028"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the virtual host name for the connection.  <a href="#a0300a2a68ecca3f684e91e637a45e028">More...</a><br /></td></tr>
 <tr class="separator:a0300a2a68ecca3f684e91e637a45e028"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc607789bafe5954d22353650cf7676a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#afc607789bafe5954d22353650cf7676a">user</a> (const std::string &amp;user)</td></tr>
+<tr class="memdesc:afc607789bafe5954d22353650cf7676a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the user name used to authenticate the connection.  <a href="#afc607789bafe5954d22353650cf7676a">More...</a><br /></td></tr>
+<tr class="separator:afc607789bafe5954d22353650cf7676a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a198b0c6afff08415952fe7311cd7faa7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a198b0c6afff08415952fe7311cd7faa7"></a>
+<a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a198b0c6afff08415952fe7311cd7faa7">password</a> (const std::string &amp;pass)</td></tr>
+<tr class="memdesc:a198b0c6afff08415952fe7311cd7faa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the password used to authenticate the connection. <br /></td></tr>
+<tr class="separator:a198b0c6afff08415952fe7311cd7faa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eb280b5a62adb5b2075d6316a590c70"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4eb280b5a62adb5b2075d6316a590c70"></a>
 <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a4eb280b5a62adb5b2075d6316a590c70">ssl_client_options</a> (const class <a class="el" href="classproton_1_1ssl__client__options.html">ssl_client_options</a> &amp;)</td></tr>
 <tr class="memdesc:a4eb280b5a62adb5b2075d6316a590c70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set SSL client options. <br /></td></tr>
@@ -179,7 +186,7 @@ Public Member Functions</h2></td></tr>
 <p>Options can be "chained" like this:</p>
 <div class="fragment"><div class="line">c = container.connect(url, <a class="code" href="classproton_1_1connection__options.html#a8034b8d17ca30a4cfc3db8c6a898dc4d">connection_options</a>().<a class="code" href="classproton_1_1connection__options.html#a7bca23aeb3455378ef2d35975758e504">handler</a>(h).<a class="code" href="classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686">max_frame_size</a>(1234));</div></div><!-- fragment --><p>You can also create an options object with common settings and use it as a base for different connections that have mostly the same settings:</p>
 <div class="fragment"><div class="line"><a class="code" href="classproton_1_1connection__options.html#a8034b8d17ca30a4cfc3db8c6a898dc4d">connection_options</a> opts;</div><div class="line">opts.idle_timeout(1000).max_frame_size(10000);</div><div class="line">c1 = container.connect(url1, opts.handler(h1));</div><div class="line">c2 = container.connect(url2, opts.handler(h2));</div></div><!-- fragment --><p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="mt_2broker_8cpp-example.html#_a23">mt/broker.cpp</a>, and <a class="el" href="mt_2epoll_container_8cpp-example.html#_a5">mt/epoll_container.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="mt_2broker_8cpp-example.html#_a27">mt/broker.cpp</a>, <a class="el" href="mt_2epoll_container_8cpp-example.html#_a5">mt/epoll_container.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a1">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a4">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a4">simple_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a7bca23aeb3455378ef2d35975758e504"></a>
 <div class="memitem">
@@ -197,7 +204,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Set a connection handler. </p>
 <p>The handler must not be deleted until <a class="el" href="classproton_1_1messaging__handler.html#a47c33c5e6c13d23f1b8a745bf7bdfa8f" title="The underlying network transport has closed. ">messaging_handler::on_transport_close()</a> is called. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="mt_2broker_8cpp-example.html#a24">mt/broker.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="mt_2broker_8cpp-example.html#a28">mt/broker.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -218,6 +225,26 @@ Public Member Functions</h2></td></tr>
 <p>Force the enabling of SASL mechanisms that disclose clear text passwords over the connection. </p>
 <p>By default, such mechanisms are disabled. </p>
 
+</div>
+</div>
+<a class="anchor" id="afc607789bafe5954d22353650cf7676a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classproton_1_1connection__options.html">connection_options</a>&amp; user </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set the user name used to authenticate the connection. </p>
+<p>This will override any user name that is specified in the url used for <a class="el" href="classproton_1_1container.html#ae8b4eb94c7de3a287665156a768de8dd" title="Connect to url and send an open request to the remote peer. ">container::connect</a>. It will be ignored if the connection is created by <a class="el" href="classproton_1_1container.html#a27d60b6665f37220d9be70f11ab69654" title="Start listening on url. ">container::listen</a> as a listening connection has no user name. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_recv_8cpp-example.html#a5">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a5">simple_send.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a class="anchor" id="a0300a2a68ecca3f684e91e637a45e028"></a>

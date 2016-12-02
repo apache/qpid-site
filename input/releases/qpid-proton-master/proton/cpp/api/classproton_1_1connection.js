@@ -25,5 +25,6 @@ var classproton_1_1connection =
     [ "sessions", "classproton_1_1connection.html#aa246b89acfdf85eff5e58f3fceae46dd", null ],
     [ "transport", "classproton_1_1connection.html#a89faad37d419b75c47031ddf530b0ab6", null ],
     [ "uninitialized", "classproton_1_1connection.html#ac148c054a035b462f4483f38078374bf", null ],
+    [ "user", "classproton_1_1connection.html#a31d44d41f9aee83ac6fdbe8721eaa42f", null ],
     [ "virtual_host", "classproton_1_1connection.html#afd5da4a30e24592cc193f4ce3ed99594", null ]
 ];

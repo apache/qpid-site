@@ -162,7 +162,7 @@ on Fedora or RHEL.
 
     $ sudo yum install cmake doxygen epydoc fop gcc graphviz java-devel \
           libxslt make python-pygments PyYAML rubygem-rdoc git \
-          pandoc-pdf python-sphinx apache-maven
+          pandoc-pdf python-sphinx maven
 
 ## Publishing your work
 

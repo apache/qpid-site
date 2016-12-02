@@ -21,6 +21,7 @@
  - [selected_recv.cpp](selected_recv.cpp.html)
  - [server.cpp](server.cpp.html)
  - [server_direct.cpp](server_direct.cpp.html)
+ - [service_bus.cpp](service_bus.cpp.html)
  - [simple_recv.cpp](simple_recv.cpp.html)
  - [simple_send.cpp](simple_send.cpp.html)
  - [ssl.cpp](ssl.cpp.html)
@@ -28,5 +29,5 @@
 
 ## More information
 
- - [README](https://github.com/apache/qpid-proton/tree/master/examples/cpp/README.hpp)
+ - [README](https://github.com/apache/qpid-proton/tree/master/examples/cpp/README.dox)
  - [Source location](https://github.com/apache/qpid-proton/tree/master/examples/cpp)

@@ -63,7 +63,7 @@ var hierarchy =
     ] ],
     [ "comparable< object< T > >", null, null ],
     [ "comparable< scalar_base >", null, [
-      [ "scalar_base", null, [
+      [ "scalar_base", "classproton_1_1scalar__base.html", [
         [ "annotation_key", "classproton_1_1annotation__key.html", null ],
         [ "message_id", "classproton_1_1message__id.html", null ],
         [ "scalar", "classproton_1_1scalar.html", null ]
@@ -75,7 +75,7 @@ var hierarchy =
     [ "comparable< value >", null, [
       [ "value", "classproton_1_1value.html", null ]
     ] ],
-    [ "connection_engine", "classproton_1_1io_1_1connection__engine.html", null ],
+    [ "connection_driver", "classproton_1_1io_1_1connection__driver.html", null ],
     [ "connection_options", "classproton_1_1connection__options.html", null ],
     [ "const_buffer", "structproton_1_1io_1_1const__buffer.html", null ],
     [ "container", "classproton_1_1container.html", [
@@ -126,13 +126,8 @@ var hierarchy =
     ] ],
     [ "thread_safe< T >", "classproton_1_1thread__safe.html", null ],
     [ "url", "classproton_1_1url.html", null ],
-    [ "value_base", null, [
-      [ "value", "classproton_1_1value.html", null ]
-    ] ],
     [ "vector< T >", null, [
       [ "binary", "classproton_1_1binary.html", null ]
     ] ],
-    [ "void_function0", "classproton_1_1void__function0.html", [
-      [ "inject_handler", "classproton_1_1inject__handler.html", null ]
-    ] ]
+    [ "void_function0", "classproton_1_1void__function0.html", null ]
 ];

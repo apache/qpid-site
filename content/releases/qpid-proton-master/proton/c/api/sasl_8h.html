@@ -97,6 +97,9 @@ $(document).ready(function(){initNavTree('sasl_8h.html','');});
 <div class="title">sasl.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>SASL secure transport layer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;proton/import_export.h&gt;</code><br />
 <code>#include &lt;proton/type_compat.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="types_8h_source.html">proton/types.h</a>&gt;</code><br />
@@ -105,52 +108,63 @@ $(document).ready(function(){initNavTree('sasl_8h.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:ga4d21fddba80d3f88d0529aafe12328b0"><td class="memItemLeft" align="right" valign="top">
-typedef struct pn_sasl_t&#160;</td><td class="memItemRight" valign="bottom"><b>pn_sasl_t</b></td></tr>
+<tr class="memitem:ga4d21fddba80d3f88d0529aafe12328b0"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a></td></tr>
+<tr class="memdesc:ga4d21fddba80d3f88d0529aafe12328b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SASL layer is responsible for establishing an authenticated and/or encrypted tunnel over which AMQP frames are passed between peers.  <a href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">More...</a><br /></td></tr>
 <tr class="separator:ga4d21fddba80d3f88d0529aafe12328b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gad44e79f52e0669b1930689b56dfa9c3b"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a> { <br />
-&#160;&#160;<b>PN_SASL_NONE</b> =-1, 
-<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3ba0050b91650a3826a090e13f57b3b941e">PN_SASL_OK</a> =0, 
-<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3bac63734ecde7c8170554f6bf04f6ce64a">PN_SASL_AUTH</a> =1, 
-<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3bacd46a2fda23f674c23ed81e6076c1939">PN_SASL_SYS</a> =2, 
+&#160;&#160;<b>PN_SASL_NONE</b>, 
+<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3ba0050b91650a3826a090e13f57b3b941e">PN_SASL_OK</a>, 
+<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3bac63734ecde7c8170554f6bf04f6ce64a">PN_SASL_AUTH</a>, 
+<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3bacd46a2fda23f674c23ed81e6076c1939">PN_SASL_SYS</a>, 
 <br />
-&#160;&#160;<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3ba03019f909ba1d98aae94437ca4bd0191">PN_SASL_PERM</a> =3, 
-<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3baee28d2c03fa80dccf771e37aae1bcdf3">PN_SASL_TEMP</a> =4
+&#160;&#160;<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3ba03019f909ba1d98aae94437ca4bd0191">PN_SASL_PERM</a>, 
+<a class="el" href="group__sasl.html#ggad44e79f52e0669b1930689b56dfa9c3baee28d2c03fa80dccf771e37aae1bcdf3">PN_SASL_TEMP</a>
 <br />
- }</td></tr>
+ }<tr class="memdesc:gad44e79f52e0669b1930689b56dfa9c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The result of the SASL negotiation.  <a href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">More...</a><br /></td></tr>
+</td></tr>
 <tr class="separator:gad44e79f52e0669b1930689b56dfa9c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ga473c3092ebf00792106cdc741d0b14ac"><td class="memItemLeft" align="right" valign="top">PN_EXTERN pn_sasl_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga473c3092ebf00792106cdc741d0b14ac">pn_sasl</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
-<tr class="separator:ga473c3092ebf00792106cdc741d0b14ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8ab2ab1ca7ed8a476fbf01e742425f3d"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga8ab2ab1ca7ed8a476fbf01e742425f3d">pn_sasl_extended</a> (void)</td></tr>
-<tr class="separator:ga8ab2ab1ca7ed8a476fbf01e742425f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaecd3b1f55fc81c6586bc435772f829d3"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gaecd3b1f55fc81c6586bc435772f829d3">pn_sasl_done</a> (pn_sasl_t *sasl, <a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a> outcome)</td></tr>
-<tr class="separator:gaecd3b1f55fc81c6586bc435772f829d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaec4ace7d77037c60f1df02f2bb0be0f8"><td class="memItemLeft" align="right" valign="top">PN_EXTERN <a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gaec4ace7d77037c60f1df02f2bb0be0f8">pn_sasl_outcome</a> (pn_sasl_t *sasl)</td></tr>
-<tr class="separator:gaec4ace7d77037c60f1df02f2bb0be0f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gafff63feb3a2eccd74f7b472ee235a886"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gafff63feb3a2eccd74f7b472ee235a886">pn_sasl_get_user</a> (pn_sasl_t *sasl)</td></tr>
-<tr class="separator:gafff63feb3a2eccd74f7b472ee235a886"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga77adf112018a4b457df4abbf5b31873b"><td class="memItemLeft" align="right" valign="top">PN_EXTERN const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga77adf112018a4b457df4abbf5b31873b">pn_sasl_get_mech</a> (pn_sasl_t *sasl)</td></tr>
-<tr class="separator:ga77adf112018a4b457df4abbf5b31873b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacdc9d99d6717e74fa5df4de1515644db"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gacdc9d99d6717e74fa5df4de1515644db">pn_sasl_allowed_mechs</a> (pn_sasl_t *sasl, const char *mechs)</td></tr>
-<tr class="separator:gacdc9d99d6717e74fa5df4de1515644db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga841eea7a3e34539aa6176ebc055cdc16"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga841eea7a3e34539aa6176ebc055cdc16">pn_sasl_set_allow_insecure_mechs</a> (pn_sasl_t *sasl, bool insecure)</td></tr>
-<tr class="separator:ga841eea7a3e34539aa6176ebc055cdc16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4f18db720611136dd7d6798b8bfbc94c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga4f18db720611136dd7d6798b8bfbc94c">pn_sasl_get_allow_insecure_mechs</a> (pn_sasl_t *sasl)</td></tr>
-<tr class="separator:ga4f18db720611136dd7d6798b8bfbc94c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gae4ef8946525b044cc2d84ff801e1ae20"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gae4ef8946525b044cc2d84ff801e1ae20">pn_sasl_config_name</a> (pn_sasl_t *sasl, const char *name)</td></tr>
-<tr class="separator:gae4ef8946525b044cc2d84ff801e1ae20"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8aa6f7e87a9eabf2d4ad8533fd7a4d3c"><td class="memItemLeft" align="right" valign="top">PN_EXTERN void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga8aa6f7e87a9eabf2d4ad8533fd7a4d3c">pn_sasl_config_path</a> (pn_sasl_t *sasl, const char *path)</td></tr>
-<tr class="separator:ga8aa6f7e87a9eabf2d4ad8533fd7a4d3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7968e80e2fe9360fc14cf865dd1ac21c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga7968e80e2fe9360fc14cf865dd1ac21c">pn_sasl</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
+<tr class="memdesc:ga7968e80e2fe9360fc14cf865dd1ac21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an Authentication and Security Layer object.  <a href="group__sasl.html#ga7968e80e2fe9360fc14cf865dd1ac21c">More...</a><br /></td></tr>
+<tr class="separator:ga7968e80e2fe9360fc14cf865dd1ac21c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1737191972d5dded0993bf1431e71df0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga1737191972d5dded0993bf1431e71df0">pn_sasl_extended</a> (void)</td></tr>
+<tr class="memdesc:ga1737191972d5dded0993bf1431e71df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do we support extended SASL negotiation.  <a href="group__sasl.html#ga1737191972d5dded0993bf1431e71df0">More...</a><br /></td></tr>
+<tr class="separator:ga1737191972d5dded0993bf1431e71df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0199871440c4ff89a204cc1d8a09f283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga0199871440c4ff89a204cc1d8a09f283">pn_sasl_done</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, <a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a> outcome)</td></tr>
+<tr class="memdesc:ga0199871440c4ff89a204cc1d8a09f283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the outcome of SASL negotiation.  <a href="group__sasl.html#ga0199871440c4ff89a204cc1d8a09f283">More...</a><br /></td></tr>
+<tr class="separator:ga0199871440c4ff89a204cc1d8a09f283"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga03b6daf742db6a07bd7d03cb197aedb6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga03b6daf742db6a07bd7d03cb197aedb6">pn_sasl_outcome</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl)</td></tr>
+<tr class="memdesc:ga03b6daf742db6a07bd7d03cb197aedb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the outcome of SASL negotiation.  <a href="group__sasl.html#ga03b6daf742db6a07bd7d03cb197aedb6">More...</a><br /></td></tr>
+<tr class="separator:ga03b6daf742db6a07bd7d03cb197aedb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga700e1d505068f895383dd932af55987e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga700e1d505068f895383dd932af55987e">pn_sasl_get_user</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl)</td></tr>
+<tr class="memdesc:ga700e1d505068f895383dd932af55987e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the authenticated user.  <a href="group__sasl.html#ga700e1d505068f895383dd932af55987e">More...</a><br /></td></tr>
+<tr class="separator:ga700e1d505068f895383dd932af55987e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga895b6a957bf0c0204aaddb3ec5b9d863"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga895b6a957bf0c0204aaddb3ec5b9d863">pn_sasl_get_mech</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl)</td></tr>
+<tr class="memdesc:ga895b6a957bf0c0204aaddb3ec5b9d863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the selected SASL mechanism.  <a href="group__sasl.html#ga895b6a957bf0c0204aaddb3ec5b9d863">More...</a><br /></td></tr>
+<tr class="separator:ga895b6a957bf0c0204aaddb3ec5b9d863"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga73299a6a22e141e7911a739590032625"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga73299a6a22e141e7911a739590032625">pn_sasl_allowed_mechs</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, const char *mechs)</td></tr>
+<tr class="memdesc:ga73299a6a22e141e7911a739590032625"><td class="mdescLeft">&#160;</td><td class="mdescRight">SASL mechanisms that are to be considered for authentication.  <a href="group__sasl.html#ga73299a6a22e141e7911a739590032625">More...</a><br /></td></tr>
+<tr class="separator:ga73299a6a22e141e7911a739590032625"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf472325bc055bb18a5a6f5ca03eda315"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gaf472325bc055bb18a5a6f5ca03eda315">pn_sasl_set_allow_insecure_mechs</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, bool insecure)</td></tr>
+<tr class="memdesc:gaf472325bc055bb18a5a6f5ca03eda315"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean to allow use of clear text authentication mechanisms.  <a href="group__sasl.html#gaf472325bc055bb18a5a6f5ca03eda315">More...</a><br /></td></tr>
+<tr class="separator:gaf472325bc055bb18a5a6f5ca03eda315"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac53ad15ee429b7ce9d0c598d1e347243"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gac53ad15ee429b7ce9d0c598d1e347243">pn_sasl_get_allow_insecure_mechs</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl)</td></tr>
+<tr class="memdesc:gac53ad15ee429b7ce9d0c598d1e347243"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the current value for allow_insecure_mechs.  <a href="group__sasl.html#gac53ad15ee429b7ce9d0c598d1e347243">More...</a><br /></td></tr>
+<tr class="separator:gac53ad15ee429b7ce9d0c598d1e347243"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad1a6932135165f0e5b7639b79ac71c56"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gad1a6932135165f0e5b7639b79ac71c56">pn_sasl_config_name</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, const char *name)</td></tr>
+<tr class="memdesc:gad1a6932135165f0e5b7639b79ac71c56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sasl configuration name.  <a href="group__sasl.html#gad1a6932135165f0e5b7639b79ac71c56">More...</a><br /></td></tr>
+<tr class="separator:gad1a6932135165f0e5b7639b79ac71c56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabf4176414424ce02a4e03b4338d30521"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#gabf4176414424ce02a4e03b4338d30521">pn_sasl_config_path</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, const char *path)</td></tr>
+<tr class="memdesc:gabf4176414424ce02a4e03b4338d30521"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the sasl configuration path.  <a href="group__sasl.html#gabf4176414424ce02a4e03b4338d30521">More...</a><br /></td></tr>
+<tr class="separator:gabf4176414424ce02a4e03b4338d30521"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>API for the SASL Secure Transport Layer.</p>
-<p>The SASL layer is responsible for establishing an authenticated and/or encrypted tunnel over which AMQP frames are passed between peers. The peer acting as the SASL Client must provide authentication credentials. The peer acting as the SASL Server must provide authentication against the received credentials. </p>
+<div class="textblock"><p>SASL secure transport layer. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

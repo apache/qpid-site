@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>Qpid Proton C API: Main Page</title>
+<title>Qpid Proton C API: Introduction</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -90,23 +90,21 @@ $(document).ready(function(){initNavTree('index.html','');});
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Qpid Proton C API Documentation</div>  </div>
+<div class="title">Introduction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<ul><li><a href="index.html"><span>Main&#160;Page</span></a>
-</li><li><a href="pages.html"><span>Related&#160;Pages</span></a>
-</li><li><a href="modules.html"><span>Modules</span></a>
-</li><li><a href="annotated.html"><span>Classes</span></a>
-<ul><li><a href="annotated.html"><span>Class&#160;List</span></a>
-</li><li><a href="classes.html"><span>Class&#160;Index</span></a>
-</li><li><a href="functions.html"><span>Class&#160;Members</span></a>
-</li></ul>
-</li><li><a href="files.html"><span>Files</span></a>
-<ul><li><a href="files.html"><span>File&#160;List</span></a>
-</li><li><a href="globals.html"><span>File&#160;Members</span></a>
-</li></ul>
-</li></ul>
-</div><!-- contents -->
+<div class="textblock"><p>This is the C API for the Proton AMQP protocol engine. It allows you to write client and server applications that send and receive AMQP messages.</p>
+<h2>Core</h2>
+<p><a class="el" href="group__core.html">Core</a> is a collection of types and functions representing AMQP concepts. Together they form a "protocol engine" API to create AMQP connections and links, handle <a class="el" href="group__event.html">events</a>, and send and receive <a class="el" href="group__message.html">messages</a>.</p>
+<h2>Types</h2>
+<p><a class="el" href="group__types.html">Types</a> contains C data types, including <a class="el" href="group__amqp__types.html">AMQP data types</a> and <a class="el" href="group__api__types.html">API data types</a>.</p>
+<h2>Codec</h2>
+<p><a class="el" href="group__codec.html">Codec</a> has functions for AMQP data encoding and decoding.</p>
+<h2>IO</h2>
+<p><a class="el" href="group__io.html">IO</a> holds interfaces for integrating Proton with platform IO.</p>
+<p>The <a class="el" href="group__proactor.html">Proactor</a> is a portable, proactive, asynchronous API for single- or multithreaded applications. It associates AMQP <a class="el" href="group__connection.html">connections</a> with network connections (<a class="el" href="group__transport.html">transports</a>) and allows one or more threads to handle <a class="el" href="group__event.html">events</a>.</p>
+<p><b>Low-level integration</b> - The <a class="el" href="group__connection__driver.html">Connection driver</a> provides a low-level SPI to feed byte streams from any source to the protocol engine. You can use it to integrate Proton directly with a foreign event loop or IO library, or to implement your own <a class="el" href="group__proactor.html">Proactor</a> to transparently replace Proton's IO layer. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

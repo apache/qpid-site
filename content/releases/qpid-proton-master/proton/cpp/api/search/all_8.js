@@ -7,7 +7,6 @@ var searchData=
   ['introduction',['Introduction',['../index.html',1,'']]],
   ['inferred',['inferred',['../classproton_1_1message.html#a72c7fb9b51a6f42a28dd27aac7c9cae4',1,'proton::message::inferred() const '],['../classproton_1_1message.html#a174b1b064de4042d155727e4327b3dd7',1,'proton::message::inferred(bool)']]],
   ['inject',['inject',['../classproton_1_1event__loop.html#a0d757857984f2fc9fd00cbcb3dd37db2',1,'proton::event_loop']]],
-  ['inject_5fhandler',['inject_handler',['../classproton_1_1inject__handler.html',1,'proton']]],
   ['int',['INT',['../namespaceproton.html#a83c2656d467d69eb49725c18f5aa13a9afd5a5f51ce25953f3db2c7e93eb7864a',1,'proton']]],
   ['io_20integration',['IO integration',['../io_page.html',1,'']]]
 ];

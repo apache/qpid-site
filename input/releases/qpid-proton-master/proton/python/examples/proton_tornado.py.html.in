@@ -30,7 +30,7 @@
 
     <span class="k">def</span> <span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">deadline</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_timeout</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">deadline</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">expired</span><span class="p">(</span><span class="n">sel</span><span class="p">))</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_timeout</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">deadline</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expired</span><span class="p">(</span><span class="n">sel</span><span class="p">))</span>
 
     <span class="k">def</span> <span class="nf">_expired</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">):</span>
         <span class="n">sel</span><span class="o">.</span><span class="n">expired</span><span class="p">()</span>

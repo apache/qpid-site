@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":6,"i7":6,"i8":6,"i9":6,"i10":6};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
+var methods = {"i0":38,"i1":38,"i2":38,"i3":38,"i4":38,"i5":38,"i6":38,"i7":38,"i8":38,"i9":38,"i10":38};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -102,8 +102,12 @@ var activeTableTab = "activeTableTab";
 <dd><code>C</code> - application supplied context</dd>
 </dl>
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Messenger and its connector will be removed from upcoming proton-j releases.</span></div>
+</div>
 <br>
-<pre>public interface <span class="typeNameLabel">Connector&lt;C&gt;</span></pre>
+<pre>@Deprecated
+public interface <span class="typeNameLabel">Connector&lt;C&gt;</span></pre>
 <div class="block">Intermediates between a proton engine <a href="../../../../../org/apache/qpid/proton/engine/Connection.html" title="interface in org.apache.qpid.proton.engine"><code>Connection</code></a> and the I/O
  layer.
 
@@ -125,7 +129,7 @@ var activeTableTab = "activeTableTab";
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -133,48 +137,56 @@ var activeTableTab = "activeTableTab";
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#close--">close</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Close the socket used by the connector.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#destroy--">destroy</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Destructor for the given connector.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Connection.html" title="interface in org.apache.qpid.proton.engine">Connection</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#getConnection--">getConnection</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the AMQP Connection associated with the connector.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/driver/Connector.html" title="type parameter in Connector">C</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#getContext--">getContext</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the application context that is associated with the connector.</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Transport.html" title="interface in org.apache.qpid.proton.engine">Transport</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#getTransport--">getTransport</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the Transport associated with the connector.</div>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#isClosed--">isClosed</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Determine if the connector is closed.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/driver/Listener.html" title="interface in org.apache.qpid.proton.driver">Listener</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#listener--">listener</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the listener which opened this connector.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#process--">process</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Handle any inbound data, outbound data, or timing events pending on
  the connector.</div>
 </td>
@@ -182,18 +194,21 @@ var activeTableTab = "activeTableTab";
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../../org/apache/qpid/proton/engine/Sasl.html" title="interface in org.apache.qpid.proton.engine">Sasl</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#sasl--">sasl</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the Authentication and Security context of the connector.</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#setConnection-org.apache.qpid.proton.engine.Connection-">setConnection</a></span>(<a href="../../../../../org/apache/qpid/proton/engine/Connection.html" title="interface in org.apache.qpid.proton.engine">Connection</a>&nbsp;connection)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Assign the AMQP Connection associated with the connector.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../org/apache/qpid/proton/driver/Connector.html#setContext-C-">setContext</a></span>(<a href="../../../../../org/apache/qpid/proton/driver/Connector.html" title="type parameter in Connector">C</a>&nbsp;context)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Assign a new application context to the connector.</div>
 </td>
 </tr>
@@ -220,6 +235,7 @@ var activeTableTab = "activeTableTab";
 <h4>process</h4>
 <pre>boolean&nbsp;process()
          throws java.io.IOException</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Handle any inbound data, outbound data, or timing events pending on
  the connector.
  Typically, applications repeatedly invoke this method
@@ -237,6 +253,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>listener</h4>
 <pre><a href="../../../../../org/apache/qpid/proton/driver/Listener.html" title="interface in org.apache.qpid.proton.driver">Listener</a>&nbsp;listener()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the listener which opened this connector.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -253,6 +270,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>sasl</h4>
 <pre><a href="../../../../../org/apache/qpid/proton/engine/Sasl.html" title="interface in org.apache.qpid.proton.engine">Sasl</a>&nbsp;sasl()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the Authentication and Security context of the connector.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -268,6 +286,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>getTransport</h4>
 <pre><a href="../../../../../org/apache/qpid/proton/engine/Transport.html" title="interface in org.apache.qpid.proton.engine">Transport</a>&nbsp;getTransport()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the Transport associated with the connector.</div>
 </li>
 </ul>
@@ -278,6 +297,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>getConnection</h4>
 <pre><a href="../../../../../org/apache/qpid/proton/engine/Connection.html" title="interface in org.apache.qpid.proton.engine">Connection</a>&nbsp;getConnection()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the AMQP Connection associated with the connector.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -292,6 +312,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>setConnection</h4>
 <pre>void&nbsp;setConnection(<a href="../../../../../org/apache/qpid/proton/engine/Connection.html" title="interface in org.apache.qpid.proton.engine">Connection</a>&nbsp;connection)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Assign the AMQP Connection associated with the connector.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -306,6 +327,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>getContext</h4>
 <pre><a href="../../../../../org/apache/qpid/proton/driver/Connector.html" title="type parameter in Connector">C</a>&nbsp;getContext()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Access the application context that is associated with the connector.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -325,6 +347,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>setContext</h4>
 <pre>void&nbsp;setContext(<a href="../../../../../org/apache/qpid/proton/driver/Connector.html" title="type parameter in Connector">C</a>&nbsp;context)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Assign a new application context to the connector.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -339,6 +362,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>close</h4>
 <pre>void&nbsp;close()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Close the socket used by the connector.</div>
 </li>
 </ul>
@@ -349,6 +373,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>isClosed</h4>
 <pre>boolean&nbsp;isClosed()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Determine if the connector is closed.</div>
 </li>
 </ul>
@@ -359,6 +384,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>destroy</h4>
 <pre>void&nbsp;destroy()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Destructor for the given connector.
 
  Assumes the connector's socket has been closed prior to call.</div>

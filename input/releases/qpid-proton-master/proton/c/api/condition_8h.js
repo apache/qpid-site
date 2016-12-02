@@ -1,14 +1,19 @@
 var condition_8h =
 [
     [ "pn_condition_t", "group__condition.html#ga11eb7db7d2c205169fe3d47c996a95a5", null ],
-    [ "pn_condition_clear", "group__condition.html#ga038f092914fc0fd8ae3713a537e34a05", null ],
-    [ "pn_condition_get_description", "group__condition.html#ga4cb8ef00e5050a0dfa022a89e44724e1", null ],
-    [ "pn_condition_get_name", "group__condition.html#ga8bb1e8261bb4c49b20e09d4015d3f8f1", null ],
-    [ "pn_condition_info", "group__condition.html#ga6ce699cd410d7cef3de1ee97e975720a", null ],
-    [ "pn_condition_is_redirect", "group__condition.html#gaaab127d4d71648f675858e9a250f73b3", null ],
-    [ "pn_condition_is_set", "group__condition.html#ga42e27e6830b6e29c1a3c769516cd706e", null ],
-    [ "pn_condition_redirect_host", "group__condition.html#ga6a226262df61311f33a6d5075b15ce41", null ],
-    [ "pn_condition_redirect_port", "group__condition.html#ga09cf10e3bb03d63a12b8d7bb91bc810f", null ],
-    [ "pn_condition_set_description", "group__condition.html#gac20f81e06aa0efb5f5a23b141b36be7b", null ],
-    [ "pn_condition_set_name", "group__condition.html#ga2ae7b345d3dc1417766e23bf8435cf29", null ]
+    [ "pn_condition", "group__condition.html#gac798dc9acd131cb47a3e7291efffbc02", null ],
+    [ "pn_condition_clear", "group__condition.html#gab91d5be5be6a61dc3d9dfaa4e01372b4", null ],
+    [ "pn_condition_copy", "group__condition.html#gae495a2885d97a9f167e297efd6974a1e", null ],
+    [ "pn_condition_format", "group__condition.html#ga65d9818487fc61e7ca75a9ec4abc8676", null ],
+    [ "pn_condition_free", "group__condition.html#gad1f52a60bcc855702cfe51e6703625bb", null ],
+    [ "pn_condition_get_description", "group__condition.html#gaabebb65bfcf47b6f7d83ab6fb0153bb8", null ],
+    [ "pn_condition_get_name", "group__condition.html#ga05b0d374d90f11d9ebbf818662569689", null ],
+    [ "pn_condition_info", "group__condition.html#ga1dba0d01af7ba6ad7ad6b02bf642a46b", null ],
+    [ "pn_condition_is_redirect", "group__condition.html#gaefa0da2c1e82f29ddda357e171f5a50a", null ],
+    [ "pn_condition_is_set", "group__condition.html#ga112611a7a4087e050c476a430db2cfb9", null ],
+    [ "pn_condition_redirect_host", "group__condition.html#ga76c5dbc715c0d72d7dad2126b797eb64", null ],
+    [ "pn_condition_redirect_port", "group__condition.html#gaf92a380a12c91d4124c22af62318c2e9", null ],
+    [ "pn_condition_set_description", "group__condition.html#ga8e7eacc5be9c2223535bb57950171f0b", null ],
+    [ "pn_condition_set_name", "group__condition.html#gab344572fd2d80aa5c52b588129facb27", null ],
+    [ "pn_condition_vformat", "group__condition.html#gaccab52be69f97d7be2d199b4e1f11380", null ]
 ];

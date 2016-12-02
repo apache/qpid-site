@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10,"i25":10,"i26":10,"i27":10,"i28":10,"i29":10,"i30":10,"i31":10,"i32":10,"i33":10,"i34":10,"i35":10,"i36":10,"i37":10,"i38":10,"i39":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42,"i5":42,"i6":42,"i7":42,"i8":42,"i9":42,"i10":42,"i11":42,"i12":42,"i13":42,"i14":42,"i15":42,"i16":42,"i17":42,"i18":42,"i19":42,"i20":42,"i21":42,"i22":42,"i23":42,"i24":42,"i25":42,"i26":42,"i27":42,"i28":42,"i29":42,"i30":42,"i31":42,"i32":42,"i33":42,"i34":42,"i35":42,"i36":42,"i37":42,"i38":42,"i39":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -110,8 +110,12 @@ var activeTableTab = "activeTableTab";
 <dd><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></dd>
 </dl>
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Messenger will be removed from upcoming proton-j releases.</span></div>
+</div>
 <br>
-<pre>public class <span class="typeNameLabel">MessengerImpl</span>
+<pre>@Deprecated
+public class <span class="typeNameLabel">MessengerImpl</span>
 extends java.lang.Object
 implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></pre>
 </li>
@@ -164,16 +168,14 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#MessengerImpl--">MessengerImpl</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">This constructor's visibility will be reduced to the default scope in a future release.
- Client code outside this module should use <code>Messenger.Factory#create()</code> instead</span></div>
+<div class="block"><span class="deprecationComment">Messenger will be removed from upcoming proton-j releases.</span></div>
 </div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#MessengerImpl-java.lang.String-">MessengerImpl</a></span>(java.lang.String&nbsp;name)</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
-<div class="block"><span class="deprecationComment">This constructor's visibility will be reduced to the default scope in a future release.
- Client code outside this module should use a <code>Messenger.Factory#create(String)</code> instead</span></div>
+<div class="block"><span class="deprecationComment">Messenger will be removed from upcoming proton-j releases.</span></div>
 </div>
 </td>
 </tr>
@@ -187,7 +189,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -196,12 +198,14 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#accept-org.apache.qpid.proton.messenger.Tracker-int-">accept</a></span>(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
       int&nbsp;flags)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Accepts messages retrieved from the incoming message queue.</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/qpid/proton/message/Message.html" title="interface in org.apache.qpid.proton.message">Message</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#get--">get</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns the message from the head of the incoming message
  queue.</div>
 </td>
@@ -209,49 +213,61 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getCertificate--">getCertificate</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the path to the certificate file.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getIncomingWindow--">getIncomingWindow</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getIncomingWindow--">getIncomingWindow</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getOutgoingWindow--">getOutgoingWindow</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getOutgoingWindow--">getOutgoingWindow</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getPassword--">getPassword</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the password for the priate key file.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getPrivateKey--">getPrivateKey</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the path to the private key file.</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/qpid/proton/messenger/Status.html" title="enum in org.apache.qpid.proton.messenger">Status</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getStatus-org.apache.qpid.proton.messenger.Tracker-">getStatus</a></span>(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Gets the last known remote state of the delivery associated
  with the given tracker.</div>
 </td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getTimeout--">getTimeout</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getTimeout--">getTimeout</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#getTrustedCertificates--">getTrustedCertificates</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Get the path to the trusted certificate database.</div>
 </td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#incoming--">incoming</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns a count of the messages available on the incoming
  queue.</div>
 </td>
@@ -259,21 +275,27 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#incomingTracker--">incomingTracker</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns a token which can be used to accept or reject the
  message returned in the previous get() call.</div>
 </td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#interrupt--">interrupt</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#interrupt--">interrupt</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#isBlocking--">isBlocking</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#isBlocking--">isBlocking</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#outgoing--">outgoing</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns a count of the messages currently on the outgoing queue
  (i.e.</div>
 </td>
@@ -281,6 +303,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#outgoingTracker--">outgoingTracker</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns a token which can be used to track the status of the
  message of the previous put() call.</div>
 </td>
@@ -288,6 +311,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#put-org.apache.qpid.proton.message.Message-">put</a></span>(<a href="../../../../../../org/apache/qpid/proton/message/Message.html" title="interface in org.apache.qpid.proton.message">Message</a>&nbsp;m)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Places the content contained in the message onto the outgoing
  queue of the Messenger.</div>
 </td>
@@ -295,6 +319,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#receiving--">receiving</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Returns the capacity of the incoming message queue of
  messenger.</div>
 </td>
@@ -302,6 +327,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#recv--">recv</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Receives an arbitrary number of messages into the
  incoming queue of the Messenger.</div>
 </td>
@@ -309,6 +335,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#recv-int-">recv</a></span>(int&nbsp;n)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Receives up to the specified number of messages into the
  incoming queue of the Messenger.</div>
 </td>
@@ -317,22 +344,28 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#reject-org.apache.qpid.proton.messenger.Tracker-int-">reject</a></span>(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
       int&nbsp;flags)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Rejects messages retrieved from the incoming message queue.</div>
 </td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#rewrite-java.lang.String-java.lang.String-">rewrite</a></span>(java.lang.String&nbsp;pattern,
-       java.lang.String&nbsp;address)</code>&nbsp;</td>
+       java.lang.String&nbsp;address)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#route-java.lang.String-java.lang.String-">route</a></span>(java.lang.String&nbsp;pattern,
-     java.lang.String&nbsp;address)</code>&nbsp;</td>
+     java.lang.String&nbsp;address)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#send--">send</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Blocks until the outgoing queue is empty and, in the event that
  an outgoing window has been set, until the messages in that
  window have been received by the target to which they were
@@ -341,83 +374,107 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#send-int-">send</a></span>(int&nbsp;n)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#send-int-">send</a></span>(int&nbsp;n)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setBlocking-boolean-">setBlocking</a></span>(boolean&nbsp;b)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setBlocking-boolean-">setBlocking</a></span>(boolean&nbsp;b)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setCertificate-java.lang.String-">setCertificate</a></span>(java.lang.String&nbsp;certificate)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Set the path to the certificate file.</div>
 </td>
 </tr>
 <tr id="i27" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setIncomingWindow-int-">setIncomingWindow</a></span>(int&nbsp;window)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setIncomingWindow-int-">setIncomingWindow</a></span>(int&nbsp;window)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i28" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setOutgoingWindow-int-">setOutgoingWindow</a></span>(int&nbsp;window)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setOutgoingWindow-int-">setOutgoingWindow</a></span>(int&nbsp;window)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i29" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setPassword-java.lang.String-">setPassword</a></span>(java.lang.String&nbsp;password)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Set the password for private key file.</div>
 </td>
 </tr>
 <tr id="i30" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setPrivateKey-java.lang.String-">setPrivateKey</a></span>(java.lang.String&nbsp;privateKey)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Set the path to private key file.</div>
 </td>
 </tr>
 <tr id="i31" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setTimeout-long-">setTimeout</a></span>(long&nbsp;timeInMillis)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setTimeout-long-">setTimeout</a></span>(long&nbsp;timeInMillis)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i32" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#settle-org.apache.qpid.proton.messenger.Tracker-int-">settle</a></span>(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
-      int&nbsp;flags)</code>&nbsp;</td>
+      int&nbsp;flags)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i33" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#setTrustedCertificates-java.lang.String-">setTrustedCertificates</a></span>(java.lang.String&nbsp;trusted)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Set the path to the trusted certificate database.</div>
 </td>
 </tr>
 <tr id="i34" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#start--">start</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Transitions the Messenger to an active state.</div>
 </td>
 </tr>
 <tr id="i35" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#stop--">stop</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Transitions the Messenger to an inactive state.</div>
 </td>
 </tr>
 <tr id="i36" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#stopped--">stopped</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#stopped--">stopped</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i37" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#subscribe-java.lang.String-">subscribe</a></span>(java.lang.String&nbsp;source)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Subscribes the Messenger to messages originating from the
  specified source.</div>
 </td>
 </tr>
 <tr id="i38" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#toString--">toString</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#toString--">toString</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i39" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../org/apache/qpid/proton/messenger/impl/MessengerImpl.html#work-long-">work</a></span>(long&nbsp;timeout)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Sends or receives any outstanding messages queued for a
  messenger.</div>
 </td>
@@ -452,8 +509,7 @@ implements <a href="../../../../../../org/apache/qpid/proton/messenger/Messenger
 <h4>MessengerImpl</h4>
 <pre>@Deprecated
 public&nbsp;MessengerImpl()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This constructor's visibility will be reduced to the default scope in a future release.
- Client code outside this module should use <code>Messenger.Factory#create()</code> instead</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Messenger will be removed from upcoming proton-j releases.</span></div>
 </li>
 </ul>
 <a name="MessengerImpl-java.lang.String-">
@@ -464,8 +520,7 @@ public&nbsp;MessengerImpl()</pre>
 <h4>MessengerImpl</h4>
 <pre>@Deprecated
 public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This constructor's visibility will be reduced to the default scope in a future release.
- Client code outside this module should use a <code>Messenger.Factory#create(String)</code> instead</span></div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Messenger will be removed from upcoming proton-j releases.</span></div>
 </li>
 </ul>
 </li>
@@ -483,6 +538,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setTimeout</h4>
 <pre>public&nbsp;void&nbsp;setTimeout(long&nbsp;timeInMillis)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setTimeout-long-">setTimeout</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -496,6 +552,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getTimeout</h4>
 <pre>public&nbsp;long&nbsp;getTimeout()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getTimeout--">getTimeout</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -509,6 +566,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>isBlocking</h4>
 <pre>public&nbsp;boolean&nbsp;isBlocking()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#isBlocking--">isBlocking</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -522,6 +580,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setBlocking</h4>
 <pre>public&nbsp;void&nbsp;setBlocking(boolean&nbsp;b)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setBlocking-boolean-">setBlocking</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -535,6 +594,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setCertificate</h4>
 <pre>public&nbsp;void&nbsp;setCertificate(java.lang.String&nbsp;certificate)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setCertificate-java.lang.String-">Messenger</a></code></span></div>
 <div class="block">Set the path to the certificate file.</div>
 <dl>
@@ -550,6 +610,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getCertificate</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getCertificate()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getCertificate--">Messenger</a></code></span></div>
 <div class="block">Get the path to the certificate file.</div>
 <dl>
@@ -565,6 +626,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setPrivateKey</h4>
 <pre>public&nbsp;void&nbsp;setPrivateKey(java.lang.String&nbsp;privateKey)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setPrivateKey-java.lang.String-">Messenger</a></code></span></div>
 <div class="block">Set the path to private key file.</div>
 <dl>
@@ -580,6 +642,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getPrivateKey</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getPrivateKey()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getPrivateKey--">Messenger</a></code></span></div>
 <div class="block">Get the path to the private key file.</div>
 <dl>
@@ -595,6 +658,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setPassword</h4>
 <pre>public&nbsp;void&nbsp;setPassword(java.lang.String&nbsp;password)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setPassword-java.lang.String-">Messenger</a></code></span></div>
 <div class="block">Set the password for private key file.</div>
 <dl>
@@ -610,6 +674,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getPassword</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getPassword()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getPassword--">Messenger</a></code></span></div>
 <div class="block">Get the password for the priate key file.</div>
 <dl>
@@ -625,6 +690,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setTrustedCertificates</h4>
 <pre>public&nbsp;void&nbsp;setTrustedCertificates(java.lang.String&nbsp;trusted)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setTrustedCertificates-java.lang.String-">Messenger</a></code></span></div>
 <div class="block">Set the path to the trusted certificate database.</div>
 <dl>
@@ -640,6 +706,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getTrustedCertificates</h4>
 <pre>public&nbsp;java.lang.String&nbsp;getTrustedCertificates()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getTrustedCertificates--">Messenger</a></code></span></div>
 <div class="block">Get the path to the trusted certificate database.</div>
 <dl>
@@ -656,6 +723,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>start</h4>
 <pre>public&nbsp;void&nbsp;start()
            throws java.io.IOException</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#start--">Messenger</a></code></span></div>
 <div class="block">Transitions the Messenger to an active state. A Messenger is
  initially created in an inactive state. When inactive, a
@@ -677,6 +745,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre>public&nbsp;void&nbsp;stop()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#stop--">Messenger</a></code></span></div>
 <div class="block">Transitions the Messenger to an inactive state. An inactive
  Messenger will not send or receive messages from its internal
@@ -696,6 +765,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>stopped</h4>
 <pre>public&nbsp;boolean&nbsp;stopped()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#stopped--">stopped</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -710,6 +780,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>work</h4>
 <pre>public&nbsp;boolean&nbsp;work(long&nbsp;timeout)
              throws <a href="../../../../../../org/apache/qpid/proton/TimeoutException.html" title="class in org.apache.qpid.proton">TimeoutException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#work-long-">Messenger</a></code></span></div>
 <div class="block">Sends or receives any outstanding messages queued for a
  messenger.  If timeout is zero, no blocking is done.  A timeout
@@ -730,6 +801,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>interrupt</h4>
 <pre>public&nbsp;void&nbsp;interrupt()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#interrupt--">interrupt</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -744,6 +816,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>put</h4>
 <pre>public&nbsp;void&nbsp;put(<a href="../../../../../../org/apache/qpid/proton/message/Message.html" title="interface in org.apache.qpid.proton.message">Message</a>&nbsp;m)
          throws <a href="../../../../../../org/apache/qpid/proton/messenger/MessengerException.html" title="class in org.apache.qpid.proton.messenger">MessengerException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#put-org.apache.qpid.proton.message.Message-">Messenger</a></code></span></div>
 <div class="block">Places the content contained in the message onto the outgoing
  queue of the Messenger. This method will never block. The
@@ -766,6 +839,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>send</h4>
 <pre>public&nbsp;void&nbsp;send()
           throws <a href="../../../../../../org/apache/qpid/proton/TimeoutException.html" title="class in org.apache.qpid.proton">TimeoutException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#send--">Messenger</a></code></span></div>
 <div class="block">Blocks until the outgoing queue is empty and, in the event that
  an outgoing window has been set, until the messages in that
@@ -788,6 +862,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>send</h4>
 <pre>public&nbsp;void&nbsp;send(int&nbsp;n)
           throws <a href="../../../../../../org/apache/qpid/proton/TimeoutException.html" title="class in org.apache.qpid.proton">TimeoutException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#send-int-">send</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -804,6 +879,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>recv</h4>
 <pre>public&nbsp;void&nbsp;recv(int&nbsp;n)
           throws <a href="../../../../../../org/apache/qpid/proton/TimeoutException.html" title="class in org.apache.qpid.proton">TimeoutException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#recv-int-">Messenger</a></code></span></div>
 <div class="block">Receives up to the specified number of messages into the
  incoming queue of the Messenger. This method will block until
@@ -824,6 +900,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>recv</h4>
 <pre>public&nbsp;void&nbsp;recv()
           throws <a href="../../../../../../org/apache/qpid/proton/TimeoutException.html" title="class in org.apache.qpid.proton">TimeoutException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#recv--">Messenger</a></code></span></div>
 <div class="block">Receives an arbitrary number of messages into the
  incoming queue of the Messenger. This method will block until
@@ -843,6 +920,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>receiving</h4>
 <pre>public&nbsp;int&nbsp;receiving()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#receiving--">Messenger</a></code></span></div>
 <div class="block">Returns the capacity of the incoming message queue of
  messenger. Note this count does not include those messages
@@ -862,6 +940,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre>public&nbsp;<a href="../../../../../../org/apache/qpid/proton/message/Message.html" title="interface in org.apache.qpid.proton.message">Message</a>&nbsp;get()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#get--">Messenger</a></code></span></div>
 <div class="block">Returns the message from the head of the incoming message
  queue.</div>
@@ -879,6 +958,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>subscribe</h4>
 <pre>public&nbsp;void&nbsp;subscribe(java.lang.String&nbsp;source)
                throws <a href="../../../../../../org/apache/qpid/proton/messenger/MessengerException.html" title="class in org.apache.qpid.proton.messenger">MessengerException</a></pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#subscribe-java.lang.String-">Messenger</a></code></span></div>
 <div class="block">Subscribes the Messenger to messages originating from the
  specified source. The source is an address as specified in the
@@ -903,6 +983,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>outgoing</h4>
 <pre>public&nbsp;int&nbsp;outgoing()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#outgoing--">Messenger</a></code></span></div>
 <div class="block">Returns a count of the messages currently on the outgoing queue
  (i.e. those that have been put() but not yet actually sent
@@ -920,6 +1001,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>incoming</h4>
 <pre>public&nbsp;int&nbsp;incoming()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#incoming--">Messenger</a></code></span></div>
 <div class="block">Returns a count of the messages available on the incoming
  queue.</div>
@@ -936,6 +1018,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getIncomingWindow</h4>
 <pre>public&nbsp;int&nbsp;getIncomingWindow()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getIncomingWindow--">getIncomingWindow</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -949,6 +1032,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setIncomingWindow</h4>
 <pre>public&nbsp;void&nbsp;setIncomingWindow(int&nbsp;window)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setIncomingWindow-int-">setIncomingWindow</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -962,6 +1046,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getOutgoingWindow</h4>
 <pre>public&nbsp;int&nbsp;getOutgoingWindow()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getOutgoingWindow--">getOutgoingWindow</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -975,6 +1060,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>setOutgoingWindow</h4>
 <pre>public&nbsp;void&nbsp;setOutgoingWindow(int&nbsp;window)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#setOutgoingWindow-int-">setOutgoingWindow</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -988,6 +1074,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>incomingTracker</h4>
 <pre>public&nbsp;<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;incomingTracker()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#incomingTracker--">Messenger</a></code></span></div>
 <div class="block">Returns a token which can be used to accept or reject the
  message returned in the previous get() call.</div>
@@ -1004,6 +1091,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>outgoingTracker</h4>
 <pre>public&nbsp;<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;outgoingTracker()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#outgoingTracker--">Messenger</a></code></span></div>
 <div class="block">Returns a token which can be used to track the status of the
  message of the previous put() call.</div>
@@ -1021,6 +1109,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>reject</h4>
 <pre>public&nbsp;void&nbsp;reject(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
                    int&nbsp;flags)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#reject-org.apache.qpid.proton.messenger.Tracker-int-">Messenger</a></code></span></div>
 <div class="block">Rejects messages retrieved from the incoming message queue. The
  tracker object for a message is obtained through a call to
@@ -1041,6 +1130,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>accept</h4>
 <pre>public&nbsp;void&nbsp;accept(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
                    int&nbsp;flags)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#accept-org.apache.qpid.proton.messenger.Tracker-int-">Messenger</a></code></span></div>
 <div class="block">Accepts messages retrieved from the incoming message queue. The
  tracker object for a message is obtained through a call to
@@ -1061,6 +1151,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>settle</h4>
 <pre>public&nbsp;void&nbsp;settle(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker,
                    int&nbsp;flags)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#settle-org.apache.qpid.proton.messenger.Tracker-int-">settle</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -1074,6 +1165,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>getStatus</h4>
 <pre>public&nbsp;<a href="../../../../../../org/apache/qpid/proton/messenger/Status.html" title="enum in org.apache.qpid.proton.messenger">Status</a>&nbsp;getStatus(<a href="../../../../../../org/apache/qpid/proton/messenger/Tracker.html" title="interface in org.apache.qpid.proton.messenger">Tracker</a>&nbsp;tracker)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#getStatus-org.apache.qpid.proton.messenger.Tracker-">Messenger</a></code></span></div>
 <div class="block">Gets the last known remote state of the delivery associated
  with the given tracker.</div>
@@ -1091,6 +1183,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>route</h4>
 <pre>public&nbsp;void&nbsp;route(java.lang.String&nbsp;pattern,
                   java.lang.String&nbsp;address)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#route-java.lang.String-java.lang.String-">route</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -1105,6 +1198,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <h4>rewrite</h4>
 <pre>public&nbsp;void&nbsp;rewrite(java.lang.String&nbsp;pattern,
                     java.lang.String&nbsp;address)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html#rewrite-java.lang.String-java.lang.String-">rewrite</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../../org/apache/qpid/proton/messenger/Messenger.html" title="interface in org.apache.qpid.proton.messenger">Messenger</a></code></dd>
@@ -1118,6 +1212,7 @@ public&nbsp;MessengerImpl(java.lang.String&nbsp;name)</pre>
 <li class="blockList">
 <h4>toString</h4>
 <pre>public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>

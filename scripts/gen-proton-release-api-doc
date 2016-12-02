@@ -37,21 +37,25 @@ def gen_api_doc(release, source_dir, release_dir):
 
 def gen_c_api_doc(release, source_dir, component_dir):
     include_dir = join(source_dir, "proton-c", "include")
-    input_path = join(include_dir, "proton")
     output_dir = join(component_dir, "c", "api")
+    config_file = join(source_dir, "proton-c", "docs", "api", "user.doxygen.in")
 
     remove(output_dir)
     
     gen_doxygen(release=release,
                 title="Qpid Proton C API",
-                input_paths=(input_path,),
+                input_paths=(join(include_dir, "proton"),
+                             join(source_dir, "proton-c", "docs"),
+                             join(source_dir, "examples", "c", "proactor", "README.dox"),
+                ),
                 strip_paths=(include_dir,),
-                output_dir=output_dir)
+                output_dir=output_dir,
+                example_paths=(join(source_dir, "examples", "c", "proactor"),),
+                config_file=config_file)
 
 def gen_cpp_api_doc(release, source_dir, component_dir):
     base_dir = join(source_dir, "proton-c", "bindings", "cpp")
     include_dir = join(base_dir, "include")
-    input_path = join(include_dir, "proton")
     output_dir = join(component_dir, "cpp", "api")
     config_file = join(base_dir, "docs", "user.doxygen.in")
 
@@ -59,7 +63,7 @@ def gen_cpp_api_doc(release, source_dir, component_dir):
     
     gen_doxygen(release=release,
                 title="Qpid Proton C++ API",
-                input_paths=(input_path,
+                input_paths=(join(include_dir, "proton"),
                              join(base_dir, "docs"),
                              join(source_dir, "examples", "cpp", "README.dox"),
                              join(source_dir, "examples", "cpp", "tutorial.dox"),
