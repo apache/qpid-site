@@ -81,5 +81,4 @@ Still older releases are available in the
 
 ## More information
 
- - [Documentation snapshots](snapshots.html)
  - [Releases on the wiki](https://cwiki.apache.org/confluence/display/qpid/Releases)
