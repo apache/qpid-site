@@ -59,7 +59,7 @@
 
  - [Qpid at Jenkins](https://builds.apache.org/view/M-R/view/Qpid/)
  - [Qpid at Review Board](https://reviews.apache.org/groups/qpid/)
- - [URI shortener](http://s.apache.org/)
+ - [URL shortener](http://s.apache.org/)
  - [Pastebin](https://paste.apache.org/)
 
 </section>
@@ -79,6 +79,7 @@
 
  - [Components]({{site_url}}/components/index.html)
  - [Releases]({{site_url}}/releases/index.html)
+ - [Doc snapshots]({{site_url}}/releases/snapshots.html)
 
 </section>
 </section>

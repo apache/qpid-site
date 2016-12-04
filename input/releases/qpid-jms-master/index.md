@@ -17,17 +17,17 @@
 ;; under the License.
 ;;
 
-# Qpid JMS Master
+# Qpid JMS documentation snapshot
 
 <div class="feature" markdown="1">
 
 ## Warning! This is a snapshot of work in progress
 
-Code and documentation found here may be unstable, incorrect, or
-incomplete.  For a smoother experience, see the
-[current stable release]({{current_jms_release_url}}/index.html).
+Documentation found here may be incorrect or incomplete.  For a
+smoother experience, see the [current stable
+release]({{current_jms_release_url}}/index.html).
 
-This content was generated at 10:45  on Thursday, 14 April 2016.
+This content was generated at 09:12  on Sunday, 04 December 2016.
 
 </div>
 

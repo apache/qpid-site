@@ -33,14 +33,19 @@ unsubscribe address.
 | List | Purpose | Subscribe | Unsubscribe | Archive | 
 |------|---------|-----------|-------------|---------|
 | [users@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-users/) | General discussion | [users-subscribe](mailto:users-subscribe@qpid.apache.org) | [users-unsubscribe](mailto:users-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html) |
-| [dev@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-dev/) | Development | [dev-subscribe](mailto:dev-subscribe@qpid.apache.org) | [dev-unsubscribe](mailto:dev-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html) |
+| [dev@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-dev/) | Issue notifications | [dev-subscribe](mailto:dev-subscribe@qpid.apache.org) | [dev-unsubscribe](mailto:dev-unsubscribe@qpid.apache.org) | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html) |
 | [proton@qpid.apache.org](http://mail-archives.apache.org/mod_mbox/qpid-proton/) | Proton. Going forward, use above lists. |  | | [Nabble](http://qpid.2158936.n2.nabble.com/Apache-Qpid-Proton-f7580687.html) |
 
 Qpid also offers lists for
 [commits]({{site_url}}/source-code.html#commits-list) and
 [notifications]({{site_url}}/source-code.html#notifications-list).
 
-`NOTE`: The Qpid project offers various components in many different languages. When mailing the lists please be specific about which component, or even which part of a given component, that you are using to better facilitate discussion. For example, "I'm using the Qpid Broker for Java &lt;version&gt; with the Qpid JMS &lt;version&gt; AMQP 1.0 client" rather than "I'm using the broker and JMS client".
+**NOTE**: The Qpid project offers various components in many different
+languages. When mailing the lists, please be specific about which
+component, or even which part of a given component, that you are
+using. For example, "I'm using the Qpid Broker for Java
+&lt;version&gt; with the Qpid JMS &lt;version&gt; AMQP 1.0 client"
+rather than "I'm using the broker and JMS client".
 
 ## Chat
 

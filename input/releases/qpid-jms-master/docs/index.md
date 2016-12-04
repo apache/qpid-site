@@ -67,7 +67,11 @@ The basic format of the clients Connection URI is as follows:
 
       amqp[s]://hostname:port[?option=value[&option2=value...]]
 
-Where the *amqps* scheme is specified to use SSL/TLS, the hostname segment from the URI can be used by the JVM for the
+or for WebSocket connections:
+
+     amqpws[s]://hostname:port[/path][?option=value[&option2=value...]]
+
+Where the *amqps* and *amqpwss* scheme is specified to use SSL/TLS, the hostname segment from the URI can be used by the JVM for the
 TLS SNI (Server Name Indication) extension in order to communicate the desired server hostname during a TLS handshake.
 The SNI extension will be automatically included if a Fully Qualified name (e.g myhost.mydomain) is specified, but not
 when an unqualified name (e.g myhost) or bare IP address are used.
@@ -97,10 +101,9 @@ The options apply to the behaviour of the JMS objects such as Connection, Sessio
 + **jms.requestTimeout** Timeout value that controls how long the client waits on completion of various synchronous interactions with the remote peer before returning an error (By default the client will wait indefinitely for a request to complete
 + **jms.clientIDPrefix** Optional prefix value that is used for generated Client ID values when a new Connection is created for the JMS ConnectionFactory.  The default prefix is 'ID:'.
 + **jms.connectionIDPrefix** Optional prefix value that is used for generated Connection ID values when a new Connection is created for the JMS ConnectionFactory.  This connection ID is used when logging some information from the JMS Connection object so a configurable prefix can make breadcrumbing the logs easier.  The default prefix is 'ID:'.
-+ **jms.messageIDType** Controls the type of the Message ID assigned to messages sent from the client.  By default a generated String value is used on outgoing messages, other available types are UUID and UUID_STRING.
 + **jms.populateJMSXUserID** Controls whether a MessageProducer will populate the JMSXUserID value for each sent message using the authenticated username from the connection.  This value defaults to false and the JMSXUserID for all sent message will not be populated.
 
-These values control how many messages the remote peer can send to the client and be held in a prefetch buffer for each consumer instance.
+The Prefetch Policy controls how many messages the remote peer can send to the client and be held in a prefetch buffer for each consumer instance.
 
 + **jms.prefetchPolicy.queuePrefetch** defaults to 1000
 + **jms.prefetchPolicy.topicPrefetch** defaults to 1000
@@ -108,9 +111,29 @@ These values control how many messages the remote peer can send to the client an
 + **jms.prefetchPolicy.durableTopicPrefetch** defaults to 1000
 + **jms.prefetchPolicy.all** used to set all prefetch values at once.
 
-The RedeliveryPolicy controls how redelivered messages are handled on the client.
+The Redelivery Policy controls how redelivered messages are handled on the client.
 
 + **jms.redeliveryPolicy.maxRedeliveries** controls when an incoming message is rejected based on the number of times it has been redelivered, the default value is (-1) disabled.  A value of zero would indicate no message redeliveries are accepted, a value of five would allow a message to be redelivered five times, etc.
+
+The MessageID Policy controls the type of the Message ID assigned to messages sent from the client.
+
++ **jms.messageIDPolicy.messageIDType** By default a generated String value is used for the MessageID on outgoing messages. Other available types are UUID, UUID_STRING, and PREFIXED_UUID_STRING.
+
+The Presettle Policy controls when a producer or consumer instance will be configured to use AMQP presettled messaging semantics.
+
++ **jms.presettlePolicy.presettleAll** when true all producers and non-transacted consumers created operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleProducers** when true all producers operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleTopicProducers** when true any producer that is sending to a Topic or Temporary Topic destination will operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleQueueProducers** when true any producer that is sending to a Queue or Temporary Queue destination will operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleTransactedProducers** when true any producer that is created in a transacted Session will operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleConsumers** when true all consumers operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleTopicConsumers** when true any consumer that is receiving from a Topic or Temporary Topic destination will operate in presettled mode, defaults to false.
++ **jms.presettlePolicy.presettleQueueConsumers** when true any consumer that is receiving from a Queue or Temporary Queue destination will operate in presettled mode, defaults to false.
+
+The Deserialization Policy provides a means of controlling which types are trusted to be deserialized from the object stream while retrieving the body from an incoming JMS ObjectMessage composed of serialized Java Object content. By default all types are trusted during attempt to deserialize the body. The default Deserialization Policy object provides URI options that allow specifying a whitelist and a blacklist of Java class or package names.
+
+**jms.deserializationPolicy.whiteList** A comma separated list of class/package names that should be allowed when deserializing the contents of a JMS ObjectMessage, unless overridden by the blackList. The names in this list are not pattern values, the exact class or package name must be configured, e.g "java.util.Map" or "java.util". Package matches include sub-packages. Default is to allow all.
+**jms.deserializationPolicy.blackList** A comma separated list of class/package names that should be rejected when deserializing the contents of a JMS ObjectMessage. The names in this list are not pattern values, the exact class or package name must be configured, e.g "java.util.Map" or "java.util". Package matches include sub-packages. Default is to prevent none.
 
 ### TCP Transport Configuration options
 
@@ -154,6 +177,15 @@ The complete set of SSL Transport options is listed below:
 + **transport.verifyHost** Whether to verify that the hostname being connected to matches with the provided server certificate. Defaults to true.
 + **transport.keyAlias** The alias to use when selecting a keypair from the keystore if required to send a client certificate to the server. No default.
 
+### Websocket Transport Configuration options
+
+The WebSocket (WS) Transport extends the TCP and SSL Transports to provide both unsecured and secured Websocket connectivity and is enabled using the *amqpws* and *amqpwss* URI schemes.  The unsecured WS Transport extends the basic TCP transport which means all the normal TCP Transport configuration options also apply to the WS Transport. Similarly the WSS Transport extends the SSL Transport which means both the TCP and SSL Transport options can be applied to configure it.
+
+A simple WS[S] based client URI is shown below:
+
+    amqpws[s]://myhost.mydomain:5671/[optional-path]
+
+
 ### AMQP Configuration options
 
 These options apply to the behaviour of certain AMQP functionality.
@@ -163,6 +195,7 @@ These options apply to the behaviour of certain AMQP functionality.
 + **amqp.saslLayer** Controls whether connections should use a SASL layer or not. Default is true.
 + **amqp.saslMechanisms** Which SASL mechanism(s) the client should allow selection of, if offered by the server and usable with the configured credentials. Comma separated if specifying more than 1 mechanism. Default is to allow selection from all the clients supported mechanisms, which are currently EXTERNAL, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5, PLAIN, and ANONYMOUS.
 + **amqp.maxFrameSize** The max-frame-size value in bytes that is advertised to the peer. Default is 1048576.
++ **amqp.drainTimeout** The time in milliseconds that the client will wait for a response from the remote when a consumer drain request is made. If no response is seen in the allotted timeout period the link will be considered failed and the associated consumer will be closed. Default is 60000.
 
 ### Failover Configuration options
 
@@ -186,7 +219,7 @@ The complete set of configuration options for failover is listed below:
 + **failover.maxReconnectAttempts** The number of reconnection attempts allowed before reporting the connection as failed to the client.  The default is no limit or (-1).
 + **failover.startupMaxReconnectAttempts** For a client that has never connected to a remote peer before this option control how many attempts are made to connect before reporting the connection as failed.  The default is to use the value of maxReconnectAttempts.
 + **failover.warnAfterReconnectAttempts** Controls how often the client will log a message indicating that failover reconnection is being attempted.  The default is to log every 10 connection attempts.
-+ **failover.randomize** When true the set of failover URIs is randomly shuffled prior to attempting to connect to one of them.  This can help to distribute client connections more evenly across multiple remote peers.  The default value for this setting is to false.
++ **failover.randomize** When true the set of failover URIs is randomly shuffled prior to attempting to connect to one of them.  This can help to distribute client connections more evenly across multiple remote peers.  The default value is false.
 
 The failover URI also supports defining 'nested' options as a means of specifying AMQP and transport option values applicable to all the individual nested broker URI's, which can be useful to avoid repetition. This is accomplished using the same "transport." and "amqp." URI options outlined earlier for a non-failover broker URI but prefixed with *failover.nested.*. For example, to apply the same value for the *amqp.vhost* option to every broker connected to you might have a URI like:
 

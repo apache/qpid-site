@@ -79,16 +79,7 @@ the
 Still older releases are available in the
 [Apache archives](http://archive.apache.org/dist/qpid/).
 
-;; ## Development documentation snapshots
-;; 
-;; Warning! These are snapshots of work in progress.
-;; 
-;;  - [Qpid C++ master](qpid-cpp-master/index.html)
-;;  - [Qpid Dispatch master](qpid-dispatch-master/index.html)
-;;  - [Qpid for Java trunk](qpid-java-trunk/index.html)
-;;  - [Qpid JMS master](qpid-jms-master/index.html)
-;;  - [Qpid Proton master](qpid-proton-master/index.html)
-
 ## More information
 
+ - [Documentation snapshots](snapshots.html)
  - [Releases on the wiki](https://cwiki.apache.org/confluence/display/qpid/Releases)

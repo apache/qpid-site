@@ -17,17 +17,17 @@
 ;; under the License.
 ;;
 
-# Qpid Proton Master
+# Qpid Proton documentation snapshot
 
 <div class="feature" markdown="1">
 
 ## Warning! This is a snapshot of work in progress
 
-Code and documentation found here may be unstable, incorrect, or
-incomplete.  For a smoother experience, see the [current stable
+Documentation found here may be incorrect or incomplete.  For a
+smoother experience, see the [current stable
 release]({{current_proton_release_url}}/index.html).
 
-This content was generated at 15:15  on Friday, 02 December 2016.
+This content was generated at 09:11  on Sunday, 04 December 2016.
 
 </div>
 
