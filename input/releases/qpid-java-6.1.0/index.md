@@ -48,7 +48,6 @@ files you download.
 | Component | Languages | Platforms | AMQP versions |
 |-----------|-----------|-----------|---------------|
 | [Qpid Broker for Java]({{site_url}}/components/java-broker/index.html) | Java | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
-| [Qpid JCA]({{site_url}}/components/qpid-jca/index.html) | Java | JVM | 0-10 |
 | [Qpid JMS for AMQP 0-9-1/0-10]({{site_url}}/components/jms/amqp-0-x.html) | Java | JVM | 0-10, 0-9-1, 0-9, 0-8 |
 
 ## Documentation
