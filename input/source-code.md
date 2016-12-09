@@ -37,7 +37,7 @@ with one of the Subversion URLs below.
     Qpid
     % svn checkout http://svn.apache.org/repos/asf/qpid/trunk/qpid qpid
 
-    Qpid Java
+    Qpid for Java
     % svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
 
 <div class="two-column" markdown="1">
@@ -52,7 +52,7 @@ with one of the Subversion URLs below.
 </section>
 <section markdown="1">
 
-### Qpid Java
+### Qpid for Java
 
  - [Anonymous Subversion URL](http://svn.apache.org/repos/asf/qpid/java/trunk/)
  - [Committer Subversion URL](https://svn.apache.org/repos/asf/qpid/java/trunk/)
@@ -65,7 +65,7 @@ with one of the Subversion URLs below.
 
 Consult the install documentation below.
 
- - [How to build Qpid Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
+ - [How to build Qpid for Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
  - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
  - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
 
@@ -77,7 +77,7 @@ of the following commands.
     Qpid
     % git clone git://git.apache.org/qpid.git
 
-    Qpid Java
+    Qpid for Java
     % git clone git://git.apache.org/qpid-java.git
 
 If you have commit access, it's also possible to commit back with `git

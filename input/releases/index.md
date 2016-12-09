@@ -48,7 +48,7 @@ the
  - [Qpid for Java 6.0.3](qpid-java-6.0.3/index.html), May 2016
  - [Qpid JMS 0.9.0](qpid-jms-0.9.0/index.html), April 2016
  - [Qpid Proton 0.12.2](qpid-proton-0.12.2/index.html), April 2016
- - [Qpid Java 6.0.2](qpid-java-6.0.2/index.html), April 2016
+ - [Qpid for Java 6.0.2](qpid-java-6.0.2/index.html), April 2016
  - [Qpid Proton 0.12.1](qpid-proton-0.12.1/index.html), March 2016
  - [Qpid JMS 0.8.0](qpid-jms-0.8.0/index.html), February 2016
  - [Qpid for Java 6.0.1](qpid-java-6.0.1/index.html), February 2016
