@@ -1,4 +1,0 @@
-var dir_b96cff9d3ee48d724992031886563d19 =
-[
-    [ "bindings", "dir_a2877a2347060b2314d2822ba1315f1f.html", "dir_a2877a2347060b2314d2822ba1315f1f" ]
-];
