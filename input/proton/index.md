@@ -83,9 +83,8 @@ platform, environment, or language. More about
 
 ## Resources
 
- - [Proton Messenger](messenger.html)
- - [Development plans](development.html)
  - [Contributing to Proton](contributing.html)
+ - [Proton Messenger](messenger.html)
  - [Proton wiki pages](https://cwiki.apache.org/confluence/display/qpid/proton)
 
 </div>
