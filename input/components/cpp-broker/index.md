@@ -19,7 +19,7 @@
 
 <div id="-left-column" markdown="1">
 
-# C++ Broker
+# Qpid C++ Broker
 
 <div class="feature" markdown="1">
 
