@@ -32,3 +32,4 @@ documentation, see the [release overview](index.html).
  - [QPID-7470](https://issues.apache.org/jira/browse/QPID-7470) - [Java Broker] Address javax.xml.bind.DatatypeConverter shortcomings
  - [QPID-7508](https://issues.apache.org/jira/browse/QPID-7508) - Broker occasionally fails to report SUB-1003 in response to a consumer that has become suspended
  - [QPID-7560](https://issues.apache.org/jira/browse/QPID-7560) - AbstractVirtualHost defines two state transitions from ERROR to ACTIVE
+ - [QPID-7599](https://issues.apache.org/jira/browse/QPID-7599) - [CVE-2016-8741] Prevent leaking information about the existence of user accounts in SCRAM-SHA256/SCRAM-SHA1 authentication providers

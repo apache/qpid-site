@@ -43,3 +43,4 @@ documentation, see the [release overview](index.html).
  - [QPID-7549](https://issues.apache.org/jira/browse/QPID-7549) - [Java Broker] Authentication using SimpleLDAP authentication provider fails with NPE when caching of authentication results is enabled(by default)
  - [QPID-7560](https://issues.apache.org/jira/browse/QPID-7560) - AbstractVirtualHost defines two state transitions from ERROR to ACTIVE
  - [QPID-7577](https://issues.apache.org/jira/browse/QPID-7577) - [Java Broker] Generic JDBC configuration store mistakenly is put into OPEN state in init
+ - [QPID-7599](https://issues.apache.org/jira/browse/QPID-7599) - [CVE-2016-8741] Prevent leaking information about the existence of user accounts in SCRAM-SHA256/SCRAM-SHA1 authentication providers

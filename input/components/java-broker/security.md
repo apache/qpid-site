@@ -108,6 +108,38 @@
         </div>
       </td>
     </tr>
+    <tr>
+      <td>CVE-2016-8741</td>
+      <td>Moderate</td>
+      <td>6.0.1, 6.0.2, 6.0.3, 6.0.4, 6.0.5, and 6.1.0</td>
+      <td><a href="{{site_url}}/releases/qpid-java-6.0.6/">6.0.6</a>, <a href="{{site_url}}/releases/qpid-java-6.1.1/">6.1.1</a></td>
+      <td>
+        Information Leakage.
+        <a id="CVE-2016-8741_details_toggle" href="javascript:_toggleDiv({divId:'CVE-2016-8741_details', controlId:'CVE-2016-8741_details_toggle', showMore:'<small>show more</small>', showLess:'<small>show less</small>'});"><small>show more</small></a>
+        <div style="display:none;" id="CVE-2016-8741_details">
+          <p>Versions Affected: Apache Qpid Broker for Java versions 6.0.1,
+          6.0.2, 6.0.3, 6.0.4, 6.0.5, and 6.1.0</p>
+          <p>Description: The Qpid Broker for Java can be configured to use different so
+             called AuthenticationProviders to handle user authentication.<br/>
+             Among the choices are the SCRAM-SHA-1 and SCRAM-SHA-256
+             AuthenticationProvider types.
+
+             It was discovered that these AuthenticationProviders prematurely
+             terminate the SCRAM SASL negotiation if the provided user name
+             does not exist thus allowing remote attacker to determine the
+             existence of user accounts.<br/>
+
+             The Vulnerability does not apply to AuthenticationProviders other
+             than SCRAM-SHA-1 and SCRAM-SHA-256.</p>
+          <p>Mitigation: Users should upgrade the Qpid Broker for Java to version 6.0.6,
+             6.1.1, or later (recommended).
+             If upgrading is not possible, the vulnerability can be mitigated
+             by using an AuthenticationProvider other than SCRAM-SHA-1 and
+             SCRAM-SHA-256. </p>
+          <p>References: <a href="https://issues.apache.org/jira/browse/QPID-7599">QPID-7599</a></p>
+        </div>
+      </td>
+    </tr>
   </tbody>
 </table>
 
