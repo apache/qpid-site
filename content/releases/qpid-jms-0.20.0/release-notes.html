@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid JMS 0.20.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/java-broker/index.html">Broker for Java</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.20.0/index.html">Qpid JMS 0.20.0</a></li><li>Qpid JMS 0.20.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-jms-0200-release-notes">Qpid JMS 0.20.0 Release Notes</h1>
+
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 1.1 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-207">QPIDJMS-207</a> - Implement the JMS 2.0 API</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-215">QPIDJMS-215</a> - Eliminate the need to copy messages on MessageProducer send</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-216">QPIDJMS-216</a> - Don't encode a Header for Messages that don't require one</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-217">QPIDJMS-217</a> - Remove unecessary copy of the body if an inbound BytesMessage</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-219">QPIDJMS-219</a> - allow MessageListeners to be used when prefetch is configured to 0 </li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-229">QPIDJMS-229</a> - allow supplying an SslContext instead of the configuration used to create one</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-232">QPIDJMS-232</a> - Perform Authentication when the remote connection is established instead of waiting until Connection is used</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-235">QPIDJMS-235</a> - add option to complete AMQP Open without waiting for a ClientID to [not] be set</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-238">QPIDJMS-238</a> - update to proton-j 0.16.0</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-240">QPIDJMS-240</a> - Add configuration option to determine if the Connection maintains a non-daemon thread</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-250">QPIDJMS-250</a> - Handle invalid URI on ConnectionFactory create in a consistent manner</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-253">QPIDJMS-253</a> - have transport config defaults pick up changes to the SSL system properties</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-208">QPIDJMS-208</a> - Can't set custom deserialization policy on ConnectionFactory</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-209">QPIDJMS-209</a> - Failover Transport can hold completion of operations that it doesn't need to when the connection fails</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-218">QPIDJMS-218</a> - ConcurrentModificationException during remote closure of session with multiple producers or consumers</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-221">QPIDJMS-221</a> - Blocked receive calls are not unblocked on session / consumer close when awaiting a drain response</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-222">QPIDJMS-222</a> - Footer value not included in Message Copy.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-223">QPIDJMS-223</a> - Redirect Exception creation return wrong exception in some cases</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-224">QPIDJMS-224</a> - QueueSender calls incorrect superclass send method</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-226">QPIDJMS-226</a> - Failover recovery can hang when Temporary Destination is being recreated.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-227">QPIDJMS-227</a> - NullPointerException on closing anonymous producer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-228">QPIDJMS-228</a> - Connection close can use wrong timeout value and stall</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-234">QPIDJMS-234</a> - set supported source outcomes on Coordinator links</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-236">QPIDJMS-236</a> - include all supported outcomes on producer link source</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-237">QPIDJMS-237</a> - Connection doesn't always shutdown its internal threads on connection loss</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-242">QPIDJMS-242</a> - Creation of consumer, producer or session hangs when connection is in a process of re-establishing by failover</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-243">QPIDJMS-243</a> - NPE is reported when failover tries to connect to stopped/not available broker</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-245">QPIDJMS-245</a> - Factory connection string in JNDI properties file will be decoded twice resulting to unexpected value</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-249">QPIDJMS-249</a> - Don't close consumer when a drain request times out if the consumer is in a Transaction</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-251">QPIDJMS-251</a> - Thread unsafe use of MessageListener and state variable in JmsMessageConsumer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-254">QPIDJMS-254</a> - trust store config password default taken from incorrect system property</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-225">QPIDJMS-225</a> - Add additional testing for not yet covered code paths and use cases</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-233">QPIDJMS-233</a> - Update test dependency to ActiveMQ 5.14.2 </li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-246">QPIDJMS-246</a> - Update to latest Netty 4.1.6 release and fix usages deprecated netty methods</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-247">QPIDJMS-247</a> - Update slf4j to 1.7.22 </li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-248">QPIDJMS-248</a> - Target Java 8+, i.e. drop support for Java 7</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-252">QPIDJMS-252</a> - update to current apache parent pom</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

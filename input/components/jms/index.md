@@ -25,7 +25,7 @@
 
 ## JMS with the strength of AMQP
 
-Qpid JMS is a complete AMQP 1.0 [Java Message Service][jms] 1.1 client built
+Qpid JMS is an AMQP 1.0 [Java Message Service][jms] 2.0 client built
 using [Qpid Proton]({{site_url}}/proton/index.html).
 
 Qpid also provides an alternate JMS client supporting
@@ -37,8 +37,8 @@ Qpid also provides an alternate JMS client supporting
 
 ## Features
 
- - [JMS 1.1](http://www.oracle.com/technetwork/java/docs-136352.html)
-   API compatible
+ - [JMS 2.0](https://jcp.org/aboutJava/communityprocess/mrel/jsr343/index.html)
+   API
  - Secure communication via SSL and SASL 
  - Producer flow control
  - Failover
@@ -48,7 +48,7 @@ Qpid also provides an alternate JMS client supporting
 
 <div class="two-column" markdown="1">
 
- - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
+ - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
  - [Examples](https://github.com/apache/qpid-jms/tree/{{current_jms_release}}/qpid-jms-examples)
  - [Configuration]({{current_jms_release_url}}/docs/index.html)
  - [Building Qpid JMS]({{current_jms_release_url}}/building.html)
