@@ -122,77 +122,39 @@ track and manage changes to its source code.</p>
 
 <h2 id="browse-the-code">Browse the code</h2>
 
-<ul>
-<li><a href="http://svn.apache.org/viewvc/qpid">Browse via ViewVC</a></li>
-<li><a href="https://svn.apache.org/repos/asf/qpid">Browse the source tree directly</a></li>
-<li><form id="-viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form></li>
-</ul>
+<p>The <a href="/dashboard.html">Dashboard</a> page provides links to the
+repository for each individual component. The repositories are all directly
+viewable, and GitHub mirrors are additionally provided for each.</p>
 
 <h2 id="check-out-the-code">Check out the code</h2>
 
-<p>To access the repository anonymously, use the <code>svn checkout</code> command
-with one of the Subversion URLs below.</p>
+<p>To access code from one of the Git repositories, use the <code>git clone</code> command
+with its URL, e.g for Qpid JMS:</p>
 
-<pre><code>Qpid
-% svn checkout http://svn.apache.org/repos/asf/qpid/trunk/qpid qpid
+<pre><code>Qpid JMS
+% git clone https://git-wip-us.apache.org/repos/asf/qpid-jms.git qpid-jms
+</code></pre>
 
-Qpid for Java
+<p>Alternatively, you can use the mirror repositories available on GitHub to
+create your own fork.</p>
+
+<p>To access code from a Subversion repository, use the <code>svn checkout</code> command
+with its URL, .e.g for Qpid for Java:</p>
+
+<pre><code>Qpid for Java
 % svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
 </code></pre>
 
-<div class="two-column">
-
-<section>
-
-<h3 id="qpid">Qpid</h3>
-
-<ul>
-<li><a href="http://svn.apache.org/repos/asf/qpid/trunk/qpid/">Anonymous Subversion URL</a></li>
-<li><a href="https://svn.apache.org/repos/asf/qpid/trunk/qpid/">Committer Subversion URL</a></li>
-<li><a href="http://svn.apache.org/viewvc/qpid/trunk/qpid/">Browse via ViewVC</a></li>
-</ul>
-
-</section>
-
-<section>
-
-<h3 id="qpid-for-java">Qpid for Java</h3>
-
-<ul>
-<li><a href="http://svn.apache.org/repos/asf/qpid/java/trunk/">Anonymous Subversion URL</a></li>
-<li><a href="https://svn.apache.org/repos/asf/qpid/java/trunk/">Committer Subversion URL</a></li>
-<li><a href="http://svn.apache.org/viewvc/qpid/java/trunk/">Browse via ViewVC</a></li>
-</ul>
-
-</section>
-
-</div>
-
 <h2 id="install-the-code">Install the code</h2>
 
-<p>Consult the install documentation below.</p>
+<p>Consult the install documentation below, or see the respective component
+documentation for more details.</p>
 
 <ul>
 <li><a href="https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to">How to build Qpid for Java</a></li>
 <li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt">Installing Qpid C++</a></li>
 <li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md">Installing Qpid Python</a></li>
 </ul>
-
-<h2 id="git-mirrors-of-subversion-repositories">Git mirrors of Subversion repositories</h2>
-
-<p>Read-only <a href="http://git-scm.com/">Git</a> mirrors are available.  Use one
-of the following commands.</p>
-
-<pre><code>Qpid
-% git clone git://git.apache.org/qpid.git
-
-Qpid for Java
-% git clone git://git.apache.org/qpid-java.git
-</code></pre>
-
-<p>If you have commit access, it's also possible to commit back with <code>git
-svn dcommit</code> by following the instructions on the
-<a href="http://www.apache.org/dev/git.html">Git at Apache</a> page.</p>
 
 <h2 id="notifications">Notifications</h2>
 

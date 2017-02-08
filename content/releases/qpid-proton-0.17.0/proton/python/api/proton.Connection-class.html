@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>proton.Connection</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="proton-module.html">Package&nbsp;proton</a> ::
+        Class&nbsp;Connection
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="proton.Connection-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS DESCRIPTION ==================== -->
+<h1 class="epydoc">Class Connection</h1><p class="nomargin-top"><span class="codelink"><a href="proton-pysrc.html#Connection">source&nbsp;code</a></span></p>
+<center>
+<center>  <map id="uml_class_diagram_for_proton_c" name="uml_class_diagram_for_proton_c">
+<area shape="rect" id="node1_39" href="proton.Connection-class.html#connection" title="proton.Connection.connection" alt="" coords="53,239,367,257"/>
+<area shape="rect" id="node1_40" href="proton.Connection-class.html#transport" title="proton.Connection.transport" alt="" coords="53,257,367,276"/>
+<area shape="rect" id="node1_41" href="proton.Connection-class.html#container" title="proton.Connection.container" alt="" coords="53,276,367,295"/>
+<area shape="rect" id="node1_42" href="proton.Connection-class.html#hostname" title="Set the name of the host (either fully qualified or relative) to which this connection is connecting to." alt="" coords="53,295,367,313"/>
+<area shape="rect" id="node1_43" href="proton.Connection-class.html#user" title="proton.Connection.user" alt="" coords="53,313,367,332"/>
+<area shape="rect" id="node1_44" href="proton.Connection-class.html#password" title="proton.Connection.password" alt="" coords="53,332,367,351"/>
+<area shape="rect" id="node1_45" href="proton.Connection-class.html#remote_container" title="The container identifier specified by the remote peer for this connection." alt="" coords="53,351,367,369"/>
+<area shape="rect" id="node1_46" href="proton.Connection-class.html#remote_hostname" title="The hostname specified by the remote peer for this connection." alt="" coords="53,369,367,388"/>
+<area shape="rect" id="node1_47" href="proton.Connection-class.html#remote_offered_capabilities" title="The capabilities offered by the remote peer for this connection." alt="" coords="53,388,367,407"/>
+<area shape="rect" id="node1_48" href="proton.Connection-class.html#remote_desired_capabilities" title="The capabilities desired by the remote peer for this connection." alt="" coords="53,407,367,425"/>
+<area shape="rect" id="node1_49" href="proton.Connection-class.html#remote_properties" title="The properties specified by the remote peer for this connection." alt="" coords="53,425,367,444"/>
+<area shape="rect" id="node1_50" href="proton.Connection-class.html#state" title="The state of the connection as a bit field." alt="" coords="53,444,367,463"/>
+<area shape="rect" id="node1_51" href="proton.Connection-class.html#work_head" title="proton.Connection.work_head" alt="" coords="53,463,367,481"/>
+<area shape="rect" id="node1_52" href="proton.Connection-class.html#error" title="proton.Connection.error" alt="" coords="53,481,367,500"/>
+<area shape="rect" id="node1_53" href="proton.Connection-class.html#wrap" title="proton.Connection.wrap" alt="" coords="53,503,367,521"/>
+<area shape="rect" id="node1_54" href="proton.Connection-class.html#__init__" title="x.__init__(...) initializes x; see help(type(x)) for signature" alt="" coords="53,521,367,540"/>
+<area shape="rect" id="node1_55" href="proton.Connection-class.html#collect" title="proton.Connection.collect" alt="" coords="53,540,367,559"/>
+<area shape="rect" id="node1_56" href="proton.Connection-class.html#open" title="Opens the connection." alt="" coords="53,559,367,577"/>
+<area shape="rect" id="node1_57" href="proton.Connection-class.html#close" title="Closes the connection." alt="" coords="53,577,367,596"/>
+<area shape="rect" id="node1_58" href="proton.Connection-class.html#session" title="Returns a new session on this connection." alt="" coords="53,596,367,615"/>
+<area shape="rect" id="node1_59" href="proton.Connection-class.html#session_head" title="proton.Connection.session_head" alt="" coords="53,615,367,633"/>
+<area shape="rect" id="node1_60" href="proton.Connection-class.html#link_head" title="proton.Connection.link_head" alt="" coords="53,633,367,652"/>
+<area shape="rect" id="node1_61" href="proton.Connection-class.html#free" title="proton.Connection.free" alt="" coords="53,652,367,671"/>
+<area shape="rect" id="node1" href="proton.Connection-class.html" title="A representation of an AMQP connection" alt="" coords="41,214,378,677"/>
+<area shape="rect" id="node2_62" href="proton.wrapper.Wrapper-class.html#__getattr__" title="proton.wrapper.Wrapper.__getattr__" alt="" coords="17,39,197,57"/>
+<area shape="rect" id="node2_63" href="proton.wrapper.Wrapper-class.html#__setattr__" title="x.__setattr__(&#39;name&#39;, value) &lt;==&gt; x.name = value" alt="" coords="17,57,197,76"/>
+<area shape="rect" id="node2_64" href="proton.wrapper.Wrapper-class.html#__delattr__" title="x.__delattr__(&#39;name&#39;) &lt;==&gt; del x.name" alt="" coords="17,76,197,95"/>
+<area shape="rect" id="node2_65" href="proton.wrapper.Wrapper-class.html#__hash__" title="hash(x)" alt="" coords="17,95,197,113"/>
+<area shape="rect" id="node2_66" href="proton.wrapper.Wrapper-class.html#__eq__" title="proton.wrapper.Wrapper.__eq__" alt="" coords="17,113,197,132"/>
+<area shape="rect" id="node2_67" href="proton.wrapper.Wrapper-class.html#__ne__" title="proton.wrapper.Wrapper.__ne__" alt="" coords="17,132,197,151"/>
+<area shape="rect" id="node2_68" href="proton.wrapper.Wrapper-class.html#__del__" title="proton.wrapper.Wrapper.__del__" alt="" coords="17,151,197,169"/>
+<area shape="rect" id="node2_69" href="proton.wrapper.Wrapper-class.html#__repr__" title="repr(x)" alt="" coords="17,169,197,188"/>
+<area shape="rect" id="node2" href="proton.wrapper.Wrapper-class.html" title="proton.wrapper.Wrapper" alt="" coords="5,6,209,194"/>
+<area shape="rect" id="node3_70" href="proton.Endpoint-class.html#LOCAL_UNINIT" title="proton.Endpoint.LOCAL_UNINIT" alt="" coords="251,31,377,49"/>
+<area shape="rect" id="node3_71" href="proton.Endpoint-class.html#REMOTE_UNINIT" title="proton.Endpoint.REMOTE_UNINIT" alt="" coords="251,49,377,68"/>
+<area shape="rect" id="node3_72" href="proton.Endpoint-class.html#LOCAL_ACTIVE" title="proton.Endpoint.LOCAL_ACTIVE" alt="" coords="251,68,377,87"/>
+<area shape="rect" id="node3_73" href="proton.Endpoint-class.html#REMOTE_ACTIVE" title="proton.Endpoint.REMOTE_ACTIVE" alt="" coords="251,87,377,105"/>
+<area shape="rect" id="node3_74" href="proton.Endpoint-class.html#LOCAL_CLOSED" title="proton.Endpoint.LOCAL_CLOSED" alt="" coords="251,105,377,124"/>
+<area shape="rect" id="node3_75" href="proton.Endpoint-class.html#REMOTE_CLOSED" title="proton.Endpoint.REMOTE_CLOSED" alt="" coords="251,124,377,143"/>
+<area shape="rect" id="node3_76" href="proton.Endpoint-class.html#remote_condition" title="proton.Endpoint.remote_condition" alt="" coords="251,143,377,161"/>
+<area shape="rect" id="node3_77" href="proton.Endpoint-class.html#handler" title="proton.Endpoint.handler" alt="" coords="251,161,377,180"/>
+<area shape="rect" id="node3" href="proton.Endpoint-class.html" title="proton.Endpoint" alt="" coords="238,6,389,194"/>
+</map>
+  <img src="uml_class_diagram_for_proton_c.png" alt='' usemap="#uml_class_diagram_for_proton_c" ismap="ismap" class="graph-without-title" />
+</center>
+</center>
+<hr />
+<p>A representation of an AMQP connection</p>
+
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Connection-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">impl</span>=<span class="summary-sig-default">&lt;built-in function pn_connection&gt;</span>)</span><br />
+      x.__init__(...) initializes x; see help(type(x)) for signature</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="collect"></a><span class="summary-sig-name">collect</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">collector</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.collect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Connection-class.html#open" class="summary-sig-name">open</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Opens the connection.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.open">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.Connection-class.html#close" class="summary-sig-name">close</a>(<span class="summary-sig-arg">self</span>)</span><br />
+      Closes the connection.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.close">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="session"></a><span class="summary-sig-name">session</span>(<span class="summary-sig-arg">self</span>)</span><br />
+      Returns a new session on this connection.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.session">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="session_head"></a><span class="summary-sig-name">session_head</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mask</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.session_head">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="link_head"></a><span class="summary-sig-name">link_head</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">mask</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.link_head">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="free"></a><span class="summary-sig-name">free</span>(<span class="summary-sig-arg">self</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.free">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.wrapper.Wrapper-class.html">wrapper.Wrapper</a></code></b>:
+      <code><a href="proton.wrapper.Wrapper-class.html#__del__">__del__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__delattr__">__delattr__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__eq__">__eq__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__getattr__">__getattr__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__hash__">__hash__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__ne__">__ne__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__repr__">__repr__</a></code>,
+      <code><a href="proton.wrapper.Wrapper-class.html#__setattr__">__setattr__</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__format__</code>,
+      <code>__getattribute__</code>,
+      <code>__new__</code>,
+      <code>__reduce__</code>,
+      <code>__reduce_ex__</code>,
+      <code>__sizeof__</code>,
+      <code>__str__</code>,
+      <code>__subclasshook__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Static Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="wrap"></a><span class="summary-sig-name">wrap</span>(<span class="summary-sig-arg">impl</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton-pysrc.html#Connection.wrap">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+</table>
+<!-- ==================== CLASS VARIABLES ==================== -->
+<a name="section-ClassVariables"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Class Variables</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.Endpoint-class.html">Endpoint</a></code></b>:
+      <code><a href="proton.Endpoint-class.html#LOCAL_ACTIVE">LOCAL_ACTIVE</a></code>,
+      <code><a href="proton.Endpoint-class.html#LOCAL_CLOSED">LOCAL_CLOSED</a></code>,
+      <code><a href="proton.Endpoint-class.html#LOCAL_UNINIT">LOCAL_UNINIT</a></code>,
+      <code><a href="proton.Endpoint-class.html#REMOTE_ACTIVE">REMOTE_ACTIVE</a></code>,
+      <code><a href="proton.Endpoint-class.html#REMOTE_CLOSED">REMOTE_CLOSED</a></code>,
+      <code><a href="proton.Endpoint-class.html#REMOTE_UNINIT">REMOTE_UNINIT</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#connection" class="summary-name">connection</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#transport" class="summary-name">transport</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#container" class="summary-name">container</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#hostname" class="summary-name">hostname</a><br />
+      Set the name of the host (either fully qualified or relative) to 
+      which this connection is connecting to.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#user" class="summary-name">user</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#password" class="summary-name">password</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#remote_container" class="summary-name">remote_container</a><br />
+      The container identifier specified by the remote peer for this 
+      connection.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#remote_hostname" class="summary-name">remote_hostname</a><br />
+      The hostname specified by the remote peer for this connection.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#remote_offered_capabilities" class="summary-name">remote_offered_capabilities</a><br />
+      The capabilities offered by the remote peer for this connection.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#remote_desired_capabilities" class="summary-name">remote_desired_capabilities</a><br />
+      The capabilities desired by the remote peer for this connection.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#remote_properties" class="summary-name">remote_properties</a><br />
+      The properties specified by the remote peer for this connection.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#state" class="summary-name">state</a><br />
+      The state of the connection as a bit field.
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#work_head" class="summary-name">work_head</a>
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+        <a href="proton.Connection-class.html#error" class="summary-name">error</a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.Endpoint-class.html">Endpoint</a></code></b>:
+      <code><a href="proton.Endpoint-class.html#handler">handler</a></code>,
+      <code><a href="proton.Endpoint-class.html#remote_condition">remote_condition</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code>object</code></b>:
+      <code>__class__</code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">impl</span>=<span class="sig-default">&lt;built-in function pn_connection&gt;</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Connection.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>x.__init__(...) initializes x; see help(type(x)) for signature</p>
+  <dl class="fields">
+    <dt>Overrides:
+        object.__init__
+        <dd><em class="note">(inherited documentation)</em></dd>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="open"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">open</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Connection.open">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Opens the connection.</p>
+  <p>In more detail, this moves the local state of the connection to the 
+  ACTIVE state and triggers an open frame to be sent to the peer. A 
+  connection is fully active once both peers have opened it.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="close"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">close</span>(<span class="sig-arg">self</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton-pysrc.html#Connection.close">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Closes the connection.</p>
+  <p>In more detail, this moves the local state of the connection to the 
+  CLOSED state and triggers a close frame to be sent to the peer. A 
+  connection is fully closed once both peers have closed it.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== PROPERTY DETAILS ==================== -->
+<a name="section-PropertyDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Property Details</span></td>
+</tr>
+</table>
+<a name="connection"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">connection</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.connection(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="transport"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">transport</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.transport(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="container"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">container</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_get_container" class="summary-sig-name" onclick="show_private();">_get_container</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_set_container" class="summary-sig-name" onclick="show_private();">_set_container</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="hostname"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">hostname</h3>
+  <p>Set the name of the host (either fully qualified or relative) to which
+  this connection is connecting to.  This information may be used by the 
+  remote peer to determine the correct back-end service to connect the 
+  client to. This value will be sent in the Open performative, and will be 
+  used by SSL and SASL layers to identify the peer.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_get_hostname" class="summary-sig-name" onclick="show_private();">_get_hostname</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_set_hostname" class="summary-sig-name" onclick="show_private();">_set_hostname</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="user"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">user</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_get_user" class="summary-sig-name" onclick="show_private();">_get_user</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_set_user" class="summary-sig-name" onclick="show_private();">_set_user</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="password"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">password</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_get_password" class="summary-sig-name" onclick="show_private();">_get_password</a>(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+    <dt>Set Method:</dt>
+    <dd class="value"><span class="summary-sig"><a href="proton.Connection-class.html#_set_password" class="summary-sig-name" onclick="show_private();">_set_password</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">name</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remote_container"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_container</h3>
+  <p>The container identifier specified by the remote peer for this 
+  connection.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_container(<span class="summary-sig-arg">self</span>)</span>
+        - The container identifier specified by the remote peer for this connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remote_hostname"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_hostname</h3>
+  <p>The hostname specified by the remote peer for this connection.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_hostname(<span class="summary-sig-arg">self</span>)</span>
+        - The hostname specified by the remote peer for this connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remote_offered_capabilities"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_offered_capabilities</h3>
+  <p>The capabilities offered by the remote peer for this connection.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_offered_capabilities(<span class="summary-sig-arg">self</span>)</span>
+        - The capabilities offered by the remote peer for this connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remote_desired_capabilities"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_desired_capabilities</h3>
+  <p>The capabilities desired by the remote peer for this connection.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_desired_capabilities(<span class="summary-sig-arg">self</span>)</span>
+        - The capabilities desired by the remote peer for this connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="remote_properties"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">remote_properties</h3>
+  <p>The properties specified by the remote peer for this connection.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.remote_properties(<span class="summary-sig-arg">self</span>)</span>
+        - The properties specified by the remote peer for this connection.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="state"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">state</h3>
+  <p>The state of the connection as a bit field. The state has a local and 
+  a remote component. Each of these can be in one of three states: UNINIT, 
+  ACTIVE or CLOSED. These can be tested by masking against LOCAL_UNINIT, 
+  LOCAL_ACTIVE, LOCAL_CLOSED, REMOTE_UNINIT, REMOTE_ACTIVE and 
+  REMOTE_CLOSED.</p>
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.state(<span class="summary-sig-arg">self</span>)</span>
+        - The state of the connection as a bit field.
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="work_head"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">work_head</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.work_head(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="error"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <h3 class="epydoc">error</h3>
+  
+  <dl class="fields">
+    <dt>Get Method:</dt>
+    <dd class="value"><span class="summary-sig"><i>unreachable</i>.error(<span class="summary-sig-arg">self</span>)</span>
+    </dd>
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Wed Feb  8 19:12:43 2017
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>
