@@ -20,4 +20,3 @@
 # Contributing to Proton
 
  - [Submitting Patches](submitting-patches.html)
- - [Proton-J/Proton-C](proton-j-proton-c.html)

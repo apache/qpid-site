@@ -33,7 +33,6 @@ find previous versions with our
 
  - [C API reference]({{current_proton_release_url}}/proton/c/api/messenger_8h.html)
  - [C examples]({{current_proton_release_url}}/messenger/c/examples/index.html)
- - [Java API reference]({{current_proton_release_url}}/proton/java/api/org/apache/qpid/proton/messenger/Messenger.html)
  - [Perl examples]({{current_proton_release_url}}/messenger/perl/examples/index.html)
  - [PHP examples]({{current_proton_release_url}}/messenger/php/examples/index.html)
  - [Python API reference]({{current_proton_release_url}}/proton/python/api/proton.Messenger-class.html)

@@ -45,6 +45,8 @@ help:
 	@echo "                Verify that all links have targets"
 	@echo "gen-proton-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid Proton release content"
+	@echo "gen-proton-j-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
+	@echo "                Generate Qpid Proton-J release content"
 	@echo "gen-dispatch-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid Dispatch release content"
 	@echo "gen-java-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
@@ -104,6 +106,9 @@ gen-amqp-type-reference:
 .PHONY: gen-proton-release
 gen-proton-release: gen-proton-release-page gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
 
+.PHONY: gen-proton-j-release
+gen-proton-j-release: gen-proton-j-release-page gen-proton-j-release-notes gen-proton-j-release-api-doc
+
 .PHONY: gen-dispatch-release
 gen-dispatch-release: gen-dispatch-release-page gen-dispatch-release-notes gen-dispatch-release-books
 
@@ -122,6 +127,10 @@ gen-python-release: gen-python-release-page gen-python-release-notes gen-python-
 gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
 gen-proton-release-%: 
 	scripts/gen-proton-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+
+gen-proton-j-release-%: RELEASE_DIR := input/releases/qpid-proton-j-${RELEASE}
+gen-proton-j-release-%:
+	scripts/gen-proton-j-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
 gen-dispatch-release-%: RELEASE_DIR := input/releases/qpid-dispatch-${RELEASE}
 gen-dispatch-release-%:

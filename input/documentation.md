@@ -17,8 +17,8 @@ You can find older versions with our
  - [Overview]({{site_url}}/proton/index.html)
  - [C API reference]({{current_proton_release_url}}/proton/c/api/files.html)
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
- - [Java API reference]({{current_proton_release_url}}/proton/java/api/index.html)
  - [Python API reference]({{current_proton_release_url}}/proton/python/api/index.html)
+ - [Java API reference]({{current_proton_j_release_url}}/api/index.html)
 
 </section>
 <section markdown="1">

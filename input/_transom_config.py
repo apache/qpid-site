@@ -24,7 +24,8 @@ python_release = _Release("Qpid Python", "qpid-python", "1.35.0")
 dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.7.0")
 java_release = _Release("Qpid for Java", "qpid-java", "6.1.1")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.20.0")
-proton_release = _Release("Qpid Proton", "qpid-proton", "0.16.0")
+proton_release = _Release("Qpid Proton", "qpid-proton", "0.17.0")
+proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.17.0")
 
 _svn_base = "http://svn.apache.org/repos/asf/qpid"
 
@@ -56,3 +57,7 @@ current_dispatch_release_link = dispatch_release.link
 current_proton_release = proton_release.number
 current_proton_release_url = proton_release.url
 current_proton_release_link = proton_release.link
+
+current_proton_j_release = proton_j_release.number
+current_proton_j_release_url = proton_j_release.url
+current_proton_j_release_link = proton_j_release.link

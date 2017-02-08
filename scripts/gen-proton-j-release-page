@@ -7,9 +7,9 @@
 # to you under the Apache License, Version 2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
-# 
+#
 #   http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -23,24 +23,16 @@ from generate import *
 from datetime import datetime
 
 download_records = (
-    ("qpid-proton-{}.tar.gz", "Qpid Proton"),
+    ("apache-qpid-proton-j-{}-bin.tar.gz", "Qpid Proton-J (binary)"),
+    ("apache-qpid-proton-j-{}-src.tar.gz", "Qpid Proton-J (source release)"),
     )
 
 documentation = \
 """
 <div class="two-column" markdown="1">
 
- - [C API reference](proton/c/api/files.html)
- - [C++ introduction](proton/cpp/api/index.html)
- - [C++ tutorial](proton/cpp/api/tutorial.html)
- - [C++ examples](proton/cpp/examples/index.html)
- - [C++ API reference](proton/cpp/api/annotated.html)
- - [Python overview](proton/python/book/overview.html)
- - [Python tutorial](proton/python/book/tutorial.html)
- - [Python examples](proton/python/examples/index.html)
- - [Python API reference](proton/python/api/index.html)
-;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
- - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb={source_release})
+ - [API reference](api/index.html)
+ - [Examples](https://github.com/apache/qpid-proton-j/tree/{source_release}/examples)
 
 </div>
 """
@@ -55,9 +47,9 @@ template = \
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -66,7 +58,7 @@ template = \
 ;; under the License.
 ;;
 
-# Qpid Proton {release}
+# Qpid Proton-J {release}
 
 Qpid Proton is a high-performance, lightweight messaging library. More
 about [Qpid Proton]({{{{site_url}}}}/proton/index.html).
@@ -84,15 +76,17 @@ the files you download.
 |---------|----------|--------|
 {downloads}
 
+Proton-J is also available [via Maven]({{{{site_url}}}}/maven.html).
+
 ## Documentation
 
 {documentation}
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/proton/{release})
+ - [All release artefacts](http://archive.apache.org/dist/qpid/proton-j/{release})
  - [Resolved issues in JIRA]({issues_url})
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tag;h={release})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-proton-j.git;a=tag;h={release})
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {{
@@ -107,7 +101,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     output_path = join(release_dir, "index.md")
 
     downloads = list()
-    artifact_url_template = "http://archive.apache.org/dist/qpid/proton/{}/{}"
+    artifact_url_template = "http://archive.apache.org/dist/qpid/proton-j/{}/{}"
 
     for artifact, summary in download_records:
         artifact = artifact.format(release)
@@ -121,12 +115,12 @@ def gen_release_page(release, issues_release, source_release, release_dir):
 
     downloads = "\n".join(downloads)
 
-    jql = "project = PROTON AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    jql = "project = PROTON AND fixVersion = 'proton-j-{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
     issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
 
     vars = locals()
     vars["documentation"] = documentation.format(release=release, source_release=source_release)
-    
+
     output = template.format(**vars)
     output = output.strip()
 
@@ -141,9 +135,9 @@ master_template = """
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -160,7 +154,7 @@ master_template = """
 
 Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
-release]({{{{current_proton_release_url}}}}/index.html).
+release]({{{{current_proton_j_release_url}}}}/index.html).
 
 This content was generated at {time} on {day}, {date}.
 
@@ -172,7 +166,7 @@ This content was generated at {time} on {day}, {date}.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-proton.git?a=tree)
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git?a=tree)
 """
 
 def gen_master_release_page(release_dir):
@@ -186,7 +180,7 @@ def gen_master_release_page(release_dir):
 
     vars = locals()
     vars["documentation"] = documentation.format(release="master", source_release="master")
-    
+
     output = master_template.format(**vars)
     output = output.strip()
 

@@ -52,7 +52,7 @@ platform, environment, or language. More about
  - [C++ tutorial]({{current_proton_release_url}}/proton/cpp/api/tutorial.html)
  - [C++ examples]({{current_proton_release_url}}/proton/cpp/examples/index.html)
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
- - [Java API reference]({{current_proton_release_url}}/proton/java/api/index.html)
+ - [Java API reference]({{current_proton_j_release_url}}/api/index.html)
  - [Python overview]({{current_proton_release_url}}/proton/python/book/overview.html)
  - [Python tutorial]({{current_proton_release_url}}/proton/python/book/tutorial.html)
  - [Python examples]({{current_proton_release_url}}/proton/python/examples/index.html)
@@ -66,6 +66,7 @@ platform, environment, or language. More about
 ## Releases
 
  - {{current_proton_release_link}}
+ - {{current_proton_j_release_link}}
  - [Past releases]({{site_url}}/releases/index.html#past-releases)
  - [Work in progress]({{site_url}}/releases/qpid-proton-master/index.html) 
 
@@ -78,12 +79,16 @@ platform, environment, or language. More about
 
 ## Source code
 
- - [Browse via GitHub](https://github.com/apache/qpid-proton)
- - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-proton.git)
+ - Proton
+     - [Browse via GitHub](https://github.com/apache/qpid-proton)
+     - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-proton.git)
+ - Proton-J
+     - [Browse via GitHub](https://github.com/apache/qpid-proton-j)
+     - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git)
 
 ## Resources
 
- - [Contributing to Proton](contributing.html)
+ - [Contributing to Proton](submitting-patches.html)
  - [Proton Messenger](messenger.html)
  - [Proton wiki pages](https://cwiki.apache.org/confluence/display/qpid/proton)
 

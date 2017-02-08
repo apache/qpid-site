@@ -32,7 +32,6 @@ def gen_api_doc(release, source_dir, release_dir):
 
     gen_c_api_doc(release, source_dir, component_dir)
     gen_cpp_api_doc(release, source_dir, component_dir)
-    gen_java_api_doc(release, source_dir, component_dir)
     gen_python_api_doc(release, source_dir, component_dir)
 
 def gen_c_api_doc(release, source_dir, component_dir):
@@ -72,19 +71,6 @@ def gen_cpp_api_doc(release, source_dir, component_dir):
                 output_dir=output_dir,
                 example_paths=(join(source_dir, "examples", "cpp"),),
                 config_file=config_file)
-
-def gen_java_api_doc(release, source_dir, component_dir):
-    input_path = join(source_dir, "proton-j", "src", "main", "java")
-    input_namespace = "org.apache.qpid.proton"
-    output_dir = join(component_dir, "java", "api")
-
-    remove(output_dir)
-    
-    gen_javadoc(release=release,
-                title="Qpid Proton Java API",
-                input_paths=(input_path,),
-                input_namespaces=(input_namespace,),
-                output_dir=output_dir)
 
 def gen_python_api_doc(release, source_dir, component_dir):
     input_path = join(source_dir, "proton-c", "bindings", "python")

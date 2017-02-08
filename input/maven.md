@@ -54,7 +54,7 @@ The following dependencies can be added to the POM for your Maven build to utili
 <span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>proton-j<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>{{current_proton_release}}<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>{{current_proton_j_release}}<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
