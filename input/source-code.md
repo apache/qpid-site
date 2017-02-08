@@ -23,66 +23,38 @@ Qpid employs
 [revision control](http://en.wikipedia.org/wiki/Revision_control) to
 track and manage changes to its source code.
 
+
 ## Browse the code
 
- - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid)
- - [Browse the source tree directly](https://svn.apache.org/repos/asf/qpid)
- - <form id="-viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get"><input type="hidden" name="view" value="revision"/>Go to revision <input type="text" name="revision"/></form>
+The [Dashboard]({{site_url}}/dashboard.html) page provides links to the
+repository for each individual component. The repositories are all directly
+viewable, and GitHub mirrors are additionally provided for each.
 
 ## Check out the code
 
-To access the repository anonymously, use the `svn checkout` command
-with one of the Subversion URLs below.
+To access code from one of the Git repositories, use the `git clone` command
+with its URL, e.g for Qpid JMS:
 
-    Qpid
-    % svn checkout http://svn.apache.org/repos/asf/qpid/trunk/qpid qpid
+    Qpid JMS
+    % git clone https://git-wip-us.apache.org/repos/asf/qpid-jms.git qpid-jms
+
+Alternatively, you can use the mirror repositories available on GitHub to
+create your own fork.
+
+To access code from a Subversion repository, use the `svn checkout` command
+with its URL, .e.g for Qpid for Java:
 
     Qpid for Java
     % svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
 
-<div class="two-column" markdown="1">
-<section markdown="1">
-
-### Qpid
-
- - [Anonymous Subversion URL](http://svn.apache.org/repos/asf/qpid/trunk/qpid/)
- - [Committer Subversion URL](https://svn.apache.org/repos/asf/qpid/trunk/qpid/)
- - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid/trunk/qpid/)
-
-</section>
-<section markdown="1">
-
-### Qpid for Java
-
- - [Anonymous Subversion URL](http://svn.apache.org/repos/asf/qpid/java/trunk/)
- - [Committer Subversion URL](https://svn.apache.org/repos/asf/qpid/java/trunk/)
- - [Browse via ViewVC](http://svn.apache.org/viewvc/qpid/java/trunk/)
-
-</section>
-</div>
-
 ## Install the code
 
-Consult the install documentation below.
+Consult the install documentation below, or see the respective component
+documentation for more details.
 
  - [How to build Qpid for Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
  - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
  - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
-
-## Git mirrors of Subversion repositories
-
-Read-only [Git](http://git-scm.com/) mirrors are available.  Use one
-of the following commands.
-
-    Qpid
-    % git clone git://git.apache.org/qpid.git
-
-    Qpid for Java
-    % git clone git://git.apache.org/qpid-java.git
-
-If you have commit access, it's also possible to commit back with `git
-svn dcommit` by following the instructions on the
-[Git at Apache](http://www.apache.org/dev/git.html) page.
 
 ## Notifications
 
