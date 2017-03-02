@@ -39,7 +39,7 @@ platform, environment, or language. More about
  - A flexible and capable reactive messaging API
  - Full control of AMQP 1.0 protocol semantics
  - Portable C implementation with bindings to popular languages
- - Pure-Java and pure-JavaScript implementations
+ - Pure-Java implementation
  - Peer-to-peer and brokered messaging
  - Secure communication via SSL and SASL
 

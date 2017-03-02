@@ -20,15 +20,12 @@
 # Overview
 
 The goal of Proton is to provide ubiquitous access to a global-scale
-interoperable message bus based on AMQP 1.0. At its core Proton
-provides three parallel implementations of the AMQP 1.0 protocol, one
-in C, one in Java, and one in Javascript. These implementations all
-share the same architecture and interface and are rigorously tested
-against a single common test suite to guarantee identical
-behavior. These three implementations serve as the basis for
-delivering protocol access to a wide variety of environments.
+interoperable message bus based on AMQP 1.0, with implementations
+of the AMQP 1.0 protocol in Java and C, and various language bindings
+around the latter such as for Python and C++. These implementations serve as
+the basis for delivering protocol access to a wide variety of environments.
 
-The common architecture used by the protocol engines is designed to be
+The architecture used by the protocol engines is designed to be
 a suitable basis for both high performance-network servers and simple
 clients, and to be usable in both threaded and non-threaded
 contexts. In short, with the use of binding tools such as SWIG, it is
