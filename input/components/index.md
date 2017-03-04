@@ -68,7 +68,7 @@ connecting clients, brokers, and standalone services.
  - [Broker for Java](java-broker/index.html) - A pure-Java AMQP message broker
  - [C++ broker](cpp-broker/index.html) - A native-code AMQP message broker
  - [Dispatch router](dispatch-router/index.html) - An AMQP router for scalable messaging interconnect
- 
+
 ## Compatibility
 
 <div class="scroll" markdown="1">
@@ -87,3 +87,7 @@ instance, the brokers are implemented in C++ and Java respectively,
 but they do not require C++ or JMS clients for communication.
 
 </div>
+
+;;## Other components
+;;
+;; - [Qpid Interop Test](interop-test/index.html) - Tests for interoperability of AMQP components

@@ -399,13 +399,14 @@ def render_release_notes(project, release):
 def _fetch_issues(project, release):
     query = list()
 
-    fix_version=release
+    fix_version = release
 
     if project in ("qpid-cpp", "qpid-java", "qpid-python"):
         project = "qpid"
-    if project in ["proton-j"]:
+
+    if project == "proton-j":
         project = "proton"
-        fix_version="proton-j-{}".format(release)
+        fix_version = "proton-j-{}".format(release)
 
     query.append("project = '{}'".format(project))
     query.append("fixVersion = '{}'".format(fix_version))

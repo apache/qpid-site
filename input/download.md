@@ -64,6 +64,11 @@ and
 [MD5](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.md5),
 [SHA1](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.sha1)\].
 
+;; ## Other components
+;;
+;; | Content | Download | Verify |
+;; | ------- | -------- | ------ |
+;; | [Interop Test]({{site_url}}/components/interop-test/index.html) | [qpid-interop-test-{{current_interop_test_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.asc), [SHA](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.sha) |
 
 ## Verify what you download
 

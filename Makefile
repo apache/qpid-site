@@ -103,14 +103,14 @@ clean:
 gen-amqp-type-reference:
 	scripts/gen-amqp-type-reference misc/amqp > input/amqp/type-reference.html.in
 
-.PHONY: gen-proton-release
-gen-proton-release: gen-proton-release-page gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
-
-.PHONY: gen-proton-j-release
-gen-proton-j-release: gen-proton-j-release-page gen-proton-j-release-notes gen-proton-j-release-api-doc
+.PHONY: gen-cpp-release
+gen-cpp-release: gen-cpp-release-page gen-cpp-release-notes gen-cpp-release-api-doc gen-cpp-release-examples gen-cpp-release-books
 
 .PHONY: gen-dispatch-release
 gen-dispatch-release: gen-dispatch-release-page gen-dispatch-release-notes gen-dispatch-release-books
+
+.PHONY: gen-interop-test-release
+gen-interop-test-release: gen-interop-test-release-page gen-interop-test-release-notes
 
 .PHONY: gen-java-release
 gen-java-release: gen-java-release-page gen-java-release-notes gen-java-release-books gen-java-release-examples
@@ -118,23 +118,26 @@ gen-java-release: gen-java-release-page gen-java-release-notes gen-java-release-
 .PHONY: gen-jms-release
 gen-jms-release: gen-jms-release-page gen-jms-release-notes gen-jms-release-docs
 
-.PHONY: gen-cpp-release
-gen-cpp-release: gen-cpp-release-page gen-cpp-release-notes gen-cpp-release-api-doc gen-cpp-release-examples gen-cpp-release-books
+.PHONY: gen-proton-release
+gen-proton-release: gen-proton-release-page gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
+
+.PHONY: gen-proton-j-release
+gen-proton-j-release: gen-proton-j-release-page gen-proton-j-release-notes gen-proton-j-release-api-doc
 
 .PHONY: gen-python-release
 gen-python-release: gen-python-release-page gen-python-release-notes gen-python-release-api-doc gen-python-release-examples
 
-gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
-gen-proton-release-%: 
-	scripts/gen-proton-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-proton-j-release-%: RELEASE_DIR := input/releases/qpid-proton-j-${RELEASE}
-gen-proton-j-release-%:
-	scripts/gen-proton-j-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+gen-cpp-release-%: RELEASE_DIR := input/releases/qpid-cpp-${RELEASE}
+gen-cpp-release-%:
+	scripts/gen-cpp-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
 gen-dispatch-release-%: RELEASE_DIR := input/releases/qpid-dispatch-${RELEASE}
 gen-dispatch-release-%:
 	scripts/gen-dispatch-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+
+gen-interop-test-release-%: RELEASE_DIR := input/releases/qpid-interop-test-${RELEASE}
+gen-interop-test-release-%:
+	scripts/gen-interop-test-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
 gen-java-release-%: RELEASE_DIR := input/releases/qpid-java-${RELEASE}
 gen-java-release-%:
@@ -144,18 +147,18 @@ gen-jms-release-%: RELEASE_DIR := input/releases/qpid-jms-${RELEASE}
 gen-jms-release-%:
 	scripts/gen-jms-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
-gen-cpp-release-%: RELEASE_DIR := input/releases/qpid-cpp-${RELEASE}
-gen-cpp-release-%:
-	scripts/gen-cpp-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
+gen-proton-release-%: 
+	scripts/gen-proton-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+
+gen-proton-j-release-%: RELEASE_DIR := input/releases/qpid-proton-j-${RELEASE}
+gen-proton-j-release-%:
+	scripts/gen-proton-j-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
 gen-python-release-%: RELEASE_DIR := input/releases/qpid-python-${RELEASE}
 gen-python-release-%:
 	scripts/gen-python-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
 
-.PHONY: update-plano
-update-plano:
-	curl "https://raw.githubusercontent.com/ssorj/plano/master/python/plano.py" -o python/plano.py
-
-.PHONY: update-transom
-update-transom:
-	curl "https://raw.githubusercontent.com/ssorj/transom/master/python/transom.py" -o python/transom.py
+.PHONY: update-%
+update-%:
+	curl "https://raw.githubusercontent.com/ssorj/$*/master/python/$*.py" -o python/$*.py

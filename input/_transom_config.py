@@ -20,12 +20,13 @@ class _Release(object):
 qpid_release = _Release("Qpid", "qpid", "0.32")
 
 cpp_release = _Release("Qpid C++", "qpid-cpp", "1.36.0")
-python_release = _Release("Qpid Python", "qpid-python", "1.35.0")
 dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.7.0")
+interop_test_release = _Release("Qpid Interop Test", "qpid-interop", "0.1.0")
 java_release = _Release("Qpid for Java", "qpid-java", "6.1.1")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.20.0")
 proton_release = _Release("Qpid Proton", "qpid-proton", "0.17.0")
 proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.18.0")
+python_release = _Release("Qpid Python", "qpid-python", "1.35.0")
 
 _svn_base = "http://svn.apache.org/repos/asf/qpid"
 
@@ -38,9 +39,13 @@ current_cpp_release = cpp_release.number
 current_cpp_release_url = cpp_release.url
 current_cpp_release_link = cpp_release.link
 
-current_python_release = python_release.number
-current_python_release_url = python_release.url
-current_python_release_link = python_release.link
+current_dispatch_release = dispatch_release.number
+current_dispatch_release_url = dispatch_release.url
+current_dispatch_release_link = dispatch_release.link
+
+current_interop_test_release = interop_test_release.number
+current_interop_test_release_url = interop_test_release.url
+current_interop_test_release_link = interop_test_release.link
 
 current_java_release = java_release.number
 current_java_release_url = java_release.url
@@ -50,10 +55,6 @@ current_jms_release = jms_release.number
 current_jms_release_url = jms_release.url
 current_jms_release_link = jms_release.link
 
-current_dispatch_release = dispatch_release.number
-current_dispatch_release_url = dispatch_release.url
-current_dispatch_release_link = dispatch_release.link
-
 current_proton_release = proton_release.number
 current_proton_release_url = proton_release.url
 current_proton_release_link = proton_release.link
@@ -61,3 +62,7 @@ current_proton_release_link = proton_release.link
 current_proton_j_release = proton_j_release.number
 current_proton_j_release_url = proton_j_release.url
 current_proton_j_release_link = proton_j_release.link
+
+current_python_release = python_release.number
+current_python_release_url = python_release.url
+current_python_release_link = python_release.link
