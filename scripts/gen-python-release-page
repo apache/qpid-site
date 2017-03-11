@@ -117,10 +117,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha1_url = "{}.sha1".format(artefact_url)
+        sha_url = "{}.sha".format(artefact_url)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha1_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
 
         source_artefacts.append(row)
 
