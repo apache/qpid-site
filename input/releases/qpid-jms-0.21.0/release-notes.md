@@ -34,6 +34,7 @@ documentation, see the [release overview](index.html).
  - [QPIDJMS-244](https://issues.apache.org/jira/browse/QPIDJMS-244) - Connection close does not wait for acknowledgement of in-flight message delivery with asyncronous auto-ack MessageConsumer
  - [QPIDJMS-258](https://issues.apache.org/jira/browse/QPIDJMS-258) - Reduce the amount of allocation done in the consumer on async message dispatch
  - [QPIDJMS-267](https://issues.apache.org/jira/browse/QPIDJMS-267) - Support discovery of failover hosts provided in a connection property of the Open frame
+ - [QPIDJMS-270](https://issues.apache.org/jira/browse/QPIDJMS-270) - update to proton-j 0.18.0
  - [QPIDJMS-271](https://issues.apache.org/jira/browse/QPIDJMS-271) - Cache transaction state dispostions for TXN producers and consumers
 
 ## Bugs fixed
