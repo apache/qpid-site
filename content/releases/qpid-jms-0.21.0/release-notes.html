@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS documentation snapshot - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.21.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,40 +111,43 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS documentation snapshot</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.21.0/index.html">Qpid JMS 0.21.0</a></li><li>Qpid JMS 0.21.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-jms-documentation-snapshot">Qpid JMS documentation snapshot</h1>
+          <h1 id="qpid-jms-0210-release-notes">Qpid JMS 0.21.0 Release Notes</h1>
 
-<div class="feature">
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 1.1 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
 
-<h2 id="warning-this-is-a-snapshot-of-work-in-progress">Warning! This is a snapshot of work in progress</h2>
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<p>Documentation found here may be incorrect or incomplete.  For a
-smoother experience, see the <a href="/releases/qpid-jms-0.21.0/index.html">current stable
-release</a>.</p>
-
-<p>This content was generated at 09:12  on Sunday, 04 December 2016.</p>
-
-</div>
-
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
+<h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
-<li><a href="http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/master/qpid-jms-examples">Examples</a></li>
-<li><a href="docs/index.html">Configuration</a></li>
-<li><a href="building.html">Building Qpid JMS</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-244">QPIDJMS-244</a> - Connection close does not wait for acknowledgement of in-flight message delivery with asyncronous auto-ack MessageConsumer</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-258">QPIDJMS-258</a> - Reduce the amount of allocation done in the consumer on async message dispatch</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-267">QPIDJMS-267</a> - Support discovery of failover hosts provided in a connection property of the Open frame</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-271">QPIDJMS-271</a> - Cache transaction state dispostions for TXN producers and consumers</li>
 </ul>
 
-</div>
-
-<h2 id="more-information">More information</h2>
+<h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-jms.git">Source repository</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-231">QPIDJMS-231</a> - closing a consumer used since prior commit/rollback holds its prefetched messages until the next commit/rollback</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-256">QPIDJMS-256</a> - Closing a consumer that was used in a transaction does not stop message dispatching unitl next commit or rollback</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-257">QPIDJMS-257</a> - Messages delivered from a consume in client acknowledge mode cannot be acknowledged after the consumer is closed</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-266">QPIDJMS-266</a> - Race on session start and message dispatch can deliver messages in wrong order</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-269">QPIDJMS-269</a> - Performance regression affecting MessageProducer on transacted Sessions.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-272">QPIDJMS-272</a> - fail fast when attempting connection to a server using unexpected protocol type</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-262">QPIDJMS-262</a> - Update ActiveMQ Dependency to latest 5.14.3</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-268">QPIDJMS-268</a> - Update Netty to 4.1.8.Final</li>
 </ul>
 
 
