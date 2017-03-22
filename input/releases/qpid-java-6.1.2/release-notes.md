@@ -45,6 +45,6 @@ documentation, see the [release overview](index.html).
  - [QPID-7685](https://issues.apache.org/jira/browse/QPID-7685) - [Java Broker, BDB] AsyncRecovery and Queue#enqueue can contend for a BDB Lock potentially bringing down the broker
  - [QPID-7690](https://issues.apache.org/jira/browse/QPID-7690) - [Java Broker] Cannot create VirtualHostLogger with certain ACLs in place
  - [QPID-7692](https://issues.apache.org/jira/browse/QPID-7692) - [Java Broker, 0-8..0-91]  Message sent to fanout exchange with no routing key is not delivered to application
- - [QPID-7695](https://issues.apache.org/jira/browse/QPID-7695) - [Java Broker, HA] Indefinite hang when new node joins existing group but existing node is unresponsive
+ - [QPID-7695](https://issues.apache.org/jira/browse/QPID-7695) - [Java Broker, BDB HA] Indefinite hang when new node joins existing group but existing node is unresponsive
  - [QPID-7696](https://issues.apache.org/jira/browse/QPID-7696) - [Java Broker] Deletion of a temporary queue can crash the broker with certain ACLs
  - [QPID-7707](https://issues.apache.org/jira/browse/QPID-7707) - [Java Broker, WMC] If ACL reload operation fails due to  malformed ACL rules, etc, the error is not reported back to the user invoking the operation
