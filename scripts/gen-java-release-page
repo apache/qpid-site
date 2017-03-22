@@ -23,7 +23,7 @@ from generate import *
 from datetime import datetime
 
 source_artefact_records = (
-    ("qpid-java-{}.tar.gz", "Qpid Broker for Java, Qpid JMS for AMQP 0-9-1/0-10, Qpid JCA"),
+    ("qpid-java-{}.tar.gz", "Qpid Broker for Java, Qpid JMS for AMQP 0-9-1/0-10"),
 )
 
 binary_artefact_records = (
@@ -47,7 +47,6 @@ documentation = \
  - [Using the Qpid JMS client for AMQP 0-9-1](jms-client-0-8/book/index.html)
  - [JMS examples for AMQP 0-10](qpid-jms/examples/index.html)
  - [JMS examples for AMQP 0-9-1, 0-9, 0-8](jms-client-0-8/book/JMS-Client-0-8-Examples.html)
- - [JCA examples](http://svn.apache.org/repos/asf/qpid/java/trunk/jca/example/)
 
 </div>
 """
@@ -139,10 +138,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha1_url = "{}.sha1".format(artefact_url)
+        sha_url = "{}.sha".format(artefact_url)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha1_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
 
         source_artefacts.append(row)
 
@@ -151,10 +150,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = binary_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha1_url = "{}.sha1".format(artefact_url)
+        sha_url = "{}.sha".format(artefact_url)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha1_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
 
         binary_artefacts.append(row)
 
