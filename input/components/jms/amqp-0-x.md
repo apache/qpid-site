@@ -12,7 +12,7 @@ This JMS implementation is released as part of {{current_java_release_link}}.
  - [Java binary](http://www.apache.org/dyn/closer.lua/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz)
  - [PGP signature](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.asc)
  - [MD5 checksum](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.md5)
- - [SHA1 checksum](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.sha1)
+ - [SHA512 checksum](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-client-{{current_java_release}}-bin.tar.gz.sha)
 
 </div>
 
