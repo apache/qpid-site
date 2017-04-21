@@ -6,9 +6,9 @@
 # to you under the Apache License, Version 2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
-# 
+#
 #   http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -53,18 +53,18 @@ def setup_release_script():
     assert release_dir != ""
     assert checkout_dir is None or checkout_dir != ""
 
-    call("cmake --version > /dev/null")
-    call("dot -V > /dev/null")
-    call("doxygen --version > /dev/null")
-    call("epydoc --version > /dev/null")
-    call("fop -version > /dev/null")
-    call("gcc --version > /dev/null")
-    call("make --version > /dev/null")
-    call("rdoc --version > /dev/null")
-    call("which sphinx-build > /dev/null")
-    call("svn --version > /dev/null")
-    call("which javadoc > /dev/null")
-    call("xsltproc --version > /dev/null")
+    call_and_print_on_error("cmake --version")
+    call_and_print_on_error("dot -V")
+    call_and_print_on_error("doxygen --version")
+    call_and_print_on_error("epydoc --version")
+    call_and_print_on_error("fop -version")
+    call_and_print_on_error("gcc --version")
+    call_and_print_on_error("make --version")
+    call_and_print_on_error("rdoc --version")
+    call_and_print_on_error("which sphinx-build")
+    call_and_print_on_error("svn --version")
+    call_and_print_on_error("which javadoc")
+    call_and_print_on_error("xsltproc --version")
 
     notice("Release script inputs:")
     notice("  release:         {}", pformat(release))
@@ -96,7 +96,7 @@ def get_svn_release_url(module, release):
 
         if release == "trunk":
             path = "trunk/qpid"
-        
+
         return "{}/{}".format(project_url, path)
 
     path = "{}/{}{}".format(module, release_path_prefix, release)
@@ -113,6 +113,7 @@ def get_git_release_branch_url(module, release, path=""):
     If called without PATH it returns a URL that you can append paths
     to.
     """
+
     modules = {
         "cpp": "https://github.com/apache/qpid-cpp/tree",
         "proton": "https://github.com/apache/qpid-proton/tree",
@@ -123,45 +124,24 @@ def get_git_release_branch_url(module, release, path=""):
 
     return "{}/{}/{}".format(modules[module], release, path.lstrip("/"))
 
-def export_release(module, release, checkout_dir):
-    temp_dir = make_user_temp_dir()
-    dir_name = "qpid-{}-{}".format(module, release)
-    export_dir = join(temp_dir, "transom", dir_name)
-
-    if is_dir(export_dir):
-        debug("Export already exists")
-        return export_dir
-
-    remove(export_dir)
-    make_dir(split(export_dir)[0])
-
-    uri = get_svn_release_url(module, release)
-
-    if checkout_dir is not None:
-        uri = checkout_dir
-
-    call("svn export {} {}", uri, export_dir)
-
-    return export_dir
-
-def export_release_from_git(module, release):
+def fetch_source(module, release):
     work_dir = make_temp_dir()
     user_temp_dir = make_user_temp_dir()
     dir_name = "qpid-{}-{}".format(module, release)
-    export_dir = join(user_temp_dir, "transom", dir_name)
+    source_dir = join(user_temp_dir, "transom", dir_name)
     url = "http://git-wip-us.apache.org/repos/asf/qpid-{}.git".format(module)
 
-    if is_dir(export_dir):
-        debug("Export already exists")
-        return export_dir
+    if is_dir(source_dir):
+        debug("Source already exists")
+        return source_dir
 
-    make_dir(export_dir)
+    make_dir(source_dir)
 
     with working_dir(work_dir):
         call("git clone --bare --branch '{}' '{}' .", release, url)
-        call("git archive '{}' | tar -xf - -C '{}'", release, export_dir)
+        call("git archive '{}' | tar -xf - -C '{}'", release, source_dir, shell=True)
 
-    return export_dir
+    return source_dir
 
 ## API reference ##
 
@@ -187,7 +167,7 @@ def gen_doxygen(release, title, input_paths, strip_paths, output_dir,
     input_paths = " ".join(input_paths)
     strip_paths = " ".join(strip_paths)
     example_paths = " ".join(example_paths)
-    
+
     make_dir(output_dir)
 
     source_conf = ""
@@ -196,7 +176,7 @@ def gen_doxygen(release, title, input_paths, strip_paths, output_dir,
     if config_file is not None:
         source_conf = read(config_file)
 
-    path = make_temp("conf")
+    path = make_temp_file()
 
     write(path, source_conf)
     append(path, local_conf)
@@ -221,7 +201,10 @@ def gen_epydoc(release, title, input_paths, input_namespaces, output_dir):
     options.append("--url \"http://qpid.apache.org/index.html\"")
     options = " ".join(options)
 
-    call("PYTHONPATH={} epydoc {} {}", input_paths, options, input_namespaces)
+    env = ENV
+    env["PYTHONPATH"] = input_paths
+
+    call("epydoc {} {}", options, input_namespaces, env=env)
 
     touch(join(output_dir, "_transom_ignore_pages"))
 
@@ -259,8 +242,9 @@ def gen_rdoc(release, title, base_input_path, input_paths, output_dir):
 
     input_paths = " ".join(input_paths)
 
-    call("cd {} && rdoc {} {}", base_input_path, options, input_paths)
-    
+    with working_dir(base_input_path):
+        call("rdoc {} {}", options, input_paths)
+
     touch(join(output_dir, "_transom_ignore_pages"))
 
 ## Examples ##
@@ -367,7 +351,7 @@ def gen_examples_index(release, input_names, output_dir, title,
 
     example_links = LINE_SEP.join(example_links)
     info_links = LINE_SEP.join(info_links)
-    
+
     index = _examples_index_template.format(**locals())
 
     write(output_path, index)
@@ -424,7 +408,7 @@ def _fetch_issues(project, release):
         }
 
     issues = list()
-    
+
     for i in range(100):
         params["startAt"] = i * page_size
 

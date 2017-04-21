@@ -1,0 +1,245 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+from datetime import datetime
+
+source_artefact_records = (
+    ("qpid-broker-j-{}.tar.gz", "Qpid Broker-J"),
+)
+
+binary_artefact_records = (
+    ("qpid-broker-{}-bin.tar.gz", "Qpid Broker-J"),
+)
+
+component_records = (
+    ("broker-j", "Qpid Broker-J", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
+)
+
+documentation = \
+"""
+<div class="two-column" markdown="1">
+
+ - [Installing Qpid Broker-J](java-broker/book/Java-Broker-Installation.html)
+ - [Broker book](java-broker/book/index.html)
+
+</div>
+"""
+
+template = \
+"""
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Broker-J {release}
+
+Qpid Broker-J is a message broker written in Java that stores, routes,
+and forwards messages using AMQP.  More about
+[Qpid]({{{{site_url}}}}/index.html).
+
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
+
+It's important to [verify the
+integrity]({{{{site_url}}}}/download.html#verify-what-you-download) of the
+files you download.
+
+## Source archives
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{source_artefacts}
+
+## Binaries
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{binary_artefacts}
+
+## Components
+
+| Component | Languages | Platforms | AMQP versions |
+|-----------|-----------|-----------|---------------|
+{components}
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [All release artefacts](http://archive.apache.org/dist/qpid/broker-j/{release})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/{release})
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {{
+      if ("{release}" === "{{{{current_broker_j_release}}}}") {{
+          _modifyCurrentReleaseLinks();
+      }}
+  }});
+</script>
+"""
+
+def gen_release_page(release, issues_release, source_release, release_dir):
+    output_path = join(release_dir, "index.md")
+
+    components = list()
+
+    source_artefacts = list()
+    source_artefact_url = "http://archive.apache.org/dist/qpid/broker-j/{}/{}"
+
+    binary_artefacts = list()
+    binary_artefact_url = "http://archive.apache.org/dist/qpid/broker-j/{}/binaries/{}"
+
+    for artefact, summary in source_artefact_records:
+        artefact = artefact.format(release)
+        artefact_url = source_artefact_url.format(release, artefact)
+        asc_url = "{}.asc".format(artefact_url)
+        md5_url = "{}.md5".format(artefact_url)
+        sha_url = "{}.sha".format(artefact_url)
+
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
+
+        source_artefacts.append(row)
+
+    for artefact, summary in binary_artefact_records:
+        artefact = artefact.format(release)
+        artefact_url = binary_artefact_url.format(release, artefact)
+        asc_url = "{}.asc".format(artefact_url)
+        md5_url = "{}.md5".format(artefact_url)
+        sha_url = "{}.sha".format(artefact_url)
+
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
+
+        binary_artefacts.append(row)
+
+    for key, name, languages, platforms, amqp_versions in component_records:
+        if key.endswith(".html"):
+            link = "[{}]({{{{site_url}}}}/components/{})".format(name, key)
+        else:
+            link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)
+        args = link, languages, platforms, amqp_versions
+        components.append("| {} | {} | {} | {} |".format(*args))
+
+    source_artefacts = "\n".join(source_artefacts)
+    binary_artefacts = "\n".join(binary_artefacts)
+    components = "\n".join(components)
+
+    jql = "project = QPID AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    vars = locals()
+    vars["documentation"] = documentation
+    
+    output = template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+trunk_template = """
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;; 
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;; 
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid Broker-J documentation snapshot
+
+<div class="feature" markdown="1">
+
+## Warning! This is a snapshot of work in progress
+
+Documentation found here may be incorrect or incomplete.  For a
+smoother experience, see the [current stable
+release]({{{{current_broker_j_release_url}}}}/index.html).
+
+This content was generated at {time} on {day}, {date}.
+
+</div>
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git)
+"""
+    
+def gen_master_release_page(release_dir):
+    output_path = join(release_dir, "index.md")
+
+    now = datetime.now()
+
+    day = now.strftime("%A")
+    date = now.strftime("%d %B %Y")
+    time = now.strftime("%H:%M %Z")
+
+    vars = locals()
+    vars["documentation"] = documentation
+    
+    output = trunk_template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+
+if release == "master":
+    gen_master_release_page(release_dir)
+else:
+    gen_release_page(release, issues_release, source_release, release_dir)
+
+notice("Release page generated")

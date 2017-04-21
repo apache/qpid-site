@@ -19,11 +19,13 @@ class _Release(object):
 
 qpid_release = _Release("Qpid", "qpid", "0.32")
 
+broker_j_release = _Release("Qpid Broker-J", "qpid-broker-j", "6.2.0")
 cpp_release = _Release("Qpid C++", "qpid-cpp", "1.36.0")
 dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.7.0")
 interop_test_release = _Release("Qpid Interop Test", "qpid-interop", "0.1.0")
 java_release = _Release("Qpid for Java", "qpid-java", "6.1.2")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.22.0")
+jms_amqp_0_x_release = _Release("Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.2.0")
 proton_release = _Release("Qpid Proton", "qpid-proton", "0.17.0")
 proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.18.0")
 python_release = _Release("Qpid Python", "qpid-python", "1.36.0")
@@ -34,6 +36,10 @@ current_release = qpid_release.number
 current_release_url = qpid_release.url
 current_release_link = qpid_release.link
 current_release_tag = "{}/tags/{}".format(_svn_base, qpid_release.number)
+
+current_broker_j_release = broker_j_release.number
+current_broker_j_release_url = broker_j_release.url
+current_broker_j_release_link = broker_j_release.link
 
 current_cpp_release = cpp_release.number
 current_cpp_release_url = cpp_release.url
@@ -54,6 +60,10 @@ current_java_release_link = java_release.link
 current_jms_release = jms_release.number
 current_jms_release_url = jms_release.url
 current_jms_release_link = jms_release.link
+
+current_jms_amqp_0_x_release = jms_amqp_0_x_release.number
+current_jms_amqp_0_x_release_url = jms_amqp_0_x_release.url
+current_jms_amqp_0_x_release_link = jms_amqp_0_x_release.link
 
 current_proton_release = proton_release.number
 current_proton_release_url = proton_release.url

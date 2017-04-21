@@ -20,7 +20,7 @@
 
 from generate import *
 
-def gen_docs(release, source_dir, output_dir):
+def gen_jms_docs(release, source_dir, output_dir):
     docs_input_dir = join(source_dir, "qpid-jms-docs")
     docs_output_dir = join(output_dir, "docs")
 
@@ -33,8 +33,8 @@ def gen_docs(release, source_dir, output_dir):
 ## Now do stuff ##
 
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
-source_dir = export_release_from_git("jms", source_release)
+source_dir = checkout_dir or fetch_source("jms", source_release)
 
-gen_docs(release, source_dir, release_dir)
+gen_jms_docs(release, source_dir, release_dir)
 
 notice("Docs copied")

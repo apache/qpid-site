@@ -20,7 +20,7 @@
 export PYTHONPATH := python
 
 OUTPUT_DIR := output
-SITE_URL := file://$(abspath ${OUTPUT_DIR})
+SITE_URL := file:$(abspath ${OUTPUT_DIR})
 
 ifdef RELEASE
     ifndef ISSUES_RELEASE
@@ -31,6 +31,8 @@ ifdef RELEASE
         SOURCE_RELEASE := ${RELEASE}
     endif
 endif
+
+SOURCE_MODULES := broker-j cpp dispatch interop-test java jms jms-amqp-0-x proton proton-j python
 
 .PHONY: default
 default: render
@@ -103,61 +105,17 @@ clean:
 gen-amqp-type-reference:
 	scripts/gen-amqp-type-reference misc/amqp > input/amqp/type-reference.html.in
 
-.PHONY: gen-cpp-release
-gen-cpp-release: gen-cpp-release-page gen-cpp-release-notes gen-cpp-release-api-doc gen-cpp-release-examples gen-cpp-release-books
+define RELEASE_TEMPLATE =
+.PHONY: gen-${1}-release
+gen-${1}-release: gen-${1}-release-page gen-${1}-release-notes gen-${1}-release-docs
 
-.PHONY: gen-dispatch-release
-gen-dispatch-release: gen-dispatch-release-page gen-dispatch-release-notes gen-dispatch-release-books
+.PHONY: gen-${1}-release-%
+gen-${1}-release-%: RELEASE_DIR := input/releases/qpid-${1}-$${RELEASE}
+gen-${1}-release-%:
+	scripts/gen-${1}-release-$$* $${RELEASE} $${ISSUES_RELEASE} $${SOURCE_RELEASE} $${RELEASE_DIR} $${CHECKOUT_DIR}
+endef
 
-.PHONY: gen-interop-test-release
-gen-interop-test-release: gen-interop-test-release-page gen-interop-test-release-notes
-
-.PHONY: gen-java-release
-gen-java-release: gen-java-release-page gen-java-release-notes gen-java-release-books gen-java-release-examples
-
-.PHONY: gen-jms-release
-gen-jms-release: gen-jms-release-page gen-jms-release-notes gen-jms-release-docs
-
-.PHONY: gen-proton-release
-gen-proton-release: gen-proton-release-page gen-proton-release-notes gen-proton-release-api-doc gen-proton-release-examples
-
-.PHONY: gen-proton-j-release
-gen-proton-j-release: gen-proton-j-release-page gen-proton-j-release-notes gen-proton-j-release-api-doc
-
-.PHONY: gen-python-release
-gen-python-release: gen-python-release-page gen-python-release-notes gen-python-release-api-doc gen-python-release-examples
-
-gen-cpp-release-%: RELEASE_DIR := input/releases/qpid-cpp-${RELEASE}
-gen-cpp-release-%:
-	scripts/gen-cpp-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-dispatch-release-%: RELEASE_DIR := input/releases/qpid-dispatch-${RELEASE}
-gen-dispatch-release-%:
-	scripts/gen-dispatch-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-interop-test-release-%: RELEASE_DIR := input/releases/qpid-interop-test-${RELEASE}
-gen-interop-test-release-%:
-	scripts/gen-interop-test-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-java-release-%: RELEASE_DIR := input/releases/qpid-java-${RELEASE}
-gen-java-release-%:
-	scripts/gen-java-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-jms-release-%: RELEASE_DIR := input/releases/qpid-jms-${RELEASE}
-gen-jms-release-%:
-	scripts/gen-jms-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-proton-release-%: RELEASE_DIR := input/releases/qpid-proton-${RELEASE}
-gen-proton-release-%: 
-	scripts/gen-proton-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-proton-j-release-%: RELEASE_DIR := input/releases/qpid-proton-j-${RELEASE}
-gen-proton-j-release-%:
-	scripts/gen-proton-j-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
-
-gen-python-release-%: RELEASE_DIR := input/releases/qpid-python-${RELEASE}
-gen-python-release-%:
-	scripts/gen-python-release-$* ${RELEASE} ${ISSUES_RELEASE} ${SOURCE_RELEASE} ${RELEASE_DIR} ${CHECKOUT_DIR}
+$(foreach module,${SOURCE_MODULES},$(eval $(call RELEASE_TEMPLATE,${module})))
 
 .PHONY: update-%
 update-%:

@@ -1,0 +1,198 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+from datetime import datetime
+
+download_records = (
+    ("apache-qpid-jms-amqp-0-x-{}-bin.tar.gz", "Qpid JMS binaries"),
+    ("apache-qpid-jms-amqp-0-x-{}-src.tar.gz", "Qpid JMS source code"),
+    )
+
+documentation = \
+"""
+<div class="two-column" markdown="1">
+
+ - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
+
+</div>
+"""
+
+template = \
+"""
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;;
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;;
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid JMS for AMQP 0-x {release}
+
+Qpid JMS for AMQP 0-x is XXX.
+
+For a detailed list of the changes in this release, see the [release
+notes](release-notes.html).
+
+[jms]: http://en.wikipedia.org/wiki/Java_Message_Service
+
+## Download
+
+It's important to [verify the
+integrity]({{{{site_url}}}}/download.html#verify-what-you-download) of the
+files you download.
+
+| Content | Download | Verify |
+|---------|----------|--------|
+{downloads}
+
+The client is also available [via Maven]({{{{site_url}}}}/maven.html).
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [All release artefacts](http://archive.apache.org/dist/qpid/jms-amqp-0-x/{release})
+ - [Resolved issues in JIRA]({issues_url})
+ - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git/tree/refs/tags/{source_release})
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {{
+      if ("{release}" === "{{{{current_jms_amqp_0_x_release}}}}") {{
+          _modifyCurrentReleaseLinks();
+      }}
+  }});
+</script>
+"""
+
+def gen_release_page(release, issues_release, source_release, release_dir):
+    output_path = join(release_dir, "index.md")
+
+    downloads = list()
+    components = list()
+
+    artifact_url_template = "http://archive.apache.org/dist/qpid/jms-amqp-0-x/{}/{}"
+
+    for artifact, summary in download_records:
+        artifact = artifact.format(release)
+        artifact_url = artifact_url_template.format(release, artifact)
+        asc_url = "{}.asc".format(artifact_url)
+        md5_url = "{}.md5".format(artifact_url)
+        sha_url = "{}.sha".format(artifact_url)
+
+        args = summary, artifact, artifact_url, asc_url, md5_url, sha_url
+        downloads.append("| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args))
+
+    downloads = "\n".join(downloads)
+
+    jql = "project = QPID AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release=release, source_release=source_release)
+
+    output = template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+master_template = """
+;;
+;; Licensed to the Apache Software Foundation (ASF) under one
+;; or more contributor license agreements.  See the NOTICE file
+;; distributed with this work for additional information
+;; regarding copyright ownership.  The ASF licenses this file
+;; to you under the Apache License, Version 2.0 (the
+;; "License"); you may not use this file except in compliance
+;; with the License.  You may obtain a copy of the License at
+;;
+;;   http://www.apache.org/licenses/LICENSE-2.0
+;;
+;; Unless required by applicable law or agreed to in writing,
+;; software distributed under the License is distributed on an
+;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+;; KIND, either express or implied.  See the License for the
+;; specific language governing permissions and limitations
+;; under the License.
+;;
+
+# Qpid JMS for AMQP 0-x documentation snapshot
+
+<div class="feature" markdown="1">
+
+## Warning! This is a snapshot of work in progress
+
+Documentation found here may be incorrect or incomplete.  For a
+smoother experience, see the [current stable
+release]({{{{current_jms_amqp_0_x_release_url}}}}/index.html).
+
+This content was generated at {time} on {day}, {date}.
+
+</div>
+
+## Documentation
+
+{documentation}
+
+## More information
+
+ - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
+"""
+
+def gen_master_release_page(release_dir):
+    output_path = join(release_dir, "index.md")
+
+    now = datetime.now()
+
+    day = now.strftime("%A")
+    date = now.strftime("%d %B %Y")
+    time = now.strftime("%H:%M %Z")
+
+    vars = locals()
+    vars["documentation"] = documentation.format(release="master", source_release="master")
+
+    output = master_template.format(**vars)
+    output = output.strip()
+
+    write(output_path, output)
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+
+if release == "master":
+    gen_master_release_page(release_dir)
+else:
+    gen_release_page(release, issues_release, source_release, release_dir)
+
+notice("Release page generated")

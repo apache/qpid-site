@@ -1,0 +1,145 @@
+#!/usr/bin/python
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+
+from generate import *
+
+def gen_proton_apis(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+    build_dir = make_temp_dir()
+
+    with working_dir(build_dir):
+        call("cmake {}", source_dir)
+        call("make all docs")
+
+    gen_proton_c_api(release, source_dir, component_dir)
+    gen_proton_cpp_api(release, source_dir, component_dir)
+    gen_proton_python_api(release, source_dir, component_dir)
+
+def gen_proton_c_api(release, source_dir, component_dir):
+    include_dir = join(source_dir, "proton-c", "include")
+    output_dir = join(component_dir, "c", "api")
+    config_file = join(source_dir, "proton-c", "docs", "api", "user.doxygen.in")
+
+    remove(output_dir)
+    
+    gen_doxygen(release=release,
+                title="Qpid Proton C API",
+                input_paths=(join(include_dir, "proton"),
+                             join(source_dir, "proton-c", "docs"),
+                             join(source_dir, "examples", "c", "proactor", "README.dox"),
+                ),
+                strip_paths=(include_dir,),
+                output_dir=output_dir,
+                example_paths=(join(source_dir, "examples", "c", "proactor"),),
+                config_file=config_file)
+
+def gen_proton_cpp_api(release, source_dir, component_dir):
+    base_dir = join(source_dir, "proton-c", "bindings", "cpp")
+    include_dir = join(base_dir, "include")
+    output_dir = join(component_dir, "cpp", "api")
+    config_file = join(base_dir, "docs", "user.doxygen.in")
+
+    remove(output_dir)
+    
+    gen_doxygen(release=release,
+                title="Qpid Proton C++ API",
+                input_paths=(join(include_dir, "proton"),
+                             join(base_dir, "docs"),
+                             join(source_dir, "examples", "cpp", "README.dox"),
+                             join(source_dir, "examples", "cpp", "tutorial.dox"),
+                ),
+                strip_paths=(include_dir,),
+                output_dir=output_dir,
+                example_paths=(join(source_dir, "examples", "cpp"),),
+                config_file=config_file)
+
+def gen_proton_python_api(release, source_dir, component_dir):
+    input_path = join(source_dir, "proton-c", "bindings", "python")
+    input_namespace = "proton"
+    output_dir = join(component_dir, "python", "api")
+
+    remove(output_dir)
+    
+    gen_epydoc(release=release,
+               title="Qpid Proton Python API",
+               input_paths=(input_path,),
+               input_namespaces=(input_namespace,),
+               output_dir=output_dir)
+
+def gen_proton_books(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+    input_dir = join(source_dir, "proton-c", "bindings", "python", "docs")
+    output_dir = join(component_dir, "python", "book")
+
+    remove(output_dir)
+
+    copy(input_dir, output_dir)
+    touch(join(output_dir, "_transom_ignore_pages"))
+
+    remove(join(output_dir, ".doctrees"))
+
+def gen_proton_examples(release, source_dir, release_dir):
+    component_dir = join(release_dir, "proton")
+
+    gen_proton_python_examples(release, source_dir, component_dir)
+    gen_proton_cpp_examples(release, source_dir, component_dir)
+
+def gen_proton_python_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "python")
+    output_dir = join(component_dir, "python", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/python")
+    readme_url = "{}/README".format(source_url)
+    input_names = list_dir(input_dir, "*.py")
+
+    gen_examples(release=release,
+                 lang="python",
+                 title="Proton Python Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url,
+                 readme_url=readme_url)
+
+def gen_proton_cpp_examples(release, source_dir, component_dir):
+    input_dir = join(source_dir, "examples", "cpp")
+    output_dir = join(component_dir, "cpp", "examples")
+    source_url = get_git_release_branch_url("proton", release, "examples/cpp")
+    readme_url = "{}/README.dox".format(source_url)
+    input_names = list_dir(input_dir, "*.cpp", "*.hpp")
+
+    gen_examples(release=release,
+                 lang="cpp",
+                 title="Proton C++ Examples",
+                 input_dir=input_dir,
+                 input_names=input_names,
+                 output_dir=output_dir,
+                 source_url=source_url,
+                 readme_url=readme_url)
+
+## Now do stuff ##
+
+release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
+source_dir = checkout_dir or fetch_source("proton", source_release)
+
+gen_proton_apis(release, source_dir, release_dir)
+gen_proton_books(release, source_dir, release_dir)
+gen_proton_examples(release, source_dir, release_dir)
+
+notice("Docs generated")
