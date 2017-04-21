@@ -41,12 +41,6 @@ with its URL, e.g for Qpid JMS:
 Alternatively, you can use the mirror repositories available on GitHub to
 create your own fork.
 
-To access code from a Subversion repository, use the `svn checkout` command
-with its URL, .e.g for Qpid for Java:
-
-    Qpid for Java
-    % svn checkout http://svn.apache.org/repos/asf/qpid/java/trunk qpid-java
-
 ## Install the code
 
 Consult the install documentation below, or see the respective component
@@ -87,9 +81,6 @@ servers.
 
 ## More information
 
- - [Subversion project](http://subversion.apache.org/)
- - [Subversion manual](http://svnbook.red-bean.com/)
- - [Subversion at Apache](http://www.apache.org/dev/version-control.html)
  - [Git project](http://git-scm.com)
  - [Git documentation](http://git-scm.com/documentation)
  - [Git at Apache](http://www.apache.org/dev/git.html)

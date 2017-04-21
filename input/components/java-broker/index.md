@@ -81,8 +81,8 @@ that stores, routes, and forwards messages using AMQP.
 
 ## Source code
 
- - [Browse via GitHub](https://github.com/apache/qpid-java)
- - [Subversion repository](https://svn.apache.org/repos/asf/qpid/java/trunk)
+ - [Browse via GitHub](https://github.com/apache/qpid-broker-j)
+ - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git)
 
 ## Resources
 

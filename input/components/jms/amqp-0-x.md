@@ -35,3 +35,8 @@ The client is also available [via Maven]({{site_url}}/maven.html).
  - [Report a bug](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&priority=3&components=12311389)
  - [Request an improvement](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&priority=3&components=12311389)
  - [Jira component page](http://issues.apache.org/jira/browse/QPID/component/12311389)
+
+## Source code
+
+ - [Browse via GitHub](https://github.com/apache/qpid-jms-amqp-0-x)
+ - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
