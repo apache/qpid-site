@@ -1627,7 +1627,7 @@ cellspacing="0" cellpadding="4">
 <tr>
 <td align="left" valign="top"><p class="table">users</p></td>
 <td align="left" valign="top"><p class="table">""</p></td>
-<td align="left" valign="top"><p class="table">List of authenticated users in this group.</p></td>
+<td align="left" valign="top"><p class="table">Comma separated list of authenticated users in this group.</p></td>
 </tr>
 <tr>
 <td align="left" valign="top"><p class="table"><strong>Connection Restrictions</strong></p></td>
@@ -2514,7 +2514,7 @@ running using the <code>qdrouterd(8)</code> tool&#8217;s <code>create</code> ope
 be modified using the <code>update</code> operation, see the entity descriptions below.</p></div>
 <div class="sect3">
 <h4 id="_router">4.4.1. router</h4>
-<div class="paragraph"><p>Tracks peer routers and computes routes to destinations.</p></div>
+<div class="paragraph"><p>Tracks peer routers and computes routes to destinations. This entity is mandatory. The router will not start without this entity.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
@@ -2542,7 +2542,15 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloInterval</em> (integer, default=1, <code>CREATE</code>)
+<em>version</em> (string)
+</dt>
+<dd>
+<p>
+  Software Version
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloInterval</em> (integer, default=<em>1</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2550,7 +2558,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloMaxAge</em> (integer, default=3, <code>CREATE</code>)
+<em>helloMaxAge</em> (integer, default=<em>3</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2558,7 +2566,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raInterval</em> (integer, default=30, <code>CREATE</code>)
+<em>raInterval</em> (integer, default=<em>30</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2566,7 +2574,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raIntervalFlux</em> (integer, default=4, <code>CREATE</code>)
+<em>raIntervalFlux</em> (integer, default=<em>4</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2574,7 +2582,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>remoteLsMaxAge</em> (integer, default=60, <code>CREATE</code>)
+<em>remoteLsMaxAge</em> (integer, default=<em>60</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2606,7 +2614,31 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>workerThreads</em> (integer, default=4, <code>CREATE</code>)
+<em>linkRouteCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of link routes attached to the router node.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>autoLinkCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of auto links attached to the router node.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connectionCount</em> (integer)
+</dt>
+<dd>
+<p>
+  Number of open connections to the router node.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>workerThreads</em> (integer, default=<em>4</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2638,6 +2670,14 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
+<em>allowUnsettledMulticast</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  If true, allow senders to send unsettled deliveries to multicast addresses.  These deliveries shall be settled by the ingress router.  If false, unsettled deliveries to multicast addresses shall be rejected.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>routerId</em> (string, <code>CREATE</code>)
 </dt>
 <dd>
@@ -2646,7 +2686,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>mobileAddrMaxAge</em> (integer, default=60, <code>CREATE</code>)
+<em>mobileAddrMaxAge</em> (integer, default=<em>60</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2697,7 +2737,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the <em>password</em> option.  Don&#8217;t use both password and passwordFile in the same profile.
+  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -2705,7 +2745,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint).
+  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint). The user identifier (uid) that is generated based on the uidFormat is a string which has a semi-colon as a separator between the components
 </p>
 </dd>
 <dt class="hdlist1">
@@ -2713,7 +2753,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  The absolute path to the file containing the unique id to dispay name mapping
+  The absolute path to the file containing the unique id to display name mapping
 </p>
 </dd>
 </dl></div>
@@ -2724,11 +2764,11 @@ be modified using the <code>update</code> operation, see the entity descriptions
 <div class="paragraph"><p>Operations allowed: <code>CREATE</code>, <code>DELETE</code>, <code>READ</code></p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>host</em> (string, default=<em>127.0.0.1</em>, <code>CREATE</code>)
+<em>host</em> (string, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
-  IP address: ipv4 or ipv6 literal or a host name
+  A host name, IPV4 or IPV6 literal, or the empty string. The empty string listens on all local addresses. A host name listens on all addresses associated with the name. An IPV6 literal address (or wildcard <em>[::]</em>) listens only for IPV6. An IPV4 literal address (or wildcard <em>0.0.0.0</em>) listens only for IPV4.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -2812,7 +2852,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxFrameSize</em> (integer, default=16384, <code>CREATE</code>)
+<em>maxFrameSize</em> (integer, default=<em>16384</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2820,7 +2860,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessions</em> (integer, default=32768, <code>CREATE</code>)
+<em>maxSessions</em> (integer, default=<em>32768</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2828,15 +2868,15 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessionFrames</em> (integer, default=100, <code>CREATE</code>)
+<em>maxSessionFrames</em> (integer, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
-  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings, if specified, will overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 100.
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings, if specified, will overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 0 (unlimited window).
 </p>
 </dd>
 <dt class="hdlist1">
-<em>idleTimeoutSeconds</em> (integer, default=16, <code>CREATE</code>)
+<em>idleTimeoutSeconds</em> (integer, default=<em>16</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2857,6 +2897,22 @@ be modified using the <code>update</code> operation, see the entity descriptions
 <dd>
 <p>
   The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>multiTenant</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  If true, apply multi-tenancy to endpoints connected at this listener.  The address space is defined by the virtual host (hostname field in the Open).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>failoverList</em> (string, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A comma-separated list of failover urls to be supplied to connected clients.  Form: [(amqp|amqps|ws|wss)://]host_or_ip[:port]
 </p>
 </dd>
 <dt class="hdlist1">
@@ -2889,6 +2945,30 @@ be modified using the <code>update</code> operation, see the entity descriptions
 <dd>
 <p>
   (DEPRECATED) This attribute is now controlled by the requireEncryption attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>http</em> (boolean, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Accept HTTP connections that can upgrade to AMQP over WebSocket
+</p>
+</dd>
+<dt class="hdlist1">
+<em>httpRoot</em> (path, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  Serve HTTP files from this directory, defaults to the installed stand-alone console directory
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
 </p>
 </dd>
 </dl></div>
@@ -2955,7 +3035,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>allowRedirect</em> (boolean, default=True, <code>CREATE</code>)
+<em>allowRedirect</em> (boolean, default=<em>True</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2963,7 +3043,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxFrameSize</em> (integer, default=16384, <code>CREATE</code>)
+<em>maxFrameSize</em> (integer, default=<em>16384</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2971,7 +3051,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessions</em> (integer, default=32768, <code>CREATE</code>)
+<em>maxSessions</em> (integer, default=<em>32768</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -2979,15 +3059,15 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessionFrames</em> (integer, default=100, <code>CREATE</code>)
+<em>maxSessionFrames</em> (integer, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
-  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings will not overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 100.
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings will not overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1.  Defaults to 0 (unlimited window).
 </p>
 </dd>
 <dt class="hdlist1">
-<em>idleTimeoutSeconds</em> (integer, default=16, <code>CREATE</code>)
+<em>idleTimeoutSeconds</em> (integer, default=<em>16</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3011,7 +3091,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>verifyHostName</em> (boolean, default=True, <code>CREATE</code>)
+<em>verifyHostName</em> (boolean, default=<em>True</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3042,6 +3122,14 @@ be modified using the <code>update</code> operation, see the entity descriptions
   (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
 </p>
 </dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>, <code>CREATE</code>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
 </dl></div>
 </div>
 <div class="sect3">
@@ -3050,7 +3138,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 <div class="paragraph"><p>Operations allowed: <code>UPDATE</code>, <code>READ</code></p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>DEFAULT</em>], required, <code>UPDATE</code>)
+<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>HTTP</em>, <em>CONN_MGR</em>, <em>PYTHON</em>, <em>DEFAULT</em>], required, <code>UPDATE</code>)
 </dt>
 <dd>
 <p>
@@ -3156,7 +3244,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  ContainerID for the target container
+  ContainerID for the target container. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -3164,7 +3252,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  The name from a connector or listener
+  The name from a connector or listener. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -3227,7 +3315,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  ContainerID for the target container
+  ContainerID for the target container. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
 </p>
 </dd>
 <dt class="hdlist1">
@@ -3235,7 +3323,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </dt>
 <dd>
 <p>
-  The name from a connector or listener
+  The name from a connector or listener. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
 </p>
 </dd>
 <dt class="hdlist1">
@@ -3286,7 +3374,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>wsport</em> (integer, default=5673)
+<em>wsport</em> (integer, default=<em>5673</em>)
 </dt>
 <dd>
 <p>
@@ -3325,7 +3413,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>maxConnections</em> (integer, default=65535, <code>CREATE</code>)
+<em>maxConnections</em> (integer, default=<em>65535</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3383,7 +3471,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnections</em> (integer, default=65535, <code>CREATE</code>, <code>UPDATE</code>)
+<em>maxConnections</em> (integer, default=<em>65535</em>, <code>CREATE</code>, <code>UPDATE</code>)
 </dt>
 <dd>
 <p>
@@ -3391,7 +3479,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnectionsPerUser</em> (integer, default=65535, <code>CREATE</code>, <code>UPDATE</code>)
+<em>maxConnectionsPerUser</em> (integer, default=<em>65535</em>, <code>CREATE</code>, <code>UPDATE</code>)
 </dt>
 <dd>
 <p>
@@ -3399,7 +3487,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnectionsPerHost</em> (integer, default=65535, <code>CREATE</code>, <code>UPDATE</code>)
+<em>maxConnectionsPerHost</em> (integer, default=<em>65535</em>, <code>CREATE</code>, <code>UPDATE</code>)
 </dt>
 <dd>
 <p>
@@ -3438,7 +3526,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>workerThreads</em> (integer, default=4, <code>CREATE</code>)
+<em>workerThreads</em> (integer, default=<em>4</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3493,7 +3581,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>inPhase</em> (integer, default=-1, <code>CREATE</code>)
+<em>inPhase</em> (integer, default=<em>-1</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3501,7 +3589,7 @@ be modified using the <code>update</code> operation, see the entity descriptions
 </p>
 </dd>
 <dt class="hdlist1">
-<em>outPhase</em> (integer, default=-1, <code>CREATE</code>)
+<em>outPhase</em> (integer, default=<em>-1</em>, <code>CREATE</code>)
 </dt>
 <dd>
 <p>
@@ -3823,7 +3911,70 @@ operational attributes.</p></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_router_link">4.5.3. router.link</h4>
+<h4 id="_logstats">4.5.3. logStats</h4>
+<div class="paragraph"><p>histogram of the different severity-levels of events on the given log.</p></div>
+<div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>traceCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many trace-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many debug-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>infoCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many info-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>noticeCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many notice-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>warningCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many warning-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>errorCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many error-level events have happened on this log.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>criticalCount</em> (integer)
+</dt>
+<dd>
+<p>
+  How many critical-level events have happened on this log.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect3">
+<h4 id="_router_link">4.5.4. router.link</h4>
 <div class="paragraph"><p>Link to another AMQP endpoint: router node, client or other AMQP process.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>UPDATE</code>, <code>READ</code></p></div>
 <div class="dlist"><dl>
@@ -3948,7 +4099,7 @@ operational attributes.</p></div>
 </dl></div>
 </div>
 <div class="sect3">
-<h4 id="_router_address">4.5.4. router.address</h4>
+<h4 id="_router_address">4.5.5. router.address</h4>
 <div class="paragraph"><p>AMQP address managed by the router.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
@@ -4067,7 +4218,7 @@ operational attributes.</p></div>
 </dl></div>
 </div>
 <div class="sect3">
-<h4 id="_router_node">4.5.5. router.node</h4>
+<h4 id="_router_node">4.5.6. router.node</h4>
 <div class="paragraph"><p>Remote router node connected to this router.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
@@ -4077,6 +4228,14 @@ operational attributes.</p></div>
 <dd>
 <p>
   Remote node identifier.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolVersion</em> (integer)
+</dt>
+<dd>
+<p>
+  Router-protocol version supported by the node.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -4135,10 +4294,18 @@ operational attributes.</p></div>
   Reachability cost
 </p>
 </dd>
+<dt class="hdlist1">
+<em>lastTopoChange</em> (integer)
+</dt>
+<dd>
+<p>
+  Timestamp showing the most recent change to this node&#8217;s neighborhood.
+</p>
+</dd>
 </dl></div>
 </div>
 <div class="sect3">
-<h4 id="_connection">4.5.6. connection</h4>
+<h4 id="_connection">4.5.7. connection</h4>
 <div class="paragraph"><p>Connections to the router&#8217;s container.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
@@ -4242,6 +4409,14 @@ operational attributes.</p></div>
 </p>
 </dd>
 <dt class="hdlist1">
+<em>tenant</em> (string)
+</dt>
+<dd>
+<p>
+  If multi-tenancy is on for this connection, the tenant space in effect
+</p>
+</dd>
+<dt class="hdlist1">
 <em>properties</em> (map)
 </dt>
 <dd>
@@ -4252,7 +4427,7 @@ operational attributes.</p></div>
 </dl></div>
 </div>
 <div class="sect3">
-<h4 id="_allocator">4.5.7. allocator</h4>
+<h4 id="_allocator">4.5.8. allocator</h4>
 <div class="paragraph"><p>Memory allocation pool.</p></div>
 <div class="paragraph"><p>Operations allowed: <code>READ</code></p></div>
 <div class="dlist"><dl>
@@ -4350,7 +4525,7 @@ from any AMQP client by sending a message with the appropriate properties and bo
 response should be sent.</p></div>
 </div>
 <div class="sect3">
-<h4 id="_operations_for_all_entity_types">4.5.8. Operations for all entity types</h4>
+<h4 id="_operations_for_all_entity_types">4.5.9. Operations for all entity types</h4>
 <div class="sect4">
 <h5 id="_operation_read">Operation READ</h5>
 <div class="paragraph"><p>Read attributes of a single entity</p></div>
@@ -4470,7 +4645,7 @@ response should be sent.</p></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_operations_for_em_org_amqp_management_em_entity_type">4.5.9. Operations for <em>org.amqp.management</em> entity type</h4>
+<h4 id="_operations_for_em_org_amqp_management_em_entity_type">4.5.10. Operations for <em>org.amqp.management</em> entity type</h4>
 <div class="sect4">
 <h5 id="_operation_get_types_2">Operation GET-TYPES</h5>
 <div class="paragraph"><p>Get the set of entity types and their inheritance relationships</p></div>
@@ -4637,7 +4812,7 @@ response should be sent.</p></div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_operations_for_em_management_em_entity_type">4.5.10. Operations for <em>management</em> entity type</h4>
+<h4 id="_operations_for_em_management_em_entity_type">4.5.11. Operations for <em>management</em> entity type</h4>
 <div class="sect4">
 <h5 id="_operation_get_schema_json_2">Operation GET-SCHEMA-JSON</h5>
 <div class="paragraph"><p>Get the qdrouterd schema for this router in JSON format</p></div>

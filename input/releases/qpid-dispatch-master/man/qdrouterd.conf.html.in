@@ -73,7 +73,7 @@ listener {
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_router">router</h3>
-<div class="paragraph"><p>Tracks peer routers and computes routes to destinations.</p></div>
+<div class="paragraph"><p>Tracks peer routers and computes routes to destinations. This entity is mandatory. The router will not start without this entity.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 <em>id</em> (string)
@@ -92,7 +92,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloInterval</em> (integer, default=1)
+<em>helloInterval</em> (integer, default=<em>1</em>)
 </dt>
 <dd>
 <p>
@@ -100,7 +100,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloMaxAge</em> (integer, default=3)
+<em>helloMaxAge</em> (integer, default=<em>3</em>)
 </dt>
 <dd>
 <p>
@@ -108,7 +108,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raInterval</em> (integer, default=30)
+<em>raInterval</em> (integer, default=<em>30</em>)
 </dt>
 <dd>
 <p>
@@ -116,7 +116,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raIntervalFlux</em> (integer, default=4)
+<em>raIntervalFlux</em> (integer, default=<em>4</em>)
 </dt>
 <dd>
 <p>
@@ -124,7 +124,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>remoteLsMaxAge</em> (integer, default=60)
+<em>remoteLsMaxAge</em> (integer, default=<em>60</em>)
 </dt>
 <dd>
 <p>
@@ -132,7 +132,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>workerThreads</em> (integer, default=4)
+<em>workerThreads</em> (integer, default=<em>4</em>)
 </dt>
 <dd>
 <p>
@@ -164,6 +164,14 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>allowUnsettledMulticast</em> (boolean)
+</dt>
+<dd>
+<p>
+  If true, allow senders to send unsettled deliveries to multicast addresses.  These deliveries shall be settled by the ingress router.  If false, unsettled deliveries to multicast addresses shall be rejected.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>routerId</em> (string)
 </dt>
 <dd>
@@ -172,7 +180,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>mobileAddrMaxAge</em> (integer, default=60)
+<em>mobileAddrMaxAge</em> (integer, default=<em>60</em>)
 </dt>
 <dd>
 <p>
@@ -222,7 +230,7 @@ listener {
 </dt>
 <dd>
 <p>
-  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This option can be used by supplying the password in the <em>password</em> option.  Don&#8217;t use both password and passwordFile in the same profile.
+  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -230,7 +238,7 @@ listener {
 </dt>
 <dd>
 <p>
-  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint).
+  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint). The user identifier (uid) that is generated based on the uidFormat is a string which has a semi-colon as a separator between the components
 </p>
 </dd>
 <dt class="hdlist1">
@@ -238,7 +246,7 @@ listener {
 </dt>
 <dd>
 <p>
-  The absolute path to the file containing the unique id to dispay name mapping
+  The absolute path to the file containing the unique id to display name mapping
 </p>
 </dd>
 </dl></div>
@@ -248,11 +256,11 @@ listener {
 <div class="paragraph"><p>Listens for incoming connections to the router.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>host</em> (string, default=<em>127.0.0.1</em>)
+<em>host</em> (string)
 </dt>
 <dd>
 <p>
-  IP address: ipv4 or ipv6 literal or a host name
+  A host name, IPV4 or IPV6 literal, or the empty string. The empty string listens on all local addresses. A host name listens on all addresses associated with the name. An IPV6 literal address (or wildcard <em>[::]</em>) listens only for IPV6. An IPV4 literal address (or wildcard <em>0.0.0.0</em>) listens only for IPV4.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -336,7 +344,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxFrameSize</em> (integer, default=16384)
+<em>maxFrameSize</em> (integer, default=<em>16384</em>)
 </dt>
 <dd>
 <p>
@@ -344,7 +352,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessions</em> (integer, default=32768)
+<em>maxSessions</em> (integer, default=<em>32768</em>)
 </dt>
 <dd>
 <p>
@@ -352,15 +360,15 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessionFrames</em> (integer, default=100)
+<em>maxSessionFrames</em> (integer)
 </dt>
 <dd>
 <p>
-  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings, if specified, will overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 100.
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings, if specified, will overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 0 (unlimited window).
 </p>
 </dd>
 <dt class="hdlist1">
-<em>idleTimeoutSeconds</em> (integer, default=16)
+<em>idleTimeoutSeconds</em> (integer, default=<em>16</em>)
 </dt>
 <dd>
 <p>
@@ -381,6 +389,22 @@ listener {
 <dd>
 <p>
   The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>multiTenant</em> (boolean)
+</dt>
+<dd>
+<p>
+  If true, apply multi-tenancy to endpoints connected at this listener.  The address space is defined by the virtual host (hostname field in the Open).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>failoverList</em> (string)
+</dt>
+<dd>
+<p>
+  A comma-separated list of failover urls to be supplied to connected clients.  Form: [(amqp|amqps|ws|wss)://]host_or_ip[:port]
 </p>
 </dd>
 <dt class="hdlist1">
@@ -413,6 +437,30 @@ listener {
 <dd>
 <p>
   (DEPRECATED) This attribute is now controlled by the requireEncryption attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>http</em> (boolean)
+</dt>
+<dd>
+<p>
+  Accept HTTP connections that can upgrade to AMQP over WebSocket
+</p>
+</dd>
+<dt class="hdlist1">
+<em>httpRoot</em> (path)
+</dt>
+<dd>
+<p>
+  Serve HTTP files from this directory, defaults to the installed stand-alone console directory
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
 </p>
 </dd>
 </dl></div>
@@ -478,7 +526,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>allowRedirect</em> (boolean, default=True)
+<em>allowRedirect</em> (boolean, default=<em>True</em>)
 </dt>
 <dd>
 <p>
@@ -486,7 +534,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxFrameSize</em> (integer, default=16384)
+<em>maxFrameSize</em> (integer, default=<em>16384</em>)
 </dt>
 <dd>
 <p>
@@ -494,7 +542,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessions</em> (integer, default=32768)
+<em>maxSessions</em> (integer, default=<em>32768</em>)
 </dt>
 <dd>
 <p>
@@ -502,15 +550,15 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxSessionFrames</em> (integer, default=100)
+<em>maxSessionFrames</em> (integer)
 </dt>
 <dd>
 <p>
-  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings will not overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 100.
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings will not overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1.  Defaults to 0 (unlimited window).
 </p>
 </dd>
 <dt class="hdlist1">
-<em>idleTimeoutSeconds</em> (integer, default=16)
+<em>idleTimeoutSeconds</em> (integer, default=<em>16</em>)
 </dt>
 <dd>
 <p>
@@ -534,7 +582,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>verifyHostName</em> (boolean, default=True)
+<em>verifyHostName</em> (boolean, default=<em>True</em>)
 </dt>
 <dd>
 <p>
@@ -565,6 +613,14 @@ listener {
   (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
 </p>
 </dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
 </dl></div>
 </div>
 <div class="sect2">
@@ -572,7 +628,7 @@ listener {
 <div class="paragraph"><p>Configure logging for a particular module. You can use the <code>UPDATE</code> operation to change log settings while the router is running.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>DEFAULT</em>], required)
+<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>HTTP</em>, <em>CONN_MGR</em>, <em>PYTHON</em>, <em>DEFAULT</em>], required)
 </dt>
 <dd>
 <p>
@@ -676,7 +732,7 @@ listener {
 </dt>
 <dd>
 <p>
-  ContainerID for the target container
+  ContainerID for the target container. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -684,7 +740,7 @@ listener {
 </dt>
 <dd>
 <p>
-  The name from a connector or listener
+  The name from a connector or listener. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -738,7 +794,7 @@ listener {
 </dt>
 <dd>
 <p>
-  ContainerID for the target container
+  ContainerID for the target container. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
 </p>
 </dd>
 <dt class="hdlist1">
@@ -746,7 +802,7 @@ listener {
 </dt>
 <dd>
 <p>
-  The name from a connector or listener
+  The name from a connector or listener. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
 </p>
 </dd>
 <dt class="hdlist1">
@@ -772,7 +828,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>wsport</em> (integer, default=5673)
+<em>wsport</em> (integer, default=<em>5673</em>)
 </dt>
 <dd>
 <p>
@@ -810,7 +866,7 @@ listener {
 <div class="paragraph"><p>Defines global connection limit</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>maxConnections</em> (integer, default=65535)
+<em>maxConnections</em> (integer, default=<em>65535</em>)
 </dt>
 <dd>
 <p>
@@ -856,7 +912,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnections</em> (integer, default=65535)
+<em>maxConnections</em> (integer, default=<em>65535</em>)
 </dt>
 <dd>
 <p>
@@ -864,7 +920,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnectionsPerUser</em> (integer, default=65535)
+<em>maxConnectionsPerUser</em> (integer, default=<em>65535</em>)
 </dt>
 <dd>
 <p>
@@ -872,7 +928,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>maxConnectionsPerHost</em> (integer, default=65535)
+<em>maxConnectionsPerHost</em> (integer, default=<em>65535</em>)
 </dt>
 <dd>
 <p>
@@ -910,7 +966,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>workerThreads</em> (integer, default=4)
+<em>workerThreads</em> (integer, default=<em>4</em>)
 </dt>
 <dd>
 <p>
@@ -964,7 +1020,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>inPhase</em> (integer, default=-1)
+<em>inPhase</em> (integer, default=<em>-1</em>)
 </dt>
 <dd>
 <p>
@@ -972,7 +1028,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>outPhase</em> (integer, default=-1)
+<em>outPhase</em> (integer, default=<em>-1</em>)
 </dt>
 <dd>
 <p>
