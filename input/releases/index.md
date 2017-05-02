@@ -35,7 +35,7 @@ the
  - [Qpid Proton 0.17.0](qpid-proton-0.17.0/index.html), February 2017
  - [Qpid C++ 1.36.0](qpid-cpp-1.36.0/index.html), December 2016
  - [Qpid for Java 6.0.6](qpid-java-6.0.6/index.html), December 2016
- - [Qpid Dispatch 0.7.0](qpid-dispatch-0.7.0/index.html), November 2016
+ - [Qpid Dispatch 0.8.0](qpid-dispatch-0.8.0/index.html), May 2017
 
 </div>
 
@@ -89,6 +89,7 @@ the
  - [Qpid Dispatch 0.3](qpid-dispatch-0.3/index.html), January 2015
  - [Qpid Proton 0.8](qpid-proton-0.8/index.html), October 2014
  - [Qpid 0.30](qpid-0.30/index.html), September 2014
+ - [Qpid Dispatch 0.7.0](qpid-dispatch-0.7.0/index.html), November 2016
 
 </div>
 
