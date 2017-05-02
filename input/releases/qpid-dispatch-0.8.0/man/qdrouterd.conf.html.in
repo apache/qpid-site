@@ -1,0 +1,1108 @@
+<div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>Provides the initial configuration when <em>qdrouterd(8)</em> starts. The configuration
+of a running router can be modified using <em>qdmanage(8)</em>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>The configuration file is made up of sections with this syntax:</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>sectionName {
+    attributeName: attributeValue
+    attributeName: attributeValue
+    ...
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>For example you can define a router using the <em>router</em> section</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>router {
+    mode: standalone
+    id: Router.A
+    ...
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>or define a listener using the <em>listener</em> section</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>listener {
+    host: 0.0.0.0
+    port: 20102
+    saslMechanisms: ANONYMOUS
+    ...
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>or define a connector using the <em>connector</em> section</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>connector {
+    role: inter-router
+    host: 0.0.0.0
+    port: 20003
+    saslMechanisms: ANONYMOUS
+    ...
+}</code></pre>
+</div></div>
+<div class="paragraph"><p>An <em>sslProfile</em> section with SSL credentials can be included in multiple <em>listener</em> or <em>connector</em> entities. Here&#8217;s an example, note
+how the <em>sslProfile</em> attribute of <em>listener</em> sections references the <em>name</em>
+attribute of <em>sslProfile</em> sections.</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>sslProfile {
+    name: my-ssl
+    certDb: ca-certificate-1.pem
+    certFile: server-certificate-1.pem
+    keyFile: server-private-key.pem
+}
+
+listener {
+    sslProfile: my-ssl
+    host: 0.0.0.0
+    port: 20102
+    saslMechanisms: ANONYMOUS
+}</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_sections">Configuration Sections</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_router">router</h3>
+<div class="paragraph"><p>Tracks peer routers and computes routes to destinations. This entity is mandatory. The router will not start without this entity.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>id</em> (string)
+</dt>
+<dd>
+<p>
+  Router&#8217;s unique identity. One of id or routerId is required. The router will fail to start without id or routerId
+</p>
+</dd>
+<dt class="hdlist1">
+<em>mode</em> (One of [<em>standalone</em>, <em>interior</em>], default=<em>standalone</em>)
+</dt>
+<dd>
+<p>
+  In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloInterval</em> (integer, default=1)
+</dt>
+<dd>
+<p>
+  Interval in seconds between HELLO messages sent to neighbor routers.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloMaxAge</em> (integer, default=3)
+</dt>
+<dd>
+<p>
+  Time in seconds after which a neighbor is declared lost if no HELLO is received.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raInterval</em> (integer, default=30)
+</dt>
+<dd>
+<p>
+  Interval in seconds between Router-Advertisements sent to all routers in a stable network.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raIntervalFlux</em> (integer, default=4)
+</dt>
+<dd>
+<p>
+  Interval in seconds between Router-Advertisements sent to all routers during topology fluctuations.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>remoteLsMaxAge</em> (integer, default=60)
+</dt>
+<dd>
+<p>
+  Time in seconds after which link state is declared stale if no RA is received.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>workerThreads</em> (integer, default=4)
+</dt>
+<dd>
+<p>
+  The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugDump</em> (path)
+</dt>
+<dd>
+<p>
+  A file to dump debugging information that can&#8217;t be logged normally.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigPath</em> (path)
+</dt>
+<dd>
+<p>
+  Absolute path to the SASL configuration file.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigName</em> (string, default=<em>qdrouterd</em>)
+</dt>
+<dd>
+<p>
+  Name of the SASL configuration.  This string + <em>.conf</em> is the name of the configuration file.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>routerId</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Router&#8217;s unique identity. This attribute has been deprecated. Use id instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>mobileAddrMaxAge</em> (integer, default=60)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This value is no longer used in the router.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_sslprofile">sslProfile</h3>
+<div class="paragraph"><p>Attributes for setting TLS/SSL configuration for connections.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>certDb</em> (path)
+</dt>
+<dd>
+<p>
+  The absolute path to the database that contains the public certificates of trusted certificate authorities (CA).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certFile</em> (path)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>keyFile</em> (path)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the PEM-formatted private key for the above certificate.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>passwordFile</em> (path)
+</dt>
+<dd>
+<p>
+  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>password</em> (string)
+</dt>
+<dd>
+<p>
+  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>uidFormat</em> (string)
+</dt>
+<dd>
+<p>
+  A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For e.g. a value of <em>cou</em> indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of <em>o2</em> indicates that the uid will consist of o (organization name) concatenated with 2 (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of <em>c</em>( ISO3166 two character country code), <em>s</em>(state or province), <em>l</em>(Locality; generally - city), <em>o</em>(Organization - Company Name), <em>u</em>(Organization Unit - typically certificate type or brand), <em>n</em>(CommonName - typically a user name for client certificates) and <em>1</em>(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint). The user identifier (uid) that is generated based on the uidFormat is a string which has a semi-colon as a separator between the components
+</p>
+</dd>
+<dt class="hdlist1">
+<em>displayNameFile</em> (string)
+</dt>
+<dd>
+<p>
+  The absolute path to the file containing the unique id to display name mapping
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_listener">listener</h3>
+<div class="paragraph"><p>Listens for incoming connections to the router.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>host</em> (string, default=<em>127.0.0.1</em>)
+</dt>
+<dd>
+<p>
+  IP address: ipv4 or ipv6 literal or a host name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>port</em> (string, default=<em>amqp</em>)
+</dt>
+<dd>
+<p>
+  Port number or symbolic service name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>])
+</dt>
+<dd>
+<p>
+  [<em>IPv4</em>, <em>IPv6</em>] IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6.  If not specified, the protocol family will be automatically determined from the address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>)
+</dt>
+<dd>
+<p>
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>cost</em> (integer, default=<em>1</em>)
+</dt>
+<dd>
+<p>
+  For the <em>inter-router</em> role only.  This value assigns a cost metric to the inter-router connection.  The default (and minimum) value is one.  Higher values represent higher costs.  The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslProfile</em> (string)
+</dt>
+<dd>
+<p>
+  Name of the sslProfile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslMechanisms</em> (string)
+</dt>
+<dd>
+<p>
+  Space separated list of accepted SASL authentication mechanisms.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>authenticatePeer</em> (boolean)
+</dt>
+<dd>
+<p>
+  yes: Require the peer&#8217;s identity to be authenticated; no: Do not require any authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requireEncryption</em> (boolean)
+</dt>
+<dd>
+<p>
+  yes: Require the connection to the peer to be encrypted; no: Permit non-encrypted communication with the peer
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requireSsl</em> (boolean)
+</dt>
+<dd>
+<p>
+  yes: Require the use of SSL or TLS on the connection; no: Allow clients to connect without SSL or TLS.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>trustedCerts</em> (path)
+</dt>
+<dd>
+<p>
+  This optional setting can be used to reduce the set of available CAs for client authentication.  If used, this setting must provide the absolute path to a PEM file that contains the trusted certificates.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxFrameSize</em> (integer, default=16384)
+</dt>
+<dd>
+<p>
+  The maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity. Policy settings, if specified, will overwrite this value. Defaults to 16384.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessions</em> (integer, default=32768)
+</dt>
+<dd>
+<p>
+  The maximum number of sessions that can be simultaneously active on the connection. Setting this value to zero selects the default number of sessions. Policy settings, if specified, will overwrite this value. Defaults to 32768.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessionFrames</em> (integer)
+</dt>
+<dd>
+<p>
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings, if specified, will overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1. Defaults to 0 (unlimited window).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>idleTimeoutSeconds</em> (integer, default=16)
+</dt>
+<dd>
+<p>
+  The idle timeout, in seconds, for connections through this listener.  If no frames are received on the connection for this time interval, the connection shall be closed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>stripAnnotations</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>], default=<em>both</em>)
+</dt>
+<dd>
+<p>
+  [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>] in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkCapacity</em> (integer)
+</dt>
+<dd>
+<p>
+  The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>multiTenant</em> (boolean)
+</dt>
+<dd>
+<p>
+  If true, apply multi-tenancy to endpoints connected at this listener.  The address space is defined by the virtual host (hostname field in the Open).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>failoverList</em> (string)
+</dt>
+<dd>
+<p>
+  A comma-separated list of failover urls to be supplied to connected clients.  Form: [(amqp|amqps|ws|wss)://]host_or_ip[:port]
+</p>
+</dd>
+<dt class="hdlist1">
+<em>addr</em> (string, default=<em>127.0.0.1</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowNoSasl</em> (boolean)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>requirePeerAuth</em> (boolean)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowUnsecured</em> (boolean)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This attribute is now controlled by the requireEncryption attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>http</em> (boolean)
+</dt>
+<dd>
+<p>
+  Accept HTTP connections that can upgrade to AMQP over WebSocket
+</p>
+</dd>
+<dt class="hdlist1">
+<em>httpRoot</em> (path)
+</dt>
+<dd>
+<p>
+  Serve HTTP files from this directory, defaults to the installed stand-alone console directory
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_connector">connector</h3>
+<div class="paragraph"><p>Establishes an outgoing connection from the router.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>host</em> (string, default=<em>127.0.0.1</em>)
+</dt>
+<dd>
+<p>
+  IP address: ipv4 or ipv6 literal or a host name
+</p>
+</dd>
+<dt class="hdlist1">
+<em>port</em> (string, default=<em>amqp</em>)
+</dt>
+<dd>
+<p>
+  Port number or symbolic service name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>])
+</dt>
+<dd>
+<p>
+  [<em>IPv4</em>, <em>IPv6</em>] IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6.  If not specified, the protocol family will be automatically determined from the address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>)
+</dt>
+<dd>
+<p>
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>cost</em> (integer, default=<em>1</em>)
+</dt>
+<dd>
+<p>
+  For the <em>inter-router</em> role only.  This value assigns a cost metric to the inter-router connection.  The default (and minimum) value is one.  Higher values represent higher costs.  The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sslProfile</em> (string)
+</dt>
+<dd>
+<p>
+  Name of the sslProfile.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslMechanisms</em> (string)
+</dt>
+<dd>
+<p>
+  Space separated list of accepted SASL authentication mechanisms.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowRedirect</em> (boolean, default=True)
+</dt>
+<dd>
+<p>
+  Allow the peer to redirect this connection to another address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxFrameSize</em> (integer, default=16384)
+</dt>
+<dd>
+<p>
+  The maximum frame size in octets that will be used in the connection-open negotiation with a connected peer.  The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity. Policy settings will not overwrite this value. Defaults to 16384.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessions</em> (integer, default=32768)
+</dt>
+<dd>
+<p>
+  The maximum number of sessions that can be simultaneously active on the connection. Setting this value to zero selects the default number of sessions. Policy settings will not overwrite this value. Defaults to 32768.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessionFrames</em> (integer)
+</dt>
+<dd>
+<p>
+  Session incoming window measured in transfer frames for sessions created on this connection. This is the number of transfer frames that may simultaneously be in flight for all links in the session. Setting this value to zero selects the default session window size. Policy settings will not overwrite this value. The numerical product of maxFrameSize and maxSessionFrames may not exceed 2<sup>31-1. If (maxFrameSize x maxSessionFrames) exceeds 2</sup>31-1 then maxSessionFrames is reduced to (2^31-1 / maxFrameSize). maxSessionFrames has a minimum value of 1.  Defaults to 0 (unlimited window).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>idleTimeoutSeconds</em> (integer, default=16)
+</dt>
+<dd>
+<p>
+  The idle timeout, in seconds, for connections through this connector.  If no frames are received on the connection for this time interval, the connection shall be closed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>stripAnnotations</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>], default=<em>both</em>)
+</dt>
+<dd>
+<p>
+  [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>] in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations
+</p>
+</dd>
+<dt class="hdlist1">
+<em>linkCapacity</em> (integer)
+</dt>
+<dd>
+<p>
+  The capacity of links within this connection, in terms of message deliveries.  The capacity is the number of messages that can be in-flight concurrently for each link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>verifyHostName</em> (boolean, default=True)
+</dt>
+<dd>
+<p>
+  yes: Ensures that when initiating a connection (as a client) the host name in the URL to which this connector connects to matches the host name in the digital certificate that the peer sends back as part of the SSL connection; no: Does not perform host name verification
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslUsername</em> (string)
+</dt>
+<dd>
+<p>
+  The user name that the connector is using to connect to a peer.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslPassword</em> (string)
+</dt>
+<dd>
+<p>
+  The password that the connector is using to connect to a peer.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>addr</em> (string, default=<em>127.0.0.1</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_log">log</h3>
+<div class="paragraph"><p>Configure logging for a particular module. You can use the <code>UPDATE</code> operation to change log settings while the router is running.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>HTTP</em>, <em>CONN_MGR</em>, <em>PYTHON</em>, <em>DEFAULT</em>], required)
+</dt>
+<dd>
+<p>
+  Module to configure. The special module <em>DEFAULT</em> specifies defaults for all modules.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>enable</em> (string)
+</dt>
+<dd>
+<p>
+  Levels are: trace, debug, info, notice, warning, error, critical. The enable string is a comma-separated list of levels. A level may have a trailing <em>+</em> to enable that level and above. For example <em>trace,debug,warning+</em> means enable trace, debug, warning, error and critical. The value <em>none</em> means disable logging for the module.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>timestamp</em> (boolean)
+</dt>
+<dd>
+<p>
+  Include timestamp in log messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>source</em> (boolean)
+</dt>
+<dd>
+<p>
+  Include source file and line number in log messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>output</em> (string)
+</dt>
+<dd>
+<p>
+  Where to send log messages. Can be <em>stderr</em>, <em>stdout</em>, <em>syslog</em> or a file name.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_address">address</h3>
+<div class="paragraph"><p>Entity type for address configuration.  This is used to configure the treatment of message-routed deliveries within a particular address-space.  The configuration controls distribution and address phasing.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address prefix for the configured settings
+</p>
+</dd>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>multicast</em>, <em>closest</em>, <em>balanced</em>], default=<em>balanced</em>)
+</dt>
+<dd>
+<p>
+  Treatment of traffic associated with the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>waypoint</em> (boolean)
+</dt>
+<dd>
+<p>
+  Designates this address space as being used for waypoints.  This will cause the proper address-phasing to be used.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>ingressPhase</em> (integer)
+</dt>
+<dd>
+<p>
+  Advanced - Override the ingress phase for this address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>egressPhase</em> (integer)
+</dt>
+<dd>
+<p>
+  Advanced - Override the egress phase for this address
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_linkroute">linkRoute</h3>
+<div class="paragraph"><p>Entity type for link-route configuration.  This is used to identify remote containers that shall be destinations for routed link-attaches.  The link-routing configuration applies to an addressing space defined by a prefix.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address prefix for the configured settings
+</p>
+</dd>
+<dt class="hdlist1">
+<em>containerId</em> (string)
+</dt>
+<dd>
+<p>
+  ContainerID for the target container. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connection</em> (string)
+</dt>
+<dd>
+<p>
+  The name from a connector or listener. Only one of containerId or connection should be specified for a linkRoute. Specifying both will result in the linkRoute not being created.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>linkBalanced</em>], default=<em>linkBalanced</em>)
+</dt>
+<dd>
+<p>
+  Treatment of traffic associated with the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+</dt>
+<dd>
+<p>
+  The permitted direction of links: <em>in</em> means client senders; <em>out</em> means client receivers
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_autolink">autoLink</h3>
+<div class="paragraph"><p>Entity type for configuring auto-links.  Auto-links are links whose lifecycle is managed by the router.  These are typically used to attach to waypoints on remote containers (brokers, etc.).</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>addr</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address of the provisioned object
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+</dt>
+<dd>
+<p>
+  The direction of the link to be created.  In means into the router, out means out of the router.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>phase</em> (integer)
+</dt>
+<dd>
+<p>
+  The address phase for this link.  Defaults to <em>0</em> for <em>out</em> links and <em>1</em> for <em>in</em> links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>containerId</em> (string)
+</dt>
+<dd>
+<p>
+  ContainerID for the target container. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connection</em> (string)
+</dt>
+<dd>
+<p>
+  The name from a connector or listener. Only one of containerId or connection should be specified for an autoLink. Specifying both will result in the autoLink not being created
+</p>
+</dd>
+<dt class="hdlist1">
+<em>externalAddr</em> (string)
+</dt>
+<dd>
+<p>
+  If present, an alternate address of the node on the remote container.  This is used if the node has a different address than the address used internally by the router to route deliveries.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_console">console</h3>
+<div class="paragraph"><p>Start a websocket/tcp proxy and http file server to serve the web console</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>listener</em> (string)
+</dt>
+<dd>
+<p>
+  The name of the listener to send the proxied tcp traffic to.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>wsport</em> (integer, default=5673)
+</dt>
+<dd>
+<p>
+  port on which to listen for websocket traffic
+</p>
+</dd>
+<dt class="hdlist1">
+<em>proxy</em> (string)
+</dt>
+<dd>
+<p>
+  The full path to the proxy program to run.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>home</em> (string)
+</dt>
+<dd>
+<p>
+  The full path to the html/css/js files for the console.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>args</em> (string)
+</dt>
+<dd>
+<p>
+  Optional args to pass the proxy program for logging, authentication, etc.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_policy">policy</h3>
+<div class="paragraph"><p>Defines global connection limit</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>maxConnections</em> (integer, default=65535)
+</dt>
+<dd>
+<p>
+  Global maximum number of concurrent client connections allowed. This limit is always enforced even if no other policy settings have been defined.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>enableVhostPolicy</em> (boolean)
+</dt>
+<dd>
+<p>
+  Enable vhost policy user groups, connection denial, and resource limit enforcement
+</p>
+</dd>
+<dt class="hdlist1">
+<em>policyDir</em> (path)
+</dt>
+<dd>
+<p>
+  Absolute path to a directory that holds vhost definition .json files. All vhost definitions in all .json files in this directory are processed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>defaultVhost</em> (string)
+</dt>
+<dd>
+<p>
+  Vhost rule set name to use for connections with a vhost that is otherwise not defined. Default vhost processing may be disabled either by erasing the definition of defaultVhost or by not defining a vhost object named <em>$default</em>.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_vhost">vhost</h3>
+<div class="paragraph"><p>AMQP virtual host policy definition of users, user groups, allowed remote hosts, and AMQP restrictions.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>id</em> (string, required)
+</dt>
+<dd>
+<p>
+  The vhost name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnections</em> (integer, default=65535)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnectionsPerUser</em> (integer, default=65535)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed for any single user.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxConnectionsPerHost</em> (integer, default=65535)
+</dt>
+<dd>
+<p>
+  Maximum number of concurrent client connections allowed for any remote host.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowUnknownUser</em> (boolean)
+</dt>
+<dd>
+<p>
+  Unrestricted users, those who are not members of a defined user group, are allowed to connect to this application. Unrestricted users are assigned to the <em>default</em> user group and receive <em>default</em> settings.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>groups</em> (map)
+</dt>
+<dd>
+<p>
+  A map where each key is a user group name and the value is a map of the corresponding settings for that group.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_container">container</h3>
+<div class="paragraph"><p>(DEPRECATED)Attributes related to the AMQP container. This entity has been deprecated. Use the router entity instead.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>containerName</em> (string)
+</dt>
+<dd>
+<p>
+  The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>workerThreads</em> (integer, default=4)
+</dt>
+<dd>
+<p>
+  The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugDump</em> (path)
+</dt>
+<dd>
+<p>
+  A file to dump debugging information that can&#8217;t be logged normally.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigPath</em> (path)
+</dt>
+<dd>
+<p>
+  Absolute path to the SASL configuration file.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigName</em> (string)
+</dt>
+<dd>
+<p>
+  Name of the SASL configuration.  This string + <em>.conf</em> is the name of the configuration file.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_waypoint">waypoint</h3>
+<div class="paragraph"><p>(DEPRECATED) A remote node that messages for an address pass through. This entity has been deprecated. Use autoLink instead</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>address</em> (string, required)
+</dt>
+<dd>
+<p>
+  The AMQP address of the waypoint.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connector</em> (string, required)
+</dt>
+<dd>
+<p>
+  The name of the on-demand connector used to reach the waypoint&#8217;s container.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>inPhase</em> (integer, default=-1)
+</dt>
+<dd>
+<p>
+  The phase of the address as it is routed <em>to</em> the waypoint.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>outPhase</em> (integer, default=-1)
+</dt>
+<dd>
+<p>
+  The phase of the address as it is routed <em>from</em> the waypoint.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_fixedaddress">fixedAddress</h3>
+<div class="paragraph"><p>(DEPRECATED) Establishes treatment for addresses starting with a prefix. This entity has been deprecated. Use address instead</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address prefix (always starting with <em>/</em>).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>phase</em> (integer)
+</dt>
+<dd>
+<p>
+  The phase of a multi-hop address passing through one or more waypoints.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>fanout</em> (One of [<em>multiple</em>, <em>single</em>], default=<em>multiple</em>)
+</dt>
+<dd>
+<p>
+  One of <em>multiple</em> or <em>single</em>.  Multiple fanout is a non-competing pattern.  If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address.  Single fanout is a competing pattern where each message is sent to only one consumer.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>bias</em> (One of [<em>closest</em>, <em>spread</em>], default=<em>closest</em>)
+</dt>
+<dd>
+<p>
+  Only if fanout is single.  One of <em>closest</em> or <em>spread</em>.  Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_linkroutepattern">linkRoutePattern</h3>
+<div class="paragraph"><p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node. This entity has been deprecated. Use linkRoute instead</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>prefix</em> (string, required)
+</dt>
+<dd>
+<p>
+  An address prefix to match against target and source addresses.  This pattern must be of the form <em>&lt;text&gt;.&lt;text1&gt;.&lt;textN&gt;</em> or <em>&lt;text&gt;</em> or <em>&lt;text&gt;.</em> and matches any address that contains that prefix.  For example, if the prefix is set to org.apache (or org.apache.), any address that has the prefix <em>org.apache</em>  (like org.apache.dev) will match. Note that a prefix must not start with a (.), can end in a (.) and can contain zero or more dots (.).  Any characters between the dots are simply treated as part of the address
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>], default=<em>both</em>)
+</dt>
+<dd>
+<p>
+  Link direction for match: <em>in</em> matches only links inbound to the client; <em>out</em> matches only links outbound from the client; <em>both</em> matches any link.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>connector</em> (string)
+</dt>
+<dd>
+<p>
+  The name of the on-demand connector used to reach the target node&#8217;s container.  If this value is not provided, it means that the target container is expected to be connected to a different router in the network.  This prevents links to a link-routable address from being misinterpreted as message-routing links when there is no route to a valid destination available.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><strong>qdrouterd(8)</strong>, <strong>qdmanage(8)</strong></p></div>
+<div class="paragraph"><p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p></div>
+</div>
+</div>

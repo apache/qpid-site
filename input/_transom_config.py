@@ -21,7 +21,7 @@ qpid_release = _Release("Qpid", "qpid", "0.32")
 
 broker_j_release = _Release("Qpid Broker-J", "qpid-broker-j", "6.2.0")
 cpp_release = _Release("Qpid C++", "qpid-cpp", "1.36.0")
-dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.7.0")
+dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.8.0")
 interop_test_release = _Release("Qpid Interop Test", "qpid-interop", "0.1.0")
 java_release = _Release("Qpid for Java", "qpid-java", "6.1.2")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.22.0")
