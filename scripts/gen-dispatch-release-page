@@ -104,15 +104,17 @@ def gen_release_page(release, issues_release, source_release, release_dir):
 
     downloads = list()
 
-    source_artifact_url = "http://archive.apache.org/dist/qpid/dispatch/{}/{}"
+    artifact_url_template = "http://archive.apache.org/dist/qpid/dispatch/{}/{}"
 
     for artifact, summary in download_records:
         artifact = artifact.format(release)
-        artifact_url = source_artifact_url.format(release, artifact)
-        sig_url = "http://archive.apache.org/dist/qpid/dispatch/{}/{}.asc".format(release, artifact)
+        artifact_url = artifact_url_template.format(release, artifact)
+        asc_url = "{}.asc".format(artifact_url)
+        md5_url = "{}.md5".format(artifact_url)
+        sha_url = "{}.sha".format(artifact_url)
 
-        args = summary, artifact, artifact_url, sig_url
-        downloads.append("| {} | [{}]({}) | [PGP]({}) |".format(*args))
+        args = summary, artifact, artifact_url, asc_url, md5_url, sha_url
+        downloads.append("| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args))
 
     downloads = "\n".join(downloads)
 

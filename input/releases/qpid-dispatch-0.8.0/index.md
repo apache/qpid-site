@@ -34,14 +34,14 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Dispatch router | [qpid-dispatch-0.8.0.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz) | [PGP](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.asc) |
+| Dispatch router | [qpid-dispatch-0.8.0.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.sha) |
 
 ## Documentation
 
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=0.8.x)
+ - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=0.8.0)
  - [Dispatch Router User Guide](book/book.html)
  - [qdrouterd](man/qdrouterd.html) - Router daemon
  - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
