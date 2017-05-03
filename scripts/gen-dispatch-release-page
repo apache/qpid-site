@@ -26,10 +26,6 @@ download_records = (
     ("qpid-dispatch-{}.tar.gz", "Dispatch router"),
     )
 
-component_records = (
-    ("dispatch-router", "Dispatch router", "C, Python", "Linux", "1.0"),
-    )
-
 documentation = \
 """
 <div class="two-column" markdown="1">
@@ -107,7 +103,6 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     output_path = join(release_dir, "index.md")
 
     downloads = list()
-    components = list()
 
     source_artifact_url = "http://archive.apache.org/dist/qpid/dispatch/{}/{}"
 
@@ -119,13 +114,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         args = summary, artifact, artifact_url, sig_url
         downloads.append("| {} | [{}]({}) | [PGP]({}) |".format(*args))
 
-    for key, name, languages, platforms, amqp_versions in component_records:
-        link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)
-        args = link, languages, platforms, amqp_versions
-        components.append("| {} | {} | {} | {} |".format(*args))
-
     downloads = "\n".join(downloads)
-    components = "\n".join(components)
 
     jql = "project = DISPATCH AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
     issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
