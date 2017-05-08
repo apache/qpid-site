@@ -27,7 +27,7 @@ java_release = _Release("Qpid for Java", "qpid-java", "6.1.2")
 jms_release = _Release("Qpid JMS", "qpid-jms", "0.22.0")
 jms_amqp_0_x_release = _Release("Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.2.0")
 proton_release = _Release("Qpid Proton", "qpid-proton", "0.17.0")
-proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.18.0")
+proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.19.0")
 python_release = _Release("Qpid Python", "qpid-python", "1.36.0")
 
 _svn_base = "http://svn.apache.org/repos/asf/qpid"
