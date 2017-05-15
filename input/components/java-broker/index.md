@@ -86,6 +86,7 @@ that stores, routes, and forwards messages using AMQP.
 
 ## Resources
 
+ - [Security](security.html)
  - [FAQ](https://cwiki.apache.org/confluence/display/qpid/qpid+java+faq)
  - [Design documents](https://cwiki.apache.org/confluence/display/qpid/java+broker+design)
  - [Qpid extensions to AMQP](https://cwiki.apache.org/confluence/display/qpid/qpid+extensions+to+amqp)

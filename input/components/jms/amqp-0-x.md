@@ -40,3 +40,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
  - [Browse via GitHub](https://github.com/apache/qpid-jms-amqp-0-x)
  - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
+
+## Resources
+
+ - [Security](security.html)

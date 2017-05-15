@@ -21,7 +21,7 @@
 
 <section markdown="1">
 
-## Security Updates
+## Security updates
 
 Details of security problems fixed in released versions of individual Apache
 Qpid components are detailed at:
@@ -30,13 +30,12 @@ Qpid components are detailed at:
 <section markdown="1">
 
  - [Broker for Java]({{site_url}}/components/java-broker/security.html)
- - [C++ Broker]({{site_url}}/components/cpp-broker/security.html)
+ - [C++ broker]({{site_url}}/components/cpp-broker/security.html)
 
 </section>
 <section markdown="1">
 
- - [JMS Client (AMQP 1.0)]({{site_url}}/components/jms/security.html)
- - [JMS Client (AMQP 0.x)]({{site_url}}/components/jms/security-0-x.html)
+ - [JMS client]({{site_url}}/components/jms/security.html)
  - [Proton]({{site_url}}/proton/security.html)
 
 </section>
@@ -45,7 +44,7 @@ Qpid components are detailed at:
 </section>
 <section markdown="1">
 
-## Reporting New Security Problems with Apache Qpid
+## Reporting new security problems with Apache Qpid
 
 We take a very active stance in eliminating security problems and
 denial of service attacks against Apache Qpid.

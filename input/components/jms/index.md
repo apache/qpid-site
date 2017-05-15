@@ -80,6 +80,7 @@ For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
 
 ## Resources
 
+ - [Security](security.html)
  - [AMQP 0-x JMS Client](amqp-0-x.html)
 
 </div>
