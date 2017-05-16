@@ -1,4 +1,4 @@
-# Qpid JMS for AMQP 0-9-1/0-10
+# AMQP 0-x JMS
 
 A JMS 1.1 implementation supporting AMQP versions 0-10, 0-9-1, 0-9, and
 0-8.  For AMQP 1.0 support, use the newer [Qpid JMS](index.html) client.
@@ -43,4 +43,4 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 ## Resources
 
- - [Security](security.html)
+ - [Security](security-0-x.html)

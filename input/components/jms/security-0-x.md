@@ -19,14 +19,16 @@
 
 # Security
 
-## AMQP 1.0 JMS
+## AMQP 0-x JMS (AMQP 0-8, 0-9, 0-9-1, 0-10)
 
 | CVE-ID | Severity | Affected versions | Fixed versions | Summary |
 | ------ | -------- | ----------------- | -------------- | ------- |
-| [CVE-2016-4974]({{site_url}}/cves/CVE-2016-4974.html) | Moderate | 0.9.0 and earlier | 0.10.0 and later | Deserialization of untrusted input while using JMS ObjectMessage |
+| [CVE-2016-4974]({{site_url}}/cves/CVE-2016-4974_0-x.html) | Moderate | 6.0.3 and earlier | 6.0.4 and later | Deserialization of untrusted input while using JMS ObjectMessage |
 
-See the [AMQP 0-x JMS Security]({{site_url}}/components/jms/security-0-x.html)
-page for details of the AMQP 0-x JMS client.
+See the [Qpid JMS Security]({{site_url}}/components/jms/security.html) page
+for details of the AMQP 1.0 JMS client.
 
 See the main [Security]({{site_url}}/security.html) page for general
 information and details for other components.
+
+
