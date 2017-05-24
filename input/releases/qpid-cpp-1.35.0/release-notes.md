@@ -34,16 +34,19 @@ documentation, see the [release overview](index.html).
  - [QPID-6391](https://issues.apache.org/jira/browse/QPID-6391) - [C++ Broker] [AMQP 1.0] add support for a 'no-local' filter
  - [QPID-6665](https://issues.apache.org/jira/browse/QPID-6665) - update hello_world.cpp example to use setContentObject
  - [QPID-6730](https://issues.apache.org/jira/browse/QPID-6730) - Make the journal flush timeout configurable in the C++ broker
+ - [QPID-6754](https://issues.apache.org/jira/browse/QPID-6754) - Support anonymous relay
  - [QPID-6757](https://issues.apache.org/jira/browse/QPID-6757) - [linearstore] Add qpid-txtest mode to qpid-qls-analyze which extracts message number from message body
  - [QPID-6783](https://issues.apache.org/jira/browse/QPID-6783) - qpidd should dynamically set the SASL service name based on protocol.
  - [QPID-7130](https://issues.apache.org/jira/browse/QPID-7130) - qpid C++ with SSL authentication returning dummy string from Connection::getAuthenticatedUsername()
  - [QPID-7171](https://issues.apache.org/jira/browse/QPID-7171) - Allow disable-auto-decode to be set via env var or conf file
  - [QPID-7281](https://issues.apache.org/jira/browse/QPID-7281) - Get the tests running on Windows
+ - [QPID-7400](https://issues.apache.org/jira/browse/QPID-7400) - Allow Proton 0.14 to be used without warning
 
 ## Bugs fixed
 
  - [QPID-5855](https://issues.apache.org/jira/browse/QPID-5855) - JAVA Client Can not recieve message with qpid ha cluster "Session exception occured while trying to commit"
  - [QPID-6308](https://issues.apache.org/jira/browse/QPID-6308) - [C++ Messaging] Server example never sends utf8 responses
+ - [QPID-6347](https://issues.apache.org/jira/browse/QPID-6347) - queue_event_generation option clean-up
  - [QPID-6435](https://issues.apache.org/jira/browse/QPID-6435) - No error info logged for io errors with ssl
  - [QPID-6491](https://issues.apache.org/jira/browse/QPID-6491) - qpid-route map does not use any authentication when querying other brokers
  - [QPID-6577](https://issues.apache.org/jira/browse/QPID-6577) - HA - backup broker messages are larger than primary messages.
