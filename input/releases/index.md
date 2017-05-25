@@ -89,7 +89,6 @@ the
  - [Qpid JMS 0.1.0](qpid-jms-0.1.0/index.html), March 2015
  - [Qpid Proton 0.9](qpid-proton-0.9/index.html), March 2015
  - [Qpid Dispatch 0.3](qpid-dispatch-0.3/index.html), January 2015
- - [Qpid Proton 0.8](qpid-proton-0.8/index.html), October 2014
 
 </div>
 
