@@ -36,7 +36,7 @@ find previous versions with our
 
 <div class="two-column" markdown="1">
 
- - [Using the Qpid Messaging API]({{site_url}}/releases/qpid-0.32/programming/book/ch02.html)
+ - [Using the Qpid Messaging API]({{current_cpp_release_url}}/messaging-api/book/using-the-qpid-messaging-api.html) ([PDF]({{current_cpp_release_url}}/messaging-api/qpid-messaging-api-book.pdf))
  - [C++ API reference]({{current_cpp_release_url}}/messaging-api/cpp/api/annotated.html)
  - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
  - [Python API reference]({{current_python_release_url}}/messaging-api/api/index.html)

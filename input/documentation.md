@@ -55,7 +55,7 @@ You can find older versions with our
 ### Qpid Messaging API
 
  - [Overview]({{site_url}}/components/messaging-api/index.html)
- - [Using the Qpid Messaging API]({{site_url}}/releases/qpid-0.32/programming/book/ch02.html) ([PDF]({{site_url}}/releases/qpid-0.32/programming/programming-book.pdf))
+ - [Using the Qpid Messaging API]({{current_cpp_release_url}}/messaging-api/book/using-the-qpid-messaging-api.html) ([PDF]({{current_cpp_release_url}}/messaging-api/qpid-messaging-api-book.pdf))
  - [C++ API reference]({{current_cpp_release_url}}/messaging-api/cpp/api/index.html)
  - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
 

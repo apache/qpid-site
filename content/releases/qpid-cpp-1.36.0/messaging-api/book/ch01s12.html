@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid C++ 1.36.0 - Apache Qpid&#8482;</title>
+    <title>1.12.&#160;The Request / Response Pattern - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,97 +111,51 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid C++ 1.36.0</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-1.36.0/index.html">Qpid C++ 1.36.0</a></li><li><a href="/releases/qpid-cpp-1.36.0/messaging-api/book/index.html">Using the Qpid Messaging API</a></li><li>1.12.&#160;The Request / Response Pattern</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-c-1360">Qpid C++ 1.36.0</h1>
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.12.&#160;The Request / Response Pattern</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="section-Maps.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch01s13.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm221082958448"></a>1.12.&#160;The Request / Response Pattern</h2></div></div></div><p>Request / Response applications use the reply-to property,
+      described in <a class="xref" href="section-amqp0-10-mapping.html#table-amqp0-10-message-properties" title="Table&#160;1.9.&#160;Mapping to AMQP 0-10 Message Properties">Table&#160;1.9, &#8220;Mapping to AMQP 0-10 Message Properties&#8221;</a>, to allow a server
+      to respond to the client that sent a message. A server sets up a
+      service queue, with a name known to clients. A client creates a
+      private queue for the server's response, creates a message for a
+      request, sets the request's reply-to property to the address of
+      the client's response queue, and sends the request to the
+      service queue. The server sends the response to the address
+      specified in the request's reply-to property.
+      </p><div class="example"><a id="idm221082956320"></a><p class="title"><strong>Example&#160;1.18.&#160;Request / Response Applications in C++</strong></p><div class="example-contents"><p>This example shows the C++ code for a client and server
+	that use the request / response pattern.</p><p>The server creates a service queue and waits for a
+	message to arrive. If it receives a message, it sends a
+	message back to the sender.</p><pre class="programlisting">Receiver receiver = session.createReceiver("service_queue; {create: always}");
 
-<p>Qpid C++ offers a connection-oriented messaging API and a message
-broker written in C++ that stores, routes, and forwards messages using
-AMQP. More about <a href="/index.html">Qpid</a>.</p>
+	Message request = receiver.fetch();
+	const Address&amp;amp; address = request.getReplyTo(); // Get "reply-to" from request ...
+	if (address) {
+	Sender sender = session.createSender(address); // ... send response to "reply-to"
+	Message response("pong!");
+	sender.send(response);
+	session.acknowledge();
+	}
+	</pre><p>The client creates a sender for the service queue, and
+	also creates a response queue that is deleted when the
+	client closes the receiver for the response queue. In the C++
+	client, if the address starts with the character
+	<code class="literal">#</code>, it is given a unique name.</p><pre class="programlisting">
+	Sender sender = session.createSender("service_queue");
 
-<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
-notes</a>.</p>
+	Address responseQueue("#response-queue; {create:always, delete:always}");
+	Receiver receiver = session.createReceiver(responseQueue);
 
-<p>It's important to <a href="/download.html#verify-what-you-download">verify the
-integrity</a> of the
-files you download.</p>
-
-<h2 id="source-archives">Source archives</h2>
-
-<table>
-<thead>
-<tr>
-  <th>Content</th>
-  <th>Download</th>
-  <th>Verify</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>C++ broker, Qpid Messaging API (C++)</td>
-  <td><a href="http://archive.apache.org/dist/qpid/cpp/1.36.0/qpid-cpp-1.36.0.tar.gz">qpid-cpp-1.36.0.tar.gz</a></td>
-  <td><a href="http://archive.apache.org/dist/qpid/cpp/1.36.0/qpid-cpp-1.36.0.tar.gz.asc">ASC</a>, <a href="http://archive.apache.org/dist/qpid/cpp/1.36.0/qpid-cpp-1.36.0.tar.gz.md5">MD5</a>, <a href="http://archive.apache.org/dist/qpid/cpp/1.36.0/qpid-cpp-1.36.0.tar.gz.sha1">SHA1</a></td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="components">Components</h2>
-
-<table>
-<thead>
-<tr>
-  <th>Component</th>
-  <th>Languages</th>
-  <th>Platforms</th>
-  <th>AMQP versions</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td><a href="/components/cpp-broker/index.html">C++ broker</a></td>
-  <td>C++</td>
-  <td>Linux, Windows</td>
-  <td>1.0, 0-10</td>
-</tr>
-<tr>
-  <td><a href="/components/messaging-api/index.html">Qpid Messaging API</a></td>
-  <td>C++</td>
-  <td>Linux, Windows</td>
-  <td>1.0, 0-10</td>
-</tr>
-</tbody>
-</table>
-
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
-
-<ul>
-<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt;hb=HEAD">Installing Qpid C++</a></li>
-<li><a href="cpp-broker/book/index.html">C++ broker book</a> (<a href="cpp-broker/cpp-broker-book.pdf">PDF</a>)</li>
-<li><a href="messaging-api/book/using-the-qpid-messaging-api.html">Using the Qpid Messaging API</a> (<a href="messaging-api/qpid-messaging-api-book.pdf">PDF</a>)</li>
-<li><a href="messaging-api/cpp/api/index.html">C++ API reference</a></li>
-<li><a href="messaging-api/cpp/examples/index.html">C++ examples</a></li>
-</ul>
-
-</div>
-
-<h2 id="more-information">More information</h2>
-
-<ul>
-<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-cpp-1.36.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-cpp.git/tree/refs/tags/1.36.0">Source repository tag</a></li>
-</ul>
-
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("1.36.0" === "1.36.0") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
-
+	Message request;
+	request.setReplyTo(responseQueue);
+	request.setContent("ping");
+	sender.send(request);
+	Message response = receiver.fetch();
+	std::cout &lt;&lt; request.getContent() &lt;&lt; " -&gt; " &lt;&lt; response.getContent() &lt;&lt; std::endl;
+		  </pre><p>The client sends the string <code class="literal">ping</code> to
+	the server. The server sends the response
+	<code class="literal">pong</code> back to the same client, using the
+	<code class="varname">replyTo</code> property.</p></div></div><br class="example-break" /></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="section-Maps.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="using-the-qpid-messaging-api.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch01s13.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.11.&#160;Maps and Lists in Message Content&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.13.&#160;Performance Tips</td></tr></table></div></div>
 
           <hr/>
 
