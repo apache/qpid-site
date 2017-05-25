@@ -81,9 +81,8 @@ Fedora it is part of the `emacs-goodies` package.
 page.  To illustrate:
 
     {{site_url}}                 -> http://qpid.apache.org
-    {{current_release}}          -> 0.20
-    {{current_proton_release}}   -> 0.4
-    {{current_dispatch_release}} -> 0.1
+    {{current_proton_release}}   -> 0.17.0
+    {{current_dispatch_release}} -> 0.8.0
 
 Under `output/`, `{{site_url}}` is set to a path in your development
 environment, to allow for local testing.  Under `content/`,

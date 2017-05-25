@@ -17,8 +17,6 @@ class _Release(object):
     def link(self):
         return "<a href=\"{}\">{}</a>".format(self.url, self.name)
 
-qpid_release = _Release("Qpid", "qpid", "0.32")
-
 broker_j_release = _Release("Qpid Broker-J", "qpid-broker-j", "6.2.0")
 cpp_release = _Release("Qpid C++", "qpid-cpp", "1.36.0")
 dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.8.0")
@@ -29,13 +27,6 @@ jms_amqp_0_x_release = _Release("Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6
 proton_release = _Release("Qpid Proton", "qpid-proton", "0.17.0")
 proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.19.0")
 python_release = _Release("Qpid Python", "qpid-python", "1.36.0")
-
-_svn_base = "http://svn.apache.org/repos/asf/qpid"
-
-current_release = qpid_release.number
-current_release_url = qpid_release.url
-current_release_link = qpid_release.link
-current_release_tag = "{}/tags/{}".format(_svn_base, qpid_release.number)
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
