@@ -60,14 +60,21 @@ def gen_cpp_books(release, source_dir, output_dir):
     cpp_broker_input_dir = join(input_dir, "build", "AMQP-Messaging-Broker-CPP-Book")
     cpp_broker_output_dir = join(output_dir, "cpp-broker")
 
+    messaging_input_dir = join(input_dir, "build", "Qpid-Messaging-API")
+    messaging_output_dir = join(output_dir, "messaging-api")
+
     remove(cpp_broker_output_dir)
+    remove(join(messaging_output_dir, "book"))
 
     copy(join(cpp_broker_input_dir, "html"), join(cpp_broker_output_dir, "book"))
+    copy(join(messaging_input_dir, "html"), join(messaging_output_dir, "book"))
 
     copy(join(cpp_broker_input_dir, "pdf", "AMQP-Messaging-Broker-CPP-Book.pdf"),
          join(cpp_broker_output_dir, "cpp-broker-book.pdf"))
+    copy(join(messaging_input_dir, "pdf", "Qpid-Messaging-API.pdf"),
+         join(messaging_output_dir, "qpid-messaging-api-book.pdf"))
 
-    output_dirs = [cpp_broker_output_dir]
+    output_dirs = [cpp_broker_output_dir, join(messaging_output_dir, "book")]
 
     for dir in output_dirs:
         for path in find(dir, "*.html"):
