@@ -73,20 +73,6 @@ Install the EPEL release RPM to add the repository to your system.
 Once installed, you can use the [Fedora instructions](#fedora) above
 to install the packages.
 
-Due to an existing set of deprecated Qpid packages in RHEL 6 and
-CentOS 6, we cannot at present provide updated Qpid packages directly
-in EPEL 6.  We offer an alternative repository at
-[Fedora Copr](https://copr.fedorainfracloud.org/).
-
- - [Qpid at Copr](https://copr.fedorainfracloud.org/coprs/g/qpid/qpid/)
- - [Copr repo file for RHEL 6 and CentOS 6](https://copr.fedorainfracloud.org/coprs/g/qpid/qpid/repo/epel-6/irina-qpid-epel-6.repo)
- - [Copr Qpid GPG public key]({{site_url}}/copr-qpid-pubkey.gpg)
-
-Use the `yum copr` or `dnf copr` command to add the repository to your
-system.
-
-    % yum copr enable @qpid/qpid
-
 ## Windows
 
 A [Windows installer](http://www.riverace.com/qpid/downloads.htm) is
