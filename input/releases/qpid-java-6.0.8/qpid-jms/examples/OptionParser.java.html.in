@@ -1,0 +1,336 @@
+
+<h1>OptionParser.java</h1>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">org.apache.qpid.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.List</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Map</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.jms.Connection</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.qpid.client.AMQConnection</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">OptionParser</span>
+<span class="o">{</span>    
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">BROKER</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="s">&quot;b&quot;</span><span class="o">,</span>
+            <span class="s">&quot;broker&quot;</span><span class="o">,</span>
+            <span class="s">&quot;connect to specified broker&quot;</span><span class="o">,</span>
+            <span class="s">&quot;USER:PASS@HOST:PORT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;guest:guest@localhost:5672&quot;</span><span class="o">,</span>
+            <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>        
+        
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">HELP</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="s">&quot;h&quot;</span><span class="o">,</span>
+            <span class="s">&quot;help&quot;</span><span class="o">,</span>
+            <span class="s">&quot;show this help message and exit&quot;</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="s">&quot;t&quot;</span><span class="o">,</span>
+            <span class="s">&quot;timeout&quot;</span><span class="o">,</span>
+            <span class="s">&quot;timeout in seconds to wait before exiting&quot;</span><span class="o">,</span>
+            <span class="s">&quot;TIMEOUT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">CON_OPTIONS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span>
+            <span class="s">&quot;con-option&quot;</span><span class="o">,</span>
+            <span class="s">&quot;JMS Connection URL options. Ex sync_ack=true sync_publish=all &quot;</span><span class="o">,</span>
+            <span class="s">&quot;NAME=VALUE&quot;</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">BROKER_OPTIONS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span>
+            <span class="s">&quot;broker-option&quot;</span><span class="o">,</span>
+            <span class="s">&quot;JMS Broker URL options. Ex ssl=true sasl_mechs=GSSAPI &quot;</span><span class="o">,</span>
+            <span class="s">&quot;NAME=VALUE&quot;</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="n">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+    
+    
+    <span class="kd">private</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">optMap</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span><span class="n">Object</span><span class="o">&gt;();</span>
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Option</span><span class="o">&gt;</span> <span class="n">optDefs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Option</span><span class="o">&gt;();</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">CLIENTID</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="o">;</span>
+    
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">usage</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">desc</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">address</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="nf">OptionParser</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">,</span> <span class="n">String</span> <span class="n">usage</span><span class="o">,</span> <span class="n">String</span> <span class="n">desc</span><span class="o">)</span>
+    <span class="o">{</span>   
+        <span class="k">this</span><span class="o">.</span><span class="na">usage</span> <span class="o">=</span> <span class="n">usage</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">desc</span>  <span class="o">=</span> <span class="n">desc</span><span class="o">;</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> 
+           <span class="o">(</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="o">(</span><span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;-h&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">args</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;--help&quot;</span><span class="o">))))</span>
+        <span class="o">{</span>
+            <span class="n">printHelp</span><span class="o">();</span>
+        <span class="o">}</span>
+        
+        <span class="n">address</span> <span class="o">=</span> <span class="n">args</span><span class="o">[</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">String</span><span class="o">[]</span> <span class="n">ops</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">args</span><span class="o">.</span><span class="na">length</span> <span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">arraycopy</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">ops</span><span class="o">,</span> <span class="mi">0</span><span class="o">,</span> <span class="n">ops</span><span class="o">.</span><span class="na">length</span><span class="o">);</span>        
+        <span class="n">parseOpts</span><span class="o">(</span><span class="n">ops</span><span class="o">);</span>
+        
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">optMap</span><span class="o">);</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">isHelp</span><span class="o">())</span>
+        <span class="o">{</span>
+            <span class="n">printHelp</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isHelp</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&quot;h&quot;</span><span class="o">)</span> <span class="o">||</span> <span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="s">&quot;help&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printHelp</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%s\n&quot;</span><span class="o">,</span><span class="n">usage</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%s\n&quot;</span><span class="o">,</span><span class="n">desc</span><span class="o">));</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%s\n&quot;</span><span class="o">,</span><span class="s">&quot;Options:&quot;</span><span class="o">));</span>
+        
+        <span class="k">for</span> <span class="o">(</span><span class="n">Option</span> <span class="n">op</span> <span class="o">:</span> <span class="n">optDefs</span><span class="o">)</span>
+        <span class="o">{</span>  
+           <span class="n">String</span> <span class="n">valueLabel</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">getValueLabel</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">&quot;=&quot;</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="na">getValueLabel</span><span class="o">()</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">;</span> 
+           <span class="n">String</span> <span class="n">shortForm</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">&quot;-&quot;</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">()</span> <span class="o">+</span> <span class="n">valueLabel</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+           <span class="n">String</span> <span class="n">longForm</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> <span class="s">&quot;--&quot;</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()</span> <span class="o">+</span> <span class="n">valueLabel</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+           <span class="n">String</span> <span class="n">desc</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">getDesc</span><span class="o">();</span>
+           <span class="n">String</span> <span class="n">defaultValue</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">getDefaultValue</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">?</span> 
+                   <span class="s">&quot; (default &quot;</span> <span class="o">+</span> <span class="n">op</span><span class="o">.</span><span class="na">getDefaultValue</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span> <span class="o">:</span> <span class="s">&quot;&quot;</span><span class="o">;</span>
+           
+           <span class="k">if</span> <span class="o">(!</span><span class="n">shortForm</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">))</span>
+           <span class="o">{</span>
+               <span class="n">longForm</span> <span class="o">=</span> <span class="n">shortForm</span> <span class="o">+</span> <span class="s">&quot;, &quot;</span> <span class="o">+</span> <span class="n">longForm</span><span class="o">;</span>
+           <span class="o">}</span>
+           <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span>
+                   <span class="n">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">&quot;%-54s%s%s&quot;</span><span class="o">,</span> <span class="n">longForm</span><span class="o">,</span><span class="n">desc</span><span class="o">,</span><span class="n">defaultValue</span><span class="o">));</span>
+        <span class="o">}</span>
+        
+        <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">parseOpts</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span>
+    <span class="o">{</span>   
+        <span class="n">String</span> <span class="n">prevOpt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+        <span class="k">for</span><span class="o">(</span><span class="n">String</span> <span class="n">op</span><span class="o">:</span> <span class="n">args</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="c1">// covers both -h and --help formats</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">))</span>
+            <span class="o">{</span>
+                <span class="n">String</span> <span class="n">key</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;--&quot;</span><span class="o">)?</span> <span class="mi">2</span><span class="o">:</span><span class="mi">1</span> <span class="o">,</span>
+                                         <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;=&#39;</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">?</span> 
+                                            <span class="n">op</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;=&#39;</span><span class="o">):</span>
+                                            <span class="n">op</span><span class="o">.</span><span class="na">length</span><span class="o">());</span>
+                
+                <span class="kt">boolean</span> <span class="n">match</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                <span class="k">for</span> <span class="o">(</span><span class="n">Option</span> <span class="n">option</span><span class="o">:</span> <span class="n">optDefs</span><span class="o">)</span>
+                <span class="o">{</span>
+                    
+                    <span class="k">if</span> <span class="o">((</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;-&quot;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">key</span><span class="o">))</span> <span class="o">||</span>
+                        <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;--&quot;</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">option</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">key</span><span class="o">))</span> <span class="o">)</span>
+                    <span class="o">{</span>
+                        <span class="n">match</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                        <span class="k">break</span><span class="o">;</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                
+                <span class="k">if</span> <span class="o">(!</span><span class="n">match</span><span class="o">)</span> 
+                <span class="o">{</span> 
+                    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">op</span> <span class="o">+</span> <span class="s">&quot; is not a valid option&quot;</span><span class="o">);</span> 
+                    <span class="n">System</span><span class="o">.</span><span class="na">exit</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+                <span class="o">}</span>                    
+                
+                <span class="k">if</span> <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;=&#39;</span><span class="o">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span>
+                <span class="o">{</span>
+                    <span class="n">String</span> <span class="n">val</span> <span class="o">=</span> <span class="n">extractValue</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;=&#39;</span><span class="o">)+</span><span class="mi">1</span><span class="o">));</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">key</span><span class="o">))</span>
+                    <span class="o">{</span>
+                        <span class="n">optMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">key</span><span class="o">)</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="n">val</span><span class="o">);</span>
+                    <span class="o">}</span>
+                    <span class="k">else</span>
+                    <span class="o">{</span>
+                        <span class="n">optMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">val</span><span class="o">);</span>
+                    <span class="o">}</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                <span class="o">{</span>
+                    <span class="k">if</span> <span class="o">(!</span> <span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">key</span><span class="o">)){</span> <span class="n">optMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">);</span> <span class="o">}</span>
+                    <span class="n">prevOpt</span> <span class="o">=</span> <span class="n">key</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">prevOpt</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="c1">// this is to catch broker localhost:5672 instead broker=localhost:5672</span>
+            <span class="o">{</span>
+                <span class="n">String</span> <span class="n">val</span> <span class="o">=</span> <span class="n">extractValue</span><span class="o">(</span><span class="n">op</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">)</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">).</span><span class="na">toString</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="s">&quot;&quot;</span><span class="o">))</span>
+                <span class="o">{</span>
+                    <span class="n">optMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">,</span> <span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">)</span> <span class="o">+</span> <span class="s">&quot;,&quot;</span> <span class="o">+</span> <span class="n">val</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="k">else</span>
+                <span class="o">{</span>
+                    <span class="n">optMap</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="n">prevOpt</span><span class="o">,</span> <span class="n">val</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="n">prevOpt</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+            <span class="o">}</span>
+            <span class="k">else</span>
+            <span class="o">{</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">optMap</span><span class="o">);</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="n">op</span> <span class="o">+</span> <span class="s">&quot; is not a valid option&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="n">String</span> <span class="nf">extractValue</span><span class="o">(</span><span class="n">String</span> <span class="n">op</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">startsWith</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(!</span><span class="n">op</span><span class="o">.</span><span class="na">endsWith</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">))</span> 
+            <span class="o">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalArgumentException</span><span class="o">(</span><span class="s">&quot; The option &quot;</span> <span class="o">+</span> <span class="n">op</span> <span class="o">+</span> <span class="s">&quot; needs to be inside quotes&quot;</span><span class="o">);</span>
+            <span class="o">}</span>
+            
+            <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span><span class="n">op</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span><span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">op</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    
+    <span class="kd">protected</span> <span class="kt">boolean</span> <span class="nf">containsOp</span><span class="o">(</span><span class="n">Option</span> <span class="n">op</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">())</span> <span class="o">||</span> <span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">());</span>
+    <span class="o">}</span>
+    
+    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">getOp</span><span class="o">(</span><span class="n">Option</span> <span class="n">op</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">()))</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getShortForm</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">optMap</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">()))</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="o">(</span><span class="n">String</span><span class="o">)</span><span class="n">optMap</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">op</span><span class="o">.</span><span class="na">getLongForm</span><span class="o">());</span>
+        <span class="o">}</span>
+        <span class="k">else</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="na">getDefaultValue</span><span class="o">();</span>
+        <span class="o">}</span>           
+    <span class="o">}</span>    
+
+    <span class="kd">protected</span> <span class="n">Connection</span> <span class="nf">createConnection</span><span class="o">()</span> <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>
+        <span class="n">StringBuffer</span> <span class="n">buf</span><span class="o">;</span>
+        <span class="n">buf</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuffer</span><span class="o">();</span>       
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;amqp://&quot;</span><span class="o">);</span>
+        <span class="n">String</span> <span class="n">userPass</span> <span class="o">=</span> <span class="s">&quot;guest:guest&quot;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">broker</span> <span class="o">=</span> <span class="s">&quot;localhost:5672&quot;</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">BROKER</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="k">try</span>
+            <span class="o">{</span>
+                <span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="n">getOp</span><span class="o">(</span><span class="n">BROKER</span><span class="o">);</span>
+                <span class="n">userPass</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="mi">0</span><span class="o">,</span><span class="n">b</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;@&#39;</span><span class="o">));</span>
+                <span class="n">broker</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">substring</span><span class="o">(</span><span class="n">b</span><span class="o">.</span><span class="na">indexOf</span><span class="o">(</span><span class="sc">&#39;@&#39;</span><span class="o">)+</span><span class="mi">1</span><span class="o">);</span>
+            <span class="o">}</span>    
+            <span class="k">catch</span> <span class="o">(</span><span class="n">StringIndexOutOfBoundsException</span> <span class="n">e</span><span class="o">)</span>
+            <span class="o">{</span>
+                <span class="n">Exception</span> <span class="n">ex</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Exception</span><span class="o">(</span><span class="s">&quot;Error parsing broker string &quot;</span> <span class="o">+</span> <span class="n">getOp</span><span class="o">(</span><span class="n">BROKER</span><span class="o">));</span>
+                <span class="n">ex</span><span class="o">.</span><span class="na">initCause</span><span class="o">(</span><span class="n">e</span><span class="o">);</span>
+                <span class="k">throw</span> <span class="n">ex</span><span class="o">;</span>
+            <span class="o">}</span>   
+            
+        <span class="o">}</span>
+        
+        <span class="k">if</span><span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">BROKER_OPTIONS</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="n">String</span> <span class="n">bOps</span> <span class="o">=</span> <span class="n">getOp</span><span class="o">(</span><span class="n">BROKER_OPTIONS</span><span class="o">);</span>
+            <span class="n">bOps</span> <span class="o">=</span> <span class="n">bOps</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">,</span> <span class="s">&quot;&#39;&amp;&quot;</span><span class="o">);</span>
+            <span class="n">bOps</span> <span class="o">=</span> <span class="n">bOps</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&quot;=&quot;</span><span class="o">,</span> <span class="s">&quot;=&#39;&quot;</span><span class="o">);</span>
+            <span class="n">broker</span> <span class="o">=</span> <span class="n">broker</span> <span class="o">+</span> <span class="s">&quot;?&quot;</span> <span class="o">+</span> <span class="n">bOps</span> <span class="o">+</span> <span class="s">&quot;&#39;&quot;</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">userPass</span><span class="o">);</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;@&quot;</span><span class="o">);</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">CLIENTID</span><span class="o">);</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;/?brokerlist=&#39;tcp://&quot;</span><span class="o">);</span>
+        <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">broker</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">CON_OPTIONS</span><span class="o">))</span>
+        <span class="o">{</span>
+            <span class="n">String</span> <span class="n">bOps</span> <span class="o">=</span> <span class="n">getOp</span><span class="o">(</span><span class="n">CON_OPTIONS</span><span class="o">);</span>
+            <span class="n">bOps</span> <span class="o">=</span> <span class="n">bOps</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&quot;,&quot;</span><span class="o">,</span> <span class="s">&quot;&#39;&amp;&quot;</span><span class="o">);</span>
+            <span class="n">bOps</span> <span class="o">=</span> <span class="n">bOps</span><span class="o">.</span><span class="na">replaceAll</span><span class="o">(</span><span class="s">&quot;=&quot;</span><span class="o">,</span> <span class="s">&quot;=&#39;&quot;</span><span class="o">);</span>
+            <span class="n">buf</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;&amp;&quot;</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">bOps</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">&quot;&#39;&quot;</span><span class="o">);</span>
+        <span class="o">}</span>
+        
+        <span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AMQConnection</span><span class="o">(</span><span class="n">buf</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">con</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">addOption</span><span class="o">(</span><span class="n">Option</span> <span class="n">opt</span><span class="o">)</span>
+    <span class="o">{</span>
+        <span class="n">optDefs</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">opt</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">protected</span> <span class="n">String</span> <span class="nf">getAddress</span><span class="o">()</span>
+    <span class="o">{</span>
+        <span class="k">return</span> <span class="n">address</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Option</span>
+    <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">shortForm</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">longForm</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">desc</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">valueLabel</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">defaultValue</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Class</span> <span class="n">type</span><span class="o">;</span>
+        
+        <span class="kd">public</span> <span class="nf">Option</span><span class="o">(</span><span class="n">String</span> <span class="n">shortForm</span><span class="o">,</span> <span class="n">String</span> <span class="n">longForm</span><span class="o">,</span> <span class="n">String</span> <span class="n">desc</span><span class="o">,</span>
+                      <span class="n">String</span> <span class="n">valueLabel</span><span class="o">,</span> <span class="n">String</span> <span class="n">defaultValue</span><span class="o">,</span> <span class="n">Class</span> <span class="n">type</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">shortForm</span> <span class="o">=</span> <span class="n">shortForm</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">longForm</span> <span class="o">=</span> <span class="n">longForm</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">defaultValue</span> <span class="o">=</span> <span class="n">defaultValue</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">type</span> <span class="o">=</span> <span class="n">type</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">desc</span> <span class="o">=</span> <span class="n">desc</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">valueLabel</span> <span class="o">=</span> <span class="n">valueLabel</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getShortForm</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">shortForm</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getLongForm</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">longForm</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDefaultValue</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">defaultValue</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="n">Class</span> <span class="nf">getType</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">type</span><span class="o">;</span>
+        <span class="o">}</span>    
+        
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getDesc</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">desc</span><span class="o">;</span>
+        <span class="o">}</span>
+        
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">getValueLabel</span><span class="o">()</span>
+        <span class="o">{</span>
+            <span class="k">return</span> <span class="n">valueLabel</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p><a href="OptionParser.java">Download this file</a></p>
