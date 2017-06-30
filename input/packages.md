@@ -73,8 +73,3 @@ Install the EPEL release RPM to add the repository to your system.
 Once installed, you can use the [Fedora instructions](#fedora) above
 to install the packages.
 
-## Windows
-
-A [Windows installer](http://www.riverace.com/qpid/downloads.htm) is
-available from Riverace. It is built from the C++ and C# source
-distributions.
