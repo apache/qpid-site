@@ -221,13 +221,15 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>jms.receiveNoWaitLocalOnly</strong> If enabled receiveNoWait calls will only check a consumers local message buffer, otherwise the remote peer is checked to ensure there are really no messages available. Default is false, the remote is checked.</li>
 <li><strong>jms.queuePrefix</strong> Optional prefix value added to the name of any Queue created from a JMS Session.</li>
 <li><strong>jms.topicPrefix</strong> Optional prefix value added to the name of any Topic created from a JMS Session.</li>
-<li><strong>jms.closeTimeout</strong> Timeout value that controls how long the client waits on Connection close before returning. (By default the client waits 15 seconds for a normal close completion event).</li>
+<li><strong>jms.closeTimeout</strong> Timeout value that controls how long the client waits on resource closure before returning. (By default the client waits 60 seconds for a normal close completion event).</li>
 <li><strong>jms.connectTimeout</strong> Timeout value that controls how long the client waits on Connection establishment before returning with an error. (By default the client waits 15 seconds for a connection to be established before failing).</li>
 <li><strong>jms.sendTimeout</strong> Timeout value that controls how long the client waits on completion of a synchronous message send before returning an error (By default the client will wait indefinitely for a send to complete).</li>
 <li><strong>jms.requestTimeout</strong> Timeout value that controls how long the client waits on completion of various synchronous interactions with the remote peer before returning an error (By default the client will wait indefinitely for a request to complete</li>
 <li><strong>jms.clientIDPrefix</strong> Optional prefix value that is used for generated Client ID values when a new Connection is created for the JMS ConnectionFactory.  The default prefix is 'ID:'.</li>
 <li><strong>jms.connectionIDPrefix</strong> Optional prefix value that is used for generated Connection ID values when a new Connection is created for the JMS ConnectionFactory.  This connection ID is used when logging some information from the JMS Connection object so a configurable prefix can make breadcrumbing the logs easier.  The default prefix is 'ID:'.</li>
 <li><strong>jms.populateJMSXUserID</strong> Controls whether a MessageProducer will populate the JMSXUserID value for each sent message using the authenticated username from the connection.  This value defaults to false and the JMSXUserID for all sent message will not be populated.</li>
+<li><strong>jms.awaitClientID</strong> Controls whether a Connection with no ClientID configured in the URI will wait for a ClientID being set programatically (or the connection being used otherwise to signal none can be set) before sending the AMQP connection Open. Defaults to true.</li>
+<li><strong>jms.useDaemonThread</strong> Controls whether a Connection will use a daemon thread for its executor. Defaults to false to ensure a non-daemon thread is present by default.</li>
 </ul>
 
 <p>The Prefetch Policy controls how many messages the remote peer can send to the client and be held in a prefetch buffer for each consumer instance.</p>
@@ -244,6 +246,7 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 
 <ul>
 <li><strong>jms.redeliveryPolicy.maxRedeliveries</strong> controls when an incoming message is rejected based on the number of times it has been redelivered, the default value is (-1) disabled.  A value of zero would indicate no message redeliveries are accepted, a value of five would allow a message to be redelivered five times, etc.</li>
+<li><strong>jms.redeliveryPolicy.outcome</strong> controls the outcome that is applied to a message that is being rejected due to it having exceeded the configured maxRedeliveries value.  This option is configured on the URI using the following set of outcome options:  ACCEPTED, REJECTED, RELEASED, MODIFIED_FAILED and MODIFIED_FAILED_UNDELIVERABLE. The default outcome value is MODIFIED_FAILED_UNDELIVERABLE.</li>
 </ul>
 
 <p>The MessageID Policy controls the type of the Message ID assigned to messages sent from the client.</p>
@@ -305,7 +308,7 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>transport.keyStoreLocation</strong>  default is to read from the system property "javax.net.ssl.keyStore"</li>
 <li><strong>transport.keyStorePassword</strong>  default is to read from the system property "javax.net.ssl.keyStorePassword"</li>
 <li><strong>transport.trustStoreLocation</strong>  default is to read from the system property "javax.net.ssl.trustStore"</li>
-<li><strong>transport.trustStorePassword</strong>  default is to read from the system property "javax.net.ssl.keyStorePassword"</li>
+<li><strong>transport.trustStorePassword</strong>  default is to read from the system property "javax.net.ssl.trustStorePassword"</li>
 <li><strong>transport.storeType</strong> The type of trust store being used. Default is "JKS".</li>
 <li><strong>transport.contextProtocol</strong> The protocol argument used when getting an SSLContext. Default is "TLS".</li>
 <li><strong>transport.enabledCipherSuites</strong> The cipher suites to enable, comma separated. No default, meaning the context default ciphers are used. Any disabled ciphers are removed from this.</li>
@@ -315,6 +318,7 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>transport.trustAll</strong> Whether to trust the provided server certificate implicitly, regardless of any configured trust store. Defaults to false.</li>
 <li><strong>transport.verifyHost</strong> Whether to verify that the hostname being connected to matches with the provided server certificate. Defaults to true.</li>
 <li><strong>transport.keyAlias</strong> The alias to use when selecting a keypair from the keystore if required to send a client certificate to the server. No default.</li>
+<li><strong>transport.useEpoll</strong> When true the transport will use the native Epoll layer when available instead of the NIO layer, which can improve performance. Defaults to true.</li>
 </ul>
 
 <h3 id="websocket-transport-configuration-options">Websocket Transport Configuration options</h3>
@@ -334,14 +338,15 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>amqp.idleTimeout</strong> The idle timeout in milliseconds after which the connection will be failed if the peer sends no AMQP frames. Default is 60000.</li>
 <li><strong>amqp.vhost</strong> The vhost to connect to. Used to populate the Sasl and Open hostname fields. Default is the main hostname from the Connection URI.</li>
 <li><strong>amqp.saslLayer</strong> Controls whether connections should use a SASL layer or not. Default is true.</li>
-<li><strong>amqp.saslMechanisms</strong> Which SASL mechanism(s) the client should allow selection of, if offered by the server and usable with the configured credentials. Comma separated if specifying more than 1 mechanism. Default is to allow selection from all the clients supported mechanisms, which are currently EXTERNAL, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5, PLAIN, and ANONYMOUS.</li>
+<li><strong>amqp.saslMechanisms</strong> Which SASL mechanism(s) the client should allow selection of, if offered by the server and usable with the configured credentials. Comma separated if specifying more than 1 mechanism. The clients supported mechanisms are currently EXTERNAL, SCRAM-SHA-256, SCRAM-SHA-1, CRAM-MD5, PLAIN, ANONYMOUS, and GSSAPI for Kerberos.  Default is to allow selection from all mechanisms except GSSAPI, which must be specified here to enable.</li>
 <li><strong>amqp.maxFrameSize</strong> The max-frame-size value in bytes that is advertised to the peer. Default is 1048576.</li>
 <li><strong>amqp.drainTimeout</strong> The time in milliseconds that the client will wait for a response from the remote when a consumer drain request is made. If no response is seen in the allotted timeout period the link will be considered failed and the associated consumer will be closed. Default is 60000.</li>
+<li><strong>amqp.allowNonSecureRedirects</strong> Controls whether an AMQP connection will allow for a redirect to an alternative host over a connection that is not secure when the existing connection is secure, e.g. redirecting an SSL connection to a raw TCP connection.  This value defaults to false.</li>
 </ul>
 
 <h3 id="failover-configuration-options">Failover Configuration options</h3>
 
-<p>With failover enabled the client can reconnect to a different broker automatically when the connection to the current connection is lost for some reason.  The failover URI is always initiated with the <em>failover</em> prefix and a list of URIs for the brokers is contained inside a set of parentheses. The "jms." options are applied to the overall failover URI, outside the parentheses, and affect the JMS Connection object for its lifetime.</p>
+<p>With failover enabled the client can reconnect to another server automatically when connection to the current server is lost for some reason.  The failover URI is always initiated with the <em>failover</em> prefix and a list of URIs for the server(s) is contained inside a set of parentheses. The "jms." options are applied to the overall failover URI, outside the parentheses, and affect the JMS Connection object for its lifetime.</p>
 
 <p>The URI for failover looks something like the following:</p>
 
@@ -365,6 +370,7 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>failover.startupMaxReconnectAttempts</strong> For a client that has never connected to a remote peer before this option control how many attempts are made to connect before reporting the connection as failed.  The default is to use the value of maxReconnectAttempts.</li>
 <li><strong>failover.warnAfterReconnectAttempts</strong> Controls how often the client will log a message indicating that failover reconnection is being attempted.  The default is to log every 10 connection attempts.</li>
 <li><strong>failover.randomize</strong> When true the set of failover URIs is randomly shuffled prior to attempting to connect to one of them.  This can help to distribute client connections more evenly across multiple remote peers.  The default value is false.</li>
+<li><strong>failover.amqpOpenServerListAction</strong> Controls how the failover transport behaves when the connection Open frame from the remote peer provides a list of failover hosts to the client.  This option accepts one of three values; REPLACE, ADD, or IGNORE (default is REPLACE).  If REPLACE is configured then all failover URIs other than the one for the current server are replaced with those provided by the remote peer.  If ADD is configured then the URIs provided by the remote are added to the existing set of failover URIs, with de-duplication.  If IGNORE is configured then any updates from the remote are dropped and no changes are made to the set of failover URIs in use.</li>
 </ul>
 
 <p>The failover URI also supports defining 'nested' options as a means of specifying AMQP and transport option values applicable to all the individual nested broker URI's, which can be useful to avoid repetition. This is accomplished using the same "transport." and "amqp." URI options outlined earlier for a non-failover broker URI but prefixed with <em>failover.nested.</em>. For example, to apply the same value for the <em>amqp.vhost</em> option to every broker connected to you might have a URI like:</p>
@@ -417,6 +423,46 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li>Set the environment variable (not Java system property) <em>PN_TRACE_FRM</em> to <em>true</em>, which will cause Proton to emit frame logging to stdout.</li>
 <li>Add the option <em>amqp.traceFrames=true</em> to your connection URI to have the client add a protocol tracer to Proton, and configure the <em>org.apache.qpid.jms.provider.amqp.FRAMES</em> Logger to <em>TRACE</em> level to include the output in your logs.</li>
 </ul>
+
+<h2 id="authenticating-using-kerberos">Authenticating using Kerberos</h2>
+
+<p>The client can be configured to authenticate using Kerberos when used with an appropriately configured server. To do so, you must:</p>
+
+<ol>
+<li><p>Configure the client to use the GSSAPI mechanism for SASL authentication using the <em>amqp.saslMechanisms</em> URI option, e.g:</p>
+
+<pre><code>amqp://myhost:5672?amqp.saslMechanisms=GSSAPI
+failover:(amqp://myhost:5672?amqp.saslMechanisms=GSSAPI)
+</code></pre></li>
+<li><p>Set the <em>java.security.auth.login.config</em> system property to the path of a JAAS Login Configuration file containing appropriate configuration for a Kerberos LoginModule, e.g:</p>
+
+<pre><code>-Djava.security.auth.login.config=/path/to/login.config
+</code></pre>
+
+<p>An example login.config configuration file might look like the following:</p>
+
+<pre><code>amqp-jms-client {
+    com.sun.security.auth.module.Krb5LoginModule required
+    useTicketCache=true;
+};
+</code></pre></li>
+</ol>
+
+<p>The precise configuration used will depend on how you wish the credentials to be established for the connection, and the particular LoginModule in use. For details of the Sun/Oracle Krb5LoginModule, see <a href="https://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/Krb5LoginModule.html">https://docs.oracle.com/javase/8/docs/jre/api/security/jaas/spec/com/sun/security/auth/module/Krb5LoginModule.html</a>. For details of the IBM Java 8 Krb5LoginModule, see <a href="https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.api.doc/jgss/com/ibm/security/auth/module/Krb5LoginModule.html">https://www.ibm.com/support/knowledgecenter/en/SSYKE2_8.0.0/com.ibm.java.security.api.doc/jgss/com/ibm/security/auth/module/Krb5LoginModule.html</a>.</p>
+
+<p>It is possible to configure the LoginModule to establish the credentials to use for the Kerberos process, such as specifying a Principal and whether to use an existing ticket cache or keytab. If however the LoginModule configuration does not provide means to establish all necessary credentials, it may then request and be passed the username and/or password values from the client Connection object if they were either supplied when creating the Connection using the ConnectionFactory or previously configured via its URI options.</p>
+
+<p>Note that Kerberos is only only supported for authentication purposes. Use SSL/TLS connections for encryption.</p>
+
+<p>The following URI options can be used to influence the Kerberos authentication process:</p>
+
+<ul>
+<li><strong>sasl.options.configScope</strong> The Login Configuration entry name to use when authenticating. Default is "amqp-jms-client".</li>
+<li><strong>sasl.options.protocol</strong> The protocol value used during the GSSAPI SASL process. Default is "amqp".</li>
+<li><strong>sasl.options.serverName</strong> The serverName value used during the GSSAPI SASL process. Default is the server hostname from the connection URI.</li>
+</ul>
+
+<p>Similar to the "amqp." and "transport." options detailed previously, these options must be specified on a per-host basis or as all-host nested options in a failover URI.</p>
 
 
           <hr/>

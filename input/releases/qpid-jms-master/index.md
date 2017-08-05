@@ -6,9 +6,9 @@
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_jms_release_url}}/index.html).
 
-This content was generated at 09:12  on Sunday, 04 December 2016.
+This content was generated at 23:06  on Friday, 04 August 2017.
 
 </div>
 
@@ -36,7 +36,7 @@ This content was generated at 09:12  on Sunday, 04 December 2016.
 
 <div class="two-column" markdown="1">
 
- - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
+ - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
  - [Examples](https://github.com/apache/qpid-jms/tree/master/qpid-jms-examples)
  - [Configuration](docs/index.html)
  - [Building Qpid JMS](building.html)
