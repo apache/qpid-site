@@ -2,8 +2,14 @@
 <h1>scheduled_send.cpp</h1>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;options.hpp&quot;</span><span class="cp"></span>
 
+<span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/default_container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/sender.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/tracker.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/work_queue.hpp&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
 
@@ -15,6 +21,7 @@
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">url</span><span class="p">;</span>
     <span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="n">sender</span><span class="p">;</span>
     <span class="n">proton</span><span class="o">::</span><span class="n">duration</span> <span class="n">interval</span><span class="p">,</span> <span class="n">timeout</span><span class="p">;</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">work_queue</span><span class="o">*</span> <span class="n">work_queue</span><span class="p">;</span>
     <span class="kt">bool</span> <span class="n">ready</span><span class="p">,</span> <span class="n">canceled</span><span class="p">;</span>
 
   <span class="k">public</span><span class="o">:</span>
@@ -27,12 +34,19 @@
         <span class="n">canceled</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>         <span class="c1">// Canceled.</span>
     <span class="p">{}</span>
 
+    <span class="c1">// The awkward looking double lambda is necessary because the scheduled lambdas run in the container context</span>
+    <span class="c1">// and must arrange lambdas for send and close to happen in the connection context.</span>
     <span class="kt">void</span> <span class="n">on_container_start</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
-        <span class="n">sender</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">open_sender</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">open_sender</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_sender_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
+        <span class="n">sender</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="n">work_queue</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">.</span><span class="n">work_queue</span><span class="p">();</span>
         <span class="c1">// Call this-&gt;cancel after timeout.</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">schedule</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">cancel</span><span class="p">();</span> <span class="p">});</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">container</span><span class="p">().</span><span class="n">schedule</span><span class="p">(</span><span class="n">timeout</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">work_queue</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">cancel</span><span class="p">();</span> <span class="p">});</span> <span class="p">});</span>
          <span class="c1">// Start regular ticks every interval.</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">schedule</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">tick</span><span class="p">();</span> <span class="p">});</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">container</span><span class="p">().</span><span class="n">schedule</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">work_queue</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">tick</span><span class="p">();</span> <span class="p">});</span> <span class="p">});</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">cancel</span><span class="p">()</span> <span class="p">{</span>
@@ -43,7 +57,7 @@
     <span class="kt">void</span> <span class="n">tick</span><span class="p">()</span> <span class="p">{</span>
         <span class="c1">// Schedule the next tick unless we have been cancelled.</span>
         <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">canceled</span><span class="p">)</span>
-            <span class="n">sender</span><span class="p">.</span><span class="n">container</span><span class="p">().</span><span class="n">schedule</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">tick</span><span class="p">();</span> <span class="p">});</span>
+            <span class="n">sender</span><span class="p">.</span><span class="n">container</span><span class="p">().</span><span class="n">schedule</span><span class="p">(</span><span class="n">interval</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">work_queue</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">(</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">tick</span><span class="p">();</span> <span class="p">});</span> <span class="p">});</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sender</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">// Only send if we have credit</span>
             <span class="n">send</span><span class="p">();</span>
         <span class="k">else</span>

@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['property_5fmap',['property_map',['../classproton_1_1message_1_1property__map.html',1,'proton::message']]]
+  ['receiver',['receiver',['../classproton_1_1receiver.html',1,'proton']]],
+  ['receiver_5foptions',['receiver_options',['../classproton_1_1receiver__options.html',1,'proton']]],
+  ['returned',['returned',['../classproton_1_1returned.html',1,'proton']]]
 ];

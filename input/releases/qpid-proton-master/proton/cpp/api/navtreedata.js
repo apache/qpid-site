@@ -2,9 +2,9 @@ var NAVTREE =
 [
   [ "Qpid Proton C++ API", "index.html", [
     [ "Introduction", "index.html", null ],
+    [ "AMQP and C++ types", "types_page.html", null ],
     [ "IO integration", "io_page.html", null ],
     [ "Multithreaded Proton applications", "mt_page.html", null ],
-    [ "AMQP and C++ types", "types_page.html", null ],
     [ "Tutorial", "tutorial.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
@@ -29,7 +29,11 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ]
+      [ "File List", "files.html", "files" ],
+      [ "File Members", "globals.html", [
+        [ "All", "globals.html", null ],
+        [ "Macros", "globals_defs.html", null ]
+      ] ]
     ] ],
     [ "Examples", "examples.html", "examples" ]
   ] ]
@@ -37,11 +41,11 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"amqp__types_8hpp_source.html",
-"classproton_1_1decimal128.html#aea40041f227d76ad1e1f063131bbc95c",
-"classproton_1_1receiver.html#a2f1d8ca25f71dff178c462cf984327f9",
-"classproton_1_1transport.html#ae94b11511c3ff52ec5b4988122a232ff",
-"type__id_8hpp.html#a83c2656d467d69eb49725c18f5aa13a9aecafbc1299672a8c1521cc0d5f1ae986"
+"annotated.html",
+"classproton_1_1decimal64.html#a13c57dab17e2c903cadfa5e35ba84064",
+"classproton_1_1receiver.html#a9e8555112049fc2b4945120b3c45f8ab",
+"classproton_1_1transport.html#aff302bb6016f2ae29f01bb4e07389a52",
+"receiver_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

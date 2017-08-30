@@ -1,8 +1,8 @@
 var classproton_1_1transport =
 [
     [ "transport", "classproton_1_1transport.html#aa1996a887a9af5c8c18c739ab08588d6", null ],
-    [ "connection", "classproton_1_1transport.html#af13d10fc3d843719af9ff4c456330a73", null ],
-    [ "error", "classproton_1_1transport.html#ae94b11511c3ff52ec5b4988122a232ff", null ],
-    [ "sasl", "classproton_1_1transport.html#a68d041918b4f276dc70e68e479333355", null ],
-    [ "ssl", "classproton_1_1transport.html#a47704eef267d19ef6411cc8028d3299f", null ]
+    [ "connection", "classproton_1_1transport.html#aff302bb6016f2ae29f01bb4e07389a52", null ],
+    [ "error", "classproton_1_1transport.html#a090a10fab22d7faf0f74c8ccda0f1470", null ],
+    [ "sasl", "classproton_1_1transport.html#a150f1a1b6c9cf6605d44f4cc150a11cc", null ],
+    [ "ssl", "classproton_1_1transport.html#a73fe833a759ac581baa889155b7d0633", null ]
 ];

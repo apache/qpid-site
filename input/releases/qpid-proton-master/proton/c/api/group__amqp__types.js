@@ -6,10 +6,10 @@ var group__amqp__types =
     [ "pn_uuid_t", "group__amqp__types.html#structpn__uuid__t", [
       [ "bytes", "group__amqp__types.html#afdf37091f4247c81d253716eab97020e", null ]
     ] ],
+    [ "pn_timestamp_t", "group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd", null ],
     [ "pn_char_t", "group__amqp__types.html#gaa1713f25d484600197d2a25ace856672", null ],
     [ "pn_decimal32_t", "group__amqp__types.html#ga54d49ca7ff04ad10a57139c2d61f1d44", null ],
     [ "pn_decimal64_t", "group__amqp__types.html#ga7d8110bc953738d83ad8b9c543ef517f", null ],
-    [ "pn_timestamp_t", "group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd", null ],
     [ "pn_type_t", "group__amqp__types.html#ga4465b5ea7d3c4f15c1dffa4deda905db", [
       [ "PN_NULL", "group__amqp__types.html#gga4465b5ea7d3c4f15c1dffa4deda905dbaee48efaa3cb0c5b5d16c5b869b7e8fbe", null ],
       [ "PN_BOOL", "group__amqp__types.html#gga4465b5ea7d3c4f15c1dffa4deda905dba2d6444a931a66258de3c73ad01238ae7", null ],

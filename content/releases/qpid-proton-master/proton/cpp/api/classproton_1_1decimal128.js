@@ -12,9 +12,9 @@ var classproton_1_1decimal128 =
     [ "size_type", "classproton_1_1decimal128.html#a89a6dcafb6130e3e1bcd6d1285e0dd6f", null ],
     [ "value_type", "classproton_1_1decimal128.html#a4bbdd41bfc847213cc17df2150f2d36f", null ],
     [ "begin", "classproton_1_1decimal128.html#a5cef60cb24e71a774ca7fd34a0299242", null ],
-    [ "begin", "classproton_1_1decimal128.html#a308ac5841c7984d6b8668cbdf7fbb030", null ],
+    [ "begin", "classproton_1_1decimal128.html#a5310cf5d739236f30ce3625d375bceb4", null ],
     [ "end", "classproton_1_1decimal128.html#a9e468c6efb6d8a6e23aa038e77e2683b", null ],
-    [ "end", "classproton_1_1decimal128.html#aea40041f227d76ad1e1f063131bbc95c", null ],
+    [ "end", "classproton_1_1decimal128.html#a9cebd58fabf177f121fdf9f25033cafb", null ],
     [ "operator[]", "classproton_1_1decimal128.html#a8bac4d75006235270f0c23744aa2517e", null ],
-    [ "operator[]", "classproton_1_1decimal128.html#a1881f7a7e8d9c1cb46fe6f4984e0c165", null ]
+    [ "operator[]", "classproton_1_1decimal128.html#a5a5b7e2edea93a2ceafe9dfa6bdc7c56", null ]
 ];

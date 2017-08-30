@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_proton_release_url}}/index.html).
 
-This content was generated at 15:57  on Friday, 09 December 2016.
+This content was generated at 20:05  on Tuesday, 29 August 2017.
 
 </div>
 
@@ -41,7 +41,6 @@ This content was generated at 15:57  on Friday, 09 December 2016.
  - [C++ tutorial](proton/cpp/api/tutorial.html)
  - [C++ examples](proton/cpp/examples/index.html)
  - [C++ API reference](proton/cpp/api/annotated.html)
- - [Java API reference](proton/java/api/index.html)
  - [Python overview](proton/python/book/overview.html)
  - [Python tutorial](proton/python/book/tutorial.html)
  - [Python examples](proton/python/examples/index.html)

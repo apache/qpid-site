@@ -21,7 +21,10 @@
 
 #include <proton/connection.hpp>
 #include <proton/connection_options.hpp>
+#include <proton/container.hpp>
 #include <proton/default_container.hpp>
+#include <proton/listener.hpp>
+#include <proton/message.hpp>
 #include <proton/messaging_handler.hpp>
 #include <proton/sasl.hpp>
 #include <proton/ssl.hpp>
@@ -61,6 +64,9 @@ struct server_handler : public proton::messaging_handler {
             c.close();
         }
         listener.stop();
+
+        // Go and do default inbound open stuff too
+        messaging_handler::on_connection_open(c);
     }
 
     void on_message(proton::delivery &, proton::message &m) OVERRIDE {

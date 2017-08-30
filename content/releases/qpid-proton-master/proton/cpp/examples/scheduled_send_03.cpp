@@ -21,8 +21,16 @@
 
 #include "options.hpp"
 
+#include <proton/container.hpp>
+#include <proton/connection.hpp>
 #include <proton/default_container.hpp>
+#include <proton/duration.hpp>
+#include <proton/function.hpp>
+#include <proton/message.hpp>
 #include <proton/messaging_handler.hpp>
+#include <proton/sender.hpp>
+#include <proton/tracker.hpp>
+#include <proton/work_queue.hpp>
 
 #include <iostream>
 
@@ -33,64 +41,51 @@
 class scheduled_sender : public proton::messaging_handler {
   private:
     std::string url;
-    proton::sender sender;
     proton::duration interval, timeout;
+    proton::work_queue *work_queue;
     bool ready, canceled;
 
-    struct tick_fn : public proton::void_function0 {
-        scheduled_sender& parent;
-        tick_fn(scheduled_sender& ss) : parent(ss) {}
-        void operator()() { parent.tick(); }
-    };
-
-    struct cancel_fn : public proton::void_function0 {
-        scheduled_sender& parent;
-        cancel_fn(scheduled_sender& ss) : parent(ss) {}
-        void operator()() { parent.cancel(); }
-    };
-
-    tick_fn do_tick;
-    cancel_fn do_cancel;
-
   public:
-
     scheduled_sender(const std::string &s, double d, double t) :
         url(s),
         interval(int(d*proton::duration::SECOND.milliseconds())), // Send interval.
         timeout(int(t*proton::duration::SECOND.milliseconds())), // Cancel after timeout.
         ready(true),            // Ready to send.
-        canceled(false),         // Canceled.
-        do_tick(*this),
-        do_cancel(*this)
+        canceled(false)         // Canceled.
     {}
 
     void on_container_start(proton::container &c) OVERRIDE {
-        sender = c.open_sender(url);
-        c.schedule(timeout, do_cancel); // Call this->cancel after timeout.
-        c.schedule(interval, do_tick); // Start regular ticks every interval.
+        c.open_sender(url);
     }
 
-    void cancel() {
+    void on_sender_open(proton::sender & s) OVERRIDE {
+        work_queue = &s.work_queue();
+
+        proton::schedule_work(work_queue, timeout, &scheduled_sender::cancel, this, s);
+        proton::schedule_work(work_queue, interval, &scheduled_sender::tick, this, s);
+    }
+
+    void cancel(proton::sender sender) {
         canceled = true;
         sender.connection().close();
     }
 
-    void tick() {
+    void tick(proton::sender sender) {
         if (!canceled) {
-            sender.container().schedule(interval, do_tick); // Next tick
+            proton::schedule_work(work_queue, interval, &scheduled_sender::tick, this, sender); // Next tick
             if (sender.credit() > 0) // Only send if we have credit
-                send();
+                send(sender);
             else
                 ready = true; // Set the ready flag, send as soon as we get credit.
         }
     }
 
-    void on_sendable(proton::sender &) OVERRIDE {
+    void on_sendable(proton::sender &sender) OVERRIDE {
         if (ready)              // We have been ticked since the last send.
-            send();
+            send(sender);
     }
 
-    void send() {
+    void send(proton::sender& sender) {
         std::cout << "send" << std::endl;
         sender.send(proton::message("ping"));
         ready = false;

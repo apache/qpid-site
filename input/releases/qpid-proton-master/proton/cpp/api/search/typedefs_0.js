@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numeric_5ftype',['numeric_type',['../classproton_1_1duration.html#a44829e89515fec974f57f37bbdbfaeb2',1,'proton::duration::numeric_type()'],['../classproton_1_1timestamp.html#a44829e89515fec974f57f37bbdbfaeb2',1,'proton::timestamp::numeric_type()']]]
+  ['annotation_5fmap',['annotation_map',['../classproton_1_1message.html#a3c6892bfc5d3b4b1972dc23c004929b7',1,'proton::message']]]
 ];

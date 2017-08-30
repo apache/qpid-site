@@ -4,7 +4,6 @@
 ## Example files
 
  - [broker.cpp](broker.cpp.html)
- - [broker.hpp](broker.hpp.html)
  - [client.cpp](client.cpp.html)
  - [connection_options.cpp](connection_options.cpp.html)
  - [direct_recv.cpp](direct_recv.cpp.html)
@@ -14,6 +13,9 @@
  - [flow_control.cpp](flow_control.cpp.html)
  - [helloworld.cpp](helloworld.cpp.html)
  - [helloworld_direct.cpp](helloworld_direct.cpp.html)
+ - [message_properties.cpp](message_properties.cpp.html)
+ - [multithreaded_client.cpp](multithreaded_client.cpp.html)
+ - [multithreaded_client_flow_control.cpp](multithreaded_client_flow_control.cpp.html)
  - [options.hpp](options.hpp.html)
  - [queue_browser.cpp](queue_browser.cpp.html)
  - [scheduled_send.cpp](scheduled_send.cpp.html)

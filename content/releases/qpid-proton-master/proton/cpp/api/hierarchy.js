@@ -5,15 +5,6 @@ var hierarchy =
         [ "symbol", "classproton_1_1symbol.html", null ]
       ] ]
     ] ],
-    [ "cached_map< annotation_key, value >", null, [
-      [ "message::annotation_map", "classproton_1_1message_1_1annotation__map.html", null ]
-    ] ],
-    [ "cached_map< std::string, scalar >", null, [
-      [ "message::property_map", "classproton_1_1message_1_1property__map.html", null ]
-    ] ],
-    [ "cached_map< symbol, value >", null, [
-      [ "source::filter_map", "classproton_1_1source_1_1filter__map.html", null ]
-    ] ],
     [ "comparable< byte_array< N > >", null, [
       [ "byte_array< 16 >", "classproton_1_1byte__array.html", [
         [ "decimal128", "classproton_1_1decimal128.html", null ],
@@ -78,11 +69,7 @@ var hierarchy =
     [ "connection_driver", "classproton_1_1io_1_1connection__driver.html", null ],
     [ "connection_options", "classproton_1_1connection__options.html", null ],
     [ "const_buffer", "structproton_1_1io_1_1const__buffer.html", null ],
-    [ "container", "classproton_1_1container.html", [
-      [ "container_ref< std::auto_ptr< container > >", "classproton_1_1container__ref.html", null ],
-      [ "container_ref< Ptr >", "classproton_1_1container__ref.html", null ]
-    ] ],
-    [ "container_impl_base", "classproton_1_1io_1_1container__impl__base.html", null ],
+    [ "container", "classproton_1_1container.html", null ],
     [ "decoder", "classproton_1_1codec_1_1decoder.html", null ],
     [ "delivery_mode", "structproton_1_1delivery__mode.html", null ],
     [ "encoder", "classproton_1_1codec_1_1encoder.html", null ],
@@ -92,7 +79,6 @@ var hierarchy =
       [ "session", "classproton_1_1session.html", null ]
     ] ],
     [ "error_condition", "classproton_1_1error__condition.html", null ],
-    [ "event_loop", "classproton_1_1event__loop.html", null ],
     [ "exception", null, [
       [ "runtime_error", null, [
         [ "error", "structproton_1_1error.html", [
@@ -106,10 +92,13 @@ var hierarchy =
     [ "link_namer", "classproton_1_1io_1_1link__namer.html", null ],
     [ "listen_handler", "classproton_1_1listen__handler.html", null ],
     [ "listener", "classproton_1_1listener.html", null ],
+    [ "map< K, T >", "classproton_1_1map.html", null ],
+    [ "map< symbol, value >", "classproton_1_1map.html", null ],
     [ "message", "classproton_1_1message.html", null ],
     [ "messaging_handler", "classproton_1_1messaging__handler.html", null ],
     [ "mutable_buffer", "structproton_1_1io_1_1mutable__buffer.html", null ],
     [ "receiver_options", "classproton_1_1receiver__options.html", null ],
+    [ "returned< T >", "classproton_1_1returned.html", null ],
     [ "sasl", "classproton_1_1sasl.html", null ],
     [ "sender_options", "classproton_1_1sender__options.html", null ],
     [ "session_options", "classproton_1_1session__options.html", null ],
@@ -124,10 +113,11 @@ var hierarchy =
       [ "source", "classproton_1_1source.html", null ],
       [ "target", "classproton_1_1target.html", null ]
     ] ],
-    [ "thread_safe< T >", "classproton_1_1thread__safe.html", null ],
     [ "url", "classproton_1_1url.html", null ],
     [ "vector< T >", null, [
       [ "binary", "classproton_1_1binary.html", null ]
     ] ],
-    [ "void_function0", "classproton_1_1void__function0.html", null ]
+    [ "void_function0", "classproton_1_1void__function0.html", null ],
+    [ "work", "classproton_1_1work.html", null ],
+    [ "work_queue", "classproton_1_1work__queue.html", null ]
 ];

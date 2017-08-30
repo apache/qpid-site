@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['value',['value',['../classproton_1_1value.html',1,'proton']]],
-  ['void_5ffunction0',['void_function0',['../classproton_1_1void__function0.html',1,'proton']]]
+  ['work',['work',['../classproton_1_1work.html',1,'proton']]],
+  ['work_5fqueue',['work_queue',['../classproton_1_1work__queue.html',1,'proton']]]
 ];
