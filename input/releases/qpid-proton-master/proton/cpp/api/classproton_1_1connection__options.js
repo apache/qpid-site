@@ -11,6 +11,7 @@ var classproton_1_1connection__options =
     [ "max_sessions", "classproton_1_1connection__options.html#af66706fdb4a2f3f4d9943be9ee4b1347", null ],
     [ "operator=", "classproton_1_1connection__options.html#a2c612e142b60cf61ce50d88582465167", null ],
     [ "password", "classproton_1_1connection__options.html#a78a90a1387cf91915dbe39b888955d75", null ],
+    [ "reconnect", "classproton_1_1connection__options.html#a5a38fafc56619c03e10979b978393bbc", null ],
     [ "sasl_allow_insecure_mechs", "classproton_1_1connection__options.html#afbabea03db40dee25da7bbdc7e918322", null ],
     [ "sasl_allowed_mechs", "classproton_1_1connection__options.html#a52f0724b86920647ef8624922aa54ab6", null ],
     [ "sasl_config_name", "classproton_1_1connection__options.html#ad8e93a44cab5e65949046fb036c237a6", null ],

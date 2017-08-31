@@ -27,6 +27,7 @@ var namespaceproton =
     [ "messaging_handler", "classproton_1_1messaging__handler.html", "classproton_1_1messaging__handler" ],
     [ "receiver", "classproton_1_1receiver.html", "classproton_1_1receiver" ],
     [ "receiver_options", "classproton_1_1receiver__options.html", "classproton_1_1receiver__options" ],
+    [ "reconnect_options", "classproton_1_1reconnect__options.html", "classproton_1_1reconnect__options" ],
     [ "returned", "classproton_1_1returned.html", "classproton_1_1returned" ],
     [ "sasl", "classproton_1_1sasl.html", "classproton_1_1sasl" ],
     [ "scalar", "classproton_1_1scalar.html", "classproton_1_1scalar" ],

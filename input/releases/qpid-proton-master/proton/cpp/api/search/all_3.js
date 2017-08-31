@@ -9,6 +9,8 @@ var searchData=
   ['decoder',['decoder',['../classproton_1_1codec_1_1decoder.html',1,'decoder'],['../classproton_1_1codec_1_1decoder.html#ac9222fed91a5066887b42f471de0be8a',1,'proton::codec::decoder::decoder(const data &amp;d, bool exact=false)'],['../classproton_1_1codec_1_1decoder.html#adaca283b3eeb8861b7f7e8e94f784810',1,'proton::codec::decoder::decoder(const internal::value_base &amp;, bool exact=false)']]],
   ['default_5fpriority',['default_priority',['../classproton_1_1message.html#a2014354e2553f4acc49fc9a921da7e92',1,'proton::message']]],
   ['default_5fsession',['default_session',['../classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462',1,'proton::connection']]],
+  ['delay',['delay',['../classproton_1_1reconnect__options.html#a700d91bfa7a95ee851dd94eda092721b',1,'proton::reconnect_options']]],
+  ['delay_5fmultiplier',['delay_multiplier',['../classproton_1_1reconnect__options.html#a8456389a8174cf6d2ae2550e05e3e650',1,'proton::reconnect_options']]],
   ['delivery',['delivery',['../classproton_1_1delivery.html',1,'proton']]],
   ['delivery_2ehpp',['delivery.hpp',['../delivery_8hpp.html',1,'']]],
   ['delivery_5fcount',['delivery_count',['../classproton_1_1message.html#ab8eed6909bec0a2ca6a76abed732a7e2',1,'proton::message::delivery_count() const'],['../classproton_1_1message.html#aaaf044a6b10403eafed371d20d5ba5c1',1,'proton::message::delivery_count(uint32_t)']]],

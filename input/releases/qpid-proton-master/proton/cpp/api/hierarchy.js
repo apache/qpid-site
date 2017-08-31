@@ -98,6 +98,7 @@ var hierarchy =
     [ "messaging_handler", "classproton_1_1messaging__handler.html", null ],
     [ "mutable_buffer", "structproton_1_1io_1_1mutable__buffer.html", null ],
     [ "receiver_options", "classproton_1_1receiver__options.html", null ],
+    [ "reconnect_options", "classproton_1_1reconnect__options.html", null ],
     [ "returned< T >", "classproton_1_1returned.html", null ],
     [ "sasl", "classproton_1_1sasl.html", null ],
     [ "sender_options", "classproton_1_1sender__options.html", null ],

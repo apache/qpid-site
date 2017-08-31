@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classproton_1_1decimal64.html":[6,0,0,11],
 "classproton_1_1decimal64.html#a13c57dab17e2c903cadfa5e35ba84064":[6,0,0,11,1],
 "classproton_1_1decimal64.html#a421ef78ccdc84f0f6b2b14e2732527ba":[6,0,0,11,3],
 "classproton_1_1decimal64.html#a4b0424da8c99197075d119ba0959bf1e":[6,0,0,11,5],
@@ -248,6 +249,5 @@ var NAVTREEINDEX1 =
 "classproton_1_1receiver.html#a7c755d6ac6385e007adb61966598ba63":[6,0,0,25,20],
 "classproton_1_1receiver.html#a817883d28ce0ac8a29d917d196796f68":[6,0,0,25,4],
 "classproton_1_1receiver.html#a84d3a001340d11201e03c6ed7c763641":[6,0,0,25,2],
-"classproton_1_1receiver.html#a897e5c9bbc85f213403e0c6fcb69426d":[6,0,0,25,15],
-"classproton_1_1receiver.html#a91a9e8a9445b29d83dd0514cd76503ae":[6,0,0,25,17]
+"classproton_1_1receiver.html#a897e5c9bbc85f213403e0c6fcb69426d":[6,0,0,25,15]
 };

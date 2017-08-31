@@ -63,7 +63,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "receiver_options.hpp", "receiver__options_8hpp.html", [
       [ "receiver_options", "classproton_1_1receiver__options.html", "classproton_1_1receiver__options" ]
     ] ],
-    [ "reconnect_timer.hpp", "reconnect__timer_8hpp.html", null ],
+    [ "reconnect_options.hpp", "reconnect__options_8hpp_source.html", null ],
     [ "returned.hpp", "returned_8hpp.html", [
       [ "returned", "classproton_1_1returned.html", "classproton_1_1returned" ]
     ] ],
