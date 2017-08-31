@@ -1,7 +1,7 @@
 var searchData=
 [
   ['make_5fwork',['make_work',['../namespaceproton.html#a8b9a9f4f45c6ee25e0e4516855dc7fc8',1,'proton']]],
-  ['map',['map',['../classproton_1_1map.html',1,'map&lt; K, T &gt;'],['../namespaceproton.html#a83c2656d467d69eb49725c18f5aa13a9a4cafa5feda04184537b4d7d346e1e89b',1,'proton::MAP()']]],
+  ['map',['map',['../classproton_1_1map.html',1,'map&lt; K, T &gt;'],['../classproton_1_1map.html#a7f35c814c022f4191d359b5dc139d35b',1,'proton::map::map()'],['../classproton_1_1map.html#abd67a924a05c8bd5353cd2fa429b5272',1,'proton::map::map(const map &amp;)'],['../classproton_1_1map.html#aa4042115b50aa33d3e365ce1e4b254d4',1,'proton::map::map(map &amp;&amp;)'],['../namespaceproton.html#a83c2656d467d69eb49725c18f5aa13a9a4cafa5feda04184537b4d7d346e1e89b',1,'proton::MAP()']]],
   ['map_2ehpp',['map.hpp',['../codec_2map_8hpp.html',1,'(Global Namespace)'],['../map_8hpp.html',1,'(Global Namespace)']]],
   ['map_3c_20symbol_2c_20value_20_3e',['map&lt; symbol, value &gt;',['../classproton_1_1map.html',1,'proton']]],
   ['max_5fframe_5fsize',['max_frame_size',['../classproton_1_1connection.html#a491981c839dbde2411267e0654d73c4f',1,'proton::connection::max_frame_size()'],['../classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686',1,'proton::connection_options::max_frame_size()']]],

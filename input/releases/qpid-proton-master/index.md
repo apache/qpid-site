@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_proton_release_url}}/index.html).
 
-This content was generated at 20:05  on Tuesday, 29 August 2017.
+This content was generated at 05:34  on Thursday, 31 August 2017.
 
 </div>
 

@@ -20,5 +20,5 @@ var searchData=
   ['correlation_5fid',['correlation_id',['../classproton_1_1message.html#ad159656f1742235cd22a9c6aaabf9d2d',1,'proton::message::correlation_id(const message_id &amp;)'],['../classproton_1_1message.html#af315e837ef0814fac5c50cb9e1ef3c3a',1,'proton::message::correlation_id() const']]],
   ['creation_5ftime',['creation_time',['../classproton_1_1message.html#a7a98b91876cbcb45e79a96189e289410',1,'proton::message::creation_time(timestamp t)'],['../classproton_1_1message.html#a178b791501dfdb0b0b01922d6a3ddcb1',1,'proton::message::creation_time() const']]],
   ['credit',['credit',['../classproton_1_1link.html#afd27bd11ba72d7df51c44f71b15749eb',1,'proton::link']]],
-  ['credit_5fwindow',['credit_window',['../classproton_1_1receiver__options.html#a0d332416daba4af0ce5cf6677b497226',1,'proton::receiver_options']]]
+  ['credit_5fwindow',['credit_window',['../classproton_1_1receiver__options.html#a714a6a7dd1ea90c6046fe0460d2ce4f0',1,'proton::receiver_options']]]
 ];

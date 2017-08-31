@@ -138,10 +138,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a5af1685196fb40ea6e1e5182d9964d44"><td class="mdescLeft">&#160;</td><td class="mdescRight">If true, stop the container when all active connections and listeners are closed.  <a href="#a5af1685196fb40ea6e1e5182d9964d44">More...</a><br /></td></tr>
 <tr class="separator:a5af1685196fb40ea6e1e5182d9964d44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade42a19caab198f0fd1d28e03cf9ba0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1container.html#ade42a19caab198f0fd1d28e03cf9ba0e">stop</a> (const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;err)</td></tr>
-<tr class="memdesc:ade42a19caab198f0fd1d28e03cf9ba0e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - Stop the container with an <a class="el" href="classproton_1_1error__condition.html" title="Describes an endpoint error state. ">error_condition</a> err.  <a href="#ade42a19caab198f0fd1d28e03cf9ba0e">More...</a><br /></td></tr>
+<tr class="memdesc:ade42a19caab198f0fd1d28e03cf9ba0e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Stop the container with an <a class="el" href="classproton_1_1error__condition.html" title="Describes an endpoint error state. ">error_condition</a> err.  <a href="#ade42a19caab198f0fd1d28e03cf9ba0e">More...</a><br /></td></tr>
 <tr class="separator:ade42a19caab198f0fd1d28e03cf9ba0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c528baf37154d347366083f0f816846"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1container.html#a8c528baf37154d347366083f0f816846">stop</a> ()</td></tr>
-<tr class="memdesc:a8c528baf37154d347366083f0f816846"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - Stop the container with an empty error condition.  <a href="#a8c528baf37154d347366083f0f816846">More...</a><br /></td></tr>
+<tr class="memdesc:a8c528baf37154d347366083f0f816846"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Stop the container with an empty error condition.  <a href="#a8c528baf37154d347366083f0f816846">More...</a><br /></td></tr>
 <tr class="separator:a8c528baf37154d347366083f0f816846"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0511cbc22f76a538465b9c93d91ccf9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classproton_1_1returned.html">returned</a>&lt; <a class="el" href="classproton_1_1sender.html">sender</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1container.html#ae0511cbc22f76a538465b9c93d91ccf9">open_sender</a> (const std::string &amp;<a class="el" href="classproton_1_1url.html">url</a>)</td></tr>
 <tr class="memdesc:ae0511cbc22f76a538465b9c93d91ccf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open a connection and sender for <code>url</code>.  <a href="#ae0511cbc22f76a538465b9c93d91ccf9">More...</a><br /></td></tr>
@@ -262,7 +262,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>work_queue</b></td><
 </div><div class="memdoc">
 
 <p>If true, stop the container when all active connections and listeners are closed. </p>
-<p>If false the container will keep running till <a class="el" href="classproton_1_1container.html#a8c528baf37154d347366083f0f816846" title="Experimental - Stop the container with an empty error condition. ">stop()</a> is called.</p>
+<p>If false the container will keep running till <a class="el" href="classproton_1_1container.html#a8c528baf37154d347366083f0f816846" title="Unsettled API - Stop the container with an empty error condition. ">stop()</a> is called.</p>
 <p>auto_stop is set by default when a new container is created. </p>
 
 </div>
@@ -774,7 +774,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>work_queue</b></td><
 </div><div class="memdoc">
 
 <p>Run the container in this thread. </p>
-<p>Returns when the container stops. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#a5af1685196fb40ea6e1e5182d9964d44" title="If true, stop the container when all active connections and listeners are closed. ...">auto_stop()</a> and <a class="el" href="classproton_1_1container.html#a8c528baf37154d347366083f0f816846" title="Experimental - Stop the container with an empty error condition. ">stop()</a>.</dd></dl>
+<p>Returns when the container stops. </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#a5af1685196fb40ea6e1e5182d9964d44" title="If true, stop the container when all active connections and listeners are closed. ...">auto_stop()</a> and <a class="el" href="classproton_1_1container.html#a8c528baf37154d347366083f0f816846" title="Unsettled API - Stop the container with an empty error condition. ">stop()</a>.</dd></dl>
 <p>If you are using C++11 or later you may use a multithreaded container. In this case you may call <a class="el" href="classproton_1_1container.html#a13a43e6d814de94978c515cb084873b1" title="Run the container in this thread. ">run()</a> in multiple threads to create a thread pool. Or aternatively call run with an integer parameter specifying the number of threads for the thread pool. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a27">broker.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a21">multithreaded_client.cpp</a>, and <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a22">multithreaded_client_flow_control.cpp</a>.</dd>
 </dl>
@@ -851,7 +851,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>work_queue</b></td><
 <p>Options for creating a sender. </p>
 <p>Options can be "chained" like this:</p>
 <div class="fragment"><div class="line">l = <a class="code" href="classproton_1_1container.html#a4a45bac9751911de6fbcd3115ff13914">container</a>.create_sender(url, <a class="code" href="classproton_1_1container.html#ae7bfc8d811be7f6be17be6cf15e35b4a">sender_options</a>().handler(h).auto_settle(<span class="keyword">false</span>));</div></div><!-- fragment --><p>You can also create an options object with common settings and use it as a base for different connections that have mostly the same settings:</p>
-<div class="fragment"><div class="line"><a class="code" href="classproton_1_1container.html#ae7bfc8d811be7f6be17be6cf15e35b4a">sender_options</a> opts;</div><div class="line">opts.browsing(<span class="keyword">true</span>);</div><div class="line">l1 = <a class="code" href="classproton_1_1container.html#a4a45bac9751911de6fbcd3115ff13914">container</a>.open_sender(url1, opts.handler(h1));</div><div class="line">c2 = <a class="code" href="classproton_1_1container.html#a4a45bac9751911de6fbcd3115ff13914">container</a>.open_receiver(url2, opts.handler(h2));</div></div><!-- fragment --><p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
+<div class="fragment"><div class="line"><a class="code" href="classproton_1_1container.html#ae7bfc8d811be7f6be17be6cf15e35b4a">sender_options</a> opts;</div><div class="line">opts.<a class="code" href="classproton_1_1sender__options.html#ab7dc71a7b5737c2ca642058a296292db">delivery_mode</a>(<a class="code" href="structproton_1_1delivery__mode.html#a811fe196a5d9d37857c2f8adeeaac3c6adc975babe0d2bc27916397e614eb6624">delivery_mode::AT_MOST_ONCE</a>);</div><div class="line">l1 = <a class="code" href="classproton_1_1container.html#a4a45bac9751911de6fbcd3115ff13914">container</a>.open_sender(url1, opts.handler(h1));</div><div class="line">c2 = <a class="code" href="classproton_1_1container.html#a4a45bac9751911de6fbcd3115ff13914">container</a>.open_receiver(url2, opts.handler(h2));</div></div><!-- fragment --><p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
 
 </div>
 </div>
@@ -912,7 +912,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>work_queue</b></td><
       </table>
 </div><div class="memdoc">
 
-<p><b>Experimental</b> - Stop the container with an <a class="el" href="classproton_1_1error__condition.html" title="Describes an endpoint error state. ">error_condition</a> err. </p>
+<p><b>Unsettled API</b> - Stop the container with an <a class="el" href="classproton_1_1error__condition.html" title="Describes an endpoint error state. ">error_condition</a> err. </p>
 <ul>
 <li>Abort all open connections and listeners.</li>
 <li>Process final handler events and injected functions</li>
@@ -937,8 +937,8 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>work_queue</b></td><
       </table>
 </div><div class="memdoc">
 
-<p><b>Experimental</b> - Stop the container with an empty error condition. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#ade42a19caab198f0fd1d28e03cf9ba0e" title="Experimental - Stop the container with an error_condition err. ">stop(const error_condition&amp;)</a> </dd></dl>
+<p><b>Unsettled API</b> - Stop the container with an empty error condition. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#ade42a19caab198f0fd1d28e03cf9ba0e" title="Unsettled API - Stop the container with an error_condition err. ">stop(const error_condition&amp;)</a> </dd></dl>
 
 </div>
 </div>

@@ -5,7 +5,7 @@ var classproton_1_1receiver__options =
     [ "~receiver_options", "classproton_1_1receiver__options.html#ad8168a06620ae6844cb61451d065f4f3", null ],
     [ "auto_accept", "classproton_1_1receiver__options.html#a9b9ad83418de47f87c6c7062eaefb5b6", null ],
     [ "auto_settle", "classproton_1_1receiver__options.html#af313abfa8d5b19e4b61c779907eb9980", null ],
-    [ "credit_window", "classproton_1_1receiver__options.html#a0d332416daba4af0ce5cf6677b497226", null ],
+    [ "credit_window", "classproton_1_1receiver__options.html#a714a6a7dd1ea90c6046fe0460d2ce4f0", null ],
     [ "delivery_mode", "classproton_1_1receiver__options.html#a582bced77754ed8a85f9597e2e457079", null ],
     [ "handler", "classproton_1_1receiver__options.html#a84f38ac0f31f74011c9dc342e44a53df", null ],
     [ "operator=", "classproton_1_1receiver__options.html#a815be8018205013b8ff011d4b62b7324", null ],
