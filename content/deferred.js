@@ -407,8 +407,9 @@ function _modifyCurrentReleaseLinks() {
 
         var href = elem.href;
         var ext = href.substring(href.length - 4)
+        var ext7 = href.substring(href.length - 7)
 
-        if (ext === ".asc" || ext === ".md5" || ext === "sha1" || ext === ".sha") {
+        if (ext === ".asc" || ext === ".md5" || ext === "sha1" || ext === ".sha" || ext7 === ".sha512") {
             href = href.replace("http://archive.apache.org/dist/qpid/",
                                 "http://www.apache.org/dist/qpid/");
         } else {
