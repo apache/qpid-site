@@ -222,20 +222,17 @@ using the ASC signatures, MD5 checksums, or SHA checksums.</p>
 
 <p>The signatures can be verified using PGP or GPG. First download
 the <a href="http://www.apache.org/dist/qpid/KEYS"><code>KEYS</code></a> file as well as the
-<code>.asc</code> signature file for the relevant artefact. Make sure you get
-these files from the relevant subdirectory of the
-<a href="http://www.apache.org/dist/qpid/">main distribution directory</a>,
-rather than from a mirror. Then verify the signatures using one of the
-following sets of commands.</p>
+<code>.asc</code> signature file for the relevant artefact. Then verify the signatures
+using one of the following sets of commands.</p>
 
-<pre><code>% pgpk -a KEYS
+<pre><code>% gpg --import KEYS
+% gpg --verify &lt;artifact-name&gt;.asc
+
+% pgpk -a KEYS
 % pgpv &lt;artifact-name&gt;.asc
 
 % pgp -ka KEYS
 % pgp &lt;artifact-name&gt;.asc
-
-% gpg --import KEYS
-% gpg --verify &lt;artifact-name&gt;.asc
 </code></pre>
 
 <p>Alternatively, you can verify the MD5 or SHA checksums of the
@@ -243,13 +240,9 @@ files. Unix programs called <code>md5sum</code>, <code>sha1sum</code> and <code>
 <code>sha512</code>) are included in many unix distributions.  They are also
 available as part of
 <a href="http://www.gnu.org/software/coreutils/">GNU Coreutils</a>. For
-Windows users, <a href="http://www.slavasoft.com/fsum/">FSUM</a> supports MD5 and
-SHA1. Ensure your generated checksum string matches the string
-published in the <code>.md5</code> or <code>.sha1</code> file included with each release
-artefact. Again, make sure you get this file from the relevant
-subdirectory of the
-<a href="http://www.apache.org/dist/qpid/">main distribution directory</a>,
-rather than from a mirror.</p>
+Windows users, <a href="http://www.slavasoft.com/fsum/">FSUM</a> supports this.
+Ensure your generated checksum string matches the string
+published in the checksum file included with each release artefact.</p>
 
 <h2 id="more-information">More information</h2>
 
