@@ -28,5 +28,5 @@ documentation, see the [release overview](index.html).
 
 ## Bugs fixed
 
- - [PROTON-1551](https://issues.apache.org/jira/browse/PROTON-1551) - Large Binary encoded incorrectly via data API
+ - [PROTON-1551](https://issues.apache.org/jira/browse/PROTON-1551) - Binary vbin32 length encoded incorrectly when using the Data API
  - [PROTON-1565](https://issues.apache.org/jira/browse/PROTON-1565) - dont throw if the anonymous ciphers are not supported
