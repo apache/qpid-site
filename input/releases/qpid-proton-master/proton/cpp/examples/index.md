@@ -18,6 +18,7 @@
  - [multithreaded_client_flow_control.cpp](multithreaded_client_flow_control.cpp.html)
  - [options.hpp](options.hpp.html)
  - [queue_browser.cpp](queue_browser.cpp.html)
+ - [reconnect_client.cpp](reconnect_client.cpp.html)
  - [scheduled_send.cpp](scheduled_send.cpp.html)
  - [scheduled_send_03.cpp](scheduled_send_03.cpp.html)
  - [selected_recv.cpp](selected_recv.cpp.html)

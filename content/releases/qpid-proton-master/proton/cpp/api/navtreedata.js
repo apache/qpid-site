@@ -2,15 +2,17 @@ var NAVTREE =
 [
   [ "Qpid Proton C++ API", "index.html", [
     [ "Introduction", "index.html", null ],
-    [ "AMQP and C++ types", "types_page.html", null ],
     [ "IO integration", "io_page.html", null ],
-    [ "Multithreaded Proton applications", "mt_page.html", null ],
-    [ "Tutorial", "tutorial.html", null ],
+    [ "Multithreading", "mt_page.html", null ],
+    [ "Overview", "overview_page.html", null ],
+    [ "AMQP and C++ types", "types_page.html", null ],
+    [ "Tutorial", "tutorial_page.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
         [ "All", "namespacemembers.html", null ],
         [ "Functions", "namespacemembers_func.html", null ],
+        [ "Typedefs", "namespacemembers_type.html", null ],
         [ "Enumerations", "namespacemembers_enum.html", null ],
         [ "Enumerator", "namespacemembers_eval.html", null ]
       ] ]
@@ -29,11 +31,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Files", null, [
-      [ "File List", "files.html", "files" ],
-      [ "File Members", "globals.html", [
-        [ "All", "globals.html", null ],
-        [ "Macros", "globals_defs.html", null ]
-      ] ]
+      [ "File List", "files.html", "files" ]
     ] ],
     [ "Examples", "examples.html", "examples" ]
   ] ]
@@ -42,9 +40,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classproton_1_1decimal64.html",
-"classproton_1_1receiver.html#a91a9e8a9445b29d83dd0514cd76503ae",
-"classproton_1_1transfer.html#adc6e5733fc3c22f0a7b2914188c49c90a69c37229a15f9a89e188ad210f31c647",
+"classproton_1_1decimal64.html#a4b0424da8c99197075d119ba0959bf1e",
+"classproton_1_1receiver.html#ad9735e23cb0888fb98e1c5893aecff7e",
+"classproton_1_1transfer.html#aff302bb6016f2ae29f01bb4e07389a52",
 "namespaceproton_1_1codec.html"
 ];
 

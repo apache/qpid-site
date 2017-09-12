@@ -93,17 +93,15 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">Introduction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This is the C API for the Proton AMQP protocol engine. It allows you to write client and server applications that send and receive AMQP messages.</p>
-<h2>Core</h2>
-<p><a class="el" href="group__core.html">Core</a> is a collection of types and functions representing AMQP concepts. Together they form a "protocol engine" API to create AMQP connections and links, handle <a class="el" href="group__event.html">events</a>, and send and receive <a class="el" href="group__message.html">messages</a>.</p>
-<h2>Types</h2>
-<p><a class="el" href="group__types.html">Types</a> contains C data types, including <a class="el" href="group__amqp__types.html">AMQP data types</a> and <a class="el" href="group__api__types.html">API data types</a>.</p>
-<h2>Codec</h2>
-<p><a class="el" href="group__codec.html">Codec</a> has functions for AMQP data encoding and decoding.</p>
-<h2>Proactor</h2>
-<p>The <a class="el" href="group__proactor.html">Proactor</a> is a portable, proactive, asynchronous API for single- or multithreaded applications. It associates AMQP <a class="el" href="group__connection.html">connections</a> with network connections (<a class="el" href="group__transport.html">transports</a>) and allows one or more threads to handle <a class="el" href="group__event.html">events</a>.</p>
-<h2>Low-level IO integration</h2>
-<p>The <a class="el" href="group__connection__driver.html">Connection driver</a> Connection Driver is a low-level SPI to feed byte streams from any source to the protocol engine. You can use it to integrate Proton directly with a foreign event loop or IO library, or to implement your own <a class="el" href="group__proactor.html">Proactor</a> to transparently replace Proton's IO layer. </p>
+<div class="textblock"><p>The Qpid Proton C API enables writing clients and servers that send and receive messages using the AMQP protocol. It is part of the <a href="https://qpid.apache.org/proton/index.html">Qpid Proton</a> suite of messaging APIs.</p>
+<h2>Modules</h2>
+<p>The <a class="el" href="group__core.html">Core</a> module is a collection of types and functions representing AMQP concepts and key elements of the API. Together they form a "protocol engine" API to create AMQP <a class="el" href="group__connection.html">connections</a> and <a class="el" href="group__link.html">links</a>, handle <a class="el" href="group__event.html">events</a>, and send and receive <a class="el" href="group__message.html">messages</a>.</p>
+<p>The <a class="el" href="group__types.html">Types</a> module contains C types and functions for handling AMQP- and API-specific data types.</p>
+<p>The <a class="el" href="group__codec.html">Codec</a> module has functions for AMQP data encoding and decoding.</p>
+<p>The <a class="el" href="group__io.html">IO</a> module contains interfaces for integrating with platform-native network IO. See <a class="el" href="io_page.html">IO integration</a> for more information.</p>
+<h2>Conventions</h2>
+<p>Elements of the API marked as <b>Unsettled API</b>, including any elements contained within them, are still evolving and thus are subject to change. They are available to use, but newer versions of Proton may require changes to your application source code.</p>
+<p>Elements marked <b>Deprecated</b> are slated for removal in a future release. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

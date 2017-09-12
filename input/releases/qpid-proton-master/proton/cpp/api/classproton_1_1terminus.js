@@ -12,9 +12,9 @@ var classproton_1_1terminus =
       [ "NEVER", "classproton_1_1terminus.html#a348690a43df146eca928a8c06034a1eba3a267f9424d4d555780a8d26209c8118", null ]
     ] ],
     [ "terminus", "classproton_1_1terminus.html#a009b3efd1003495cd865ef0d24ea2134", null ],
+    [ "expiry_policy", "classproton_1_1terminus.html#afc97dbb9b04812da5be8a41eb9434904", null ],
+    [ "timeout", "classproton_1_1terminus.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ],
     [ "durability_mode", "classproton_1_1terminus.html#aeb6439d6ea5d274a59dd8e90d97f31d8", null ],
     [ "dynamic", "classproton_1_1terminus.html#adcc4ef24adb8478230018c519aa636ec", null ],
-    [ "expiry_policy", "classproton_1_1terminus.html#afc97dbb9b04812da5be8a41eb9434904", null ],
-    [ "node_properties", "classproton_1_1terminus.html#ab503c82e36aa618e6c6fb34feaad57b8", null ],
-    [ "timeout", "classproton_1_1terminus.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ]
+    [ "node_properties", "classproton_1_1terminus.html#ab503c82e36aa618e6c6fb34feaad57b8", null ]
 ];

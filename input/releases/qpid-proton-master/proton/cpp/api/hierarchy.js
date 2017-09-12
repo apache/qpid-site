@@ -89,7 +89,6 @@ var hierarchy =
       ] ]
     ] ],
     [ "finish", "namespaceproton_1_1codec.html#structproton_1_1codec_1_1finish", null ],
-    [ "link_namer", "classproton_1_1io_1_1link__namer.html", null ],
     [ "listen_handler", "classproton_1_1listen__handler.html", null ],
     [ "listener", "classproton_1_1listener.html", null ],
     [ "map< K, T >", "classproton_1_1map.html", null ],
@@ -118,7 +117,6 @@ var hierarchy =
     [ "vector< T >", null, [
       [ "binary", "classproton_1_1binary.html", null ]
     ] ],
-    [ "void_function0", "classproton_1_1void__function0.html", null ],
     [ "work", "classproton_1_1work.html", null ],
     [ "work_queue", "classproton_1_1work__queue.html", null ]
 ];

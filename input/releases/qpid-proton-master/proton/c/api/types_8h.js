@@ -18,7 +18,7 @@ var types_8h =
     [ "pn_collector_t", "group__event.html#ga905cdecedb8020bc28e648e43348b5d1", null ],
     [ "pn_listener_t", "group__listener.html#ga68ac7072ae60612d0bca5470014bf216", null ],
     [ "pn_transport_t", "group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8", null ],
-    [ "pn_proactor_t", "types_8h.html#abba42c7929dfceb9d296535bad0c93dc", null ],
+    [ "pn_proactor_t", "group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc", null ],
     [ "pn_bytes", "group__api__types.html#gab4f7e8d204246a3702c6e31a404b0edb", null ],
     [ "pn_rwbytes", "group__api__types.html#ga9fb5bee0255a52b1b8b8fa1b8620cbca", null ]
 ];

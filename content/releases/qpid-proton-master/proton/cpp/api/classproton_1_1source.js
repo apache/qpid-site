@@ -11,10 +11,10 @@ var classproton_1_1source =
     [ "source", "classproton_1_1source.html#a6cfde826a3d3092bd8a3a636e2336bbb", null ],
     [ "address", "classproton_1_1source.html#a4744eb217c976c199b678bb5a0d55acf", null ],
     [ "distribution_mode", "classproton_1_1source.html#abb1886a3a928bddfaf76dc67e3d15525", null ],
-    [ "durability_mode", "classproton_1_1source.html#aeb6439d6ea5d274a59dd8e90d97f31d8", null ],
-    [ "dynamic", "classproton_1_1source.html#adcc4ef24adb8478230018c519aa636ec", null ],
-    [ "expiry_policy", "classproton_1_1source.html#afc97dbb9b04812da5be8a41eb9434904", null ],
     [ "filters", "classproton_1_1source.html#a5872b2a2f80f74a6f4f5b02791861a6d", null ],
-    [ "node_properties", "classproton_1_1source.html#ab503c82e36aa618e6c6fb34feaad57b8", null ],
-    [ "timeout", "classproton_1_1source.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ]
+    [ "durability_mode", "classproton_1_1source.html#aeb6439d6ea5d274a59dd8e90d97f31d8", null ],
+    [ "expiry_policy", "classproton_1_1source.html#afc97dbb9b04812da5be8a41eb9434904", null ],
+    [ "timeout", "classproton_1_1source.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ],
+    [ "dynamic", "classproton_1_1source.html#adcc4ef24adb8478230018c519aa636ec", null ],
+    [ "node_properties", "classproton_1_1source.html#ab503c82e36aa618e6c6fb34feaad57b8", null ]
 ];

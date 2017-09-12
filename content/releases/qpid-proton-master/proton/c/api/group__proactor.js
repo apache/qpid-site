@@ -1,9 +1,8 @@
 var group__proactor =
 [
-    [ "Listener", "group__listener.html", "group__listener" ],
-    [ "Events", "group__proactor__events.html", null ],
     [ "PN_MAX_ADDR", "group__proactor.html#ga29ae114b42fb797c103dc9883ebcb256", null ],
     [ "pn_netaddr_t", "group__proactor.html#ga79d820cd3ad391cc5207c83dbb373a9c", null ],
+    [ "pn_proactor_t", "group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc", null ],
     [ "pn_netaddr_str", "group__proactor.html#ga9f6a27999303c6082edc581f880de37c", null ],
     [ "pn_netaddr_local", "group__proactor.html#ga7edab5e295c55e1c2169e39aaa082f8b", null ],
     [ "pn_netaddr_remote", "group__proactor.html#ga59fa5ba7adc39bc8549645d5d33082c0", null ],

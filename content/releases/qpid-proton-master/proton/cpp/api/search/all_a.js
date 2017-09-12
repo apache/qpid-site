@@ -22,6 +22,6 @@ var searchData=
   ['modify',['modify',['../classproton_1_1delivery.html#a7a2a3abb755d0d1a31414355520d054b',1,'proton::delivery']]],
   ['more',['more',['../classproton_1_1codec_1_1decoder.html#aba1201662b7dccd64b782cb43e40d3e0',1,'proton::codec::decoder']]],
   ['move',['MOVE',['../classproton_1_1source.html#ad049690d03cac384636e0c2055726089aed3ef32890b6da0919b57254c5206c62',1,'proton::source']]],
-  ['multithreaded_20proton_20applications',['Multithreaded Proton applications',['../mt_page.html',1,'']]],
+  ['multithreading',['Multithreading',['../mt_page.html',1,'']]],
   ['mutable_5fbuffer',['mutable_buffer',['../structproton_1_1io_1_1mutable__buffer.html',1,'mutable_buffer'],['../structproton_1_1io_1_1mutable__buffer.html#ae164359bc44e1b29a68ebc40555972c2',1,'proton::io::mutable_buffer::mutable_buffer()']]]
 ];

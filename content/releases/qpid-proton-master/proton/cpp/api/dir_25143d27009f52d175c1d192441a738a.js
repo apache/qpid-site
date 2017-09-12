@@ -14,9 +14,11 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "connection_options.hpp", "connection__options_8hpp.html", [
       [ "connection_options", "classproton_1_1connection__options.html", "classproton_1_1connection__options" ]
     ] ],
-    [ "container.hpp", "container_8hpp.html", "container_8hpp" ],
+    [ "container.hpp", "container_8hpp.html", [
+      [ "container", "classproton_1_1container.html", "classproton_1_1container" ]
+    ] ],
     [ "decimal.hpp", "decimal_8hpp.html", "decimal_8hpp" ],
-    [ "default_container.hpp", "default__container_8hpp_source.html", null ],
+    [ "default_container.hpp", "default__container_8hpp.html", "default__container_8hpp" ],
     [ "delivery.hpp", "delivery_8hpp.html", [
       [ "delivery", "classproton_1_1delivery.html", "classproton_1_1delivery" ]
     ] ],
@@ -24,7 +26,9 @@ var dir_25143d27009f52d175c1d192441a738a =
       [ "delivery_mode", "structproton_1_1delivery__mode.html", "structproton_1_1delivery__mode" ]
     ] ],
     [ "duration.hpp", "duration_8hpp.html", "duration_8hpp" ],
-    [ "endpoint.hpp", "endpoint_8hpp_source.html", null ],
+    [ "endpoint.hpp", "endpoint_8hpp.html", [
+      [ "endpoint", "classproton_1_1endpoint.html", "classproton_1_1endpoint" ]
+    ] ],
     [ "error.hpp", "error_8hpp.html", [
       [ "error", "structproton_1_1error.html", "structproton_1_1error" ],
       [ "timeout_error", "structproton_1_1timeout__error.html", "structproton_1_1timeout__error" ],
@@ -33,9 +37,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "error_condition.hpp", "error__condition_8hpp.html", [
       [ "error_condition", "classproton_1_1error__condition.html", "classproton_1_1error__condition" ]
     ] ],
-    [ "function.hpp", "function_8hpp.html", [
-      [ "void_function0", "classproton_1_1void__function0.html", "classproton_1_1void__function0" ]
-    ] ],
+    [ "function.hpp", "function_8hpp.html", null ],
     [ "fwd.hpp", "fwd_8hpp.html", [
       [ "returned", "classproton_1_1returned.html", "classproton_1_1returned" ]
     ] ],
@@ -63,7 +65,9 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "receiver_options.hpp", "receiver__options_8hpp.html", [
       [ "receiver_options", "classproton_1_1receiver__options.html", "classproton_1_1receiver__options" ]
     ] ],
-    [ "reconnect_options.hpp", "reconnect__options_8hpp_source.html", null ],
+    [ "reconnect_options.hpp", "reconnect__options_8hpp.html", [
+      [ "reconnect_options", "classproton_1_1reconnect__options.html", "classproton_1_1reconnect__options" ]
+    ] ],
     [ "returned.hpp", "returned_8hpp.html", [
       [ "returned", "classproton_1_1returned.html", "classproton_1_1returned" ]
     ] ],
@@ -108,7 +112,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "terminus.hpp", "terminus_8hpp.html", [
       [ "terminus", "classproton_1_1terminus.html", "classproton_1_1terminus" ]
     ] ],
-    [ "thread_safe.hpp", "thread__safe_8hpp_source.html", null ],
+    [ "thread_safe.hpp", "thread__safe_8hpp.html", null ],
     [ "timestamp.hpp", "timestamp_8hpp.html", "timestamp_8hpp" ],
     [ "tracker.hpp", "tracker_8hpp.html", [
       [ "tracker", "classproton_1_1tracker.html", "classproton_1_1tracker" ]
@@ -128,5 +132,5 @@ var dir_25143d27009f52d175c1d192441a738a =
     ] ],
     [ "uuid.hpp", "uuid_8hpp.html", "uuid_8hpp" ],
     [ "value.hpp", "value_8hpp.html", "value_8hpp" ],
-    [ "work_queue.hpp", "work__queue_8hpp_source.html", null ]
+    [ "work_queue.hpp", "work__queue_8hpp.html", "work__queue_8hpp" ]
 ];

@@ -180,7 +180,7 @@ class <a class="el" href="classproton_1_1container.html">container</a> &amp;&#16
 <tr class="separator:a2f632b80247e868b8264b8a025b84baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c755d6ac6385e007adb61966598ba63"><td class="memItemLeft" align="right" valign="top"><a id="a7c755d6ac6385e007adb61966598ba63"></a>
 class <a class="el" href="classproton_1_1work__queue.html">work_queue</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1link.html#a7c755d6ac6385e007adb61966598ba63">work_queue</a> () const</td></tr>
-<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A work queue for serial execution. ">work_queue</a> for the link. <br /></td></tr>
+<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">work_queue</a> for the link. <br /></td></tr>
 <tr class="separator:a7c755d6ac6385e007adb61966598ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff302bb6016f2ae29f01bb4e07389a52"><td class="memItemLeft" align="right" valign="top"><a id="aff302bb6016f2ae29f01bb4e07389a52"></a>
 class <a class="el" href="classproton_1_1connection.html">connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1link.html#aff302bb6016f2ae29f01bb4e07389a52">connection</a> () const</td></tr>
@@ -195,6 +195,48 @@ class <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td
 <div class="textblock"><p>A channel for receiving messages. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a15">broker.cpp</a>, <a class="el" href="client_8cpp-example.html#_a4">client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a17">multithreaded_client_flow_control.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a9">service_bus.cpp</a>, and <a class="el" href="simple_recv_8cpp-example.html#_a1">simple_recv.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e8555112049fc2b4945120b3c45f8ab">&#9670;&nbsp;</a></span>open() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open the receiver. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a17">broker.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="a897e5c9bbc85f213403e0c6fcb69426d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a897e5c9bbc85f213403e0c6fcb69426d">&#9670;&nbsp;</a></span>open() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void open </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open the receiver. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+</div>
+</div>
 <a id="a84d3a001340d11201e03c6ed7c763641"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a84d3a001340d11201e03c6ed7c763641">&#9670;&nbsp;</a></span>add_credit()</h2>
 
@@ -215,6 +257,26 @@ class <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td
 <p>Credit granted during a drain cycle is not communicated to the receiver until the drain completes. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a20">multithreaded_client_flow_control.cpp</a>.</dd>
 </dl>
+</div>
+</div>
+<a id="af7d01b5776b9d8a0f218aec331ddaeb9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7d01b5776b9d8a0f218aec331ddaeb9">&#9670;&nbsp;</a></span>drain()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void drain </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>Unsettled API</b> - Commence a drain cycle. </p>
+<p>If there is positive credit, a request is sent to the sender to immediately use up all of the existing credit balance by sending messages that are immediately available and releasing any unused credit (see <a class="el" href="classproton_1_1sender.html#abc4cb5f2f38643abb47c0b221a130bc8" title="Unsettled API - Return all unused credit to the receiver in response to a drain request. ">sender::return_credit</a>). Throws <a class="el" href="structproton_1_1error.html" title="The base Proton error. ">proton::error</a> if a drain cycle is already in progress. An on_receiver_drain_finish event will be generated when the outstanding drained credit reaches zero. </p>
+
 </div>
 </div>
 <a id="a5ae591df94fc66ccb85cbb6565368bca"></a>
@@ -244,7 +306,7 @@ class <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td
 <dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
 
 <p>Implements <a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">endpoint</a>.</p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="direct_recv_8cpp-example.html#a11">direct_recv.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a14">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a10">helloworld_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a21">service_bus.cpp</a>, and <a class="el" href="simple_recv_8cpp-example.html#a14">simple_recv.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="direct_recv_8cpp-example.html#a11">direct_recv.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a14">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a10">helloworld_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a20">service_bus.cpp</a>, and <a class="el" href="simple_recv_8cpp-example.html#a14">simple_recv.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -307,26 +369,6 @@ class <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td
 
 </div>
 </div>
-<a id="af7d01b5776b9d8a0f218aec331ddaeb9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7d01b5776b9d8a0f218aec331ddaeb9">&#9670;&nbsp;</a></span>drain()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void drain </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><b>Unsettled API</b> - Commence a drain cycle. </p>
-<p>If there is positive credit, a request is sent to the sender to immediately use up all of the existing credit balance by sending messages that are immediately available and releasing any unused credit (see <a class="el" href="classproton_1_1sender.html#abc4cb5f2f38643abb47c0b221a130bc8" title="Unsettled API - Return all unused credit to the receiver in response to a drain request. ">sender::return_credit</a>). Throws <a class="el" href="structproton_1_1error.html" title="The base Proton error. ">proton::error</a> if a drain cycle is already in progress. An on_receiver_drain_finish event will be generated when the outstanding drained credit reaches zero. </p>
-
-</div>
-</div>
 <a id="a19c36a38b50e8080b94a47230a56234f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19c36a38b50e8080b94a47230a56234f">&#9670;&nbsp;</a></span>draining()</h2>
 
@@ -353,48 +395,6 @@ class <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td
 <p><b>Unsettled API</b> - True for a receiver if a drain cycle has been started and the corresponding <code>on_receiver_drain_finish</code> event is still pending. </p>
 <p>True for a sender if the receiver has requested a drain of credit and the sender has unused credit.</p>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1receiver.html#af7d01b5776b9d8a0f218aec331ddaeb9">receiver::drain</a>. </dd></dl>
-
-</div>
-</div>
-<a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e8555112049fc2b4945120b3c45f8ab">&#9670;&nbsp;</a></span>open() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void open </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Open the receiver. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a17">broker.cpp</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="a897e5c9bbc85f213403e0c6fcb69426d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a897e5c9bbc85f213403e0c6fcb69426d">&#9670;&nbsp;</a></span>open() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void open </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> &amp;&#160;</td>
-          <td class="paramname"><em>opts</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Open the receiver. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
 
 </div>
 </div>

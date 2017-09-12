@@ -108,7 +108,7 @@ Inheritance diagram for message_id:</div>
  <div class="center">
   <img src="classproton_1_1message__id.png" usemap="#message_5Fid_map" alt=""/>
   <map id="message_5Fid_map" name="message_5Fid_map">
-<area href="classproton_1_1scalar__base.html" title="Base class for scalar types. " alt="scalar_base" shape="rect" coords="0,56,171,80"/>
+<area href="classproton_1_1scalar__base.html" title="The base class for scalar types. " alt="scalar_base" shape="rect" coords="0,56,171,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -186,42 +186,6 @@ Related Functions</h2></td></tr>
 <li><a class="el" href="classproton_1_1binary.html" title="Arbitrary binary data. ">proton::binary</a> </li>
 </ul>
 </div><h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a8965a5e1c4122df8aee11e971ceabd07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8965a5e1c4122df8aee11e971ceabd07">&#9670;&nbsp;</a></span>coerce()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">T coerce </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1message__id.html">message_id</a> &amp;&#160;</td>
-          <td class="paramname"><em>x</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">related</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Coerce the contained value to type T. </p>
-<p>For example: </p><pre class="fragment">uint64_t i = coerce&lt;uint64_t&gt;(x)
-</pre><p>This will succeed if x contains any numeric value, but may lose precision if it contains a float or double value.</p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="structproton_1_1conversion__error.html" title="An error converting between AMQP and C++ data. ">conversion_error</a></td><td>if the value cannot be converted to T according to <code>std::is_convertible</code> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a id="a8e96d12c2968550ffea0e57fc6ca2c7d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8e96d12c2968550ffea0e57fc6ca2c7d">&#9670;&nbsp;</a></span>get() <span class="overload">[1/4]</span></h2>
 
@@ -331,6 +295,42 @@ Related Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the std::string value or throw <a class="el" href="structproton_1_1conversion__error.html" title="An error converting between AMQP and C++ data. ">conversion_error</a>. </p>
+
+</div>
+</div>
+<a id="a8965a5e1c4122df8aee11e971ceabd07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8965a5e1c4122df8aee11e971ceabd07">&#9670;&nbsp;</a></span>coerce()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">T coerce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1message__id.html">message_id</a> &amp;&#160;</td>
+          <td class="paramname"><em>x</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Coerce the contained value to type T. </p>
+<p>For example: </p><pre class="fragment">uint64_t i = coerce&lt;uint64_t&gt;(x)
+</pre><p>This will succeed if x contains any numeric value, but may lose precision if it contains a float or double value.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="structproton_1_1conversion__error.html" title="An error converting between AMQP and C++ data. ">conversion_error</a></td><td>if the value cannot be converted to T according to <code>std::is_convertible</code> </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

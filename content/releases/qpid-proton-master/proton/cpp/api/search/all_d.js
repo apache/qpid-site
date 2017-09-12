@@ -5,7 +5,6 @@ var searchData=
   ['password',['password',['../classproton_1_1connection__options.html#a78a90a1387cf91915dbe39b888955d75',1,'proton::connection_options::password()'],['../classproton_1_1url.html#a7d831b27c411bf8939849914c29e452e',1,'proton::url::password()']]],
   ['path',['path',['../classproton_1_1url.html#ac4cb5f95f1d720ef0cc94b74152cf50b',1,'proton::url']]],
   ['perm',['PERM',['../classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf',1,'proton::sasl']]],
-  ['pn_5fcpp_5fsupports_5fthreads',['PN_CPP_SUPPORTS_THREADS',['../container_8hpp.html#a96a10284ee2a21982761518068fff40f',1,'container.hpp']]],
   ['port',['port',['../classproton_1_1url.html#a6f16e8b68942ad0d21494d056b4e13d7',1,'proton::url']]],
   ['port_5fint',['port_int',['../classproton_1_1url.html#aa54f07362c271f7f550c3f904022329b',1,'proton::url']]],
   ['priority',['priority',['../classproton_1_1message.html#ab558bc7b971e0c09d6ca1f4f93d71b41',1,'proton::message::priority() const'],['../classproton_1_1message.html#a74cc6581e2fa3d3c9f3a885921063b92',1,'proton::message::priority(uint8_t)']]],

@@ -14,7 +14,6 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "messenger.h", "messenger_8h.html", "messenger_8h" ],
     [ "netaddr.h", "netaddr_8h.html", "netaddr_8h" ],
     [ "proactor.h", "proactor_8h.html", "proactor_8h" ],
-    [ "sasl-plugin.h", "sasl-plugin_8h_source.html", null ],
     [ "sasl.h", "sasl_8h.html", "sasl_8h" ],
     [ "session.h", "session_8h.html", "session_8h" ],
     [ "ssl.h", "ssl_8h.html", "ssl_8h" ],

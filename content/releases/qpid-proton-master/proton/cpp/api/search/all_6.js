@@ -7,6 +7,6 @@ var searchData=
   ['get_3c_20symbol_20_3e',['get&lt; symbol &gt;',['../namespaceproton.html#a7bacee0d198b7e122d9f5f2ba2979898',1,'proton']]],
   ['get_3c_20uint64_5ft_20_3e',['get&lt; uint64_t &gt;',['../namespaceproton.html#afe991edadb78e18facab149551baf317',1,'proton::get&lt; uint64_t &gt;(const annotation_key &amp;x)'],['../namespaceproton.html#a2551b903e19d1bc8d4b59ffbe0b53ff5',1,'proton::get&lt; uint64_t &gt;(const message_id &amp;x)']]],
   ['get_3c_20uuid_20_3e',['get&lt; uuid &gt;',['../namespaceproton.html#a1855356a8be38bc4b1ac3f6a39f72df9',1,'proton']]],
-  ['group_5fid',['group_id',['../classproton_1_1message.html#a914482152fd66b188e63a4066ef87586',1,'proton::message::group_id(const std::string &amp;s)'],['../classproton_1_1message.html#a691ee3d0e9c9a156357b63a5661d206a',1,'proton::message::group_id() const']]],
+  ['group_5fid',['group_id',['../classproton_1_1message.html#ac203a412f35c34fce9de3016a9d57fb4',1,'proton::message::group_id(const std::string &amp;)'],['../classproton_1_1message.html#a691ee3d0e9c9a156357b63a5661d206a',1,'proton::message::group_id() const']]],
   ['group_5fsequence',['group_sequence',['../classproton_1_1message.html#afad787e06e9c46c11e72b7c117c278e9',1,'proton::message::group_sequence() const'],['../classproton_1_1message.html#a2c47345d04743821765ec83e13396f29',1,'proton::message::group_sequence(int32_t)']]]
 ];

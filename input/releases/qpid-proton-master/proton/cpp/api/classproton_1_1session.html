@@ -151,7 +151,7 @@ class <a class="el" href="classproton_1_1container.html">container</a> &amp;&#16
 <tr class="separator:a2f632b80247e868b8264b8a025b84baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c755d6ac6385e007adb61966598ba63"><td class="memItemLeft" align="right" valign="top"><a id="a7c755d6ac6385e007adb61966598ba63"></a>
 class <a class="el" href="classproton_1_1work__queue.html">work_queue</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1session.html#a7c755d6ac6385e007adb61966598ba63">work_queue</a> () const</td></tr>
-<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A work queue for serial execution. ">work_queue</a> for the session. <br /></td></tr>
+<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">work_queue</a> for the session. <br /></td></tr>
 <tr class="separator:a7c755d6ac6385e007adb61966598ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff302bb6016f2ae29f01bb4e07389a52"><td class="memItemLeft" align="right" valign="top"><a id="aff302bb6016f2ae29f01bb4e07389a52"></a>
 class <a class="el" href="classproton_1_1connection.html">connection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1session.html#aff302bb6016f2ae29f01bb4e07389a52">connection</a> () const</td></tr>
@@ -192,6 +192,47 @@ receiver_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <div class="textblock"><p>A container of senders and receivers. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a24">broker.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e8555112049fc2b4945120b3c45f8ab">&#9670;&nbsp;</a></span>open() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void open </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open the session. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+</div>
+</div>
+<a id="a7158346a6221ba5dad8c19464950f51b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7158346a6221ba5dad8c19464950f51b">&#9670;&nbsp;</a></span>open() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void open </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1session__options.html">session_options</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Open the session. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+</div>
+</div>
 <a id="a5ae591df94fc66ccb85cbb6565368bca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5ae591df94fc66ccb85cbb6565368bca">&#9670;&nbsp;</a></span>close() <span class="overload">[1/2]</span></h2>
 
@@ -253,44 +294,33 @@ receiver_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 
 </div>
 </div>
-<a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e8555112049fc2b4945120b3c45f8ab">&#9670;&nbsp;</a></span>open() <span class="overload">[1/2]</span></h2>
+<a id="ab997a1233a3327d5ac1e63327fa62717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab997a1233a3327d5ac1e63327fa62717">&#9670;&nbsp;</a></span>open_sender()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void open </td>
+          <td class="memname"><a class="el" href="classproton_1_1sender.html">sender</a> open_sender </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Open the session. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-
-</div>
-</div>
-<a id="a7158346a6221ba5dad8c19464950f51b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7158346a6221ba5dad8c19464950f51b">&#9670;&nbsp;</a></span>open() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">void open </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1session__options.html">session_options</a> &amp;&#160;</td>
-          <td class="paramname"><em>opts</em></td><td>)</td>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td>
+          <td class="paramname"><em>opts</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Open the session. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+<p>Open a sender for <code>addr</code>. </p>
 
 </div>
 </div>
@@ -321,36 +351,6 @@ receiver_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 </div><div class="memdoc">
 
 <p>Open a receiver for <code>addr</code>. </p>
-
-</div>
-</div>
-<a id="ab997a1233a3327d5ac1e63327fa62717"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab997a1233a3327d5ac1e63327fa62717">&#9670;&nbsp;</a></span>open_sender()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classproton_1_1sender.html">sender</a> open_sender </td>
-          <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1sender__options.html">sender_options</a> &amp;&#160;</td>
-          <td class="paramname"><em>opts</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Open a sender for <code>addr</code>. </p>
 
 </div>
 </div>

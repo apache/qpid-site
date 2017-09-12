@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('classproton_1_1returned.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>Return type for container functions.  
+<p>A return type for container methods.  
  <a href="classproton_1_1returned.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="returned_8hpp_source.html">returned.hpp</a>&gt;</code></p>
@@ -115,8 +115,8 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><h3>template&lt;class T&gt;<br />
 class proton::returned&lt; T &gt;</h3>
 
-<p>Return type for container functions. </p>
-<dl class="section note"><dt>Note</dt><dd>returned value is <em>thread-unsafe</em>. A single-threaded application can assign the returned&lt;T&gt; value to a plain T. A multi-threaded application <em>must</em> ignore the returned value, as it may already be invalid by the time the function returns. Multi-threaded applications can access the value in <a class="el" href="classproton_1_1messaging__handler.html">messaging_handler</a> functions. </dd></dl>
+<p>A return type for container methods. </p>
+<p><b>Thread safety</b> - Container method return values are <em>thread-unsafe</em>. A single-threaded application can safely assign the <code>returned&lt;T&gt;</code> value to a plain <code>T</code>. A multithreaded application <em>must</em> ignore the returned value because it may already be invalid by the time the function returns. Multithreaded applications can safely access the value inside <a class="el" href="classproton_1_1messaging__handler.html">messaging_handler</a> functions. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a7e6c2d7eb0ba9807a9fb9fee0f628508"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e6c2d7eb0ba9807a9fb9fee0f628508">&#9670;&nbsp;</a></span>returned()</h2>
@@ -135,7 +135,7 @@ class proton::returned&lt; T &gt;</h3>
 </div><div class="memdoc">
 
 <p>Copy operator required to return a value. </p>
-<dl class="section note"><dt>Note</dt><dd>thread safe </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Thread-safe </dd></dl>
 
 </div>
 </div>
@@ -156,7 +156,7 @@ class proton::returned&lt; T &gt;</h3>
 </div><div class="memdoc">
 
 <p>Convert to the proton::object. </p>
-<dl class="section note"><dt>Note</dt><dd><b>Thread unsafe</b> do not use in a multi-threaded application. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd><b>Thread-unsafe</b> - Do not use in a multithreaded application. </dd></dl>
 
 </div>
 </div>

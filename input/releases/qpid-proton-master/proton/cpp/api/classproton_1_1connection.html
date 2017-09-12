@@ -138,7 +138,7 @@ class <a class="el" href="classproton_1_1error__condition.html">error_condition<
 <tr class="separator:a2f632b80247e868b8264b8a025b84baf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7c755d6ac6385e007adb61966598ba63"><td class="memItemLeft" align="right" valign="top"><a id="a7c755d6ac6385e007adb61966598ba63"></a>
 class <a class="el" href="classproton_1_1work__queue.html">work_queue</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a7c755d6ac6385e007adb61966598ba63">work_queue</a> () const</td></tr>
-<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A work queue for serial execution. ">work_queue</a> for the connection. <br /></td></tr>
+<tr class="memdesc:a7c755d6ac6385e007adb61966598ba63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">work_queue</a> for the connection. <br /></td></tr>
 <tr class="separator:a7c755d6ac6385e007adb61966598ba63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a579bcab77cddadcb8ba07d2bc576c3d6"><td class="memItemLeft" align="right" valign="top"><a id="a579bcab77cddadcb8ba07d2bc576c3d6"></a>
 class <a class="el" href="classproton_1_1transport.html">transport</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a579bcab77cddadcb8ba07d2bc576c3d6">transport</a> () const</td></tr>
@@ -217,73 +217,14 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a94680c89dde19dcee4c6a7c5508e9659"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a94680c89dde19dcee4c6a7c5508e9659">idle_timeout</a> () const</td></tr>
 <tr class="memdesc:a94680c89dde19dcee4c6a7c5508e9659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the idle timeout set by the remote peer.  <a href="#a94680c89dde19dcee4c6a7c5508e9659">More...</a><br /></td></tr>
 <tr class="separator:a94680c89dde19dcee4c6a7c5508e9659"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a473371542eaeba6f67660582fe6a6074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074">wake</a> () const</td></tr>
+<tr class="memdesc:a473371542eaeba6f67660582fe6a6074"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Trigger an event from another thread.  <a href="#a473371542eaeba6f67660582fe6a6074">More...</a><br /></td></tr>
+<tr class="separator:a473371542eaeba6f67660582fe6a6074"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A connection to a remote AMQP peer. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a19">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a6">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a2">server.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a12">service_bus.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a19">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a6">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a2">server.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a11">service_bus.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a5ae591df94fc66ccb85cbb6565368bca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5ae591df94fc66ccb85cbb6565368bca">&#9670;&nbsp;</a></span>close() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void close </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Close the endpoint. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-
-<p>Implements <a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">endpoint</a>.</p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a15">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a19">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a18">helloworld_direct.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a23">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a17">simple_send.cpp</a>.</dd>
-</dl>
-</div>
-</div>
-<a id="a817883d28ce0ac8a29d917d196796f68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a817883d28ce0ac8a29d917d196796f68">&#9670;&nbsp;</a></span>close() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void close </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Close the endpoint with an error condition. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-
-<p>Implements <a class="el" href="classproton_1_1endpoint.html#ad4fcddcba5b74ba7766ac6f125469644">endpoint</a>.</p>
-
-</div>
-</div>
 <a id="a2f632b80247e868b8264b8a025b84baf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f632b80247e868b8264b8a025b84baf">&#9670;&nbsp;</a></span>container()</h2>
 
@@ -306,86 +247,6 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a id="a0e37f5c26858e9fa4399acbbcdbb6462"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e37f5c26858e9fa4399acbbcdbb6462">&#9670;&nbsp;</a></span>default_session()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classproton_1_1session.html">session</a> default_session </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the default session. </p>
-<p>A default session is created on the first call and reused for the lifetime of the connection. </p>
-
-</div>
-</div>
-<a id="a94680c89dde19dcee4c6a7c5508e9659"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94680c89dde19dcee4c6a7c5508e9659">&#9670;&nbsp;</a></span>idle_timeout()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t idle_timeout </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the idle timeout set by the remote peer. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#a7c838237bfba8a5a04c2b97e6f023448">connection_options::idle_timeout</a> </dd></dl>
-
-</div>
-</div>
-<a id="a491981c839dbde2411267e0654d73c4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a491981c839dbde2411267e0654d73c4f">&#9670;&nbsp;</a></span>max_frame_size()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t max_frame_size </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the maximum frame size allowed by the remote peer. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686">connection_options::max_frame_size</a> </dd></dl>
-
-</div>
-</div>
-<a id="a089389fc8a798fec049618c96c53444c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a089389fc8a798fec049618c96c53444c">&#9670;&nbsp;</a></span>max_sessions()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t max_sessions </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Get the maximum number of open sessions allowed by the remote peer. </p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#af66706fdb4a2f3f4d9943be9ee4b1347">connection_options::max_sessions</a> </dd></dl>
 
 </div>
 </div>
@@ -430,33 +291,105 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="ac514daf6aef85ee1e68858577e014877"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac514daf6aef85ee1e68858577e014877">&#9670;&nbsp;</a></span>open_receiver()</h2>
+<a id="a5ae591df94fc66ccb85cbb6565368bca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5ae591df94fc66ccb85cbb6565368bca">&#9670;&nbsp;</a></span>close() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void close </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Close the endpoint. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+<p>Implements <a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">endpoint</a>.</p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a15">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a19">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a18">helloworld_direct.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a22">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a17">simple_send.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="a817883d28ce0ac8a29d917d196796f68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a817883d28ce0ac8a29d917d196796f68">&#9670;&nbsp;</a></span>close() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void close </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Close the endpoint with an error condition. </p>
+<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+
+<p>Implements <a class="el" href="classproton_1_1endpoint.html#ad4fcddcba5b74ba7766ac6f125469644">endpoint</a>.</p>
+
+</div>
+</div>
+<a id="ae922e54bbff7c2d27373eea9d15e3367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae922e54bbff7c2d27373eea9d15e3367">&#9670;&nbsp;</a></span>open_session()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classproton_1_1receiver.html">receiver</a> open_receiver </td>
+          <td class="memname"><a class="el" href="classproton_1_1session.html">session</a> open_session </td>
           <td>(</td>
-          <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"><em>addr</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1session__options.html">session_options</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Open a receiver for <code>addr</code> on <a class="el" href="classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462" title="Get the default session. ">default_session()</a>. </p>
+<p>Open a new session. </p>
+
+</div>
+</div>
+<a id="a0e37f5c26858e9fa4399acbbcdbb6462"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e37f5c26858e9fa4399acbbcdbb6462">&#9670;&nbsp;</a></span>default_session()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classproton_1_1session.html">session</a> default_session </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the default session. </p>
+<p>A default session is created on the first call and reused for the lifetime of the connection. </p>
 
 </div>
 </div>
@@ -490,41 +423,33 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="ae922e54bbff7c2d27373eea9d15e3367"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae922e54bbff7c2d27373eea9d15e3367">&#9670;&nbsp;</a></span>open_session()</h2>
+<a id="ac514daf6aef85ee1e68858577e014877"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac514daf6aef85ee1e68858577e014877">&#9670;&nbsp;</a></span>open_receiver()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classproton_1_1session.html">session</a> open_session </td>
+          <td class="memname"><a class="el" href="classproton_1_1receiver.html">receiver</a> open_receiver </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1session__options.html">session_options</a> &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Open a new session. </p>
-
-</div>
-</div>
-<a id="a099ddaa3cfcd6a8ae14401bbbfb4b660"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a099ddaa3cfcd6a8ae14401bbbfb4b660">&#9670;&nbsp;</a></span>receiver_options()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
         <tr>
-          <td class="memname">class <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd>container::receiver_options() </dd></dl>
+
+<p>Open a receiver for <code>addr</code> on <a class="el" href="classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462" title="Get the default session. ">default_session()</a>. </p>
 
 </div>
 </div>
@@ -542,7 +467,112 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section see"><dt>See also</dt><dd>proton::container::sender_options() </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#a4fb43ab767dd944cfea2cc169f112488" title="Sender options applied to senders created by this container. ">proton::container::sender_options()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a099ddaa3cfcd6a8ae14401bbbfb4b660"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a099ddaa3cfcd6a8ae14401bbbfb4b660">&#9670;&nbsp;</a></span>receiver_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">class <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> <a class="el" href="classproton_1_1receiver__options.html">receiver_options</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1container.html#a2e01779c75286d270f579a28dae14d37" title="Receiver options applied to receivers created by this container. ">container::receiver_options()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a491981c839dbde2411267e0654d73c4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a491981c839dbde2411267e0654d73c4f">&#9670;&nbsp;</a></span>max_frame_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t max_frame_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the maximum frame size allowed by the remote peer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686">connection_options::max_frame_size</a> </dd></dl>
+
+</div>
+</div>
+<a id="a089389fc8a798fec049618c96c53444c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a089389fc8a798fec049618c96c53444c">&#9670;&nbsp;</a></span>max_sessions()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t max_sessions </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the maximum number of open sessions allowed by the remote peer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#af66706fdb4a2f3f4d9943be9ee4b1347">connection_options::max_sessions</a> </dd></dl>
+
+</div>
+</div>
+<a id="a94680c89dde19dcee4c6a7c5508e9659"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94680c89dde19dcee4c6a7c5508e9659">&#9670;&nbsp;</a></span>idle_timeout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t idle_timeout </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the idle timeout set by the remote peer. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1connection__options.html#a7c838237bfba8a5a04c2b97e6f023448">connection_options::idle_timeout</a> </dd></dl>
+
+</div>
+</div>
+<a id="a473371542eaeba6f67660582fe6a6074"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a473371542eaeba6f67660582fe6a6074">&#9670;&nbsp;</a></span>wake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void wake </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>Unsettled API</b> - Trigger an event from another thread. </p>
+<p><code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> can be called from any thread. The Proton library will call <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> as soon as possible in the correct event-handling thread.</p>
+<dl class="section note"><dt>Note</dt><dd></dd></dl>
+<ul>
+<li>Thread-safe: This is the <em>only</em> <a class="el" href="classproton_1_1connection.html">connection</a> function that can be called from outside the handler thread.</li>
+<li>Multiple calls to <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> may be coalesced into a single call to <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> that occurs after all of them.</li>
+<li>Spurious <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> calls can occur even if the application does not call <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code>.</li>
+</ul>
+<p>The <a class="el" href="classproton_1_1work__queue.html">work_queue</a> interface provides an easier way execute code safely in the event-handler thread. </p>
 
 </div>
 </div>

@@ -55,7 +55,6 @@ var namespaceproton =
     [ "url_error", "structproton_1_1url__error.html", null ],
     [ "uuid", "classproton_1_1uuid.html", "classproton_1_1uuid" ],
     [ "value", "classproton_1_1value.html", "classproton_1_1value" ],
-    [ "void_function0", "classproton_1_1void__function0.html", "classproton_1_1void__function0" ],
     [ "work", "classproton_1_1work.html", "classproton_1_1work" ],
     [ "work_queue", "classproton_1_1work__queue.html", "classproton_1_1work__queue" ]
 ];

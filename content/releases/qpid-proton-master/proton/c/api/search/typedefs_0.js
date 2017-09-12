@@ -21,7 +21,7 @@ var searchData=
   ['pn_5fmessenger_5ft',['pn_messenger_t',['../group__messenger.html#ga0d342bb795d48591ad6b3f867766b8b1',1,'messenger.h']]],
   ['pn_5fmillis_5ft',['pn_millis_t',['../group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c',1,'types.h']]],
   ['pn_5fnetaddr_5ft',['pn_netaddr_t',['../group__proactor.html#ga79d820cd3ad391cc5207c83dbb373a9c',1,'netaddr.h']]],
-  ['pn_5fproactor_5ft',['pn_proactor_t',['../types_8h.html#abba42c7929dfceb9d296535bad0c93dc',1,'types.h']]],
+  ['pn_5fproactor_5ft',['pn_proactor_t',['../group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc',1,'types.h']]],
   ['pn_5frwbytes_5ft',['pn_rwbytes_t',['../group__api__types.html#ga1f6bde2a01737366adcbfee546035b78',1,'types.h']]],
   ['pn_5fsasl_5ft',['pn_sasl_t',['../group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0',1,'sasl.h']]],
   ['pn_5fseconds_5ft',['pn_seconds_t',['../group__api__types.html#gafdede9be0526a8d0b9ab5d3149069af1',1,'types.h']]],

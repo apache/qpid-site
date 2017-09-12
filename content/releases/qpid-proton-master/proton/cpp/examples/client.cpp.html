@@ -119,7 +119,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;options.hpp&quot;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/default_container.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
@@ -194,7 +193,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="n">requests</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;And the mome raths outgrabe.&quot;</span><span class="p">);</span>
 
         <span class="n">client</span> <span class="n">c</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">requests</span><span class="p">);</span>
-        <span class="n">proton</span><span class="o">::</span><span class="n">default_container</span><span class="p">(</span><span class="n">c</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">c</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
 
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">example</span><span class="o">::</span><span class="n">bad_option</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>

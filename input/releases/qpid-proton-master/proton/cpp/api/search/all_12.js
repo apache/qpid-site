@@ -6,6 +6,5 @@ var searchData=
   ['verify_5fmode',['verify_mode',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3',1,'proton::ssl']]],
   ['verify_5fpeer',['VERIFY_PEER',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3adb9333f2461b9f65dcb7346a8ceb185c',1,'proton::ssl']]],
   ['verify_5fpeer_5fname',['VERIFY_PEER_NAME',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3a57807a2e5ed5e9858db1e84f24e91a0a',1,'proton::ssl']]],
-  ['virtual_5fhost',['virtual_host',['../classproton_1_1connection.html#a58c45cfdcca234c692559be81f206421',1,'proton::connection::virtual_host()'],['../classproton_1_1connection__options.html#a0300a2a68ecca3f684e91e637a45e028',1,'proton::connection_options::virtual_host()']]],
-  ['void_5ffunction0',['void_function0',['../classproton_1_1void__function0.html',1,'proton']]]
+  ['virtual_5fhost',['virtual_host',['../classproton_1_1connection.html#a58c45cfdcca234c692559be81f206421',1,'proton::connection::virtual_host()'],['../classproton_1_1connection__options.html#a0300a2a68ecca3f684e91e637a45e028',1,'proton::connection_options::virtual_host()']]]
 ];

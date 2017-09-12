@@ -107,7 +107,7 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:ga87f3028b4888632bbd56fb71ac737ae8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notification of a state change in the protocol engine.  <a href="#ga87f3028b4888632bbd56fb71ac737ae8">More...</a><br /></td></tr>
 <tr class="separator:ga87f3028b4888632bbd56fb71ac737ae8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a></td></tr>
-<tr class="memdesc:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - A batch of events that must be handled in sequence.  <a href="#ga6bc581dfeaa8e8d46d07d37229d565c9">More...</a><br /></td></tr>
+<tr class="memdesc:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - A batch of events that must be handled in sequence.  <a href="#ga6bc581dfeaa8e8d46d07d37229d565c9">More...</a><br /></td></tr>
 <tr class="separator:ga6bc581dfeaa8e8d46d07d37229d565c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga905cdecedb8020bc28e648e43348b5d1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#ga905cdecedb8020bc28e648e43348b5d1">pn_collector_t</a></td></tr>
 <tr class="memdesc:ga905cdecedb8020bc28e648e43348b5d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">An event collector.  <a href="#ga905cdecedb8020bc28e648e43348b5d1">More...</a><br /></td></tr>
@@ -249,7 +249,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <tr class="memdesc:gae7beda7f373660b889b61412ce429028"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the event context object has a condition and the condition is set return it, otherwise return NULL.  <a href="#gae7beda7f373660b889b61412ce429028">More...</a><br /></td></tr>
 <tr class="separator:gae7beda7f373660b889b61412ce429028"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac3fbf151357d3101ac294cb675348c76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__event.html#ga87f3028b4888632bbd56fb71ac737ae8">pn_event_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76">pn_event_batch_next</a> (<a class="el" href="group__event.html#ga6bc581dfeaa8e8d46d07d37229d565c9">pn_event_batch_t</a> *batch)</td></tr>
-<tr class="memdesc:gac3fbf151357d3101ac294cb675348c76"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Experimental</b> - Remove the next event from the batch and return it.  <a href="#gac3fbf151357d3101ac294cb675348c76">More...</a><br /></td></tr>
+<tr class="memdesc:gac3fbf151357d3101ac294cb675348c76"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Remove the next event from the batch and return it.  <a href="#gac3fbf151357d3101ac294cb675348c76">More...</a><br /></td></tr>
 <tr class="separator:gac3fbf151357d3101ac294cb675348c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -293,8 +293,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
       </table>
 </div><div class="memdoc">
 
-<p><b>Experimental</b> - A batch of events that must be handled in sequence. </p>
-<p>Call <a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76" title="Experimental - Remove the next event from the batch and return it. ">pn_event_batch_next()</a> in a loop until it returns NULL to extract the events. </p>
+<p><b>Unsettled API</b> - A batch of events that must be handled in sequence. </p>
+<p>Call <a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76" title="Unsettled API - Remove the next event from the batch and return it. ">pn_event_batch_next()</a> in a loop until it returns NULL to extract the events. </p>
 
 </div>
 </div>
@@ -444,14 +444,14 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <p><a class="el" href="group__listener.html#gaa49d0d11a9f46a75fbbbebf6def2d4b2" title="Get the error condition for a listener. ">pn_listener_condition()</a> provides error information. Events of this type point to the <a class="el" href="group__listener.html#ga68ac7072ae60612d0bca5470014bf216">pn_listener_t</a>. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaaee05826a80e94b5b86c4544e4715f499"></a>PN_PROACTOR_INTERRUPT&#160;</td><td class="fielddoc"><p>Indicates <a class="el" href="group__proactor.html#gaa5255cd1bcb5d7f5639b53dc30712711" title="Return a PN_PROACTOR_INTERRUPT event as soon as possible. ">pn_proactor_interrupt()</a> was called to interrupt a proactor thread. </p>
-<p>Events of this type point to the <a class="el" href="types_8h.html#abba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
+<p>Events of this type point to the <a class="el" href="group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa4afa8c2da61f4c665c669fbe37b1c5fe"></a>PN_PROACTOR_TIMEOUT&#160;</td><td class="fielddoc"><p>Timeout set by <a class="el" href="group__proactor.html#gad7cd71f06282eb290699d90c316b2d32" title="Return a PN_PROACTOR_TIMEOUT after timeout milliseconds elapse. ">pn_proactor_set_timeout()</a> time limit expired. </p>
-<p>Events of this type point to the <a class="el" href="types_8h.html#abba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
+<p>Events of this type point to the <a class="el" href="group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa894e93f167ef39e28a07c9cdf6b1181b"></a>PN_PROACTOR_INACTIVE&#160;</td><td class="fielddoc"><p>The proactor has become inactive: all listeners and connections were closed and the timeout (if set) expired or was cancelled. </p>
 <p>There will be no further events unless new listeners or connections are opened, or a new timeout is set (possibly in other threads in a multi-threaded program.)</p>
-<p>Events of this type point to the <a class="el" href="types_8h.html#abba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
+<p>Events of this type point to the <a class="el" href="group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc">pn_proactor_t</a>. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa6e25f00110ab278fd8b34fee00bd5fd7"></a>PN_LISTENER_OPEN&#160;</td><td class="fielddoc"><p>The listener is listeneing. </p>
 <p>Events of this type point to the <a class="el" href="group__listener.html#ga68ac7072ae60612d0bca5470014bf216">pn_listener_t</a>. </p>
@@ -485,8 +485,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a human readable name </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a21">broker.c</a>, <a class="el" href="direct_8c-example.html#a2">direct.c</a>, <a class="el" href="receive_8c-example.html#a1">receive.c</a>, and <a class="el" href="send_8c-example.html#a2">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga7c7754316e257d4ce7660730953000ac"></a>
@@ -804,8 +803,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the type of the event </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a22">broker.c</a>, <a class="el" href="direct_8c-example.html#a3">direct.c</a>, <a class="el" href="receive_8c-example.html#a2">receive.c</a>, and <a class="el" href="send_8c-example.html#a3">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga1f3f0a01db5cce634c5d0ccd5d9b50be"></a>
@@ -859,8 +857,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the connection associated with the event (or NULL) </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a25">broker.c</a>, <a class="el" href="direct_8c-example.html#a7">direct.c</a>, <a class="el" href="receive_8c-example.html#a6">receive.c</a>, and <a class="el" href="send_8c-example.html#a7">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gaf4af0bfbe0e0a8e432f0e803df14ecb5"></a>
@@ -887,8 +884,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the session associated with the event (or NULL) </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a45">broker.c</a>, <a class="el" href="direct_8c-example.html#a73">direct.c</a>, <a class="el" href="receive_8c-example.html#a45">receive.c</a>, and <a class="el" href="send_8c-example.html#a55">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga75f230ef55f03a1f943df79279f8d111"></a>
@@ -915,8 +911,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the link associated with the event (or NULL) </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a47">broker.c</a>, <a class="el" href="direct_8c-example.html#a32">direct.c</a>, <a class="el" href="receive_8c-example.html#a49">receive.c</a>, and <a class="el" href="send_8c-example.html#a36">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga10fa6f53bdabe0851ebb2d8a0bf6a52c"></a>
@@ -943,8 +938,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the delivery associated with the event (or NULL) </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a56">broker.c</a>, <a class="el" href="direct_8c-example.html#a36">direct.c</a>, <a class="el" href="receive_8c-example.html#a26">receive.c</a>, and <a class="el" href="send_8c-example.html#a45">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga14525ae84870388141898bbf57f2b151"></a>
@@ -971,8 +965,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the transport associated with the event (or NULL) </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a67">broker.c</a>, <a class="el" href="direct_8c-example.html#a65">direct.c</a>, <a class="el" href="receive_8c-example.html#a40">receive.c</a>, and <a class="el" href="send_8c-example.html#a50">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga5989cf0c187bd12899596fe06931476e"></a>
@@ -1039,10 +1032,9 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
       </table>
 </div><div class="memdoc">
 
-<p><b>Experimental</b> - Remove the next event from the batch and return it. </p>
-<p>NULL means the batch is empty. The returned event pointer is valid until <a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76" title="Experimental - Remove the next event from the batch and return it. ">pn_event_batch_next()</a> is called again on the same batch. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a84">broker.c</a>, <a class="el" href="direct_8c-example.html#a91">direct.c</a>, <a class="el" href="receive_8c-example.html#a52">receive.c</a>, and <a class="el" href="send_8c-example.html#a61">send.c</a>.</dd>
-</dl>
+<p><b>Unsettled API</b> - Remove the next event from the batch and return it. </p>
+<p>NULL means the batch is empty. The returned event pointer is valid until <a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76" title="Unsettled API - Remove the next event from the batch and return it. ">pn_event_batch_next()</a> is called again on the same batch. </p>
+
 </div>
 </div>
 </div><!-- contents -->

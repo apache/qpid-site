@@ -98,7 +98,7 @@ $(document).ready(function(){initNavTree('group__connection.html','');});
 </div><!--header-->
 <div class="contents">
 
-<p>A channel for communication between two peers on a network.  
+<p>A connection to a remote AMQP peer.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
@@ -239,7 +239,7 @@ Functions</h2></td></tr>
 <tr class="separator:gad8bd46661ca997b9b2c2c38cb6983c59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<p>A channel for communication between two peers on a network. </p>
+<p>A connection to a remote AMQP peer. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="gaa83193a655e32bffc18624acc2c39233"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaa83193a655e32bffc18624acc2c39233">&#9670;&nbsp;</a></span>pn_state_t</h2>
@@ -295,8 +295,7 @@ Functions</h2></td></tr>
 
 <p>Factory to construct a new Connection. </p>
 <dl class="section return"><dt>Returns</dt><dd>pointer to a new connection object. </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a30">broker.c</a>, <a class="el" href="direct_8c-example.html#a61">direct.c</a>, <a class="el" href="receive_8c-example.html#a58">receive.c</a>, and <a class="el" href="send_8c-example.html#a67">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga00cbef1a9f5062a6e1f113fda923f65e"></a>
@@ -368,7 +367,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Get additional error information associated with the connection.</p>
 <p>Whenever a connection operation fails (i.e. returns an error code), additional error details can be obtained using this function. The error object that is returned may also be used to clear the error condition.</p>
 <p>The pointer returned by this operation is valid until the connection object is freed.</p>
@@ -457,7 +455,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Get the application context that is associated with a connection object.</p>
 <p>The application context for a connection may be set using <a class="el" href="group__connection.html#gad3203b366cb1ff5becd1778a8dd6b1a6">pn_connection_set_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -467,8 +464,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the application context for the connection object </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a11">broker.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gad3203b366cb1ff5becd1778a8dd6b1a6"></a>
@@ -496,7 +492,6 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000003">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Set a new application context for a connection object.</p>
 <p>The application context for a connection object may be retrieved using <a class="el" href="group__connection.html#ga50613e6c09186dc3f1a2f36238c61f07">pn_connection_get_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -506,8 +501,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a10">broker.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gad8b6c777b525c9da9401e3a770db15da"></a>
@@ -588,8 +582,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a39">broker.c</a>, <a class="el" href="direct_8c-example.html#a70">direct.c</a>, <a class="el" href="receive_8c-example.html#a17">receive.c</a>, and <a class="el" href="send_8c-example.html#a28">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gac25afdf810ad188b2cb3bf31a7482ca0"></a>
@@ -616,8 +609,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a70">broker.c</a>, <a class="el" href="direct_8c-example.html#a6">direct.c</a>, <a class="el" href="receive_8c-example.html#a5">receive.c</a>, and <a class="el" href="send_8c-example.html#a6">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga3a76135d214e12a0735441c1ba2c28d3"></a>
@@ -702,8 +694,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the connection's remote condition object </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a69">broker.c</a>, <a class="el" href="direct_8c-example.html#a78">direct.c</a>, <a class="el" href="receive_8c-example.html#a42">receive.c</a>, and <a class="el" href="send_8c-example.html#a52">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga61e1f6386d18a568da50b998200eb87b"></a>
@@ -768,8 +759,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a32">broker.c</a>, <a class="el" href="direct_8c-example.html#a63">direct.c</a>, <a class="el" href="receive_8c-example.html#a16">receive.c</a>, and <a class="el" href="send_8c-example.html#a27">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gafb84dd2ef7551ad864be08cb31010d19"></a>
@@ -1198,8 +1188,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the transport bound to a connection, or NULL if the connection is unbound </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a34">broker.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 </div><!-- contents -->

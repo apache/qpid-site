@@ -109,14 +109,14 @@ Macros</h2></td></tr>
 <tr class="separator:gae8f32e46e94953bab10bee530eee9044"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="memItemLeft" align="right" valign="top"><a id="gafde0eb3c73fb98816f4238d42d48f3d8"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8">PN_TRACE_RAW</a></td></tr>
-<tr class="memdesc:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log raw binary data into/out of the transport. <br /></td></tr>
+<tr class="memdesc:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log raw binary data going in and out of the transport. <br /></td></tr>
 <tr class="separator:gafde0eb3c73fb98816f4238d42d48f3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab8e04b4c128379ff27e6b801c0bce494"><td class="memItemLeft" align="right" valign="top"><a id="gab8e04b4c128379ff27e6b801c0bce494"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494">PN_TRACE_FRM</a></td></tr>
-<tr class="memdesc:gab8e04b4c128379ff27e6b801c0bce494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log frames into/out of the transport. <br /></td></tr>
+<tr class="memdesc:gab8e04b4c128379ff27e6b801c0bce494"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log protocol frames going in and out of the transport. <br /></td></tr>
 <tr class="separator:gab8e04b4c128379ff27e6b801c0bce494"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7065ad65f95c995a24e416edc95aead4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4">PN_TRACE_DRV</a></td></tr>
-<tr class="memdesc:ga7065ad65f95c995a24e416edc95aead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log driver related events, e.g.  <a href="#ga7065ad65f95c995a24e416edc95aead4">More...</a><br /></td></tr>
+<tr class="memdesc:ga7065ad65f95c995a24e416edc95aead4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log driver-related events.  <a href="#ga7065ad65f95c995a24e416edc95aead4">More...</a><br /></td></tr>
 <tr class="separator:ga7065ad65f95c995a24e416edc95aead4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3bde88d15fcfda400a36d8f9e5d51688"><td class="memItemLeft" align="right" valign="top"><a id="ga3bde88d15fcfda400a36d8f9e5d51688"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#ga3bde88d15fcfda400a36d8f9e5d51688">PN_TRACE_EVT</a></td></tr>
@@ -133,7 +133,7 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" 
 <tr class="memdesc:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Callback for customizing logging behaviour. <br /></td></tr>
 <tr class="separator:gae9b49fcbf6397e6916eb4e1357c90ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a></td></tr>
-<tr class="memdesc:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">An AMQP Transport object.  <a href="#gac26eda05f649bbf0399f3d8d78d12fa8">More...</a><br /></td></tr>
+<tr class="memdesc:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">A network channel supporting an AMQP connection.  <a href="#gac26eda05f649bbf0399f3d8d78d12fa8">More...</a><br /></td></tr>
 <tr class="separator:gac26eda05f649bbf0399f3d8d78d12fa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -302,8 +302,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
       </table>
 </div><div class="memdoc">
 
-<p>Log driver related events, e.g. </p>
-<p>initialization, end of stream, etc. </p>
+<p>Log driver-related events. </p>
+<p>For example, initialization, end of stream, and so on. </p>
 
 </div>
 </div>
@@ -324,9 +324,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
 <p>The trace flags for an AMQP transport control what sort of information is logged by an AMQP transport. The following bits can be set:</p>
 <ul>
 <li><a class="el" href="group__transport.html#gae8f32e46e94953bab10bee530eee9044" title="Turn logging off entirely. ">PN_TRACE_OFF</a></li>
-<li><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8" title="Log raw binary data into/out of the transport. ">PN_TRACE_RAW</a></li>
-<li><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494" title="Log frames into/out of the transport. ">PN_TRACE_FRM</a></li>
-<li><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4" title="Log driver related events, e.g. ">PN_TRACE_DRV</a></li>
+<li><a class="el" href="group__transport.html#gafde0eb3c73fb98816f4238d42d48f3d8" title="Log raw binary data going in and out of the transport. ">PN_TRACE_RAW</a></li>
+<li><a class="el" href="group__transport.html#gab8e04b4c128379ff27e6b801c0bce494" title="Log protocol frames going in and out of the transport. ">PN_TRACE_FRM</a></li>
+<li><a class="el" href="group__transport.html#ga7065ad65f95c995a24e416edc95aead4" title="Log driver-related events. ">PN_TRACE_DRV</a></li>
 <li><a class="el" href="group__transport.html#ga3bde88d15fcfda400a36d8f9e5d51688" title="Log events. ">PN_TRACE_EVT</a> </li>
 </ul>
 
@@ -344,7 +344,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
       </table>
 </div><div class="memdoc">
 
-<p>An AMQP Transport object. </p>
+<p>A network channel supporting an AMQP connection. </p>
 <p>A pn_transport_t encapsulates the transport related state of all AMQP endpoint objects associated with a physical network connection at a given point in time. </p>
 
 </div>
@@ -498,8 +498,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a35">broker.c</a>, and <a class="el" href="direct_8c-example.html#a66">direct.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="ga8a60f6a48e4bd2d090f5bd264cf7f90d"></a>
@@ -626,8 +625,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the transport's condition object </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a66">broker.c</a>, <a class="el" href="direct_8c-example.html#a75">direct.c</a>, <a class="el" href="receive_8c-example.html#a39">receive.c</a>, and <a class="el" href="send_8c-example.html#a49">send.c</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="gaede0bc2a0038ccdc7e1b193e322147fa"></a>
@@ -645,7 +643,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000013">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
@@ -819,7 +816,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000014">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Get the application context that is associated with a transport object.</p>
 <p>The application context for a transport may be set using <a class="el" href="group__transport.html#gac22041ff85d1a1f5287ac2ba826edb74">pn_transport_set_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -857,7 +853,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000015">Deprecated:</a></b></dt><dd></dd></dl>
 <p>Set a new application context for a transport object.</p>
 <p>The application context for a transport object may be retrieved using <a class="el" href="group__transport.html#ga000b2b9ab82139defb1a103f220ec58e">pn_transport_get_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
@@ -1338,7 +1333,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000016">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>
@@ -1373,7 +1367,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="grou
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000017">Deprecated:</a></b></dt><dd></dd></dl>
 
 </div>
 </div>

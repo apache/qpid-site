@@ -200,8 +200,8 @@ Related Functions</h2></td></tr>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="types_page.html">AMQP and C++ types</a> </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="service_bus_8cpp-example.html#_a5">service_bus.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a486dfed974ca6f79e75039b3eee6c44c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a486dfed974ca6f79e75039b3eee6c44c">&#9670;&nbsp;</a></span>coerce() <span class="overload">[1/2]</span></h2>
+<a id="a70ee803fc7f2a505266e357e7c13aa18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a70ee803fc7f2a505266e357e7c13aa18">&#9670;&nbsp;</a></span>operator<<</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -210,52 +210,16 @@ Related Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">T coerce </td>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">related</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Coerce the contained value to type T. </p>
-<p>For example: </p><pre class="fragment">uint64_t i = coerce&lt;uint64_t&gt;(x)
-</pre><p>This will succeed if x contains any numeric value, but may lose precision if it contains a float or double value.</p>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="structproton_1_1conversion__error.html" title="An error converting between AMQP and C++ data. ">conversion_error</a></td><td>if the value cannot be converted to T according to <code>std::is_convertible</code> </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a4896ec87beab7d691e1985c221c36e49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4896ec87beab7d691e1985c221c36e49">&#9670;&nbsp;</a></span>coerce() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void coerce </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
-          <td class="paramname"><em>v</em>, </td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname">, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">T &amp;&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
+          <td class="paramname">&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -265,13 +229,13 @@ Related Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Like <a class="el" href="classproton_1_1value.html#a486dfed974ca6f79e75039b3eee6c44c" title="Coerce the contained value to type T. ">coerce(const value&amp;)</a> but assigns the value to a reference instead of returning it. </p>
-<p>May be more efficient for complex values (arrays, maps, etc.) </p>
+<p>If contained value is a scalar type T, print using operator&lt;&lt;(T) </p>
+<p>Complex types are printed in a non-standard human-readable format but that may change in future so should not be parsed. </p>
 
 </div>
 </div>
@@ -308,7 +272,7 @@ Related Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="service_bus_8cpp-example.html#a18">service_bus.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="service_bus_8cpp-example.html#a17">service_bus.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -387,8 +351,8 @@ Related Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a70ee803fc7f2a505266e357e7c13aa18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a70ee803fc7f2a505266e357e7c13aa18">&#9670;&nbsp;</a></span>operator<<</h2>
+<a id="a486dfed974ca6f79e75039b3eee6c44c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a486dfed974ca6f79e75039b3eee6c44c">&#9670;&nbsp;</a></span>coerce() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -397,16 +361,52 @@ Related Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td class="memname">T coerce </td>
           <td>(</td>
-          <td class="paramtype">std::ostream &amp;&#160;</td>
-          <td class="paramname">, </td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Coerce the contained value to type T. </p>
+<p>For example: </p><pre class="fragment">uint64_t i = coerce&lt;uint64_t&gt;(x)
+</pre><p>This will succeed if x contains any numeric value, but may lose precision if it contains a float or double value.</p>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="structproton_1_1conversion__error.html" title="An error converting between AMQP and C++ data. ">conversion_error</a></td><td>if the value cannot be converted to T according to <code>std::is_convertible</code> </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a4896ec87beab7d691e1985c221c36e49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4896ec87beab7d691e1985c221c36e49">&#9670;&nbsp;</a></span>coerce() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void coerce </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
+          <td class="paramname"><em>v</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="el" href="classproton_1_1value.html">value</a> &amp;&#160;</td>
-          <td class="paramname">&#160;</td>
+          <td class="paramtype">T &amp;&#160;</td>
+          <td class="paramname"><em>x</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -416,13 +416,13 @@ Related Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">related</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>If contained value is a scalar type T, print using operator&lt;&lt;(T) </p>
-<p>Complex types are printed in a non-standard human-readable format but that may change in future so should not be parsed. </p>
+<p>Like <a class="el" href="classproton_1_1value.html#a486dfed974ca6f79e75039b3eee6c44c" title="Coerce the contained value to type T. ">coerce(const value&amp;)</a> but assigns the value to a reference instead of returning it. </p>
+<p>May be more efficient for complex values (arrays, maps, etc.) </p>
 
 </div>
 </div>

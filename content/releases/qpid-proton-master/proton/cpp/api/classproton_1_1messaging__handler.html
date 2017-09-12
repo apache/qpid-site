@@ -211,6 +211,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a815e30c6d10d923d88dc1085b7b0f116"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a815e30c6d10d923d88dc1085b7b0f116">on_receiver_drain_finish</a> (<a class="el" href="classproton_1_1receiver.html">receiver</a> &amp;r)</td></tr>
 <tr class="memdesc:a815e30c6d10d923d88dc1085b7b0f116"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - The credit outstanding at the time of the call to <a class="el" href="classproton_1_1receiver.html#af7d01b5776b9d8a0f218aec331ddaeb9" title="Unsettled API - Commence a drain cycle. ">receiver::drain</a> has been consumed or returned.  <a href="#a815e30c6d10d923d88dc1085b7b0f116">More...</a><br /></td></tr>
 <tr class="separator:a815e30c6d10d923d88dc1085b7b0f116"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29bfba2d26604e5d8d7f3183f1374481"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481">on_connection_wake</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
+<tr class="memdesc:a29bfba2d26604e5d8d7f3183f1374481"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - an event that can be triggered from another thread.  <a href="#a29bfba2d26604e5d8d7f3183f1374481">More...</a><br /></td></tr>
+<tr class="separator:a29bfba2d26604e5d8d7f3183f1374481"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e29fef3b8c5b8cf18aa7d69850ac22e"><td class="memItemLeft" align="right" valign="top"><a id="a5e29fef3b8c5b8cf18aa7d69850ac22e"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a5e29fef3b8c5b8cf18aa7d69850ac22e">on_error</a> (const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;c)</td></tr>
 <tr class="memdesc:a5e29fef3b8c5b8cf18aa7d69850ac22e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fallback error handling. <br /></td></tr>
@@ -255,7 +258,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>The container event loop is starting. </p>
-<p>This is the first event received after calling <a class="el" href="classproton_1_1container.html#a13a43e6d814de94978c515cb084873b1" title="Run the container in this thread. ">container::run</a> </p>
+<p>This is the first event received after calling <a class="el" href="classproton_1_1container.html#a13a43e6d814de94978c515cb084873b1" title="Run the container in the current thread. ">container::run</a> </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a5">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a2">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a2">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a2">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a2">helloworld_direct.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a8">multithreaded_client.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a5">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a4">scheduled_send_03.cpp</a>, <a class="el" href="server_8cpp-example.html#a3">server.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#a1">server_direct.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a2">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a2">simple_send.cpp</a>.</dd>
 </dl>
 </div>
@@ -289,8 +292,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="a815e30c6d10d923d88dc1085b7b0f116"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a815e30c6d10d923d88dc1085b7b0f116">&#9670;&nbsp;</a></span>on_receiver_drain_finish()</h2>
+<a id="af89551ce0e44ae3465d4b078f1c87653"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af89551ce0e44ae3465d4b078f1c87653">&#9670;&nbsp;</a></span>on_transport_error()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,10 +302,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void on_receiver_drain_finish </td>
+          <td class="memname">virtual void on_transport_error </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classproton_1_1receiver.html">receiver</a> &amp;&#160;</td>
-          <td class="paramname"><em>r</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1transport.html">transport</a> &amp;&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -313,7 +316,7 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p><b>Unsettled API</b> - The credit outstanding at the time of the call to <a class="el" href="classproton_1_1receiver.html#af7d01b5776b9d8a0f218aec331ddaeb9" title="Unsettled API - Commence a drain cycle. ">receiver::drain</a> has been consumed or returned. </p>
+<p>The underlying network transport has closed with an error condition. </p>
 
 </div>
 </div>
@@ -345,8 +348,8 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
-<a id="af89551ce0e44ae3465d4b078f1c87653"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af89551ce0e44ae3465d4b078f1c87653">&#9670;&nbsp;</a></span>on_transport_error()</h2>
+<a id="a815e30c6d10d923d88dc1085b7b0f116"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a815e30c6d10d923d88dc1085b7b0f116">&#9670;&nbsp;</a></span>on_receiver_drain_finish()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -355,10 +358,10 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void on_transport_error </td>
+          <td class="memname">virtual void on_receiver_drain_finish </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classproton_1_1transport.html">transport</a> &amp;&#160;</td>
-          <td class="paramname"><em>t</em></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1receiver.html">receiver</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -369,7 +372,39 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>The underlying network transport has closed with an error condition. </p>
+<p><b>Unsettled API</b> - The credit outstanding at the time of the call to <a class="el" href="classproton_1_1receiver.html#af7d01b5776b9d8a0f218aec331ddaeb9" title="Unsettled API - Commence a drain cycle. ">receiver::drain</a> has been consumed or returned. </p>
+
+</div>
+</div>
+<a id="a29bfba2d26604e5d8d7f3183f1374481"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29bfba2d26604e5d8d7f3183f1374481">&#9670;&nbsp;</a></span>on_connection_wake()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void on_connection_wake </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1connection.html">connection</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><b>Unsettled API</b> - an event that can be triggered from another thread. </p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">on_connection_wake()</a> can be triggered by any thread calling <a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">connection::wake()</a> It is used to notify the application's <a class="el" href="classproton_1_1messaging__handler.html">messaging_handler</a> instance that something needs attention.</p>
+<p>The application handler and the triggering thread must use some form of thread-safe state or communication to tell the handler what it needs to do.</p>
+<dl class="section note"><dt>Note</dt><dd>spurious calls to <a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">on_connection_wake()</a> can occur without any application call to <a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">connection::wake()</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">work_queue</a> provides an easier way execute code safely in the handler thread. </dd></dl>
 
 </div>
 </div>

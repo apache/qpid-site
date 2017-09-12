@@ -5,7 +5,6 @@
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/default_container.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/function.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
@@ -245,7 +244,7 @@
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">connection_string</span><span class="p">(</span><span class="s">&quot;amqps://&quot;</span> <span class="o">+</span> <span class="n">sb_key_name</span> <span class="o">+</span> <span class="s">&quot;:&quot;</span> <span class="o">+</span> <span class="n">sb_key</span> <span class="o">+</span> <span class="s">&quot;@&quot;</span> <span class="o">+</span> <span class="n">sb_namespace</span><span class="p">);</span>
 
         <span class="n">sequence</span> <span class="n">seq</span><span class="p">(</span><span class="n">connection_string</span><span class="p">,</span> <span class="n">sb_entity</span><span class="p">);</span>
-        <span class="n">proton</span><span class="o">::</span><span class="n">default_container</span><span class="p">(</span><span class="n">seq</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">seq</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>

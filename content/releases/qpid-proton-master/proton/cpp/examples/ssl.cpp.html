@@ -121,7 +121,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/default_container.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/error_condition.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/listener.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
@@ -234,7 +233,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 
     <span class="kt">void</span> <span class="n">on_transport_error</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">transport</span> <span class="o">&amp;</span><span class="n">t</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">err</span> <span class="o">=</span> <span class="n">t</span><span class="p">.</span><span class="n">error</span><span class="p">().</span><span class="n">what</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;certificate&quot;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">err</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;certificate&quot;</span><span class="p">)</span> <span class="o">!=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">::</span><span class="n">npos</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">verify_failed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
             <span class="k">throw</span> <span class="nf">example_cert_error</span><span class="p">(</span><span class="n">err</span><span class="p">);</span>
         <span class="p">}</span>
@@ -276,7 +275,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;bad verify argument: &quot;</span> <span class="o">+</span> <span class="n">verify</span><span class="p">);</span>
 
         <span class="n">hello_world_direct</span> <span class="n">hwd</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
-        <span class="n">proton</span><span class="o">::</span><span class="n">default_container</span><span class="p">(</span><span class="n">hwd</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">hwd</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">verify_failed</span><span class="p">)</span> <span class="p">{</span>

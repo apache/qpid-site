@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['decode',['decode',['../classproton_1_1codec_1_1decoder.html#a2db9ebfc344a8b1718099047639e32b2',1,'proton::codec::decoder::decode(const char *buffer, size_t size)'],['../classproton_1_1codec_1_1decoder.html#a8a2c9746655f00930f1d609b2bb9ff17',1,'proton::codec::decoder::decode(const std::string &amp;)'],['../classproton_1_1message.html#a72fbad8f3ef14c3d485f7478271f2cd4',1,'proton::message::decode()']]],
+  ['decode',['decode',['../classproton_1_1codec_1_1decoder.html#a2db9ebfc344a8b1718099047639e32b2',1,'proton::codec::decoder::decode(const char *buffer, size_t size)'],['../classproton_1_1codec_1_1decoder.html#a8a2c9746655f00930f1d609b2bb9ff17',1,'proton::codec::decoder::decode(const std::string &amp;)'],['../classproton_1_1message.html#a53538e1ae48ba56e7285ca859d9cee50',1,'proton::message::decode()']]],
   ['decoder',['decoder',['../classproton_1_1codec_1_1decoder.html#ac9222fed91a5066887b42f471de0be8a',1,'proton::codec::decoder::decoder(const data &amp;d, bool exact=false)'],['../classproton_1_1codec_1_1decoder.html#adaca283b3eeb8861b7f7e8e94f784810',1,'proton::codec::decoder::decoder(const internal::value_base &amp;, bool exact=false)']]],
   ['default_5fsession',['default_session',['../classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462',1,'proton::connection']]],
   ['delay',['delay',['../classproton_1_1reconnect__options.html#a700d91bfa7a95ee851dd94eda092721b',1,'proton::reconnect_options']]],

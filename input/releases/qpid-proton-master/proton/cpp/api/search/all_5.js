@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['failover_5furls',['failover_urls',['../classproton_1_1reconnect__options.html#a342bae3e139b785604e4ed0c7599a068',1,'proton::reconnect_options']]],
   ['filter_5fmap',['filter_map',['../classproton_1_1source.html#ad5af497ef0602d13b06773c910994fd7',1,'proton::source']]],
   ['filters',['filters',['../classproton_1_1source.html#a5872b2a2f80f74a6f4f5b02791861a6d',1,'proton::source::filters()'],['../classproton_1_1source__options.html#a9a38c4697708d223e8163d301e92f6af',1,'proton::source_options::filters()']]],
   ['finish',['finish',['../namespaceproton_1_1codec.html#structproton_1_1codec_1_1finish',1,'proton::codec']]],
