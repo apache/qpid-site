@@ -199,7 +199,6 @@ changes.  Any additions or other structural changes under the `input/` and
     Keep in mind that you may need to git add new files.
     Also keep in mind to git rm matching files from content/ that have been removed from input/.
 
-
 ## More information
 
  - The Qpid site code internally uses
