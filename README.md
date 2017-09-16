@@ -129,6 +129,9 @@ for a new release.
     # For new Qpid Proton releases
     [qpid-site]$ make gen-proton-release RELEASE=$VERSION
 
+    # For new Qpid Proton-J releases
+    [qpid-site]$ make gen-proton-j-release RELEASE=$VERSION
+
     # For new Qpid Dispatch releases
     [qpid-site]$ make gen-dispatch-release RELEASE=$VERSION
 
