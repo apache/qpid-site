@@ -95,10 +95,10 @@ The options apply to the behaviour of the JMS objects such as Connection, Sessio
 + **jms.receiveNoWaitLocalOnly** If enabled receiveNoWait calls will only check a consumers local message buffer, otherwise the remote peer is checked to ensure there are really no messages available. Default is false, the remote is checked.
 + **jms.queuePrefix** Optional prefix value added to the name of any Queue created from a JMS Session.
 + **jms.topicPrefix** Optional prefix value added to the name of any Topic created from a JMS Session.
-+ **jms.closeTimeout** Timeout value that controls how long the client waits on resource closure before returning. (By default the client waits 60 seconds for a normal close completion event).
-+ **jms.connectTimeout** Timeout value that controls how long the client waits on Connection establishment before returning with an error. (By default the client waits 15 seconds for a connection to be established before failing).
-+ **jms.sendTimeout** Timeout value that controls how long the client waits on completion of a synchronous message send before returning an error (By default the client will wait indefinitely for a send to complete).
-+ **jms.requestTimeout** Timeout value that controls how long the client waits on completion of various synchronous interactions with the remote peer before returning an error (By default the client will wait indefinitely for a request to complete
++ **jms.closeTimeout** Timeout value that controls how long the client waits on resource closure before returning. By default the client waits 60 seconds for a normal close completion event.
++ **jms.connectTimeout** Timeout value that controls how long the client waits on Connection establishment before returning with an error. By default the client waits 15 seconds for a connection to be established before failing.
++ **jms.sendTimeout** Timeout value that controls how long the client waits on completion of a synchronous message send before returning an error. By default the client will wait indefinitely for a send to complete.
++ **jms.requestTimeout** Timeout value that controls how long the client waits on completion of various synchronous interactions, such as opening a producer or consumer, before returning an error. Does not affect synchronous message sends. By default the client will wait indefinitely for a request to complete.
 + **jms.clientIDPrefix** Optional prefix value that is used for generated Client ID values when a new Connection is created for the JMS ConnectionFactory.  The default prefix is 'ID:'.
 + **jms.connectionIDPrefix** Optional prefix value that is used for generated Connection ID values when a new Connection is created for the JMS ConnectionFactory.  This connection ID is used when logging some information from the JMS Connection object so a configurable prefix can make breadcrumbing the logs easier.  The default prefix is 'ID:'.
 + **jms.populateJMSXUserID** Controls whether a MessageProducer will populate the JMSXUserID value for each sent message using the authenticated username from the connection.  This value defaults to false and the JMSXUserID for all sent message will not be populated.
@@ -180,6 +180,7 @@ The complete set of SSL Transport options is listed below:
 + **transport.verifyHost** Whether to verify that the hostname being connected to matches with the provided server certificate. Defaults to true.
 + **transport.keyAlias** The alias to use when selecting a keypair from the keystore if required to send a client certificate to the server. No default.
 + **transport.useEpoll** When true the transport will use the native Epoll layer when available instead of the NIO layer, which can improve performance. Defaults to true.
++ **transport.useKQueue** When true the transport will use the native KQueue layer when available instead of the NIO layer, which can improve performance. Defaults to false.
 
 ### Websocket Transport Configuration options
 

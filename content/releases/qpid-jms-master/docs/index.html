@@ -221,10 +221,10 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>jms.receiveNoWaitLocalOnly</strong> If enabled receiveNoWait calls will only check a consumers local message buffer, otherwise the remote peer is checked to ensure there are really no messages available. Default is false, the remote is checked.</li>
 <li><strong>jms.queuePrefix</strong> Optional prefix value added to the name of any Queue created from a JMS Session.</li>
 <li><strong>jms.topicPrefix</strong> Optional prefix value added to the name of any Topic created from a JMS Session.</li>
-<li><strong>jms.closeTimeout</strong> Timeout value that controls how long the client waits on resource closure before returning. (By default the client waits 60 seconds for a normal close completion event).</li>
-<li><strong>jms.connectTimeout</strong> Timeout value that controls how long the client waits on Connection establishment before returning with an error. (By default the client waits 15 seconds for a connection to be established before failing).</li>
-<li><strong>jms.sendTimeout</strong> Timeout value that controls how long the client waits on completion of a synchronous message send before returning an error (By default the client will wait indefinitely for a send to complete).</li>
-<li><strong>jms.requestTimeout</strong> Timeout value that controls how long the client waits on completion of various synchronous interactions with the remote peer before returning an error (By default the client will wait indefinitely for a request to complete</li>
+<li><strong>jms.closeTimeout</strong> Timeout value that controls how long the client waits on resource closure before returning. By default the client waits 60 seconds for a normal close completion event.</li>
+<li><strong>jms.connectTimeout</strong> Timeout value that controls how long the client waits on Connection establishment before returning with an error. By default the client waits 15 seconds for a connection to be established before failing.</li>
+<li><strong>jms.sendTimeout</strong> Timeout value that controls how long the client waits on completion of a synchronous message send before returning an error. By default the client will wait indefinitely for a send to complete.</li>
+<li><strong>jms.requestTimeout</strong> Timeout value that controls how long the client waits on completion of various synchronous interactions, such as opening a producer or consumer, before returning an error. Does not affect synchronous message sends. By default the client will wait indefinitely for a request to complete.</li>
 <li><strong>jms.clientIDPrefix</strong> Optional prefix value that is used for generated Client ID values when a new Connection is created for the JMS ConnectionFactory.  The default prefix is 'ID:'.</li>
 <li><strong>jms.connectionIDPrefix</strong> Optional prefix value that is used for generated Connection ID values when a new Connection is created for the JMS ConnectionFactory.  This connection ID is used when logging some information from the JMS Connection object so a configurable prefix can make breadcrumbing the logs easier.  The default prefix is 'ID:'.</li>
 <li><strong>jms.populateJMSXUserID</strong> Controls whether a MessageProducer will populate the JMSXUserID value for each sent message using the authenticated username from the connection.  This value defaults to false and the JMSXUserID for all sent message will not be populated.</li>
@@ -319,6 +319,7 @@ when an unqualified name (e.g myhost) or bare IP address are used.</p>
 <li><strong>transport.verifyHost</strong> Whether to verify that the hostname being connected to matches with the provided server certificate. Defaults to true.</li>
 <li><strong>transport.keyAlias</strong> The alias to use when selecting a keypair from the keystore if required to send a client certificate to the server. No default.</li>
 <li><strong>transport.useEpoll</strong> When true the transport will use the native Epoll layer when available instead of the NIO layer, which can improve performance. Defaults to true.</li>
+<li><strong>transport.useKQueue</strong> When true the transport will use the native KQueue layer when available instead of the NIO layer, which can improve performance. Defaults to false.</li>
 </ul>
 
 <h3 id="websocket-transport-configuration-options">Websocket Transport Configuration options</h3>

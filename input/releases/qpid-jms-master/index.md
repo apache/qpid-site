@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_jms_release_url}}/index.html).
 
-This content was generated at 23:06  on Friday, 04 August 2017.
+This content was generated at 15:07  on Friday, 22 September 2017.
 
 </div>
 
