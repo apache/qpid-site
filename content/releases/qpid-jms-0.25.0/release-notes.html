@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS 0.3.0 - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.25.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,74 +111,42 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS 0.3.0</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.25.0/index.html">Qpid JMS 0.25.0</a></li><li>Qpid JMS 0.25.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("0.3.0" === "0.25.0") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
+          <h1 id="qpid-jms-0250-release-notes">Qpid JMS 0.25.0 Release Notes</h1>
 
-<h1 id="qpid-jms-030">Qpid JMS 0.3.0</h1>
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
 
-<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 1.1 client built
-using the <a href="/proton/index.html">Qpid Proton</a> protocol engine.</p>
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
-notes</a>.</p>
-
-<h2 id="download">Download</h2>
-
-<p>It's important to <a href="/download.html#verify-what-you-download">verify the
-integrity</a> of the
-files you download.</p>
-
-<table>
-<thead>
-<tr>
-  <th>Content</th>
-  <th>Download</th>
-  <th>Verify</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Qpid JMS binaries</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-bin.tar.gz">apache-qpid-jms-0.3.0-bin.tar.gz</a></td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-bin.tar.gz.asc">ASC</a>, <a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-bin.tar.gz.md5">MD5</a>, <a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-bin.tar.gz.sha1">SHA1</a></td>
-</tr>
-<tr>
-  <td>Qpid JMS source code</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-src.tar.gz">apache-qpid-jms-0.3.0-src.tar.gz</a></td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-src.tar.gz.asc">ASC</a>, <a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-src.tar.gz.md5">MD5</a>, <a href="http://archive.apache.org/dist/qpid/jms/0.3.0/apache-qpid-jms-0.3.0-src.tar.gz.sha1">SHA1</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>The client is also available <a href="/maven.html">via Maven</a>.</p>
-
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
+<h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
-<li><a href="http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/0.3.0/qpid-jms-examples">Examples</a></li>
-<li><a href="docs/index.html">Configuration</a></li>
-<li><a href="building.html">Building Qpid JMS</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-315">QPIDJMS-315</a> - Add support for Netty KQueue transport</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-317">QPIDJMS-317</a> - Performance improvements for transfer tag cache</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-319">QPIDJMS-319</a> - Remove uneeded buffer duplication on incoming deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-321">QPIDJMS-321</a> - pre-size the inbound message queue</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-323">QPIDJMS-323</a> - improve exception message when no SASL mechanism can be negotiated</li>
 </ul>
 
-</div>
-
-<h2 id="more-information">More information</h2>
+<h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="http://archive.apache.org/dist/qpid/jms/0.3.0">All release artefacts</a></li>
-<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.3.0%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.3.0">Source repository tag</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-312">QPIDJMS-312</a> - Exception is not thrown when user attempts to create context with invalid session mode value</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-320">QPIDJMS-320</a> - selector parser LRU cache isn't thread safe</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-322">QPIDJMS-322</a> - handle edge cases when driving transport#tick(now) with nanoTime derived values</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-311">QPIDJMS-311</a> - Enable building and testing on JDK 9</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-316">QPIDJMS-316</a> - set up Travis CI to test on OSX and Linux</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-324">QPIDJMS-324</a> - update to proton-j 0.22.0</li>
 </ul>
 
 
