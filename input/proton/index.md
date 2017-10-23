@@ -49,7 +49,7 @@ platform, environment, or language. More about
 
  - [C API reference]({{current_proton_release_url}}/proton/c/api/files.html)
  - [C++ introduction]({{current_proton_release_url}}/proton/cpp/api/index.html)
- - [C++ tutorial]({{current_proton_release_url}}/proton/cpp/api/tutorial.html)
+ - [C++ tutorial]({{current_proton_release_url}}/proton/cpp/api/tutorial_page.html)
  - [C++ examples]({{current_proton_release_url}}/proton/cpp/examples/index.html)
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
  - [Java API reference]({{current_proton_j_release_url}}/api/index.html)
