@@ -22,11 +22,6 @@ from generate import *
 
 def gen_proton_apis(release, source_dir, release_dir):
     component_dir = join(release_dir, "proton")
-    build_dir = make_temp_dir()
-
-    with working_dir(build_dir):
-        call("cmake {}", source_dir)
-        call("make all docs")
 
     gen_proton_c_api(release, source_dir, component_dir)
     gen_proton_cpp_api(release, source_dir, component_dir)
@@ -83,9 +78,9 @@ def gen_proton_python_api(release, source_dir, component_dir):
                input_namespaces=(input_namespace,),
                output_dir=output_dir)
 
-def gen_proton_books(release, source_dir, release_dir):
+def gen_proton_books(release, source_dir, release_dir, build_dir):
     component_dir = join(release_dir, "proton")
-    input_dir = join(source_dir, "proton-c", "bindings", "python", "docs")
+    input_dir = join(build_dir, "proton-c", "bindings", "python", "tutorial")
     output_dir = join(component_dir, "python", "book")
 
     remove(output_dir)
@@ -138,8 +133,14 @@ def gen_proton_cpp_examples(release, source_dir, component_dir):
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
 source_dir = checkout_dir or fetch_source("proton", source_release)
 
+build_dir = make_temp_dir()
+
+with working_dir(build_dir):
+    call("cmake {}", source_dir)
+    call("make all docs")
+
 gen_proton_apis(release, source_dir, release_dir)
-gen_proton_books(release, source_dir, release_dir)
+gen_proton_books(release, source_dir, release_dir, build_dir)
 gen_proton_examples(release, source_dir, release_dir)
 
 notice("Docs generated")
