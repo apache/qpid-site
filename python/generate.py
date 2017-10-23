@@ -138,7 +138,7 @@ def fetch_source(module, release):
     make_dir(source_dir)
 
     with working_dir(work_dir):
-        call("git clone --bare --branch '{}' '{}' .", release, url)
+        call("git clone --bare --depth 20 --branch '{}' '{}' .", release, url)
         call("git archive '{}' | tar -xf - -C '{}'", release, source_dir, shell=True)
 
     return source_dir
