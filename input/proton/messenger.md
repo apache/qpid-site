@@ -17,26 +17,8 @@
 ;; under the License.
 ;;
 
-# Proton Messenger
+# Messenger
 
-The Proton Messenger API is part of the
-[Qpid Proton]({{site_url}}/proton/index.html) toolkit for making any
-application speak AMQP.
-
-## Documentation
-
-This is the documentation for the current released version.  You can
-find previous versions with our
-[past releases]({{site_url}}/releases/index.html#past-releases).
-
-<div class="two-column" markdown="1">
-
- - [C API reference]({{current_proton_release_url}}/proton/c/api/messenger_8h.html)
- - [C examples]({{current_proton_release_url}}/messenger/c/examples/index.html)
- - [Perl examples]({{current_proton_release_url}}/messenger/perl/examples/index.html)
- - [PHP examples]({{current_proton_release_url}}/messenger/php/examples/index.html)
- - [Python API reference]({{current_proton_release_url}}/proton/python/api/proton.Messenger-class.html)
- - [Python examples]({{current_proton_release_url}}/messenger/python/examples/index.html)
- - [Ruby examples]({{current_proton_release_url}}/messenger/ruby/examples/index.html)
-
-</div>
+The Messenger API has been deprecated. We recommend you use the newer APIs
+available part of the current [Qpid Proton]({{site_url}}/proton/index.html)
+release for new projects.
