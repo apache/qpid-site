@@ -388,6 +388,9 @@ def _fetch_issues(project, release):
     if project in ("qpid-cpp", "qpid-java", "qpid-python"):
         project = "qpid"
 
+    if project == "proton":
+        fix_version = "proton-c-{}".format(release)
+
     if project == "proton-j":
         project = "proton"
         fix_version = "proton-j-{}".format(release)
