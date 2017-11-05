@@ -1,5 +1,6 @@
 class _Release(object):
-    def __init__(self, component_name, component_key, number):
+    def __init__(self, site_url, component_name, component_key, number):
+        self.site_url = site_url
         self.component_name = component_name
         self.component_key = component_key
         self.number = number
@@ -10,23 +11,27 @@ class _Release(object):
 
     @property
     def url(self):
-        args = site_url, self.component_key, self.number
+        args = self.site_url, self.component_key, self.number
         return "{}/releases/{}-{}".format(*args)
 
     @property
     def link(self):
         return "<a href=\"{}\">{}</a>".format(self.url, self.name)
 
-broker_j_release = _Release("Qpid Broker-J", "qpid-broker-j", "6.2.0")
-cpp_release = _Release("Qpid C++", "qpid-cpp", "1.36.0")
-dispatch_release = _Release("Qpid Dispatch", "qpid-dispatch", "0.8.0")
-interop_test_release = _Release("Qpid Interop Test", "qpid-interop", "0.1.0")
-java_release = _Release("Qpid for Java", "qpid-java", "6.1.4")
-jms_release = _Release("Qpid JMS", "qpid-jms", "0.26.0")
-jms_amqp_0_x_release = _Release("Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.2.0")
-proton_release = _Release("Qpid Proton", "qpid-proton", "0.18.0")
-proton_j_release = _Release("Qpid Proton-J", "qpid-proton-j", "0.23.0")
-python_release = _Release("Qpid Python", "qpid-python", "1.36.0")
+    @property
+    def brief_link(self):
+        return "<a href=\"{}\">{}</a>".format(self.url, self.number)
+
+broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "6.2.0")
+cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.36.0")
+dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "0.8.0")
+interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop", "0.1.0")
+java_release = _Release(site_url, "Qpid for Java", "qpid-java", "6.1.4")
+jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "0.26.0")
+jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.2.0")
+proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.18.0")
+proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.23.0")
+python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.36.0")
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
@@ -67,3 +72,55 @@ current_proton_j_release_link = proton_j_release.link
 current_python_release = python_release.number
 current_python_release_url = python_release.url
 current_python_release_link = python_release.link
+
+def dashboard_asf_jira_links(project_key, project_id, components=None):
+    try:
+        from urllib.parse import quote_plus as url_escape
+    except ImportError:
+        from urllib import quote_plus as url_escape
+
+    links = []
+
+    all_issues_jql = "project = {}".format(project_key)
+    open_issues_jql = all_issues_jql + " and resolution is null"
+
+    if components is not None:
+        components = ", ".join(["\"{}\"".format(x) for x in components])
+        constraint = " and component in ({})".format(components)
+        open_issues_jql += constraint
+        all_issues_jql += constraint
+
+    summary_url = "https://issues.apache.org/jira/projects/{}".format(project_key)
+    open_issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(url_escape(open_issues_jql))
+    all_issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(url_escape(all_issues_jql))
+    create_issue_url = "https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid={}".format(project_id)
+
+    links.append("<a href=\"{}\">Summary</a>".format(summary_url))
+    links.append("<a href=\"{}\">Open issues</a>".format(open_issues_url))
+    links.append("<a href=\"{}\">All issues</a>".format(all_issues_url))
+    links.append("<a href=\"{}\">Create issue</a>".format(create_issue_url))
+
+    return " &#x2022; ".join(links)
+
+def dashboard_asf_git_links(repo_key):
+    links = []
+
+    git_url = "https://git-wip-us.apache.org/repos/asf/{}.git".format(repo_key)
+    github_url = "https://github.com/apache/{}".format(repo_key)
+
+    links.append("<a href=\"{}\">Git</a>".format(git_url))
+    links.append("<a href=\"{}\">GitHub</a>".format(github_url))
+
+    return " &#x2022; ".join(links)
+
+def asf_jenkins_badge(job_key):
+    job_url = "https://builds.apache.org/blue/organizations/jenkins/{}/activity".format(job_key)
+    image_url = "https://builds.apache.org/buildStatus/icon?job={}".format(job_key)
+
+    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"></a>".format(job_url, image_url)
+
+def travis_ci_badge(party_key, job_key):
+    job_url = "https://travis-ci.org/{}/{}".format(party_key, job_key)
+    image_url = "https://travis-ci.org/{}/{}.svg?branch=master".format(party_key, job_key)
+
+    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"></a>".format(job_url, image_url)

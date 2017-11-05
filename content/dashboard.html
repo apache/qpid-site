@@ -114,22 +114,17 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Dashboard</li></ul>
 
         <div id="-middle-content">
-          <h1 id="dashboard">Dashboard</h1>
-
-<div id="-dashboard-forms" class="feature">
+          <div id="-dashboard-forms">
   <form id="-jira-goto-form">
     Go to <span class="accesskey">i</span>ssue <input name="jira" accesskey="i" autofocus="autofocus" tabindex="1"/>
-  </form>
-
-  <form id="-viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get">
-    <input type="hidden" name="view" value="revision"/>
-    Go to <span class="accesskey">r</span>evision <input type="text" name="revision" accesskey="r" tabindex="2"/>
   </form>
 
   <form id="-jira-search-form">
     <span class="accesskey">S</span>earch issues <input name="text" type="text" accesskey="s" tabindex="3"/>
   </form>
 </div>
+
+<h1 id="dashboard">Dashboard</h1>
 
 <h3 id="source-modules">Source modules</h3>
 
@@ -139,65 +134,75 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <thead>
 <tr>
   <th>Module</th>
+  <th>Release</th>
   <th>Issues</th>
-  <th>Test builds</th>
+  <th>Tests</th>
   <th>Source code</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td><a href="/components/cpp-broker/index.html">C++</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20(%22C%2B%2B%20Build%22%2C%20%22C%2B%2B%20Broker%22%2C%20%22C%2B%2B%20Client%22%2C%20%22C%2B%2B%20Clustering%22%2C%20%22C%2B%2B%20Documentation%22%2C%20%22C%2B%2B%20Examples%22%2C%20%22C%2B%2B%20Tests%22%2C%20%22C%2B%2B%20Tools%22%2C%20%22.NET%20Client%22%2C%20%22Python%20Client%20(Wrapped)%22%2C%20%22QMF%22%2C%20%22Ruby%20Client%22)%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;components=12311395&amp;components=12311396&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;components=12311395&amp;components=12311396&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
-  <td><a href="https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-cpp-trunk-test/">Linux</a></td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-cpp.git">Git</a>, <a href="https://github.com/apache/qpid-cpp">GitHub mirror</a></td>
+  <td><a href="/components/java-broker/index.html">Qpid Broker-J</a></td>
+  <td><a href="/releases/qpid-java-6.1.4">6.1.4</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPID">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+resolution+is+null+and+component+in+%28%22Java+Broker%22%2C+%22Java+Build%22%2C+%22Java+Client%22%2C+%22Java+Common%22%2C+%22Java+Documentation%22%2C+%22Java+Performance+Tests%22%2C+%22Java+Tests%22%2C+%22Java+Tools%22%2C+%22JCA%22%29">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+component+in+%28%22Java+Broker%22%2C+%22Java+Build%22%2C+%22Java+Client%22%2C+%22Java+Common%22%2C+%22Java+Documentation%22%2C+%22Java+Performance+Tests%22%2C+%22Java+Tests%22%2C+%22Java+Tools%22%2C+%22JCA%22%29">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12310520">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-BrokerForJava-Test-IBMJDK1.8/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-BrokerForJava-Test-IBMJDK1.8" height="20"></a> <a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-BrokerForJava-Checks/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-BrokerForJava-Checks" height="20"></a> <a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-Python-Java-Test/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-Python-Java-Test" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-broker-j">GitHub</a></td>
 </tr>
 <tr>
-  <td><a href="/components/java-broker/index.html">Java</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20(%22Java%20Broker%22%2C%20%22Java%20Client%22%2C%20%22Java%20Common%22%2C%20%22Java%20Management%20%3A%20JMX%20Console%22%2C%20%22Java%20Performance%20Tests%22%2C%20%22Java%20Tests%22%2C%20%22Java%20Tools%22%2C%20JCA)%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;components=12311388&amp;components=12311389&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;components=12311388&amp;components=12311389&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
-  <td><a href="https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-BrokerForJava-JDK1.8/">Java 8</a></td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git">Git</a>, <a href="https://github.com/apache/qpid-broker-j">GitHub mirror</a></td>
+  <td><a href="https://github.com/apache/qpid-cpp/blob/master/README.md">Qpid C++</a></td>
+  <td><a href="/releases/qpid-cpp-1.36.0">1.36.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPID">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+resolution+is+null+and+component+in+%28%22C%2B%2B+Broker%22%2C+%22C%2B%2B+Build%22%2C+%22C%2B%2B+Client%22%2C+%22C%2B%2B+Clustering%22%2C+%22C%2B%2B+Documentation%22%2C+%22C%2B%2B+Tests%22%2C+%22C%2B%2B+Tools%22%2C+%22.NET+Client%22%2C+%22Perl+Client%22%2C+%22Python+Client+%28Wrapped%29%22%2C+%22QMF%22%2C+%22Ruby+Client%22%29">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+component+in+%28%22C%2B%2B+Broker%22%2C+%22C%2B%2B+Build%22%2C+%22C%2B%2B+Client%22%2C+%22C%2B%2B+Clustering%22%2C+%22C%2B%2B+Documentation%22%2C+%22C%2B%2B+Tests%22%2C+%22C%2B%2B+Tools%22%2C+%22.NET+Client%22%2C+%22Perl+Client%22%2C+%22Python+Client+%28Wrapped%29%22%2C+%22QMF%22%2C+%22Ruby+Client%22%29">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12310520">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-cpp-trunk-test/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-cpp-trunk-test" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-cpp.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-cpp">GitHub</a></td>
 </tr>
 <tr>
-  <td><a href="/components/messaging-api/index.html">Python</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20(%22Python%20Client%22%2C%20%22Python%20Test%20Suite%22)%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;components=12311544&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;components=12311544&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
+  <td><a href="/components/dispatch-router/index.html">Qpid Dispatch</a></td>
+  <td><a href="/releases/qpid-dispatch-0.8.0">0.8.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/DISPATCH">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH+and+resolution+is+null">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12315321">Create issue</a></td>
+  <td><a href="https://travis-ci.org/apache/qpid-dispatch"><img src="https://travis-ci.org/apache/qpid-dispatch.svg?branch=master" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-dispatch">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="/components/interop-test/index.html">Qpid Interop Test</a></td>
   <td>-</td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-python.git">Git</a>, <a href="https://github.com/apache/qpid-python">GitHub mirror</a></td>
-</tr>
-<tr>
-  <td><a href="/components/dispatch-router/index.html">Dispatch</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20DISPATCH%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12315321&amp;issuetype=1&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12315321&amp;issuetype=4&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPIDIT">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDIT+and+resolution+is+null">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDIT">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12318621">Create issue</a></td>
   <td>-</td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git">Git</a>, <a href="https://github.com/apache/qpid-dispatch">GitHub mirror</a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-interop-test">GitHub</a></td>
 </tr>
 <tr>
-  <td><a href="/components/interop-test/index.html">Interop Test</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPIDIT%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12318621&amp;issuetype=1&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12318621&amp;issuetype=4&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
+  <td><a href="/components/jms/index.html">Qpid JMS</a></td>
+  <td><a href="/releases/qpid-jms-0.26.0">0.26.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPIDJMS">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+and+resolution+is+null">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12314524">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-JMS-Test-JDK8/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-JMS-Test-JDK8" height="20"></a> <a href="https://travis-ci.org/apache/qpid-jms"><img src="https://travis-ci.org/apache/qpid-jms.svg?branch=master" height="20"></a> <a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-JMS-Test-JDK8-Windows/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-JMS-Test-JDK8-Windows" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-jms.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-jms">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="/proton/index.html">Qpid Proton-J</a></td>
+  <td><a href="/releases/qpid-proton-j-0.23.0">0.23.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/PROTON">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+and+resolution+is+null+and+component+in+%28%22proton-j%22%29">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+and+component+in+%28%22proton-j%22%29">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12313720">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-proton-j/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-proton-j" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-proton-j">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="/proton/index.html">Qpid Proton</a></td>
+  <td><a href="/releases/qpid-proton-0.18.0">0.18.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/PROTON">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+and+resolution+is+null">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12313720">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-proton-c/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-proton-c" height="20"></a> <a href="https://travis-ci.org/apache/qpid-proton"><img src="https://travis-ci.org/apache/qpid-proton.svg?branch=master" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-proton.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-proton">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/apache/qpid-python/blob/master/README.md">Qpid Python</a></td>
+  <td><a href="/releases/qpid-python-1.36.0">1.36.0</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPID">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+resolution+is+null+and+component+in+%28%22Python+Client%22%2C+%22Python+Examples%22%2C+%22Python+Test+Suite%22%29">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+component+in+%28%22Python+Client%22%2C+%22Python+Examples%22%2C+%22Python+Test+Suite%22%29">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12310520">Create issue</a></td>
+  <td><a href="https://builds.apache.org/blue/organizations/jenkins/Qpid-Python-Java-Test/activity"><img src="https://builds.apache.org/buildStatus/icon?job=Qpid-Python-Java-Test" height="20"></a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-python.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-python">GitHub</a></td>
+</tr>
+<tr>
+  <td><a href="https://github.com/apache/qpid-site/blob/asf-site/README.md">Qpid Site</a></td>
   <td>-</td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git">Git</a></td>
-</tr>
-<tr>
-  <td><a href="/components/jms/index.html">JMS</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPIDJMS%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12314524&amp;issuetype=1&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12314524&amp;issuetype=4&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
-  <td><a href="https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-JMS-Test-JDK8/">Java 8</a></td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-jms.git">Git</a>, <a href="https://github.com/apache/qpid-jms">GitHub mirror</a></td>
-</tr>
-<tr>
-  <td><a href="/proton/index.html">Proton</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20PROTON%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&amp;issuetype=1&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&amp;issuetype=4&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
-  <td><a href="https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-proton-c/">Linux</a></td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-proton.git">Git</a>, <a href="https://github.com/apache/qpid-proton">GitHub mirror</a></td>
-</tr>
-<tr>
-  <td><a href="/proton/index.html">Proton-J</a></td>
-  <td><a href="https://issues.apache.org/jira/browse/?jql=project%20%3D%20PROTON%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20proton-j%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&amp;issuetype=1&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&amp;issuetype=4&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
-  <td><a href="https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-proton-j/">Java 7</a></td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git">Git</a>, <a href="https://github.com/apache/qpid-proton-j">GitHub mirror</a></td>
-</tr>
-<tr>
-  <td><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-site.git;a=blob_plain;f=README.md;hb=HEAD">Website</a></td>
-  <td><a href="https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20Website%20ORDER%20BY%20priority%20DESC">Open issues</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=1&amp;components=12312307&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New bug</a> &#x2014; <a href="https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&amp;issuetype=4&amp;components=12312307&amp;summary=[Enter%20a%20brief%20description]&amp;priority=3">New improvement</a></td>
+  <td><a href="https://issues.apache.org/jira/projects/QPID">Summary</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+resolution+is+null+and+component+in+%28%22Website%22%29">Open issues</a> &#x2022; <a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+and+component+in+%28%22Website%22%29">All issues</a> &#x2022; <a href="https://issues.apache.org/jira/secure/CreateIssue!default.jspa?pid=12310520">Create issue</a></td>
   <td>-</td>
-  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-site.git">Git</a></td>
+  <td><a href="https://git-wip-us.apache.org/repos/asf/qpid-site.git">Git</a> &#x2022; <a href="https://github.com/apache/qpid-site">GitHub</a></td>
 </tr>
 </tbody>
 </table>
@@ -216,6 +221,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <li><a href="https://issues.apache.org/jira/issues/?filter=-1">Your assigned issues</a></li>
 <li><a href="https://issues.apache.org/jira/issues/?filter=-2">Your reported issues</a></li>
 <li><a href="https://issues.apache.org/jira/issues/?filter=-3">Your recent issues</a></li>
+<li><a href="https://issues.apache.org/jira/issues/?jql=project%20in%20(QPID%2C%20QPIDIT%2C%20QPIDJMS%2C%20PROTON%2C%20DISPATCH)">All Qpid issues</a></li>
 </ul>
 
 </section>

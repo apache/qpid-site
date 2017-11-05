@@ -17,16 +17,9 @@
 ;; under the License.
 ;;
 
-# Dashboard
-
-<div id="-dashboard-forms" class="feature">
+<div id="-dashboard-forms">
   <form id="-jira-goto-form">
     Go to <span class="accesskey">i</span>ssue <input name="jira" accesskey="i" autofocus="autofocus" tabindex="1"/>
-  </form>
-
-  <form id="-viewvc-goto-form" action="http://svn.apache.org/viewvc" method="get">
-    <input type="hidden" name="view" value="revision"/>
-    Go to <span class="accesskey">r</span>evision <input type="text" name="revision" accesskey="r" tabindex="2"/>
   </form>
 
   <form id="-jira-search-form">
@@ -34,21 +27,23 @@
   </form>
 </div>
 
+# Dashboard
+
 ### Source modules
 
 <div id="-source-modules" class="scroll" markdown="1">
 
-| Module | Issues | Test builds | Source code |
-| ------ | ------ | ----------- | ----------- |
-| [C++]({{site_url}}/components/cpp-broker/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20(%22C%2B%2B%20Build%22%2C%20%22C%2B%2B%20Broker%22%2C%20%22C%2B%2B%20Client%22%2C%20%22C%2B%2B%20Clustering%22%2C%20%22C%2B%2B%20Documentation%22%2C%20%22C%2B%2B%20Examples%22%2C%20%22C%2B%2B%20Tests%22%2C%20%22C%2B%2B%20Tools%22%2C%20%22.NET%20Client%22%2C%20%22Python%20Client%20(Wrapped)%22%2C%20%22QMF%22%2C%20%22Ruby%20Client%22)%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&components=12311395&components=12311396&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&components=12311395&components=12311396&summary=[Enter%20a%20brief%20description]&priority=3) | [Linux](https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-cpp-trunk-test/) | [Git](https://git-wip-us.apache.org/repos/asf/qpid-cpp.git), [GitHub mirror](https://github.com/apache/qpid-cpp) |
-| [Java]({{site_url}}/components/java-broker/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20\(%22Java%20Broker%22%2C%20%22Java%20Client%22%2C%20%22Java%20Common%22%2C%20%22Java%20Management%20%3A%20JMX%20Console%22%2C%20%22Java%20Performance%20Tests%22%2C%20%22Java%20Tests%22%2C%20%22Java%20Tools%22%2C%20JCA\)%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&components=12311388&components=12311389&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&components=12311388&components=12311389&summary=[Enter%20a%20brief%20description]&priority=3) | [Java 8](https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-BrokerForJava-JDK1.8/) | [Git](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git), [GitHub mirror](https://github.com/apache/qpid-broker-j) |
-| [Python]({{site_url}}/components/messaging-api/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20in%20\(%22Python%20Client%22%2C%20%22Python%20Test%20Suite%22\)%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&components=12311544&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&components=12311544&summary=[Enter%20a%20brief%20description]&priority=3) | - | [Git](https://git-wip-us.apache.org/repos/asf/qpid-python.git), [GitHub mirror](https://github.com/apache/qpid-python) |
-| [Dispatch]({{site_url}}/components/dispatch-router/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20DISPATCH%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12315321&issuetype=1&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12315321&issuetype=4&summary=[Enter%20a%20brief%20description]&priority=3) | - | [Git](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git), [GitHub mirror](https://github.com/apache/qpid-dispatch) |
-| [Interop Test]({{site_url}}/components/interop-test/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPIDIT%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12318621&issuetype=1&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12318621&issuetype=4&summary=[Enter%20a%20brief%20description]&priority=3) | - | [Git](https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git) |
-| [JMS]({{site_url}}/components/jms/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPIDJMS%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12314524&issuetype=1&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12314524&issuetype=4&summary=[Enter%20a%20brief%20description]&priority=3) | [Java 8](https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-JMS-Test-JDK8/) | [Git](https://git-wip-us.apache.org/repos/asf/qpid-jms.git), [GitHub mirror](https://github.com/apache/qpid-jms) |
-| [Proton]({{site_url}}/proton/index.html) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20PROTON%20AND%20resolution%20%3D%20Unresolved%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&issuetype=1&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&issuetype=4&summary=[Enter%20a%20brief%20description]&priority=3) | [Linux](https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-proton-c/) | [Git](https://git-wip-us.apache.org/repos/asf/qpid-proton.git), [GitHub mirror](https://github.com/apache/qpid-proton) |
-| [Proton-J]({{site_url}}/proton/index.html) | [Open issues](https://issues.apache.org/jira/browse/?jql=project%20%3D%20PROTON%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20proton-j%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&issuetype=1&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12313720&issuetype=4&summary=[Enter%20a%20brief%20description]&priority=3) | [Java 7](https://builds.apache.org/view/M-R/view/Qpid/job/Qpid-proton-j/) | [Git](https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git), [GitHub mirror](https://github.com/apache/qpid-proton-j) |
-| [Website](https://git-wip-us.apache.org/repos/asf?p=qpid-site.git;a=blob_plain;f=README.md;hb=HEAD) | [Open issues](https://issues.apache.org/jira/issues/?jql=project%20%3D%20QPID%20AND%20resolution%20%3D%20Unresolved%20AND%20component%20%3D%20Website%20ORDER%20BY%20priority%20DESC) &#x2014; [New bug](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&components=12312307&summary=[Enter%20a%20brief%20description]&priority=3) &#x2014; [New improvement](https://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&components=12312307&summary=[Enter%20a%20brief%20description]&priority=3) | - | [Git](https://git-wip-us.apache.org/repos/asf/qpid-site.git) |
+| Module | Release | Issues | Tests | Source code |
+| ------ | ------- | ------ | ----- | ----------- |
+| [Qpid Broker-J]({{site_url}}/components/java-broker/index.html)            | {{java_release.brief_link}} | {{dashboard_asf_jira_links("QPID", 12310520, ["Java Broker", "Java Build", "Java Client", "Java Common", "Java Documentation", "Java Performance Tests", "Java Tests", "Java Tools", "JCA"])}} | {{asf_jenkins_badge("Qpid-BrokerForJava-Test-IBMJDK1.8")}} {{asf_jenkins_badge("Qpid-BrokerForJava-Checks")}} {{asf_jenkins_badge("Qpid-Python-Java-Test")}} | {{dashboard_asf_git_links("qpid-broker-j")}} |
+| [Qpid C++](https://github.com/apache/qpid-cpp/blob/master/README.md)       | {{cpp_release.brief_link}} | {{dashboard_asf_jira_links("QPID", 12310520, ["C++ Broker", "C++ Build", "C++ Client", "C++ Clustering", "C++ Documentation", "C++ Tests", "C++ Tools", ".NET Client", "Perl Client", "Python Client (Wrapped)", "QMF", "Ruby Client"])}} | {{asf_jenkins_badge("Qpid-cpp-trunk-test")}} | {{dashboard_asf_git_links("qpid-cpp")}} |
+| [Qpid Dispatch]({{site_url}}/components/dispatch-router/index.html)        | {{dispatch_release.brief_link}} | {{dashboard_asf_jira_links("DISPATCH", 12315321)}} | {{travis_ci_badge("apache", "qpid-dispatch")}} | {{dashboard_asf_git_links("qpid-dispatch")}} |
+| [Qpid Interop Test]({{site_url}}/components/interop-test/index.html)       | - | {{dashboard_asf_jira_links("QPIDIT", 12318621)}} | - | {{dashboard_asf_git_links("qpid-interop-test")}} |
+| [Qpid JMS]({{site_url}}/components/jms/index.html)                         | {{jms_release.brief_link}} | {{dashboard_asf_jira_links("QPIDJMS", 12314524)}} | {{asf_jenkins_badge("Qpid-JMS-Test-JDK8")}} {{travis_ci_badge("apache", "qpid-jms")}} {{asf_jenkins_badge("Qpid-JMS-Test-JDK8-Windows")}} | {{dashboard_asf_git_links("qpid-jms")}} |
+| [Qpid Proton-J]({{site_url}}/proton/index.html)                            | {{proton_j_release.brief_link}} | {{dashboard_asf_jira_links("PROTON", 12313720, ["proton-j"])}} | {{asf_jenkins_badge("Qpid-proton-j")}} | {{dashboard_asf_git_links("qpid-proton-j")}} |
+| [Qpid Proton]({{site_url}}/proton/index.html)                              | {{proton_release.brief_link}} | {{dashboard_asf_jira_links("PROTON", 12313720)}} | {{asf_jenkins_badge("Qpid-proton-c")}} {{travis_ci_badge("apache", "qpid-proton")}} | {{dashboard_asf_git_links("qpid-proton")}} |
+| [Qpid Python](https://github.com/apache/qpid-python/blob/master/README.md) | {{python_release.brief_link}} | {{dashboard_asf_jira_links("QPID", 12310520, ["Python Client", "Python Examples", "Python Test Suite"])}} | {{asf_jenkins_badge("Qpid-Python-Java-Test")}} | {{dashboard_asf_git_links("qpid-python")}} |
+| [Qpid Site](https://github.com/apache/qpid-site/blob/asf-site/README.md)   | - | {{dashboard_asf_jira_links("QPID", 12310520, ["Website"])}} | - | {{dashboard_asf_git_links("qpid-site")}} |
 
 </div>
 
@@ -62,6 +57,7 @@
  - [Your assigned issues](https://issues.apache.org/jira/issues/?filter=-1)
  - [Your reported issues](https://issues.apache.org/jira/issues/?filter=-2)
  - [Your recent issues](https://issues.apache.org/jira/issues/?filter=-3)
+ - [All Qpid issues](https://issues.apache.org/jira/issues/?jql=project%20in%20\(QPID%2C%20QPIDIT%2C%20QPIDJMS%2C%20PROTON%2C%20DISPATCH\))
 
 </section>
 <section markdown="1">
