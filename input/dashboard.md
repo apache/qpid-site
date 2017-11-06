@@ -29,8 +29,6 @@
 
 # Dashboard
 
-### Source modules
-
 <div id="-source-modules" class="scroll" markdown="1">
 
 | Module | Release | Issues | Tests | Source code |
