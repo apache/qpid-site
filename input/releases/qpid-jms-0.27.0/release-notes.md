@@ -33,7 +33,6 @@ documentation, see the [release overview](index.html).
 
  - [QPIDJMS-338](https://issues.apache.org/jira/browse/QPIDJMS-338) - SSL configuration should support setting keyStoreType and trustStoreType independently
  - [QPIDJMS-339](https://issues.apache.org/jira/browse/QPIDJMS-339) - Allow setting keystore and truststore type from system properties
- - [QPIDJMS-344](https://issues.apache.org/jira/browse/QPIDJMS-344) - FailoverWithAmqpOpenProvidedServerListIntegrationTest sporadic test failures in CI
 
 ## Bugs fixed
 
@@ -41,6 +40,7 @@ documentation, see the [release overview](index.html).
  - [QPIDJMS-336](https://issues.apache.org/jira/browse/QPIDJMS-336) - Refine failover reconnect behavior
  - [QPIDJMS-340](https://issues.apache.org/jira/browse/QPIDJMS-340) - Build fails with group id is too big error
  - [QPIDJMS-342](https://issues.apache.org/jira/browse/QPIDJMS-342) - Missed connect error on start can lead to hung failover reconnect cycle
+ - [QPIDJMS-344](https://issues.apache.org/jira/browse/QPIDJMS-344) - FailoverWithAmqpOpenProvidedServerListIntegrationTest sporadic test failures in CI
 
 ## Tasks
 
