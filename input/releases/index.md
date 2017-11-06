@@ -28,7 +28,7 @@ the
 
 <div class="two-column" markdown="1">
 
- - [Qpid Proton 0.18.0](qpid-proton-0.18.0/index.html), October 2017
+ - [Qpid Proton 0.18.1](qpid-proton-0.18.1/index.html), November 2017
  - [Qpid JMS 0.26.0](qpid-jms-0.26.0/index.html), October 2017
  - [Qpid Proton-J 0.23.0](qpid-proton-j-0.23.0/index.html), October 2017
  - [Qpid for Java 6.1.4](qpid-java-6.1.4/index.html), June 2017
@@ -43,6 +43,7 @@ the
 
 <div class="two-column" markdown="1">
 
+ - [Qpid Proton 0.18.0](qpid-proton-0.18.0/index.html), October 2017
  - [Qpid Proton-J 0.22.0](qpid-proton-j-0.22.0/index.html), September 2017
  - [Qpid JMS 0.25.0](qpid-jms-0.25.0/index.html), September 2017
  - [Qpid Proton-J 0.21.0](qpid-proton-j-0.21.0/index.html), September 2017
