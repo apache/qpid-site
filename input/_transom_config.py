@@ -117,10 +117,10 @@ def asf_jenkins_badge(job_key):
     job_url = "https://builds.apache.org/blue/organizations/jenkins/{}/activity".format(job_key)
     image_url = "https://builds.apache.org/buildStatus/icon?job={}".format(job_key)
 
-    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"></a>".format(job_url, image_url)
+    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
 def travis_ci_badge(party_key, job_key):
     job_url = "https://travis-ci.org/{}/{}".format(party_key, job_key)
     image_url = "https://travis-ci.org/{}/{}.svg?branch=master".format(party_key, job_key)
 
-    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"></a>".format(job_url, image_url)
+    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
