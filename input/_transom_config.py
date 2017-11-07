@@ -119,8 +119,8 @@ def asf_jenkins_badge(job_key):
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
-def travis_ci_badge(party_key, job_key):
+def travis_ci_badge(party_key, job_key, branch="master"):
     job_url = "https://travis-ci.org/{}/{}".format(party_key, job_key)
-    image_url = "https://travis-ci.org/{}/{}.svg?branch=master".format(party_key, job_key)
+    image_url = "https://travis-ci.org/{}/{}.svg?branch={}".format(party_key, job_key, branch)
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
