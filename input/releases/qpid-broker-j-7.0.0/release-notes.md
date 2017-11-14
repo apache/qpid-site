@@ -30,7 +30,6 @@ Qpid Broker-J 7.0 brings the following major changes:
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
-
 ## New features and improvements
 
  - [QPID-6028](https://issues.apache.org/jira/browse/QPID-6028) - [Java Broker] Configured model objects should have only one parent
