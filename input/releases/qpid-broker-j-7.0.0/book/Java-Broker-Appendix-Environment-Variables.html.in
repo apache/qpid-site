@@ -1,0 +1,54 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Appendix&#160;A.&#160;Environment Variables</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Backup-And-Recovery-Virtualhost.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Appendix-System-Properties.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Appendix-Environment-Variables"></a>Appendix&#160;A.&#160;Environment Variables</h1></div></div></div><p>The following table describes the environment variables understood by the Qpid scripts
+    contained within the <code class="literal">/bin</code> directory within the Broker distribution.</p><p>To take effect, these variables must be set within the shell (and exported - if using Unix)
+    before invoking the script.</p><div class="table"><a id="d0e7153"></a><p class="title"><strong>Table&#160;A.1.&#160;Environment variables</strong></p><div class="table-contents"><table border="1" summary="Environment variables" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>Environment variable</th><th>Default</th><th>Purpose</th></tr></thead><tbody><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Qpid-Home"></a>QPID_HOME</td><td>
+            <p>None</p>
+          </td><td>
+            <p>The variable used to tell the Broker its installation directory. It must be an
+              absolute path. This is used to determine the location of Qpid's dependency JARs and
+              some configuration files.</p>
+            <p>Typically the value of this variable will look similar to
+                <code class="literal">c:\qpid\qpid-broker\\7.0.0</code> (Windows) or
+                <code class="literal">/usr/local/qpid/qpid-broker/7.0.0</code> (Unix). The
+              installation prefix will differ from installation to installation. </p>
+            <p>If not set, a value for <code class="literal">QPID_HOME</code> is derived from the location
+              of the script itself.</p>
+          </td></tr><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Qpid-Work"></a>QPID_WORK</td><td>
+            <p>User's home directory</p>
+          </td><td>
+            <p>Used as the default root directory for any data written by the Broker. This is the
+              default location for any message data written to persistent stores and the Broker's
+              log file.</p>
+            <p>For example, <code class="literal">QPID_WORK=/var/qpidwork</code>.</p>
+          </td></tr><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Qpid-Opts"></a>QPID_OPTS</td><td>
+            <p>None</p>
+          </td><td>
+            <p>This is the preferred mechanism for passing <a class="link" href="Java-Broker-Appendix-System-Properties.html" title="Appendix&#160;B.&#160;System Properties">Java system properties</a> to the
+              Broker. The value must be a list of system properties each separate by a space.
+                  <code class="literal">-D<em class="replaceable"><code>name1</code></em>=<em class="replaceable"><code>value1</code></em>
+                  -D<em class="replaceable"><code>name2</code></em>=<em class="replaceable"><code>value2</code></em></code>.
+            </p>
+          </td></tr><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Qpid-Java-Gc"></a>QPID_JAVA_GC</td><td>
+            <code class="literal">-XX:+HeapDumpOnOutOfMemoryError -XX:+UseConcMarkSweepGC</code>
+          </td><td>
+            <p>This is the preferred mechanism for customising garbage collection behaviour. The
+              value should contain valid garbage collection options(s) for the target JVM.</p>
+            <p>Refer to the JVM's documentation for details.</p>
+          </td></tr><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Qpid-Java-Mem"></a>QPID_JAVA_MEM</td><td>
+            <code class="literal">-Xmx512m -XX:MaxDirectMemorySize=1536m</code>
+          </td><td>
+            <p>This is the preferred mechanism for customising the size of the JVM's heap and
+              direct memory.
+              The value should contain valid memory option(s) for the target JVM. Oracle JVMs
+              understand <code class="literal">-Xmx</code> to specify a maximum heap size,
+               <code class="literal">-Xms</code> an initial size, and
+               <code class="literal">-XX:MaxDirectMemorySize</code> for the maximum amount of direct
+               memory.</p>
+            <p>For example, <code class="code">QPID_JAVA_MEM="-Xmx6g -XX:MaxDirectMemorySize=12g"</code> would
+              set a maximum heap size of 6GB and 12GB of direct memory.</p>
+            <p>Refer to the JVM's documentation for details.</p>
+          </td></tr><tr><td><a id="Java-Broker-Appendix-Environment-Variables-Java-Opts"></a>JAVA_OPTS</td><td>None</td><td>
+            <p>This is the preferred mechanism for passing any other JVM options. This variable is
+              commonly used to pass options for diagnostic purposes, for instance to turn on verbose
+              GC. <code class="literal">-verbose:gc</code>.</p>
+            <p>Refer to the JVM's documentation for details.</p>
+          </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Backup-And-Recovery-Virtualhost.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Appendix-System-Properties.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">11.3.&#160;Virtualhost&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Appendix&#160;B.&#160;System Properties</td></tr></table></div></div>

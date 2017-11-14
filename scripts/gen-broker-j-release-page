@@ -23,23 +23,20 @@ from generate import *
 from datetime import datetime
 
 source_artefact_records = (
-    ("qpid-broker-j-{}.tar.gz", "Qpid Broker-J"),
+    ("apache-qpid-broker-j-{}-src.tar.gz", "Qpid Broker-J"),
 )
 
 binary_artefact_records = (
-    ("qpid-broker-{}-bin.tar.gz", "Qpid Broker-J"),
-)
-
-component_records = (
-    ("broker-j", "Qpid Broker-J", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
+    ("apache-qpid-broker-j-{}-bin.tar.gz", "Qpid Broker-J"),
+    ("apache-qpid-broker-j-{}-bin.zip", "Qpid Broker-J"),
 )
 
 documentation = \
 """
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Broker-J](java-broker/book/Java-Broker-Installation.html)
- - [Broker book](java-broker/book/index.html)
+ - [Installing Qpid Broker-J](book/Java-Broker-Installation.html)
+ - [Broker book](book/index.html)
 
 </div>
 """
@@ -67,8 +64,8 @@ template = \
 
 # Qpid Broker-J {release}
 
-Qpid Broker-J is a message broker written in Java that stores, routes,
-and forwards messages using AMQP.  More about
+[Qpid Broker-J]({{site_url}}/components/broker-j/index.html) is a message broker written in Java that stores, routes,
+and forwards messages using AMQP 1.0, 0-10, 0-9-1, 0-9 and 0-8.  More about
 [Qpid]({{{{site_url}}}}/index.html).
 
 For a detailed list of the changes in this release, see the [release
@@ -89,12 +86,6 @@ files you download.
 | Content | Download | Verify |
 |---------|----------|--------|
 {binary_artefacts}
-
-## Components
-
-| Component | Languages | Platforms | AMQP versions |
-|-----------|-----------|-----------|---------------|
-{components}
 
 ## Documentation
 
@@ -143,24 +134,15 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = binary_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha_url = "{}.sha".format(artefact_url)
+        sha_url = "{}.sha512".format(artefact_url)
 
         args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
         row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
 
         binary_artefacts.append(row)
 
-    for key, name, languages, platforms, amqp_versions in component_records:
-        if key.endswith(".html"):
-            link = "[{}]({{{{site_url}}}}/components/{})".format(name, key)
-        else:
-            link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)
-        args = link, languages, platforms, amqp_versions
-        components.append("| {} | {} | {} | {} |".format(*args))
-
     source_artefacts = "\n".join(source_artefacts)
     binary_artefacts = "\n".join(binary_artefacts)
-    components = "\n".join(components)
 
     jql = "project = QPID AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
     issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))

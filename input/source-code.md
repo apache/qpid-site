@@ -46,7 +46,7 @@ create your own fork.
 Consult the install documentation below, or see the respective component
 documentation for more details.
 
- - [How to build Qpid for Java](https://cwiki.apache.org/confluence/display/qpid/qpid+java+build+how+to)
+ - [How to build Qpid Broker-J](https://cwiki.apache.org/confluence/display/qpid/How+To+Build+Qpid+Broker-J)
  - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
  - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
 

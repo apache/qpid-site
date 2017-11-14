@@ -38,13 +38,13 @@ def gen_broker_j_books(release, source_dir, output_dir):
          jms_client010_book_url)
 
     java_broker_input_dir = join(input_dir, "java-broker", "target", "docbkx")
-    java_broker_output_dir = join(output_dir, "java-broker")
+    java_broker_book_dir = join(output_dir, "book")
 
-    remove(java_broker_output_dir)
+    remove(java_broker_book_dir)
 
-    copy(java_broker_input_dir, join(java_broker_output_dir, "book"))
+    copy(java_broker_input_dir, java_broker_book_dir)
 
-    for path in find(java_broker_output_dir, "*.html"):
+    for path in find(output_dir, "*.html"):
         print(path)
 
         tree = ElementTree.parse(path)

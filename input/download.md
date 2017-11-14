@@ -43,7 +43,7 @@ It is important to [verify the integrity](#verify-what-you-download) of the file
 
 | Content | Download | Verify |
 | ------- | -------- | ------ |
-| [Broker for Java]({{site_url}}/components/java-broker/index.html) | [qpid-broker-{{current_java_release}}-bin.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/java/{{current_java_release}}/binaries/qpid-broker-{{current_java_release}}-bin.tar.gz)\* | [ASC](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-broker-{{current_java_release}}-bin.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-broker-{{current_java_release}}-bin.tar.gz.md5), [SHA512](http://www.apache.org/dist/qpid/java/{{current_java_release}}/binaries/qpid-broker-{{current_java_release}}-bin.tar.gz.sha) |
+| [Broker-J]({{site_url}}/components/broker-j/index.html) | [apache-qpid-broker-j-{{current_broker_j_release}}-bin.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/broker-j/{{current_broker_j_release}}/binaries/apache-qpid-broker-j-{{current_broker_j_release}}-bin.tar.gz)\* | [ASC](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/binaries/apache-qpid-broker-j-{{current_broker_j_release}}-bin.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/binaries/apache-qpid-broker-j-{{current_broker_j_release}}-bin.tar.gz.md5), [SHA512](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/binaries/apache-qpid-broker-j-{{current_broker_j_release}}-bin.tar.gz.sha512) |
 | [C++ broker]({{site_url}}/components/cpp-broker/index.html) | [qpid-cpp-{{current_cpp_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.md5), [SHA1](http://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.sha1) |
 | [Dispatch router]({{site_url}}/components/dispatch-router/index.html) | [qpid-dispatch-{{current_dispatch_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.md5), [SHA512](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.sha) |
 
@@ -58,6 +58,11 @@ and
 \[[ASC](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.asc),
 [MD5](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.sha512)\]
+and
+[Qpid Broker-J source release](http://www.apache.org/dyn/closer.lua/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz)
+\[[ASC](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.asc),
+[MD5](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.md5),
+[SHA512](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.sha512)\]
 and
 [Qpid for Java source release](http://www.apache.org/dyn/closer.lua/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz)
 \[[ASC](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.asc),

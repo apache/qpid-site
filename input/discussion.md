@@ -43,7 +43,7 @@ Qpid also offers lists for
 **NOTE**: The Qpid project offers various components in many different
 languages. When mailing the lists, please be specific about which
 component, or even which part of a given component, that you are
-using. For example, "I'm using the Qpid Broker for Java
+using. For example, "I'm using the Qpid Broker-J
 &lt;version&gt; with the Qpid JMS &lt;version&gt; AMQP 1.0 client"
 rather than "I'm using the broker and JMS client".
 

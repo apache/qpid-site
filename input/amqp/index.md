@@ -49,7 +49,7 @@ Qpid offers AMQP 1.0 support in the following components:
 
  - [C++ broker]({{site_url}}/components/cpp-broker/index.html)
  - [Dispatch router]({{site_url}}/components/dispatch-router/index.html)
- - [Broker for Java]({{site_url}}/components/java-broker/index.html)
+ - [Broker-J]({{site_url}}/components/broker-j/index.html)
  - [Qpid JMS]({{site_url}}/components/jms/index.html)
  - [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html)
  - [Qpid Proton]({{site_url}}/proton/index.html)

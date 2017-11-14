@@ -17,13 +17,9 @@
 ;; under the License.
 ;;
 
-# Security
 
-| CVE-ID | Severity | Affected versions | Fixed versions | Summary |
-| ------ | -------- | ----------------- | -------------- | ------- |
-| [CVE-2016-3094]({{site_url}}/cves/CVE-2016-3094.html) | Important | 6.0.0, 6.0.1, and 6.0.2 | 6.0.3 | Denial of service |
-| [CVE-2016-4432]({{site_url}}/cves/CVE-2016-4432.html) | Important | 6.0.2 and earlier | 6.0.3 | Authentication bypass |
-| [CVE-2016-8741]({{site_url}}/cves/CVE-2016-8741.html) | Moderate | 6.0.1, 6.0.2, 6.0.3, 6.0.4, 6.0.5, and 6.1.0 | 6.0.6, 6.1.1 | Information leakage |
+<script type="javascript">
+window.location.href="../broker-j/security.html";
+</script>
+The page was moved [here](../broker-j/security.html).
 
-See the main [security]({{site_url}}/security.html) page for general
-information and details for other components.
