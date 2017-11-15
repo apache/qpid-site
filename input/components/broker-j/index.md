@@ -34,9 +34,9 @@ that stores, routes, and forwards messages using AMQP.
 
 <div class="two-column" markdown="1">
 
- - [JMS 1.1](http://www.oracle.com/technetwork/java/docs-136352.html) compliant
  - Speaks and translates among all versions of AMQP
- - Management via JMX, REST, QMF, and web console
+ - AMQP over WebSockets
+ - Management via REST, AMQP Management, and web console
  - [Access control lists]({{current_broker_j_release_url}}/book/Java-Broker-Security-AccessControlProviders.html)
  - Flexible logging
  - Flow to disk
@@ -45,7 +45,7 @@ that stores, routes, and forwards messages using AMQP.
  - [High availability]({{current_broker_j_release_url}}/book/Java-Broker-High-Availability.html)
  - Message groups
  - Pluggable persistence supporting Derby, SQL, and BDB stores
- - [Pluggable authentication]({{current_broker_j_release_url}}/book/Java-Broker-Security.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, and SSL client certificates
+ - [Pluggable authentication]({{current_broker_j_release_url}}/book/Java-Broker-Security.html#Java-Broker-Security-Authentication-Providers) supporting LDAP, Kerberos, OAUTH2 and SSL client certificates
  - [Producer flow control]({{current_broker_j_release_url}}/book/Java-Broker-Runtime-Disk-Space-Management.html#Qpid-Producer-Flow-Control)
  - Secure connection via SSL
  - Server-side selectors
@@ -61,7 +61,7 @@ that stores, routes, and forwards messages using AMQP.
 ## Documentation
 
  - [Broker book]({{current_broker_j_release_url}}/book/index.html)
- - [How to build Apache Qpid for Java](https://cwiki.apache.org/confluence/display/qpid/How+To+Build+Qpid+Broker-J)
+ - [How to build Apache Qpid Broker-J](https://github.com/apache/qpid-broker-j/blob/master/README.md)
 
 </div>
 

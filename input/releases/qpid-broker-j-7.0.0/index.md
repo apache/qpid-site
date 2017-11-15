@@ -19,7 +19,7 @@
 
 # Qpid Broker-J 7.0.0
 
-[Qpid Broker-J]({site_url}/components/broker-j/index.html) is a message broker written in Java that stores, routes,
+[Qpid Broker-J]({{site_url}}/components/broker-j/index.html) is a message broker written in Java that stores, routes,
 and forwards messages using AMQP 1.0, 0-10, 0-9-1, 0-9 and 0-8.  More about
 [Qpid]({{site_url}}/index.html).
 
@@ -34,7 +34,7 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-src.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.sha) |
+| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-src.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.sha512) |
 
 ## Binaries
 
