@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid JMS AMQP 0-x 6.3.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-amqp-0-x-6.3.0/index.html">Qpid JMS AMQP 0-x 6.3.0</a></li><li>Qpid JMS AMQP 0-x 6.3.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-jms-amqp-0-x-630-release-notes">Qpid JMS AMQP 0-x 6.3.0 Release Notes</h1>
+
+<p>Qpid JMS AMQP 0-x is JMS 1.1 compatible client which can speak AMQP 0-8,0-9,0-9-1 and 0-10.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7292">QPID-7292</a> - Qpid clients should verify the server-final message when using SCRAM-* authentication</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7466">QPID-7466</a> - [Java Broker, Java Client for AMQP 0-8 to 0-10] Improve documentation for end-to-end encryption</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7476">QPID-7476</a> - [Java Client] Improve error message when timeout exception thrown in commit</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7524">QPID-7524</a> - [Java Client] New lines should be specified with '%n' in calls to String.format</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7530">QPID-7530</a> - [Java Client] AMQSession_0_8#isQueueExist contains dead code intending to send passive queue declaration when queue is bound to a default exchange and assert flag is set to true</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7532">QPID-7532</a> - [Java] Replace AMQConstant class with constant integer error codes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7533">QPID-7533</a> - [Java Broker] Implement wd12 version of the AMQP Management working draft</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7538">QPID-7538</a> - [Java Client] Improve handling of hanshake status codes in SSLSender</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7622">QPID-7622</a> - Separate Qpid Broker for Java and 0-x JMS Client in source tree</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7718">QPID-7718</a> - Tidy up 0-x JMS Client source tree following separation from Broker.</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7725">QPID-7725</a> - Remove direct byte buffer implementation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7726">QPID-7726</a> - Upgrade SLF4J to 1.7.25</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7737">QPID-7737</a> - [JMS AMQP 0-x Client] Upgrade SLF4j to 1.7.25</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7778">QPID-7778</a> - [Java Broker, Documentation] The Message encryption pages should mention that they require the Unlimited Strength JCE</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7779">QPID-7779</a> - [Qpid JMS Client 0-x] [0-8..0-91] sasl_mechs and other SASL connection options not supported</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8018">QPID-8018</a> - [Java Client, AMQP 0-x] Clarify error message when connection times out</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8034">QPID-8034</a> - [Qpid JMS AMQP 0-x] Update bundling to follow project conventions</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7505">QPID-7505</a> - [JMS AMQP 0-x Client] [AMQP 0-10] Synchronous #receive(long) might return null even though there are messages on the queue and client has enough credit</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7507">QPID-7507</a> - AMQSession_0_10.isQueueExist() fails with NPE if SessionException does not have a cause</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7535">QPID-7535</a> - [Java Client] Strengthen notification between threads holding dispatcher lock</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7537">QPID-7537</a> - Improve implementations of equal methods in various classes to be able to account for sub-classes</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7544">QPID-7544</a> - [Java Client][AMQP 0-10] After resending a previously sent Message, the JMSMessageId is not updated</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7692">QPID-7692</a> - [Java Broker, 0-8..0-91]  Message sent to fanout exchange with no routing key is not delivered to application</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7774">QPID-7774</a> - [JMS Client 0-x] [0-8..0-91] MessageConsumer#receiveNoWait() always returns null after a successful failover</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7888">QPID-7888</a> - [Java Client] [Documentation] Correct typo in end to end encryption connection url examples</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7897">QPID-7897</a> - [Java 0-8...0-9-1 Client] Message#getJMSCorrelationIDAsBytes() erroneously first converts to string before retreiving bytes </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7898">QPID-7898</a> - [Java 0-8...0-9-1 Client] Calling getJMSReplyTo on a received message can lead to NullPointerException</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7899">QPID-7899</a> - [Java 0-8...0-9-1 Client] Message#setJMSCorrelationIDAsBytes() erroneously converts the bytes to string</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7964">QPID-7964</a> - [Java Client, AMQP 0-x] SCRAM SASL implementation incorrectly encodes "=" and "," for passwords</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8033">QPID-8033</a> - [Qpid JMS AMQP 0-x] An establishment of connection times out if an exception is thrown from ConnectionStartMethoHandler due to unsupported sasl mechanisms</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7628">QPID-7628</a> - [java] update to current apache parent pom</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7716">QPID-7716</a> - Remove AMQP 0-10 based JCA/RA components from Qpid JMS 0-x Client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7738">QPID-7738</a> - [Qpid JMS AMQP 0-x Client] Migrate qpid-java svn to git </li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-7755">QPID-7755</a> - add release scripts for qpid-broker-j and qpid-jms-amqp-0-x</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
