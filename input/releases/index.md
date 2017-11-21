@@ -28,6 +28,7 @@ the
 
 <div class="two-column" markdown="1">
 
+ - [Qpid JMS AMQP 0-x 6.3.0](qpid-jms-amqp-0-x-6.3.0/index.html), November 2017
  - [Qpid Broker-J 7.0.0](qpid-broker-j-7.0.0/index.html), November 2017
  - [Qpid JMS 0.27.0](qpid-jms-0.27.0/index.html), October 2017
  - [Qpid Proton 0.18.1](qpid-proton-0.18.1/index.html), November 2017

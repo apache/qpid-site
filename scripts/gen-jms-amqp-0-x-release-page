@@ -23,8 +23,9 @@ from generate import *
 from datetime import datetime
 
 download_records = (
-    ("apache-qpid-jms-amqp-0-x-{}-bin.tar.gz", "Qpid JMS binaries"),
-    ("apache-qpid-jms-amqp-0-x-{}-src.tar.gz", "Qpid JMS source code"),
+    ("apache-qpid-jms-amqp-0-x-{}-bin.tar.gz", "Qpid JMS binaries", "binaries/"),
+    ("apache-qpid-jms-amqp-0-x-{}-bin.zip", "Qpid JMS binaries", "binaries/"),
+    ("apache-qpid-jms-amqp-0-x-{}-src.tar.gz", "Qpid JMS source code", ""),
     )
 
 documentation = \
@@ -32,6 +33,10 @@ documentation = \
 <div class="two-column" markdown="1">
 
  - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
+ - [Using the Qpid JMS AMQP 0-x - AMQP 0-10](jms-amqp-0-10-book/index.html)
+ - [Using the Qpid JMS AMQP 0-x - AMQP 0-9-1, 0-9, 0-8](jms-amqp-0-8-book/index.html)
+ - [Examples (AMQP 0-10)](examples/index.html)
+ - [Examples (AMQP 0-9-1, 0-9, 0-8)](jms-amqp-0-8-book/JMS-Client-0-8-Examples.html)
 
 </div>
 """
@@ -57,9 +62,9 @@ template = \
 ;; under the License.
 ;;
 
-# Qpid JMS for AMQP 0-x {release}
+# Qpid JMS AMQP 0-x {release}
 
-Qpid JMS for AMQP 0-x is XXX.
+Qpid JMS AMQP 0-x is JMS 1.1 compatible client which can speak AMQP 0-8,0-9,0-9-1 and 0-10.
 
 For a detailed list of the changes in this release, see the [release
 notes](release-notes.html).
@@ -103,14 +108,14 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     downloads = list()
     components = list()
 
-    artifact_url_template = "http://archive.apache.org/dist/qpid/jms-amqp-0-x/{}/{}"
+    artifact_url_template = "http://archive.apache.org/dist/qpid/jms-amqp-0-x/{}/{}{}"
 
-    for artifact, summary in download_records:
+    for artifact, summary, subfolder in download_records:
         artifact = artifact.format(release)
-        artifact_url = artifact_url_template.format(release, artifact)
+        artifact_url = artifact_url_template.format(release, subfolder, artifact)
         asc_url = "{}.asc".format(artifact_url)
         md5_url = "{}.md5".format(artifact_url)
-        sha_url = "{}.sha".format(artifact_url)
+        sha_url = "{}.sha512".format(artifact_url)
 
         args = summary, artifact, artifact_url, asc_url, md5_url, sha_url
         downloads.append("| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args))

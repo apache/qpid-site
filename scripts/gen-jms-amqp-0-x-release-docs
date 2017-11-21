@@ -19,9 +19,111 @@
 #
 
 from generate import *
+import uuid
+from xml.etree import ElementTree
 
 def gen_jms_docs(release, source_dir, output_dir):
-    pass
+    toplevel_pom = join(source_dir, "pom.xml")
+    input_dir = join(source_dir, "doc")
+
+    cpp_broker_book_url = "/releases/qpid-cpp-{{current_cpp_release}}/cpp-broker/book/"
+    jms_client010_book_url = "/releases/qpid-jms-0-x-{}/jms-0-10/book/".format(release)
+
+    call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidJmsClient010Book={}",
+         toplevel_pom,
+         cpp_broker_book_url,
+         jms_client010_book_url)
+
+    jms_client08_input_dir = join(input_dir, "jms-client-0-8", "target", "docbkx")
+    jms_client010_input_dir = join(input_dir, "jms-client-0-10", "target", "docbkx")
+
+    jms_client08_output_dir = join(output_dir, "jms-amqp-0-8-book")
+    jms_client010_output_dir = join(output_dir, "jms-amqp-0-10-book")
+
+    remove(jms_client08_output_dir)
+    remove(jms_client010_output_dir)
+
+    copy(jms_client08_input_dir, jms_client08_output_dir)
+    copy(jms_client010_input_dir, jms_client010_output_dir)
+
+    output_dirs = [jms_client08_output_dir, jms_client010_output_dir]
+
+    for dir in output_dirs:
+        for path in find(dir, "*.html"):
+            print path
+
+            tree = ElementTree.parse(path)
+            elem = tree.find(".//{http://www.w3.org/1999/xhtml}body")
+
+            elem.tag = "div"
+            elem.set("class", "docbook")
+
+            remove_namespace(elem, "http://www.w3.org/1999/xhtml")
+
+            # A hack to preserve docbook's empty anchors in an
+            # IE-compatible way
+
+            target = str(uuid.uuid4())
+
+            for a in tree.iter("a"):
+                if a.text is None:
+                    a.text = target
+
+            content = ElementTree.tostring(elem)
+            content = content.replace(target, "")
+
+            write("{}.in".format(path), content)
+            remove(path)
+
+def infile_replace(filename, old_string, new_string):
+    fileContent = ""
+    with open(filename,'r') as f:
+        fileContent=f.read()
+    if old_string in fileContent:
+        newContent=fileContent.replace(old_string, new_string)
+        with open(filename,'w') as f:
+            f.write(newContent)
+            f.flush()
+
+# From http://homework.nwsnet.de/releases/45be/
+def remove_namespace(doc, namespace):
+    """Remove namespace in the passed document in place."""
+    ns = u'{%s}' % namespace
+    nsl = len(ns)
+    for elem in doc.getiterator():
+        if elem.tag.startswith(ns):
+            elem.tag = elem.tag[nsl:]
+
+def gen_jms_examples(release, source_dir, release_dir):
+    input_dir = join(source_dir, "client", "example", "src", "main",
+                     "java", "org", "apache", "qpid", "example")
+    output_dir = join(release_dir, "examples")
+
+    release_url = "https://github.com/apache/qpid-jms-amqp-0-x/tree/{}".format(release)
+    readme_url = "{}/client/README.txt".format(release_url)
+    source_url = "{}/client/example/src/main/java/org/apache/qpid/example".format(release_url)
+
+    input_names = list_dir(input_dir, "*.java", "*.properties")
+
+    for name in input_names:
+        lang = "java"
+
+        if name.endswith(".properties"):
+            lang = "ini"
+
+        gen_example_page(release=release,
+                         input_dir=input_dir,
+                         input_name=name,
+                         output_dir=output_dir,
+                         lang=lang)
+
+    gen_examples_index(release=release,
+                       input_names=input_names,
+                       output_dir=output_dir,
+                       title="Qpid JMS AMQP 0-x Examples",
+                       readme_url=readme_url,
+                       source_url=source_url)
+
 
 ## Now do stuff ##
 
@@ -29,5 +131,6 @@ release, issues_release, source_release, release_dir, checkout_dir = setup_relea
 source_dir = checkout_dir or fetch_source("jms-amqp-0-x", source_release)
 
 gen_jms_docs(release, source_dir, release_dir)
+gen_jms_examples(release, source_dir, release_dir)
 
 notice("Docs generated")

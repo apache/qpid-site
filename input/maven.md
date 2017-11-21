@@ -39,7 +39,7 @@ The following dependencies can be added to the POM for your Maven build to utili
 <span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
   <span class="nt">&lt;artifactId&gt;</span>qpid-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>{{current_java_release}}<span class="nt">&lt;/version&gt;</span>
+  <span class="nt">&lt;version&gt;</span>{{current_jms_amqp_0_x_release}}<span class="nt">&lt;/version&gt;</span>
 <span class="nt">&lt;/dependency&gt;</span>
 <span class="nt">&lt;dependency&gt;</span>
   <span class="nt">&lt;groupId&gt;</span>org.apache.geronimo.specs<span class="nt">&lt;/groupId&gt;</span>
