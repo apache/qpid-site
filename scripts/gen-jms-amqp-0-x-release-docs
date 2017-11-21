@@ -27,7 +27,7 @@ def gen_jms_docs(release, source_dir, output_dir):
     input_dir = join(source_dir, "doc")
 
     cpp_broker_book_url = "/releases/qpid-cpp-{{current_cpp_release}}/cpp-broker/book/"
-    jms_client010_book_url = "/releases/qpid-jms-0-x-{}/jms-amqp-0-10-book/".format(release)
+    jms_client010_book_url = "/releases/qpid-jms-amqp-0-x-{}/jms-amqp-0-10-book/".format(release)
 
     call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidJmsClient010Book={}",
          toplevel_pom,
