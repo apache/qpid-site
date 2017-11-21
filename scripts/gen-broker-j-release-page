@@ -64,7 +64,7 @@ template = \
 
 # Qpid Broker-J {release}
 
-[Qpid Broker-J]({{site_url}}/components/broker-j/index.html) is a message broker written in Java that stores, routes,
+[Qpid Broker-J]({{{{site_url}}}}/components/broker-j/index.html) is a message broker written in Java that stores, routes,
 and forwards messages using AMQP 1.0, 0-10, 0-9-1, 0-9 and 0-8.  More about
 [Qpid]({{{{site_url}}}}/index.html).
 
@@ -122,7 +122,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha_url = "{}.sha".format(artefact_url)
+        sha_url = "{}.sha512".format(artefact_url)
 
         args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
         row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
