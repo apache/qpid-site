@@ -34,7 +34,7 @@ the
  - [Qpid Proton-J 0.23.0](qpid-proton-j-0.23.0/index.html), October 2017
  - [Qpid for Java 6.1.4](qpid-java-6.1.4/index.html), June 2017
  - [Qpid for Java 6.0.8](qpid-java-6.0.8/index.html), June 2017
- - [Qpid Dispatch 0.8.0](qpid-dispatch-0.8.0/index.html), May 2017
+ - [Qpid Dispatch 1.0.0](qpid-dispatch-1.0.0/index.html), November 2017
  - [Qpid Python 1.36.0](qpid-python-1.36.0/index.html), March 2017
  - [Qpid C++ 1.36.0](qpid-cpp-1.36.0/index.html), December 2016
 
@@ -43,7 +43,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
-
+ - [Qpid Dispatch 0.8.0](qpid-dispatch-0.8.0/index.html), May 2017
  - [Qpid Proton 0.18.0](qpid-proton-0.18.0/index.html), October 2017
  - [Qpid JMS 0.26.0](qpid-jms-0.26.0/index.html), October 2017
  - [Qpid Proton-J 0.22.0](qpid-proton-j-0.22.0/index.html), September 2017
