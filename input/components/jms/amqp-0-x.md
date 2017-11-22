@@ -20,21 +20,20 @@
 <div id="-left-column" markdown="1">
 # Qpid JMS AMQP 0-x
 
+<div class="feature" markdown="1">
 A JMS 1.1 implementation supporting AMQP versions 0-10, 0-9-1, 0-9, and
 0-8.  For AMQP 1.0 support, use the newer [Qpid JMS](index.html) client.
-
-## Download
-
-<div class="two-column" markdown="1">
-
- - [Binary](http://www.apache.org/dyn/closer.lua/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/binaries/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-bin.tar.gz)
- - [PGP signature](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/binaries/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-bin.tar.gz.asc)
- - [MD5 checksum](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/binaries/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-bin.tar.gz.md5)
- - [SHA512 checksum](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/binaries/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-bin.tar.gz.sha512)
-
 </div>
 
-The client is also available [via Maven]({{site_url}}/maven.html).
+## Features
+
+ - [JMS 1.1](http://download.oracle.com/otndocs/jcp/7195-jms-1.1-fr-spec-oth-JSpec/) API
+ - Secure communication via SSL and SASL
+ - Producer flow control
+ - Maximum delivery count
+ - Message encryption
+ - Failover
+ - Pure-Java implementation compatible with Java 7 and above
 
 ## Documentation
 
@@ -61,7 +60,8 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
  - [Report a bug](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&priority=3&components=12311389)
  - [Request an improvement](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&priority=3&components=12311389)
- - [Jira component page](http://issues.apache.org/jira/browse/QPID/component/12311389)
+ - <form id="-jira-goto-form">Go to issue <input name="jira" value="QPID-"/></form>
+ - [JIRA project page](http://issues.apache.org/jira/browse/QPID/component/12311389)
 
 ## Source code
 
