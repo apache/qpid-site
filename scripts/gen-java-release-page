@@ -32,7 +32,7 @@ binary_artefact_records = (
 )
 
 component_records = (
-    ("java-broker", "Qpid Broker for Java", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
+    ("broker-j", "Qpid Broker for Java", "Java", "JVM", "1.0, 0-10, 0-9-1, 0-9, 0-8"),
     ("jms/amqp-0-x.html","Qpid JMS for AMQP 0-9-1/0-10", "Java", "JVM", "0-10, 0-9-1, 0-9, 0-8")
     )
 
@@ -42,7 +42,7 @@ documentation = \
 
  - [Installing Qpid Broker for Java](java-broker/book/Java-Broker-Installation.html)
  - [Broker book](java-broker/book/index.html)
- - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
+ - [JMS API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
  - [Using the Qpid JMS client for AMQP 0-10](jms-client-0-10/book/index.html)
  - [Using the Qpid JMS client for AMQP 0-9-1](jms-client-0-8/book/index.html)
  - [JMS examples for AMQP 0-10](qpid-jms/examples/index.html)
@@ -139,7 +139,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha_url = "{}.sha".format(artefact_url)
+        sha_url = "{}.sha512".format(artefact_url)
 
         args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
         row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
@@ -151,7 +151,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = binary_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha_url = "{}.sha".format(artefact_url)
+        sha_url = "{}.sha512".format(artefact_url)
 
         args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
         row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
