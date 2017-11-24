@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>7.5.&#160;VirtualHosts - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.1.5/index.html">Qpid for Java 6.1.5</a></li><li><a href="/releases/qpid-java-6.1.5/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>7.5.&#160;VirtualHosts</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">7.5.&#160;VirtualHosts</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Managing-Virtualhost-Nodes.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;7.&#160;Managing Entities</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-RemoteReplicationNodes.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Management-Managing-Virtualhosts"></a>7.5.&#160;VirtualHosts</h2></div></div></div><p>A virtualhost is a independent namespace in which messaging is performed. Virtualhosts are
+    responsible for the storage of message data.</p><p>Virtualhosts can only be managed by the HTTP management channel.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Virtualhosts-Types"></a>7.5.1.&#160;Types</h3></div></div></div><p>The following virtualhost types are supported. </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>BDB - Virtualhost backed with Oracle BDB <a class="footnote" href="#ftn.d0e3266" id="d0e3266"><sup class="footnote">[8]</sup></a></p></li><li class="listitem"><p>BDB HA - Virtualhost backed with Oracle BDB utilising High Availability</p></li><li class="listitem"><p>DERBY - Virtualhost backed with Apache Derby</p></li><li class="listitem"><p>JDBC - Virtualhost backed with an external database <a class="footnote" href="#ftn.d0e3280" id="d0e3280"><sup class="footnote">[9]</sup></a></p></li><li class="listitem"><p>Memory - In-memory node (changes lost on Broker restart)</p></li><li class="listitem"><p>Provided - Virtualhost that co-locates message data within the parent virtualhost
+            node <a class="footnote" href="#ftn.d0e3290" id="d0e3290"><sup class="footnote">[10]</sup></a>.</p></li></ul></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Virtualhost-Context"></a>7.5.2.&#160;Context</h3></div></div></div><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>use_async_message_store_recovery</em></span> Controls the <a class="link" href="Java-Broker-Runtime-Background-Recovery.html" title="9.8.&#160;Background Recovery">background recovery</a>
+            feature.</p></li></ul></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Virtualhost-Attributes"></a>7.5.3.&#160;Attributes</h3></div></div></div><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Name the virtualhost</em></span>. This is the name the messaging clients
+            refer to when forming a connection to the Broker.</p></li><li class="listitem"><p><span class="emphasis"><em>Store Path/JDBC URL</em></span>. Refers the file system location or
+            database URL used to store the message data.</p></li><li class="listitem"><p><span class="emphasis"><em>Store overflow/underflow</em></span>. Some virtualhosts have the ability to
+            limit the of the cumulative size of all the messages contained within the store. This
+            feature is described in detail <a class="xref" href="Java-Broker-Runtime-Disk-Space-Management.html" title="9.2.&#160;Disk Space Management">Section&#160;9.2, &#8220;Disk Space Management&#8221;</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Connection thread pool size</em></span>. Number of worker threads
+            used to perform messaging with connected clients.  </p><p>Defaults to 64 or double the maximum number of available processors, whichever
+            is the larger.</p></li><li class="listitem"><p><span class="emphasis"><em>Number of selectors</em></span>. Number of worker threads
+            used from the thread pool to dispatch I/O activity to the worker threads.</p><p>Defaults to one eighth of the thread pool size. Minimum 1.</p></li><li class="listitem"><p><span class="emphasis"><em>Store transaction timeouts</em></span>. Warns of long running producer
+            transactions. See <a class="xref" href="Java-Broker-Runtime-Producer-Transaction-Timeout.html" title="9.3.&#160;Producer Transaction Timeout">Section&#160;9.3, &#8220;Producer Transaction Timeout&#8221;</a></p></li><li class="listitem"><p><span class="emphasis"><em>Synchronization policy</em></span>. HA only. See <a class="xref" href="Java-Broker-High-Availability-Behaviour.html#Java-Broker-High-Availability-Behaviour-SynchronizationPolicy" title="10.4.2.&#160;Synchronization Policy">Section&#160;10.4.2, &#8220;Synchronization Policy&#8221;</a></p></li></ul></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Virtualhost-Children"></a>7.5.4.&#160;Children</h3></div></div></div><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+            <a class="link" href="Java-Broker-Management-Managing-Exchanges.html" title="7.7.&#160;Exchanges">Exchange</a>
+          </p></li><li class="listitem"><p>
+            <a class="link" href="Java-Broker-Management-Managing-Queues.html" title="7.8.&#160;Queues">Queue</a>
+          </p></li></ul></div><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Virtualhost-Lifecycle"></a>7.5.5.&#160;Lifecycle</h3></div></div></div><p>
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Stop</em></span>. Stops the virtualhost. This closes any existing messaging
+            connections to the virtualhost and prevents new ones. Any inflight transactions are
+            rolled back. Non durable queues and non durable exchanges are lost. Transient messages
+            or persistent messages on non-durable queues are lost.</p></li><li class="listitem"><p><span class="emphasis"><em>Start</em></span>. Activates the virtualhost.</p></li></ul></div><p>
+    </p></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div class="footnote" id="ftn.d0e3266"><p><a class="para" href="#d0e3266"><sup class="para">[8] </sup></a>Oracle BDB JE is optional. See <a class="xref" href="Java-Broker-Miscellaneous-Installing-Oracle-BDB-JE.html" title="E.3.&#160;Installing Oracle BDB JE">Section&#160;E.3, &#8220;Installing Oracle BDB JE&#8221;</a>.</p></div><div class="footnote" id="ftn.d0e3280"><p><a class="para" href="#d0e3280"><sup class="para">[9] </sup></a>JDBC 4.0 compatible drivers must be available. See <a class="xref" href="Java-Broker-Miscellaneous-Installing-External-JDBC-Driver.html" title="E.2.&#160;Installing External JDBC Driver">Section&#160;E.2, &#8220;Installing External JDBC Driver&#8221;</a></p></div><div class="footnote" id="ftn.d0e3290"><p><a class="para" href="#d0e3290"><sup class="para">[10] </sup></a>Not available if Virtualhost Node type is JSON.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Management-Managing-Virtualhost-Nodes.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Management-Managing-Entities.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-RemoteReplicationNodes.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">7.4.&#160;Virtualhost Nodes&#160;</td><td align="center" width="20%"><a accesskey="h" href="AMQP-Messaging-Broker-Java-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;7.6.&#160;Remote Replication Nodes</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
