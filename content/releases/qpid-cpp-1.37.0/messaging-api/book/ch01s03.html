@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>1.3.&#160;A Simple Messaging Program in .NET C# - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-1.37.0/index.html">Qpid C++ 1.37.0</a></li><li><a href="/releases/qpid-cpp-1.37.0/messaging-api/book/index.html">Using the Qpid Messaging API</a></li><li>1.3.&#160;A Simple Messaging Program in .NET C#</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.3.&#160;A Simple Messaging Program in .NET C#</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch01s02.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="section-addresses.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm140711184098496"></a>1.3.&#160;A Simple Messaging Program in .NET C#</h2></div></div></div><p>The following .NET C#
+      <a class="footnote" href="#ftn.idm140711184097504" id="idm140711184097504"><sup class="footnote">[1]</sup></a>
+      program shows how to create a connection,
+      create a session, send messages using a sender, and receive
+      messages using a receiver.
+      </p><div class="example"><a id="idm140711184096256"></a><p class="title"><strong>Example&#160;1.3.&#160;"Hello world!" in .NET C#</strong></p><div class="example-contents"><pre class="programlisting" lang="c++" xml:lang="c++">
+	  using System;
+	  using Org.Apache.Qpid.Messaging;  <a class="co" href="ch01s03.html#callout-csharp-using" id="hello-csharp-using">(1)</a>
+
+	  namespace Org.Apache.Qpid.Messaging {
+	  class Program {
+	  static void Main(string[] args) {
+	  String broker = args.Length &gt; 0 ? args[0] : "localhost:5672";
+	  String address = args.Length &gt; 1 ? args[1] : "amq.topic";
+
+	  Connection connection = null;
+	  try {
+	  connection = new Connection(broker);
+	  connection.Open();   <a class="co" href="ch01s03.html#callout-csharp-open" id="hello-csharp-open">(2)</a>
+	  Session session = connection.CreateSession();   <a class="co" href="ch01s03.html#callout-csharp-session" id="hello-csharp-session">(3)</a>
+
+	  Receiver receiver = session.CreateReceiver(address);   <a class="co" href="ch01s03.html#callout-csharp-receiver" id="hello-csharp-receiver">(4)</a>
+	  Sender sender = session.CreateSender(address);   <a class="co" href="ch01s03.html#callout-csharp-sender" id="hello-csharp-sender">(5)</a>
+
+	  sender.Send(new Message("Hello world!"));
+
+	  Message message = new Message();
+	  message = receiver.Fetch(DurationConstants.SECOND * 1);   <a class="co" href="ch01s03.html#callout-csharp-fetch" id="hello-csharp-fetch">(6)</a>
+	  Console.WriteLine("{0}", message.GetContent());
+	  session.Acknowledge();   <a class="co" href="ch01s03.html#callout-csharp-acknowledge" id="hello-csharp-acknowledge">(7)</a>
+
+	  connection.Close();   <a class="co" href="ch01s03.html#callout-csharp-close" id="hello-csharp-close">(8)</a>
+	  } catch (Exception e) {
+	  Console.WriteLine("Exception {0}.", e);
+	  if (null != connection)
+	  connection.Close();
+	  }
+	  }
+	  }
+	  }
+
+	</pre><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-using"></a><a href="#hello-csharp-using">(1)</a> </p></td><td align="left" valign="top"><p> Permits use of Org.Apache.Qpid.Messaging types and methods without explicit namespace qualification. Any .NET project must have a project reference to the assembly file <code class="literal">Org.Apache.Qpid.Messaging.dll</code> in order to obtain the definitions of the .NET Binding for Qpid Messaging namespace.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-open"></a><a href="#hello-csharp-open">(2)</a> </p></td><td align="left" valign="top"><p>Establishes the connection with the messaging broker.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-session"></a><a href="#hello-csharp-session">(3)</a> </p></td><td align="left" valign="top"><p>Creates a session object on which messages will be sent and received.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-receiver"></a><a href="#hello-csharp-receiver">(4)</a> </p></td><td align="left" valign="top"><p>Creates a receiver that receives messages from the given address.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-sender"></a><a href="#hello-csharp-sender">(5)</a> </p></td><td align="left" valign="top"><p>Creates a sender that sends to the given address.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-fetch"></a><a href="#hello-csharp-fetch">(6)</a> </p></td><td align="left" valign="top"><p>Receives the next message. The duration is optional, if omitted, will wait indefinitely for the next message.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-acknowledge"></a><a href="#hello-csharp-acknowledge">(7)</a> </p></td><td align="left" valign="top"><p>Acknowledges receipt of all fetched messages on the
+	    session. This informs the broker that the messages were
+	    transfered and processed by the client successfully.</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-csharp-close"></a><a href="#hello-csharp-close">(8)</a> </p></td><td align="left" valign="top"><p>Closes the connection, all sessions managed by the connection, and all senders and receivers managed by each session.</p></td></tr></table></div></div></div><br class="example-break" /><div class="footnotes"><br /><hr align="left" width="100" /><div class="footnote" id="ftn.idm140711184097504"><p><a class="para" href="#idm140711184097504"><sup class="para">[1] </sup></a>
+	  The .NET binding for the Qpid C++ Messaging API
+	  applies to all .NET Framework managed code languages. C# was chosen
+	  for illustration purposes only.
+	</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch01s02.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="using-the-qpid-messaging-api.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="section-addresses.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.2.&#160;A Simple Messaging Program in Python&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.4.&#160;Addresses</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

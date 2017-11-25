@@ -121,10 +121,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url)
         md5_url = "{}.md5".format(artefact_url)
-        sha1_url = "{}.sha1".format(artefact_url)
+        sha512_url = "{}.sha512".format(artefact_url)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha1_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA1]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, md5_url, sha512_url
+        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
 
         source_artefacts.append(row)
 
@@ -136,7 +136,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     source_artefacts = "\n".join(source_artefacts)
     components = "\n".join(components)
 
-    jql = "project = QPID AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
+    jql = "project = QPID AND fixVersion = 'qpid-cpp-{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
     issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
 
     vars = locals()

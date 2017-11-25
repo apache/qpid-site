@@ -28,6 +28,7 @@ the
 
 <div class="two-column" markdown="1">
 
+ - [Qpid C++ 1.37.0](qpid-cpp-1.37.0/index.html), November 2017
  - [Qpid for Java 6.1.5](qpid-java-6.1.5/index.html), Novemeber 2017
  - [Qpid Dispatch 1.0.0](qpid-dispatch-1.0.0/index.html), November 2017
  - [Qpid JMS AMQP 0-x 6.3.0](qpid-jms-amqp-0-x-6.3.0/index.html), November 2017
@@ -37,7 +38,6 @@ the
  - [Qpid Proton-J 0.23.0](qpid-proton-j-0.23.0/index.html), October 2017
  - [Qpid for Java 6.0.8](qpid-java-6.0.8/index.html), June 2017
  - [Qpid Python 1.36.0](qpid-python-1.36.0/index.html), March 2017
- - [Qpid C++ 1.36.0](qpid-cpp-1.36.0/index.html), December 2016
 
 </div>
 
@@ -64,6 +64,7 @@ the
  - [Qpid Proton 0.17.0](qpid-proton-0.17.0/index.html), February 2017
  - [Qpid Proton-J 0.17.0](qpid-proton-j-0.17.0/index.html), February 2017
  - [Qpid JMS 0.20.0](qpid-jms-0.20.0/index.html), January 2017
+ - [Qpid C++ 1.36.0](qpid-cpp-1.36.0/index.html), December 2016
  - [Qpid for Java 6.1.1](qpid-java-6.1.1/index.html), December 2016
  - [Qpid for Java 6.0.6](qpid-java-6.0.6/index.html), December 2016
  - [Qpid Proton 0.16.0](qpid-proton-0.16.0/index.html), December 2016

@@ -1,0 +1,26 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.15.&#160;Logging</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="ch01s14.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;Using the Qpid Messaging API</th><td align="right" width="20%">&#160;<a accesskey="n" href="section-amqp0-10-mapping.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm140711178163008"></a>1.15.&#160;Logging</h2></div></div></div><p>To simplify debugging, Qpid provides a logging facility
+      that prints out messaging events.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm140711178161872"></a>1.15.1.&#160;Logging in C++</h3></div></div></div><p>
+	  The Qpidd broker and C++ clients can both use environment variables to enable logging. Linux and Windows systems use the same named environment variables and values.
+	</p><p>Use QPID_LOG_ENABLE to set the level of logging you are interested in (trace, debug, info, notice, warning, error, or critical):
+	</p><pre class="screen">
+	  export QPID_LOG_ENABLE="warning+"
+	</pre><p>
+	  The Qpidd broker and C++ clients use QPID_LOG_OUTPUT to determine where logging output should be sent. This is either a file name or the special values stderr, stdout, or syslog:
+	</p><pre class="screen">
+	  export QPID_LOG_TO_FILE="/tmp/myclient.out"
+	</pre><p>
+	  From a Windows command prompt, use the following command format to set the environment variables:
+	</p><pre class="screen">
+	  set QPID_LOG_ENABLE=warning+
+	  set QPID_LOG_TO_FILE=D:\tmp\myclient.out
+	</pre></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm140711178156864"></a>1.15.2.&#160;Logging in Python</h3></div></div></div><p>
+	  The Python client library supports logging using the standard Python logging module. The easiest way to do logging is to use the <span class="command"><strong>basicConfig()</strong></span>, which reports all warnings and errors:
+	</p><pre class="programlisting">from logging import basicConfig
+	basicConfig()
+	</pre><p>
+	  Qpidd also provides a convenience method that makes it easy to specify the level of logging desired. For instance, the following code enables logging at the <span class="command"><strong>DEBUG</strong></span> level:
+	</p><pre class="programlisting">from qpid.log import enable, DEBUG
+	enable("qpid.messaging.io", DEBUG)
+	</pre><p>
+	  For more information on Python logging, see <a class="ulink" href="http://docs.python.org/lib/node425.html" target="_top">http://docs.python.org/lib/node425.html</a>. For more information on Qpid logging, use <span class="command"><strong>$ pydoc qpid.log</strong></span>.
+	</p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="ch01s14.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="using-the-qpid-messaging-api.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="section-amqp0-10-mapping.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.14.&#160;Cluster Failover&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;1.16.&#160;The AMQP 0-10 mapping</td></tr></table></div></div>

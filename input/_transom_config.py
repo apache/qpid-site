@@ -23,7 +23,7 @@ class _Release(object):
         return "<a href=\"{}\">{}</a>".format(self.url, self.number)
 
 broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "7.0.0")
-cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.36.0")
+cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.37.0")
 dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.0.0")
 interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop", "0.1.0")
 java_release = _Release(site_url, "Qpid for Java", "qpid-java", "6.1.5")
