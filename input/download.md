@@ -48,31 +48,26 @@ It is important to [verify the integrity](#verify-what-you-download) of the file
 | [Dispatch router]({{site_url}}/components/dispatch-router/index.html) | [qpid-dispatch-{{current_dispatch_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.md5), [SHA512](http://www.apache.org/dist/qpid/dispatch/{{current_dispatch_release}}/qpid-dispatch-{{current_dispatch_release}}.tar.gz.sha512) |
 
 \*These Java artefacts are presented as compiled bytecode.  We also
-offer the source as part of our
-[Qpid Proton-J source release](http://www.apache.org/dyn/closer.lua/qpid/proton-j/{{current_proton_j_release}}/apache-qpid-proton-j-{{current_proton_j_release}}-src.tar.gz)
+offer the source releases of
+[Qpid Proton-J](http://www.apache.org/dyn/closer.lua/qpid/proton-j/{{current_proton_j_release}}/apache-qpid-proton-j-{{current_proton_j_release}}-src.tar.gz)
 \[[ASC](http://www.apache.org/dist/qpid/proton-j/{{current_proton_j_release}}/apache-qpid-proton-j-{{current_proton_j_release}}-src.tar.gz.asc),
 [MD5](http://www.apache.org/dist/qpid/proton-j/{{current_proton_j_release}}/apache-qpid-proton-j-{{current_proton_j_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/proton-j/{{current_proton_j_release}}/apache-qpid-proton-j-{{current_proton_j_release}}-src.tar.gz.sha512)\]
 and
-[Qpid JMS source release](http://www.apache.org/dyn/closer.lua/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz)
+[Qpid JMS](http://www.apache.org/dyn/closer.lua/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz)
 \[[ASC](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.asc),
 [MD5](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/jms/{{current_jms_release}}/apache-qpid-jms-{{current_jms_release}}-src.tar.gz.sha512)\]
 and
-[Qpid JMS AMQP 0-x source release](http://www.apache.org/dyn/closer.lua/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-src.tar.gz)
+[Qpid JMS AMQP 0-x](http://www.apache.org/dyn/closer.lua/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-src.tar.gz)
 \[[ASC](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-src.tar.gz.asc),
 [MD5](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/jms-amqp-0-x/{{current_jms_amqp_0_x_release}}/apache-qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}-src.tar.gz.sha512)\]
 and
-[Qpid Broker-J source release](http://www.apache.org/dyn/closer.lua/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz)
+[Qpid Broker-J](http://www.apache.org/dyn/closer.lua/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz)
 \[[ASC](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.asc),
 [MD5](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.sha512)\]
-and
-[Qpid for Java source release](http://www.apache.org/dyn/closer.lua/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz)
-\[[ASC](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.asc),
-[MD5](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.md5),
-[SHA512](http://www.apache.org/dist/qpid/java/{{current_java_release}}/qpid-java-{{current_java_release}}.tar.gz.sha)\].
 
 ;; ## Other components
 ;;

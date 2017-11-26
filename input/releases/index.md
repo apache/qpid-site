@@ -37,7 +37,6 @@ the
  - [Qpid JMS 0.27.0](qpid-jms-0.27.0/index.html), October 2017
  - [Qpid Proton 0.18.1](qpid-proton-0.18.1/index.html), November 2017
  - [Qpid Proton-J 0.23.0](qpid-proton-j-0.23.0/index.html), October 2017
- - [Qpid for Java 6.0.8](qpid-java-6.0.8/index.html), June 2017
 
 </div>
 
@@ -52,6 +51,7 @@ the
  - [Qpid JMS 0.24.0](qpid-jms-0.24.0/index.html), August 2017
  - [Qpid Proton-J 0.20.0](qpid-proton-j-0.20.0/index.html), August 2017
  - [Qpid for Java 6.1.4](qpid-java-6.1.4/index.html), June 2017
+ - [Qpid for Java 6.0.8](qpid-java-6.0.8/index.html), June 2017
  - [Qpid for Java 6.1.3](qpid-java-6.1.3/index.html), June 2017
  - [Qpid for Java 6.0.7](qpid-java-6.0.7/index.html), June 2017
  - [Qpid Dispatch 0.8.0](qpid-dispatch-0.8.0/index.html), May 2017
