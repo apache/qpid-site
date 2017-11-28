@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_dispatch_release_url}}/index.html).
 
-This content was generated at 15:51  on Tuesday, 02 May 2017.
+This content was generated at 11:21  on Tuesday, 28 November 2017.
 
 </div>
 
@@ -36,8 +36,9 @@ This content was generated at 15:51  on Tuesday, 02 May 2017.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master)
- - [Dispatch Router User Guide](book/book.html)
+ - [Using Qpid Dispatch](user-guide/index.html)
+ - [Installing Qpid Dispatch from
+   source](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master)
  - [qdrouterd](man/qdrouterd.html) - Router daemon
  - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
  - [qdstat](man/qdstat.html) - Get router statistics

@@ -123,10 +123,11 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <div class="sect1">
 <h2 id="_description">DESCRIPTION</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>An AMQP management client for use with qdrouterd. Sends AMQP management
-operations requests and prints the response in JSON format. This is a
-generic AMQP management tool and can be used with any standard AMQP
-managed endpoint, not just with qdrouter.</p></div>
+<div class="paragraph"><p>An AMQP management client for use with the Dispatch router daemon
+(<em>qdrouterd</em>). Sends AMQP management operations requests and prints
+the response in JSON format. This is a generic AMQP management tool
+and can be used with any standard AMQP managed endpoint, not just
+with <em>qdrouterd</em>.</p></div>
 </div>
 </div>
 <div class="sect1">
@@ -143,17 +144,17 @@ managed endpoint, not just with qdrouter.</p></div>
 <div class="paragraph"><p>--identity=ID
 :   Identity of entity to operate on.</p></div>
 <div class="paragraph"><p>--indent=INDENT
-:   Pretty-printing indent. -1 means don&#8217;t pretty-print</p></div>
+:   Pretty-printing indent. -1 means don&#8217;t pretty-print (default 2)</p></div>
 <div class="paragraph"><p>--stdin
-:   Read attributes as JSON map or list of maps from</p></div>
+:   Read attributes as JSON map or list of maps from stdin.</p></div>
 <div class="paragraph"><p>--body=BODY
-:   JSON value to use as body of a non-standard operation</p></div>
+:   JSON value to use as body of a non-standard operation call.</p></div>
 <div class="paragraph"><p>--properties=PROPERTIES
 :   JSON map to use as properties for a non-standard operation call.</p></div>
 <div class="sect2">
 <h3 id="_connection_options">Connection Options</h3>
 <div class="paragraph"><p>-b URL, --bus=URL
-:   URL of the messaging bus to connect to (default</p></div>
+:   URL of the messaging bus to connect to (default 0.0.0.0)</p></div>
 <div class="paragraph"><p>-r ROUTER-ID, --router=ROUTER-ID
 :   Router to be queried</p></div>
 <div class="paragraph"><p>-t SECS, --timeout=SECS
@@ -212,7 +213,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  Print all the attributes of a single entity, specified by the --name or
+  Print all of the attributes of a single entity, specified by the --name or
   --identity options.
 </p>
 </dd>
@@ -240,7 +241,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  List entity types with their base types. With no arguments list all
+  List entity types with their base types. With no arguments, list all
   types.
 </p>
 </dd>
@@ -249,7 +250,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  List entity types with their operations. With no arguments list all
+  List entity types with their operations. With no arguments, list all
   types.
 </p>
 </dd>
@@ -258,7 +259,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  List entity types with their attributes. With no arguments list all
+  List entity types with their attributes. With no arguments, list all
   types.
 </p>
 </dd>
@@ -267,7 +268,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  List entity types with their annotations. With no arguments list all
+  List entity types with their annotations. With no arguments, list all
   types.
 </p>
 </dd>
@@ -308,7 +309,7 @@ managed endpoint, not just with qdrouter.</p></div>
 </dt>
 <dd>
 <p>
-  Management schema for qdrouterd.
+  Management schema for <em>qdrouterd</em>.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -326,7 +327,7 @@ managed endpoint, not just with qdrouter.</p></div>
 <h2 id="_examples">EXAMPLES</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Show the logging configuration</div>
+<div class="title">Show the logging configuration:</div>
 <div class="content">
 <pre><code>qdmanage query --type=log</code></pre>
 </div></div>
@@ -336,17 +337,17 @@ managed endpoint, not just with qdrouter.</p></div>
 <pre><code>qdmanage update name=log/DEFAULT enable=debug+</code></pre>
 </div></div>
 <div class="listingblock">
-<div class="title">Enable trace log messages only for the MESSAGE module and direct MESSAGE logs to the file "test.log"</div>
+<div class="title">Enable trace log messages only for the MESSAGE module, and direct MESSAGE logs to the file <em>test.log</em>:</div>
 <div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=trace output=test.log</code></pre>
 </div></div>
 <div class="listingblock">
-<div class="title">Set MESSAGE logging back to the default</div>
+<div class="title">Set MESSAGE logging back to the default:</div>
 <div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=default</code></pre>
 </div></div>
 <div class="listingblock">
-<div class="title">Disable MESSAGE logging</div>
+<div class="title">Disable MESSAGE logging:</div>
 <div class="content">
 <pre><code>qdmanage update name=log/MESSAGE enable=none</code></pre>
 </div></div>

@@ -157,14 +157,14 @@ files:
     input/releases/index.md    # Add current release, move the previous
 
 The scripts depend on the availability of the following tools in your
-environment: cmake, dot, doxygen, epydoc, fop, gcc, javadoc, make,
-pygments, PyYAML, rdoc, git, pandoc, pdflatex and xsltproc.  The
-following yum command works to install all the required dependencies
-on Fedora or RHEL.
+environment: asciidoc, asciidoctor, cmake, dot, doxygen, epydoc, fop,
+gcc, javadoc, make, pygments, PyYAML, rdoc, git, pandoc, pdflatex and
+xsltproc.  The following yum command works to install all the required
+dependencies on Fedora or RHEL.
 
-    $ sudo yum install cmake doxygen epydoc fop gcc graphviz java-devel \
-          libxslt make python-pygments PyYAML rubygem-rdoc git \
-          pandoc-pdf python-sphinx maven
+    $ sudo yum install asciidoc asciidoctor cmake doxygen epydoc \
+          fop gcc graphviz java-devel libxslt make python-pygments \
+          PyYAML rubygem-rdoc git \ pandoc-pdf python-sphinx maven
 
 ## Publishing your work
 

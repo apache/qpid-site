@@ -7,9 +7,9 @@
 # to you under the Apache License, Version 2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
-# 
+#
 #   http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -23,33 +23,11 @@ from generate import *
 
 def gen_dispatch_docs(release, source_dir, output_dir):
     build_dir = make_temp_dir()
-    
+
     with working_dir(build_dir):
         call("cmake {}", source_dir)
         call("make")
         call("make doc")
-
-    book_build_dir = join(build_dir, "doc", "book")
-
-    for f in list_dir(book_build_dir, "*.html.in"):
-        input_file = join(book_build_dir, f)
-        output_file = join(output_dir, "book", f)
-
-        copy(input_file, output_file)
-
-    for f in list_dir(book_build_dir, "*.png"):
-        input_file = join(book_build_dir, f)
-        output_file = join(output_dir, "book", f)
-
-        copy(input_file, output_file)
-
-    # book_image_dir = join(build_dir, "doc", "_images")
-
-    # for f in list_dir(book_image_dir, "*"):
-    #     input_file = join(book_image_dir, f)
-    #     output_file = join(output_dir, "_images", f)
-
-    #     copy(input_file, output_file)
 
     man_build_dir = join(build_dir, "doc", "man")
 
@@ -58,6 +36,17 @@ def gen_dispatch_docs(release, source_dir, output_dir):
         output_file = join(output_dir, "man", f)
 
         copy(input_file, output_file)
+
+    book_input_file = join(source_dir, "doc", "new-book", "book.adoc")
+    book_output_dir = join(output_dir, "user-guide")
+    book_output_file = join(book_output_dir, "index.html.in")
+
+    make_dir(book_output_dir)
+
+    call("asciidoctor --no-header-footer -o {} {}", book_output_file, book_input_file)
+
+    # Asciidoctor strips the title - add it back
+    prepend(book_output_file, "<h1>Using Qpid Dispatch</h1>\n")
 
 ## Now do stuff ##
 

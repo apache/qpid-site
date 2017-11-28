@@ -80,7 +80,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Router&#8217;s unique identity. One of id or routerId is required. The router will fail to start without id or routerId
+  Router&#8217;s unique identity. The router will fail to start without id.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -172,19 +172,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>routerId</em> (string)
+<em>defaultDistribution</em> (One of [<em>multicast</em>, <em>closest</em>, <em>balanced</em>, <em>unavailable</em>], default=<em>balanced</em>)
 </dt>
 <dd>
 <p>
-  (DEPRECATED) Router&#8217;s unique identity. This attribute has been deprecated. Use id instead
-</p>
-</dd>
-<dt class="hdlist1">
-<em>mobileAddrMaxAge</em> (integer, default=<em>60</em>)
-</dt>
-<dd>
-<p>
-  (DEPRECATED) This value is no longer used in the router.
+  Default forwarding treatment for any address without a specified treatment. multicast - one copy of each message delivered to all subscribers; closest - messages delivered to only the closest subscriber; balanced - messages delivered to one subscriber with load balanced across subscribers; unavailable - this address is unavailable, link attaches to an address of unavilable distribution will be rejected.
 </p>
 </dd>
 </dl></div>
@@ -193,6 +185,14 @@ listener {
 <h3 id="_sslprofile">sslProfile</h3>
 <div class="paragraph"><p>Attributes for setting TLS/SSL configuration for connections.</p></div>
 <div class="dlist"><dl>
+<dt class="hdlist1">
+<em>ciphers</em> (string)
+</dt>
+<dd>
+<p>
+  Specifies the enabled ciphers so the SSL Ciphers can be hardened. In other words, use this field to disable weak ciphers. The ciphers are specified in the format understood by the OpenSSL library. For example, ciphers can be set to ALL:!aNULL:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP;&#8201;&#8212;&#8201;The full list of allowed ciphers can be viewed using the openssl ciphers command
+</p>
+</dd>
 <dt class="hdlist1">
 <em>certDb</em> (path)
 </dt>
@@ -252,6 +252,36 @@ listener {
 </dl></div>
 </div>
 <div class="sect2">
+<h3 id="_authserviceplugin">authServicePlugin</h3>
+<div class="paragraph"><p>EXPERIMENTAL. Attributes for setting SASL plugin.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>authService</em> (string, required)
+</dt>
+<dd>
+<p>
+  Address of a service to delegate authentication to.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslInitHostname</em> (string)
+</dt>
+<dd>
+<p>
+  Value to set for hostname field on sasl-init
+</p>
+</dd>
+<dt class="hdlist1">
+<em>authSslProfile</em> (string)
+</dt>
+<dd>
+<p>
+  Name of the sslProfile to use for the authentication service.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
 <h3 id="_listener">listener</h3>
 <div class="paragraph"><p>Listens for incoming connections to the router.</p></div>
 <div class="dlist"><dl>
@@ -280,11 +310,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>)
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>], default=<em>normal</em>)
 </dt>
 <dd>
 <p>
-  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -317,6 +347,14 @@ listener {
 <dd>
 <p>
   yes: Require the peer&#8217;s identity to be authenticated; no: Do not require any authentication.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslPlugin</em> (string)
+</dt>
+<dd>
+<p>
+  EXPERIMENTAL. Name of the a sasl plugin configuration section to use for this listener (e.g. authServicePlugin).
 </p>
 </dd>
 <dt class="hdlist1">
@@ -376,6 +414,14 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>initialHandshakeTimeoutSeconds</em> (integer)
+</dt>
+<dd>
+<p>
+  The timeout, in seconds, for the initial handshake for connections coming in through listeners.  If the time interval expires before the peer sends the AMQP OPEN frame, the connection shall be closed.  A value of zero (the default) disables this timeout.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>stripAnnotations</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>, <em>no</em>], default=<em>both</em>)
 </dt>
 <dd>
@@ -408,43 +454,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>addr</em> (string, default=<em>127.0.0.1</em>)
-</dt>
-<dd>
-<p>
-  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
-</p>
-</dd>
-<dt class="hdlist1">
-<em>allowNoSasl</em> (boolean)
-</dt>
-<dd>
-<p>
-  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>requirePeerAuth</em> (boolean)
-</dt>
-<dd>
-<p>
-  (DEPRECATED) This attribute is now controlled by the authenticatePeer attribute.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>allowUnsecured</em> (boolean)
-</dt>
-<dd>
-<p>
-  (DEPRECATED) This attribute is now controlled by the requireEncryption attribute.
-</p>
-</dd>
-<dt class="hdlist1">
 <em>http</em> (boolean)
 </dt>
 <dd>
 <p>
-  Accept HTTP connections that can upgrade to AMQP over WebSocket
+  Accept HTTP connections that can upgrade to AMQP over WebSocket. Plain AMQP connections are not accepted on this listener.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -494,11 +508,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>on-demand</em>], default=<em>normal</em>)
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>], default=<em>normal</em>)
 </dt>
 <dd>
 <p>
-  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection. on-demand role has been deprecated.
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -606,19 +620,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>addr</em> (string, default=<em>127.0.0.1</em>)
-</dt>
-<dd>
-<p>
-  (DEPRECATED)IP address: ipv4 or ipv6 literal or a host name. This attribute has been deprecated. Use host instead
-</p>
-</dd>
-<dt class="hdlist1">
 <em>logMessage</em> (string, default=<em>none</em>)
 </dt>
 <dd>
 <p>
-  A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+  A comma separated list that indicates which components of the message should be logged (no spaces allowed between list components). Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. This log message is written to the MESSAGE logging module. In the <em>log</em> entity, set <em>module</em> property to MESSAGE or DEFAULT and <em>enable</em> to trace+ to see this log message
 </p>
 </dd>
 </dl></div>
@@ -674,15 +680,23 @@ listener {
 <div class="paragraph"><p>Entity type for address configuration.  This is used to configure the treatment of message-routed deliveries within a particular address-space.  The configuration controls distribution and address phasing.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>prefix</em> (string, required)
+<em>prefix</em> (string)
 </dt>
 <dd>
 <p>
-  The address prefix for the configured settings
+  The address prefix for the configured settings. Cannot be used with a pattern attribute.
 </p>
 </dd>
 <dt class="hdlist1">
-<em>distribution</em> (One of [<em>multicast</em>, <em>closest</em>, <em>balanced</em>], default=<em>balanced</em>)
+<em>pattern</em> (string)
+</dt>
+<dd>
+<p>
+  A wildcarded pattern for address matching. Incoming addresses are matched against this pattern. Matching addresses use the configured settings. The pattern consists of one or more tokens separated by a forward slash <em>/</em>. A token can be one of the following: a * character, a # character, or a sequence of characters that do not include /, *, or #.  The * token matches any single token.  The # token matches zero or more tokens. * has higher precedence than #, and exact match has the highest precedence. Cannot be used with a prefix attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>distribution</em> (One of [<em>multicast</em>, <em>closest</em>, <em>balanced</em>, <em>unavailable</em>], default=<em>balanced</em>)
 </dt>
 <dd>
 <p>
@@ -717,14 +731,22 @@ listener {
 </div>
 <div class="sect2">
 <h3 id="_linkroute">linkRoute</h3>
-<div class="paragraph"><p>Entity type for link-route configuration.  This is used to identify remote containers that shall be destinations for routed link-attaches.  The link-routing configuration applies to an addressing space defined by a prefix.</p></div>
+<div class="paragraph"><p>Entity type for link-route configuration.  This is used to identify remote containers that shall be destinations for routed link-attaches.  The link-routing configuration applies to an addressing space defined by a prefix or a pattern.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>prefix</em> (string, required)
+<em>prefix</em> (string)
 </dt>
 <dd>
 <p>
-  The address prefix for the configured settings
+  The address prefix for the configured settings. Cannot be used with the pattern attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>pattern</em> (string)
+</dt>
+<dd>
+<p>
+  A wildcarded pattern for address matching. Link addresses are matched against this pattern. Matching addresses use the configured settings. The pattern consists of one or more tokens separated by a forward slash <em>/</em>. A token can be one of the following: a * character, a # character, or a sequence of characters that do not include /, *, or #.  The * token matches any single token.  The # token matches zero or more tokens. * has higher precedence than #, and exact match has the highest precedence. Cannot be used with the prefix attribute.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -817,7 +839,7 @@ listener {
 </div>
 <div class="sect2">
 <h3 id="_console">console</h3>
-<div class="paragraph"><p>Start a websocket/tcp proxy and http file server to serve the web console</p></div>
+<div class="paragraph"><p>(DEPRECATED) Start a websocket/tcp proxy and http file server to serve the web console</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 <em>listener</em> (string)
@@ -836,7 +858,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>proxy</em> (string)
+<em>proxy</em> (string, required)
 </dt>
 <dd>
 <p>
@@ -844,7 +866,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>home</em> (string)
+<em>home</em> (string, required)
 </dt>
 <dd>
 <p>
@@ -949,158 +971,6 @@ listener {
 <dd>
 <p>
   A map where each key is a user group name and the value is a map of the corresponding settings for that group.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_container">container</h3>
-<div class="paragraph"><p>(DEPRECATED)Attributes related to the AMQP container. This entity has been deprecated. Use the router entity instead.</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<em>containerName</em> (string)
-</dt>
-<dd>
-<p>
-  The  name of the AMQP container.  If not specified, the container name will be set to a value of the container&#8217;s choosing.  The automatically assigned container name is not guaranteed to be persistent across restarts of the container.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>workerThreads</em> (integer, default=<em>4</em>)
-</dt>
-<dd>
-<p>
-  The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, etc.) .
-</p>
-</dd>
-<dt class="hdlist1">
-<em>debugDump</em> (path)
-</dt>
-<dd>
-<p>
-  A file to dump debugging information that can&#8217;t be logged normally.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>saslConfigPath</em> (path)
-</dt>
-<dd>
-<p>
-  Absolute path to the SASL configuration file.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>saslConfigName</em> (string)
-</dt>
-<dd>
-<p>
-  Name of the SASL configuration.  This string + <em>.conf</em> is the name of the configuration file.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_waypoint">waypoint</h3>
-<div class="paragraph"><p>(DEPRECATED) A remote node that messages for an address pass through. This entity has been deprecated. Use autoLink instead</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<em>address</em> (string, required)
-</dt>
-<dd>
-<p>
-  The AMQP address of the waypoint.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>connector</em> (string, required)
-</dt>
-<dd>
-<p>
-  The name of the on-demand connector used to reach the waypoint&#8217;s container.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>inPhase</em> (integer, default=<em>-1</em>)
-</dt>
-<dd>
-<p>
-  The phase of the address as it is routed <em>to</em> the waypoint.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>outPhase</em> (integer, default=<em>-1</em>)
-</dt>
-<dd>
-<p>
-  The phase of the address as it is routed <em>from</em> the waypoint.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_fixedaddress">fixedAddress</h3>
-<div class="paragraph"><p>(DEPRECATED) Establishes treatment for addresses starting with a prefix. This entity has been deprecated. Use address instead</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<em>prefix</em> (string, required)
-</dt>
-<dd>
-<p>
-  The address prefix (always starting with <em>/</em>).
-</p>
-</dd>
-<dt class="hdlist1">
-<em>phase</em> (integer)
-</dt>
-<dd>
-<p>
-  The phase of a multi-hop address passing through one or more waypoints.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>fanout</em> (One of [<em>multiple</em>, <em>single</em>], default=<em>multiple</em>)
-</dt>
-<dd>
-<p>
-  One of <em>multiple</em> or <em>single</em>.  Multiple fanout is a non-competing pattern.  If there are multiple consumers using the same address, each consumer will receive its own copy of every message sent to the address.  Single fanout is a competing pattern where each message is sent to only one consumer.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>bias</em> (One of [<em>closest</em>, <em>spread</em>], default=<em>closest</em>)
-</dt>
-<dd>
-<p>
-  Only if fanout is single.  One of <em>closest</em> or <em>spread</em>.  Closest bias means that messages to an address will always be delivered to the closest (lowest cost) subscribed consumer. Spread bias will distribute the messages across subscribers in an approximately even manner.
-</p>
-</dd>
-</dl></div>
-</div>
-<div class="sect2">
-<h3 id="_linkroutepattern">linkRoutePattern</h3>
-<div class="paragraph"><p>(DEPRECATED) An address pattern to match against link sources and targets to cause the router to link-route the attach across the network to a remote node. This entity has been deprecated. Use linkRoute instead</p></div>
-<div class="dlist"><dl>
-<dt class="hdlist1">
-<em>prefix</em> (string, required)
-</dt>
-<dd>
-<p>
-  An address prefix to match against target and source addresses.  This pattern must be of the form <em>&lt;text&gt;.&lt;text1&gt;.&lt;textN&gt;</em> or <em>&lt;text&gt;</em> or <em>&lt;text&gt;.</em> and matches any address that contains that prefix.  For example, if the prefix is set to org.apache (or org.apache.), any address that has the prefix <em>org.apache</em>  (like org.apache.dev) will match. Note that a prefix must not start with a (.), can end in a (.) and can contain zero or more dots (.).  Any characters between the dots are simply treated as part of the address
-</p>
-</dd>
-<dt class="hdlist1">
-<em>dir</em> (One of [<em>in</em>, <em>out</em>, <em>both</em>], default=<em>both</em>)
-</dt>
-<dd>
-<p>
-  Link direction for match: <em>in</em> matches only links inbound to the client; <em>out</em> matches only links outbound from the client; <em>both</em> matches any link.
-</p>
-</dd>
-<dt class="hdlist1">
-<em>connector</em> (string)
-</dt>
-<dd>
-<p>
-  The name of the on-demand connector used to reach the target node&#8217;s container.  If this value is not provided, it means that the target container is expected to be connected to a different router in the network.  This prevents links to a link-routable address from being misinterpreted as message-routing links when there is no route to a valid destination available.
 </p>
 </dd>
 </dl></div>

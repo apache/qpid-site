@@ -53,6 +53,8 @@ def setup_release_script():
     assert release_dir != ""
     assert checkout_dir is None or checkout_dir != ""
 
+    call_and_print_on_error("asciidoc --version")
+    call_and_print_on_error("asciidoctor --version")
     call_and_print_on_error("cmake --version")
     call_and_print_on_error("dot -V")
     call_and_print_on_error("doxygen --version")
