@@ -23,6 +23,8 @@ Qpid for Java offers an AMQP-fluent implementation of JMS and a message
 broker written in Java that stores, routes, and forwards messages
 using AMQP.
 
+**Note**: This release addresses security vulnerability [CVE-2017-15701]({{site_url}}/components/broker-j/security.html).
+
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
