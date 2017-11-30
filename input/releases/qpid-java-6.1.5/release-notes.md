@@ -38,5 +38,5 @@ documentation, see the [release overview](index.html).
 
  - [QPID-7836](https://issues.apache.org/jira/browse/QPID-7836) - NPE logged at WARN during management view of messages whilst consumer active
  - [QPID-7853](https://issues.apache.org/jira/browse/QPID-7853) - Message enqueued twice to the same queue leads to Broker failure
- - [QPID-7947](https://issues.apache.org/jira/browse/QPID-7947) - [Java Broker] [AMQP 1.0] Improve handling of empty and overlarge frames
+ - [QPID-7947](https://issues.apache.org/jira/browse/QPID-7947) - [CVE-2017-15701] [Java Broker] [AMQP 1.0] Improve handling of empty and overlarge frames
  - [QPID-7973](https://issues.apache.org/jira/browse/QPID-7973) - Table Name Prefix is set to NULL if no prefix is provided instead of empty String
