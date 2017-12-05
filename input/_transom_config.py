@@ -25,7 +25,7 @@ class _Release(object):
 broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "7.0.0")
 cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.37.0")
 dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.0.0")
-interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop", "0.1.0")
+interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-test", "0.1.0")
 java_release = _Release(site_url, "Qpid for Java", "qpid-java", "6.1.5")
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "0.27.0")
 jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.3.0")

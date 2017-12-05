@@ -21,11 +21,16 @@
 import os
 
 from generate import *
+from shutil import copyfile
 
 def gen_interop_test_docs(release, source_dir, output_dir):
-    pass
-
-## Now do stuff ##
+  # Copy QUICKSTART.md into the output directory
+  copyfile("%s/QUICKSTART.md"%(source_dir), "%s/QUICKSTART.md"%(output_dir))
+  # Generate docbook output
+  build_dir = make_temp_dir()
+  source_file = "{}/docs/users-guide.txt".format(source_dir)
+  output_file = "{}/users-guide.html.in".format(output_dir)
+  call(["asciidoc", "--doctype", "book", "--no-header-footer", "--out-file", output_file, source_file])
 
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
 source_dir = checkout_dir or fetch_source("interop-test", source_release)

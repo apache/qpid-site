@@ -95,6 +95,23 @@ You can find older versions with our
 
 ---
 
+## Messaging tools
+
+<div class="flex" markdown="1">
+<section markdown="1">
+
+### Qpid Interop Test
+
+ - [Overview]({{site_url}}/components/interop-test/index.html)
+ - [Quickstart guide]({{current_interop_test_release_url}}/QUICKSTART.html)
+ - [User guide]({{current_interop_test_release_url}}/users-guide.html)
+ - [Developer overview](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
+
+</section>
+</div>
+
+---
+
 ## More information
 
  - [Documentation snapshots]({{site_url}}/releases/snapshots.html)

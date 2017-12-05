@@ -120,23 +120,139 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 
 <div class="feature">
 
-<h2 id="amqp-interoperability-testing">AMQP interoperability testing</h2>
-
-<p>XXX</p>
+<p>A test suite that systematically tests <a href="/amqp/index.html">AMQP 1.0</a>
+clients against each other to ensure that they are working correctly
+with each other. The tests consist of matched client pairs to send and receive
+messages through an AMQP server (or combination of connected servers). These tests
+also check that the AMQP server is able to handle the clients and AMQP traffic.</p>
 
 </div>
 
 <h2 id="features">Features</h2>
 
+<div class="two-column">
+
 <ul>
-<li>XXX</li>
+<li>Tests all available clients against each other</li>
+<li>Tests AMQP clients against any AMQP server</li>
+<li>Tests AMQP types</li>
+<li>Tests large messages</li>
+<li>Tests JMS messages</li>
+<li>Tests JMS headers and properties</li>
 </ul>
+
+</div>
+
+<h2 id="supported-servers">Supported servers</h2>
+
+<p>Any servers that can handle <a href="/amqp/index.html">AMQP 1.0</a>
+will work. By default, the tests run against localhost using the default AMQP port (5672), but these can be
+changed to any valid IP address and port.</p>
+
+<h2 id="supported-clients">Supported clients</h2>
+
+<p>The following clients are currently supported:</p>
+
+<ul>
+<li><a href="/releases/qpid-proton-0.18.1/proton/c/api/files.html">Qpid Proton C++</a></li>
+<li><a href="/releases/qpid-proton-0.18.1/proton/python/api/index.html">Qpid Proton Python</a></li>
+<li><a href="/components/jms/index.html">Qpid JMS</a></li>
+<li><a href="https://github.com/grs/rhea">Rhea Javascript</a></li>
+<li><a href="https://github.com/Azure/amqpnetlite">AMQP .Net Lite</a></li>
+</ul>
+
+<h2 id="amqp-test-coverage">AMQP test coverage</h2>
+
+<div class="scroll">
+
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th colspan="4">Clients</th>
+    </tr>
+    <tr>
+      <th>Test</th>
+      <th>Qpid Proton C++</th>
+      <th>Qpid Proton Python</th>
+      <th>Rhea</th>
+      <th>AMQP .Net Lite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>AMQP types</th>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+    </tr>
+    <tr>
+      <th>Large AMQP messages</th>
+      <td>YES</td>
+      <td>YES</td>
+      <td></td>
+      <td>YES</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+<h2 id="jms-test-coverage">JMS test coverage</h2>
+
+<div class="scroll">
+
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th colspan="5">Clients</th>
+    </tr>
+    <tr>
+      <th>Test</th>
+      <th>Qpid JMS</th>
+      <th>Qpid Proton C++</th>
+      <th>Qpid Proton Python</th>
+      <th>Rhea</th>
+      <th>AMQP .Net Lite</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>JMS messages</th>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th>JMS headers & properties</th>
+      <td>YES</td>
+      <td>YES</td>
+      <td>YES</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
 
 <h2 id="documentation">Documentation</h2>
 
+<div class="two-column">
+
 <ul>
-<li>XXX</li>
+<li><a href="/releases/qpid-interop-test-0.1.0/QUICKSTART.html">Quickstart guide</a></li>
+<li><a href="/releases/qpid-interop-test-0.1.0/users-guide.html">User guide</a></li>
+<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0">Developer overview</a></li>
+<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Test_HOWTO.txt;hb=0.1.0">Test HOWTO</a></li>
+<li><a href="https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Shim_HOWTO.txt;hb=0.1.0">Shim HOWTO</a></li>
 </ul>
+
+</div>
 
 </div>
 
@@ -145,12 +261,15 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <h2 id="releases">Releases</h2>
 
 <ul>
-<li>XXX</li>
+<li><a href="/releases/qpid-interop-test-0.1.0">Qpid Interop Test 0.1.0</a> </li>
+<li><a href="/releases/index.html#past-releases">Past releases</a></li>
 </ul>
 
 <h2 id="issues">Issues</h2>
 
 <ul>
+<li><a href="https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12318621&amp;issuetype=1&amp;priority=3">Report a bug</a></li>
+<li><a href="https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12318621&amp;issuetype=4&amp;priority=3">Request an improvement</a></li>
 <li><form id="-jira-goto-form">Go to issue <input name="jira" value="QPIDIT-"/></form></li>
 <li><a href="https://issues.apache.org/jira/browse/QPIDIT">JIRA project page</a></li>
 </ul>
@@ -158,13 +277,8 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <h2 id="source-code">Source code</h2>
 
 <ul>
+<li><a href="https://github.com/apache/qpid-interop-test">Browse via GitHub</a></li>
 <li><a href="https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git">Git clone URL</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-
-<ul>
-<li>XXX</li>
 </ul>
 
 </div>

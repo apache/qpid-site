@@ -536,6 +536,9 @@ def call_and_print_on_error(command, *args, **kwargs):
     except CalledProcessError:
         eprint(read(output_file), end="")
         raise
+    except OSError as e:
+        eprint("\"{0}\": {1}".format(command, e))
+        raise
 
 _child_processes = list()
 

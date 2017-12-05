@@ -69,11 +69,11 @@ and
 [MD5](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.md5),
 [SHA512](http://www.apache.org/dist/qpid/broker-j/{{current_broker_j_release}}/apache-qpid-broker-j-{{current_broker_j_release}}-src.tar.gz.sha512)\]
 
-;; ## Other components
-;;
-;; | Content | Download | Verify |
-;; | ------- | -------- | ------ |
-;; | [Interop Test]({{site_url}}/components/interop-test/index.html) | [qpid-interop-test-{{current_interop_test_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.asc), [SHA](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.sha) |
+## Messaging tools
+
+| Content | Download | Verify |
+| ------- | -------- | ------ |
+|[Qpid Interop Test]({{site_url}}/components/interop-test/index.html) | [qpid-interop-test-{{current_interop_test_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz) | [ASC](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.asc), [MD5](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.md5), [SHA512](http://www.apache.org/dist/qpid/interop-test/{{current_interop_test_release}}/qpid-interop-test-{{current_interop_test_release}}.tar.gz.sha512) |
 
 ## Verify what you download
 

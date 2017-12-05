@@ -69,6 +69,10 @@ connecting clients, brokers, and standalone services.
  - [C++ broker](cpp-broker/index.html) - A native-code AMQP message broker
  - [Dispatch router](dispatch-router/index.html) - An AMQP router for scalable messaging interconnect
 
+## Messaging tools
+
+- [Qpid Interop Test](interop-test/index.html) - An AMQP 1.0 interoperability test suite
+
 ## Compatibility
 
 <div class="scroll" markdown="1">
@@ -81,6 +85,7 @@ connecting clients, brokers, and standalone services.
 | [Qpid JMS]({{site_url}}/components/jms/index.html) | Java | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
 | [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | C++, Perl, Python, Ruby, .NET | Linux, Windows | 1.0, 0-10 |
 | [Qpid Proton]({{site_url}}/proton/index.html) | C, C++, Java, JavaScript, Python, Ruby | JVM, Linux, Windows | 1.0 |
+| [Qpid Interop Test](interop-test/index.html) | - | Linux | 1.0 |
 
 Any Qpid components that share an AMQP version can interoperate.  For
 instance, the brokers are implemented in C++ and Java respectively,
