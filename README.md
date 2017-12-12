@@ -1,15 +1,15 @@
 # Qpid Site
 
-## Setup your environment
+## Dependencies
 
-To setup paths in your environment, source the `config.sh` script.
-
-    ~$ cd qpid-site/
-    [qpid-site]$ source config.sh
+ - Curl
+ - Git
+ - GNU Find
+ - GNU Make
+ - Python 2.7
 
 ## Project layout
 
-    config.sh                     # Sets up your project environment
     Makefile                      # Defines the make targets
     python/                       # Python library code; used by scripts
     scripts/                      # Scripts called by the make rules
@@ -46,19 +46,21 @@ These are the important ones:
 
 3. To look at the result in your browser, navigate to
 
-        file:///$somepath/site/output/somepage.html
+        file:/<some-path>/qpid-site/output/somepage.html
 
 ## Render transformations
 
-The render step takes files under `input/` and reproduces them under
-`output/`.  The following transformations are applied in the process:
+The render operation takes files under `input/` and reproduces them
+under `output/`.  The following transformations are applied in the
+process.
 
- - `.html.in` files are wrapped in the site template and copied
+ - `.html.in` files are wrapped in the standard page template and
+   copied.
  - `.md` (Markdown) files are converted to HTML, wrapped in the site
-   template, and copied
- - All other files are simply copied
+   template, and copied.
+ - All other files are simply copied.
  - All Markdown, HTML, Javascript, and CSS files undergo substitution
-   for `{{placeholders}}`
+   for `{{placeholders}}`.
 
 ## Markdown syntax
 
@@ -111,9 +113,8 @@ working.
 
 ## Generating release content
 
-Most of the site content is written by human beings.  Release content,
-however, is automated.  Use the following commands to generate content
-for a new release.
+Content for new releases is generated using scripts.  Use one of the
+following commands.
 
     # Usage: make gen-$module-release RELEASE=$VERSION [CHECKOUT_DIR=$DIR]
 
@@ -151,7 +152,7 @@ parameter to the location of a local Subversion checkout, the scripts
 will instead use the provided content.
 
 When you add release content, you should also update the following
-files:
+files.
 
     input/_transom_config.py   # Update the current release pointer
     input/releases/index.md    # Add current release, move the previous
@@ -169,8 +170,8 @@ dependencies on Fedora or RHEL.
 ## Publishing your work
 
 Qpid uses gitpubsub to send new content to the Qpid website.  Any file
-committed under the 'content' dir on the 'asf-site' branch of the
-https://git-wip-us.apache.org/repos/asf/qpid-site.git repo is
+committed under the `content/` directory on the `asf-site` branch of
+the https://git-wip-us.apache.org/repos/asf/qpid-site.git repo is
 automatically propagated to the live site.  `make publish` renders to
 this same `content/` directory.
 
