@@ -86,7 +86,7 @@ the [`KEYS`](https://www.apache.org/dist/qpid/KEYS) file as well as the
 using one of the following sets of commands.
 
     % gpg --import KEYS
-    % gpg --verify <artifact-name>.asc
+    % gpg --verify <artifact-name>.asc <artifact-name>
 
     % pgpk -a KEYS
     % pgpv <artifact-name>.asc
