@@ -34,14 +34,14 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker for Java, Qpid JMS for AMQP 0-9-1/0-10, Qpid JCA | [qpid-java-6.1.1.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.sha1) |
+| Qpid Broker for Java, Qpid JMS for AMQP 0-9-1/0-10, Qpid JCA | [qpid-java-6.1.1.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/java/6.1.1/qpid-java-6.1.1.tar.gz.sha1) |
 
 ## Binaries
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker for Java | [qpid-broker-6.1.1-bin.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.sha1) |
-| Qpid JMS for AMQP 0-9-1/0-10 | [qpid-client-6.1.1-bin.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.sha1) |
+| Qpid Broker for Java | [qpid-broker-6.1.1-bin.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-broker-6.1.1-bin.tar.gz.sha1) |
+| Qpid JMS for AMQP 0-9-1/0-10 | [qpid-client-6.1.1-bin.tar.gz](http://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/java/6.1.1/binaries/qpid-client-6.1.1-bin.tar.gz.sha1) |
 
 ## Components
 

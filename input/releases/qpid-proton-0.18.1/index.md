@@ -33,7 +33,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Proton | [qpid-proton-0.18.1.tar.gz](http://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.sha512) |
+| Qpid Proton | [qpid-proton-0.18.1.tar.gz](http://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/proton/0.18.1/qpid-proton-0.18.1.tar.gz.sha512) |
 
 ## Documentation
 

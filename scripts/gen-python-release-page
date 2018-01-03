@@ -111,13 +111,15 @@ def gen_release_page(release, issues_release, source_release, release_dir):
 
     source_artefacts = list()
     source_artefact_url = "http://archive.apache.org/dist/qpid/python/{}/{}"
+    source_artefact_url_https = "https://archive.apache.org/dist/qpid/python/{}/{}"
 
     for artefact, summary in source_artefact_records:
         artefact = artefact.format(release)
         artefact_url = source_artefact_url.format(release, artefact)
-        asc_url = "{}.asc".format(artefact_url)
-        md5_url = "{}.md5".format(artefact_url)
-        sha512_url = "{}.sha512".format(artefact_url)
+        artefact_url_https = source_artefact_url_https.format(release, artefact)
+        asc_url = "{}.asc".format(artefact_url_https)
+        md5_url = "{}.md5".format(artefact_url_https)
+        sha512_url = "{}.sha512".format(artefact_url_https)
 
         args = summary, artefact, artefact_url, asc_url, md5_url, sha512_url
         row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)

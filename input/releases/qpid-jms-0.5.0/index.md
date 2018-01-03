@@ -43,8 +43,8 @@ files you download.
 
 | Content | Download | Verify |
 | ------- | -------- | ------ |
-| Qpid JMS binaries | [apache-qpid-jms-0.5.0-bin.tar.gz](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.sha1) |
-| Qpid JMS source code | [apache-qpid-jms-0.5.0-src.tar.gz](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.sha1) |
+| Qpid JMS binaries | [apache-qpid-jms-0.5.0-bin.tar.gz](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-bin.tar.gz.sha1) |
+| Qpid JMS source code | [apache-qpid-jms-0.5.0-src.tar.gz](http://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/jms/0.5.0/apache-qpid-jms-0.5.0-src.tar.gz.sha1) |
 
 The client is also available [via Maven]({{site_url}}/maven.html).
 ## Documentation

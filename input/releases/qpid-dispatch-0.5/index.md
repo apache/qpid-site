@@ -34,7 +34,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Dispatch router | [qpid-dispatch-0.5.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz) | [PGP](http://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz.asc) |
+| Dispatch router | [qpid-dispatch-0.5.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz) | [PGP](https://archive.apache.org/dist/qpid/dispatch/0.5/qpid-dispatch-0.5.tar.gz.asc) |
 
 ## Documentation
 

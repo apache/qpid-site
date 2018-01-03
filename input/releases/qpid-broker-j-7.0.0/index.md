@@ -34,14 +34,14 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-src.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-src.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/broker-j/7.0.0/apache-qpid-broker-j-7.0.0-src.tar.gz.sha512) |
 
 ## Binaries
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-bin.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.sha512) |
-| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-bin.zip](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip) | [ASC](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.asc), [MD5](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.md5), [SHA512](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-bin.tar.gz](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.tar.gz.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-7.0.0-bin.zip](http://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip) | [ASC](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.asc), [MD5](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.md5), [SHA512](https://archive.apache.org/dist/qpid/broker-j/7.0.0/binaries/apache-qpid-broker-j-7.0.0-bin.zip.sha512) |
 
 ## Documentation
 

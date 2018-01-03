@@ -41,7 +41,7 @@ files you download.
 
 | Content | Download | Signature |
 | ------- | -------- | --------- |
-| Dispatch router | [qpid-dispatch-0.4.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.4/qpid-dispatch-0.4.tar.gz) | [PGP](http://archive.apache.org/dist/qpid/dispatch/0.4/qpid-dispatch-0.4.tar.gz.asc) |
+| Dispatch router | [qpid-dispatch-0.4.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.4/qpid-dispatch-0.4.tar.gz) | [PGP](https://archive.apache.org/dist/qpid/dispatch/0.4/qpid-dispatch-0.4.tar.gz.asc) |
 
 
 ## Documentation

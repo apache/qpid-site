@@ -33,8 +33,8 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Proton-J (binary) | [apache-qpid-proton-j-0.24.0-bin.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.sha512) |
-| Qpid Proton-J (source release) | [apache-qpid-proton-j-0.24.0-src.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.sha512) |
+| Qpid Proton-J (binary) | [apache-qpid-proton-j-0.24.0-bin.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-bin.tar.gz.sha512) |
+| Qpid Proton-J (source release) | [apache-qpid-proton-j-0.24.0-src.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.24.0/apache-qpid-proton-j-0.24.0-src.tar.gz.sha512) |
 
 Proton-J is also available [via Maven]({{site_url}}/maven.html).
 

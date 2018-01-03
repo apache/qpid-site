@@ -41,7 +41,7 @@ files you download.
 
 | Content | Download | Verify |
 | ------- | -------- | ------ |
-| Qpid Proton | [qpid-proton-0.9.tar.gz](http://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.md5), [SHA1](http://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.sha) |
+| Qpid Proton | [qpid-proton-0.9.tar.gz](http://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.md5), [SHA1](https://archive.apache.org/dist/qpid/proton/0.9/qpid-proton-0.9.tar.gz.sha) |
 
 ## Documentation
 

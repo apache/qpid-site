@@ -34,7 +34,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Dispatch router | [qpid-dispatch-0.8.0.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz) | [ASC](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.asc), [MD5](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.md5), [SHA512](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.sha) |
+| Dispatch router | [qpid-dispatch-0.8.0.tar.gz](http://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/dispatch/0.8.0/qpid-dispatch-0.8.0.tar.gz.sha) |
 
 ## Documentation
 

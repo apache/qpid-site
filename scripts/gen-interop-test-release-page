@@ -109,7 +109,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     for artifact, summary in download_records:
         artifact = artifact.format(release)
         artifact_url = source_artifact_url.format(release, artifact)
-        sig_url = "http://archive.apache.org/dist/qpid/interop-test/{}/{}.asc".format(release, artifact)
+        sig_url = "https://archive.apache.org/dist/qpid/interop-test/{}/{}.asc".format(release, artifact)
 
         args = summary, artifact, artifact_url, sig_url
         downloads.append("| {} | [{}]({}) | [PGP]({}) |".format(*args))
