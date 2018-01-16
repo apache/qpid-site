@@ -49,6 +49,7 @@ In addition, the Messenger API (in any binding) is now deprecated.  We encourage
  - [PROTON-1684](https://issues.apache.org/jira/browse/PROTON-1684) - Change build for updated minimum tool versions
  - [PROTON-1687](https://issues.apache.org/jira/browse/PROTON-1687) - Improve efficiency of the transport output buffer
  - [PROTON-1693](https://issues.apache.org/jira/browse/PROTON-1693) - [ruby] Replace C-reactor based code with new Container
+ - [PROTON-1702](https://issues.apache.org/jira/browse/PROTON-1702) - Fix epoll proactor listener for rearming and overflow per socket
  - [PROTON-1707](https://issues.apache.org/jira/browse/PROTON-1707) - Remove extraneous directories in C++ binding source
  - [PROTON-1713](https://issues.apache.org/jira/browse/PROTON-1713) - Various doc fixes
 
@@ -76,3 +77,4 @@ In addition, the Messenger API (in any binding) is now deprecated.  We encourage
  - [PROTON-1711](https://issues.apache.org/jira/browse/PROTON-1711) - SSL_IMPL none SASL_IMPL none build attempts to build c-ssl-tests and fails
  - [PROTON-1717](https://issues.apache.org/jira/browse/PROTON-1717) - [C proactor] Allow initialization of transport and connection before binding
  - [PROTON-1720](https://issues.apache.org/jira/browse/PROTON-1720) - [ruby] support for SSL configuration via connection options
+ - [PROTON-1725](https://issues.apache.org/jira/browse/PROTON-1725) - [ruby] broker example does not work if run outside home directory
