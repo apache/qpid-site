@@ -22,6 +22,8 @@
 Qpid Broker-J is a message broker written in Java that stores, routes,
 and forwards messages using AMQP.
 
+**Note**: This release addresses security vulnerability CVE-2018-1298.
+
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
@@ -41,7 +43,7 @@ documentation, see the [release overview](index.html).
  - [QPID-8030](https://issues.apache.org/jira/browse/QPID-8030) - [Broker-J] Message conversion from 0-8 to 1.0 should preserve binary correlationId
  - [QPID-8040](https://issues.apache.org/jira/browse/QPID-8040) - [Broker-J] Uncaught java.nio.channels.CancelledKeyException seen during Broker shutdown
  - [QPID-8042](https://issues.apache.org/jira/browse/QPID-8042) - [Broker-J][AMQP 1.0] Support for pipelined connection open containing SASL frames broken
- - [QPID-8046](https://issues.apache.org/jira/browse/QPID-8046) - [Broker-J] Allow SASL mechanisms PLAIN and XOAUTH2 to not require initial response
+ - [QPID-8046](https://issues.apache.org/jira/browse/QPID-8046) - [CVE-2018-1298][Broker-J] Allow SASL mechanisms PLAIN and XOAUTH2 to not require initial response
  - [QPID-8047](https://issues.apache.org/jira/browse/QPID-8047) - [Broker-J][AMQP 0-10] NPE on receiving session.detach for unknown session
  - [QPID-8049](https://issues.apache.org/jira/browse/QPID-8049) - Non-free ICC profiles
  - [QPID-8058](https://issues.apache.org/jira/browse/QPID-8058) - [Broker-J][AMQP 1.0] Broker does not respond to drain request from consumer of management temporary destination
