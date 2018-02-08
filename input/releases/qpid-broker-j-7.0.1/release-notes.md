@@ -45,7 +45,7 @@ documentation, see the [release overview](index.html).
  - [QPID-8047](https://issues.apache.org/jira/browse/QPID-8047) - [Broker-J][AMQP 0-10] NPE on receiving session.detach for unknown session
  - [QPID-8049](https://issues.apache.org/jira/browse/QPID-8049) - Non-free ICC profiles
  - [QPID-8058](https://issues.apache.org/jira/browse/QPID-8058) - [Broker-J][AMQP 1.0] Broker does not respond to drain request from consumer of management temporary destination
- - [QPID-8060](https://issues.apache.org/jira/browse/QPID-8060) - [Broker-J] [AMQP 0-8..0-9-1] Declaring queue that specifies an alternate binding that does not exist crashes the Broker
+ - [QPID-8060](https://issues.apache.org/jira/browse/QPID-8060) - [Broker-J] [AMQP 0-8..0-9-1] Declaring queue with an alternate binding that does not exist crashes the Broker
  - [QPID-8061](https://issues.apache.org/jira/browse/QPID-8061) - [Broker-J] [AMQP 0-8..0-9-1] Declaring exchange with not existing alternate binding crashes the Broker
  - [QPID-8062](https://issues.apache.org/jira/browse/QPID-8062) - [Broker-J][AMQP 1.0] Fix handling of routing errors when target destination cannot route received message
  - [QPID-8066](https://issues.apache.org/jira/browse/QPID-8066) - [Broker-J] Virtual host logger rules are left over in configuration store after deletion of virtual host logger on provided virtual host causing virtualhost restart failure
@@ -55,3 +55,7 @@ documentation, see the [release overview](index.html).
  - [QPID-8081](https://issues.apache.org/jira/browse/QPID-8081) - [Broker-J] FileLogger with "roll on restart" set to "true" does not roll log file on broker restart when "roll daily" is "true"
  - [QPID-8087](https://issues.apache.org/jira/browse/QPID-8087) - [Broker-J][BDB] [HA] Virtualhostnode fails to go into ERROR state following failure to recover
  - [QPID-8092](https://issues.apache.org/jira/browse/QPID-8092) - [Broker-J][Web Management Console] Fix label for max history of file loggers
+
+## Tasks
+
+ - [QPID-8094](https://issues.apache.org/jira/browse/QPID-8094) - [Broker-J] Release Qpid Broker-J 7.0.1
