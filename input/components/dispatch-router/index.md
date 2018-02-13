@@ -79,4 +79,8 @@ they be clients, brokers or other AMQP-enabled services.  More about
  - [Browse via GitHub](https://github.com/apache/qpid-dispatch)
  - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git)
 
+## Resources
+
+ - [Security](security.html)
+
 </div>

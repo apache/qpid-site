@@ -31,6 +31,7 @@ Qpid components are detailed at:
 
  - [Broker-J]({{site_url}}/components/broker-j/security.html)
  - [C++ broker]({{site_url}}/components/cpp-broker/security.html)
+ - [Dispatch]({{site_url}}/components/dispatch-router/security.html) 
 
 </section>
 <section markdown="1">

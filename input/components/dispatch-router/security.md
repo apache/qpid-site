@@ -17,15 +17,11 @@
 ;; under the License.
 ;;
 
-# Qpid Dispatch 0.8.1 Release Notes
+# Security
 
-Dispatch is a lightweight AMQP message router library. More about
-[Qpid
-Dispatch]({{site_url}}/components/dispatch-router/index.html).
+| CVE-ID | Severity | Affected versions | Fixed versions | Summary |
+| ------ | -------- | ----------------- | -------------- | ------- |
+| [CVE-2017-15699]({{site_url}}/cves/CVE-2017-15699.html) | Important | 0.7.0, 0.8.0 | 0.8.1, 1.0.0 | Denial of service |
 
-For more information about this release, including download links and
-documentation, see the [release overview](index.html).
-
-## Bugs fixed
-
- - [DISPATCH-924](https://issues.apache.org/jira/browse/DISPATCH-924) - Denial of Service Vulnerability when specially crafted frame is sent to the Router
+See the main [security]({{site_url}}/security.html) page for general
+information and details for other components.
