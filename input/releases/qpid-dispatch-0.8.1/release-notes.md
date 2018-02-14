@@ -26,6 +26,7 @@ Dispatch]({{site_url}}/components/dispatch-router/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+
 ## Bugs fixed
 
- - [DISPATCH-924](https://issues.apache.org/jira/browse/DISPATCH-924) - Denial of Service Vulnerability when specially crafted frame is sent to the Router
+ - [DISPATCH-924](https://issues.apache.org/jira/browse/DISPATCH-924) - [CVE-2017-15699] Denial of Service Vulnerability when specially crafted frame is sent to the Router

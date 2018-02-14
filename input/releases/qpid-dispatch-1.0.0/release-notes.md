@@ -125,6 +125,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-870](https://issues.apache.org/jira/browse/DISPATCH-870) - connection improperly reopened from closed connector
  - [DISPATCH-871](https://issues.apache.org/jira/browse/DISPATCH-871) - Performance issues with large messages
  - [DISPATCH-873](https://issues.apache.org/jira/browse/DISPATCH-873) - new routes calculated wrongly after connector deletion
+ - [DISPATCH-924](https://issues.apache.org/jira/browse/DISPATCH-924) - [CVE-2017-15699] Denial of Service Vulnerability when specially crafted frame is sent to the Router
 
 ## Tasks
 
