@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>6.3.&#160;REST API - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-7.0.2/index.html">Qpid Broker-J 7.0.2</a></li><li><a href="/releases/qpid-broker-j-7.0.2/book/index.html">Apache Qpid Broker-J</a></li><li>6.3.&#160;REST API</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">6.3.&#160;REST API</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;6.&#160;Management Channels</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-AMQP-Intrinstic.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Management-Channel-REST-API"></a>6.3.&#160;REST API</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Introduction"></a>6.3.1.&#160;Introduction</h3></div></div></div><p>This section describes the REST API provided by the Apache Qpid Broker-J. The REST API is intended
+      for use by developers who wish to automate the management or monitoring of the Broker. It
+      is also very useful for adhoc monitoring on the command line using tools such as
+        <code class="literal">curl</code>.</p><p>The REST API provides access to all of the Broker's entities using hierarchical paths
+      expressed by the URI. Responses are returned in JSON format.</p><p>The <code class="literal">GET</code> method request retrieves information about an object, the
+        <code class="literal">DELETE</code> method requests the removal of one, and the <code class="literal">PUT</code>
+      or <code class="literal">POST</code> methods perform updates or create new objects. The
+        <code class="literal">POST</code> method is also used to invoke operations.</p><p>The REST API is versioned with the version number embedded within the URI. The general form
+      of the URI is <code class="literal">/api/&lt;version&gt;</code> where &lt;version&gt; is a dot separated
+      major and minor model version prefixed with "v", for example, "v6.1" (without the quotation marks).
+      For convenience the alias <code class="literal">latest</code> (<code class="literal">/api/latest</code>) signifies the
+      latest supported version.</p><p>There are also some ancillary services under URI <code class="literal">/service</code> used for
+      authentication and logout.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-APIDocs"></a>6.3.2.&#160;REST API documentation</h3></div></div></div><p>REST API documentation is available on-line from any Broker at location
+        <code class="literal">/apidocs</code>. It is also linked from the menu of the Web Management Console.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Authentication"></a>6.3.3.&#160;Authentication</h3></div></div></div><p>Before you can use the REST API, you must authenticate. Authentication decisions are made
+      by the <a class="link" href="Java-Broker-Concepts-Authentication-Providers.html" title="4.9.&#160;Authentication Providers">authentication
+        provider</a> associated with HTTP <a class="link" href="Java-Broker-Concepts-Ports.html" title="4.8.&#160;Ports">port</a>
+      on which you connect.</p><p>You may authenticate using <a class="link" href="https://www.ietf.org/rfc/rfc4422.txt" target="_top">SASL</a>
+        (<code class="literal">/service/sasl</code>) or <a class="link" href="https://tools.ietf.org/html/rfc2617" target="_top">HTTP
+        Basic Authentication</a>. The latter is convienent when using tools such as
+        <code class="literal">curl</code> on the command line. This is illustrated in the examples
+      below.</p><p>For SASL authentication use a <code class="literal">GET</code> request to
+        <code class="literal">/service/sasl</code> to get a list of supported SASL mechanisms, and use
+        <code class="literal">PUT</code> to the same URL to perform the SASL negotiation.</p><p>It is possible to end an authenticated session using
+      <code class="literal">/service/logout</code>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Create"></a>6.3.4.&#160;Configured Object creation</h3></div></div></div><p>Methods PUT or POST can be used to create ConfiguredObject.</p><p> ConfiguredObject can be created by submitting PUT request against ConfiguredObject full
+      URI (the one ending with configured object name) or by submitting PUT/POST request against
+      parent URI. The request encoding should be json (application/json) and request body should
+      contain attributes values in json format. On successful completion of operation a response
+      should be returned having response status code set to 201 and response header "Location" set
+      to ConfiguredObject full URI. If object with a such name/id already exist and POST/PUT
+      requests is made against parent URI, an error response should be returned having response code
+      409 (conflict) and body containing the json with the reason of operation failure. If object
+      with a such name/id already exist and and PUT request is made against ConfiguredObject full
+      URI, then ConfiguredObject update should be performed and http status code 200 should be
+      returned. If ConfiguredObject cannot be created because of validation failure(s) the response
+      should have http status code set 422 (Unprocessible Entity) and body should contain json with
+      the reason of operation failure. On any other failure to create ConfiguredObject the response
+      should have status code set to 400 (Bad Request) and payload should contain a json with error
+      explaining the exact reason of failure. </p><div class="example"><a id="d0e2073"></a><p class="title"><strong>Example&#160;6.1.&#160;Examples of REST calls for Queue creation</strong></p><div class="example-contents"><p> To create Queue with name "my-queue" on a virtual host with name "vh" (which is
+        contained within virtual host node with name "vhn") either of the following requests should
+        be made: </p><pre class="screen">PUT /api/latest/queue/vhn/vh HTTP/1.1</pre><pre class="screen">POST /api/latest/queue/vhn/vh HTTP/1.1</pre><pre class="screen">PUT /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><p> Response code 201 should be returned on successful queue creation. Response header
+        "Location" should be set to "/api/latest/queue/test/my-queue". If queue with name "my-queue"
+        already exists and either of 2 first requests above were used, an error response with
+        response code 409 (conflict) and body containing json with message that queue exists should
+        be returned. If queue with name "my-queue" exists and last request is used, then Queue
+        update should occur. </p></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Update"></a>6.3.5.&#160;Configured Object update</h3></div></div></div><p>Methods PUT or POST can be used to update ConfiguredObject.</p><p> ConfiguredObject can be updated by submitting PUT or POST request against
+      ConfiguredObject full URI (the one ending with configured object name). The request encoding
+      should be json (application/json) and request body should contain a ConfiguredObject json
+      (with all or only modified attributes). On successful completion of operation a response code
+      200 should be returned. If ConfiguredObject does not exists and PUT method is used, such
+      object should be created (201 response will be returned in this case). If ConfiguredObject
+      does not exists and POST method is used, an error response should be returned having response
+      status code 404 and payload with json explaining the problem. If any error occur on update, a
+      response with response code 400 or 422 or 404 should be sent back to the client containing
+      json body with error details. </p><div class="example"><a id="d0e2093"></a><p class="title"><strong>Example&#160;6.2.&#160;Examples of REST calls for Queue update</strong></p><div class="example-contents"><p>To update Queue with name "my-queue" on a virtual host with name "vh" (contained in
+        virtual host node with name "vhn") either of the following requests can be made:</p><pre class="screen">POST /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><pre class="screen">POST /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Delete"></a>6.3.6.&#160;Configured Object deletion</h3></div></div></div><p>Method DELETE can be used to delete ConfiguredObject. Alternatively, ConfiguredObject can
+      be deleted with update request having desiredState attribute set to value "DELETED". POST or
+      PUT methods can be used in this case.</p><p>On successful completion of operation a response code 200 should be returned.</p><p>With DELETE method object ConfiguredObject in following ways:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>by submitting DELETE request using ConfiguredObject full URI (the one ending with
+          configured object name)</p></li><li class="listitem"><p>by submitting DELETE request using parent URI and providing parameters having the same
+          names as children attributes, for example, id, name, etc. Multiple children can be deleted
+          in a such way. Many "id" parameters can be specified in such requests. Only children with
+          matching attribute values will be deleted.</p></li></ul></div><div class="example"><a id="d0e2118"></a><p class="title"><strong>Example&#160;6.3.&#160;Examples of REST calls for Queue deletion</strong></p><div class="example-contents"><p>To delete Queue with name "my-queue" on a virtual host with name "vh" (contained in
+        virtual host node with name "vhn") either of the following requests can be made:</p><pre class="screen">DELETE /api/latest/queue/vhn/vh/my-queue HTTP/1.1</pre><pre class="screen">DELETE /api/latest/queue/vhn/vh?name=my-queue HTTP/1.1</pre><pre class="screen">DELETE /api/latest/queue/vhn/vh?id=real-queue-id HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Get"></a>6.3.7.&#160;Retrieving Configured Object details</h3></div></div></div><p>Method GET is used to retrieve an object's attributes values and statistics.</p><p>To retrieve a single object, use its full URI. For instance, to retrieve a single queue:</p><pre class="screen">GET /api/latest/queue/vhn/vh/my-queue</pre><p>To retrieve all objects beneath a parent, pass the parent's URI. For instance, to retrieve
+      all queues beneath the virtualhost called <code class="literal">vh</code>. A collection will be returned.
+    </p><pre class="screen">GET /api/latest/queue/vhn/vh</pre><p>Request parameters (with the same name as an attribute) are used to filter the returned collection.
+      For instance, to filter those queues of type <code class="literal">standard</code>:</p><pre class="screen">GET /api/latest/queue/vhn/vh?type=standard</pre><p>Additional parameters supported in GET requests:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">depth</span></dt><dd><p>To restrict the depth of hierarchy of configured objects to return in
+            response</p></dd><dt><span class="term">actuals</span></dt><dd><p>If set to "true" attribute actual values are returned instead of effective</p></dd><dt><span class="term">excludeInheritedContext</span></dt><dd><p>If set to "false" the inherited context is included from the object's ancestors. Default is true.</p></dd><dt><span class="term">oversize</span></dt><dd><p>Sets the maximum length for values of over-sized attributes to trim</p></dd><dt><span class="term">extractInitialConfig</span></dt><dd><p>If set to "true", the returned json can be used as initial configuration.</p></dd></dl></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Operations"></a>6.3.8.&#160;Configured Object operations</h3></div></div></div><p>Method POST is used to invoke Configured Objects operations. Some operations support
+      parameters. Pass parameters using a JSON request body containing a map with a map entry for
+      each parameter. </p><div class="example"><a id="d0e2190"></a><p class="title"><strong>Example&#160;6.4.&#160;Example REST call invoking the operation clear queue</strong></p><div class="example-contents"><p>To clear the queue with name "my-queue" on a virtual host with name "vh".</p><pre class="screen">POST api/latest/queue/vhn/vh/my-queue/clearQueue HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Status-Codes"></a>6.3.9.&#160;HTTP status codes returned by REST interfaces</h3></div></div></div><div class="table"><a id="d0e2200"></a><p class="title"><strong>Table&#160;6.1.&#160;HTTP status codes returned by REST interfaces</strong></p><div class="table-contents"><table border="1" summary="HTTP status codes returned by REST interfaces"><colgroup><col /><col /></colgroup><thead><tr><th>Status code</th><th>Description</th></tr></thead><tbody><tr><td>
+              <p>200</p>
+            </td><td>
+              <p>REST request is successfully completed. This status code can be returned by
+                update, delete and get requests.</p>
+            </td></tr><tr><td>
+              <p>201</p>
+            </td><td>
+              <p>New configured object is created. It is returned by REST PUT and POST requests
+                for creation of configured objects.</p>
+            </td></tr><tr><td>
+              <p>400</p>
+            </td><td>
+              <p>REST request cannot be performed due to errors in request. It can be returned
+                from create, update and delete requests. The details of a problem are provided in
+                the response payload in json format.</p>
+            </td></tr><tr><td>
+              <p>401</p>
+            </td><td>
+              <p>The request requires user authentication</p>
+            </td></tr><tr><td>
+              <p>403</p>
+            </td><td>
+              <p>Execution of request is not allowed due to failure to authorize user
+                operation.</p>
+            </td></tr><tr><td>
+              <p>404</p>
+            </td><td>
+              <p> The requested configured object cannot be found. This status code can be
+                returned from POST update requests if configured object does not exist. The reason
+                for the status code is provided in the response payload in json format. </p>
+            </td></tr><tr><td>
+              <p>409</p>
+            </td><td>
+              <p>The request can not be performed because its execution can create conflicts in
+                the broker. This status code can be returned from POST/PUT create requests against
+                parent URI if configured object with requested name or id already exists. The status
+                code 409 can also be returned if removal or update of configured object can violate
+                system integrity. The reason for the status code is provided in the response payload
+                in json format. </p>
+            </td></tr><tr><td>
+              <p>422</p>
+            </td><td>
+              <p>The request can not be performed because provided information either incomplete
+                or invalid. This status code can be returned from create or update requests. The
+                reason for the status code is provided in the response payload in json
+                format.</p>
+            </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-Examples"></a>6.3.10.&#160;Examples of REST requests with curl</h3></div></div></div><div class="example"><a id="d0e2302"></a><p class="title"><strong>Example&#160;6.5.&#160;Examples of queue creation using curl (authenticating as user admin):</strong></p><div class="example-contents"><pre class="programlisting">
+#create a durable queue
+curl --user admin -X PUT  -d '{"durable":true}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+#create a durable priority queue
+curl --user admin -X PUT  -d '{"durable":true,"type":"priority"}' http://localhost:8080/api/latest/queue/&lt;vhostnode name&gt;/&lt;vhostname&gt;/&lt;queuename&gt;
+            </pre></div></div><br class="example-break" /><p> NOTE: These curl examples utilise an unsecured HTTP transport. To use the examples it is
+      first necessary enable Basic authentication for HTTP within the HTTP Management Configuration
+      (it is off by default). For details see <a class="xref" href="Java-Broker-Management-Managing-Plugin-HTTP.html" title="7.15.&#160;HTTP Plugin">Section&#160;7.15, &#8220;HTTP Plugin&#8221;</a>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-Query-API"></a>6.3.11.&#160;Query API</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Channel-REST-Query-API-Introduction"></a>6.3.11.1.&#160;Introduction</h4></div></div></div><p>The <span class="emphasis"><em>Qpid Broker-J</em></span> provides a powerful feature called
+            the <span class="emphasis"><em>Query API</em></span>. This allows the retrieval of the existing configured objects attributes
+            satisfying user-provided queries.</p><p>Developers and operators can use this feature to monitor the Broker.
+            For example, using <span class="emphasis"><em>Query API</em></span> one can find all queues with queue depth
+            exceeding some limit or existing connections made from a particular location(s).</p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Channel-REST-Query-API-Overview"></a>6.3.11.2.&#160;Query API Overview</h4></div></div></div><p>
+            When using the <span class="emphasis"><em>Query API</em></span> one specifies the category of the object
+            to query, a list of attributes to return in the result set, an optional where clause,
+            expressed as a predicate, that determines the filtering criteria, ordering, and
+            limit/offset. The features should be readily recognisable to anyone who has has familiarity
+            with SQL.
+        </p><p>Queries associate with either the <span class="emphasis"><em>broker</em></span> as a whole, or an
+            individual  <span class="emphasis"><em>virtualhost</em></span>.  Queries associated with the Broker
+            can query any object within the Broker. Queries associated with a virtualhost are limited
+            to the objects of the virtualhost itself.   For instance a queue query associated
+            with a virtualhost queries only the queues belonging to that virtualhost.  On the other
+            hand, a queue query associated with the Broker sees all the queues belonging on the entire
+            Broker.
+        </p><p>
+            </p><div class="table"><a id="d0e2349"></a><p class="title"><strong>Table&#160;6.2.&#160;Query API URLs</strong></p><div class="table-contents"><table border="1" summary="Query API URLs"><colgroup><col /><col /></colgroup><thead><tr><th>Query API URL</th><th>Description</th></tr></thead><tbody><tr><td>
+                                <p>/api/latest/querybroker/&lt;configured object category name&gt;</p>
+                                <p>/api/&lt;version&gt;/querybroker/&lt;configured object category name&gt;</p>
+                            </td><td>
+                                <p>Query API URL fragment to query the specified object type across the entire broker</p>
+                            </td></tr><tr><td>
+                                <p>/api/latest/queryvhost/&lt;virtual host node name&gt;/&lt;virtual host name&gt;/&lt;configured object category name&gt;</p>
+                                <p>/api/&lt;version&gt;/queryvhost/&lt;virtual host node name&gt;/&lt;virtual host name&gt;/&lt;configured object category name&gt;</p>
+                            </td><td>
+                                <p>Query API URL fragment to query the specified object type for a specific virtualhost</p>
+                            </td></tr></tbody></table></div></div><p><br class="table-break" />
+        </p><p>
+            The QueryAPI accepts <code class="literal">select</code>, <code class="literal">where</code>, <code class="literal">orderBy</code>,
+            <code class="literal">limit</code> and <code class="literal">offset</code> request parameters.
+            </p><div class="table"><a id="d0e2406"></a><p class="title"><strong>Table&#160;6.3.&#160;Query API request parameters</strong></p><div class="table-contents"><table border="1" summary="Query API request parameters"><colgroup><col /><col /></colgroup><thead><tr><th>Parameter Name</th><th>Parameter Description</th></tr></thead><tbody><tr><td>
+                                <p><code class="literal">select</code></p>
+                            </td><td>
+                                <p>The <code class="literal">select</code> defines the columns of the result set.  It is a
+                                    comma-separated list of expressions.  At its most simple, an expression can be
+                                    the name of the attribute (e.g. <code class="literal">queueDepthBytes</code>), but more complex
+                                    <a class="link" href="Java-Broker-Management-Channel-REST-API.html#Java-Broker-Management-Channel-REST-Query-API-Expressions" title="Query API expressions">expressions</a> are also supported.</p>
+                                <p>Columns within the result set are named.  For expressions that are simple attribute
+                                    names, the column names will follow the attributes themselves.  By default, other
+                                    expressions will have a no name.</p>
+                                <p>Column names can be overridden with an <code class="literal">AS</code>
+                                    clause e.g. <code class="literal">now() AS currentDate</code>
+                                </p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">where</code></p>
+                            </td><td>
+                                <p>The <code class="literal">where</code> provides a boolean expression defining the result set filtering.</p>
+                                <p>The syntax of the <a class="link" href="Java-Broker-Management-Channel-REST-API.html#Java-Broker-Management-Channel-REST-Query-API-Expressions" title="Query API expressions">expression</a>
+                                    is based on a subset of the SQL92 conditional expression syntax and is similar to selector expressions in JMS e.g.
+                                    <code class="literal">queueDepthBytes &gt; 16384 AND name like '%flow_queue'</code>.
+                                </p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">orderBy</code></p>
+                            </td><td>
+                                <p>Ordering conditions; the syntax of the
+                                    <a class="link" href="Java-Broker-Management-Channel-REST-API.html#Java-Broker-Management-Channel-REST-Query-API-Expressions" title="Query API expressions">
+                                        expression
+                                    </a>
+                                    is based on a subset of
+                                    the SQL92 ordering expression syntax. Similar to ordering expressions in SQL,
+                                    one can specify in ordering expression attributes names, sub-expressions
+                                    or indexes (starting from 1) of attributes or expressions specified in select.
+                                </p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">limit</code></p>
+                            </td><td>
+                                <p>The maximum number of results to provide starting from given offset.</p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">offset</code></p>
+                            </td><td>
+                                <p>An offset in results (default is 0) to provide results from.</p>
+                            </td></tr></tbody></table></div></div><p><br class="table-break" />
+        </p><div class="example"><a id="d0e2514"></a><p class="title"><strong>Example&#160;6.6.&#160;Example of a Query API request to retrieve queue names and depths.</strong></p><div class="example-contents"><pre class="screen">GET api/latest/querybroker/queue?select=name,queueDepthBytes,queueDepthMessages&amp;where=queueDepthBytes&gt;0&amp;orderBy=1 desc,2 desc&amp;offset=0&amp;limit=100 HTTP/1.1</pre></div></div><br class="example-break" /></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Management-Channel-REST-Query-API-Results"></a>6.3.11.3.&#160;Query API Results</h4></div></div></div><p>The <span class="emphasis"><em>Query API</em></span> returns a JSON response.  The response contains the following:
+            </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">headers</code></span></dt><dd><p>ordered list of result set column names derived from the <code class="literal">select</code>
+                            clause. Note that anonymous expressions (that is, those expressed without an
+                            <code class="literal">AS</code>) will have empty column name.</p></dd><dt><span class="term"><code class="literal">results</code></span></dt><dd><p>two dimensional array containing the result-set</p></dd><dt><span class="term"><code class="literal">total</code></span></dt><dd><p>The <span class="emphasis"><em>total</em></span> number of results matching the where criteria.</p></dd></dl></div><p>
+        </p><div class="example"><a id="d0e2559"></a><p class="title"><strong>Example&#160;6.7.&#160;Example of Query API call for queue names and depths.</strong></p><div class="example-contents"><pre class="screen">GET api/latest/querybroker/queue?select=name,queueDepthBytes,queueDepthMessages&amp;where=queueDepthBytes&gt;0&amp;orderBy=1 desc,2 desc&amp;offset=0&amp;limit=100 HTTP/1.1</pre><pre class="programlisting">
+{
+    "headers" : [ "name", "queueDepthBytes", "queueDepthMessages" ],
+    "results" : [ [ "foo", 312, 26], [ "bar", 300, 24 ] ],
+    "total" : 2
+}
+            </pre></div></div><br class="example-break" /><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="Java-Broker-Management-Channel-REST-Query-API-Expressions"></a>Query API expressions</h5></div></div></div><p>Expressions within the <code class="literal">select</code>, <code class="literal">where</code> and <code class="literal">orderBy</code>
+                clauses can be comprised in the following manner. Expressions can be nested to arbitary depth. Parentheses
+                allow for precedence to be explicitly denoted.
+            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>variable name which can be an attribute name e.g <code class="literal">queueDepthBytes</code> or
+                a reference to a parent attribute <code class="literal">$parent.name</code></p></li><li class="listitem"><p>literal e.g. <code class="literal">3</code> or <code class="literal">'foo'</code></p></li><li class="listitem"><p>functions - see below e.g. <code class="literal">now()</code> or <code class="literal">to_string(createdDate, '%tm/%td/%ty', 'EST')</code></p></li><li class="listitem"><p>arithmetic operations e.g. <code class="literal">3 * 4</code> or <code class="literal">to_string(now()) + name</code></p></li></ul></div><p>The following functions are supported:
+                </p><div class="table"><a id="d0e2615"></a><p class="title"><strong>Table&#160;6.4.&#160;Query API functions</strong></p><div class="table-contents"><table border="1" summary="Query API functions"><colgroup><col /><col /></colgroup><thead><tr><th>Function Name</th><th>Function Description</th></tr></thead><tbody><tr><td>
+                                <p><code class="literal">concat(obj[,obj..])</code></p>
+                            </td><td>
+                                <p>concatenates the given objects into a string</p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">now()</code></p>
+                            </td><td>
+                                <p>returns current date and time</p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">to_date(object)</code></p>
+                            </td><td>
+                                <p>converts the first parameter, which must be a string. into a date.  The
+                                string must be in ISO-8601 format e.g. <code class="literal">1970-01-01T10:00:00Z</code>.</p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">date_add(object, duration)</code></p>
+                            </td><td>
+                                <p>adds the given ISO-8601 duration <code class="literal">duration</code> e.g.
+                                    <code class="literal">P1D</code> or <code class="literal">-PT10H</code> to the date provided by the
+                                    first parameter.</p>
+                            </td></tr><tr><td>
+                                <p><code class="literal">to_string(object[, format[, timezone]])</code></p>
+                            </td><td>
+                                <p>Converts given object into a string.</p>
+                                <p>If the format argument is present, it must be a Java
+                                    <a class="link" href="http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html" target="_top">Formatter</a>
+                                    compliant string e.g. <code class="literal">%f</code> or <code class="literal">%tY-%tm-%td</code>.
+                                </p>
+                                <p>The timezone argument is significant if the object is a Date. If the timezone
+                                    argument is specified it must be a valid Java timezone name. The date is converted
+                                    to the specified timezone before being formatted by the<code class="literal">format</code>.
+                                    If the timezone is omitted <code class="literal">UTC</code> is assumed.
+                                </p>
+                            </td></tr></tbody></table></div></div><p><br class="table-break" />
+            </p></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Channel-REST-API-CORS"></a>6.3.12.&#160;Cross Origin Resource Sharing (CORS)</h3></div></div></div><p> The Broker supports Cross Origin Resource Sharing (CORS)
+      to allow web management consoles other than the one embedded in the
+      broker to use the REST API.  This feature must be enabled by configuring
+      the CORS Allow Origins and related attributes on the
+      <a class="xref" href="Java-Broker-Management-Managing-Plugin-HTTP.html" title="7.15.&#160;HTTP Plugin">Section&#160;7.15, &#8220;HTTP Plugin&#8221;</a>
+    </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Management-Channel-Web-Console.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Management-Channel.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Management-Channel-AMQP-Intrinstic.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">6.2.&#160;Web Management Console&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;6.4.&#160;AMQP Intrinstic Management</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
