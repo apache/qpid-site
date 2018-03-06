@@ -29,7 +29,6 @@ documentation, see the [release overview](index.html).
 ## New features and improvements
 
  - [PROTON-1762](https://issues.apache.org/jira/browse/PROTON-1762) - [ruby] gem does not contain examples or tests
- - [PROTON-1766](https://issues.apache.org/jira/browse/PROTON-1766) - [cpp] seg fault in reconnect test
  - [PROTON-1768](https://issues.apache.org/jira/browse/PROTON-1768) - Allow tox tests of pyPI dist packaging on all platforms
 
 ## Bugs fixed
@@ -41,6 +40,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-1738](https://issues.apache.org/jira/browse/PROTON-1738) - [ruby-binding] incompatible with ruby 2.0.0
  - [PROTON-1757](https://issues.apache.org/jira/browse/PROTON-1757) - pn_netaddr_host_port() fails on FreeBSD
  - [PROTON-1758](https://issues.apache.org/jira/browse/PROTON-1758) - [Python binding] Check message application property keys, convert binary to string
+ - [PROTON-1766](https://issues.apache.org/jira/browse/PROTON-1766) - [cpp] seg fault in reconnect test
  - [PROTON-1769](https://issues.apache.org/jira/browse/PROTON-1769) - PyPI package python-qpid-proton doesn't pip install on MacOS X
  - [PROTON-1772](https://issues.apache.org/jira/browse/PROTON-1772) - Remove thread race in proactor locking of listener_context
  - [PROTON-1773](https://issues.apache.org/jira/browse/PROTON-1773) - Access after free in pn_proactor_disconnect
