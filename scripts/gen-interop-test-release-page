@@ -110,9 +110,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artifact = artifact.format(release)
         artifact_url = source_artifact_url.format(release, artifact)
         sig_url = "https://archive.apache.org/dist/qpid/interop-test/{}/{}.asc".format(release, artifact)
+        sha_url = "https://archive.apache.org/dist/qpid/interop-test/{}/{}.sha512".format(release, artifact)
 
-        args = summary, artifact, artifact_url, sig_url
-        downloads.append("| {} | [{}]({}) | [PGP]({}) |".format(*args))
+        args = summary, artifact, artifact_url, sig_url, sha_url
+        downloads.append("| {} | [{}]({}) | [ASC]({}), [SHA512]({})|".format(*args))
 
     for key, name, languages, platforms, amqp_versions in component_records:
         link = "[{}]({{{{site_url}}}}/components/{}/index.html)".format(name, key)

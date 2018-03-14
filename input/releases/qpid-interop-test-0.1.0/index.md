@@ -34,7 +34,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Interop Test | [qpid-interop-test-0.1.0.tar.gz](http://archive.apache.org/dist/qpid/interop-test/0.1.0/qpid-interop-test-0.1.0.tar.gz) | [PGP](https://archive.apache.org/dist/qpid/interop-test/0.1.0/qpid-interop-test-0.1.0.tar.gz.asc) |
+| Interop Test | [qpid-interop-test-0.1.0.tar.gz](http://archive.apache.org/dist/qpid/interop-test/0.1.0/qpid-interop-test-0.1.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/interop-test/0.1.0/qpid-interop-test-0.1.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/interop-test/0.1.0/qpid-interop-test-0.1.0.tar.gz.sha512)|
 
 ## Documentation
 
