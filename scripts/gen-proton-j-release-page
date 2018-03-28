@@ -109,11 +109,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artifact_url = artifact_url_template.format(release, artifact)
         artifact_url_https = artifact_url_template_https.format(release, artifact)
         asc_url = "{}.asc".format(artifact_url_https)
-        md5_url = "{}.md5".format(artifact_url_https)
         sha_url = "{}.sha512".format(artifact_url_https)
 
-        args = summary, artifact, artifact_url, asc_url, md5_url, sha_url
-        downloads.append("| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args))
+        args = summary, artifact, artifact_url, asc_url, sha_url
+        downloads.append("| {} | [{}]({}) | [ASC]({}), [SHA512]({}) |".format(*args))
 
     downloads = "\n".join(downloads)
 

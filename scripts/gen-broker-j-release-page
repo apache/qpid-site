@@ -124,11 +124,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = source_artefact_url.format(release, artefact)
         artefact_url_https = source_artefact_url_https.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url_https)
-        md5_url = "{}.md5".format(artefact_url_https)
         sha_url = "{}.sha512".format(artefact_url_https)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [SHA512]({}) |".format(*args)
 
         source_artefacts.append(row)
 
@@ -137,11 +136,10 @@ def gen_release_page(release, issues_release, source_release, release_dir):
         artefact_url = binary_artefact_url.format(release, artefact)
         artefact_url_https = binary_artefact_url_https.format(release, artefact)
         asc_url = "{}.asc".format(artefact_url_https)
-        md5_url = "{}.md5".format(artefact_url_https)
         sha_url = "{}.sha512".format(artefact_url_https)
 
-        args = summary, artefact, artefact_url, asc_url, md5_url, sha_url
-        row = "| {} | [{}]({}) | [ASC]({}), [MD5]({}), [SHA512]({}) |".format(*args)
+        args = summary, artefact, artefact_url, asc_url, sha_url
+        row = "| {} | [{}]({}) | [ASC]({}), [SHA512]({}) |".format(*args)
 
         binary_artefacts.append(row)
 
