@@ -1,0 +1,41 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Chapter&#160;2.&#160;The .NET Binding for the C++ Messaging Client</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Message-Groups-Guide.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s02.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="idm140160708808608"></a>Chapter&#160;2.&#160;The .NET Binding for the C++ Messaging Client</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="ch02.html#idm140160708807408">2.1. .NET Binding for the C++ Messaging Client Component Architecture</a></span></dt><dt><span class="section"><a href="ch02s02.html">2.2. .NET Binding for the C++ Messaging Client Examples</a></span></dt><dt><span class="section"><a href="ch02s03.html">2.3. .NET Binding Class Mapping to Underlying C++ Messaging API</a></span></dt><dd><dl><dt><span class="section"><a href="ch02s03.html#idm140160708743168">2.3.1. .NET Binding for the C++ Messaging API Class: Address</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708672336">2.3.2. .NET Binding for the C++ Messaging API Class: Connection</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708597216">2.3.3. .NET Binding for the C++ Messaging API Class: Duration</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708547888">2.3.4. .NET Binding for the C++ Messaging API Class: FailoverUpdates</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708526768">2.3.5. .NET Binding for the C++ Messaging API Class: Message</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708388528">2.3.6. .NET Binding for the C++ Messaging API Class: Receiver</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708313104">2.3.7. .NET Binding for the C++ Messaging API Class: Sender</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708256592">2.3.8. .NET Binding for the C++ Messaging API Class: Session</a></span></dt><dt><span class="section"><a href="ch02s03.html#idm140160708144208">2.3.9. .NET Binding Class: SessionReceiver</a></span></dt></dl></dd></dl></div><p>
+      The .NET Binding for the C++ Qpid Messaging Client is a library that gives
+      any .NET program access to Qpid C++ Messaging objects and methods.
+    </p><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm140160708807408"></a>2.1.&#160;.NET Binding for the C++ Messaging Client Component Architecture</h2></div></div></div><pre class="programlisting">
+                      +----------------------------+
+                      | Dotnet examples            |
+                      | Managed C#                 |
+                      +------+---------------+-----+
+                             |               |
+                             V               |
+        +---------------------------+        |
+        | .NET Managed Callback     |        |
+        | org.apache.qpid.messaging.|        |
+        | sessionreceiver.dll       |        |
+        +----------------------+----+        |
+                               |             |
+managed                        V             V
+(.NET)                 +--------------------------------+
+:::::::::::::::::::::::| .NET Binding Library           |::::::::::::
+unmanaged              | org.apache.qpid.messaging.dll  |
+(Native Win32/64)      +---------------+----------------+
+                                       |
+                                       |
+      +----------------+               |
+      | Native examples|               |
+      | Unmanaged C++  |               |
+      +--------+-------+               |
+               |                       |
+               V                       V
+          +----------------------------------+
+          | QPID Messaging C++ Libraries     |
+          | qpid*.dll qmf*.dll               |
+          +--------+--------------+----------+
+</pre><p>This diagram illustrates the code and library components of the binding
+and the hierarchical relationships between them.</p><div class="table"><a id="table-Dotnet-Binding-Component-Architecture"></a><p class="title"><strong>Table&#160;2.1.&#160;.NET Binding for the C++ Messaging Client Component Architecture</strong></p><div class="table-contents"><table border="1" class="table" summary=".NET Binding for the C++ Messaging Client Component Architecture"><colgroup><col /><col /></colgroup><thead><tr><th>Component Name</th><th>Component Function</th></tr></thead><tbody><tr><td>QPID Messaging C++ Libraries</td><td>The QPID Messaging C++ core run time system</td></tr><tr><td>Unmanaged C++ Example Source Programs</td><td>Ordinary C++ programs that illustrate using qpid/cpp Messaging directly
+		in a native Windows environment.</td></tr><tr><td>.NET Messaging Binding Library</td><td>The .NET Messaging Binding library provides interoprability between
+		managed .NET programs and the unmanaged, native Qpid Messaging C++ core
+		run time system. .NET programs create a Reference to this library thereby
+		exposing all of the native C++ Messaging functionality to programs
+		written in any .NET language.</td></tr><tr><td>.NET Messaging Managed Callback Library</td><td>An extension of the .NET Messaging Binding Library that provides message
+		callbacks in a managed .NET environment.</td></tr><tr><td>Managed C# .NET Example Source Programs</td><td>Various C# example programs that illustrate using .NET Binding for C++ Messaging in the .NET environment.</td></tr></tbody></table></div></div><br class="table-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Message-Groups-Guide.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="ch02s02.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.17.&#160;Using Message Groups&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.2.&#160;.NET Binding for the C++ Messaging Client Examples</td></tr></table></div></div>
