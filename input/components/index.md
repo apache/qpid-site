@@ -83,8 +83,8 @@ connecting clients, brokers, and standalone services.
 | [Dispatch router]({{site_url}}/components/dispatch-router/index.html) | - | Linux | 1.0 |
 | [Broker-J]({{site_url}}/components/broker-j/index.html) | - | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
 | [Qpid JMS]({{site_url}}/components/jms/index.html) | Java | JVM | 1.0, 0-10, 0-9-1, 0-9, 0-8 |
-| [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | C++, Perl, Python, Ruby, .NET | Linux, Windows | 1.0, 0-10 |
-| [Qpid Proton]({{site_url}}/proton/index.html) | C, C++, Java, JavaScript, Python, Ruby | JVM, Linux, Windows | 1.0 |
+| [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | C++, Python | Linux, Windows | 1.0, 0-10 |
+| [Qpid Proton]({{site_url}}/proton/index.html) | C, C++, Java, Python, Ruby | JVM, Linux, Windows | 1.0 |
 | [Qpid Interop Test](interop-test/index.html) | - | Linux | 1.0 |
 
 Any Qpid components that share an AMQP version can interoperate.  For

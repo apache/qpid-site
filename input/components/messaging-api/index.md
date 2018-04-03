@@ -22,7 +22,7 @@
 A connection-oriented messaging API that supports many languages and
 platforms.
 
-  - *Languages* - C++, Perl, Python, Ruby, .NET
+  - *Languages* - C++, Python
   - *Platforms* - Linux, Windows
   - *AMQP versions* - 1.0, 0-10
   - *Downloads* - C++, bindings: [qpid-cpp-{{current_cpp_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz) \[[ASC](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.asc), [MD5](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.md5), [SHA512](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.sha512)],<br/>Python: [qpid-python-{{current_python_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz) \[[ASC](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.asc), [MD5](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.md5), [SHA512](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.sha512)]
