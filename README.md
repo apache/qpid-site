@@ -164,7 +164,7 @@ dependencies on Fedora or RHEL.
 
     $ sudo yum install asciidoc asciidoctor cmake doxygen epydoc \
           fop gcc graphviz java-devel libxslt make python-pygments \
-          PyYAML rubygem-rdoc git \ pandoc-pdf python-sphinx maven
+          PyYAML rubygem-rdoc git pandoc-pdf python-sphinx maven
 
 ## Publishing your work
 
