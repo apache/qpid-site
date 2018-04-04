@@ -58,7 +58,7 @@ the files you download.
 ## More information
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/proton/0.22.0)
- - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%270.22.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
+ - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%27proton-c-0.22.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tag;h=0.22.0)
 
 <script type="text/javascript">
