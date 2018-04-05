@@ -34,7 +34,7 @@ documentation, see the [release overview](index.html).
 
 ## Bugs fixed
 
- - [QPID-7892](https://issues.apache.org/jira/browse/QPID-7892) - [Java Broker] Qpid Logback plugin RollingPolicyDecorator tests fail since java.io.tmpdir pointed at directory containing parentheses 
+ - [QPID-7892](https://issues.apache.org/jira/browse/QPID-7892) - [Broker-J] Qpid Logback plugin RollingPolicyDecorator tests fail since java.io.tmpdir pointed at directory containing parentheses 
  - [QPID-8049](https://issues.apache.org/jira/browse/QPID-8049) - Non-free ICC profiles
  - [QPID-8070](https://issues.apache.org/jira/browse/QPID-8070) - [Broker-J][JDBC Store] Instantiate asynchronous commits executor on open of JDBC message store
  - [QPID-8130](https://issues.apache.org/jira/browse/QPID-8130) - [Broker-J] IAE "Comparison method violates its general contract!" can be thrown whilst comparing log file details of file logger
