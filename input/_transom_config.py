@@ -22,7 +22,7 @@ class _Release(object):
     def brief_link(self):
         return "<a href=\"{}\">{}</a>".format(self.url, self.number)
 
-broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "7.0.2")
+broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "7.0.3")
 cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.38.0")
 dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.0.1")
 interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-test", "0.1.0")

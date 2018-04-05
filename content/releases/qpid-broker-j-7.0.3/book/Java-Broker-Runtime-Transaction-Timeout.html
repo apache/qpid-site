@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>9.3.&#160;Transaction Timeout - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-7.0.3/index.html">Qpid Broker-J 7.0.3</a></li><li><a href="/releases/qpid-broker-j-7.0.3/book/index.html">Apache Qpid Broker-J</a></li><li>9.3.&#160;Transaction Timeout</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.3.&#160;Transaction Timeout</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime-Disk-Space-Management.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Handling-Undeliverable-Messages.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Transaction-Timeout"></a>9.3.&#160;Transaction Timeout</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-GeneralInformation"></a>9.3.1.&#160;General Information</h3></div></div></div><p> The transaction timeout mechanism is used to control broker resources when clients
+   using transactions hang, become unresponsive, or simply (due to programming error)
+   begin a transaction and keep using it without ever calling committing or rolling back.</p><p>Users can choose to configure an idleWarn or openWarn threshold, after which the identified
+   transaction should be logged as a WARN level alert as well as (more importantly) an idleClose or
+   openClose threshold after which the transaction and the connection it applies to will be
+   closed.</p><p>This feature is particularly useful in environments where the owner of the broker does not
+   have full control over the implementation of clients, such as in a shared services
+   deployment.</p><p>The following section provide more details on this feature and its use.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Purpose"></a>9.3.2.&#160;Purpose</h3></div></div></div><p> This feature has been introduced to address the scenario where an open transaction on the
+   broker holds an open transaction on the persistent store. This can have undesirable consequences
+   if the store does not time out or close long-running transactions, such as with BDB. This can can
+   result in a rapid increase in disk usage size, bounded only by available space, due to growth of
+   the transaction log. </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Effect"></a>9.3.3.&#160;Effect</h3></div></div></div><p>Full details of configuration options are provided in the sections that follow. This section
+   gives a brief overview of what the Transaction Timeout feature can do.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Effect-Broker-Side"></a>9.3.3.1.&#160;Broker Logging and Connection Close</h4></div></div></div><p>When the openWarn or idleWarn specified threshold is exceeded, the broker will log a WARN
+    level alert with details of the connection on which the threshold has been exceeded,
+    along with the age of the transaction.</p><p>When the openClose or idleClose specified threshold value is exceeded, the broker will
+    throw an exception back to the client connection via the <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/ExceptionListener.html" target="_top">ExceptionListener</a>, log the
+    action and then close the connection.</p><p>The example broker log output shown below is where the idleWarn threshold specified is
+    lower than the idleClose threshold and the broker therefore logs the idle transaction 3 times
+    before the close threshold is triggered and the connection closed out.</p><pre class="screen">
+CON-1011 : Idle Transaction : 13,116 ms
+CON-1011 : Idle Transaction : 14,116 ms
+CON-1011 : Idle Transaction : 15,118 ms
+CON-1002 : Close : Idle transaction timed out
+   </pre><p>The second example broker log output shown below illustrates the same mechanism operating
+    on an open transaction.</p><pre class="screen">
+CON-1010 : Open Transaction : 12,406 ms
+CON-1010 : Open Transaction : 13,406 ms
+CON-1010 : Open Transaction : 14,406 ms
+CON-1002 : Close : Open transaction timed out
+   </pre></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Effect-Client-Side"></a>9.3.3.2.&#160;Client Side Effect</h4></div></div></div><p>After a Close threshold has been exceeded, the Broker will close the client's connection.
+    The application must reconnect itself in order to continue work.  If the
+    client is a JMS client, the application will be notified by the
+    <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/ExceptionListener.html" target="_top">exception
+     listener.</a></p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Configuration"></a>9.3.4.&#160;Configuration</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Transaction-Timeout-Configuration-Overview"></a>9.3.4.1.&#160;Configuration</h4></div></div></div><p>The transaction timeouts can be specified when a new virtualhost is created or an exiting
+    virtualhost is edited.</p><p>We would recommend that only warnings are configured at first, which should allow broker
+    administrators to obtain an idea of the distribution of transaction lengths on their systems,
+    and configure production settings appropriately for both warning and closure. Ideally
+    establishing thresholds should be achieved in a representative UAT environment, with clients and
+    broker running, prior to any production deployment.</p><p>It is impossible to give suggested values, due to the large variation in usage depending on
+    the applications using a broker. However, clearly transactions should not span the expected
+    lifetime of any client application as this would indicate a hung client.</p><p>When configuring closure timeouts, it should be noted that a timeout on any producer
+    or consumer will cause the connection to be closed - this disconnecting all producers and consumers
+    created on that connection.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Runtime-Disk-Space-Management.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Handling-Undeliverable-Messages.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">9.2.&#160;Disk Space Management&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;9.4.&#160;Handing Undeliverable Messages</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
