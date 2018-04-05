@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>9.11.&#160;Memory - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.1.6/index.html">Qpid for Java 6.1.6</a></li><li><a href="/releases/qpid-java-6.1.6/java-broker/book/index.html">Apache Qpid Broker for Java</a></li><li>9.11.&#160;Memory</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.11.&#160;Memory</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime-Connection-Limit.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-High-Availability.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Memory"></a>9.11.&#160;Memory</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Introduction"></a>9.11.1.&#160;Introduction</h3></div></div></div><p>
+      Understanding how the Qpid broker uses memory is essential to running a high performing and reliable service.
+      A wrongly configured broker can exhibit poor performance or even crash with an <code class="literal">OutOfMemoryError</code>.
+      Unfortunately, memory usage is not a simple topic and thus requires some in depth explanations.
+      This page should give the required background information to make informed decisions on how to configure your broker.
+    </p><p>
+      <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Types" title="9.11.2.&#160;Types of Memory">Section&#160;9.11.2, &#8220;Types of Memory&#8221;</a> explains the two different kinds of Java memory most relevant to the broker.
+      <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Usage" title="9.11.3.&#160;Memory Usage in the Broker">Section&#160;9.11.3, &#8220;Memory Usage in the Broker&#8221;</a> goes on to explain which parts of the broker use what kind of memory.
+      <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory" title="9.11.4.&#160;Low Memory Conditions">Section&#160;9.11.4, &#8220;Low Memory Conditions&#8221;</a> explains what happens when the system runs low on memory.
+      <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Defaults" title="9.11.5.&#160;Defaults">Section&#160;9.11.5, &#8220;Defaults&#8221;</a> lays out the default settings of the Qpid broker.
+      Finally, <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Tuning" title="9.11.6.&#160;Memory Tuning the Broker">Section&#160;9.11.6, &#8220;Memory Tuning the Broker&#8221;</a> gives some advice on tuning your broker.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Types"></a>9.11.2.&#160;Types of Memory</h3></div></div></div><p>
+      While Java has a couple of different internal memory types we will focus on the two types that are relevant to the Qpid broker.
+      Both of these memory types are taken from the same physical memory (RAM).
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6471"></a>9.11.2.1.&#160;Heap</h4></div></div></div><p>
+        Normally, all objects are allocated from Java's heap memory.
+        Once, nothing references an object it is cleaned up by the Java Garbage Collector and it's memory returned to the heap.
+        This works fine for most use cases.
+        However, when interacting with other parts of the operating system using Java's heap is not ideal.
+        This is where the so called direct memory comes into play.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6476"></a>9.11.2.2.&#160;Direct</h4></div></div></div><p>
+        The world outside of the JVM, in particular the operating system (OS), does not know about Java heap memory and uses other structures like C arrays.
+        In order to interact with these systems Java needs to copy data between its own heap memory and these native structures.
+        This can become a bottle neck when there is a lot of exchange between Java and the OS like in I/O (both disk and network) heavy applications.
+        Java's solution to this is to allow programmers to request <code class="literal">ByteBuffer</code>s from so called direct memory.
+        This is an opaque structure that <span class="emphasis"><em>might</em></span> have an underlying implementation that makes it efficient to interact with the OS.
+        Unfortunately, the GC is not good at tracking direct memory and in general it is inadvisable to use direct memory for regular objects.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Usage"></a>9.11.3.&#160;Memory Usage in the Broker</h3></div></div></div><p>
+      This section lists some note worthy users of memory within the broker and where possible lists their usage of heap and direct memory.
+      Note that to ensure smooth performance some heap memory should remain unused by the application and be reserved for the JVM to do house keeping and garbage collection.
+      <a class="link" href="https://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/util/DbCacheSize.html" target="_top">Some guides</a> advise to reserve up to 30% of heap memory for the JVM.
+    </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6495"></a>9.11.3.1.&#160;Broker</h4></div></div></div><p>
+        The broker itself uses a moderate amount of heap memory (&#8776;15 MB).
+        However, each connection and session comes with a heap overhead of about 17 kB and 15 kB respectively.
+        In addition, each connection reserves 512 kB direct memory for network I/O.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6500"></a>9.11.3.2.&#160;Virtual Hosts</h4></div></div></div><p>
+        The amount of memory a Virtual Host uses depends on its type.
+        For a JSON Virtual Host Node with a BDB Virtual Host the heap memory usage is approximately 2 MB.
+        However, each BDB Virtual Hosts has a mandatory cache in heap memory which has an impact on performance.
+        See <a class="link" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Usage-BDB" title="9.11.3.4.&#160;Message Store">below</a> for more information.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6508"></a>9.11.3.3.&#160;Messages</h4></div></div></div><p>
+        Messages and their headers are kept in direct memory and have an additional overhead of approximately 1 kB heap memory each.
+        This means that most brokers will want to have more direct memory than heap memory.
+        When many small messages accumulate on the broker the 1 kB heap memory overhead can become a <a class="link" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory-Heap" title="9.11.4.1.&#160;Low on Heap Memory">limiting factor</a>.
+      </p><p>
+        When the broker is <a class="link" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory-Direct" title="9.11.4.2.&#160;Low on Direct Memory">running low on direct memory</a>
+        it will evict messages from memory and <a class="link" href="Java-Broker-Runtime-Flow-To-Disk.html" title="9.6.&#160;Flow to Disk">flow them to disk</a>.
+        For persistent messages this only means freeing the direct memory representation because they always have an on-disk representation to guard against unexpected failure (e.g., a power cut).
+        For transient messages this implies additional disk I/O.
+        After being flown to disk messages need to be re-read from disk before delivery.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Usage-BDB"></a>9.11.3.4.&#160;Message Store</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6527"></a>Berkeley DB (BDB)</h5></div></div></div><p>
+          The broker can use Oracle's BDB JE (BDB) as a message store to persist messages by writing them to a database.
+          BDB uses a mandatory cache for navigating and organising its database structure.
+          Sizing and tuning this cache is a topic of its own and would go beyond the scope of this guide.
+          Suffice to say that by default Qpid uses 5% of heap memory for BDB caches (each Virtual Host uses a separate cache) or 10 MB per BDB store, whichever is greater.
+          See the <a class="link" href="http://www.oracle.com/us/products/database/berkeley-db/je" target="_top">official webpage</a> especially <a class="link" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/util/DbCacheSize.html" target="_top">this page</a> for more information.
+          For those interested, Qpid uses <a class="link" href="http://docs.oracle.com/cd/E17277_02/html/java/com/sleepycat/je/CacheMode.html#EVICT_LN" target="_top">EVICT_LN</a> as its default JE cacheMode.
+        </p><p>
+          Note that due to licensing concerns Qpid does not ship the BDB JE jar files.
+        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6543"></a>Derby</h5></div></div></div><p>
+          TODO
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6548"></a>9.11.3.5.&#160;HTTP Management</h4></div></div></div><p>
+        Qpid uses Jetty for the HTTP Management (both REST and Web Management Console).
+        When the management plugin is loaded it will allocate the memory it needs and should not require more memory during operation and can thus be largely ignored.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Low-Memory"></a>9.11.4.&#160;Low Memory Conditions</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Low-Memory-Heap"></a>9.11.4.1.&#160;Low on Heap Memory</h4></div></div></div><p>
+        When the broker runs low on heap memory performance will degrade because the JVM will trigger full garbage collection (GC) events in a struggle to free memory.
+        These full GC events are also called stop-the-world events as they completely halt the execution of the Java application.
+        Stop-the-world-events may take any where from a couple of milliseconds up to several minutes.
+        Should the heap memory demands rise even further the JVM will eventually throw an OutOfMemoryError which will cause the broker to shut down.
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Runtime-Memory-Low-Memory-Direct"></a>9.11.4.2.&#160;Low on Direct Memory</h4></div></div></div><p>
+        When the broker detects that it uses 40% of available direct memory it will start flowing incoming transient messages to disk and reading them back before delivery.
+        This will prevent the broker from running out of direct memory but may degrade performance by requiring disk I/O.
+      </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Defaults"></a>9.11.5.&#160;Defaults</h3></div></div></div><p>
+      By default Qpid uses these settings:
+      </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+          0.5 GB heap memory
+        </li><li class="listitem">
+          1.5 GB direct memory
+        </li><li class="listitem">
+          5% of heap reserved for the JE cache.
+        </li><li class="listitem">
+          Start flow-to-disk at 40% direct memory utilisation.
+        </li></ul></div><p>
+      As an example, this would accommodate a broker with 50 connections, each serving 5 sessions, and each session having 1000 messages of 1 kB on queues in the broker.
+      This means a total of 250 concurrent sessions and a total of 250000 messages without flowing messages to disk.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Memory-Tuning"></a>9.11.6.&#160;Memory Tuning the Broker</h3></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6584"></a>9.11.6.1.&#160;Java Tuning</h4></div></div></div><p>
+        Most of these options are implementation specific. It is assumed you are using Oracle Java 1.7 and Qpid v6.
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+            Heap and direct memory can be configured through the <a class="link" href="Java-Broker-Appendix-Environment-Variables.html#Java-Broker-Appendix-Environment-Variables-Qpid-Java-Mem"><code class="literal">QPID_JAVA_MEM</code> environment variable</a>.
+          </li></ul></div><p>
+      </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6598"></a>9.11.6.2.&#160;Qpid Tuning</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem">
+          The system property <code class="literal">qpid.broker.bdbTotalCacheSize</code> sets the total amount of heap memory (in bytes) allocated to BDB caches.
+        </li><li class="listitem">
+          The system property <code class="literal">broker.flowToDiskThreshold</code> sets the threshold (in bytes) for flowing transient messages to disk.
+          Should the broker use more than direct memory it will flow incoming messages to disk.
+          Should utilisation fall beneath the threshold it will stop flowing messages to disk.
+        </li></ul></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6612"></a>9.11.6.3.&#160;Formulas</h4></div></div></div><p>
+        We developed a simple formula which estimates the <span class="emphasis"><em>minimum</em></span> memory usage of the broker under certain usage.
+        These are rough estimate so we strongly recommend testing your configuration extensively.
+        Also, if your machine has more memory available by all means use more memory as it can only improve the performance and stability of your broker.
+        However, remember that both heap and direct memory are served from your computer's physical memory so their sum should never exceed the physically available RAM (minus what other processes use).
+      </p><p>
+        </p><div class="informalequation"><span class="mathphrase">
+            memory<sub>heap</sub> = 15 MB + 15 kB * N<sub>sessions</sub> + 1.5 kB * N<sub>messages</sub> + 17 kB * N<sub>connections</sub>
+          </span></div><p>
+      </p><p>
+        </p><div class="informalequation"><span class="mathphrase">
+            memory<sub>direct</sub> = 2 MB + (200 B + averageSize<sub>msg</sub> *2)*  N<sub>messages</sub> + 1MB * N<sub>connections</sub>
+          </span></div><p>
+      </p><p>
+        Where <span class="mathphrase">N</span> denotes the total number of connections/sessions/messages on the broker. Furthermore, for direct memory only the messages that have not been flown to disk are relevant.
+      </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>The formulae assume the worst case in terms of memory usage: persistent messages and TLS connections. Transient messages consume less heap memory than peristent and plain connections consume less direct memory than TLS
+          connections.
+        </p></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6664"></a>9.11.6.4.&#160;Things to Consider</h4></div></div></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6667"></a>Performance</h5></div></div></div><p>
+          Choosing a smaller direct memory size will lower the threshold for flowing transient messages to disk when messages accumulate on a queue.
+          This can have impact on performance in the transient case where otherwise no disk I/O would be involved.
+        </p><p>
+          Having too little heap memory will result in poor performance due to frequent garbage collection events. See <a class="xref" href="Java-Broker-Runtime-Memory.html#Java-Broker-Runtime-Memory-Low-Memory" title="9.11.4.&#160;Low Memory Conditions">Section&#160;9.11.4, &#8220;Low Memory Conditions&#8221;</a> for more details.
+        </p></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="d0e6676"></a>OutOfMemoryError</h5></div></div></div><p>
+          Choosing too low heap memory can cause an OutOfMemoryError which will force the broker to shut down.
+          In this sense the available heap memory puts a hard limit on the number of messages you can have in the broker at the same time.
+        </p><p>
+          If the Java runs out of direct memory it also throws a OutOfMemoryError resulting the a broker shutdown.
+          Under normal circumstances this should not happen but needs to be considered when deviating from the default configuration, especially when changing the flowToDiskThreshold.
+        </p><p>
+          If you are sending very large messages you should accommodate for this by making sure you have enough direct memory.
+        </p></div></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Runtime-Connection-Limit.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-High-Availability.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">9.10.&#160;Connection Limits&#160;</td><td align="center" width="20%"><a accesskey="h" href="AMQP-Messaging-Broker-Java-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;10.&#160;High Availability</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

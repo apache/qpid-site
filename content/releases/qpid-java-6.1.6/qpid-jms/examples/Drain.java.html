@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Drain.java - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-java-6.1.6/index.html">Qpid for Java 6.1.6</a></li><li><a href="/releases/qpid-java-6.1.6/qpid-jms/examples/index.html">Qpid JMS Examples (AMQP 0-10)</a></li><li>Drain.java</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>Drain.java</h1>
+<div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">org.apache.qpid.example</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.jms.Connection</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.Destination</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.Message</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.MessageConsumer</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">javax.jms.Session</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.apache.qpid.client.AMQAnyDestination</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Drain</span> <span class="kd">extends</span> <span class="n">OptionParser</span>
+<span class="o">{</span>
+       
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">FOREVER</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span><span class="o">(</span><span class="s">&quot;f&quot;</span><span class="o">,</span>
+            <span class="s">&quot;forever&quot;</span><span class="o">,</span>
+            <span class="s">&quot;ignore timeout and wait forever&quot;</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="kc">null</span><span class="o">,</span>
+            <span class="n">Boolean</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+
+    <span class="kd">static</span> <span class="kd">final</span> <span class="n">Option</span> <span class="n">COUNT</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Option</span> <span class="o">(</span><span class="s">&quot;c&quot;</span><span class="o">,</span>
+            <span class="s">&quot;count&quot;</span><span class="o">,</span>
+            <span class="s">&quot;read c messages, then exit&quot;</span><span class="o">,</span>
+            <span class="s">&quot;COUNT&quot;</span><span class="o">,</span>
+            <span class="s">&quot;0&quot;</span><span class="o">,</span>
+            <span class="n">Integer</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                                                
+
+    <span class="kd">static</span> 
+    <span class="o">{</span>        
+        <span class="n">addOption</span><span class="o">(</span><span class="n">BROKER</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">HELP</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">TIMEOUT</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">FOREVER</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">COUNT</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">CON_OPTIONS</span><span class="o">);</span>
+        <span class="n">addOption</span><span class="o">(</span><span class="n">BROKER_OPTIONS</span><span class="o">);</span>
+    <span class="o">}</span>
+    
+    <span class="kd">public</span> <span class="nf">Drain</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">,</span> <span class="n">String</span> <span class="n">usage</span><span class="o">,</span> <span class="n">String</span> <span class="n">desc</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>   
+        <span class="kd">super</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="n">usage</span><span class="o">,</span> <span class="n">desc</span><span class="o">);</span>        
+        
+        <span class="n">Connection</span> <span class="n">con</span> <span class="o">=</span> <span class="n">createConnection</span><span class="o">();</span>
+        <span class="n">con</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">Session</span> <span class="n">ssn</span> <span class="o">=</span> <span class="n">con</span><span class="o">.</span><span class="na">createSession</span><span class="o">(</span><span class="kc">false</span><span class="o">,</span><span class="n">Session</span><span class="o">.</span><span class="na">AUTO_ACKNOWLEDGE</span><span class="o">);</span>     
+        <span class="n">Destination</span> <span class="n">dest</span> <span class="o">=</span> <span class="k">new</span> <span class="n">AMQAnyDestination</span><span class="o">(</span><span class="n">getAddress</span><span class="o">());</span>
+        <span class="n">MessageConsumer</span> <span class="n">consumer</span> <span class="o">=</span> <span class="n">ssn</span><span class="o">.</span><span class="na">createConsumer</span><span class="o">(</span><span class="n">dest</span><span class="o">);</span>
+        <span class="n">Message</span> <span class="n">msg</span><span class="o">;</span>
+        
+        <span class="kt">long</span> <span class="n">timeout</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">;</span>        
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        
+        <span class="k">if</span> <span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">TIMEOUT</span><span class="o">))</span> <span class="o">{</span> <span class="n">timeout</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">getOp</span><span class="o">(</span><span class="n">TIMEOUT</span><span class="o">))*</span><span class="mi">1000</span><span class="o">;</span> <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">FOREVER</span><span class="o">))</span> <span class="o">{</span> <span class="n">timeout</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">containsOp</span><span class="o">(</span><span class="n">COUNT</span><span class="o">))</span> <span class="o">{</span> <span class="n">count</span> <span class="o">=</span> <span class="n">Integer</span><span class="o">.</span><span class="na">parseInt</span><span class="o">(</span><span class="n">getOp</span><span class="o">(</span><span class="n">COUNT</span><span class="o">));</span> <span class="o">}</span>
+        
+        <span class="k">while</span> <span class="o">((</span><span class="n">msg</span> <span class="o">=</span> <span class="n">consumer</span><span class="o">.</span><span class="na">receive</span><span class="o">(</span><span class="n">timeout</span><span class="o">))</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="o">{</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;\n------------- Msg -------------&quot;</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">msg</span><span class="o">);</span>
+            <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;-------------------------------\n&quot;</span><span class="o">);</span>
+
+            <span class="k">if</span> <span class="o">(</span><span class="n">count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="k">if</span> <span class="o">(++</span><span class="n">i</span> <span class="o">==</span> <span class="n">count</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">break</span><span class="o">;</span>                    
+                <span class="o">}</span>               
+            <span class="o">}</span>            
+        <span class="o">}</span>
+        <span class="n">consumer</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">ssn</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+        <span class="n">con</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="o">}</span>
+   
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="o">{</span>
+        <span class="n">String</span> <span class="n">u</span> <span class="o">=</span> <span class="s">&quot;Usage: drain [OPTIONS] &#39;ADDRESS&#39;&quot;</span><span class="o">;</span>
+        <span class="n">String</span> <span class="n">d</span> <span class="o">=</span> <span class="s">&quot;Drains messages from the specified address.&quot;</span><span class="o">;</span> 
+            
+        <span class="k">new</span> <span class="n">Drain</span><span class="o">(</span><span class="n">args</span><span class="o">,</span><span class="n">u</span><span class="o">,</span><span class="n">d</span><span class="o">);</span>        
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+
+<p><a href="Drain.java">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
