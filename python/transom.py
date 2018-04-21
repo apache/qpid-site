@@ -6,9 +6,9 @@
 # to you under the Apache License, Version 2.0 (the
 # "License"); you may not use this file except in compliance
 # with the License.  You may obtain a copy of the License at
-# 
+#
 #   http://www.apache.org/licenses/LICENSE-2.0
-# 
+#
 # Unless required by applicable law or agreed to in writing,
 # software distributed under the License is distributed on an
 # "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -65,7 +65,7 @@ class Transom:
 
         self.template_content = None
         self.config_env = None
-        
+
         extras = {
             "code-friendly": True,
             "footnotes": True,
@@ -94,7 +94,7 @@ class Transom:
 
         if not _is_file(self.template_path):
             raise Exception("No template found")
-            
+
         self.template_content = _read_file(self.template_path)
 
         init_globals = {"site_url": self.site_url}
@@ -189,7 +189,7 @@ class Transom:
 
                 if name == "transom":
                     continue
-                
+
                 self.traverse_output_files(path, files)
 
     def check_links(self, internal=True, external=False):
@@ -202,17 +202,17 @@ class Transom:
         errors_by_link = _defaultdict(list)
         links = self.filter_links(self.links)
 
-        for link in links:
+        for i, link in enumerate(links):
             if internal and link.startswith(self.site_url):
                 if link[len(self.site_url):].startswith("/transom"):
                     continue
-                
+
                 if link not in self.link_targets:
                     errors_by_link[link].append("Link has no target")
 
             if external and not link.startswith(self.site_url):
                 code, error = self.check_external_link(link)
-            
+
                 if code >= 400:
                     msg = "HTTP error code {}".format(code)
                     errors_by_link[link].append(msg)
@@ -221,6 +221,10 @@ class Transom:
                     errors_by_link[link].append(error.message)
 
             _sys.stdout.write(".")
+
+            if (i + 1) % 100 == 0:
+                _sys.stdout.write("\n")
+            
             _sys.stdout.flush()
 
         print()
@@ -233,6 +237,8 @@ class Transom:
 
             for source in self.links[link]:
                 print("  Source: {}".format(source))
+
+        return len(errors_by_link)
 
     def filter_links(self, links):
         config_path = _join(self.input_dir, "_transom_ignore_links")
@@ -253,7 +259,7 @@ class Transom:
             return filter(retain, links)
 
         return links
-                
+
     def check_external_link(self, link):
         sock, code, error = None, None, None
 
@@ -366,7 +372,7 @@ class _File(object):
             if token[:2] != "{{" or token[-2:] != "}}":
                 out.append(token)
                 continue
-            
+
             token_content = token[2:-2]
 
             if page_vars and token_content in page_vars:
@@ -375,7 +381,7 @@ class _File(object):
 
             expr = token_content
             env = self.site.config_env
-            
+
             try:
                 result = eval(expr, env)
             except Exception as e:
@@ -415,7 +421,7 @@ class _Page(_File):
 
         self.title = None
         self.attributes = dict()
-        
+
         self.site.pages.append(self)
 
     def init(self):
@@ -429,13 +435,13 @@ class _Page(_File):
         super(_Page, self).init()
 
         self.template_content = self.site.template_content
-        
+
         input_dir, name = _split(self.input_path)
         template_path = _join(input_dir, "_transom_template.html")
 
         if _is_file(template_path):
             self.template_content = _read_file(template_path)
-        
+
     def load_input(self):
         self.site.info("Loading {}", self)
         self.content = _read_file(self.input_path)
@@ -532,7 +538,7 @@ class _Page(_File):
             return
 
         self.site.info("Finding links in {}", self)
-        
+
         try:
             root = self.parse_xml(self.content)
         except Exception as e:
@@ -626,7 +632,7 @@ def _write_file(path, content):
 
     with _open_file(path, "w") as file:
         return file.write(content)
-    
+
 # Adapted from http://stackoverflow.com/questions/22078621/python-how-to-copy-files-fast
 
 _read_flags = _os.O_RDONLY
@@ -635,7 +641,7 @@ _eof = b""
 
 def _copy_file(src, dst):
     _make_dir(_split(dst)[0])
-    
+
     try:
         fin = _os.open(src, _read_flags)
         fout = _os.open(dst, _write_flags)
