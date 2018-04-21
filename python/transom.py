@@ -173,6 +173,8 @@ class Transom:
             for path in sorted(extra_files):
                 print("  {}".format(path))
 
+        return len(missing_files), len(extra_files)
+
     def traverse_output_files(self, subdir, files):
         output_dir = _join(self.output_dir, subdir)
         names = set(_os.listdir(output_dir))
@@ -224,7 +226,7 @@ class Transom:
 
             if (i + 1) % 100 == 0:
                 _sys.stdout.write("\n")
-            
+
             _sys.stdout.flush()
 
         print()

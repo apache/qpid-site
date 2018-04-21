@@ -26,4 +26,15 @@ site_url, input_dir, output_dir = sys.argv[1:4]
 
 transom = Transom(site_url, input_dir, output_dir)
 transom.init()
-transom.check_output_files()
+
+missing_files, extra_files = transom.check_output_files()
+
+if extra_files != 0:
+    print("Warning! {} extra files in the output".format(extra_files))
+
+if missing_files == 0:
+    print("PASSED")
+else:
+    print("FAILED")
+
+sys.exit(missing_files)
