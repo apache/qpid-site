@@ -54,9 +54,9 @@ attribute of <em>sslProfile</em> sections.</p></div>
 <div class="content">
 <pre><code>sslProfile {
     name: my-ssl
-    certDb: ca-certificate-1.pem
+    caCertFile: ca-certificate-1.pem
     certFile: server-certificate-1.pem
-    keyFile: server-private-key.pem
+    privateKeyFile: server-private-key.pem
 }
 
 listener {
@@ -92,7 +92,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloInterval</em> (integer, default=<em>1</em>)
+<em>helloIntervalSeconds</em> (integer, default=<em>1</em>)
 </dt>
 <dd>
 <p>
@@ -100,7 +100,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>helloMaxAge</em> (integer, default=<em>3</em>)
+<em>helloMaxAgeSeconds</em> (integer, default=<em>3</em>)
 </dt>
 <dd>
 <p>
@@ -108,7 +108,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raInterval</em> (integer, default=<em>30</em>)
+<em>raIntervalSeconds</em> (integer, default=<em>30</em>)
 </dt>
 <dd>
 <p>
@@ -116,7 +116,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>raIntervalFlux</em> (integer, default=<em>4</em>)
+<em>raIntervalFluxSeconds</em> (integer, default=<em>4</em>)
 </dt>
 <dd>
 <p>
@@ -124,7 +124,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>remoteLsMaxAge</em> (integer, default=<em>60</em>)
+<em>remoteLsMaxAgeSeconds</em> (integer, default=<em>60</em>)
 </dt>
 <dd>
 <p>
@@ -140,15 +140,15 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>debugDump</em> (path)
+<em>debugDumpFile</em> (path)
 </dt>
 <dd>
 <p>
-  A file to dump debugging information that can&#8217;t be logged normally.
+  The absolute path to the location for the debug dump file. The router writes debug-level information to this file if the logger is not available.
 </p>
 </dd>
 <dt class="hdlist1">
-<em>saslConfigPath</em> (path)
+<em>saslConfigDir</em> (path)
 </dt>
 <dd>
 <p>
@@ -164,11 +164,19 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>allowResumableLinkRoute</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Whether links can be routed where timeout is non-zero or expiry-policy is not link-detach
+</p>
+</dd>
+<dt class="hdlist1">
 <em>allowUnsettledMulticast</em> (boolean)
 </dt>
 <dd>
 <p>
-  If true, allow senders to send unsettled deliveries to multicast addresses.  These deliveries shall be settled by the ingress router.  If false, unsettled deliveries to multicast addresses shall be rejected.
+  (DEPRECATED) If true, allow senders to send unsettled deliveries to multicast addresses.  These deliveries shall be settled by the ingress router.  If false, unsettled deliveries to multicast addresses shall be rejected.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -177,6 +185,62 @@ listener {
 <dd>
 <p>
   Default forwarding treatment for any address without a specified treatment. multicast - one copy of each message delivered to all subscribers; closest - messages delivered to only the closest subscriber; balanced - messages delivered to one subscriber with load balanced across subscribers; unavailable - this address is unavailable, link attaches to an address of unavilable distribution will be rejected.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloInterval</em> (integer, default=<em>1</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Interval in seconds between HELLO messages sent to neighbor routers. This attribute has been deprecated. Use helloIntervalSeconds instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>helloMaxAge</em> (integer, default=<em>3</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Time in seconds after which a neighbor is declared lost if no HELLO is received. This attribute has been deprecated. Use helloMaxAgeSeconds instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raInterval</em> (integer, default=<em>30</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Interval in seconds between Router-Advertisements sent to all routers in a stable network. This attribute has been deprecated. Use raIntervalSeconds instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>raIntervalFlux</em> (integer, default=<em>4</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Interval in seconds between Router-Advertisements sent to all routers during topology fluctuations. This attribute has been deprecated. Use raIntervalFluxSeconds instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>remoteLsMaxAge</em> (integer, default=<em>60</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Time in seconds after which link state is declared stale if no RA is received. This attribute has been deprecated. Use remoteLsMaxAgeSeconds instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>debugDump</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The absolute path to the location for the debug dump file. The router writes debug-level information to this file if the logger is not available. This attribute has been deprecated. Use debugDumpFile instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslConfigPath</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Absolute path to the SASL configuration file. This attribute has been deprecated. Use saslConfigDir instead.
 </p>
 </dd>
 </dl></div>
@@ -194,7 +258,15 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>certDb</em> (path)
+<em>protocols</em> (string)
+</dt>
+<dd>
+<p>
+  The TLS protocols that this sslProfile can use. You can specify a list of one or more of TLSv1, TLSv1.1, or TLSv1.2. To specify multiple protocols, separate the protocols with a space. For example, to permit the sslProfile to use TLS v1.1 and TLS v1.2 only, you would set the value to TLSv1.1 TLSv1.2. If you do not specify a value, the sslProfile uses the TLS protocol specified by the system-wide configuration.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>caCertFile</em> (path)
 </dt>
 <dd>
 <p>
@@ -210,7 +282,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>keyFile</em> (path)
+<em>privateKeyFile</em> (path)
 </dt>
 <dd>
 <p>
@@ -222,7 +294,7 @@ listener {
 </dt>
 <dd>
 <p>
-  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key.
+  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key. This file should be permission protected to limit access
 </p>
 </dd>
 <dt class="hdlist1">
@@ -230,7 +302,7 @@ listener {
 </dt>
 <dd>
 <p>
-  An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified.
+  (DEPRECATED) An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified. This attribute has been deprecated because it is unsafe to store plain text passwords in config files. Use the passwordFile instead
 </p>
 </dd>
 <dt class="hdlist1">
@@ -242,11 +314,35 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>displayNameFile</em> (string)
+<em>uidNameMappingFile</em> (string)
 </dt>
 <dd>
 <p>
   The absolute path to the file containing the unique id to display name mapping
+</p>
+</dd>
+<dt class="hdlist1">
+<em>certDb</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The absolute path to the database that contains the public certificates of trusted certificate authorities (CA). This attribute has been deprecated. Use caCertFile instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>keyFile</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The absolute path to the file containing the PEM-formatted private key for the above certificate. This attribute has been deprecated. Use privateKeyFile instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>displayNameFile</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The absolute path to the file containing the unique id to display name mapping This attribute has been deprecated. Use uidNameMappingFile instead.
 </p>
 </dd>
 </dl></div>
@@ -256,15 +352,31 @@ listener {
 <div class="paragraph"><p>EXPERIMENTAL. Attributes for setting SASL plugin.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>authService</em> (string, required)
+<em>authService</em> (string)
 </dt>
 <dd>
 <p>
-  Address of a service to delegate authentication to.
+  (DEPRECATED) Address of a service to delegate authentication to. This attribute has been deprecated. Use the host and port attributes instead.
 </p>
 </dd>
 <dt class="hdlist1">
-<em>saslInitHostname</em> (string)
+<em>host</em> (string)
+</dt>
+<dd>
+<p>
+  A host name, IPV4 or IPV6 literal, of the service to delegate to.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>port</em> (string, default=<em>amqp</em>)
+</dt>
+<dd>
+<p>
+  Port number of the service delegated host.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>realm</em> (string)
 </dt>
 <dd>
 <p>
@@ -272,11 +384,27 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>authSslProfile</em> (string)
+<em>sslProfile</em> (string)
 </dt>
 <dd>
 <p>
   Name of the sslProfile to use for the authentication service.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>saslInitHostname</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Value to set for hostname field on sasl-init This attribute has been deprecated. Use realm instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>authSslProfile</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Name of the sslProfile to use for the authentication service. This attribute has been deprecated. Use sslProfile instead.
 </p>
 </dd>
 </dl></div>
@@ -298,11 +426,11 @@ listener {
 </dt>
 <dd>
 <p>
-  Port number or symbolic service name.
+  Port number or symbolic service name.  If <em>0</em>, the router shall assign an ephemeral port to the listener and log the port number with a log of the form <em>SERVER (notice) Listening on &lt;host&gt;:&lt;assigned-port&gt; (&lt;listener-name&gt;)</em>
 </p>
 </dd>
 <dt class="hdlist1">
-<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>])
+<em>socketAddressFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>])
 </dt>
 <dd>
 <p>
@@ -374,7 +502,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>trustedCerts</em> (path)
+<em>trustedCertsFile</em> (path)
 </dt>
 <dd>
 <p>
@@ -446,7 +574,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>failoverList</em> (string)
+<em>failoverUrls</em> (string)
 </dt>
 <dd>
 <p>
@@ -462,7 +590,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>httpRoot</em> (path)
+<em>httpRootDir</em> (path)
 </dt>
 <dd>
 <p>
@@ -470,11 +598,51 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>logMessage</em> (string, default=<em>none</em>)
+<em>messageLoggingComponents</em> (string, default=<em>none</em>)
 </dt>
 <dd>
 <p>
   A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
+<dt class="hdlist1">
+<em>protocolFamily</em> (One of [<em>IPv4</em>, <em>IPv6</em>])
+</dt>
+<dd>
+<p>
+  (DEPRECATED) [<em>IPv4</em>, <em>IPv6</em>] IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6.  If not specified, the protocol family will be automatically determined from the address. This attribute has been deprecated. Use socketAddressFamily instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>trustedCerts</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) This optional setting can be used to reduce the set of available CAs for client authentication.  If used, this setting must provide the absolute path to a PEM file that contains the trusted certificates. This attribute has been deprecated. Use trustedCertsFile instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>failoverList</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) A comma-separated list of failover urls to be supplied to connected clients.  Form: [(amqp|amqps|ws|wss)://]host_or_ip[:port] This attribute has been deprecated. Use failoverUrls instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>httpRoot</em> (path)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Serve HTTP files from this directory, defaults to the installed stand-alone console directory This attribute has been deprecated. Use httpRootDir instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed This attribute has been deprecated. Use messageLoggingComponents instead.
 </p>
 </dd>
 </dl></div>
@@ -596,7 +764,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>verifyHostName</em> (boolean, default=<em>True</em>)
+<em>verifyHostname</em> (boolean, default=<em>True</em>)
 </dt>
 <dd>
 <p>
@@ -620,11 +788,27 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>logMessage</em> (string, default=<em>none</em>)
+<em>messageLoggingComponents</em> (string, default=<em>none</em>)
 </dt>
 <dd>
 <p>
   A comma separated list that indicates which components of the message should be logged (no spaces allowed between list components). Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. This log message is written to the MESSAGE logging module. In the <em>log</em> entity, set <em>module</em> property to MESSAGE or DEFAULT and <em>enable</em> to trace+ to see this log message
+</p>
+</dd>
+<dt class="hdlist1">
+<em>verifyHostName</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) yes: Ensures that when initiating a connection (as a client) the host name in the URL to which this connector connects to matches the host name in the digital certificate that the peer sends back as part of the SSL connection; no: Does not perform host name verification This attribute has been deprecated. Use verifyHostname instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>logMessage</em> (string, default=<em>none</em>)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) A comma separated list that indicates which components of the message should be logged (no spaces allowed between list components). Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. This log message is written to the MESSAGE logging module. In the <em>log</em> entity, set <em>module</em> property to MESSAGE or DEFAULT and <em>enable</em> to trace+ to see this log message This attribute has been deprecated. Use messageLoggingComponents instead.
 </p>
 </dd>
 </dl></div>
@@ -650,7 +834,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>timestamp</em> (boolean)
+<em>includeTimestamp</em> (boolean)
 </dt>
 <dd>
 <p>
@@ -658,7 +842,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>source</em> (boolean)
+<em>includeSource</em> (boolean)
 </dt>
 <dd>
 <p>
@@ -666,11 +850,35 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>output</em> (string)
+<em>outputFile</em> (string)
 </dt>
 <dd>
 <p>
   Where to send log messages. Can be <em>stderr</em>, <em>stdout</em>, <em>syslog</em> or a file name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>timestamp</em> (boolean)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Include timestamp in log messages. This attribute has been deprecated. Use includeTimestamp instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>source</em> (boolean)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Include source file and line number in log messages. This attribute has been deprecated. Use includeSource instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>output</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) Where to send log messages. Can be <em>stderr</em>, <em>stdout</em>, <em>syslog</em> or a file name. This attribute has been deprecated. Use outputFile instead.
 </p>
 </dd>
 </dl></div>
@@ -774,11 +982,19 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+<em>direction</em> (One of [<em>in</em>, <em>out</em>], required)
 </dt>
 <dd>
 <p>
   The permitted direction of links: <em>in</em> means client senders; <em>out</em> means client receivers
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The permitted direction of links: <em>in</em> means client senders; <em>out</em> means client receivers This attribute has been deprecated. Use direction instead.
 </p>
 </dd>
 </dl></div>
@@ -796,7 +1012,7 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+<em>direction</em> (One of [<em>in</em>, <em>out</em>], required)
 </dt>
 <dd>
 <p>
@@ -833,6 +1049,98 @@ listener {
 <dd>
 <p>
   If present, an alternate address of the node on the remote container.  This is used if the node has a different address than the address used internally by the router to route deliveries.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>dir</em> (One of [<em>in</em>, <em>out</em>], required)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The direction of the link to be created.  In means into the router, out means out of the router. This attribute has been deprecated. Use direction instead.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_exchange">exchange</h3>
+<div class="paragraph"><p>[EXPERIMENTAL] Defines a topic exchange.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>address</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address of the exchange. Used by the message publisher as the target for sending messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>phase</em> (integer)
+</dt>
+<dd>
+<p>
+  The address phase for the exchange.  Defaults to <em>0</em>.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>alternateAddress</em> (string)
+</dt>
+<dd>
+<p>
+  The address to forward the message to if no bindings are matched.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>alternatePhase</em> (integer)
+</dt>
+<dd>
+<p>
+  The address phase for the alternateAddress.  Defaults to <em>0</em>.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>matchMethod</em> (One of [<em>amqp</em>, <em>mqtt</em>], default=<em>amqp</em>)
+</dt>
+<dd>
+<p>
+  Key matching algorithm used. <em>amqp</em> uses the legacy AMQP topic exchange wildcard match method as described in the pre-1.0 drafts. <em>mqtt</em> uses the MQTT topic filter wildcard match method.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_binding">binding</h3>
+<div class="paragraph"><p>[EXPERIMENTAL] Defines a keyed next hop binding for a topic exchange. The subject field of the messages arriving at the exchange is compared against the binding&#8217;s key value using the exchange&#8217;s matchMethod.  If the subject matches the key the message is forwarded to the nextHopAddress. The nextHopAddress overrides the message&#8217;s original destination.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>exchangeName</em> (string, required)
+</dt>
+<dd>
+<p>
+  The name of the exchange to bind.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>bindingKey</em> (string)
+</dt>
+<dd>
+<p>
+  Pattern to compare against incoming message&#8217;s subject.  The key is a string of zero or more tokens and wildcards. The format depends on the matchMethod configured for the exchange. For AMQP each token is delimited by the <em>.</em> character and wild-card tokens <em>*</em> matches a single token and <em></em> matches zero or more tokens. For MQTT each token is delimited by the <em>/</em> character and wildcard tokens <em>+</em> matches a single token and <em></em> matches zero or more tokens at the end of the topic. If a key is not provided the binding will match all messages arriving at the exchange (fanout behavior).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>nextHopAddress</em> (string, required)
+</dt>
+<dd>
+<p>
+  The address to forward the message to when the message&#8217;s topic string matches the binding key pattern.  This address is used by message consumers as the source of incoming messages.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>nextHopPhase</em> (integer)
+</dt>
+<dd>
+<p>
+  The address phase used when forwarding messages that match this binding.
 </p>
 </dd>
 </dl></div>
@@ -892,7 +1200,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Global maximum number of concurrent client connections allowed. This limit is always enforced even if no other policy settings have been defined.
+  The maximum number of concurrent client connections allowed for this router. This limit is always enforced, even if no other policy settings have been defined. The limit is applied to all incoming connections regardless of remote host, authenticated user, or targeted vhost.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -900,7 +1208,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Enable vhost policy user groups, connection denial, and resource limit enforcement
+  Enables the router to enforce the connection denials and resource limits defined in the configured vhost policies.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -908,7 +1216,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Absolute path to a directory that holds vhost definition .json files. All vhost definitions in all .json files in this directory are processed.
+  The absolute path to a directory that holds vhost policy definition files in JSON format (*.json). The router processes all of the vhost policies in each JSON file that is in this directory.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -916,7 +1224,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Vhost rule set name to use for connections with a vhost that is otherwise not defined. Default vhost processing may be disabled either by erasing the definition of defaultVhost or by not defining a vhost object named <em>$default</em>.
+  The name of the default vhost policy, which is applied to any connection for which a vhost policy has not been configured. If <em>defaultVhost</em> is not defined, then default vhost processing is disabled.
 </p>
 </dd>
 </dl></div>
@@ -926,11 +1234,11 @@ listener {
 <div class="paragraph"><p>AMQP virtual host policy definition of users, user groups, allowed remote hosts, and AMQP restrictions.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>id</em> (string, required)
+<em>hostname</em> (string, required)
 </dt>
 <dd>
 <p>
-  The vhost name.
+  The hostname of the vhost. This vhost policy will be applied to any client connection that is directed to this hostname.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -938,7 +1246,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Maximum number of concurrent client connections allowed.
+  The global maximum number of concurrent client connections allowed for this vhost.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -946,7 +1254,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Maximum number of concurrent client connections allowed for any single user.
+  The maximum number of concurrent client connections allowed for any user.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -954,7 +1262,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Maximum number of concurrent client connections allowed for any remote host.
+  The maximum number of concurrent client connections allowed for any remote host (the host from which the client is connecting).
 </p>
 </dd>
 <dt class="hdlist1">
@@ -962,7 +1270,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Unrestricted users, those who are not members of a defined user group, are allowed to connect to this application. Unrestricted users are assigned to the <em>default</em> user group and receive <em>default</em> settings.
+  Whether unknown users (users who are not members of a defined user group) are allowed to connect to the vhost. Unknown users are assigned to the <em>$default</em> user group and receive <em>$default</em> settings.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -970,7 +1278,99 @@ listener {
 </dt>
 <dd>
 <p>
-  A map where each key is a user group name and the value is a map of the corresponding settings for that group.
+  A map where each key is a vhost name and each value is a map of the settings for users of that vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>id</em> (string, required)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The hostname of the vhost. This vhost policy will be applied to any client connection that is directed to this hostname. This attribute has been deprecated. Use hostname instead.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_vhostusergroupsettings">vhostUserGroupSettings</h3>
+<div class="paragraph"><p>Policy settings for users connecting to a vhost. Configuration files including this section must use .json format.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<em>maxFrameSize</em> (integer, default=<em>16384</em>)
+</dt>
+<dd>
+<p>
+  The largest frame, in bytes, that may be sent on this connection. Non-zero policy values overwrite values specified for a listener object (AMQP Open, max-frame-size).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessionWindow</em> (integer, default=<em>1638400</em>)
+</dt>
+<dd>
+<p>
+  The incoming capacity for new AMQP sessions, measured in octets. Non-zero policy values overwrite values specified for a listener object (AMQP Begin, incoming-window).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSessions</em> (integer, default=<em>32768</em>)
+</dt>
+<dd>
+<p>
+  The maximum number of sessions that may be created on this connection. Non-zero policy values overwrite values specified for a listener object (AMQP Open, channel-max).
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxSenders</em> (integer, default=<em>2147483647</em>)
+</dt>
+<dd>
+<p>
+  The maximum number of sending links that may be created on this connection. A value of <em>0</em> disables all sender links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>maxReceivers</em> (integer, default=<em>2147483647</em>)
+</dt>
+<dd>
+<p>
+  The maximum number of receiving links that may be created on this connection. A value of <em>0</em> disables all receiver links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowDynamicSource</em> (boolean)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to create dynamic receiving links (links to resources that do not exist on the peer). A value of <em>true</em> means that users are able to automatically create resources on the peer system.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowAnonymousSender</em> (boolean)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to create sending links if the sender does not provide a target address. By prohibiting anonymous senders, the router only needs to verify once, when the link is created, that the sender is permitted to send messages to the target address. The router does not need to verify each message that is sent on the link. A value of <em>true</em> means that users may send messages to any address. Allowing anonymous senders can also decrease performance: if the sender does not specify a target address, then the router must parse each message to determine how to route it.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowUserIdProxy</em> (boolean)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to send messages with a user ID that is different than the connection&#8217;s authenticated user name.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sources</em> (string)
+</dt>
+<dd>
+<p>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>targets</em> (string)
+</dt>
+<dd>
+<p>
 </p>
 </dd>
 </dl></div>

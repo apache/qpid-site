@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_dispatch_release_url}}/index.html).
 
-This content was generated at 11:21  on Tuesday, 28 November 2017.
+This content was generated at 07:00  on Saturday, 28 April 2018.
 
 </div>
 

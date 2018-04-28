@@ -34,53 +34,56 @@
 <li><a href="#security">2.5. Security</a></li>
 </ul>
 </li>
-<li><a href="#getting_started">3. Getting Started</a>
+<li><a href="#getting-started">3. Getting Started</a>
 <ul class="sectlevel2">
-<li><a href="#starting_the_router">3.1. Starting the Router</a></li>
+<li><a href="#starting-the-router">3.1. Starting the Router</a></li>
 <li><a href="#routing_messages_in_a_peer_to_peer_configuration">3.2. Routing Messages in a Peer-to-Peer Configuration</a>
 <ul class="sectlevel3">
-<li><a href="#starting_the_receiver_client">3.2.1. Starting the Receiver Client</a></li>
-<li><a href="#sending_messages">3.2.2. Sending Messages</a></li>
+<li><a href="#starting-the-receiver-client">3.2.1. Starting the Receiver Client</a></li>
+<li><a href="#sending-messages">3.2.2. Sending Messages</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#router_configuration">4. Configuration</a>
+<li><a href="#router-configuration">4. Configuration</a>
 <ul class="sectlevel2">
 <li><a href="#accessing_the_router_configuration_file">4.1. Accessing the Router Configuration File</a></li>
 <li><a href="#how_the_router_configuration_file_is_structured">4.2. How the Router Configuration File is Structured</a></li>
-<li><a href="#methods_for_changing_router_configuration">4.3. Changing a Router&#8217;s Configuration</a>
+<li><a href="#methods-for-changing-router-configuration">4.3. Changing a Router&#8217;s Configuration</a>
 <ul class="sectlevel3">
-<li><a href="#making_permanent_change_to_router_configuration">4.3.1. Making a Permanent Change to the Router&#8217;s Configuration</a></li>
-<li><a href="#changing_configuration_for_running_router">4.3.2. Changing the Configuration for a Running Router</a></li>
+<li><a href="#making-permanent-change-to-router-configuration">4.3.1. Making a Permanent Change to the Router&#8217;s Configuration</a></li>
+<li><a href="#changing-configuration-for-running-router">4.3.2. Changing the Configuration for a Running Router</a></li>
 </ul>
 </li>
 <li><a href="#default_configuration_settings">4.4. Default Configuration Settings</a></li>
 <li><a href="#setting_essential_configuration_properties">4.5. Setting Essential Configuration Properties</a></li>
 </ul>
 </li>
-<li><a href="#router_network_connections">5. Network Connections</a>
+<li><a href="#router-network-connections">5. Network Connections</a>
 <ul class="sectlevel2">
-<li><a href="#adding_incoming_connections">5.1. Listening for Incoming Connections</a></li>
-<li><a href="#adding_outgoing_connections">5.2. Adding Outgoing Connections</a></li>
+<li><a href="#adding-incoming-connections">5.1. Listening for Incoming Connections</a></li>
+<li><a href="#adding-outgoing-connections">5.2. Adding Outgoing Connections</a></li>
 </ul>
 </li>
-<li><a href="#security_config">6. Security</a>
+<li><a href="#security-config">6. Security</a>
 <ul class="sectlevel2">
-<li><a href="#setting_up_ssl_for_encryption_and_authentication">6.1. Setting Up SSL/TLS for Encryption and Authentication</a></li>
-<li><a href="#setting_up_sasl_for_authentication_and_payload_encryption">6.2. Setting Up SASL for Authentication and Payload Encryption</a></li>
-<li><a href="#securing_incoming_connections">6.3. Securing Incoming Connections</a>
+<li><a href="#authenticating_remote_peers">6.1. Authenticating Remote Peers</a>
 <ul class="sectlevel3">
-<li><a href="#adding_ssl_encryption_to_incoming_connection">6.3.1. Adding SSL/TLS Encryption to an Incoming Connection</a></li>
-<li><a href="#adding_sasl_authentication_to_incoming_connection">6.3.2. Adding SASL Authentication to an Incoming Connection</a></li>
-<li><a href="#adding_ssl_client_authentication_to_incoming_connection">6.3.3. Adding SSL/TLS Client Authentication to an Incoming Connection</a></li>
-<li><a href="#adding_sasl_payload_encryption_to_incoming_connection">6.3.4. Adding SASL Payload Encryption to an Incoming Connection</a></li>
+<li><a href="#setting-up-ssl-for-encryption-and-authentication">6.1.1. Setting Up SSL/TLS for Encryption and Authentication</a></li>
+<li><a href="#setting-up-sasl-for-authentication-and-payload-encryption">6.1.2. Setting Up SASL for Authentication and Payload Encryption</a></li>
+<li><a href="#securing-incoming-connections">6.1.3. Securing Incoming Connections</a></li>
+<li><a href="#securing-outgoing-connections">6.1.4. Securing Outgoing Connections</a></li>
+<li><a href="#integrating-with-kerberos">6.1.5. Integrating with Kerberos</a></li>
 </ul>
 </li>
-<li><a href="#securing_outgoing_connections">6.4. Securing Outgoing Connections</a>
+<li><a href="#authorizing_access_to_messaging_resources">6.2. Authorizing Access to Messaging Resources</a>
 <ul class="sectlevel3">
-<li><a href="#adding_ssl_authentication_to_outgoing_connection">6.4.1. Adding SSL/TLS Client Authentication to an Outgoing Connection</a></li>
-<li><a href="#adding_sasl_authentication_to_outgoing_connection">6.4.2. Adding SASL Authentication to an Outgoing Connection</a></li>
+<li><a href="#types_of_policies">6.2.1. Types of Policies</a></li>
+<li><a href="#how_dispatch_router_applies_policies">6.2.2. How Dispatch Router Applies Policies</a></li>
+<li><a href="#configuring_global_policies">6.2.3. Configuring Global Policies</a></li>
+<li><a href="#configuring_vhost_policies">6.2.4. Configuring Vhost Policies</a></li>
+<li><a href="#example_configuring_a_vhost_policy">6.2.5. Example: Configuring a Vhost Policy</a></li>
+<li><a href="#example_using_a_vhost_policy_to_limit_memory_consumption_advanced">6.2.6. Example: Using a Vhost Policy to Limit Memory Consumption (Advanced)</a></li>
 </ul>
 </li>
 </ul>
@@ -96,10 +99,10 @@
 <li><a href="#configuring_message_routing">7.2. Configuring Message Routing</a>
 <ul class="sectlevel3">
 <li><a href="#addresses_2">7.2.1. Addresses</a></li>
-<li><a href="#routing_patterns_overview">7.2.2. Routing Patterns</a></li>
+<li><a href="#routing-patterns-overview">7.2.2. Routing Patterns</a></li>
 <li><a href="#message_settlement_2">7.2.3. Message Settlement</a></li>
-<li><a href="#routing_messages_between_clients">7.2.4. Routing Messages Between Clients</a></li>
-<li><a href="#routing_messages_through_broker">7.2.5. Routing Messages Through a Broker Queue</a></li>
+<li><a href="#routing-messages-between-clients">7.2.4. Routing Messages Between Clients</a></li>
+<li><a href="#routing-messages-through-broker">7.2.5. Routing Messages Through a Broker Queue</a></li>
 <li><a href="#example_routing_messages_through_broker_queues">7.2.6. Example: Routing Messages Through Broker Queues</a></li>
 </ul>
 </li>
@@ -108,7 +111,7 @@
 <li><a href="#link_route_addresses_2">7.3.1. Link Route Addresses</a></li>
 <li><a href="#link_route_routing_patterns">7.3.2. Link Route Routing Patterns</a></li>
 <li><a href="#link_route_flow_control">7.3.3. Link Route Flow Control</a></li>
-<li><a href="#creating_link_route">7.3.4. Creating a Link Route</a></li>
+<li><a href="#creating-link-route">7.3.4. Creating a Link Route</a></li>
 <li><a href="#example_using_a_link_route_to_provide_client_isolation">7.3.5. Example: Using a Link Route to Provide Client Isolation</a></li>
 </ul>
 </li>
@@ -116,7 +119,7 @@
 </li>
 <li><a href="#logging">8. Logging</a>
 <ul class="sectlevel2">
-<li><a href="#logging_modules_you_can_configure">8.1. Logging Modules</a>
+<li><a href="#logging-modules-you-can-configure">8.1. Logging Modules</a>
 <ul class="sectlevel3">
 <li><a href="#the_code_default_code_logging_module">8.1.1. The <code>DEFAULT</code> Logging Module</a></li>
 <li><a href="#the_code_router_code_logging_module">8.1.2. The <code>ROUTER</code> Logging Module</a></li>
@@ -132,7 +135,7 @@
 <li><a href="#the_code_policy_code_logging_module">8.1.12. The <code>POLICY</code> Logging Module</a></li>
 </ul>
 </li>
-<li><a href="#configure_default_logging">8.2. Configuring Logging</a></li>
+<li><a href="#configure-default-logging">8.2. Configuring Logging</a></li>
 <li><a href="#viewing_log_entries">8.3. Viewing Log Entries</a>
 <ul class="sectlevel3">
 <li><a href="#viewing_log_entries_on_the_console">8.3.1. Viewing Log Entries on the Console</a></li>
@@ -141,112 +144,66 @@
 </li>
 </ul>
 </li>
-<li><a href="#policy">9. Policy</a>
+<li><a href="#management">9. Management</a>
 <ul class="sectlevel2">
-<li><a href="#definitions">9.1. Definitions</a>
+<li><a href="#using_apache_qpid_dispatch_router_console">9.1. Using Apache Qpid Dispatch Router Console</a>
 <ul class="sectlevel3">
-<li><a href="#vhost">9.1.1. vhost</a></li>
+<li><a href="#console-overview">9.1.1. Console Overview</a></li>
+<li><a href="#console-installation">9.1.2. Console Installation</a></li>
+<li><a href="#console-operation">9.1.3. Console Operation</a></li>
 </ul>
 </li>
-<li><a href="#policy_features">9.2. Policy Features</a>
+<li><a href="#monitoring-using-qdstat">9.2. Monitoring Dispatch Router Using <code>qdstat</code></a>
 <ul class="sectlevel3">
-<li><a href="#total_connection_limit">9.2.1. Total Connection Limit</a></li>
-<li><a href="#vhost_policy">9.2.2. Vhost Policy</a></li>
-<li><a href="#default_vhost">9.2.3. Default Vhost</a></li>
+<li><a href="#syntax_for_using_code_qdstat_code">9.2.1. Syntax for Using <code>qdstat</code></a></li>
+<li><a href="#viewing_general_statistics_for_a_router">9.2.2. Viewing General Statistics for a Router</a></li>
+<li><a href="#viewing_a_list_of_connections_to_a_router">9.2.3. Viewing a List of Connections to a Router</a></li>
+<li><a href="#viewing_amqp_links_attached_to_a_router">9.2.4. Viewing AMQP Links Attached to a Router</a></li>
+<li><a href="#viewing_known_routers_on_a_network">9.2.5. Viewing Known Routers on a Network</a></li>
+<li><a href="#viewing_addresses_known_to_a_router">9.2.6. Viewing Addresses Known to a Router</a></li>
+<li><a href="#viewing_a_router_s_autolinks">9.2.7. Viewing a Router&#8217;s Autolinks</a></li>
+<li><a href="#viewing_the_status_of_a_router_s_link_routes">9.2.8. Viewing the Status of a Router&#8217;s Link Routes</a></li>
+<li><a href="#viewing_memory_consumption_information">9.2.9. Viewing Memory Consumption Information</a></li>
 </ul>
 </li>
-<li><a href="#policy_schema">9.3. Policy Schema</a>
+<li><a href="#managing-router">9.3. Managing Dispatch Router Using <code>qdmanage</code></a>
 <ul class="sectlevel3">
-<li><a href="#global_policy">9.3.1. Global Policy</a></li>
-<li><a href="#vhost_policy_2">9.3.2. Vhost Policy</a></li>
-<li><a href="#vhost_user_group_settings_map">9.3.3. Vhost User Group Settings Map</a></li>
+<li><a href="#syntax_for_using_code_qdmanage_code">9.3.1. Syntax for Using <code>qdmanage</code></a></li>
+<li><a href="#managing_network_connections">9.3.2. Managing Network Connections</a></li>
+<li><a href="#managing_security">9.3.3. Managing Security</a></li>
+<li><a href="#managing_routing">9.3.4. Managing Routing</a></li>
+<li><a href="#managing_logging">9.3.5. Managing Logging</a></li>
 </ul>
 </li>
-<li><a href="#policy_wildcard_and_user_name_substitution">9.4. Policy Wildcard and User Name Substitution</a>
-<ul class="sectlevel3">
-<li><a href="#remote_host_wildcard">9.4.1. Remote Host Wildcard</a></li>
-<li><a href="#amqp_source_and_target_wildcard_and_name_substitution">9.4.2. AMQP Source and Target Wildcard and Name Substitution</a></li>
+<li><a href="#management_entities">9.4. Management Entities</a></li>
 </ul>
 </li>
-<li><a href="#composing_policies">9.5. Composing Policies</a>
-<ul class="sectlevel3">
-<li><a href="#example_1_user_policy_disabled">9.5.1. Example 1. User Policy Disabled</a></li>
-<li><a href="#example2">9.5.2. Example 2. All Users Have Simple Connection Limits</a></li>
-<li><a href="#example_3_admins_must_connect_from_localhost">9.5.3. Example 3. Admins Must Connect From Localhost</a></li>
-<li><a href="#example_4_limiting_possible_memory_consumption">9.5.4. Example 4. Limiting Possible Memory Consumption</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><a href="#management">10. Management</a>
+<li><a href="#reliability">10. Reliability</a>
 <ul class="sectlevel2">
-<li><a href="#using_apache_qpid_dispatch_router_console">10.1. Using Apache Qpid Dispatch Router Console</a>
-<ul class="sectlevel3">
-<li><a href="#console-overview">10.1.1. Console Overview</a></li>
-<li><a href="#console-installation">10.1.2. Console Installation</a></li>
-<li><a href="#console-operation">10.1.3. Console Operation</a></li>
+<li><a href="#path_redundancy">10.1. Path Redundancy</a></li>
+<li><a href="#path_redundancy_and_temporal_decoupling">10.2. Path Redundancy and Temporal Decoupling</a></li>
+<li><a href="#sharded_queue">10.3. Sharded Queue</a></li>
 </ul>
 </li>
-<li><a href="#monitoring_using_qdstat">10.2. Monitoring Dispatch Router Using <code>qdstat</code></a>
-<ul class="sectlevel3">
-<li><a href="#syntax_for_using_code_qdstat_code">10.2.1. Syntax for Using <code>qdstat</code></a></li>
-<li><a href="#viewing_general_statistics_for_a_router">10.2.2. Viewing General Statistics for a Router</a></li>
-<li><a href="#viewing_a_list_of_connections_to_a_router">10.2.3. Viewing a List of Connections to a Router</a></li>
-<li><a href="#viewing_amqp_links_attached_to_a_router">10.2.4. Viewing AMQP Links Attached to a Router</a></li>
-<li><a href="#viewing_known_routers_on_a_network">10.2.5. Viewing Known Routers on a Network</a></li>
-<li><a href="#viewing_addresses_known_to_a_router">10.2.6. Viewing Addresses Known to a Router</a></li>
-<li><a href="#viewing_a_router_s_autolinks">10.2.7. Viewing a Router&#8217;s Autolinks</a></li>
-<li><a href="#viewing_the_status_of_a_router_s_link_routes">10.2.8. Viewing the Status of a Router&#8217;s Link Routes</a></li>
-<li><a href="#viewing_memory_consumption_information">10.2.9. Viewing Memory Consumption Information</a></li>
-</ul>
-</li>
-<li><a href="#managing_router">10.3. Managing Dispatch Router Using <code>qdmanage</code></a>
-<ul class="sectlevel3">
-<li><a href="#syntax_for_using_code_qdmanage_code">10.3.1. Syntax for Using <code>qdmanage</code></a></li>
-<li><a href="#managing_network_connections">10.3.2. Managing Network Connections</a></li>
-<li><a href="#managing_security">10.3.3. Managing Security</a></li>
-<li><a href="#managing_routing">10.3.4. Managing Routing</a></li>
-<li><a href="#managing_logging">10.3.5. Managing Logging</a></li>
-</ul>
-</li>
-<li><a href="#management_entities">10.4. Management Entities</a></li>
-</ul>
-</li>
-<li><a href="#reliability">11. Reliability</a>
+<li><a href="#technical-details-specifications">11. Technical Details and Specifications</a>
 <ul class="sectlevel2">
-<li><a href="#path_redundancy">11.1. Path Redundancy</a></li>
-<li><a href="#path_redundancy_and_temporal_decoupling">11.2. Path Redundancy and Temporal Decoupling</a></li>
-<li><a href="#sharded_queue">11.3. Sharded Queue</a></li>
-</ul>
-</li>
-<li><a href="#technical_details_specifications">12. Technical Details and Specifications</a>
-<ul class="sectlevel2">
-<li><a href="#client_compatibility">12.1. Client Compatibility</a></li>
-<li><a href="#amqp_mapping">12.2. AMQP Mapping</a>
+<li><a href="#client-compatibility">11.1. Client Compatibility</a></li>
+<li><a href="#amqp-mapping">11.2. AMQP Mapping</a>
 <ul class="sectlevel3">
-<li><a href="#message_annotations">12.2.1. Message Annotations</a></li>
-<li><a href="#sourcetarget_capabilities">12.2.2. Source/Target Capabilities</a></li>
-<li><a href="#dynamic_node_properties">12.2.3. Dynamic-Node-Properties</a></li>
-<li><a href="#addresses_and_address_formats">12.2.4. Addresses and Address Formats</a></li>
-<li><a href="#implementation_of_the_amqp_management_specification">12.2.5. Implementation of the AMQP Management Specification</a></li>
+<li><a href="#message-annotations">11.2.1. Message Annotations</a></li>
+<li><a href="#sourcetarget-capabilities">11.2.2. Source/Target Capabilities</a></li>
+<li><a href="#dynamic-node-properties">11.2.3. Dynamic-Node-Properties</a></li>
+<li><a href="#addresses-and-address-formats">11.2.4. Addresses and Address Formats</a></li>
+<li><a href="#implementation-of-the-amqp-management-specification">11.2.5. Implementation of the AMQP Management Specification</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#cyrus_sasl">Appendix A: Using Cyrus SASL to Provide Authentication</a>
+<li><a href="#cyrus-sasl">Appendix A: Using Cyrus SASL to Provide Authentication</a>
 <ul class="sectlevel2">
-<li><a href="#generating_sasl_database">A.1. Generating a SASL Database</a></li>
+<li><a href="#generating-sasl-database">A.1. Generating a SASL Database</a></li>
 <li><a href="#viewing_users_in_a_sasl_database">A.2. Viewing Users in a SASL Database</a></li>
-<li><a href="#configuring_sasl_database">A.3. Configuring a SASL Database</a></li>
-</ul>
-</li>
-<li><a href="#router_configuration_reference">Appendix B: Configuration Reference</a>
-<ul class="sectlevel2">
-<li><a href="#configuration_file">B.1. Configuration File</a>
-<ul class="sectlevel3">
-<li><a href="#configuration_sections">B.1.1. Configuration Sections</a></li>
-</ul>
-</li>
+<li><a href="#configuring-sasl-database">A.3. Configuring a SASL Database</a></li>
 </ul>
 </li>
 </ul>
@@ -756,32 +713,86 @@ used. Address semantics include the following considerations:</p>
 <div class="sect3">
 <h4 id="routing_patterns">2.4.1. Routing Patterns</h4>
 <div class="paragraph">
-<p>Routing patterns define the paths that a message with a mobile address can take across a network. These routing patterns can be used for both direct routing, in which the router distributes messages between clients without a broker, and indirect routing, in which the router enables clients to exchange messages through a broker.</p>
+<p>Routing patterns define the paths that a message with a mobile address
+can take across a network. These routing patterns can be used for both
+direct routing, in which the router distributes messages between
+clients without a broker, and indirect routing, in which the router
+enables clients to exchange messages through a broker.</p>
 </div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 20%;">
-<col style="width: 80%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Pattern</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Balanced</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An anycast method which allows multiple receivers to use the same address. In this case, messages (or links) are routed to exactly one of the receivers and the network attempts to balance the traffic load across the set of receivers using the same address. This routing delivers messages to receivers based on how quickly they settle the deliveries. Faster receivers get more messages.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Closest</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">An anycast method in which even if there are more receivers for the same address, every message is sent along the shortest path to reach the destination. This means that only one receiver will get the message. Each message is delivered to the closest receivers in terms of topology cost. If there are multiple receivers with the same lowest cost, deliveries will be spread evenly among those receivers.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Multicast</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Having multiple consumers on the same address at the same time, messages are routed such that each consumer receives one copy of the message.</p></td>
-</tr>
-</tbody>
-</table>
+<div class="paragraph">
+<p>Note that the routing patterns fall into two categories:  Anycast
+(Balanced and Closest) and Multicast.  There is no concept of
+"unicast" in which there is only one consumer for an address.</p>
+</div>
+<div class="paragraph">
+<p>Anycast distribution delivers each message to one consumer whereas
+multicast distribution delivers each message to all consumers.</p>
+</div>
+<div class="paragraph">
+<p>Anycast delivery is reliable when the message deliveries are
+unsettled.  There is a reliability contract that the router network
+abides by when delivering unsettled messages to anycast addresses.
+For every such delivery sent by a producer, the router network
+guarantees that one of the following outcomes will occur:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>The delivery shall be settled with ACCEPTED or REJECTED disposition
+where the disposition is supplied by the consumer.</p>
+</li>
+<li>
+<p>The delivery shall be settled with RELEASED disposition, meaning
+that the message was not delivered to any consumer.</p>
+</li>
+<li>
+<p>The delivery shall be settled with MODIFIED disposition, meaning
+that the message may have been delivered to a consumer but should be
+considered in-doubt and re-sent.</p>
+</li>
+<li>
+<p>The connection to the producer shall be dropped, signifying that all
+unsettled deliveries should now be considered in-doubt by the
+producer and later re-sent.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Multicast delivery is not reliable.  If a producer sends an unsettled
+delivery, the ingress router shall settle the delivery with ACCEPTED
+disposition regardless of whether the message was delivered to any
+consumers.</p>
+</div>
+<div class="sect4">
+<h5 id="balanced">Balanced</h5>
+<div class="paragraph">
+<p>An anycast method which allows multiple receivers to use the same
+address. In this case, messages (or links) are routed to exactly one
+of the receivers and the network attempts to balance the traffic load
+across the set of receivers using the same address. This routing
+delivers messages to receivers based on how quickly they settle the
+deliveries. Faster receivers get more messages.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="closest">Closest</h5>
+<div class="paragraph">
+<p>An anycast method in which even if there are more receivers for the
+same address, every message is sent along the shortest path to reach
+the destination. This means that only one receiver will get the
+message. Each message is delivered to the closest receivers in terms
+of topology cost. If there are multiple receivers with the same lowest
+cost, deliveries will be spread evenly among those receivers.</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="multicast">Multicast</h5>
+<div class="paragraph">
+<p>Having multiple consumers on the same address at the same time,
+messages are routed such that each consumer receives one copy of the
+message.</p>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="routing_mechanisms">2.4.2. Routing Mechanisms</h4>
@@ -917,13 +928,13 @@ control.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="getting_started">3. Getting Started</h2>
+<h2 id="getting-started">3. Getting Started</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Before configuring Dispatch Router, you should understand how to start the router, how it is configured by default, and how to use it in a simple peer-to-peer configuration.</p>
 </div>
 <div class="sect2">
-<h3 id="starting_the_router">3.1. Starting the Router</h3>
+<h3 id="starting-the-router">3.1. Starting the Router</h3>
 <div class="olist arabic">
 <div class="title">Procedure</div>
 <ol class="arabic">
@@ -949,7 +960,7 @@ control.</p>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>You can specify a different configuration file with which to start the router. For more information, see <a href="#methods_for_changing_router_configuration"><em>Changing a Router&#8217;s Configuration</em></a>.</p>
+<p>You can specify a different configuration file with which to start the router. For more information, see <a href="#methods-for-changing-router-configuration"><em>Changing a Router&#8217;s Configuration</em></a>.</p>
 </div>
 </td>
 </tr>
@@ -1039,15 +1050,15 @@ messages to that address.</p>
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p><a href="#starting_the_receiver_client">Start the receiver client</a>.</p>
+<p><a href="#starting-the-receiver-client">Start the receiver client</a>.</p>
 </li>
 <li>
-<p><a href="#sending_messages">Send messages</a>.</p>
+<p><a href="#sending-messages">Send messages</a>.</p>
 </li>
 </ol>
 </div>
 <div class="sect3">
-<h4 id="starting_the_receiver_client">3.2.1. Starting the Receiver Client</h4>
+<h4 id="starting-the-receiver-client">3.2.1. Starting the Receiver Client</h4>
 <div class="paragraph">
 <p>In this example, the receiver client is started first. This means that the messages will be sent as soon as the sender client is started.</p>
 </div>
@@ -1088,7 +1099,7 @@ $ python simple_recv.py -a 127.0.0.1:5672/examples -m 5</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="sending_messages">3.2.2. Sending Messages</h4>
+<h4 id="sending-messages">3.2.2. Sending Messages</h4>
 <div class="paragraph">
 <p>After starting the receiver client, you can send messages from the sender. These messages will travel through the router to the receiver.</p>
 </div>
@@ -1135,7 +1146,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="router_configuration">4. Configuration</h2>
+<h2 id="router-configuration">4. Configuration</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Before starting Dispatch Router, you should understand where the router&#8217;s configuration file is stored, how the file is structured, and the methods you can use to modify it.</p>
@@ -1156,7 +1167,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 <p>When Dispatch Router is installed, <code>qdrouterd.conf</code> is installed in this directory by default. When the router is started, it runs with the settings defined in this file.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the router configuration file (including available entities and attributes), see the <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdrouterd.html">qdrouterd man page</a>.</p>
+<p>For more information about the router configuration file (including available entities and attributes), see the <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.html" target="_blank" rel="noopener">qdrouterd man page</a>.</p>
 </div>
 </div>
 </div>
@@ -1183,7 +1194,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="methods_for_changing_router_configuration">4.3. Changing a Router&#8217;s Configuration</h3>
+<h3 id="methods-for-changing-router-configuration">4.3. Changing a Router&#8217;s Configuration</h3>
 <div class="paragraph">
 <p>You can use different methods for changing a router&#8217;s configuration based on whether the router is currently running, and whether you want the change to take effect immediately.</p>
 </div>
@@ -1191,15 +1202,15 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 <div class="title">Choices</div>
 <ul>
 <li>
-<p><a href="#making_permanent_change_to_router_configuration">Make a permanent change to the router&#8217;s configuration</a>.</p>
+<p><a href="#making-permanent-change-to-router-configuration">Make a permanent change to the router&#8217;s configuration</a>.</p>
 </li>
 <li>
-<p><a href="#changing_configuration_for_running_router">Change the configuration for a running router.</a></p>
+<p><a href="#changing-configuration-for-running-router">Change the configuration for a running router.</a></p>
 </li>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="making_permanent_change_to_router_configuration">4.3.1. Making a Permanent Change to the Router&#8217;s Configuration</h4>
+<h4 id="making-permanent-change-to-router-configuration">4.3.1. Making a Permanent Change to the Router&#8217;s Configuration</h4>
 <div class="paragraph">
 <p>You can make a permanent change to the router&#8217;s configuration by editing the router&#8217;s configuration file directly. You must restart the router for the changes to take effect, but the changes will be saved even if the router is stopped.</p>
 </div>
@@ -1226,7 +1237,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdrouterd -d --conf /etc/qpid-dispatch/new-configuration-file.conf</pre>
+<pre class="nowrap">$ sudo qdrouterd -d --conf /etc/qpid-dispatch/new-configuration-file.conf</pre>
 </div>
 </div>
 </li>
@@ -1234,7 +1245,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="changing_configuration_for_running_router">4.3.2. Changing the Configuration for a Running Router</h4>
+<h4 id="changing-configuration-for-running-router">4.3.2. Changing the Configuration for a Running Router</h4>
 <div class="paragraph">
 <p>If the router is running, you can change its configuration on the fly. The changes you make take effect immediately, but are lost if the router is stopped.</p>
 </div>
@@ -1244,7 +1255,7 @@ $ python simple_send.py -a 127.0.0.1:5672/examples -m 5</pre>
 <li>
 <p>Use <code>qdmanage</code> to change the configuration.</p>
 <div class="paragraph">
-<p>For more information about using <code>qdmanage</code>, see <a href="#managing_router">Managing Dispatch Router Using <em>qdmanage</em></a>.</p>
+<p>For more information about using <code>qdmanage</code>, see <a href="#managing-router">Managing Dispatch Router Using <em>qdmanage</em></a>.</p>
 </div>
 </li>
 </ul>
@@ -1388,7 +1399,7 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_router">Router</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_router">router</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -1400,10 +1411,10 @@ address {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#setting_up_ssl_for_encryption_and_authentication">Set up SSL/TLS for encryption, authentication, or both</a></p>
+<p><a href="#setting-up-ssl-for-encryption-and-authentication">Set up SSL/TLS for encryption, authentication, or both</a></p>
 </li>
 <li>
-<p><a href="#setting_up_sasl_for_authentication_and_payload_encryption">Set up SASL for authentication and payload encryption</a></p>
+<p><a href="#setting-up-sasl-for-authentication-and-payload-encryption">Set up SASL for authentication and payload encryption</a></p>
 </li>
 </ul>
 </div>
@@ -1417,10 +1428,10 @@ address {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#adding_incoming_connections">Add incoming connections</a></p>
+<p><a href="#adding-incoming-connections">Add incoming connections</a></p>
 </li>
 <li>
-<p><a href="#adding_outgoing_connections">Add outgoing connections</a></p>
+<p><a href="#adding-outgoing-connections">Add outgoing connections</a></p>
 </li>
 </ul>
 </div>
@@ -1434,13 +1445,13 @@ address {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#routing_messages_between_clients">Configure the router to route messages between clients directly</a></p>
+<p><a href="#routing-messages-between-clients">Configure the router to route messages between clients directly</a></p>
 </li>
 <li>
-<p><a href="#routing_messages_through_broker">Configure the router to route messages through a broker queue</a></p>
+<p><a href="#routing-messages-through-broker">Configure the router to route messages through a broker queue</a></p>
 </li>
 <li>
-<p><a href="#creating_link_route">Create a link route to define a private messaging path between endpoints</a></p>
+<p><a href="#creating-link-route">Create a link route to define a private messaging path between endpoints</a></p>
 </li>
 </ul>
 </div>
@@ -1456,13 +1467,13 @@ address {
 </div>
 </div>
 <div class="sect1">
-<h2 id="router_network_connections">5. Network Connections</h2>
+<h2 id="router-network-connections">5. Network Connections</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Connections define how the router communicates with clients, other routers, and brokers. You can configure <em>incoming connections</em> to define how the router listens for data from clients and other routers, and you can configure <em>outgoing connections</em> to define how the router sends data to other routers and brokers.</p>
 </div>
 <div class="sect2">
-<h3 id="adding_incoming_connections">5.1. Listening for Incoming Connections</h3>
+<h3 id="adding-incoming-connections">5.1. Listening for Incoming Connections</h3>
 <div class="paragraph">
 <p>Listening for incoming connections involves setting the host and port on which the router should listen for traffic.</p>
 </div>
@@ -1495,13 +1506,13 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_listener">Listener</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_listener">listener</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
 </li>
 <li>
-<p>If necessary, <a href="#securing_incoming_connections">secure the connection</a>.</p>
+<p>If necessary, <a href="#securing-incoming-connections">secure the connection</a>.</p>
 <div class="paragraph">
 <p>If you have set up SSL/TLS or SASL in your environment, you can configure the router to only accept encrypted or authenticated communication on this connection.</p>
 </div>
@@ -1513,12 +1524,12 @@ address {
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding_outgoing_connections">5.2. Adding Outgoing Connections</h3>
+<h3 id="adding-outgoing-connections">5.2. Adding Outgoing Connections</h3>
 <div class="paragraph">
 <p>Configuring outgoing connections involves setting the host and port on which the router connects to other routers and brokers.</p>
 </div>
 <div class="paragraph">
-<p>When a router connects to a broker, the broker might provide backup connection data that the router can use if the primary connection fails. If the primary connection fails, the router attempts to reconnect by using a combination of the primary and&#8201;&#8212;&#8201;if provided&#8201;&#8212;&#8201;backup connections in round-robin fashion until the connection is successful. For more information about viewing the backup connection data provided by the broker, see <a href="#managing_connectors">Managing Connectors</a>.</p>
+<p>When a router connects to a broker, the broker might provide backup connection data that the router can use if the primary connection fails. If the primary connection fails, the router attempts to reconnect by using a combination of the primary and&#8201;&#8212;&#8201;if provided&#8201;&#8212;&#8201;backup connections in round-robin fashion until the connection is successful. For more information about viewing the backup connection data provided by the broker, see <a href="#managing-connectors">Managing Connectors</a>.</p>
 </div>
 <div class="olist arabic">
 <div class="title">Procedure</div>
@@ -1554,13 +1565,13 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_connector">Connector</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_connector">connector</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
 </li>
 <li>
-<p>If necessary, <a href="#securing_outgoing_connections">secure the connection</a>.</p>
+<p>If necessary, <a href="#securing-outgoing-connections">secure the connection</a>.</p>
 <div class="paragraph">
 <p>If you have set up SSL/TLS or SASL in your environment, you can configure the router to only send encrypted or authenticated communication on this connection.</p>
 </div>
@@ -1574,8 +1585,13 @@ address {
 </div>
 </div>
 <div class="sect1">
-<h2 id="security_config">6. Security</h2>
+<h2 id="security-config">6. Security</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Securing your router network involves configuring authentication and authorization. You can authenticate and encrypt the router&#8217;s connections using SSL/TLS or SASL. Additionally, you can authorize access to messaging resources by setting user connection restrictions and defining AMQP resource access control.</p>
+</div>
+<div class="sect2">
+<h3 id="authenticating_remote_peers">6.1. Authenticating Remote Peers</h3>
 <div class="paragraph">
 <p>You can configure Dispatch Router to communicate with clients, routers, and brokers in a secure way by authenticating and encrypting the router&#8217;s connections. Dispatch Router supports the following security protocols:</p>
 </div>
@@ -1589,8 +1605,8 @@ address {
 </li>
 </ul>
 </div>
-<div class="sect2">
-<h3 id="setting_up_ssl_for_encryption_and_authentication">6.1. Setting Up SSL/TLS for Encryption and Authentication</h3>
+<div class="sect3">
+<h4 id="setting-up-ssl-for-encryption-and-authentication">6.1.1. Setting Up SSL/TLS for Encryption and Authentication</h4>
 <div class="paragraph">
 <p>Before you can secure incoming and outgoing connections using SSL/TLS encryption and authentication, you must first set up the SSL/TLS profile in the router&#8217;s configuration file.</p>
 </div>
@@ -1623,9 +1639,9 @@ address {
 <pre class="nowrap">sslProfile {
     name: <em>NAME</em>
     ciphers: <em>CIPHERS</em>
-    certDb: <em>PATH</em>.pem
+    caCertFile: <em>PATH</em>.pem
     certFile: <em>PATH</em>.pem
-    keyFile: <em>PATH</em>.pem
+    privateKeyFile: <em>PATH</em>.pem
     password: <em>PASSWORD/PATH_TO_PASSWORD_FILE</em>
     ...
 }</pre>
@@ -1660,15 +1676,15 @@ address {
 <p>To see the full list of available ciphers, use the <code>openssl ciphers</code> command. For more information about each cipher, see the <a href="https://www.openssl.org/docs/manmaster/man1/ciphers.html" target="_blank" rel="noopener">ciphers man page</a>.</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>certDb</code></dt>
+<dt class="hdlist1"><code>caCertFile</code></dt>
 <dd>
-<p>The absolute path to the database that contains the public certificates of trusted certificate authorities (CA).</p>
+<p>The absolute path to the file that contains the public certificates of trusted certificate authorities (CA).</p>
 <div class="paragraph">
 <p>For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">certDb: /qdrouterd/ssl_certs/ca-cert.pem</pre>
+<pre class="nowrap">caCertFile: /qdrouterd/ssl_certs/ca-cert.pem</pre>
 </div>
 </div>
 </dd>
@@ -1684,7 +1700,7 @@ address {
 </div>
 </div>
 </dd>
-<dt class="hdlist1"><code>keyFile</code></dt>
+<dt class="hdlist1"><code>privateKeyFile</code></dt>
 <dd>
 <p>The absolute path to the file containing the PEM-formatted private key for the above certificate.</p>
 <div class="paragraph">
@@ -1692,7 +1708,7 @@ address {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">keyFile: /qdrouterd/ssl_certs/router-key-pwd.pem</pre>
+<pre class="nowrap">privateKeyFile: /qdrouterd/ssl_certs/router-key-pwd.pem</pre>
 </div>
 </div>
 </dd>
@@ -1711,7 +1727,7 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional <code>sslProfile</code> attributes, see <a href="#router_configuration_file_sslprofile"><em>sslProfile</em></a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional <code>sslProfile</code> attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_sslprofile">sslProfile</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -1719,8 +1735,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="setting_up_sasl_for_authentication_and_payload_encryption">6.2. Setting Up SASL for Authentication and Payload Encryption</h3>
+<div class="sect3">
+<h4 id="setting-up-sasl-for-authentication-and-payload-encryption">6.1.2. Setting Up SASL for Authentication and Payload Encryption</h4>
 <div class="paragraph">
 <p>If you plan to use SASL to authenticate connections, you must first add the SASL attributes to the <code>router</code> entity in the router&#8217;s configuration file. These attributes define a set of SASL parameters that can be used by the router&#8217;s incoming and outgoing connections.</p>
 </div>
@@ -1731,10 +1747,23 @@ address {
 <div class="ulist">
 <ul>
 <li>
-<p><a href="#generating_sasl_database">The SASL database is generated.</a></p>
+<p><a href="#generating-sasl-database">The SASL database is generated.</a></p>
 </li>
 <li>
-<p><a href="#configuring_sasl_database">The SASL configuration file is configured.</a></p>
+<p><a href="#configuring-sasl-database">The SASL configuration file is configured.</a></p>
+</li>
+<li>
+<p>The Cyrus SASL plugin is installed for each SASL mechanism you plan to use.</p>
+<div class="paragraph">
+<p>Cyrus SASL uses plugins to support specific SASL mechanisms. Before you can use a particular SASL mechanism, the relevant plugin must be installed. For example, you need the <code>cyrus-sasl-plain</code> plugin to use SASL PLAIN authentication.</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>To see a list of Cyrus SASL plugins in a <code>dnf</code>-based Linux system, use the <code>dnf search cyrus-sasl</code> command. To install a Cyrus SASL plugin, use the <code>dnf install <em>PLUGIN</em></code> command.</p>
+</div>
+</div>
+</div>
 </li>
 </ul>
 </div>
@@ -1749,14 +1778,14 @@ address {
 <div class="content">
 <pre class="nowrap">router {
     ...
-    saslConfigPath: <em>PATH</em>
+    saslConfigDir: <em>PATH</em>
     saslConfigName: <em>FILE_NAME</em>
 }</pre>
 </div>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>saslConfigPath</code></dt>
+<dt class="hdlist1"><code>saslConfigDir</code></dt>
 <dd>
 <p>The absolute path to the SASL configuration file.</p>
 <div class="paragraph">
@@ -1764,7 +1793,7 @@ address {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">saslConfigPath: /qdrouterd/security</pre>
+<pre class="nowrap">saslConfigDir: /qdrouterd/security</pre>
 </div>
 </div>
 </dd>
@@ -1788,8 +1817,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="securing_incoming_connections">6.3. Securing Incoming Connections</h3>
+<div class="sect3">
+<h4 id="securing-incoming-connections">6.1.3. Securing Incoming Connections</h4>
 <div class="paragraph">
 <p>You can secure incoming connections by configuring each connection&#8217;s <code>listener</code> entity for encryption, authentication, or both.</p>
 </div>
@@ -1801,21 +1830,21 @@ address {
 <div class="title">Choices</div>
 <ul>
 <li>
-<p><a href="#adding_ssl_encryption_to_incoming_connection">Add SSL/TLS encryption</a></p>
+<p><a href="#adding-ssl-encryption-to-incoming-connection">Add SSL/TLS encryption</a></p>
 </li>
 <li>
-<p><a href="#adding_sasl_authentication_to_incoming_connection">Add SASL authentication</a></p>
+<p><a href="#adding-sasl-authentication-to-incoming-connection">Add SASL authentication</a></p>
 </li>
 <li>
-<p><a href="#adding_ssl_client_authentication_to_incoming_connection">Add SSL/TLS client authentication</a></p>
+<p><a href="#adding-ssl-client-authentication-to-incoming-connection">Add SSL/TLS client authentication</a></p>
 </li>
 <li>
-<p><a href="#adding_sasl_payload_encryption_to_incoming_connection">Add SASL payload encryption</a></p>
+<p><a href="#adding-sasl-payload-encryption-to-incoming-connection">Add SASL payload encryption</a></p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="adding_ssl_encryption_to_incoming_connection">6.3.1. Adding SSL/TLS Encryption to an Incoming Connection</h4>
+<div class="sect4">
+<h5 id="adding-ssl-encryption-to-incoming-connection">Adding SSL/TLS Encryption to an Incoming Connection</h5>
 <div class="paragraph">
 <p>You can configure an incoming connection to accept encrypted connections only. By adding SSL/TLS encryption, to connect to this router, a remote peer must first start an SSL/TLS handshake with the router and be able to validate the server certificate received by the router during the handshake.</p>
 </div>
@@ -1853,8 +1882,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="adding_sasl_authentication_to_incoming_connection">6.3.2. Adding SASL Authentication to an Incoming Connection</h4>
+<div class="sect4">
+<h5 id="adding-sasl-authentication-to-incoming-connection">Adding SASL Authentication to an Incoming Connection</h5>
 <div class="paragraph">
 <p>You can configure an incoming connection to authenticate the client using SASL. You can use SASL authentication with or without SSL/TLS encryption.</p>
 </div>
@@ -1895,8 +1924,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="adding_ssl_client_authentication_to_incoming_connection">6.3.3. Adding SSL/TLS Client Authentication to an Incoming Connection</h4>
+<div class="sect4">
+<h5 id="adding-ssl-client-authentication-to-incoming-connection">Adding SSL/TLS Client Authentication to an Incoming Connection</h5>
 <div class="paragraph">
 <p>You can configure an incoming connection to authenticate the client using SSL/TLS.</p>
 </div>
@@ -1938,8 +1967,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="adding_sasl_payload_encryption_to_incoming_connection">6.3.4. Adding SASL Payload Encryption to an Incoming Connection</h4>
+<div class="sect4">
+<h5 id="adding-sasl-payload-encryption-to-incoming-connection">Adding SASL Payload Encryption to an Incoming Connection</h5>
 <div class="paragraph">
 <p>If you do not use SSL/TLS, you can still encrypt the incoming connection by using SASL payload encryption.</p>
 </div>
@@ -1981,8 +2010,8 @@ address {
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="securing_outgoing_connections">6.4. Securing Outgoing Connections</h3>
+<div class="sect3">
+<h4 id="securing-outgoing-connections">6.1.4. Securing Outgoing Connections</h4>
 <div class="paragraph">
 <p>You can secure outgoing connections by configuring each connection&#8217;s <code>connector</code> entity for encryption, authentication, or both.</p>
 </div>
@@ -1994,15 +2023,15 @@ address {
 <div class="title">Choices</div>
 <ul>
 <li>
-<p><a href="#adding_ssl_authentication_to_outgoing_connection">Add SSL/TLS authentication</a></p>
+<p><a href="#adding-ssl-authentication-to-outgoing-connection">Add SSL/TLS authentication</a></p>
 </li>
 <li>
-<p><a href="#adding_sasl_authentication_to_outgoing_connection">Add SASL authentication</a></p>
+<p><a href="#adding-sasl-authentication-to-outgoing-connection">Add SASL authentication</a></p>
 </li>
 </ul>
 </div>
-<div class="sect3">
-<h4 id="adding_ssl_authentication_to_outgoing_connection">6.4.1. Adding SSL/TLS Client Authentication to an Outgoing Connection</h4>
+<div class="sect4">
+<h5 id="adding-ssl-authentication-to-outgoing-connection">Adding SSL/TLS Client Authentication to an Outgoing Connection</h5>
 <div class="paragraph">
 <p>If an outgoing connection connects to an external client configured with mutual authentication, you should ensure that the outgoing connection is configured to provide the external client with a valid security certificate during the SSL/TLS handshake.</p>
 </div>
@@ -2038,8 +2067,8 @@ address {
 </ul>
 </div>
 </div>
-<div class="sect3">
-<h4 id="adding_sasl_authentication_to_outgoing_connection">6.4.2. Adding SASL Authentication to an Outgoing Connection</h4>
+<div class="sect4">
+<h5 id="adding-sasl-authentication-to-outgoing-connection">Adding SASL Authentication to an Outgoing Connection</h5>
 <div class="paragraph">
 <p>You can configure an outgoing connection to provide authentication credentials to the external container. You can use SASL authentication with or without SSL/TLS encryption.</p>
 </div>
@@ -2083,6 +2112,648 @@ address {
 </div>
 </li>
 </ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="integrating-with-kerberos">6.1.5. Integrating with Kerberos</h4>
+<div class="paragraph">
+<p>By using the <code>GSSAPI</code> SASL mechanism, you can configure Dispatch Router to authenticate incoming connections using Kerberos.</p>
+</div>
+<div class="ulist">
+<div class="title">Prerequisites</div>
+<ul>
+<li>
+<p>A Kerberos infrastructure must be deployed in your environment.</p>
+</li>
+<li>
+<p>In the Kerberos environment, a service principal of <code>amqp/<em>HOSTNAME</em>@<em>REALM</em></code> must be configured.</p>
+<div class="paragraph">
+<p>This is the service principal that Dispatch Router uses.</p>
+</div>
+</li>
+<li>
+<p>The <code>cyrus-sasl-gssapi</code> package must be installed on each client and router host machine.</p>
+</li>
+<li>
+<p><a href="#setting-up-sasl-for-authentication-and-payload-encryption">SASL must be set up for Dispatch Router</a>.</p>
+</li>
+</ul>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>On the router&#8217;s host machine, open the <code>/etc/sasl2/qdrouterd.conf</code> configuration file.</p>
+<div class="openblock">
+<div class="content">
+<div class="exampleblock">
+<div class="title">Example 1. An <code>/etc/sasl2/qdrouterd.conf</code> Configuration File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">pwcheck_method: auxprop
+auxprop_plugin: sasldb
+sasldb_path: qdrouterd.sasldb
+keytab: /etc/krb5.keytab
+mech_list: ANONYMOUS DIGEST-MD5 EXTERNAL PLAIN GSSAPI</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Verify the following:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The <code>mech_list</code> attribute contains the <code>GSSAPI</code> mechanism.</p>
+</li>
+<li>
+<p>The <code>keytab</code> attribute points to the location of the keytab file.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Open the router&#8217;s configuration file.</p>
+</li>
+<li>
+<p>For each incoming connection that should use Kerberos for authentication, set the router&#8217;s <code>listener</code> to use the <code>GSSAPI</code> mechanism.</p>
+<div class="openblock">
+<div class="content">
+<div class="exampleblock">
+<div class="title">Example 2. A <code>listener</code> in the Router Configuration File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">listener {
+    ...
+    authenticatePeer: yes
+    saslMechanisms: GSSAPI
+}</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information about these attributes, see <a href="#adding-sasl-authentication-to-incoming-connection">Adding SASL Authentication to an Incoming Connection</a>.</p>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="authorizing_access_to_messaging_resources">6.2. Authorizing Access to Messaging Resources</h3>
+<div class="paragraph">
+<p>You can restrict the number of user connections, and control access to AMQP messaging resources by configuring <em>policies</em>.</p>
+</div>
+<div class="sect3">
+<h4 id="types_of_policies">6.2.1. Types of Policies</h4>
+<div class="paragraph">
+<p>You can configure two different types of policies: <em>global policies</em> and <em>vhost policies</em>.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Global policies</dt>
+<dd>
+<p>Settings for the router. A global policy defines the maximum number of incoming user connections for the router (across all vhost policies), and defines how the router should use vhost policies.</p>
+</dd>
+<dt class="hdlist1">Vhost policies</dt>
+<dd>
+<p>Connection and AMQP resource limits for a messaging endpoint (called an AMQP virtual host, or <em>vhost</em>). A vhost policy defines what a client can access on a messaging endpoint over a particular connection.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>A vhost is typically the name of the host to which the client connection is directed. For example, if a client application opens a connection to the <code>amqp://mybroker.example.com:5672/queue01</code> URL, the vhost would be <code>mybroker.example.com</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The resource limits defined in global and vhost policies are applied to user connections only. The limits do not affect inter-router connections or router connections that are outbound to waypoints.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="how_dispatch_router_applies_policies">6.2.2. How Dispatch Router Applies Policies</h4>
+<div class="paragraph">
+<p>Dispatch Router uses both global and vhost policies to determine whether to permit a connection, and if it is permitted, to apply the appropriate resource limits.</p>
+</div>
+<div class="paragraph">
+<p>When a client creates a connection to the router, the router first determines whether to allow or deny the connection. This decision is based on the following criteria:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Whether the connection will exceed the router&#8217;s global connection limit (defined in the global policy)</p>
+</li>
+<li>
+<p>Whether the connection will exceed the vhost&#8217;s connection limits (defined in the vhost policy that matches the host to which the connection is directed)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If the connection is allowed, the router assigns the user (the authenticated user name from the connection) to a user group, and enforces the user group&#8217;s resource limits for the lifetime of the connection.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring_global_policies">6.2.3. Configuring Global Policies</h4>
+<div class="paragraph">
+<p>You can set the incoming connection limit for the router and define how it should use vhost policies by configuring a global policy.</p>
+</div>
+<div class="ulist">
+<div class="title">Procedure</div>
+<ul>
+<li>
+<p>In the router configuration file, add a <code>policy</code> section.</p>
+<div class="openblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">policy = {
+    maxConnections: 10000  <b class="conum">(1)</b>
+    enableVhostPolicy: true  <b class="conum">(2)</b>
+    policyDir: /etc/qpid-dispatch/policies/  <b class="conum">(3)</b>
+    defaultVhost: $default  <b class="conum">(4)</b>
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The maximum number of concurrent client connections allowed for this router. This limit is always enforced, even if no other policy settings have been defined. The limit is applied to all incoming connections regardless of remote host, authenticated user, or targeted vhost. The default (and the maximum) value is <code>65535</code>.</p>
+</li>
+<li>
+<p>Enables the router to enforce the connection denials and resource limits defined in the configured vhost policies. The default is <code>false</code>, which means that the router will not enforce any vhost policies.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Setting <code>enableVhostPolicy</code> to <code>false</code> improves the router&#8217;s performance.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>The absolute path to a directory that holds vhost policy definition files in JSON format (<code>*.json</code>). The router processes all of the vhost policies in each JSON file that is in this directory. For more information, see <a href="#configuring-vhost-policies-json">Configuring Vhost Policies as JSON Files</a>.</p>
+</li>
+<li>
+<p>The name of the default vhost policy, which is applied to any connection for which a vhost policy has not been configured. The default is <code>$default</code>. If <code>defaultVhost</code> is not defined, then default vhost processing is disabled.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="configuring_vhost_policies">6.2.4. Configuring Vhost Policies</h4>
+<div class="paragraph">
+<p>You configure vhost policies to define the connection limits and AMQP resource limits for a messaging endpoint.</p>
+</div>
+<div class="paragraph">
+<p>A vhost policy consists of the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Connection limits</p>
+<div class="paragraph">
+<p>These limits control the number of users that can be connected to the vhost simultaneously.</p>
+</div>
+</li>
+<li>
+<p>User groups</p>
+<div class="paragraph">
+<p>A user group defines the messaging resources that the group members are permitted to access. Each user group defines the following:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A set of users that can connect to the vhost (the group members)</p>
+</li>
+<li>
+<p>The remote hosts from which the group members may connect to the router network</p>
+</li>
+<li>
+<p>The AMQP resources that the group members are permitted to access on the vhost</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can use the following methods to configure vhost policies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#configuring-vhost-policies-router">Configure vhost policies directly in the router configuration file</a></p>
+</li>
+<li>
+<p><a href="#configuring-vhost-policies-json">Configure vhost policies as JSON files</a></p>
+</li>
+</ul>
+</div>
+<div class="sect4">
+<h5 id="configuring-vhost-policies-router">Configuring Vhost Policies in the Router Configuration File</h5>
+<div class="paragraph">
+<p>You can configure vhost policies in the router configuration file by configuring <code>vhost</code> entities. However, if multiple routers in your router network should be configured with the same vhost configuration, you will need to add the <code>vhost</code> configuration to each router&#8217;s configuration file.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>In the router configuration file, add a <code>vhost</code> section and define the connection limits for it.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>The connection limits apply to all users that are connected to the vhost. These limits control the number of users that can be connected simultaneously to the vhost.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">vhost = {
+    hostname: example.com  <b class="conum">(1)</b>
+    maxConnections: 10000  <b class="conum">(2)</b>
+    maxConnectionsPerUser: 1000  <b class="conum">(3)</b>
+    maxConnectionsPerHost: 1000  <b class="conum">(4)</b>
+    allowUnknownUser: false  <b class="conum">(5)</b>
+    ...
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The host name of the vhost. This vhost policy will be applied to any client connection that is directed to the hostname that you specify.</p>
+</li>
+<li>
+<p>The global maximum number of concurrent client connections allowed for this vhost. The default is <code>65535</code>.</p>
+</li>
+<li>
+<p>The maximum number of concurrent client connections allowed for any user. The default is <code>65535</code>.</p>
+</li>
+<li>
+<p>The maximum number of concurrent client connections allowed for any remote host (the host from which the client is connecting). The default is <code>65535</code>.</p>
+</li>
+<li>
+<p>Whether unknown users (users who are not members of a defined user group) are allowed to connect to the vhost. Unknown users are assigned to the <code>$default</code> user group and receive <code>$default</code> settings. The default is <code>false</code>, which means that unknown users are not allowed.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>In the <code>vhost</code> section, beneath the connection settings that you added, add the necessary user groups.</p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>A user group defines what messaging resources the members of the group are allowed to access.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">vhost {
+    ...
+    groups: {
+        admin: {  <b class="conum">(1)</b>
+            users: admin1, admin2  <b class="conum">(2)</b>
+            remoteHosts: 127.0.0.1, ::1  <b class="conum">(3)</b>
+            sources: *  <b class="conum">(4)</b>
+            targets: *  <b class="conum">(5)</b>
+        },
+        ...
+    }
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The name of the user group.</p>
+</li>
+<li>
+<p>A list of authenticated users for this user group. Use commas to separate multiple users. A user may belong to only one vhost user group.</p>
+</li>
+<li>
+<p>A list of remote hosts from which the users may connect. A host can be a hostname, IP address, or IP address range. Use commas to separate multiple hosts. To allow access from all remote hosts, specify a wildcard <code>*</code>. To deny access from all remote hosts, leave this attribute blank.</p>
+</li>
+<li>
+<p>A list of AMQP source addresses from which users in this group may receive messages. To specify multiple AMQP addresses, separate the addresses with either a comma or a space. If you do not specify any addresses, users in this group are not allowed to receive messages from any addresses.</p>
+<div class="paragraph">
+<p>You can use the substitution token <code>{user}</code> to specify an AMQP address that contains a user&#8217;s authenticated user name. This enables you to allow access to resources specific to each user in the user group without having to name each user individually. You can only specify the <code>{user}</code> token once in an AMQP address name. If there are multiple tokens in an address, only the leftmost token will be substituted.</p>
+</div>
+<div class="paragraph">
+<p>You can use an asterisk (<code>*</code>) wildcard to match one or more characters in an AMQP address. However, this wildcard is only recognized if it is the last character in the address name.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 3. Allowing Access to All Addresses</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">sources: *</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 4. Restricting Access to All Addresses</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">sources:</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 5. Allowing Access to Specific Addresses</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">sources: myaddress01, myaddress02, myaddress03</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Example 6. Allowing Access to User-Specific Addresses</div>
+<div class="content">
+<div class="paragraph">
+<p>This definition allows access to any address that meets any of the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Starts with the prefix <code>tmp_</code> and ends with the user name</p>
+</li>
+<li>
+<p>Starts with the prefix <code>temp</code> followed by any additional characters</p>
+</li>
+<li>
+<p>Starts with the user name, is followed by <code>-home-</code>, and ends with any additional characters</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">sources: tmp_{user}, temp*, {user}-home-*</pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>A list of AMQP target addresses from which users in this group may send messages. You can specify multiple AMQP addresses and use user name substitution and wildcards the same way as with source addresses.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>If necessary, add any advanced user group settings to the vhost user group.</p>
+<div class="paragraph">
+<p>The advanced user group settings enable you to define resource limits based on the AMQP connection open, session begin, and link attach phases of the connection. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_vhostUserGroupSettings" target="_blank" rel="noopener">Vhost User Group Settings</a>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect4">
+<h5 id="configuring-vhost-policies-json">Configuring Vhost Policies as JSON Files</h5>
+<div class="paragraph">
+<p>As an alternative to using the router configuration file, you can configure vhost policies in JSON files. If you have multiple routers that need to share the same vhost configuration, you can put the vhost configuration JSON files in a location accessible to each router, and then configure the routers to apply the vhost policies defined in these JSON files.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Procedure</div>
+<ol class="arabic">
+<li>
+<p>Determine where to store the vhost policy JSON files.</p>
+<div class="paragraph">
+<p>The directory should be accessible by each router that needs to apply these vhost policies.</p>
+</div>
+</li>
+<li>
+<p>In the directory you determined, create a JSON file for each vhost policy.</p>
+<div class="paragraph">
+<p>The vhost policy is configured the same way as a <code>vhost</code> entity in the router configuration file, only using JSON syntax. For more information about vhost policy attributes, see <a href="#configuring-vhost-policies-router">Configuring Vhost Policies in the Router Configuration File</a>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 7. Sample Vhost Policy JSON File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight nowrap"><code class="language-json hljs" data-lang="json">{
+    "vhost": {
+        "name": "example.com",
+        "maxConnectionsPerUser": 100,
+        "allowUnknownUser": true,
+        "groups": {
+            "admin": {
+                "users": ["admin1", "admin2"],
+                "sources": "*",
+                "targets": "*"
+            },
+            "developers": {
+                "users": ["dev1", "dev2", "dev3"],
+                "remoteHosts": "*",
+                "sources": ["myqueue1", "myqueue2"],
+                "targets": ["myqueue1", "myqueue2"]
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>In the router configuration file, locate the <code>policy</code> entity and set the <code>policyDir</code> attribute to point to the directory where the vhost policy JSON files are stored.</p>
+<div class="exampleblock">
+<div class="title">Example 8. A <code>policy</code> Entity</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">policy = {
+    maxConnections: 1000
+    enableVhostPolicy: true
+    policyDir: /etc/vhost-policies/ <b class="conum">(1)</b>
+    defaultVhost: $default
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The absolute path to a directory that holds vhost policy definition files in JSON format (*.json). The router processes all of the vhost policies in each JSON file that is in this directory.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</li>
+<li>
+<p>Repeat the previous step for each additional router that should use the vhost policies located in the vhost policy directory.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_configuring_a_vhost_policy">6.2.5. Example: Configuring a Vhost Policy</h4>
+<div class="paragraph">
+<p>In this example, a vhost policy defines resource limits for clients connecting to the <code>example.com</code> host.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 9. A Vhost Policy in the Router Configuration File</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">vhost {
+    name: example.com  <b class="conum">(1)</b>
+    maxConnectionsPerUser: 10  <b class="conum">(2)</b>
+    allowUnknownUser: true  <b class="conum">(3)</b>
+    groups: {
+        admin: {
+            users: admin-01, admin-02  <b class="conum">(4)</b>
+            remoteHosts: 127.0.0.1, ::1  <b class="conum">(5)</b>
+            sources: *  <b class="conum">(6)</b>
+            targets: *  <b class="conum">(6)</b>
+        },
+        $default: {
+            remoteHosts: *  <b class="conum">(7)</b>
+            sources: news*, sports*, chat*  <b class="conum">(8)</b>
+            targets: chat*  <b class="conum">(9)</b>
+        }
+    }
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The rules defined in this vhost policy will be applied to any user connecting to <code>example.com</code>.</p>
+</li>
+<li>
+<p>Each user can open up to 10 connections to the vhost.</p>
+</li>
+<li>
+<p>Any user can connect to this vhost. Users that are not part of the <code>admin</code> group are assigned to the <code>$default</code> group.</p>
+</li>
+<li>
+<p>If the <code>admin-01</code> or <code>admin-02</code> user connects to the vhost, they are assigned to the <code>admin</code> user group.</p>
+</li>
+<li>
+<p>Users in the <code>admin</code> user group must connect from localhost. If the admin user attempts to connect from any other host, the connection will be denied.</p>
+</li>
+<li>
+<p>Users in the admin user group can send and receive from any address offered by the vhost.</p>
+</li>
+<li>
+<p>Any non-admin user is permitted to connect from any host.</p>
+</li>
+<li>
+<p>Non-admin users are permitted to receive messages from any addresses that start with the <code>news</code>, <code>sports</code>, or <code>chat</code> prefixes.</p>
+</li>
+<li>
+<p>Non-admin users are permitted to send messages to any address that start with the <code>chat</code> prefix.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="example_using_a_vhost_policy_to_limit_memory_consumption_advanced">6.2.6. Example: Using a Vhost Policy to Limit Memory Consumption (Advanced)</h4>
+<div class="paragraph">
+<p>By using the advanced vhost policy attributes, you can control how much system buffer memory a user connection can potentially consume.</p>
+</div>
+<div class="paragraph">
+<p>In this example, a stock trading site provides services for stock traders. However, the site must also accept high-capacity, automated data feeds from stock exchanges. To prevent trading activity from consuming memory needed for the feeds, a larger amount of system buffer memory is allotted to the feeds than to the traders.</p>
+</div>
+<div class="paragraph">
+<p>This examples uses the <code>maxSessions</code> and <code>maxSessionWindow</code> attributes to set the buffer memory consumption limits for each AMQP session. These settings are passed directly to the AMQP connection and session negotiations, and do not require any processing cycles on the router.</p>
+</div>
+<div class="paragraph">
+<p>This example does not show the vhost policy settings that are unrelated to buffer allocation.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Example 10. A Vhost Policy to Limit Memory Consumption</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">vhost {
+    name: traders.com  <b class="conum">(1)</b>
+    groups: {
+        traders: {
+            users: trader-1, trader-2, ...  <b class="conum">(2)</b>
+            maxFrameSize: 10000  <b class="conum">(3)</b>
+            maxSessionWindow: 5000000  <b class="conum">(3)</b>
+            maxSessions: 1  <b class="conum">(4)</b>
+            ...
+        },
+        feeds: {
+            users: nyse-feed, nasdaq-feed  <b class="conum">(5)</b>
+            maxFrameSize: 60000  <b class="conum">(6)</b>
+            maxSessionWindow: 1200000000  <b class="conum">(6)</b>
+            maxSessions: 3  <b class="conum">(7)</b>
+            ...
+        }
+    }
+}</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>The rules defined in this vhost policy will be applied to any user connecting to <code>traders.com</code>.</p>
+</li>
+<li>
+<p>The <code>traders</code> group includes <code>trader-01</code>, <code>trader-02</code>, and any other user defined in the list.</p>
+</li>
+<li>
+<p>At most, 5,000,000 bytes of data can be in flight on each session.</p>
+</li>
+<li>
+<p>Only one session per connection is allowed.</p>
+</li>
+<li>
+<p>The <code>feeds</code> group includes two users.</p>
+</li>
+<li>
+<p>At most, 1,200,000,000 bytes of data can be in flight on each session.</p>
+</li>
+<li>
+<p>Up to three sessions per connection are allowed.</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2297,7 +2968,7 @@ address {
 </div>
 </div>
 <div class="sect3">
-<h4 id="routing_patterns_overview">7.2.2. Routing Patterns</h4>
+<h4 id="routing-patterns-overview">7.2.2. Routing Patterns</h4>
 <div class="paragraph">
 <p>Each address has one of the following routing patterns, which define the path that a message with the address can take across the messaging network:</p>
 </div>
@@ -2426,7 +3097,7 @@ address {
 </div>
 </div>
 <div class="sect3">
-<h4 id="routing_messages_between_clients">7.2.4. Routing Messages Between Clients</h4>
+<h4 id="routing-messages-between-clients">7.2.4. Routing Messages Between Clients</h4>
 <div class="paragraph">
 <p>You can route messages between clients without using a broker. In a brokerless scenario (sometimes called <em>direct-routed messaging</em>), Dispatch Router routes messages between clients directly.</p>
 </div>
@@ -2519,7 +3190,7 @@ address {
 <li>
 <p><code>multicast</code> - Messages are sent to all receivers that are attached to the address in a <em>publish/subscribe</em> model.</p>
 <div class="paragraph">
-<p>For more information about message distribution patterns, see <a href="#routing_patterns_overview">Routing Patterns</a>.</p>
+<p>For more information about message distribution patterns, see <a href="#routing-patterns-overview">Routing Patterns</a>.</p>
 </div>
 </li>
 </ul>
@@ -2528,7 +3199,7 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_address">Address</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_address">address</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -2543,7 +3214,7 @@ address {
 </div>
 </div>
 <div class="sect3">
-<h4 id="routing_messages_through_broker">7.2.5. Routing Messages Through a Broker Queue</h4>
+<h4 id="routing-messages-through-broker">7.2.5. Routing Messages Through a Broker Queue</h4>
 <div class="paragraph">
 <p>You can route messages to and from a broker queue to provide clients with access to the queue through a router. In this scenario, clients connect to a router to send and receive messages, and the router routes the messages to or from the broker queue.</p>
 </div>
@@ -2575,30 +3246,30 @@ address {
 <div class="title">Procedure</div>
 <ol class="arabic">
 <li>
-<p><a href="#configure_waypoint_address">Add a waypoint address</a>.</p>
+<p><a href="#configure-waypoint-address">Add a waypoint address</a>.</p>
 <div class="paragraph">
 <p>This address identifies the queue to which you want to route messages.</p>
 </div>
 </li>
 <li>
-<p><a href="#connect_router_to_broker">Add autolinks to connect the router to the broker</a>.</p>
+<p><a href="#connect-router-to-broker">Add autolinks to connect the router to the broker</a>.</p>
 <div class="paragraph">
 <p>Autolinks connect the router to the broker queue identified by the waypoint address.</p>
 </div>
 </li>
 <li>
-<p><a href="#connect_router_to_broker">If the queue is sharded, add autolinks for each additional broker that hosts a shard</a>.</p>
+<p><a href="#connect-router-to-broker">If the queue is sharded, add autolinks for each additional broker that hosts a shard</a>.</p>
 </li>
 </ol>
 </div>
 <div class="sect4">
-<h5 id="configure_waypoint_address">Configuring Waypoint Addresses</h5>
+<h5 id="configure-waypoint-address">Configuring Waypoint Addresses</h5>
 <div class="paragraph">
 <p>A waypoint address identifies a queue on a broker to which you want to route messages. You need to configure the waypoint address on each router that needs to use the address. For example, if a client is connected to <em>Router A</em> to send messages to the broker queue, and another client is connected to <em>Router B</em> to receive those messages, then you would need to configure the waypoint address on both <em>Router A</em> and <em>Router B</em>.</p>
 </div>
 <div class="paragraph">
 <div class="title">Prerequisites</div>
-<p>An incoming connection (<code>listener</code>) to which the clients can connect should be configured. This connection defines how the producers and consumers connect to the router to send and receive messages. For more information, see <a href="#adding_incoming_connections">Adding Incoming Connections</a>.</p>
+<p>An incoming connection (<code>listener</code>) to which the clients can connect should be configured. This connection defines how the producers and consumers connect to the router to send and receive messages. For more information, see <a href="#adding-incoming-connections">Adding Incoming Connections</a>.</p>
 </div>
 <div class="ulist">
 <div class="title">Procedure</div>
@@ -2684,7 +3355,7 @@ address {
 </div>
 </div>
 <div class="sect4">
-<h5 id="connect_router_to_broker">Connecting a Router to the Broker</h5>
+<h5 id="connect-router-to-broker">Connecting a Router to the Broker</h5>
 <div class="paragraph">
 <p>After you add waypoint addresses to identify the broker queue, you must connect a router to the broker using autolinks.</p>
 </div>
@@ -2732,7 +3403,7 @@ address {
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_connector">Connector</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_connector">connector</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -2746,7 +3417,7 @@ address {
 <pre class="nowrap">autoLink {
     addr: <em>ADDRESS</em>
     connection: <em>CONNECTOR_NAME</em>
-    dir: out
+    direction: out
     ...
 }</pre>
 </div>
@@ -2765,14 +3436,14 @@ address {
 <dd>
 <p>How the router should connect to the broker. You can specify either an outgoing connection (<code>connection</code>) or the container ID of the broker (<code>containerID</code>).</p>
 </dd>
-<dt class="hdlist1"><code>dir</code></dt>
+<dt class="hdlist1"><code>direction</code></dt>
 <dd>
 <p>Set this attribute to <code>out</code> to specify that this autolink can send messages from the router to the broker.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_autolink">autoLink</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_autolink">autoLink</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -2786,7 +3457,7 @@ address {
 <pre class="nowrap">autoLink {
     addr: <em>ADDRESS</em>
     connection: <em>CONNECTOR_NAME</em>
-    dir: in
+    direction: in
     ...
 }</pre>
 </div>
@@ -2805,14 +3476,14 @@ address {
 <dd>
 <p>How the router should connect to the broker. You can specify either an outgoing connection (<code>connection</code>) or the container ID of the broker (<code>containerID</code>).</p>
 </dd>
-<dt class="hdlist1"><code>dir</code></dt>
+<dt class="hdlist1"><code>direction</code></dt>
 <dd>
 <p>Set this attribute to <code>in</code> to specify that this autolink can receive messages from the broker to the router.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_autolink">autoLink</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_autolink">autoLink</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -2827,7 +3498,7 @@ address {
 <p>This example shows how waypoints and autolinks can route messages through a pair of queues on a broker.</p>
 </div>
 <div class="sect4">
-<h5 id="router_configuration_2">Router Configuration</h5>
+<h5 id="router_configuration">Router Configuration</h5>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">connector {  <b class="conum">(1)</b>
@@ -2845,25 +3516,25 @@ address {  <b class="conum">(2)</b>
 
 autoLink {  <b class="conum">(3)</b>
     addr: queue.first
-    dir: in
+    direction: in
     connection: broker
 }
 
 autoLink {  <b class="conum">(4)</b>
     addr: queue.first
-    dir: out
+    direction: out
     connection: broker
 }
 
 autoLink {  <b class="conum">(5)</b>
     addr: queue.second
-    dir: in
+    direction: in
     connection: broker
 }
 
 autoLink {  <b class="conum">(6)</b>
     addr: queue.second
-    dir: out
+    direction: out
     connection: broker
 }</pre>
 </div>
@@ -3019,7 +3690,7 @@ Router Addresses
 </div>
 </div>
 <div class="sect3">
-<h4 id="creating_link_route">7.3.4. Creating a Link Route</h4>
+<h4 id="creating-link-route">7.3.4. Creating a Link Route</h4>
 <div class="paragraph">
 <p>Link routes establish a link between a sender and a receiver that travels through a router. You can configure inward and outward link routes to enable the router to receive link-attaches from clients and to send them to a particular destination.</p>
 </div>
@@ -3065,7 +3736,7 @@ Router Addresses
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_connector">Connector</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_connector">connector</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -3079,7 +3750,7 @@ Router Addresses
 <pre class="nowrap">linkRoute {
     prefix: <em>ADDRESS_PREFIX</em>
     connection: <em>CONNECTOR_NAME</em>
-    dir: in
+    direction: in
     ...
 }</pre>
 </div>
@@ -3147,14 +3818,14 @@ Router Addresses
 <p>If multiple brokers are connected to the router through this connection, requests for addresses matching the link route&#8217;s prefix or pattern are balanced across the brokers. Alternatively, if you want to specify a particular broker, use <code>containerID</code> and add the broker&#8217;s container ID.</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>dir</code></dt>
+<dt class="hdlist1"><code>direction</code></dt>
 <dd>
 <p>Set this attribute to <code>in</code> to specify that clients can send messages into the router network on this link route.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_linkroute">linkRoute</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_linkroute">linkRoute</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -3168,7 +3839,7 @@ Router Addresses
 <pre class="nowrap">linkRoute {
     prefix: <em>ADDRESS_PREFIX</em>
     connection: <em>CONNECTOR_NAME</em>
-    dir: out
+    direction: out
     ...
 }</pre>
 </div>
@@ -3236,14 +3907,14 @@ Router Addresses
 <p>If multiple brokers are connected to the router through this connection, requests for addresses matching the link route&#8217;s prefix or pattern are balanced across the brokers. Alternatively, if you want to specify a particular broker, use <code>containerID</code> and add the broker&#8217;s container ID.</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>dir</code></dt>
+<dt class="hdlist1"><code>direction</code></dt>
 <dd>
 <p>Set this attribute to <code>out</code> to specify that this link route is for receivers.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional attributes, see <a href="#router_configuration_file_linkroute">linkRoute</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_linkroute">linkRoute</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -3287,7 +3958,7 @@ Router Addresses
 <p>In this example, client <code>C1</code> needs to receive messages from <code>b2.event-queue</code>, which is hosted on broker <code>B2</code> in <code>Private Net A</code>. A link route connects the client and broker even though neither of them is aware that there is a router network between them.</p>
 </div>
 <div class="sect4">
-<h5 id="router_configuration_3">Router Configuration</h5>
+<h5 id="router_configuration_2">Router Configuration</h5>
 <div class="paragraph">
 <p>To enable client <code>C1</code> to receive messages from <code>b2.event-queue</code> on broker <code>B2</code>, router <code>Ra</code> must be able to do the following:</p>
 </div>
@@ -3321,13 +3992,13 @@ Router Addresses
 
 linkRoute {  <b class="conum">(2)</b>
     prefix: b2
-    dir: in
+    direction: in
     connection: broker
 }
 
 linkRoute {  <b class="conum">(3)</b>
     prefix: b2
-    dir: out
+    direction: out
     connection: broker
 }</pre>
 </div>
@@ -3405,7 +4076,7 @@ linkRoute {  <b class="conum">(3)</b>
 <p>Dispatch Router consists of internal modules that provide important information about the router. For each module, you can specify logging levels, the format of the log file, and the location to which the logs should be written.</p>
 </div>
 <div class="sect2">
-<h3 id="logging_modules_you_can_configure">8.1. Logging Modules</h3>
+<h3 id="logging-modules-you-can-configure">8.1. Logging Modules</h3>
 <div class="paragraph">
 <p>Dispatch Router logs are broken into different categories called <em>logging modules</em>. Each module provides important information about a particular aspect of Dispatch Router.</p>
 </div>
@@ -3653,13 +4324,13 @@ Tue Jun  7 14:39:52 2016 SERVER (trace) [1]:RAW: "\x00\x00\x00\x91\x02\x00\x00\x
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: ConnectorEntity(addr=127.0.0.1, allowRedirect=True, cost=1, host=127.0.0.1, identity=connector/127.0.0.1:5672:BROKER, idleTimeoutSeconds=16, maxFrameSize=65536, name=BROKER, port=5672, role=route-container, stripAnnotations=both, type=org.apache.qpid.dispatch.connector, verifyHostName=True)
+<pre class="nowrap">Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: ConnectorEntity(addr=127.0.0.1, allowRedirect=True, cost=1, host=127.0.0.1, identity=connector/127.0.0.1:5672:BROKER, idleTimeoutSeconds=16, maxFrameSize=65536, name=BROKER, port=5672, role=route-container, stripAnnotations=both, type=org.apache.qpid.dispatch.connector, verifyHostname=True)
 Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAddressEntity(distribution=closest, identity=router.config.address/0, name=router.config.address/0, prefix=my_address, type=org.apache.qpid.dispatch.router.config.address, waypoint=False)
 Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAddressEntity(distribution=balanced, identity=router.config.address/1, name=router.config.address/1, prefix=my_queue_wp, type=org.apache.qpid.dispatch.router.config.address, waypoint=True)
-Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigLinkrouteEntity(connection=BROKER, dir=in, distribution=linkBalanced, identity=router.config.linkRoute/0, name=router.config.linkRoute/0, prefix=my_queue, type=org.apache.qpid.dispatch.router.config.linkRoute)
-Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigLinkrouteEntity(connection=BROKER, dir=out, distribution=linkBalanced, identity=router.config.linkRoute/1, name=router.config.linkRoute/1, prefix=my_queue, type=org.apache.qpid.dispatch.router.config.linkRoute)
-Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAutolinkEntity(addr=my_queue_wp, connection=BROKER, dir=in, identity=router.config.autoLink/0, name=router.config.autoLink/0, type=org.apache.qpid.dispatch.router.config.autoLink)
-Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAutolinkEntity(addr=my_queue_wp, connection=BROKER, dir=out, identity=router.config.autoLink/1, name=router.config.autoLink/1, type=org.apache.qpid.dispatch.router.config.autoLink)</pre>
+Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigLinkrouteEntity(connection=BROKER, direction=in, distribution=linkBalanced, identity=router.config.linkRoute/0, name=router.config.linkRoute/0, prefix=my_queue, type=org.apache.qpid.dispatch.router.config.linkRoute)
+Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigLinkrouteEntity(connection=BROKER, direction=out, distribution=linkBalanced, identity=router.config.linkRoute/1, name=router.config.linkRoute/1, prefix=my_queue, type=org.apache.qpid.dispatch.router.config.linkRoute)
+Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAutolinkEntity(addr=my_queue_wp, connection=BROKER, direction=in, identity=router.config.autoLink/0, name=router.config.autoLink/0, type=org.apache.qpid.dispatch.router.config.autoLink)
+Tue Jun  7 15:07:32 2016 AGENT (debug) Add entity: RouterConfigAutolinkEntity(addr=my_queue_wp, connection=BROKER, direction=out, identity=router.config.autoLink/1, name=router.config.autoLink/1, type=org.apache.qpid.dispatch.router.config.autoLink)</pre>
 </div>
 </div>
 </div>
@@ -3719,7 +4390,7 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 </div>
 </div>
 <div class="sect2">
-<h3 id="configure_default_logging">8.2. Configuring Logging</h3>
+<h3 id="configure-default-logging">8.2. Configuring Logging</h3>
 <div class="paragraph">
 <p>You can specify the types of events that should be logged, the format of the log entries, and where those entries should be sent.</p>
 </div>
@@ -3735,7 +4406,7 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 <pre class="nowrap">log {
     module: DEFAULT
     enable: <em>LOGGING_LEVEL</em>
-    timestamp: yes
+    includeTimestamp: yes
     ...
 }</pre>
 </div>
@@ -3778,14 +4449,14 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 <p>To specify multiple levels, use a comma-separated list. You can also use <code>+</code> to specify a level and all levels above it. For example, <code>trace,debug,warning+</code> enables trace, debug, warning, error, and critical levels. For default logging, you should typically use the <code>info+</code> or <code>notice+</code> level. These levels will provide general information, warnings, and errors for all modules without affecting the performance of Dispatch Router.</p>
 </div>
 </dd>
-<dt class="hdlist1"><code>timestamp</code></dt>
+<dt class="hdlist1"><code>includeTimestamp</code></dt>
 <dd>
 <p>Set this to <code>yes</code> to include the timestamp in all logs.</p>
 </dd>
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional log attributes, see <a href="#router_configuration_file_log">Log</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional log attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_log">log</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -3807,7 +4478,7 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 <dl>
 <dt class="hdlist1"><code>module</code></dt>
 <dd>
-<p>The name of the module for which you are configuring logging. For a list of valid modules, see <a href="#logging_modules_you_can_configure">Logging Modules You Can Configure</a>.</p>
+<p>The name of the module for which you are configuring logging. For a list of valid modules, see <a href="#logging-modules-you-can-configure">Logging Modules</a>.</p>
 </dd>
 <dt class="hdlist1"><code>enable</code></dt>
 <dd>
@@ -3844,7 +4515,7 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 </dl>
 </div>
 <div class="paragraph">
-<p>For information about additional log attributes, see <a href="#router_configuration_file_log">Log</a> in the <em>Configuration Reference</em>.</p>
+<p>For information about additional log attributes, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_log">log</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 </div>
 </div>
@@ -3876,7 +4547,7 @@ Tue Jun  7 15:07:32 2016 POLICY (info) Policy fallback defaultApplication is dis
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>You can use the <code>--limit</code> parameter to limit the number of log entries that are displayed. For more information about <code>qdstat</code>, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html">qdstat man page</a>.</p>
+<p>You can use the <code>--limit</code> parameter to limit the number of log entries that are displayed. For more information about <code>qdstat</code>, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html" target="_blank" rel="noopener">qdstat man page</a>.</p>
 </div>
 <div class="paragraph">
 <p>This example displays the last three log entries for <code>Router.A</code>:</p>
@@ -3899,611 +4570,7 @@ Wed Jun  7 17:49:32 2017 SERVER (none) [2]:0 -&gt; @flow(19) [next-incoming-id=1
 </div>
 </div>
 <div class="sect1">
-<h2 id="policy">9. Policy</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Policy module is an optional authorization mechanism enforcing
-user connection restrictions and AMQP resource access control.</p>
-</div>
-<div class="paragraph">
-<p>Policy is assigned when a connection is created. The connection
-properties <strong>AMQP virtual host</strong>, <strong>authenticated user name</strong>, and <strong>connection
-remote host</strong> are passed to the policy engine for a connection
-allow/deny decision.  If the connection is allowed then the user is
-assigned to a group that names a set of AMQP resource limits that are
-enforced for the lifetime of the connection.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Policy limits are applied only to incoming user network connections.
-Policy limits are not applied to interrouter connections nor are they
-applied to router connections outbound to waypoints.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="definitions">9.1. Definitions</h3>
-<div class="sect3">
-<h4 id="vhost">9.1.1. vhost</h4>
-<div class="paragraph">
-<p>A <em>vhost</em> is typically the name of the host to which the client AMQP
-connection is directed. For example, suppose a client application opens
-connection URL:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">amqp://bigbroker.example.com:5672/favorite_subject</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The client will signal virtual host name <em>bigbroker.example.com</em> to
-the router during AMQP connection startup.  Router Policy intercepts
-the virtual host <em>bigbroker.example.com</em> and applies a vhost policy
-with that name to the connection.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="policy_features">9.2. Policy Features</h3>
-<div class="sect3">
-<h4 id="total_connection_limit">9.2.1. Total Connection Limit</h4>
-<div class="paragraph">
-<p>A router may be configured with a total connection limit. This limit
-controls the maximum number of simultaneous incoming user connections
-that are allowed at any time.  It protects the router from file
-descriptor resource exhaustion in the face of many incoming client
-connections.  This limit is specified and enforced independently of
-any other Policy settings.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="vhost_policy">9.2.2. Vhost Policy</h4>
-<div class="paragraph">
-<p>Vhost policy defines users and assigns them to user groups.  Each
-user group defines the remote hosts from which the members may connect
-to the router network, and what resources in the router network the
-group members are allowed to access.</p>
-</div>
-<div class="paragraph">
-<p>Vhost policy also defines connection count limits to control the
-number of users that may be simultaneously connected to the vhost.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>A vhost user may be assigned to one user group only.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="default_vhost">9.2.3. Default Vhost</h4>
-<div class="paragraph">
-<p>A default vhost may be defined. The default vhost policy is used for
-connections whose vhost is otherwise not defined in the policy database.</p>
-</div>
-<div class="paragraph">
-<p><a href="#example2">Example 2</a> illustrates how the default vhost feature can
-be used to apply a single vhost policy set of restrictions to any
-number of vhost connections.</p>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="policy_schema">9.3. Policy Schema</h3>
-<div class="paragraph">
-<p>Policy configuration is specified in two schema objects.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">policy = {
-    &lt;global settings&gt;
-}
-
-vhost = {
-    id: vhost-name
-    &lt;connection limits&gt;
-    groups: {
-        group-name: {
-            &lt;user group settings&gt;
-        }
-    }
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <em>policy</em> object is a singleton. Multiple <em>vhost</em> objects may be
-created as needed.</p>
-</div>
-<div class="sect3">
-<h4 id="global_policy">9.3.1. Global Policy</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 35%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">attribute</th>
-<th class="tableblock halign-left valign-top">default</th>
-<th class="tableblock halign-left valign-top">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxConnections</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65535</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Global maximum number of concurrent client connections allowed. This limit is always enforced even if no other policy settings have been defined. This limit is applied to all incoming connections regardless of remote host, authenticated user, or targeted vhost.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">enableVhostPolicy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Enable vhost policy connection denial, and resource limit enforcement.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">policyDir</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Absolute path to a directory that holds vhost definition .json files. All vhost definitions in all .json files in this directory are processed.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">defaultVhost</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">"$default"</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vhost rule set name to use for connections with a vhost that is otherwise not defined. Default vhost processing may be disabled either by erasing the definition of <em>defaultVhost</em> or by not defining a <em>vhost</em> object named <em>$default</em>.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="vhost_policy_2">9.3.2. Vhost Policy</h4>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 35%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">attribute</th>
-<th class="tableblock halign-left valign-top">default</th>
-<th class="tableblock halign-left valign-top">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Vhost name must be unique.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxConnections</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65535</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of concurrent client connections allowed.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxConnectionsPerUser</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65535</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of concurrent client connections allowed for any user.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxConnectionsPerRemoteHost</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65535</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of concurrent client connections allowed for any remote host.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">allowUnknownUser</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allow unknown users who are not members of a defined user group. Unknown users are assigned to the '$default' user group and receive '$default' settings.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">groups</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A map where each key is a user group name and the value is a Vhost User Group Settings map.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect3">
-<h4 id="vhost_user_group_settings_map">9.3.3. Vhost User Group Settings Map</h4>
-<div class="paragraph">
-<p>This object is the data value contained in entries in the policy/groups map.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<colgroup>
-<col style="width: 35%;">
-<col style="width: 15%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Section/Attribute</th>
-<th class="tableblock halign-left valign-top">default</th>
-<th class="tableblock halign-left valign-top">description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Group Membership</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of authenticated users in this group.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Connection Restrictions</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">remoteHosts</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of remote hosts from which the users may connect. List values may be host names, numeric IP addresses, numeric IP address ranges, or the wildcard '*'. An empty list denies all access.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AMQP Connection Open Limits</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxFrameSize</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2^31-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Largest frame that may be sent on this connection. (AMQP Open, max-frame-size)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxSessions</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">65535</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of sessions that may be created on this connection. (AMQP Open, channel-max)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AMQP Session Begin Limits</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxSessionWindow</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2^31-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Incoming capacity for new sessions. (AMQP Begin, incoming-window)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>AMQP Link Attach</strong></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxMessageSize</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Largest message size supported by links created on this connection. If this field is zero there is no maximum size imposed by the link endpoint. (AMQP Attach, max-message-size)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxSenders</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2^31-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of sending links that may be created on this connection.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">maxReceivers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2^31-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Maximum number of receiving links that may be created on this connection.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">allowDynamicSource</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This connection is allowed to create receiving links using the Dynamic Link Source feature.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">allowAnonymousSender</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This connection is allowed to create sending links using the Anonymous Sender feature.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">allowUserIdProxy</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This connection is allowed to send messages with a user_id property that differs from the connection&#8217;s authenticated user id.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sources</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of Source addresses allowed when creating receiving links. This list may be expressed as a CSV string or as a list of strings. An empty list denies all access.</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">targets</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">""</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">List of Target addresses allowed when creating sending links. This list may be expressed as a CSV string or as a list of strings. An empty list denies all access.</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="policy_wildcard_and_user_name_substitution">9.4. Policy Wildcard and User Name Substitution</h3>
-<div class="paragraph">
-<p>Policy provides several conventions to make writing rules easier.</p>
-</div>
-<div class="sect3">
-<h4 id="remote_host_wildcard">9.4.1. Remote Host Wildcard</h4>
-<div class="paragraph">
-<p>Remote host rules may consist of a single asterisk character to
-specify all hosts.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">    remoteHosts: *</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The asterisk must stand alone and cannot be appended to a host name
-or to an IP address fragment.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="amqp_source_and_target_wildcard_and_name_substitution">9.4.2. AMQP Source and Target Wildcard and Name Substitution</h4>
-<div class="paragraph">
-<p>The rule definitions for <code>sources</code> and <code>targets</code> may include the username
-substitution token</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">    {user}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or a trailing asterisk.</p>
-</div>
-<div class="paragraph">
-<p>The username substitution token is replaced with the authenticated user name for
-the connection. Using this token, an administrator may allow access to
-some resources specific to each user without having to name each user
-individually. This token is substituted once for the leftmost
-occurrence in the link name.</p>
-</div>
-<div class="paragraph">
-<p>The asterisk is recognized only if it is the last character in the
-link name.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">    sources: tmp_{user}, temp*, {user}-home-*</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="composing_policies">9.5. Composing Policies</h3>
-<div class="paragraph">
-<p>This section shows policy examples designed to illustrate some common use cases.</p>
-</div>
-<div class="sect3">
-<h4 id="example_1_user_policy_disabled">9.5.1. Example 1. User Policy Disabled</h4>
-<div class="paragraph">
-<p>Policy is disabled when no policy configuation objects are defined.
-Any number of connections are allowed and all users have
-access to all AMQP resources in the network.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="example2">9.5.2. Example 2. All Users Have Simple Connection Limits</h4>
-<div class="paragraph">
-<p>This example shows how to keep users from overwhelming the router with
-connections.  Any user can create up to ten connections and the router
-will limit the aggregated user connection count to 100 connections
-total.  No other restrictions apply.</p>
-</div>
-<div class="paragraph">
-<p>This example also shows how to use a default vhost policy effectively.
-Only one vhost policy is defined and all user connections regardless
-of the requested vhost use that policy.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">policy {
-    maxConnections: 100            <b class="conum">(1)</b>
-}
-
-vhost {
-    name: $default                 <b class="conum">(2)</b>
-    maxConnectionsPerUser: 10      <b class="conum">(3)</b>
-    allowUnknownUser: true         <b class="conum">(4)</b>
-    groups: {
-        $default: {
-            remoteHosts: *         <b class="conum">(5)</b>
-            sources: *             <b class="conum">(6)</b>
-            targets: *             <b class="conum">(6)</b>
-        }
-    }
-}</pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>The global maxConnections limit of 100 is enforced.</p>
-</li>
-<li>
-<p>No normal vhost names are defined; user is assigned to default vhost '$default'.</p>
-</li>
-<li>
-<p>The vhost maxConnectionsPerUser limit of 10 is enforced.</p>
-</li>
-<li>
-<p>No groups are defined to have any users but allowUnknownUser is true so all users are assigned to group $default.</p>
-</li>
-<li>
-<p>The user is allowed to connect from any remote host.</p>
-</li>
-<li>
-<p>The user is allowed to connect to any source or target in the AMQP network. Router system-wide values are used for the other AMQP settings that are unspecified in the vhost rules.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="example_3_admins_must_connect_from_localhost">9.5.3. Example 3. Admins Must Connect From Localhost</h4>
-<div class="paragraph">
-<p>This example shows how an admin group may be created and restricted
-to accessing a vhost only from localhost. The admin users are allowed
-to connect to any AMQP resources while normal users are restricted.</p>
-</div>
-<div class="paragraph">
-<p>In this example a user connects to vhost 'example.com'.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">vhost {
-    name: example.com                            <b class="conum">(1)</b>
-    allowUnknownUser: true                       <b class="conum">(3)</b>
-    groups: {
-        admin: {
-            users: alice, bob                    <b class="conum">(2)</b>
-            remoteHosts: 127.0.0.1, ::1          <b class="conum">(4)</b>
-            sources: *                           <b class="conum">(5)</b>
-            targets: *                           <b class="conum">(5)</b>
-        },
-        $default: {
-            remoteHosts: *                       <b class="conum">(6)</b>
-            sources: news*, sports*, chat*       <b class="conum">(7)</b>
-            targets: chat*                       <b class="conum">(7)</b>
-        }
-    }
-}</pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>A connection to vhost 'example.com' locates this vhost rule set.</p>
-</li>
-<li>
-<p>If one of users <em>alice</em> or <em>bob</em> is connecting then she or he is assigned to the 'admin' user group.</p>
-</li>
-<li>
-<p>Any other user is not defined by a user group. However, since the <em>allowUnknownUser</em> setting is true then this user is assigned to the '$default' user group.</p>
-</li>
-<li>
-<p>Users in the 'admin' user group must connect from localhost. Connections for an 'admin' user from other hosts on the network are denied.</p>
-</li>
-<li>
-<p>Users in the 'admin' user group are allowed to access any resource offered by the vhost service.</p>
-</li>
-<li>
-<p>Other users are allowed to connect from any host.</p>
-</li>
-<li>
-<p>Other users have source and target name lists that restrict the resources they are allowed to access.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="example_4_limiting_possible_memory_consumption">9.5.4. Example 4. Limiting Possible Memory Consumption</h4>
-<div class="paragraph">
-<p>Policy provides a mechanism to control how much system buffer memory a
-user connection can potentially consume. The formula for computing
-buffer memory consumption for each session is</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre>  potential buffer usage = maxFrameSize * maxSessionWindow</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>By adjusting <em>maxFrameSize</em>, <em>maxSessions</em>, and <em>maxSessionWindow</em> an
-administrator can prevent a user from consuming too much memory by
-buffering messages in flight.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>The settings passed into the AMQP protocol connection and session
-negotiations. Normal AMQP session flow control limits buffer
-consumption in due course with no processing cycles required by the
-router.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>In this example normal users, the traders, are given smaller buffer
-allocations while high-capacity, automated data feeds are given a
-higher buffer allocation. This example skips the details of settings
-unrelated to buffer allocation.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">vhost {
-    name: traders.com                            <b class="conum">(1)</b>
-    groups: {
-        traders: {
-            users: trader-1, trader-2, ...       <b class="conum">(2)</b>
-            maxFrameSize: 10000                  <b class="conum">(3)</b>
-            maxSessionWindow: 500                <b class="conum">(3)</b>
-            maxSessions: 1                       <b class="conum">(4)</b>
-            ...
-        },
-        feeds: {
-            users: nyse-feed, nasdaq-feed        <b class="conum">(5)</b>
-            maxFrameSize: 60000                  <b class="conum">(6)</b>
-            maxSessionWindow: 20000              <b class="conum">(6)</b>
-            maxSessions: 3                       <b class="conum">(7)</b>
-            ...
-        }
-    }
-}</pre>
-</div>
-</div>
-<div class="colist arabic">
-<ol>
-<li>
-<p>These rules are for vhost traders.com.</p>
-</li>
-<li>
-<p>The 'traders' group includes trader-1, trader-2, and any other user defined in the list.</p>
-</li>
-<li>
-<p><em>maxFrameSize</em> and <em>maxSessionWindow</em> allow for at most 5,000,000 bytes of data to be in flight on each session.</p>
-</li>
-<li>
-<p>Only one session per connection is allowed.</p>
-</li>
-<li>
-<p>In the 'feeds' group two users are defined.</p>
-</li>
-<li>
-<p><em>maxFrameSize</em> and <em>maxSessionWindow</em> allow for at most 1,200,000,000 bytes of data to be in flight on each session.</p>
-</li>
-<li>
-<p>Up to three sessions per connection are allowed.</p>
-</li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="management">10. Management</h2>
+<h2 id="management">9. Management</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>You can manage Dispatch Router using both graphical and command-line tools.</p>
@@ -4525,9 +4592,9 @@ unrelated to buffer allocation.</p>
 </dl>
 </div>
 <div class="sect2">
-<h3 id="using_apache_qpid_dispatch_router_console">10.1. Using Apache Qpid Dispatch Router Console</h3>
+<h3 id="using_apache_qpid_dispatch_router_console">9.1. Using Apache Qpid Dispatch Router Console</h3>
 <div class="sect3">
-<h4 id="console-overview">10.1.1. Console Overview</h4>
+<h4 id="console-overview">9.1.1. Console Overview</h4>
 <div class="paragraph">
 <p>The console is an HTML based web site that displays information about a qpid dispatch router network.</p>
 </div>
@@ -4539,7 +4606,7 @@ unrelated to buffer allocation.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="console-installation">10.1.2. Console Installation</h4>
+<h4 id="console-installation">9.1.2. Console Installation</h4>
 <h5 id="prerequisites" class="discrete">Prerequisites</h5>
 <div class="paragraph">
 <p>The following need to be installed before running a console:</p>
@@ -4601,7 +4668,7 @@ under webapps/dispatch. Then the console is available as 'http://localhost:8080/
 </div>
 </div>
 <div class="sect3">
-<h4 id="console-operation">10.1.3. Console Operation</h4>
+<h4 id="console-operation">9.1.3. Console Operation</h4>
 <div class="sect4">
 <h5 id="logging-in-to-a-router-network">Logging into a Router Network</h5>
 <div class="paragraph">
@@ -4662,12 +4729,12 @@ under webapps/dispatch. Then the console is available as 'http://localhost:8080/
 </div>
 </div>
 <div class="sect2">
-<h3 id="monitoring_using_qdstat">10.2. Monitoring Dispatch Router Using <code>qdstat</code></h3>
+<h3 id="monitoring-using-qdstat">9.2. Monitoring Dispatch Router Using <code>qdstat</code></h3>
 <div class="paragraph">
 <p>You can use <code>qdstat</code> to view the status of routers on your router network. For example, you can view information about the attached links and configured addresses, available connections, and nodes in the router network.</p>
 </div>
 <div class="sect3">
-<h4 id="syntax_for_using_code_qdstat_code">10.2.1. Syntax for Using <code>qdstat</code></h4>
+<h4 id="syntax_for_using_code_qdstat_code">9.2.1. Syntax for Using <code>qdstat</code></h4>
 <div class="paragraph">
 <p>You can use <code>qdstat</code> with the following syntax:</p>
 </div>
@@ -4696,11 +4763,11 @@ under webapps/dispatch. Then the console is available as 'http://localhost:8080/
 </ul>
 </div>
 <div class="paragraph">
-<p>For more information about <code>qdstat</code>, see the <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html">qdstat man page</a>.</p>
+<p>For more information about <code>qdstat</code>, see the <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html" target="_blank" rel="noopener">qdstat man page</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_general_statistics_for_a_router">10.2.2. Viewing General Statistics for a Router</h4>
+<h4 id="viewing_general_statistics_for_a_router">9.2.2. Viewing General Statistics for a Router</h4>
 <div class="paragraph">
 <p>You can view information about a router in the router network, such as its working mode and ID.</p>
 </div>
@@ -4744,7 +4811,7 @@ Router Statistics
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_a_list_of_connections_to_a_router">10.2.3. Viewing a List of Connections to a Router</h4>
+<h4 id="viewing_a_list_of_connections_to_a_router">9.2.3. Viewing a List of Connections to a Router</h4>
 <div class="paragraph">
 <p>You can view:</p>
 </div>
@@ -4777,7 +4844,7 @@ Router Statistics
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_c">the qdstat -c output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_c" target="_blank" rel="noopener">the qdstat -c output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, two clients are connected to <code>Router.A</code>. <code>Router.A</code> is connected to <code>Router.B</code> and a broker.</p>
@@ -4840,7 +4907,7 @@ id    host                         container  role          dir  security     au
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_amqp_links_attached_to_a_router">10.2.4. Viewing AMQP Links Attached to a Router</h4>
+<h4 id="viewing_amqp_links_attached_to_a_router">9.2.4. Viewing AMQP Links Attached to a Router</h4>
 <div class="paragraph">
 <p>You can view a list of AMQP links attached to the router from clients (sender/receiver), from or to other routers into the network, to other containers (for example, brokers), and from the tool itself.</p>
 </div>
@@ -4857,7 +4924,7 @@ id    host                         container  role          dir  security     au
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_l">the qdstat -l output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_l" target="_blank" rel="noopener">the qdstat -l output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, <code>Router.A</code> is connected to both <code>Router.B</code> and a broker. A link route is configured for the <code>my_queue</code> queue and waypoint (with autolinks), and for the <code>my_queue_wp</code> queue on the broker. In addition, there is a receiver connected to <code>my_address</code> (message routing based), another to <code>my_queue</code>, and the a third one to <code>my_queue_wp</code>.</p>
@@ -4917,7 +4984,7 @@ Router Links
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_known_routers_on_a_network">10.2.5. Viewing Known Routers on a Network</h4>
+<h4 id="viewing_known_routers_on_a_network">9.2.5. Viewing Known Routers on a Network</h4>
 <div class="paragraph">
 <p>To see the topology of the router network, you can view known routers on the network.</p>
 </div>
@@ -4934,7 +5001,7 @@ Router Links
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_n">the qdstat -n output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_n" target="_blank" rel="noopener">the qdstat -n output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, <code>Router.A</code> is connected to <code>Router.B</code>, which is connected to <code>Router.C</code>. Viewing the router topology on <code>Router.A</code> shows the following:</p>
@@ -5007,7 +5074,7 @@ Routers in the Network
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_addresses_known_to_a_router">10.2.6. Viewing Addresses Known to a Router</h4>
+<h4 id="viewing_addresses_known_to_a_router">9.2.6. Viewing Addresses Known to a Router</h4>
 <div class="paragraph">
 <p>You can view message-routed and link-routed addresses known to a router.</p>
 </div>
@@ -5024,7 +5091,7 @@ Routers in the Network
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_a">the qdstat -a output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_a" target="_blank" rel="noopener">the qdstat -a output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, <code>Router.A</code> is connected to both <code>Router.B</code> and a broker. The broker has two queues:</p>
@@ -5095,7 +5162,7 @@ Router Addresses
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_a_router_s_autolinks">10.2.7. Viewing a Router&#8217;s Autolinks</h4>
+<h4 id="viewing_a_router_s_autolinks">9.2.7. Viewing a Router&#8217;s Autolinks</h4>
 <div class="paragraph">
 <p>You can view a list of the autolinks that are associated with waypoint addresses for a node on another container (such as a broker).</p>
 </div>
@@ -5112,7 +5179,7 @@ Router Addresses
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_autolinks">the qdstat --autolinks output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_autolinks" target="_blank" rel="noopener">the qdstat --autolinks output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, a router is connected to a broker. The broker has a queue called <code>my_queue_wp</code>, to which the router is configured with a waypoint and autolinks. Viewing the autolinks displays the following:</p>
@@ -5144,7 +5211,7 @@ AutoLinks
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_the_status_of_a_router_s_link_routes">10.2.8. Viewing the Status of a Router&#8217;s Link Routes</h4>
+<h4 id="viewing_the_status_of_a_router_s_link_routes">9.2.8. Viewing the Status of a Router&#8217;s Link Routes</h4>
 <div class="paragraph">
 <p>You can view the status of each incoming and outgoing link route.</p>
 </div>
@@ -5161,7 +5228,7 @@ AutoLinks
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdstat.html#_qdstat_linkroutes">the qdstat --linkroutes output columns</a>.</p>
+<p>For more information about the fields displayed by this command, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdstat.html#_qdstat_linkroutes" target="_blank" rel="noopener">the qdstat --linkroutes output columns</a>.</p>
 </div>
 <div class="paragraph">
 <p>In this example, a router is connected to a broker. The router is configured with a link route to the <code>my_queue</code> queue on the broker. Viewing the link routes displays the following:</p>
@@ -5193,7 +5260,7 @@ Link Routes
 </div>
 </div>
 <div class="sect3">
-<h4 id="viewing_memory_consumption_information">10.2.9. Viewing Memory Consumption Information</h4>
+<h4 id="viewing_memory_consumption_information">9.2.9. Viewing Memory Consumption Information</h4>
 <div class="paragraph">
 <p>If you need to perform debugging or tracing for a router, you can view information about its memory consumption.</p>
 </div>
@@ -5233,7 +5300,7 @@ Types
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing_router">10.3. Managing Dispatch Router Using <code>qdmanage</code></h3>
+<h3 id="managing-router">9.3. Managing Dispatch Router Using <code>qdmanage</code></h3>
 <div class="paragraph">
 <p>You can use <code>qdmanage</code> to view and modify the configuration of a running router at runtime. Specifically, <code>qdmanage</code> enables you to create, read, update, and delete the sections and attributes in the router&#8217;s configuration file without having to restart the router.</p>
 </div>
@@ -5252,7 +5319,7 @@ Types
 </table>
 </div>
 <div class="sect3">
-<h4 id="syntax_for_using_code_qdmanage_code">10.3.1. Syntax for Using <code>qdmanage</code></h4>
+<h4 id="syntax_for_using_code_qdmanage_code">9.3.1. Syntax for Using <code>qdmanage</code></h4>
 <div class="paragraph">
 <p>You can use <code>qdmanage</code> with the following syntax:</p>
 </div>
@@ -5314,11 +5381,11 @@ Types
 </div>
 </div>
 <div class="paragraph">
-<p>For more information about <code>qdmanage</code>, see the <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html">qdmanage man page</a>.</p>
+<p>For more information about <code>qdmanage</code>, see the <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html" target="_blank" rel="noopener">qdmanage man page</a>.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="managing_network_connections">10.3.2. Managing Network Connections</h4>
+<h4 id="managing_network_connections">9.3.2. Managing Network Connections</h4>
 <div class="paragraph">
 <p>You can use <code>qdmanage</code> to view, create, update, and delete listeners and connectors for any router in your router network.</p>
 </div>
@@ -5328,7 +5395,7 @@ Types
 <p>Listeners define how clients can connect to a router. The following table lists the <code>qdmanage</code> commands you can use to perform common operations on listeners.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_listener">listener</a> section in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_listener">listener</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5338,7 +5405,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -5468,12 +5535,12 @@ Types
 </table>
 </div>
 <div class="sect4">
-<h5 id="managing_connectors">Managing Connectors</h5>
+<h5 id="managing-connectors">Managing Connectors</h5>
 <div class="paragraph">
 <p>Connectors define how the router can connect to other endpoints in your messaging network, such as brokers and other routers. The following table lists the <code>qdmanage</code> commands you can use to perform common operations on connectors.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_connector">connector</a> section in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_connector">connector</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5483,7 +5550,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -5521,7 +5588,7 @@ Types
 <td class="tableblock halign-left valign-top"><p class="tableblock">If the router is connected to a broker, view the alternate URLs on which the router can connect to the broker if the primary connection fails</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="nowrap">qdmanage query failoverList --type=connector --name=CONNECTOR_NAME</pre>
+<pre class="nowrap">qdmanage query failoverUrls --type=connector --name=CONNECTOR_NAME</pre>
 </div>
 </div></div></td>
 </tr>
@@ -5622,7 +5689,7 @@ Types
 </div>
 </div>
 <div class="sect3">
-<h4 id="managing_security">10.3.3. Managing Security</h4>
+<h4 id="managing_security">9.3.3. Managing Security</h4>
 <div class="paragraph">
 <p>Dispatch Router supports both SSL/TLS and SASL security protocols for encrypting and authenticating incoming and outgoing connections for your routers. You can use <code>qdmanage</code> to view, create, update, and delete security policies for any router in your router network.</p>
 </div>
@@ -5632,7 +5699,7 @@ Types
 <p>Dispatch Router supports SSL/TLS for certificate-level encryption and mutual authentication. The following table lists the common <code>qdmanage</code> commands you can use to secure incoming and outgoing connections for a router in your router network.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_sslprofile">sslProfile</a> and <a href="#router_configuration_file_listener">listener</a> sections in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_sslprofile">sslProfile</a> and <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_listener">listener</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5642,7 +5709,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -5672,7 +5739,7 @@ Types
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set up SSL for the router</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="nowrap">qdmanage create --type=sslProfile --name=<em>NAME</em> --certDB=<em>PATH</em> --certFile=<em>PATH</em> --keyFile=<em>PATH</em> --<em>ATTRIBUTE</em>=<em>VALUE</em> ...</pre>
+<pre class="nowrap">qdmanage create --type=sslProfile --name=<em>NAME</em> --certDB=<em>PATH</em> --certFile=<em>PATH</em> --privateKeyFile=<em>PATH</em> --<em>ATTRIBUTE</em>=<em>VALUE</em> ...</pre>
 </div>
 </div></div></td>
 </tr>
@@ -5741,7 +5808,7 @@ Types
 <p>Dispatch Router supports SASL for authentication and payload encryption. The following table lists the common <code>qdmanage</code> commands you can use to secure incoming and outgoing connections for a router in your router network.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_router">router</a> and <a href="#router_configuration_file_listener">listener</a> sections in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_router">router</a> and <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_listener">listener</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5751,7 +5818,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -5773,7 +5840,7 @@ Types
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set up SASL for the router</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="nowrap">qdmanage update --type=router --saslConfigPath=<em>PATH</em> --saslConfigName=<em>NAME</em></pre>
+<pre class="nowrap">qdmanage update --type=router --saslConfigDir=<em>PATH</em> --saslConfigName=<em>NAME</em></pre>
 </div>
 </div></div></td>
 </tr>
@@ -5837,7 +5904,7 @@ Types
 <td class="tableblock halign-left valign-top"><p class="tableblock">Delete a SASL configuration</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="nowrap">qdmanage update --type=router --saslConfigPath --saslConfigName</pre>
+<pre class="nowrap">qdmanage update --type=router --saslConfigDir --saslConfigName</pre>
 </div>
 </div></div></td>
 </tr>
@@ -5846,7 +5913,7 @@ Types
 </div>
 </div>
 <div class="sect3">
-<h4 id="managing_routing">10.3.4. Managing Routing</h4>
+<h4 id="managing_routing">9.3.4. Managing Routing</h4>
 <div class="paragraph">
 <p>Dispatch Router supports both message routing and link routing for distributing messages between senders and receivers. You can use <code>qdmanage</code> to view how addresses and link routes are configured in your environment, and define how a router should distribute messages.</p>
 </div>
@@ -5856,7 +5923,7 @@ Types
 <p>Message routing involves configuring addresses to define how Dispatch Router should distribute messages. The following table lists the common <code>qdmanage</code> commands you can use to configure addresses for a router in your router network.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_address">address</a> and <a href="#router_configuration_file_autolink">autoLink</a> sections in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_address">address</a> and <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_autolink">autolink</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -5866,7 +5933,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -5971,7 +6038,7 @@ Types
 <p>Create an address waypoint, an incoming autolink, and an outgoing autolink:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[{"type":"address", "prefix":"<em>ADDRESS_PREFIX</em>", "waypoint":"yes"}, {"type":"autolink", "addr":"<em>ADDRESS_NAME</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "dir":"in"}, {"type":"autolink", "addr":"<em>ADDRESS_NAME</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "dir":"out"}]</pre>
+<pre class="nowrap">[{"type":"address", "prefix":"<em>ADDRESS_PREFIX</em>", "waypoint":"yes"}, {"type":"autolink", "addr":"<em>ADDRESS_NAME</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "direction":"in"}, {"type":"autolink", "addr":"<em>ADDRESS_NAME</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "direction":"out"}]</pre>
 </div>
 </div>
 </li>
@@ -6019,7 +6086,7 @@ Types
 <p>A link route is a chain of links between a sender and receiver that provides a private messaging path. The following table lists the common <code>qdmanage</code> commands you can use to view, create, update, and delete link routes.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_linkroute">linkRoute</a> section in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see the <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_linkroute">linkRoute</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6029,7 +6096,7 @@ Types
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -6076,7 +6143,7 @@ Types
 <p>Create an incoming and outgoing link route:</p>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[{"type":"linkRoute", "prefix":"<em>ADDRESS_PREFIX</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "dir":"in", ...}, {"type":"linkRoute", "prefix":"<em>ADDRESS_PREFIX</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "dir":"out", ...}]</pre>
+<pre class="nowrap">[{"type":"linkRoute", "prefix":"<em>ADDRESS_PREFIX</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "direction":"in", ...}, {"type":"linkRoute", "prefix":"<em>ADDRESS_PREFIX</em>", "connection":"<em>CONNECTOR/LISTENER_NAME</em>", "direction":"out", ...}]</pre>
 </div>
 </div>
 </li>
@@ -6105,12 +6172,12 @@ qdmanage delete --name=<em>OUTGOING_LINK_ROUTE_NAME</em></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="managing_logging">10.3.5. Managing Logging</h4>
+<h4 id="managing_logging">9.3.5. Managing Logging</h4>
 <div class="paragraph">
 <p>Dispatch Router logs are broken into different categories called logging modules. Each module provides important information about a particular aspect of a router. The following table lists the common <code>qdmanage</code> commands you can use to view and change the configuration of a logging module.</p>
 </div>
 <div class="paragraph">
-<p>For more information about the attributes you can use with these commands, see the <a href="#router_configuration_file_log">log</a> section in the <em>Configuration Reference</em>.</p>
+<p>For more information about the attributes you can use with these commands, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdrouterd.conf.html#_log">log</a> in the <code>qdrouterd.conf</code> man page.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -6120,7 +6187,7 @@ qdmanage delete --name=<em>OUTGOING_LINK_ROUTE_NAME</em></pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
+<p>The commands in this table demonstrate operations on the local router listening on localhost and the default AMQP port (5672). If you want to perform an operation on a different router in the router network, you must specify the necessary connection options. For more information, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/qdmanage.html#_connection_options">Connection Options</a> in the qdmanage man page.</p>
 </div>
 </td>
 </tr>
@@ -6158,7 +6225,7 @@ qdmanage delete --name=<em>OUTGOING_LINK_ROUTE_NAME</em></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set the default logging configuration</p></td>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="nowrap">qdmanage create --type=log --module=DEFAULT --enable=<em>LOGGING_LEVEL</em> --timestamp=yes --<em>ATTRIBUTE</em>=<em>VALUE</em></pre>
+<pre class="nowrap">qdmanage create --type=log --module=DEFAULT --enable=<em>LOGGING_LEVEL</em> --includeTimestamp=yes --<em>ATTRIBUTE</em>=<em>VALUE</em></pre>
 </div>
 </div></div></td>
 </tr>
@@ -6183,18 +6250,18 @@ qdmanage delete --name=<em>OUTGOING_LINK_ROUTE_NAME</em></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="management_entities">10.4. Management Entities</h3>
+<h3 id="management_entities">9.4. Management Entities</h3>
 <div class="paragraph">
 <p>The Dispatch Router management schema provides a set of management entities that you can use to configure and operate a router.</p>
 </div>
 <div class="paragraph">
-<p>For details about the management entities, see <a href="https://qpid.apache.org/releases/qpid-dispatch-0.8.0/man/managementschema.html">Dispatch Router Management Schema</a>.</p>
+<p>For details about the management entities, see <a href="https://qpid.apache.org/releases/qpid-dispatch-1.0.1/man/managementschema.html" target="_blank" rel="noopener">Dispatch Router Management Schema</a>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="reliability">11. Reliability</h2>
+<h2 id="reliability">10. Reliability</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>In general, in a broker based architecture, the reliability feature is strictly related to the "store and forward" mechanism offered by each broker. Thanks to persistent journals, a broker can offer fault tolerance thus avoiding message loss; of course, it is not so true when messages are stored only in a volatile memory.</p>
@@ -6206,7 +6273,7 @@ qdmanage delete --name=<em>OUTGOING_LINK_ROUTE_NAME</em></pre>
 <p>Because a solution based on Dispatch Router could be made not only by routers but by brokers too, the reliability is improved with persistent storage on them which add not only fault tolerance but temporal decoupling as well; without "store and forward" feature offered by brokers, the temporal decoupling is not possible only with routers and direct peers, both senders and receivers; the receiver must be online at same time of the sender in order to receive messages.</p>
 </div>
 <div class="sect2">
-<h3 id="path_redundancy">11.1. Path Redundancy</h3>
+<h3 id="path_redundancy">10.1. Path Redundancy</h3>
 <div class="paragraph">
 <p>Offering path redundancy means designing the network topology in a way that even when one or more routers go down or even connections between them, each destination is always reachable following alternate paths through the routers that are still part of the network.</p>
 </div>
@@ -6344,7 +6411,7 @@ connector {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_recv.py -a localhost:6001/my_queue -m 10</pre>
+<pre class="nowrap">$ sudo python simple_recv.py -a localhost:6001/my_queue -m 10</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6352,7 +6419,7 @@ connector {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_send.py -a localhost:6001/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_send.py -a localhost:6001/my_queue -m 10
 all messages confirmed</pre>
 </div>
 </div>
@@ -6390,7 +6457,7 @@ all messages confirmed</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_recv.py -a localhost:6002/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_recv.py -a localhost:6002/my_queue -m 10
 {u'sequence': 1L}
 {u'sequence': 2L}
 {u'sequence': 3L}
@@ -6405,7 +6472,7 @@ all messages confirmed</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="path_redundancy_and_temporal_decoupling">11.2. Path Redundancy and Temporal Decoupling</h3>
+<h3 id="path_redundancy_and_temporal_decoupling">10.2. Path Redundancy and Temporal Decoupling</h3>
 <div class="paragraph">
 <p>In order to have temporal decoupling in a solution based on Dispatch Router, adding one or more brokers is a must for its "store and forward" feature. Choosing the right topology, it is possible to have a solution which offers reliability with both path redundancy and permanent storing for messages.</p>
 </div>
@@ -6520,13 +6587,13 @@ address {
 autoLink {
     addr: my_queue
     connection: BROKER
-    dir: in
+    direction: in
 }
 
 autoLink {
     addr: my_queue
     connection: BROKER
-    dir: out
+    direction: out
 }</pre>
 </div>
 </div>
@@ -6565,7 +6632,7 @@ listener {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_send.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_send.py -a localhost:6000/my_queue -m 10
 all messages confirmed</pre>
 </div>
 </div>
@@ -6574,7 +6641,7 @@ all messages confirmed</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6001 -a
+<pre class="nowrap">$ sudo qdstat -b localhost:6001 -a
 Router Addresses
   class   addr                   phs  distrib    in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
   =================================================================================================================
@@ -6602,7 +6669,7 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_recv.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_recv.py -a localhost:6000/my_queue -m 10
 {u'sequence': 1L}
 {u'sequence': 2L}
 {u'sequence': 3L}
@@ -6620,7 +6687,7 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6001 -a
+<pre class="nowrap">$ sudo qdstat -b localhost:6001 -a
 Router Addresses
   class   addr                   phs  distrib    in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
   =================================================================================================================
@@ -6657,16 +6724,16 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[root@localhost /]# qdmanage -b localhost:6002 create --stdin
+<pre class="nowrap">$ sudo qdmanage -b localhost:6002 create --stdin
 [
 { "type":"connector", "name":"BROKER", "port":5672, "role":"route-container" },
 { "type":"address", "prefix":"my_queue", "waypoint":"yes" },
-{ "type":"autoLink", "addr":"my_queue", "connection":"BROKER", "dir":"in" },
-{ "type":"autoLink", "addr":"my_queue", "connection":"BROKER", "dir":"out" }
+{ "type":"autoLink", "addr":"my_queue", "connection":"BROKER", "direction":"in" },
+{ "type":"autoLink", "addr":"my_queue", "connection":"BROKER", "direction":"out" }
 ]
 [
   {
-    "verifyHostName": true,
+    "verifyHostname": true,
     "stripAnnotations": "both",
     "name": "BROKER",
     "allowRedirect": true,
@@ -6698,7 +6765,7 @@ Router Addresses
     "type": "org.apache.qpid.dispatch.router.config.autoLink",
     "operStatus": "inactive",
     "connection": "BROKER",
-    "dir": "in",
+    "direction": "in",
     "phase": 1,
     "lastError": null,
     "externalAddr": null,
@@ -6712,7 +6779,7 @@ Router Addresses
     "type": "org.apache.qpid.dispatch.router.config.autoLink",
     "operStatus": "inactive",
     "connection": "BROKER",
-    "dir": "out",
+    "direction": "out",
     "phase": 0,
     "lastError": null,
     "externalAddr": null,
@@ -6730,7 +6797,7 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_send.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_send.py -a localhost:6000/my_queue -m 10
 all messages confirmed</pre>
 </div>
 </div>
@@ -6739,7 +6806,7 @@ all messages confirmed</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6002 -a
+<pre class="nowrap">$ sudo qdstat -b localhost:6002 -a
 Router Addresses
   class   addr                   phs  distrib    in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
   =================================================================================================================
@@ -6766,7 +6833,7 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_recv.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_recv.py -a localhost:6000/my_queue -m 10
 {u'sequence': 1L}
 {u'sequence': 2L}
 {u'sequence': 3L}
@@ -6784,7 +6851,7 @@ Router Addresses
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6002 -a
+<pre class="nowrap">$ sudo qdstat -b localhost:6002 -a
 Router Addresses
   class   addr                   phs  distrib    in-proc  local  remote  cntnr  in  out  thru  to-proc  from-proc
   =================================================================================================================
@@ -6808,7 +6875,7 @@ Router Addresses
 </div>
 </div>
 <div class="sect2">
-<h3 id="sharded_queue">11.3. Sharded Queue</h3>
+<h3 id="sharded_queue">10.3. Sharded Queue</h3>
 <div class="paragraph">
 <p>Every broker has limits in terms of queue size but in order to overcome this problem, one possible solution is "sharding" queues : in that way a single queue is divided in more "shards" (chunks) each on a different broker. It means that such solution needs more than one broker instance in order to host a shard on each of them. Of course, a sender connected to one of these brokers can send messages to the shard hosted only on that broker. At same time, a receiver connected to a broker can get messages from the shard that is hosted on that broker and can not see available messages in the shards hosted on the other brokers, even if they are all parts of the same queue.</p>
 </div>
@@ -6901,25 +6968,25 @@ address {
 autoLink {
     addr: my_queue
     connection: BROKER1
-    dir: in
+    direction: in
 }
 
 autoLink {
     addr: my_queue
     connection: BROKER1
-    dir: out
+    direction: out
 }
 
 autoLink {
     addr: my_queue
     connection: BROKER2
-    dir: in
+    direction: in
 }
 
 autoLink {
     addr: my_queue
     connection: BROKER2
-    dir: out
+    direction: out
 }</pre>
 </div>
 </div>
@@ -6931,7 +6998,7 @@ autoLink {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_send.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_send.py -a localhost:6000/my_queue -m 10
 all messages confirmed</pre>
 </div>
 </div>
@@ -6940,7 +7007,7 @@ all messages confirmed</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6000 -l
+<pre class="nowrap">$ sudo qdstat -b localhost:6000 -l
 Router Links
   type      dir  conn id  id  peer  class   addr                  phs  cap  undel  unsettled  deliveries  admin    oper
   =======================================================================================================================
@@ -6960,7 +7027,7 @@ Router Links
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># python simple_recv.py -a localhost:6000/my_queue -m 10
+<pre class="nowrap">$ sudo python simple_recv.py -a localhost:6000/my_queue -m 10
 {u'sequence': 1L}
 {u'sequence': 2L}
 {u'sequence': 3L}
@@ -6978,7 +7045,7 @@ Router Links
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># qdstat -b localhost:6000 -l
+<pre class="nowrap">$ sudo qdstat -b localhost:6000 -l
 Router Links
   type      dir  conn id  id  peer  class   addr                  phs  cap  undel  unsettled  deliveries  admin    oper
   =======================================================================================================================
@@ -7000,10 +7067,10 @@ Router Links
 </div>
 </div>
 <div class="sect1">
-<h2 id="technical_details_specifications">12. Technical Details and Specifications</h2>
+<h2 id="technical-details-specifications">11. Technical Details and Specifications</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="client_compatibility">12.1. Client Compatibility</h3>
+<h3 id="client-compatibility">11.1. Client Compatibility</h3>
 <div class="paragraph">
 <p>Dispatch Router should, in theory, work with any client that is
 compatible with AMQP 1.0. The following clients have been tested:</p>
@@ -7039,14 +7106,14 @@ connection option.</p></td>
 </table>
 </div>
 <div class="sect2">
-<h3 id="amqp_mapping">12.2. AMQP Mapping</h3>
+<h3 id="amqp-mapping">11.2. AMQP Mapping</h3>
 <div class="paragraph">
 <p>Dispatch Router is an AMQP router and as such, it provides extensions,
 code-points, and semantics for routing over AMQP. This page documents the
 details of Dispatch Router&#8217;s use of AMQP.</p>
 </div>
 <div class="sect3">
-<h4 id="message_annotations">12.2.1. Message Annotations</h4>
+<h4 id="message-annotations">11.2.1. Message Annotations</h4>
 <div class="paragraph">
 <p>The following Message Annotation fields are defined by Dispatch Router:</p>
 </div>
@@ -7100,7 +7167,7 @@ flowing between routers.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="sourcetarget_capabilities">12.2.2. Source/Target Capabilities</h4>
+<h4 id="sourcetarget-capabilities">11.2.2. Source/Target Capabilities</h4>
 <div class="paragraph">
 <p>The following Capability values are used in Sources and Targets.</p>
 </div>
@@ -7133,7 +7200,7 @@ connection.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="dynamic_node_properties">12.2.3. Dynamic-Node-Properties</h4>
+<h4 id="dynamic-node-properties">11.2.3. Dynamic-Node-Properties</h4>
 <div class="paragraph">
 <p>The following dynamic-node-properties are used by Dispatch Router in Sources.</p>
 </div>
@@ -7161,13 +7228,13 @@ container.</p></td>
 </table>
 </div>
 <div class="sect3">
-<h4 id="addresses_and_address_formats">12.2.4. Addresses and Address Formats</h4>
+<h4 id="addresses-and-address-formats">11.2.4. Addresses and Address Formats</h4>
 <div class="paragraph">
 <p>The following AMQP addresses and address patterns are used within
 Dispatch Router.</p>
 </div>
 <div class="sect4">
-<h5 id="address_patterns">Address Patterns</h5>
+<h5 id="address-patterns">Address Patterns</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 38%;">
@@ -7210,7 +7277,7 @@ addresses.</p></td>
 </table>
 </div>
 <div class="sect4">
-<h5 id="supported_addresses">Supported Addresses</h5>
+<h5 id="supported-addresses">Supported Addresses</h5>
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
 <col style="width: 36%;">
@@ -7260,7 +7327,7 @@ with a specific router that may or may not be a neighbor.</p></td>
 </div>
 </div>
 <div class="sect3">
-<h4 id="implementation_of_the_amqp_management_specification">12.2.5. Implementation of the AMQP Management Specification</h4>
+<h4 id="implementation-of-the-amqp-management-specification">11.2.5. Implementation of the AMQP Management Specification</h4>
 <div class="paragraph">
 <p>Dispatch Router is manageable remotely via AMQP. It is compliant with the
 emerging AMQP Management specification (draft 9).</p>
@@ -7288,19 +7355,19 @@ operation.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="cyrus_sasl">Appendix A: Using Cyrus SASL to Provide Authentication</h2>
+<h2 id="cyrus-sasl">Appendix A: Using Cyrus SASL to Provide Authentication</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Dispatch Router uses the Cyrus SASL library for SASL authentication. Therefore, if you want to use SASL, you must set up the Cyrus SASL database and configure it.</p>
 </div>
 <div class="sect2">
-<h3 id="generating_sasl_database">A.1. Generating a SASL Database</h3>
+<h3 id="generating-sasl-database">A.1. Generating a SASL Database</h3>
 <div class="paragraph">
 <p>To generate a SASL database to store credentials, enter the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># saslpasswd2 -c -f <em>SASL_DATABASE_NAME</em>.sasldb -u <em>DOMAIN_NAME</em> <em>USER_NAME</em></pre>
+<pre class="nowrap">$ sudo saslpasswd2 -c -f <em>SASL_DATABASE_NAME</em>.sasldb -u <em>DOMAIN_NAME</em> <em>USER_NAME</em></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7317,14 +7384,14 @@ operation.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"># sasldblistusers2 -f qdrouterd.sasldb
+<pre class="nowrap">$ sudo sasldblistusers2 -f qdrouterd.sasldb
 user2@domain.com: <em>PASSWORD</em>
 user1@domain.com: <em>PASSWORD</em></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="configuring_sasl_database">A.3. Configuring a SASL Database</h3>
+<h3 id="configuring-sasl-database">A.3. Configuring a SASL Database</h3>
 <div class="paragraph">
 <p>To use the SASL database to provide authentication in Dispatch Router:</p>
 </div>
@@ -7378,448 +7445,8 @@ mech_list: <em>MECHANISM1 ...</em></pre>
 </li>
 </ol>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="router_configuration_reference">Appendix B: Configuration Reference</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>The Dispatch Router component behavior is totally configurable using a configuration file which can be passed as parameter (with the <code>--conf</code> option) on the command line when running it. After installation, a default configuration file is placed at the following path :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">[install-prefix]/etc/qpid-dispatch/qdrouterd.conf</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This file is used when the router is started without specify configuration file path on the command line and when it is started as a service. In case of starting router on the command line the configuration file can be placed anywhere on the file system.</p>
-</div>
-<div class="sect2">
-<h3 id="configuration_file">B.1. Configuration File</h3>
-<div class="paragraph">
-<p>The configuration file is made up of sections with following syntax :</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">sectionName {
-    attributeName: attributeValue
-    attributeName: attributeValue
-    ...
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A section could be referenced by another section using its <code>name</code> attribute. An example is the <em>sslProfile</em> section which describes attributes for setting SSL/TLS configuration and can be applied to one or more <em>listener</em> and <em>connector</em> sections.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">sslProfile {
-    name: ssl-profile-one
-    certDb: ca-certificate-1.pem
-    certFile: server-certificate-1.pem
-    keyFile: server-private-key.pem
-}
-
-listener {
-    sslProfile: ssl-profile-one
-    host: 0.0.0.0
-    port: amqp
-    saslMechanisms: ANONYMOUS
-}</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the above example, the <em>sslProfile</em> section named <em>ssl-profile-one</em> is used to define the <em>sslProfile</em> attribute for the <em>listener</em> section.</p>
-</div>
-<div class="sect3">
-<h4 id="configuration_sections">B.1.1. Configuration Sections</h4>
-<div class="sect4">
-<h5 id="router_configuration_file_sslprofile">sslProfile</h5>
-<div class="paragraph">
-<p>Attributes for setting SSL/TLS configuration for connections.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>certDb</em></strong> (path) : The absolute path to the database that contains the public certificates of trusted certificate authorities (CA).</p>
-</li>
-<li>
-<p><strong><em>certFile</em></strong> (path) : The absolute path to the file containing the PEM-formatted public certificate to be used on the local end of any connections using this profile.</p>
-</li>
-<li>
-<p><strong><em>keyFile</em></strong> (path) : The absolute path to the file containing the PEM-formatted private key for the above certificate.</p>
-</li>
-<li>
-<p><strong><em>passwordFile</em></strong> (path) : If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key.</p>
-</li>
-<li>
-<p><strong><em>password</em></strong> (string) : An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file. This option can be used by supplying the password in the ‘password’ option. Don’t use both password and passwordFile in the same profile.</p>
-</li>
-<li>
-<p><strong><em>uidFormat</em></strong> (string) : A list of x509 client certificate fields that will be used to build a string that will uniquely identify the client certificate owner. For example, a value of ‘cou’ indicates that the uid will consist of c - common name concatenated with o - organization-company name concatenated with u - organization unit; or a value of ‘oF’ indicates that the uid will consist of o (organization name) concatenated with F (the sha256 fingerprint of the entire certificate) . Allowed values can be any combination of comma separated ‘c’( ISO3166 two character country code), ‘s’(state or province), ‘l’(Locality; generally - city), ‘o’(Organization - Company Name), ‘u’(Organization Unit - typically certificate type or brand), ‘n’(CommonName - typically a username for client certificates) and ‘1’(sha1 certificate fingerprint, as displayed in the fingerprints section when looking at a certificate with say a web browser is the hash of the entire certificate) and 2 (sha256 certificate fingerprint) and 5 (sha512 certificate fingerprint).</p>
-</li>
-<li>
-<p><strong><em>displayNameFile</em></strong> (string) : The absolute path to the file containing the unique id to display name mapping.</p>
-</li>
-<li>
-<p><strong><em>name</em></strong> (string) : The name of the profile used for referencing it from <em>listener</em> and <em>connector</em> sections.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><strong>Used by</strong> : <em>listener</em>, <em>connector</em>.</p>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_router">router</h5>
-<div class="paragraph">
-<p>Describe main information about the router related to identity, internal processes and inter routers communication.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>id</em></strong> (string) : Router’s unique identity. It is required and the router will fail to start without it.</p>
-</li>
-<li>
-<p><strong><em>mode</em></strong> (One of [<code>standalone</code>, <code>interior</code>], default=<code>standalone</code>) : In standalone mode, the router operates as a single component. It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.</p>
-</li>
-<li>
-<p><strong><em>helloInterval</em></strong> (integer, default=<code>1</code>) : Interval in seconds between HELLO messages sent to neighbor routers in order to announce its presence (as a keep alive).</p>
-</li>
-<li>
-<p><strong><em>helloMaxAge</em></strong> (integer, default=<code>3</code>) : Time in seconds after which a neighbor router is declared lost if no HELLO is received.</p>
-</li>
-<li>
-<p><strong><em>raInterval</em></strong> (integer, default=<code>30</code>) : Interval in seconds between Router-Advertisements sent to all routers in a stable network.</p>
-</li>
-<li>
-<p><strong><em>raIntervalFlux</em></strong> (integer, default=<code>4</code>) : Interval in seconds between Router-Advertisements sent to all routers during topology fluctuations.</p>
-</li>
-<li>
-<p><strong><em>remoteLsMaxAge</em></strong> (integer, default=<code>60</code>) : Time in seconds after which link state is declared stale if no RA is received.</p>
-</li>
-<li>
-<p><strong><em>workerThreads</em></strong> (integer, default=<code>4</code>) : The number of threads that will be created to process message traffic and other application work (timers, non-amqp file descriptors, and so on).</p>
-</li>
-<li>
-<p><strong><em>debugDump</em></strong> (path) : The absolute path for a file to dump debugging information that can’t be logged normally.</p>
-</li>
-<li>
-<p><strong><em>saslConfigPath</em></strong> (path) : The absolute path to the SASL configuration file.</p>
-</li>
-<li>
-<p><strong><em>saslConfigName</em></strong> (string, default=<code>qdrouterd</code>) : Name of the SASL configuration. This string + ‘.conf’ is the name of the configuration file.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_listener">listener</h5>
-<div class="paragraph">
-<p>Listens for incoming connections to the router.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>host</em></strong> (string, default=<code>127.0.0.1</code>) : IP address: ipv4 or ipv6 literal or a hostname.</p>
-</li>
-<li>
-<p><strong><em>port</em></strong> (string, default=<code>amqp</code>) : Port number or symbolic service name.</p>
-</li>
-<li>
-<p><strong><em>protocolFamily</em></strong> (One of [<code>IPv4</code>, <code>IPv6</code>]) : IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6. If not specified, the protocol family will be automatically determined from the address.</p>
-</li>
-<li>
-<p><strong><em>role</em></strong> (One of [<code>normal</code>, <code>inter-router</code>, <code>route-container</code>], default=<code>normal</code>) : The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection. In the inter-router role, the connection is assumed to be to another router in the network. Inter-router discovery and routing protocols can only be used over inter-router connections. The route-container role can be used for router-container connections, for example, a router-broker connection.</p>
-</li>
-<li>
-<p><strong><em>cost</em></strong> (integer, default=<code>1</code>) : For the <code>inter-route</code> role only. This value assigns a cost metric to the inter-router connection. The default (and minimum) value is one. Higher values represent higher costs. The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.</p>
-</li>
-<li>
-<p><strong><em>saslMechanisms</em></strong> (string) : Space separated list of accepted SASL authentication mechanisms.</p>
-</li>
-<li>
-<p><strong><em>authenticatePeer</em></strong> (boolean) : yes: Require the peer’s identity to be authenticated; no: Do not require any authentication.</p>
-</li>
-<li>
-<p><strong><em>requireEncryption</em></strong> (boolean) : yes: Require the connection to the peer to be encrypted; no: Permit non-encrypted communication with the peer. It is related to SASL mechanisms which support encryption.</p>
-</li>
-<li>
-<p><strong><em>requireSsl</em></strong> (boolean) : yes: Require the use of SSL/TLS on the connection; no: Allow clients to connect without SSL/TLS.</p>
-</li>
-<li>
-<p><strong><em>trustedCerts</em></strong> (path) : This optional setting can be used to reduce the set of available CAs for client authentication. If used, this setting must provide an absolute path to a PEM file that contains the trusted certificates.</p>
-</li>
-<li>
-<p><strong><em>maxFrameSize</em></strong> (integer, default=<code>16384</code>) : Defaults to 16384. If specified, it is the maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
-</li>
-<li>
-<p><strong><em>idleTimeoutSeconds</em></strong> : (integer, default=<code>16</code>) : The idle timeout, in seconds, for connections through this listener. If no frames are received on the connection for this time interval, the connection shall be closed.</p>
-</li>
-<li>
-<p><strong><em>initialHandshakeTimeoutSeconds</em></strong> (integer, default=<code>0</code>): The number of seconds after a connection transport is established that the router waits for the connecting client to complete the initial handshake and send the <code>AMQP OPEN</code> frame. If this timeout is exceeded, the connection is dropped. The default value is <code>0</code>, which means that no timeout is applied.</p>
-</li>
-<li>
-<p><strong><em>stripAnnotations</em></strong> (One of [<code>in</code>, <code>out</code>, <code>both</code>, <code>no</code>], default=<code>both</code>) : in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations.</p>
-</li>
-<li>
-<p><strong><em>linkCapacity</em></strong> (integer) : The capacity of links within this connection, in terms of message deliveries. The capacity is the number of messages that can be in-flight concurrently for each link.</p>
-</li>
-<li>
-<p><strong><em>sslProfile</em></strong> (string) : The name of the <em>sslProfile</em> entity to use in order to have SSL/TLS configuration.</p>
-</li>
-<li>
-<p><strong><em>http</em></strong> (boolean): If set to <code>yes</code>, the listener will accept HTTP connections using AMQP over WebSockets.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_connector">connector</h5>
-<div class="paragraph">
-<p>Establishes an outgoing connection from the router.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>name</em></strong> (string) : Name using to reference the connector in the configuration file for example for a link routing to queue on a broker.</p>
-</li>
-<li>
-<p><strong><em>host</em></strong> (string, default=<code>127.0.0.1</code>) : IP address: ipv4 or ipv6 literal or a hostname.</p>
-</li>
-<li>
-<p><strong><em>port</em></strong> (string, default=<code>amqp</code>) : Port number or symbolic service name.</p>
-</li>
-<li>
-<p><strong><em>protocolFamily</em></strong> (One of [<code>IPv4</code>, <code>IPv6</code>]) : IPv4: Internet Protocol version 4; IPv6: Internet Protocol version 6. If not specified, the protocol family will be automatically determined from the address.</p>
-</li>
-<li>
-<p><strong><em>role</em></strong> (One of [<code>normal</code>, <code>inter-router</code>, <code>route-container</code>], default=<code>normal</code>) : The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection. In the inter-router role, the connection is assumed to be to another router in the network. Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.</p>
-</li>
-<li>
-<p><strong><em>cost</em></strong> (integer, default=<code>1</code>) : For the ‘inter-router’ role only. This value assigns a cost metric to the inter-router connection. The default (and minimum) value is one. Higher values represent higher costs. The cost is used to influence the routing algorithm as it attempts to use the path with the lowest total cost from ingress to egress.</p>
-</li>
-<li>
-<p><strong><em>saslMechanisms</em></strong> (string) : Space separated list of accepted SASL authentication mechanisms.</p>
-</li>
-<li>
-<p><strong><em>allowRedirect</em></strong> (boolean, default=True) : Allow the peer to redirect this connection to another address.</p>
-</li>
-<li>
-<p><strong><em>maxFrameSize</em></strong> (integer, default=<code>65536</code>) : Maximum frame size in octets that will be used in the connection-open negotiation with a connected peer. The frame size is the largest contiguous set of uninterrupted data that can be sent for a message delivery over the connection. Interleaving of messages on different links is done at frame granularity.</p>
-</li>
-<li>
-<p><strong><em>idleTimeoutSeconds</em></strong> (integer, default=<code>16</code>) : The idle timeout, in seconds, for connections through this connector. If no frames are received on the connection for this time interval, the connection shall be closed.</p>
-</li>
-<li>
-<p><strong><em>stripAnnotations</em></strong> (One of [<code>in</code>, <code>out</code>, <code>both</code>, <code>no</code>], default=<code>both</code>) : in: Strip the dispatch router specific annotations only on ingress; out: Strip the dispatch router specific annotations only on egress; both: Strip the dispatch router specific annotations on both ingress and egress; no - do not strip dispatch router specific annotations.</p>
-</li>
-<li>
-<p><strong><em>linkCapacity</em></strong> (integer) : The capacity of links within this connection, in terms of message deliveries. The capacity is the number of messages that can be in-flight concurrently for each link.</p>
-</li>
-<li>
-<p><strong><em>verifyHostName</em></strong> (boolean, default=True) : yes: Ensures that when initiating a connection (as a client) the hostname in the URL to which this connector connects to matches the hostname in the digital certificate that the peer sends back as part of the SSL/TLS connection; no: Does not perform hostname verification</p>
-</li>
-<li>
-<p><strong><em>saslUsername</em></strong> (string) : The username that the connector is using to connect to a peer.</p>
-</li>
-<li>
-<p><strong><em>saslPassword</em></strong> (string) : The password that the connector is using to connect to a peer.</p>
-</li>
-<li>
-<p><strong><em>sslProfile</em></strong> (string) : The name of the <em>sslProfile</em> entity to use in order to have SSL/TLS configuration.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_log">log</h5>
-<div class="paragraph">
-<p>Configure logging for a particular module which is part of the router. You can use the UPDATE operation to change log settings while the router is running.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>module</em></strong> (One of [<code>ROUTER</code>, <code>ROUTER_CORE</code>, <code>ROUTER_HELLO</code>, <code>ROUTER_LS</code>, <code>ROUTER_MA</code>, <code>MESSAGE</code>, <code>SERVER</code>, <code>AGENT</code>, <code>CONTAINER</code>, <code>ERROR</code>, <code>POLICY</code>, <code>DEFAULT</code>], required) : Module to configure. The special module <code>DEFAULT</code> specifies defaults for all modules.</p>
-</li>
-<li>
-<p><strong><em>enable</em></strong> (string, default=<code>default</code>, required) Levels are: <code>trace</code>, <code>debug</code>, <code>info</code>, <code>notice</code>, <code>warning</code>, <code>error</code>, <code>critical</code>. The enable string is a comma-separated list of levels. A level may have a trailing <code>+</code> to enable that level and above. For example <code>trace,debug,warning+</code> means enable trace, debug, warning, error and critical. The value ‘none’ means disable logging for the module. The value <code>default</code> means use the value from the <code>DEFAULT</code> module.</p>
-</li>
-<li>
-<p><strong><em>timestamp</em></strong> (boolean) : Include timestamp in log messages.</p>
-</li>
-<li>
-<p><strong><em>source</em></strong> (boolean) : Include source file and line number in log messages.</p>
-</li>
-<li>
-<p><strong><em>output</em></strong> (string) : Where to send log messages. Can be <code>stderr</code>, <code>syslog</code> or a file name.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_address">address</h5>
-<div class="paragraph">
-<p>Entity type for address configuration. This is used to configure the treatment of message-routed deliveries within a particular address-space. The configuration controls distribution and address phasing.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>prefix</em></strong> (string, required) : The address prefix for the configured settings.</p>
-</li>
-<li>
-<p><strong><em>distribution</em></strong> (One of [<code>multicast</code>, <code>closest</code>, <code>balanced</code>], default=<code>balanced</code>) : Treatment of traffic associated with the address.</p>
-</li>
-<li>
-<p><strong><em>waypoint</em></strong> (boolean) : Designates this address space as being used for waypoints. This will cause the proper address-phasing to be used.</p>
-</li>
-<li>
-<p><strong><em>ingressPhase</em></strong> (integer) : Advanced - Override the ingress phase for this address.</p>
-</li>
-<li>
-<p><strong><em>egressPhase</em></strong> (integer) : Advanced - Override the egress phase for this address.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_linkroute">linkRoute</h5>
-<div class="paragraph">
-<p>Entity type for link-route configuration. This is used to identify remote containers that shall be destinations for routed link-attaches. The link-routing configuration applies to an addressing space defined by a prefix.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>prefix</em></strong> (string, required) : The address prefix for the configured settings.</p>
-</li>
-<li>
-<p><strong><em>containerId</em></strong> (string) : it specifies that the link route will be activated if a remote container will provide a container-id matching with this value.</p>
-</li>
-<li>
-<p><strong><em>connection</em></strong> (string) : The name from a connector or listener.</p>
-</li>
-<li>
-<p><strong><em>distribution</em></strong> (One of [<code>linkBalanced</code>], default=<code>linkBalanced</code>) : Treatment of traffic associated with the address.</p>
-</li>
-<li>
-<p><strong><em>dir</em></strong> (One of [<code>in</code>, <code>out</code>], required) : The permitted direction of links. It is defined from a router point of view so ‘in’ means client senders (router ingress) and ‘out’ means client receivers (router egress).</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="router_configuration_file_autolink">autoLink</h5>
-<div class="paragraph">
-<p>Entity type for configuring auto-links. Auto-links are links whose lifecycle is managed by the router. These are typically used to attach to waypoints on remote containers (brokers, and so on.).</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>addr</em></strong> (string, required) : The address of the provisioned object.</p>
-</li>
-<li>
-<p><strong><em>dir</em></strong> (One of [<code>in</code>, <code>out</code>], required) : The direction of the link to be created. In means into the router, out means out of the router.</p>
-</li>
-<li>
-<p><strong><em>phase</em></strong> (integer) : The address phase for this link. Defaults to <code>0</code> for <code>out</code> links and <code>1</code> for <code>in</code> links.</p>
-</li>
-<li>
-<p><strong><em>containerId</em></strong> (string) : ContainerID for the target container.</p>
-</li>
-<li>
-<p><strong><em>connection</em></strong> (string) : The name from a connector or listener.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="console">console</h5>
-<div class="paragraph">
-<p>Start a websocket/tcp proxy and http file server to serve the web console.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>listener</em></strong> (string) : The name of the listener to send the proxied tcp traffic to.</p>
-</li>
-<li>
-<p><strong><em>wsport</em></strong> (integer, default=<code>5673</code>) : The port on which to listen for websocket traffic.</p>
-</li>
-<li>
-<p><strong><em>proxy</em></strong> (string) : The full path to the proxy program to run.</p>
-</li>
-<li>
-<p><strong><em>home</em></strong> (string) : The full path to the html/css/js files for the console.</p>
-</li>
-<li>
-<p><strong><em>args</em></strong> (string) : Optional args to pass to the proxy program for logging, authentication, and so on.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="policy_2">policy</h5>
-<div class="paragraph">
-<p>Defines global connection limit</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>maximumConnections</em></strong> (integer) : Global maximum number of concurrent client connections allowed. Zero implies no limit. This limit is always enforced even if no other policy settings have been defined.</p>
-</li>
-<li>
-<p><strong><em>enableAccessRules</em></strong> (boolean) : Enable user rule set processing and connection denial.</p>
-</li>
-<li>
-<p><strong><em>policyFolder</em></strong> (path) : The absolute path to a folder that holds policyRuleset definition .json files. For a small system the rulesets may all be defined in this file. At a larger scale it is better to have the policy files in their own folder and to have none of the rulesets defined here. All rulesets in all .json files in this folder are processed.</p>
-</li>
-<li>
-<p><strong><em>defaultApplication</em></strong> (string) : Application policyRuleset to use for connections with no open.hostname or a hostname that does not match any existing policy. For users that don’t wish to use open.hostname or any multi-tennancy feature, this default policy can be the only policy in effect for the network.</p>
-</li>
-<li>
-<p><strong><em>defaultApplicationEnabled</em></strong> (boolean) : Enable defaultApplication policy fallback logic.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="policyruleset">policyRuleset</h5>
-<div class="paragraph">
-<p>Per application definition of the locations from which users may connect and the groups to which users belong.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong><em>maxConnections</em></strong> (integer) : Maximum number of concurrent client connections allowed. Zero implies no limit.</p>
-</li>
-<li>
-<p><strong><em>maxConnPerUser</em></strong> (integer) : Maximum number of concurrent client connections allowed for any single user. Zero implies no limit.</p>
-</li>
-<li>
-<p><strong><em>maxConnPerHost</em></strong> (integer) : Maximum number of concurrent client connections allowed for any remote host. Zero implies no limit.</p>
-</li>
-<li>
-<p><strong><em>userGroups</em></strong> (map) : A map where each key is a user group name and the corresponding value is a CSV string naming the users in that group. Users who are assigned to one or more groups are deemed ‘restricted’. Restricted users are subject to connection ingress policy and are assigned policy settings based on the assigned user groups. Unrestricted users may be allowed or denied. If unrestricted users are allowed to connect then they are assigned to user group default.</p>
-</li>
-<li>
-<p><strong><em>ingressHostGroups</em></strong> (map) : A map where each key is an ingress host group name and the corresponding value is a CSV string naming the IP addresses or address ranges in that group. IP addresses may be FQDN strings or numeric IPv4 or IPv6 host addresses. A host range is two host addresses of the same address family separated with a hyphen. The wildcard host address ‘*’ represents any host address.</p>
-</li>
-<li>
-<p><strong><em>ingressPolicies</em></strong> (map) : A map where each key is a user group name and the corresponding value is a CSV string naming the ingress host group names that restrict the ingress host for the user group. Users who are members of the user group are allowed to connect only from a host in one of the named ingress host groups.</p>
-</li>
-<li>
-<p><strong><em>connectionAllowDefault</em></strong> (boolean) : Unrestricted users, those who are not members of a defined user group, are allowed to connect to this application. Unrestricted users are assigned to the ‘default’ user group and receive ‘default’ settings.</p>
-</li>
-<li>
-<p><strong><em>settings</em></strong> (map) : A map where each key is a user group name and the value is a map of the corresponding settings for that group.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>Revised on 2017-11-28 11:21:24 PST</em></p>
-</div>
-</div>
+<p><em>Revised on 2018-04-28 07:00:48 PDT</em></p>
 </div>
 </div>
 </div>
