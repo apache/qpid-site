@@ -27,7 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
- - [Qpid Proton-J 0.27.0](qpid-proton-j-0.27.0/index.html), April 2018
+ - [Qpid Proton-J 0.27.1](qpid-proton-j-0.27.1/index.html), April 2018
  - [Qpid Broker-J 7.0.3](qpid-broker-j-7.0.3/index.html), April 2018
  - [Qpid for Java 6.1.6](qpid-java-6.1.6/index.html), April 2018
  - [Qpid Proton 0.22.0](qpid-proton-0.22.0/index.html), April 2018
@@ -43,6 +43,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.27.0](qpid-proton-j-0.27.0/index.html), April 2018
  - [Qpid Broker-J 7.0.2](qpid-broker-j-7.0.2/index.html), March 2018
  - [Qpid Proton 0.21.0](qpid-proton-0.21.0/index.html), March 2018
  - [Qpid JMS 0.30.0](qpid-jms-0.30.0/index.html), March 2018

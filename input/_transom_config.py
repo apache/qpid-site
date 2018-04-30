@@ -30,7 +30,7 @@ java_release = _Release(site_url, "Qpid for Java", "qpid-java", "6.1.6")
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "0.31.0")
 jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.3.0")
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.22.0")
-proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.27.0")
+proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.27.1")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
 
 current_broker_j_release = broker_j_release.number
