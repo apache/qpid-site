@@ -28,25 +28,25 @@ def gen_proton_apis(release, source_dir, release_dir):
     gen_proton_python_api(release, source_dir, component_dir)
 
 def gen_proton_c_api(release, source_dir, component_dir):
-    include_dir = join(source_dir, "proton-c", "include")
+    include_dir = join(source_dir, "c", "include")
     output_dir = join(component_dir, "c", "api")
-    config_file = join(source_dir, "proton-c", "docs", "api", "user.doxygen.in")
+    config_file = join(source_dir, "c", "docs", "user.doxygen.in")
 
     remove(output_dir)
     
     gen_doxygen(release=release,
                 title="Qpid Proton C API",
                 input_paths=(join(include_dir, "proton"),
-                             join(source_dir, "proton-c", "docs"),
-                             join(source_dir, "examples", "c", "proactor", "README.dox"),
+                             join(source_dir, "c", "docs"),
+                             join(source_dir, "c", "examples", "README.dox"),
                 ),
                 strip_paths=(include_dir,),
                 output_dir=output_dir,
-                example_paths=(join(source_dir, "examples", "c", "proactor"),),
+                example_paths=(join(source_dir, "c", "examples", "c"),),
                 config_file=config_file)
 
 def gen_proton_cpp_api(release, source_dir, component_dir):
-    base_dir = join(source_dir, "proton-c", "bindings", "cpp")
+    base_dir = join(source_dir, "cpp")
     include_dir = join(base_dir, "include")
     output_dir = join(component_dir, "cpp", "api")
     config_file = join(base_dir, "docs", "user.doxygen.in")
@@ -57,16 +57,16 @@ def gen_proton_cpp_api(release, source_dir, component_dir):
                 title="Qpid Proton C++ API",
                 input_paths=(join(include_dir, "proton"),
                              join(base_dir, "docs"),
-                             join(source_dir, "examples", "cpp", "README.dox"),
-                             join(source_dir, "examples", "cpp", "tutorial.dox"),
+                             join(source_dir, "cpp", "examples", "README.dox"),
+                             join(source_dir, "cpp", "examples", "tutorial.dox"),
                 ),
                 strip_paths=(include_dir,),
                 output_dir=output_dir,
-                example_paths=(join(source_dir, "examples", "cpp"),),
+                example_paths=(join(source_dir, "cpp", "examples"),),
                 config_file=config_file)
 
 def gen_proton_python_api(release, source_dir, component_dir):
-    input_path = join(source_dir, "proton-c", "bindings", "python")
+    input_path = join(source_dir, "python")
     input_namespace = "proton"
     output_dir = join(component_dir, "python", "api")
 
@@ -80,7 +80,7 @@ def gen_proton_python_api(release, source_dir, component_dir):
 
 def gen_proton_books(release, source_dir, release_dir, build_dir):
     component_dir = join(release_dir, "proton")
-    input_dir = join(build_dir, "proton-c", "bindings", "python", "tutorial")
+    input_dir = join(build_dir, "python", "tutorial")
     output_dir = join(component_dir, "python", "book")
 
     remove(output_dir)
@@ -97,9 +97,9 @@ def gen_proton_examples(release, source_dir, release_dir):
     gen_proton_cpp_examples(release, source_dir, component_dir)
 
 def gen_proton_python_examples(release, source_dir, component_dir):
-    input_dir = join(source_dir, "examples", "python")
+    input_dir = join(source_dir, "python", "examples")
     output_dir = join(component_dir, "python", "examples")
-    source_url = get_git_release_branch_url("proton", release, "examples/python")
+    source_url = get_git_release_branch_url("proton", release, "python/examples")
     readme_url = "{}/README".format(source_url)
     input_names = list_dir(input_dir, "*.py")
 
@@ -113,9 +113,9 @@ def gen_proton_python_examples(release, source_dir, component_dir):
                  readme_url=readme_url)
 
 def gen_proton_cpp_examples(release, source_dir, component_dir):
-    input_dir = join(source_dir, "examples", "cpp")
+    input_dir = join(source_dir, "cpp", "examples")
     output_dir = join(component_dir, "cpp", "examples")
-    source_url = get_git_release_branch_url("proton", release, "examples/cpp")
+    source_url = get_git_release_branch_url("proton", release, "cpp/examples")
     readme_url = "{}/README.dox".format(source_url)
     input_names = list_dir(input_dir, "*.cpp", "*.hpp")
 
