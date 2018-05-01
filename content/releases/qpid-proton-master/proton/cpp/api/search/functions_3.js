@@ -5,6 +5,7 @@ var searchData=
   ['default_5fsession',['default_session',['../classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462',1,'proton::connection']]],
   ['delay',['delay',['../classproton_1_1reconnect__options.html#a700d91bfa7a95ee851dd94eda092721b',1,'proton::reconnect_options']]],
   ['delay_5fmultiplier',['delay_multiplier',['../classproton_1_1reconnect__options.html#a8456389a8174cf6d2ae2550e05e3e650',1,'proton::reconnect_options']]],
+  ['delivery_5fannotations',['delivery_annotations',['../classproton_1_1message.html#adb613430bba5478feb0c458d8a9e7145',1,'proton::message::delivery_annotations()'],['../classproton_1_1message.html#a61a343c78248490a76ea6999e8fccb65',1,'proton::message::delivery_annotations() const']]],
   ['delivery_5fcount',['delivery_count',['../classproton_1_1message.html#ab8eed6909bec0a2ca6a76abed732a7e2',1,'proton::message::delivery_count() const'],['../classproton_1_1message.html#aaaf044a6b10403eafed371d20d5ba5c1',1,'proton::message::delivery_count(uint32_t)']]],
   ['delivery_5fmode',['delivery_mode',['../classproton_1_1receiver__options.html#a582bced77754ed8a85f9597e2e457079',1,'proton::receiver_options::delivery_mode()'],['../classproton_1_1sender__options.html#ab7dc71a7b5737c2ca642058a296292db',1,'proton::sender_options::delivery_mode()']]],
   ['description',['description',['../classproton_1_1error__condition.html#a07ffe70037e0a16554c868bcdd8f83b5',1,'proton::error_condition']]],

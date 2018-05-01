@@ -122,7 +122,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/function.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/receiver_options.hpp&gt;</span><span class="cp"></span>
@@ -130,7 +129,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/sender_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/source_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/tracker.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/url.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/work_queue.hpp&gt;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
@@ -165,20 +163,9 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="n">proton</span><span class="o">::</span><span class="n">container</span> <span class="o">*</span><span class="n">container</span><span class="p">;</span>
     <span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="n">receiver</span><span class="p">;</span>
 
-
-    <span class="k">struct</span> <span class="nl">process_timeout_fn</span> <span class="p">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">void_function0</span> <span class="p">{</span>
-        <span class="n">session_receiver</span><span class="o">&amp;</span> <span class="n">parent</span><span class="p">;</span>
-        <span class="n">process_timeout_fn</span><span class="p">(</span><span class="n">session_receiver</span><span class="o">&amp;</span> <span class="n">sr</span><span class="p">)</span> <span class="o">:</span> <span class="n">parent</span><span class="p">(</span><span class="n">sr</span><span class="p">)</span> <span class="p">{}</span>
-        <span class="kt">void</span> <span class="k">operator</span><span class="p">()()</span> <span class="p">{</span> <span class="n">parent</span><span class="p">.</span><span class="n">process_timeout</span><span class="p">();</span> <span class="p">}</span>
-    <span class="p">};</span>
-
-    <span class="n">process_timeout_fn</span> <span class="n">do_process_timeout</span><span class="p">;</span>
-
-
   <span class="k">public</span><span class="o">:</span>
     <span class="n">session_receiver</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">,</span>
-                     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sid</span><span class="p">)</span> <span class="o">:</span> <span class="n">connection_url</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">entity</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">message_count</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">closed</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">read_timeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span>
-                                               <span class="n">last_read</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">container</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">do_process_timeout</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">)</span> <span class="p">{</span>
+                     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">sid</span><span class="p">)</span> <span class="o">:</span> <span class="n">connection_url</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">entity</span><span class="p">(</span><span class="n">e</span><span class="p">),</span> <span class="n">message_count</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">closed</span><span class="p">(</span><span class="nb">false</span><span class="p">),</span> <span class="n">read_timeout</span><span class="p">(</span><span class="mi">5000</span><span class="p">),</span> <span class="n">last_read</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">container</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">sid</span><span class="p">)</span>
             <span class="n">session_identifier</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">sid</span><span class="p">);</span>
         <span class="c1">// session_identifier is now either empty/null or an AMQP string type.</span>
@@ -208,7 +195,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="c1">// identifier if none was specified).</span>
         <span class="n">last_read</span> <span class="o">=</span> <span class="n">proton</span><span class="o">::</span><span class="n">timestamp</span><span class="o">::</span><span class="n">now</span><span class="p">();</span>
         <span class="c1">// Call this-&gt;process_timeout after read_timeout.</span>
-        <span class="n">container</span><span class="o">-&gt;</span><span class="n">schedule</span><span class="p">(</span><span class="n">read_timeout</span><span class="p">,</span> <span class="n">do_process_timeout</span><span class="p">);</span>
+        <span class="n">container</span><span class="o">-&gt;</span><span class="n">schedule</span><span class="p">(</span><span class="n">read_timeout</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">process_timeout</span><span class="p">();</span> <span class="p">});</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">on_receiver_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
@@ -238,7 +225,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
                 <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Done. No more messages.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
             <span class="n">proton</span><span class="o">::</span><span class="n">duration</span> <span class="n">next</span> <span class="o">=</span> <span class="n">deadline</span> <span class="o">-</span> <span class="n">now</span><span class="p">;</span>
-            <span class="n">container</span><span class="o">-&gt;</span><span class="n">schedule</span><span class="p">(</span><span class="n">next</span><span class="p">,</span> <span class="n">do_process_timeout</span><span class="p">);</span>
+            <span class="n">container</span><span class="o">-&gt;</span><span class="n">schedule</span><span class="p">(</span><span class="n">next</span><span class="p">,</span> <span class="p">[</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">process_timeout</span><span class="p">();</span> <span class="p">});</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">};</span>
@@ -310,7 +297,8 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
   <span class="k">public</span><span class="o">:</span>
     <span class="k">static</span> <span class="n">sequence</span> <span class="o">*</span><span class="n">the_sequence</span><span class="p">;</span>
 
-    <span class="n">sequence</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="o">:</span> <span class="n">sequence_no</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">sequence</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">e</span><span class="p">)</span> <span class="o">:</span>
+        <span class="n">container</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sequence_no</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
         <span class="n">snd</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">),</span> <span class="n">rcv_red</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">),</span> <span class="n">rcv_green</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">),</span> <span class="n">rcv_null</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">the_sequence</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
     <span class="p">}</span>

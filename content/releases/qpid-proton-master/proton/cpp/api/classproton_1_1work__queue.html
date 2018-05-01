@@ -112,18 +112,26 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a689e0d941a552db276229a9fc312e143">work_queue</a> (<a class="el" href="classproton_1_1container.html">container</a> &amp;)</td></tr>
 <tr class="memdesc:a689e0d941a552db276229a9fc312e143"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Create a work queue backed by a container. <br /></td></tr>
 <tr class="separator:a689e0d941a552db276229a9fc312e143"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a59dae2153455bc095477a3b66a0b681e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a59dae2153455bc095477a3b66a0b681e">add</a> (<a class="el" href="classproton_1_1work.html">work</a> fn)</td></tr>
+<tr class="memitem:a59dae2153455bc095477a3b66a0b681e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a59dae2153455bc095477a3b66a0b681e">add</a> (work fn)</td></tr>
 <tr class="memdesc:a59dae2153455bc095477a3b66a0b681e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Add work <code>fn</code> to the work queue.  <a href="#a59dae2153455bc095477a3b66a0b681e">More...</a><br /></td></tr>
 <tr class="separator:a59dae2153455bc095477a3b66a0b681e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a214d82f5924296d6fddbb8b150f8b601"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a214d82f5924296d6fddbb8b150f8b601">schedule</a> (<a class="el" href="classproton_1_1duration.html">duration</a>, <a class="el" href="classproton_1_1work.html">work</a> fn)</td></tr>
+<tr class="memitem:a7525d36e11cc3eb9d483e8e81713ab6d"><td class="memItemLeft" align="right" valign="top"><a id="a7525d36e11cc3eb9d483e8e81713ab6d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a7525d36e11cc3eb9d483e8e81713ab6d">add</a> (void_function0 &amp;fn)</td></tr>
+<tr class="memdesc:a7525d36e11cc3eb9d483e8e81713ab6d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Use <code><a class="el" href="classproton_1_1work__queue.html#a59dae2153455bc095477a3b66a0b681e" title="Unsettled API - Add work fn to the work queue. ">add(work)</a></code>. <br /></td></tr>
+<tr class="separator:a7525d36e11cc3eb9d483e8e81713ab6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a214d82f5924296d6fddbb8b150f8b601"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#a214d82f5924296d6fddbb8b150f8b601">schedule</a> (<a class="el" href="classproton_1_1duration.html">duration</a>, work fn)</td></tr>
 <tr class="memdesc:a214d82f5924296d6fddbb8b150f8b601"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Add work <code>fn</code> to the work queue after a duration.  <a href="#a214d82f5924296d6fddbb8b150f8b601">More...</a><br /></td></tr>
 <tr class="separator:a214d82f5924296d6fddbb8b150f8b601"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee24365669f2a5d5906866d56c5b2a6e"><td class="memItemLeft" align="right" valign="top"><a id="aee24365669f2a5d5906866d56c5b2a6e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html#aee24365669f2a5d5906866d56c5b2a6e">schedule</a> (<a class="el" href="classproton_1_1duration.html">duration</a>, void_function0 &amp;fn)</td></tr>
+<tr class="memdesc:aee24365669f2a5d5906866d56c5b2a6e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Use <code><a class="el" href="classproton_1_1work__queue.html#a214d82f5924296d6fddbb8b150f8b601" title="Unsettled API - Add work fn to the work queue after a duration. ">schedule(duration, work)</a></code>. <br /></td></tr>
+<tr class="separator:aee24365669f2a5d5906866d56c5b2a6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><b>Unsettled API</b> - A context for thread-safe execution of work. </p>
-<p>Event-handler functions associated with a single <code><a class="el" href="classproton_1_1connection.html" title="A connection to a remote AMQP peer. ">proton::connection</a></code> are called in sequence. The connection's <code><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a></code> allows you to "inject" extra <a class="el" href="classproton_1_1work.html">work</a> from any thread and have it executed in the same sequence.</p>
+<p>Event-handler functions associated with a single <code><a class="el" href="classproton_1_1connection.html" title="A connection to a remote AMQP peer. ">proton::connection</a></code> are called in sequence. The connection's <code><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a></code> allows you to "inject" extra work from any thread and have it executed in the same sequence.</p>
 <p>You may also create arbitrary <code><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a></code> objects backed by a <a class="el" href="classproton_1_1container.html">container</a> that allow other objects to have their own serialised work queues that can have work injected safely from other threads. The <a class="el" href="classproton_1_1container.html">container</a> ensures that the work is correctly serialised.</p>
-<p>The <code><a class="el" href="classproton_1_1work.html" title="Unsettled API - A work item for a work queue. ">proton::work</a></code> class represents the work to be queued and can be created from a function that takes no parameters and returns no value. </p>
+<p>The <code>proton::work</code> class represents the work to be queued and can be created from a function that takes no parameters and returns no value. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a2">broker.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a2">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a2">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#_a3">scheduled_send.cpp</a>, and <a class="el" href="scheduled_send_03_8cpp-example.html#_a2">scheduled_send_03.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a59dae2153455bc095477a3b66a0b681e"></a>
@@ -135,7 +143,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">bool add </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classproton_1_1work.html">work</a>&#160;</td>
+          <td class="paramtype">work&#160;</td>
           <td class="paramname"><em>fn</em></td><td>)</td>
           <td></td>
         </tr>
@@ -164,7 +172,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classproton_1_1work.html">work</a>&#160;</td>
+          <td class="paramtype">work&#160;</td>
           <td class="paramname"><em>fn</em>&#160;</td>
         </tr>
         <tr>
@@ -179,7 +187,8 @@ Public Member Functions</h2></td></tr>
 <p>Scheduled execution is "best effort". It may not be possible to inject the work after the elapsed duration. There will be no indication of this.</p>
 <p>Work <code>fn</code> will be called serially with other work in the queue. The work may be deferred and executed in another thread.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if <code>fn</code> has been or will be called; false if the event loops is ended or <code>fn</code> cannot be injected for any other reason. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="scheduled_send_03_8cpp-example.html#a10">scheduled_send_03.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>

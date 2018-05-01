@@ -3,6 +3,7 @@
 <div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;options.hpp&quot;</span><span class="cp"></span>
 
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/listen_handler.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/listener.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message_id.hpp&gt;</span><span class="cp"></span>
@@ -22,7 +23,14 @@
 
 <span class="k">class</span> <span class="nc">server</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
   <span class="k">private</span><span class="o">:</span>
+    <span class="k">class</span> <span class="nc">listener_ready_handler</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">listen_handler</span> <span class="p">{</span>
+        <span class="kt">void</span> <span class="n">on_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">listener</span><span class="o">&amp;</span> <span class="n">l</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;listening on &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">l</span><span class="p">.</span><span class="n">port</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+
     <span class="k">typedef</span> <span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">sender</span><span class="o">&gt;</span> <span class="n">sender_map</span><span class="p">;</span>
+    <span class="n">listener_ready_handler</span> <span class="n">listen_handler</span><span class="p">;</span>
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">url</span><span class="p">;</span>
     <span class="n">sender_map</span> <span class="n">senders</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">address_counter</span><span class="p">;</span>
@@ -31,8 +39,7 @@
     <span class="n">server</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">u</span><span class="p">)</span> <span class="o">:</span> <span class="n">url</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">address_counter</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
 
     <span class="kt">void</span> <span class="n">on_container_start</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
-        <span class="n">c</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="n">url</span><span class="p">);</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;server listening on &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">url</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">c</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">listen_handler</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">to_upper</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>

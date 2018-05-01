@@ -27,6 +27,7 @@ var classproton_1_1codec_1_1encoder =
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a2d41565e7410ec7a72097da5b399fd79", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a79c97aab9f563c515301adb35951b752", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a1a22fc8bfea6eee79c2af6e1c66f8f59", null ],
+    [ "operator<<", "classproton_1_1codec_1_1encoder.html#a37c5cab14118fbcf7e37fb35e4e09246", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a041e90045de495b728fb95bbed97a531", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#ae899d62164114228541da27e80372bc2", null ],
     [ "operator<<", "classproton_1_1codec_1_1encoder.html#a4ffe2e23e17b2c241074e52944916e8a", null ]

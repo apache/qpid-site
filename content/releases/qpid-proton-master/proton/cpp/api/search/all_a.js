@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['make_5fwork',['make_work',['../namespaceproton.html#a8b9a9f4f45c6ee25e0e4516855dc7fc8',1,'proton']]],
   ['map',['map',['../classproton_1_1map.html',1,'map&lt; K, T &gt;'],['../classproton_1_1map.html#a7f35c814c022f4191d359b5dc139d35b',1,'proton::map::map()'],['../classproton_1_1map.html#abd67a924a05c8bd5353cd2fa429b5272',1,'proton::map::map(const map &amp;)'],['../classproton_1_1map.html#aa4042115b50aa33d3e365ce1e4b254d4',1,'proton::map::map(map &amp;&amp;)'],['../namespaceproton.html#a83c2656d467d69eb49725c18f5aa13a9a4cafa5feda04184537b4d7d346e1e89b',1,'proton::MAP()']]],
   ['map_2ehpp',['map.hpp',['../codec_2map_8hpp.html',1,'(Global Namespace)'],['../map_8hpp.html',1,'(Global Namespace)']]],
   ['map_3c_20symbol_2c_20value_20_3e',['map&lt; symbol, value &gt;',['../classproton_1_1map.html',1,'proton']]],
@@ -11,10 +10,12 @@ var searchData=
   ['mech',['mech',['../classproton_1_1sasl.html#ae4d8c99395936130ece8495be232b9c2',1,'proton::sasl']]],
   ['message',['message',['../classproton_1_1message.html',1,'message'],['../classproton_1_1message.html#aba502b8bb024cc38b45756fdf581f915',1,'proton::message::message()'],['../classproton_1_1message.html#a583555130839030cf9aa09d81ff1eb1b',1,'proton::message::message(const message &amp;)'],['../classproton_1_1message.html#ac716863d91640bb061498ed141fdb7e4',1,'proton::message::message(message &amp;&amp;)'],['../classproton_1_1message.html#aa99aeff68b6093da4e3c11ecf898376d',1,'proton::message::message(const value &amp;x)']]],
   ['message_2ehpp',['message.hpp',['../message_8hpp.html',1,'']]],
+  ['message_5fannotations',['message_annotations',['../classproton_1_1message.html#a5d96699458d8be84d821f5651a7b3717',1,'proton::message::message_annotations()'],['../classproton_1_1message.html#a05ea365ef83130c85ffbb74498955ca3',1,'proton::message::message_annotations() const']]],
   ['message_5fid',['message_id',['../classproton_1_1message__id.html',1,'message_id'],['../classproton_1_1message__id.html#afb6e34ccd03d666d3e5cd4312064c4a3',1,'proton::message_id::message_id()'],['../classproton_1_1message__id.html#a37823024300ef4413ca077df9ddcc4d2',1,'proton::message_id::message_id(const T &amp;x)']]],
   ['message_5fid_2ehpp',['message_id.hpp',['../message__id_8hpp.html',1,'']]],
   ['messaging_5fhandler',['messaging_handler',['../classproton_1_1messaging__handler.html',1,'proton']]],
   ['messaging_5fhandler_2ehpp',['messaging_handler.hpp',['../messaging__handler_8hpp.html',1,'']]],
+  ['millisecond',['MILLISECOND',['../classproton_1_1duration.html#ad936986f8cf9cb95b0dbc93ade000b76',1,'proton::duration']]],
   ['milliseconds',['milliseconds',['../classproton_1_1duration.html#afb6516c796d13a88dcbd295247f0f535',1,'proton::duration::milliseconds()'],['../classproton_1_1timestamp.html#afb6516c796d13a88dcbd295247f0f535',1,'proton::timestamp::milliseconds()']]],
   ['minute',['MINUTE',['../classproton_1_1duration.html#a437a5e5f6a7d0c8780f3594b2272cba0',1,'proton::duration']]],
   ['modes',['modes',['../structproton_1_1delivery__mode.html#a811fe196a5d9d37857c2f8adeeaac3c6',1,'proton::delivery_mode']]],

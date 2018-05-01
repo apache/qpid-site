@@ -169,6 +169,12 @@ Functions</h2></td></tr>
 <tr class="memitem:ga39b67bd22fb8f0a47bcdbdfd40f80b11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#ga39b67bd22fb8f0a47bcdbdfd40f80b11">pn_ssl_domain_set_peer_authentication</a> (<a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *domain, const <a class="el" href="group__ssl.html#gae5e33024ed6af3432d4c76d1484d7ecb">pn_ssl_verify_mode_t</a> mode, const char *trusted_CAs)</td></tr>
 <tr class="memdesc:ga39b67bd22fb8f0a47bcdbdfd40f80b11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the level of verification used on the peer certificate.  <a href="#ga39b67bd22fb8f0a47bcdbdfd40f80b11">More...</a><br /></td></tr>
 <tr class="separator:ga39b67bd22fb8f0a47bcdbdfd40f80b11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga333fcb941ed20421373f37b23d84fc98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#ga333fcb941ed20421373f37b23d84fc98">pn_ssl_domain_set_protocols</a> (<a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *domain, const char *protocols)</td></tr>
+<tr class="memdesc:ga333fcb941ed20421373f37b23d84fc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the list of permitted TLS protocols.  <a href="#ga333fcb941ed20421373f37b23d84fc98">More...</a><br /></td></tr>
+<tr class="separator:ga333fcb941ed20421373f37b23d84fc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac3da0f48aeeb11d8149a559a2a064ddc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#gac3da0f48aeeb11d8149a559a2a064ddc">pn_ssl_domain_set_ciphers</a> (<a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *domain, const char *ciphers)</td></tr>
+<tr class="memdesc:gac3da0f48aeeb11d8149a559a2a064ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the list of permitted ciphers.  <a href="#gac3da0f48aeeb11d8149a559a2a064ddc">More...</a><br /></td></tr>
+<tr class="separator:gac3da0f48aeeb11d8149a559a2a064ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2ac989a62dcd138be770fae0bbb85e74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0bbb85e74">pn_ssl_domain_allow_unsecured_client</a> (<a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *domain)</td></tr>
 <tr class="memdesc:ga2ac989a62dcd138be770fae0bbb85e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit a server to accept connection requests from non-SSL clients.  <a href="#ga2ac989a62dcd138be770fae0bbb85e74">More...</a><br /></td></tr>
 <tr class="separator:ga2ac989a62dcd138be770fae0bbb85e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -545,6 +551,84 @@ This setting effects only those pn_ssl_t objects created after this call returns
     <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain to configure. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">mode</td><td>the level of validation to apply to the peer </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">trusted_CAs</td><td>path to a database of trusted CAs that the server will advertise to the peer client if the server has been configured to verify its peer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success </dd></dl>
+
+</div>
+</div>
+<a id="ga333fcb941ed20421373f37b23d84fc98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga333fcb941ed20421373f37b23d84fc98">&#9670;&nbsp;</a></span>pn_ssl_domain_set_protocols()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pn_ssl_domain_set_protocols </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>protocols</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the list of permitted TLS protocols. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain to configure. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">protocols</td><td>string representing the protocol list. This list is a space separated string of the allowed TLS protocols, The current possibilities are TLSv1 TLSv1.1 TLSv1.2. None of the earlier SSL protocols are allowed for security reason.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If this API not called then all the TLS protocols are allowed. The API only acts to restrict the allowed protocols to the specified set. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success </dd></dl>
+
+</div>
+</div>
+<a id="gac3da0f48aeeb11d8149a559a2a064ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac3da0f48aeeb11d8149a559a2a064ddc">&#9670;&nbsp;</a></span>pn_ssl_domain_set_ciphers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pn_ssl_domain_set_ciphers </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *&#160;</td>
+          <td class="paramname"><em>domain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>ciphers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Configure the list of permitted ciphers. </p>
+<dl class="section note"><dt>Note</dt><dd>The syntax of the permitted list is undefined and will depend on the underlying SSL implementation.</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain to configure. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ciphers</td><td>string representing the cipher list </td></tr>
   </table>
   </dd>
 </dl>

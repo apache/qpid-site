@@ -121,7 +121,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;proton/default_container.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/link.hpp&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
@@ -230,7 +229,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span> <span class="n">failovers</span><span class="p">(</span><span class="o">&amp;</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">argv</span><span class="p">[</span><span class="n">argc</span><span class="p">]);</span>
 
         <span class="n">reconnect_client</span> <span class="n">client</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">address</span><span class="p">,</span> <span class="n">message_count</span><span class="p">,</span> <span class="n">failovers</span><span class="p">);</span>
-        <span class="n">proton</span><span class="o">::</span><span class="n">default_container</span><span class="p">(</span><span class="n">client</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">client</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
 
         <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>

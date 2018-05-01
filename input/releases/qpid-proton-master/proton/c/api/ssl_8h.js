@@ -37,6 +37,8 @@ var ssl_8h =
     [ "pn_ssl_domain_set_credentials", "group__ssl.html#ga7311e46bb756474513f3c331e0c1b0aa", null ],
     [ "pn_ssl_domain_set_trusted_ca_db", "group__ssl.html#ga6cdf12ad6ff3d50ac1d31db3cff11c2d", null ],
     [ "pn_ssl_domain_set_peer_authentication", "group__ssl.html#ga39b67bd22fb8f0a47bcdbdfd40f80b11", null ],
+    [ "pn_ssl_domain_set_protocols", "group__ssl.html#ga333fcb941ed20421373f37b23d84fc98", null ],
+    [ "pn_ssl_domain_set_ciphers", "group__ssl.html#gac3da0f48aeeb11d8149a559a2a064ddc", null ],
     [ "pn_ssl_domain_allow_unsecured_client", "group__ssl.html#ga2ac989a62dcd138be770fae0bbb85e74", null ],
     [ "pn_ssl", "group__ssl.html#gaaeb5284b45f9e2146ff671b1ddc9420c", null ],
     [ "pn_ssl_init", "group__ssl.html#ga45f319dd31ad456b8a85927888f94acf", null ],

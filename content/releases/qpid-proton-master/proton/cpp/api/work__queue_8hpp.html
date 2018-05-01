@@ -91,8 +91,7 @@ $(document).ready(function(){initNavTree('work__queue_8hpp.html','');});
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#namespaces">Namespaces</a>  </div>
   <div class="headertitle">
 <div class="title">work_queue.hpp File Reference</div>  </div>
 </div><!--header-->
@@ -107,14 +106,13 @@ $(document).ready(function(){initNavTree('work__queue_8hpp.html','');});
 <code>#include &quot;./internal/export.hpp&quot;</code><br />
 <code>#include &quot;./internal/pn_unique_ptr.hpp&quot;</code><br />
 <code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div>
 <p><a href="work__queue_8hpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work.html">work</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - A work item for a <a class="el" href="classproton_1_1work__queue.html">work queue</a>.  <a href="classproton_1_1work.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1work__queue.html">work_queue</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - A context for thread-safe execution of work.  <a href="classproton_1_1work__queue.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,24 +122,6 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespaceproton"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceproton.html">proton</a></td></tr>
 <tr class="memdesc:namespaceproton"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main Proton namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ae77a8638d584f5fc99a1bbaf218d2481"><td class="memTemplParams" colspan="2"><a id="ae77a8638d584f5fc99a1bbaf218d2481"></a>
-template&lt;class WQ , class... Rest&gt; </td></tr>
-<tr class="memitem:ae77a8638d584f5fc99a1bbaf218d2481"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceproton.html#ae77a8638d584f5fc99a1bbaf218d2481">schedule_work</a> (WQ wq, Rest &amp;&amp;... r)</td></tr>
-<tr class="memdesc:ae77a8638d584f5fc99a1bbaf218d2481"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> <br /></td></tr>
-<tr class="separator:ae77a8638d584f5fc99a1bbaf218d2481"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1150bef2a1d844a7c3ba2244e993ab51"><td class="memTemplParams" colspan="2"><a id="a1150bef2a1d844a7c3ba2244e993ab51"></a>
-template&lt;class WQ , class... Rest&gt; </td></tr>
-<tr class="memitem:a1150bef2a1d844a7c3ba2244e993ab51"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a1150bef2a1d844a7c3ba2244e993ab51">schedule_work</a> (WQ wq, duration d, Rest &amp;&amp;... r)</td></tr>
-<tr class="memdesc:a1150bef2a1d844a7c3ba2244e993ab51"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> <br /></td></tr>
-<tr class="separator:a1150bef2a1d844a7c3ba2244e993ab51"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8b9a9f4f45c6ee25e0e4516855dc7fc8"><td class="memTemplParams" colspan="2"><a id="a8b9a9f4f45c6ee25e0e4516855dc7fc8"></a>
-template&lt;class... Rest&gt; </td></tr>
-<tr class="memitem:a8b9a9f4f45c6ee25e0e4516855dc7fc8"><td class="memTemplItemLeft" align="right" valign="top">work&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespaceproton.html#a8b9a9f4f45c6ee25e0e4516855dc7fc8">make_work</a> (Rest &amp;&amp;... r)</td></tr>
-<tr class="memdesc:a8b9a9f4f45c6ee25e0e4516855dc7fc8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> <br /></td></tr>
-<tr class="separator:a8b9a9f4f45c6ee25e0e4516855dc7fc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><b>Unsettled API</b> - A context for thread-safe execution of work. </p>

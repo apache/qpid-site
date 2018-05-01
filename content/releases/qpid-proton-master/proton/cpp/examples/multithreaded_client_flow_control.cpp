@@ -57,7 +57,7 @@
 #include <string>
 #include <thread>
 
-// Lock output from threads to avoid scramblin
+// Lock output from threads to avoid scrambling
 std::mutex out_lock;
 #define OUT(x) do { std::lock_guard<std::mutex> l(out_lock); x; } while (false)
 
@@ -106,7 +106,7 @@ class sender : private proton::messaging_handler {
         return work_queue_;
     }
 
-    // == messaging_handler overrides, only called in proton hander thread
+    // == messaging_handler overrides, only called in proton handler thread
 
     void on_sender_open(proton::sender& s) override {
         // Make sure sender_ and work_queue_ are set atomically
@@ -261,7 +261,8 @@ int main(int argc, const char **argv) {
         int count = n_messages * n_threads;
 
         // Total messages to be received, multiple receiver threads will decrement this.
-        std::atomic_int remaining(count);
+        std::atomic_int remaining;
+        remaining.store(count);
 
         // Run the proton container
         proton::container container;
@@ -274,14 +275,14 @@ int main(int argc, const char **argv) {
         // Start receiver threads, then sender threads.
         // Starting receivers first gives all receivers a chance to compete for messages.
         std::vector<std::thread> threads;
+        threads.reserve(n_threads*2); // Avoid re-allocation once threads are started
         for (int i = 0; i < n_threads; ++i)
             threads.push_back(std::thread([&]() { receive_thread(recv, remaining); }));
         for (int i = 0; i < n_threads; ++i)
             threads.push_back(std::thread([&]() { send_thread(send, n_messages); }));
 
         // Wait for threads to finish
-        for (auto& t : threads)
-            t.join();
+        for (auto& t : threads) t.join();
         send.close();
         recv.close();
         container_thread.join();

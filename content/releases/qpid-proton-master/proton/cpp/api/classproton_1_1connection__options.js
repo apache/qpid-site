@@ -20,6 +20,6 @@ var classproton_1_1connection__options =
     [ "sasl_allowed_mechs", "classproton_1_1connection__options.html#a52f0724b86920647ef8624922aa54ab6", null ],
     [ "sasl_config_name", "classproton_1_1connection__options.html#ad8e93a44cab5e65949046fb036c237a6", null ],
     [ "sasl_config_path", "classproton_1_1connection__options.html#a0fc40d55673b5c89e4b5a13c630edca5", null ],
-    [ "reconnect", "classproton_1_1connection__options.html#a5a38fafc56619c03e10979b978393bbc", null ],
+    [ "reconnect", "classproton_1_1connection__options.html#ad053f0ac823eefd100731c1b5248e7e8", null ],
     [ "update", "classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604", null ]
 ];

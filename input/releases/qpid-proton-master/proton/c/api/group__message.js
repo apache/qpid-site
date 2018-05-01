@@ -53,5 +53,6 @@ var group__message =
     [ "pn_message_body", "group__message.html#ga145c06edbcccfbe97136bfb5cb2b22b1", null ],
     [ "pn_message_decode", "group__message.html#gab0bae90838f4661b0c82c15f25e1e988", null ],
     [ "pn_message_encode", "group__message.html#ga2173bbce3c1f4b04074e42d2fe7da473", null ],
+    [ "pn_message_send", "group__message.html#ga86cd32577f0e78bab29bd0e49869f0b5", null ],
     [ "pn_message_data", "group__message.html#ga013d429f94d653bc1e00f1f438a079a6", null ]
 ];

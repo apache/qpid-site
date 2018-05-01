@@ -174,10 +174,10 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a0fc40d55673b5c89e4b5a13c630edca5">sasl_config_path</a> (const std::string &amp;)</td></tr>
 <tr class="memdesc:a0fc40d55673b5c89e4b5a13c630edca5"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Set the SASL configuration path. <br /></td></tr>
 <tr class="separator:a0fc40d55673b5c89e4b5a13c630edca5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a38fafc56619c03e10979b978393bbc"><td class="memItemLeft" align="right" valign="top"><a id="a5a38fafc56619c03e10979b978393bbc"></a>
-<a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a5a38fafc56619c03e10979b978393bbc">reconnect</a> (<a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> &amp;)</td></tr>
-<tr class="memdesc:a5a38fafc56619c03e10979b978393bbc"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Set reconnect and failover options. <br /></td></tr>
-<tr class="separator:a5a38fafc56619c03e10979b978393bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad053f0ac823eefd100731c1b5248e7e8"><td class="memItemLeft" align="right" valign="top"><a id="ad053f0ac823eefd100731c1b5248e7e8"></a>
+<a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#ad053f0ac823eefd100731c1b5248e7e8">reconnect</a> (const <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> &amp;)</td></tr>
+<tr class="memdesc:ad053f0ac823eefd100731c1b5248e7e8"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Set reconnect and failover options. <br /></td></tr>
+<tr class="separator:ad053f0ac823eefd100731c1b5248e7e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68a8c198dfa16653afc4a70a2b845604"><td class="memItemLeft" align="right" valign="top"><a id="a68a8c198dfa16653afc4a70a2b845604"></a>
 <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604">update</a> (const <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;other)</td></tr>
 <tr class="memdesc:a68a8c198dfa16653afc4a70a2b845604"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update option values from values set in other. <br /></td></tr>
@@ -188,7 +188,7 @@ Public Member Functions</h2></td></tr>
 <p>Options can be "chained" like this:</p>
 <div class="fragment"><div class="line">c = container.connect(url, <a class="code" href="classproton_1_1connection__options.html#a8034b8d17ca30a4cfc3db8c6a898dc4d">connection_options</a>().<a class="code" href="classproton_1_1connection__options.html#a7bca23aeb3455378ef2d35975758e504">handler</a>(h).<a class="code" href="classproton_1_1connection__options.html#ad0e93961fd048b2ee5e8bdac2b041686">max_frame_size</a>(1234));</div></div><!-- fragment --><p>You can also create an options object with common settings and use it as a base for different connections that have mostly the same settings:</p>
 <div class="fragment"><div class="line"><a class="code" href="classproton_1_1connection__options.html#a8034b8d17ca30a4cfc3db8c6a898dc4d">connection_options</a> opts;</div><div class="line">opts.idle_timeout(1000).max_frame_size(10000);</div><div class="line">c1 = container.connect(url1, opts.handler(h1));</div><div class="line">c2 = container.connect(url2, opts.handler(h2));</div></div><!-- fragment --><p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a29">broker.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a5">multithreaded_client_flow_control.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a1">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a4">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a4">simple_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a35">broker.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a5">multithreaded_client_flow_control.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a1">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a4">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a4">simple_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a7bca23aeb3455378ef2d35975758e504"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7bca23aeb3455378ef2d35975758e504">&#9670;&nbsp;</a></span>handler()</h2>
@@ -207,8 +207,8 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Set a connection handler. </p>
-<p>The handler must not be deleted until <a class="el" href="classproton_1_1messaging__handler.html#a47c33c5e6c13d23f1b8a745bf7bdfa8f" title="The underlying network transport has closed. ">messaging_handler::on_transport_close()</a> is called. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a31">broker.cpp</a>.</dd>
+<p>The handler must not be deleted until <a class="el" href="classproton_1_1messaging__handler.html#a8a60c2f6628f44a9587deea8c8729f0f" title="The underlying network transport has closed. ">messaging_handler::on_transport_close()</a> is called. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a37">broker.cpp</a>.</dd>
 </dl>
 </div>
 </div>

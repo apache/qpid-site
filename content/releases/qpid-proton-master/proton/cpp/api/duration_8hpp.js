@@ -7,5 +7,6 @@ var duration_8hpp =
     [ "operator+", "duration_8hpp.html#aed0da2778dd6e10e26e95a87d92c4a3d", null ],
     [ "operator-", "duration_8hpp.html#a7a3213826600a9c6f67f158eab0e287d", null ],
     [ "operator*", "duration_8hpp.html#ad3251c493ce2a91805b4bcc15d05a5f9", null ],
-    [ "operator*", "duration_8hpp.html#a80e1db1066d64c9e18890d42cad0b16f", null ]
+    [ "operator*", "duration_8hpp.html#a80e1db1066d64c9e18890d42cad0b16f", null ],
+    [ "operator/", "duration_8hpp.html#aab017f43c97ab4bd9a41cf3de50a8993", null ]
 ];

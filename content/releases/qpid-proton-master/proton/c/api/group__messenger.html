@@ -122,8 +122,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:ga0d342bb795d48591ad6b3f867766b8b1"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__messenger.html#ga0d342bb795d48591ad6b3f867766b8b1">pn_messenger_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messenger.html#ga0d342bb795d48591ad6b3f867766b8b1">pn_messenger_t</a></td></tr>
 <tr class="memdesc:ga0d342bb795d48591ad6b3f867766b8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A <a class="el" href="group__messenger.html#ga0d342bb795d48591ad6b3f867766b8b1" title="A pn_messenger_t provides a high level interface for sending and receiving messages (See pn_message_t...">pn_messenger_t</a> provides a high level interface for sending and receiving messages (See <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a>).  <a href="#ga0d342bb795d48591ad6b3f867766b8b1">More...</a><br /></td></tr>
 <tr class="separator:ga0d342bb795d48591ad6b3f867766b8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gabd73703511b9dae193765e9e57864291"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a></td></tr>
-<tr class="memdesc:gabd73703511b9dae193765e9e57864291"><td class="mdescLeft">&#160;</td><td class="mdescRight">A subscription is a request for incoming messages.  <a href="#gabd73703511b9dae193765e9e57864291">More...</a><br /></td></tr>
+<tr class="memitem:gabd73703511b9dae193765e9e57864291"><td class="memItemLeft" align="right" valign="top"><a id="gabd73703511b9dae193765e9e57864291"></a>
+typedef struct <a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a></td></tr>
+<tr class="memdesc:gabd73703511b9dae193765e9e57864291"><td class="mdescLeft">&#160;</td><td class="mdescRight">A subscription is a request for incoming messages. <br /></td></tr>
 <tr class="separator:gabd73703511b9dae193765e9e57864291"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab1173cfe4bcaa0a530c8035dc75f42c7"><td class="memItemLeft" align="right" valign="top"><a id="gab1173cfe4bcaa0a530c8035dc75f42c7"></a>
 typedef int64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messenger.html#gab1173cfe4bcaa0a530c8035dc75f42c7">pn_tracker_t</a></td></tr>
@@ -333,7 +334,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga9be25d57cda5a6e1c5658b0f362c41c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the remote idle timeout for the specified remote service address.  <a href="#ga9be25d57cda5a6e1c5658b0f362c41c7">More...</a><br /></td></tr>
 <tr class="separator:ga9be25d57cda5a6e1c5658b0f362c41c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga59ebaf21eaafaa4b1c359e4284564ff6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__messenger.html#ga59ebaf21eaafaa4b1c359e4284564ff6">pn_messenger_set_ssl_peer_authentication_mode</a> (<a class="el" href="group__messenger.html#ga0d342bb795d48591ad6b3f867766b8b1">pn_messenger_t</a> *messenger, const <a class="el" href="group__ssl.html#gae5e33024ed6af3432d4c76d1484d7ecb">pn_ssl_verify_mode_t</a> mode)</td></tr>
-<tr class="memdesc:ga59ebaf21eaafaa4b1c359e4284564ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the SSL peer authentiacation mode required when a trust certificate is used.  <a href="#ga59ebaf21eaafaa4b1c359e4284564ff6">More...</a><br /></td></tr>
+<tr class="memdesc:ga59ebaf21eaafaa4b1c359e4284564ff6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the SSL peer authentication mode required when a trust certificate is used.  <a href="#ga59ebaf21eaafaa4b1c359e4284564ff6">More...</a><br /></td></tr>
 <tr class="separator:ga59ebaf21eaafaa4b1c359e4284564ff6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -372,34 +373,18 @@ Functions</h2></td></tr>
 <li>amqps://127.0.0.1:1234</li>
 </ul>
 <h1>Sending &amp; Receiving Messages </h1>
-<p>The messenger API works in conjuction with the <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> API. A <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> is a mutable holder of message content.</p>
+<p>The messenger API works in conjunction with the <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> API. A <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> is a mutable holder of message content.</p>
 <p>The <a class="el" href="group__messenger.html#gafede68af29484d50d531cc48ab0d3d4a" title="Puts a message onto the messenger&#39;s outgoing queue. ">pn_messenger_put()</a> operation copies content from the supplied <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> to the outgoing queue, and may send queued messages if it can do so without blocking. The <a class="el" href="group__messenger.html#gae31f9a99dcbedffe83588cf25b805325" title="Send messages from a messenger&#39;s outgoing queue. ">pn_messenger_send()</a> operation blocks until it has sent the requested number of messages, or until a timeout interrupts the attempt.</p>
 <p>pn_messenger_t *messenger = pn_messenger(NULL); pn_message_t *message = <a class="el" href="group__message.html#gaaf98d84b9ddc1c6537dddd4c9c5b979e" title="Construct a new pn_message_t. ">pn_message()</a>; char subject[1024]; for (int i = 0; i &lt; 3; i++) { pn_message_set_address(message, "amqp://host/queue"); sprintf(subject, "Hello World! %i", i); pn_message_set_subject(message, subject); pn_messenger_put(messenger, message) pn_messenger_send(messenger);</p>
 <p>Similarly, the <a class="el" href="group__messenger.html#ga16c945185e4eb5dcb9aac2be2fcab0d6" title="Retrieve messages into a messenger&#39;s incoming queue. ">pn_messenger_recv()</a> method receives messages into the incoming queue, and may block as it attempts to receive up to the requested number of messages, or until the timeout is reached. It may receive fewer than the requested number. The <a class="el" href="group__messenger.html#gaa6d85929e4b4b574690927ddde00c540" title="Get the next message from the head of a messenger&#39;s incoming queue. ">pn_messenger_get()</a> method pops the eldest message off the incoming queue and copies its content into the supplied <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> object. It will not block.</p>
 <p>pn_messenger_t *messenger = pn_messenger(NULL); pn_message_t *message = <a class="el" href="group__message.html#gaaf98d84b9ddc1c6537dddd4c9c5b979e" title="Construct a new pn_message_t. ">pn_message()</a> pn_messenger_recv(messenger): while (pn_messenger_incoming(messenger) &gt; 0) { pn_messenger_get(messenger, message); printf("%s", message.subject); }</p>
 <p>Output: Hello World 0 Hello World 1 Hello World 2</p>
 <p>The blocking flag allows you to turn off blocking behavior entirely, in which case <a class="el" href="group__messenger.html#gae31f9a99dcbedffe83588cf25b805325" title="Send messages from a messenger&#39;s outgoing queue. ">pn_messenger_send()</a> and <a class="el" href="group__messenger.html#ga16c945185e4eb5dcb9aac2be2fcab0d6" title="Retrieve messages into a messenger&#39;s incoming queue. ">pn_messenger_recv()</a> will do whatever they can without blocking, and then return. You can then look at the number of incoming and outgoing messages to see how much outstanding work still remains.</p>
-<h1>Authentication Mechanims </h1>
+<h1>Authentication Mechanisms </h1>
 <p>The messenger API authenticates using some specific mechanisms. In prior versions of Proton the only authentication mechanism available was the PLAIN mechanism which transports the user's password over the network unencrypted. The Proton versions 0.10 and newer support other more secure mechanisms which avoid sending the users's password over the network unencrypted. For backwards compatibility the 0.10 version of the messenger API will also allow the use of the unencrypted PLAIN mechanism. From the 0.11 version and onwards you will need to set the flag PN_FLAGS_ALLOW_INSECURE_MECHS to carry on using the unencrypted PLAIN mechanism.</p>
 <p>The code for this looks like:</p>
 <p>... pn_messenger_set_flags(messenger, PN_FLAGS_ALLOW_INSECURE_MECHS); ...</p>
 <p>Note that the use of the PLAIN mechanism over an SSL connection is allowed as the password is not sent unencrypted. </p>
-
-</div>
-</div>
-<a id="gabd73703511b9dae193765e9e57864291"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gabd73703511b9dae193765e9e57864291">&#9670;&nbsp;</a></span>pn_subscription_t</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef struct <a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a> <a class="el" href="group__messenger.html#gabd73703511b9dae193765e9e57864291">pn_subscription_t</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>A subscription is a request for incoming messages. </p>
 
 </div>
 </div>
@@ -1922,7 +1907,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the next message from the head of a messenger's incoming queue. </p>
-<p>The get operation copies the message data from the head of the messenger's incoming queue into the provided <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> object. If provided <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> pointer is NULL, the head essage will be discarded. This operation will return <a class="el" href="group__error.html#ga9e0f51b097f94293cdbbdeb5422a27a3" title="End of stream. ">PN_EOS</a> if there are no messages left on the incoming queue.</p>
+<p>The get operation copies the message data from the head of the messenger's incoming queue into the provided <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> object. If provided <a class="el" href="group__message.html#gad9259fa9271e8844c8e05a7e8978e3b2" title="An AMQP Message object. ">pn_message_t</a> pointer is NULL, the head message will be discarded. This operation will return <a class="el" href="group__error.html#ga9e0f51b097f94293cdbbdeb5422a27a3" title="End of stream. ">PN_EOS</a> if there are no messages left on the incoming queue.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">messenger</td><td>a messenger object </td></tr>
@@ -1980,7 +1965,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get the subscription of the message most recently retrieved by <a class="el" href="group__messenger.html#gaa6d85929e4b4b574690927ddde00c540" title="Get the next message from the head of a messenger&#39;s incoming queue. ">pn_messenger_get()</a>. </p>
-<p>This operation will return NULL if <a class="el" href="group__messenger.html#gaa6d85929e4b4b574690927ddde00c540" title="Get the next message from the head of a messenger&#39;s incoming queue. ">pn_messenger_get()</a> has never been succesfully called.</p>
+<p>This operation will return NULL if <a class="el" href="group__messenger.html#gaa6d85929e4b4b574690927ddde00c540" title="Get the next message from the head of a messenger&#39;s incoming queue. ">pn_messenger_get()</a> has never been successfully called.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">messenger</td><td>a messenger object </td></tr>
@@ -2591,7 +2576,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the SSL peer authentiacation mode required when a trust certificate is used. </p>
+<p>Sets the SSL peer authentication mode required when a trust certificate is used. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">messenger</td><td>a messenger object </td></tr>

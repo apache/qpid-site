@@ -30,7 +30,7 @@
 <span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
 <span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
 
-<span class="c1">// Lock output from threads to avoid scramblin</span>
+<span class="c1">// Lock output from threads to avoid scrambling</span>
 <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">out_lock</span><span class="p">;</span>
 <span class="cp">#define OUT(x) do { std::lock_guard&lt;std::mutex&gt; l(out_lock); x; } while (false)</span>
 
@@ -83,7 +83,7 @@
         <span class="k">return</span> <span class="n">work_queue_</span><span class="p">;</span>
     <span class="p">}</span>
 
-    <span class="c1">// == messaging_handler overrides, only called in proton hander thread</span>
+    <span class="c1">// == messaging_handler overrides, only called in proton handler thread</span>
 
     <span class="c1">// Note: this example creates a connection when the container starts.</span>
     <span class="c1">// To create connections after the container has started, use</span>

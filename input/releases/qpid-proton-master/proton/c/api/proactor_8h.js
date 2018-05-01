@@ -4,6 +4,7 @@ var proactor_8h =
     [ "pn_proactor_addr", "group__proactor.html#gaf67a7642c9003b36255b58776b494c96", null ],
     [ "pn_proactor", "group__proactor.html#gac2a925b3de00efd8cd40fa9920169554", null ],
     [ "pn_proactor_free", "group__proactor.html#ga5260c2653d4af5eb2f1c8c6190e9d6cf", null ],
+    [ "pn_proactor_connect2", "group__proactor.html#gabb093e51449351cf5530bb300bd67ba1", null ],
     [ "pn_proactor_connect", "group__proactor.html#ga9a9d1c4138226fa87160f4769b87f8e6", null ],
     [ "pn_proactor_listen", "group__proactor.html#gacbed6a4ab75ef8452c10d52e4cd62752", null ],
     [ "pn_proactor_disconnect", "group__proactor.html#gac600bd88ed0fc6c2b66bed4a8740bd68", null ],

@@ -106,12 +106,12 @@ $(document).ready(function(){initNavTree('index.html','');});
 <p>Elements of the API marked as <b>Unsettled API</b>, including any elements contained within them, are still evolving and thus are subject to change. They are available to use, but newer versions of Proton may require changes to your application source code.</p>
 <p>Elements marked <b>Deprecated</b> are slated for removal in a future release.</p>
 <p>Sections labeled <b>Thread safety</b> describe when and where it is safe to call functions or access data across threads.</p>
-<p>Sections called <b>C++ versions</b> discuss features the API that depend on particular versions of C++ such as C++11.</p>
+<p>Sections called <b>C++ versions</b> discuss features of the API that depend on particular versions of C++ such as C++11.</p>
 <h2>URLs</h2>
 <p>The API uses URLs to identify three different kinds of resources. All URL argument names are suffixed with <code>_url</code>.</p>
 <p>Connection URLs (<code>conn_url</code> in argument lists) specify a target for outgoing network connections. The path part of the URL is ignored.</p>
 <p>Address URLs (<code>addr_url</code>) extend the connection URL to reference an AMQP node such as a queue or topic. The path of the URL, minus the leading slash, is treated as the AMQP address of the node.</p>
-<p>Listener URLs (<code>listen_url</code>) specify a local network address and port for accepting incoming TCP connections. </p>
+<p>Listener URLs (<code>listen_url</code>) specify a local network address and port for accepting incoming TCP connections. The path part of the URL is ignored. The host part may be empty, meaning "listen on all available interfaces". </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

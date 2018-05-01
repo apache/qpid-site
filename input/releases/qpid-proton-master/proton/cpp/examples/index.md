@@ -5,6 +5,7 @@
 
  - [broker.cpp](broker.cpp.html)
  - [client.cpp](client.cpp.html)
+ - [colour_send.cpp](colour_send.cpp.html)
  - [connection_options.cpp](connection_options.cpp.html)
  - [direct_recv.cpp](direct_recv.cpp.html)
  - [direct_send.cpp](direct_send.cpp.html)
@@ -12,7 +13,6 @@
  - [fake_cpp11.hpp](fake_cpp11.hpp.html)
  - [flow_control.cpp](flow_control.cpp.html)
  - [helloworld.cpp](helloworld.cpp.html)
- - [helloworld_direct.cpp](helloworld_direct.cpp.html)
  - [message_properties.cpp](message_properties.cpp.html)
  - [multithreaded_client.cpp](multithreaded_client.cpp.html)
  - [multithreaded_client_flow_control.cpp](multithreaded_client_flow_control.cpp.html)
@@ -25,6 +25,7 @@
  - [server.cpp](server.cpp.html)
  - [server_direct.cpp](server_direct.cpp.html)
  - [service_bus.cpp](service_bus.cpp.html)
+ - [simple_connect.cpp](simple_connect.cpp.html)
  - [simple_recv.cpp](simple_recv.cpp.html)
  - [simple_send.cpp](simple_send.cpp.html)
  - [ssl.cpp](ssl.cpp.html)
@@ -32,5 +33,5 @@
 
 ## More information
 
- - [README](https://github.com/apache/qpid-proton/tree/master/examples/cpp/README.dox)
- - [Source location](https://github.com/apache/qpid-proton/tree/master/examples/cpp)
+ - [README](https://github.com/apache/qpid-proton/tree/master/cpp/examples/README.dox)
+ - [Source location](https://github.com/apache/qpid-proton/tree/master/cpp/examples)

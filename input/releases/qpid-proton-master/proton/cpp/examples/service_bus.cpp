@@ -86,7 +86,6 @@ Done. No more messages.
 #include <proton/connection_options.hpp>
 #include <proton/container.hpp>
 #include <proton/delivery.hpp>
-#include <proton/function.hpp>
 #include <proton/message.hpp>
 #include <proton/messaging_handler.hpp>
 #include <proton/receiver_options.hpp>
@@ -94,7 +93,6 @@ Done. No more messages.
 #include <proton/sender_options.hpp>
 #include <proton/source_options.hpp>
 #include <proton/tracker.hpp>
-#include <proton/url.hpp>
 #include <proton/work_queue.hpp>
 
 #include <iostream>
@@ -129,20 +127,9 @@ class session_receiver : public proton::messaging_handler {
     proton::container *container;
     proton::receiver receiver;
 
-
-    struct process_timeout_fn : public proton::void_function0 {
-        session_receiver& parent;
-        process_timeout_fn(session_receiver& sr) : parent(sr) {}
-        void operator()() { parent.process_timeout(); }
-    };
-
-    process_timeout_fn do_process_timeout;
-
-
   public:
     session_receiver(const std::string &c, const std::string &e,
-                     const char *sid) : connection_url(c), entity(e), message_count(0), closed(false), read_timeout(5000),
-                                               last_read(0), container(0), do_process_timeout(*this) {
+                     const char *sid) : connection_url(c), entity(e), message_count(0), closed(false), read_timeout(5000), last_read(0), container(0) {
         if (sid)
             session_identifier = std::string(sid);
         // session_identifier is now either empty/null or an AMQP string type.
@@ -172,7 +159,7 @@ class session_receiver : public proton::messaging_handler {
         // identifier if none was specified).
         last_read = proton::timestamp::now();
         // Call this->process_timeout after read_timeout.
-        container->schedule(read_timeout, do_process_timeout);
+        container->schedule(read_timeout, [this]() { this->process_timeout(); });
     }
 
     void on_receiver_open(proton::receiver &r) OVERRIDE {
@@ -202,7 +189,7 @@ class session_receiver : public proton::messaging_handler {
                 std::cout << "Done. No more messages." << std::endl;
         } else {
             proton::duration next = deadline - now;
-            container->schedule(next, do_process_timeout);
+            container->schedule(next, [this]() { this->process_timeout(); });
         }
     }
 };
@@ -274,7 +261,8 @@ class sequence : public proton::messaging_handler {
   public:
     static sequence *the_sequence;
 
-    sequence (const std::string &c, const std::string &e) : sequence_no(0),
+    sequence (const std::string &c, const std::string &e) :
+        container(0), sequence_no(0),
         snd(c, e), rcv_red(c, e, "red"), rcv_green(c, e, "green"), rcv_null(c, e, NULL) {
         the_sequence = this;
     }

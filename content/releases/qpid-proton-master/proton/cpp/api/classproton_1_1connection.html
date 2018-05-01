@@ -223,7 +223,7 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A connection to a remote AMQP peer. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a19">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a6">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a2">server.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a11">service_bus.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a17">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a5">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a1">server.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a12">service_bus.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2f632b80247e868b8264b8a025b84baf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f632b80247e868b8264b8a025b84baf">&#9670;&nbsp;</a></span>container()</h2>
@@ -247,7 +247,8 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a25">broker.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
@@ -267,7 +268,8 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>Open the connection. </p>
 <dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a18">broker.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a91b014b59b8b14d7f5a26e2e4950cc93"></a>
@@ -318,7 +320,7 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
 
 <p>Implements <a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">endpoint</a>.</p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a15">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a19">helloworld.cpp</a>, <a class="el" href="helloworld_direct_8cpp-example.html#a18">helloworld_direct.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a22">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a17">simple_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a14">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a17">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a25">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a17">simple_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -565,14 +567,12 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p><b>Unsettled API</b> - Trigger an event from another thread. </p>
-<p><code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> can be called from any thread. The Proton library will call <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> as soon as possible in the correct event-handling thread.</p>
-<dl class="section note"><dt>Note</dt><dd></dd></dl>
-<ul>
-<li>Thread-safe: This is the <em>only</em> <a class="el" href="classproton_1_1connection.html">connection</a> function that can be called from outside the handler thread.</li>
-<li>Multiple calls to <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> may be coalesced into a single call to <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> that occurs after all of them.</li>
-<li>Spurious <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - an event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> calls can occur even if the application does not call <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code>.</li>
-</ul>
-<p>The <a class="el" href="classproton_1_1work__queue.html">work_queue</a> interface provides an easier way execute code safely in the event-handler thread. </p>
+<p>This method can be called from any thread. The Proton library will call <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - An event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> as soon as possible in the correct event-handling thread.</p>
+<p><b>Thread-safety</b> - This is the <em>only</em> <code><a class="el" href="classproton_1_1connection.html" title="A connection to a remote AMQP peer. ">proton::connection</a></code> function that can be called from outside the handler thread.</p>
+<dl class="section note"><dt>Note</dt><dd>Spurious <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - An event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> calls can occur even if the application does not call <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code>.</dd>
+<dd>
+Multiple calls to <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> may be coalesced into a single call to <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - An event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> that occurs after all of them.</dd></dl>
+<p>The <code><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a></code> interface provides an easier way execute code safely in the event-handler thread. </p>
 
 </div>
 </div>

@@ -1,7 +1,9 @@
 var classproton_1_1container =
 [
-    [ "container", "classproton_1_1container.html#a822ca363beceb76ffdc5ce370a4f9356", null ],
-    [ "container", "classproton_1_1container.html#aa73c3a48d397b513182a2d90ba5ab686", null ],
+    [ "container", "classproton_1_1container.html#a9a322df81c8d397bb4c3fa6c1a67a496", null ],
+    [ "container", "classproton_1_1container.html#a3d7f4be6b8ace086ed7470f66a742059", null ],
+    [ "container", "classproton_1_1container.html#a88125a4442a7b28fab97a89587627c0f", null ],
+    [ "container", "classproton_1_1container.html#aeacc0140de439ebab9a5466c45d38191", null ],
     [ "~container", "classproton_1_1container.html#a7c64e64cedfa36303be53f0f581d1d24", null ],
     [ "connect", "classproton_1_1container.html#adbd9ed231804512a47cca3c81f00cdf1", null ],
     [ "connect", "classproton_1_1container.html#a422bf1e05b6a01039f0ef603b2f165a4", null ],
@@ -30,5 +32,6 @@ var classproton_1_1container =
     [ "sender_options", "classproton_1_1container.html#ae7bfc8d811be7f6be17be6cf15e35b4a", null ],
     [ "receiver_options", "classproton_1_1container.html#a2e01779c75286d270f579a28dae14d37", null ],
     [ "receiver_options", "classproton_1_1container.html#a099ddaa3cfcd6a8ae14401bbbfb4b660", null ],
-    [ "schedule", "classproton_1_1container.html#aa99ede2051ccdf5fe8257d893559ea26", null ]
+    [ "schedule", "classproton_1_1container.html#aa99ede2051ccdf5fe8257d893559ea26", null ],
+    [ "schedule", "classproton_1_1container.html#a3e20a15733ef55ac0c43fbe1e60813d4", null ]
 ];

@@ -25,6 +25,7 @@ var namespaceproton =
     [ "message", "classproton_1_1message.html", "classproton_1_1message" ],
     [ "message_id", "classproton_1_1message__id.html", "classproton_1_1message__id" ],
     [ "messaging_handler", "classproton_1_1messaging__handler.html", "classproton_1_1messaging__handler" ],
+    [ "null", "classproton_1_1null.html", "classproton_1_1null" ],
     [ "receiver", "classproton_1_1receiver.html", "classproton_1_1receiver" ],
     [ "receiver_options", "classproton_1_1receiver__options.html", "classproton_1_1receiver__options" ],
     [ "reconnect_options", "classproton_1_1reconnect__options.html", "classproton_1_1reconnect__options" ],
@@ -55,6 +56,5 @@ var namespaceproton =
     [ "url_error", "structproton_1_1url__error.html", null ],
     [ "uuid", "classproton_1_1uuid.html", "classproton_1_1uuid" ],
     [ "value", "classproton_1_1value.html", "classproton_1_1value" ],
-    [ "work", "classproton_1_1work.html", "classproton_1_1work" ],
     [ "work_queue", "classproton_1_1work__queue.html", "classproton_1_1work__queue" ]
 ];

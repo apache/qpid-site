@@ -11,6 +11,7 @@ var error_8h =
     [ "PN_INTR", "group__error.html#ga53284958be0c328f90ca3a4a0793d965", null ],
     [ "PN_INPROGRESS", "group__error.html#gafbb090366e9dbf9a5bb0735df1e23d33", null ],
     [ "PN_OUT_OF_MEMORY", "group__error.html#gab1f773ca03b0953de6ce3caf4c795b8d", null ],
+    [ "PN_ABORTED", "group__error.html#ga82db456291c2627e31becc44b733a7f0", null ],
     [ "pn_error_t", "group__error.html#ga24a289d5b32c9bd8a775600a5af83d52", null ],
     [ "pn_code", "group__error.html#gac6b84f09fac8e82bd41a62212d4d8f64", null ],
     [ "pn_error", "group__error.html#ga0992aa0df5290a2ae639246b0c2f5481", null ],

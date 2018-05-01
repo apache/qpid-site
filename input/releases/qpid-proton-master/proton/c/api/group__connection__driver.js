@@ -27,8 +27,9 @@ var group__connection__driver =
     [ "pn_connection_driver_finished", "group__connection__driver.html#ga38f56836858b2d4a04ab961f650950d4", null ],
     [ "pn_connection_driver_errorf", "group__connection__driver.html#ga373eb1f632468582d025f5d6acf9655e", null ],
     [ "pn_connection_driver_verrorf", "group__connection__driver.html#gad774f90adceaf86748a0ae781f66daf2", null ],
+    [ "pn_event_batch_connection_driver", "group__connection__driver.html#gada5c75a658ae2814f253a91723be9baf", null ],
     [ "pn_connection_driver_log", "group__connection__driver.html#gadb682f03cb66b5898c4b285353e0005e", null ],
     [ "pn_connection_driver_logf", "group__connection__driver.html#ga756d1d7130b79f639d71d331f9005cab", null ],
     [ "pn_connection_driver_vlogf", "group__connection__driver.html#gabf97a6a0b608fd096fcaa4f2692c2c63", null ],
-    [ "pn_event_batch_connection_driver", "group__connection__driver.html#gada5c75a658ae2814f253a91723be9baf", null ]
+    [ "pn_connection_driver_ptr", "group__connection__driver.html#gab9d4f3255c83d7792fc17e5a020ff1c0", null ]
 ];

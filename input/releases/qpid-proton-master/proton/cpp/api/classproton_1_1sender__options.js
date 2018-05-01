@@ -9,5 +9,6 @@ var classproton_1_1sender__options =
     [ "delivery_mode", "classproton_1_1sender__options.html#ab7dc71a7b5737c2ca642058a296292db", null ],
     [ "auto_settle", "classproton_1_1sender__options.html#a087eda4a18c293de85107fcfbb7ff31f", null ],
     [ "source", "classproton_1_1sender__options.html#af4bd1e60b98c766f4c822aad783162c0", null ],
-    [ "target", "classproton_1_1sender__options.html#a7d4e83ee43fa1ee99a45f5bbe837ffcc", null ]
+    [ "target", "classproton_1_1sender__options.html#a7d4e83ee43fa1ee99a45f5bbe837ffcc", null ],
+    [ "name", "classproton_1_1sender__options.html#af37454934677c6f0e8bbe8bb1087f1ed", null ]
 ];

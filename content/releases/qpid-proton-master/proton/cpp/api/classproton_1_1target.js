@@ -8,5 +8,6 @@ var classproton_1_1target =
     [ "expiry_policy", "classproton_1_1target.html#afc97dbb9b04812da5be8a41eb9434904", null ],
     [ "timeout", "classproton_1_1target.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ],
     [ "dynamic", "classproton_1_1target.html#adcc4ef24adb8478230018c519aa636ec", null ],
-    [ "node_properties", "classproton_1_1target.html#ab503c82e36aa618e6c6fb34feaad57b8", null ]
+    [ "node_properties", "classproton_1_1target.html#ab503c82e36aa618e6c6fb34feaad57b8", null ],
+    [ "capabilities", "classproton_1_1target.html#a1c6bf68ea1dcbd3b2a0897adb628c1ee", null ]
 ];

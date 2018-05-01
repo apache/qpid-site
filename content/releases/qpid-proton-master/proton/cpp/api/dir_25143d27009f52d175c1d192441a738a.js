@@ -59,6 +59,7 @@ var dir_25143d27009f52d175c1d192441a738a =
       [ "messaging_handler", "classproton_1_1messaging__handler.html", "classproton_1_1messaging__handler" ]
     ] ],
     [ "namespaces.hpp", "namespaces_8hpp.html", null ],
+    [ "null.hpp", "null_8hpp.html", "null_8hpp" ],
     [ "receiver.hpp", "receiver_8hpp.html", [
       [ "receiver", "classproton_1_1receiver.html", "classproton_1_1receiver" ]
     ] ],
@@ -132,5 +133,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     ] ],
     [ "uuid.hpp", "uuid_8hpp.html", "uuid_8hpp" ],
     [ "value.hpp", "value_8hpp.html", "value_8hpp" ],
-    [ "work_queue.hpp", "work__queue_8hpp.html", "work__queue_8hpp" ]
+    [ "work_queue.hpp", "work__queue_8hpp.html", [
+      [ "work_queue", "classproton_1_1work__queue.html", "classproton_1_1work__queue" ]
+    ] ]
 ];

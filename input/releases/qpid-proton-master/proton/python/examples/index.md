@@ -7,6 +7,7 @@
  - [broker.py](broker.py.html)
  - [client.py](client.py.html)
  - [client_http.py](client_http.py.html)
+ - [colour_send.py](colour_send.py.html)
  - [db_common.py](db_common.py.html)
  - [db_ctrl.py](db_ctrl.py.html)
  - [db_recv.py](db_recv.py.html)
@@ -37,5 +38,5 @@
 
 ## More information
 
- - [README](https://github.com/apache/qpid-proton/tree/master/examples/python/README)
- - [Source location](https://github.com/apache/qpid-proton/tree/master/examples/python)
+ - [README](https://github.com/apache/qpid-proton/tree/master/python/examples/README)
+ - [Source location](https://github.com/apache/qpid-proton/tree/master/python/examples)

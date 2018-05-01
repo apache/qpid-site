@@ -11,5 +11,6 @@ var classproton_1_1receiver__options =
     [ "auto_settle", "classproton_1_1receiver__options.html#af313abfa8d5b19e4b61c779907eb9980", null ],
     [ "source", "classproton_1_1receiver__options.html#a7e2689fd52f88f551d11face38a4157b", null ],
     [ "target", "classproton_1_1receiver__options.html#a7823f6c72dc78481be578de1658b99eb", null ],
-    [ "credit_window", "classproton_1_1receiver__options.html#a714a6a7dd1ea90c6046fe0460d2ce4f0", null ]
+    [ "credit_window", "classproton_1_1receiver__options.html#a714a6a7dd1ea90c6046fe0460d2ce4f0", null ],
+    [ "name", "classproton_1_1receiver__options.html#a038ed50e63983958b13e42d49d270b88", null ]
 ];

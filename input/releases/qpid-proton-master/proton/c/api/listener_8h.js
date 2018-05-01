@@ -2,7 +2,8 @@ var listener_8h =
 [
     [ "pn_listener", "group__listener.html#gabba0a7d2e916188e3ec07d0acf8f3fc5", null ],
     [ "pn_listener_free", "group__listener.html#gaf5769baf81fdfa80e5c4326dd4a9ab63", null ],
-    [ "pn_listener_accept", "group__listener.html#gaaee3c3f3822484bc2e370406abf5b736", null ],
+    [ "pn_listener_accept2", "group__listener.html#ga3719a4ab17b8de42fc6bfb262018d070", null ],
+    [ "pn_listener_accept", "group__listener.html#ga8a100386ab4a079ae6924aeaafc72eb9", null ],
     [ "pn_listener_condition", "group__listener.html#gaa49d0d11a9f46a75fbbbebf6def2d4b2", null ],
     [ "pn_listener_attachments", "group__listener.html#gae94f2acd3463fc0a42b1b5dd68d9326f", null ],
     [ "pn_listener_close", "group__listener.html#ga17a5b8573f00e16b233c59a3bb17c104", null ],

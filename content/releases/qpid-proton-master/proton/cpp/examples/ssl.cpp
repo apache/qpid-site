@@ -25,6 +25,7 @@
 #include <proton/connection.hpp>
 #include <proton/container.hpp>
 #include <proton/error_condition.hpp>
+#include <proton/listen_handler.hpp>
 #include <proton/listener.hpp>
 #include <proton/message.hpp>
 #include <proton/messaging_handler.hpp>
@@ -52,15 +53,7 @@ namespace {
     const std::string verify_noname("noname"); // Skip matching host name against the certificate
     const std::string verify_fail("fail");  // Force name mismatch failure
     std::string verify(verify_full);  // Default for example
-    bool verify_failed(false);
     std::string cert_directory;
-
-    class example_cert_error : public std::runtime_error
-    {
-    public:
-        explicit example_cert_error(const std::string& s) : std::runtime_error(s) {}
-    };
-
 }
 
 
@@ -88,12 +81,18 @@ struct server_handler : public proton::messaging_handler {
 
 class hello_world_direct : public proton::messaging_handler {
   private:
-    std::string url;
+    class listener_open_handler : public proton::listen_handler {
+        void on_open(proton::listener& l) OVERRIDE {
+            std::ostringstream url;
+            url << "//:" << l.port() << "/example"; // Connect to the actual port
+            l.container().open_sender(url.str());
+        }
+    };
+
+    listener_open_handler listen_handler;
     server_handler s_handler;
 
   public:
-    hello_world_direct(const std::string& u) : url(u) {}
-
     void on_container_start(proton::container &c) OVERRIDE {
         // Configure listener.  Details vary by platform.
         ssl_certificate server_cert = platform_certificate("tserver", "tserverpw");
@@ -124,8 +123,7 @@ class hello_world_direct : public proton::messaging_handler {
         } else throw std::logic_error("bad verify mode: " + verify);
 
         c.client_connection_options(client_opts);
-        s_handler.listener = c.listen(url);
-        c.open_sender(url);
+        s_handler.listener = c.listen("//:0", listen_handler); // Listen on port 0 for a dynamic port
     }
 
     void on_connection_open(proton::connection &c) OVERRIDE {
@@ -136,9 +134,11 @@ class hello_world_direct : public proton::messaging_handler {
 
     void on_transport_error(proton::transport &t) OVERRIDE {
         std::string err = t.error().what();
-        if (err.find("certificate") != std::string::npos) {
-            verify_failed = true;
-            throw example_cert_error(err);
+        if (verify == verify_fail && err.find("certificate") != std::string::npos) {
+            std::cout << "Expected failure of connection with wrong peer name: " << err
+                      << std::endl;
+        } else {
+            std::cout << "Unexpected transport error: " << err << std::endl;
         }
     }
 
@@ -156,12 +156,7 @@ class hello_world_direct : public proton::messaging_handler {
 };
 
 int main(int argc, char **argv) {
-    // Pick an "unusual" port since we are going to be talking to
-    // ourselves, not a broker.
-    // Note the use of "amqps" as the URL scheme to denote a TLS/SSL connection.
-    std::string address("amqps://127.0.0.1:8888/examples");
     example::options opts(argc, argv);
-    opts.add_value(address, 'a', "address", "connect and send to URL", "URL");
     opts.add_value(cert_directory, 'c', "cert_directory",
                    "directory containing SSL certificates and private key information", "CERTDIR");
     opts.add_value(verify, 'v', "verify", "verify type: \"minimum\", \"full\", \"fail\"", "VERIFY");
@@ -172,23 +167,15 @@ int main(int argc, char **argv) {
         size_t sz = cert_directory.size();
         if (sz && cert_directory[sz -1] != '/')
             cert_directory.append("/");
-        else cert_directory = "ssl_certs/";
+        else cert_directory = "ssl-certs/";
 
         if (verify != verify_noname && verify != verify_full && verify != verify_fail)
             throw std::runtime_error("bad verify argument: " + verify);
 
-        hello_world_direct hwd(address);
+        hello_world_direct hwd;
         proton::container(hwd).run();
         return 0;
     } catch (const std::exception& e) {
-        if (verify_failed) {
-            if (verify == verify_fail) {
-                std::cout << "Expected failure of connection with wrong peer name: " << e.what() << std::endl;
-                return 0;
-            } else {
-                std::cerr << "unexpected internal certificate failure: ";
-            }
-        }
         std::cerr << e.what() << std::endl;
     }
     return 1;

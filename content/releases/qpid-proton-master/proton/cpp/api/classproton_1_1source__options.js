@@ -10,5 +10,6 @@ var classproton_1_1source__options =
     [ "durability_mode", "classproton_1_1source__options.html#a89176218ec0f2754c6499935368627ab", null ],
     [ "timeout", "classproton_1_1source__options.html#a5fca9a55327631935b124badfebea989", null ],
     [ "expiry_policy", "classproton_1_1source__options.html#aad9e94ccdd35ae9bd3cfd730d5749760", null ],
-    [ "filters", "classproton_1_1source__options.html#a9a38c4697708d223e8163d301e92f6af", null ]
+    [ "filters", "classproton_1_1source__options.html#a9a38c4697708d223e8163d301e92f6af", null ],
+    [ "capabilities", "classproton_1_1source__options.html#aeaddb5ce3dec75cc6e55f3249adfe454", null ]
 ];

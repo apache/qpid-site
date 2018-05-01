@@ -16,5 +16,6 @@ var classproton_1_1terminus =
     [ "timeout", "classproton_1_1terminus.html#a16d54f985193a3ce6ac69ffe10e8dfb6", null ],
     [ "durability_mode", "classproton_1_1terminus.html#aeb6439d6ea5d274a59dd8e90d97f31d8", null ],
     [ "dynamic", "classproton_1_1terminus.html#adcc4ef24adb8478230018c519aa636ec", null ],
-    [ "node_properties", "classproton_1_1terminus.html#ab503c82e36aa618e6c6fb34feaad57b8", null ]
+    [ "node_properties", "classproton_1_1terminus.html#ab503c82e36aa618e6c6fb34feaad57b8", null ],
+    [ "capabilities", "classproton_1_1terminus.html#a1c6bf68ea1dcbd3b2a0897adb628c1ee", null ]
 ];

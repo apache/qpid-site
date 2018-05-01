@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_proton_release_url}}/index.html).
 
-This content was generated at 16:18  on Tuesday, 12 September 2017.
+This content was generated at 06:28  on Tuesday, 01 May 2018.
 
 </div>
 
@@ -38,14 +38,16 @@ This content was generated at 16:18  on Tuesday, 12 September 2017.
 
  - [C API reference](proton/c/api/files.html)
  - [C++ introduction](proton/cpp/api/index.html)
- - [C++ tutorial](proton/cpp/api/tutorial.html)
+ - [C++ tutorial](proton/cpp/api/tutorial_page.html)
  - [C++ examples](proton/cpp/examples/index.html)
  - [C++ API reference](proton/cpp/api/annotated.html)
+;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
  - [Python overview](proton/python/book/overview.html)
  - [Python tutorial](proton/python/book/tutorial.html)
  - [Python examples](proton/python/examples/index.html)
  - [Python API reference](proton/python/api/index.html)
-;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
+ - [Ruby examples](proton/ruby/examples/index.html)
+ - [Ruby API reference](proton/ruby/api/index.html)
  - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=master)
 
 </div>

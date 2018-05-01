@@ -24,7 +24,6 @@
 #include <proton/container.hpp>
 #include <proton/connection.hpp>
 #include <proton/duration.hpp>
-#include <proton/function.hpp>
 #include <proton/message.hpp>
 #include <proton/messaging_handler.hpp>
 #include <proton/sender.hpp>
@@ -49,6 +48,7 @@ class scheduled_sender : public proton::messaging_handler {
         url(s),
         interval(int(d*proton::duration::SECOND.milliseconds())), // Send interval.
         timeout(int(t*proton::duration::SECOND.milliseconds())), // Cancel after timeout.
+        work_queue(0),
         ready(true),            // Ready to send.
         canceled(false)         // Canceled.
     {}
@@ -60,8 +60,8 @@ class scheduled_sender : public proton::messaging_handler {
     void on_sender_open(proton::sender & s) OVERRIDE {
         work_queue = &s.work_queue();
 
-        proton::schedule_work(work_queue, timeout, &scheduled_sender::cancel, this, s);
-        proton::schedule_work(work_queue, interval, &scheduled_sender::tick, this, s);
+        work_queue->schedule(timeout, make_work(&scheduled_sender::cancel, this, s));
+        work_queue->schedule(interval, make_work(&scheduled_sender::tick, this, s));
     }
 
     void cancel(proton::sender sender) {
@@ -71,7 +71,7 @@ class scheduled_sender : public proton::messaging_handler {
 
     void tick(proton::sender sender) {
         if (!canceled) {
-            proton::schedule_work(work_queue, interval, &scheduled_sender::tick, this, sender); // Next tick
+            work_queue->schedule(interval, make_work(&scheduled_sender::tick, this, sender)); // Next tick
             if (sender.credit() > 0) // Only send if we have credit
                 send(sender);
             else
