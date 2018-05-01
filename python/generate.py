@@ -249,6 +249,28 @@ def gen_rdoc(release, title, base_input_path, input_paths, output_dir):
 
     touch(join(output_dir, "_transom_ignore_pages"))
 
+def gen_yard(release, title, input_dir, input_namespaces, output_dir):
+    output_dir = absolute_path(output_dir)
+
+    options = list()
+    options.append("--quiet")
+    options.append("--no-progress")
+    options.append("--title \"{}\"".format(title))
+    options.append("--output-dir {}".format(output_dir))
+
+    for namespace in input_namespaces:
+        options.append("--api {}".format(namespace))
+
+    options = " ".join(options)
+
+    with working_dir(input_dir): 
+        call("yard {}", options)
+
+    # Workaround an annoying yard behavior - https://github.com/lsegal/yard/issues/837
+    #move(join(output_dir, "_index.html"), join(output_dir, "index.html"))
+
+    touch(join(output_dir, "_transom_ignore_pages"))
+
 ## Examples ##
 
 def gen_examples(release, title, lang, input_dir, input_names, output_dir,
