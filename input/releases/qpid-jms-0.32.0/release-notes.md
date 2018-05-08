@@ -32,7 +32,7 @@ documentation, see the [release overview](index.html).
 ## New features and improvements
 
  - [QPIDJMS-375](https://issues.apache.org/jira/browse/QPIDJMS-375) - Enable setting of an "Authorization" Header during WebSocket connection handshake.
- - [QPIDJMS-379](https://issues.apache.org/jira/browse/QPIDJMS-379) - Reduce garbage create on input from transport
+ - [QPIDJMS-379](https://issues.apache.org/jira/browse/QPIDJMS-379) - Reduce garbage created on input from transport
  - [QPIDJMS-380](https://issues.apache.org/jira/browse/QPIDJMS-380) - Implement ConnectionConsumer to enable use in resource adapters
  - [QPIDJMS-382](https://issues.apache.org/jira/browse/QPIDJMS-382) - limit outgoing frame sizes to configured maxFrameSize
  - [QPIDJMS-383](https://issues.apache.org/jira/browse/QPIDJMS-383) - Utilize new proton-j APIs to eleminate copying delivery buffers
@@ -42,7 +42,7 @@ documentation, see the [release overview](index.html).
 
  - [QPIDJMS-372](https://issues.apache.org/jira/browse/QPIDJMS-372) - [SASL] [XOAUTH2] Access token validation too restrictive
  - [QPIDJMS-374](https://issues.apache.org/jira/browse/QPIDJMS-374) - Double encoded query parameters
- - [QPIDJMS-376](https://issues.apache.org/jira/browse/QPIDJMS-376) - notify the ExceptionListner when a consumer with a MessageListener remotely closes
+ - [QPIDJMS-376](https://issues.apache.org/jira/browse/QPIDJMS-376) - notify the ExceptionListener when a consumer with a MessageListener remotely closes
 
 ## Tasks
 
