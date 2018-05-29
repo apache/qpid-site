@@ -159,13 +159,14 @@ files.
 
 The scripts depend on the availability of the following tools in your
 environment: asciidoc, asciidoctor, cmake, dot, doxygen, epydoc, fop,
-gcc, javadoc, make, pygments, PyYAML, rdoc, git, pandoc, pdflatex and
-xsltproc.  The following yum command works to install all the required
+gcc, javadoc, make, pygments, PyYAML, rdoc, git, pandoc, pdflatex, xsltproc,
+and yard.  The following yum command works to install all the required
 dependencies on Fedora or RHEL.
 
     $ sudo yum install asciidoc asciidoctor cmake doxygen epydoc \
           fop gcc graphviz java-devel libxslt make python-pygments \
-          PyYAML rubygem-rdoc git pandoc-pdf python-sphinx maven
+          PyYAML rubygem-rdoc git pandoc-pdf python-sphinx maven \
+          rubygem-yard
 
 ## Publishing your work
 
