@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>example_test.rb - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.23.0/index.html">Qpid Proton 0.23.0</a></li><li><a href="/releases/qpid-proton-0.23.0/proton/ruby/examples/index.html">Proton Ruby Examples</a></li><li>example_test.rb</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>example_test.rb</h1>
+<div class="highlight"><pre><span></span><span class="nb">require</span> <span class="s1">&#39;minitest/autorun&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;qpid_proton&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;socket&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;rbconfig&#39;</span>
+
+<span class="k">begin</span>
+  <span class="no">MiniTest</span><span class="o">::</span><span class="no">Test</span>
+<span class="k">rescue</span> <span class="no">NameError</span>                <span class="c1"># For older versions of MiniTest</span>
+  <span class="no">MiniTest</span><span class="o">::</span><span class="no">Test</span> <span class="o">=</span> <span class="no">MiniTest</span><span class="o">::</span><span class="no">Unit</span><span class="o">::</span><span class="no">TestCase</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">listening_port</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="sr">/Listening on ([0-9]+)/</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span>
+<span class="k">end</span>
+
+<span class="k">def</span> <span class="nf">listening_url</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+  <span class="s2">&quot;:</span><span class="si">#{</span><span class="n">listening_port</span> <span class="n">s</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="k">end</span>
+
+<span class="k">class</span> <span class="nc">ExampleTest</span> <span class="o">&lt;</span> <span class="no">MiniTest</span><span class="o">::</span><span class="no">Test</span>
+
+  <span class="k">def</span> <span class="nf">run_script</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">return</span> <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="o">[</span> <span class="no">RbConfig</span><span class="o">.</span><span class="n">ruby</span> <span class="o">]</span> <span class="o">+</span> <span class="n">args</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">a</span><span class="o">.</span><span class="n">to_s</span> <span class="p">})</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">assert_output</span><span class="p">(</span><span class="n">want</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="n">run_script</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">strip</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_helloworld</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="s2">&quot;Hello world!&quot;</span><span class="p">,</span> <span class="s2">&quot;helloworld.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_client_server</span>
+    <span class="n">want</span> <span class="o">=</span>  <span class="o">&lt;&lt;</span><span class="dl">EOS</span>
+<span class="sh">-&gt; Twas brillig, and the slithy toves</span>
+<span class="sh">&lt;- TWAS BRILLIG, AND THE SLITHY TOVES</span>
+<span class="sh">-&gt; Did gire and gymble in the wabe.</span>
+<span class="sh">&lt;- DID GIRE AND GYMBLE IN THE WABE.</span>
+<span class="sh">-&gt; All mimsy were the borogroves,</span>
+<span class="sh">&lt;- ALL MIMSY WERE THE BOROGROVES,</span>
+<span class="sh">-&gt; And the mome raths outgrabe.</span>
+<span class="sh">&lt;- AND THE MOME RATHS OUTGRABE.</span>
+<span class="dl">EOS</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">run_script</span><span class="p">(</span><span class="s2">&quot;server.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="s2">&quot;client.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+  <span class="k">ensure</span>
+    <span class="no">Process</span><span class="o">.</span><span class="n">kill</span> <span class="ss">:TERM</span><span class="p">,</span> <span class="n">server</span><span class="o">.</span><span class="n">pid</span> <span class="k">if</span> <span class="n">server</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_send_recv</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="s2">&quot;All 10 messages confirmed!&quot;</span><span class="p">,</span> <span class="s2">&quot;simple_send.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">want</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Received: sequence </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">}</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="s2">&quot;simple_recv.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_ssl_send_recv</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">run_script</span><span class="p">(</span><span class="s2">&quot;ssl_send.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">strip</span>
+    <span class="n">assert_match</span><span class="p">(</span><span class="sr">/Connection secured with &quot;...*\&quot;\nAll 10 messages confirmed!/</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+    <span class="n">want</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Received: sequence </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">}</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="s2">&quot;simple_recv.rb&quot;</span><span class="p">,</span> <span class="vg">$url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_direct_recv</span>
+    <span class="nb">p</span> <span class="o">=</span> <span class="n">run_script</span><span class="p">(</span><span class="s2">&quot;direct_recv.rb&quot;</span><span class="p">,</span> <span class="s2">&quot;:0&quot;</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">listening_url</span><span class="p">(</span><span class="nb">p</span><span class="o">.</span><span class="n">readline</span><span class="p">)</span> <span class="c1"># Wait till ready</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="s2">&quot;All 10 messages confirmed!&quot;</span><span class="p">,</span> <span class="s2">&quot;simple_send.rb&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">want</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Received: sequence </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">}</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="nb">p</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">strip</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">test_direct_send</span>
+    <span class="nb">p</span> <span class="o">=</span> <span class="n">run_script</span><span class="p">(</span><span class="s2">&quot;direct_send.rb&quot;</span><span class="p">,</span> <span class="s2">&quot;:0&quot;</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">listening_url</span><span class="p">(</span><span class="nb">p</span><span class="o">.</span><span class="n">readline</span><span class="p">)</span> <span class="c1"># Wait till ready</span>
+    <span class="n">want</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="o">..</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Received: sequence </span><span class="si">#{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="p">}</span>
+    <span class="n">assert_output</span><span class="p">(</span><span class="n">want</span><span class="o">.</span><span class="n">strip</span><span class="p">,</span> <span class="s2">&quot;simple_recv.rb&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">)</span>
+    <span class="n">assert_equal</span><span class="p">(</span><span class="s2">&quot;All 10 messages confirmed!&quot;</span><span class="p">,</span> <span class="nb">p</span><span class="o">.</span><span class="n">read</span><span class="o">.</span><span class="n">strip</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># Start the broker before all tests.</span>
+<span class="vg">$broker</span> <span class="o">=</span> <span class="no">IO</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span><span class="o">[</span><span class="no">RbConfig</span><span class="o">.</span><span class="n">ruby</span><span class="p">,</span> <span class="s1">&#39;broker.rb&#39;</span><span class="p">,</span> <span class="s2">&quot;:0&quot;</span><span class="o">]</span><span class="p">)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="vg">$broker</span><span class="o">.</span><span class="n">readline</span>
+<span class="vg">$url</span> <span class="o">=</span> <span class="n">listening_url</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
+
+<span class="c1"># Kill the broker after all tests</span>
+<span class="no">MiniTest</span><span class="o">.</span><span class="n">after_run</span> <span class="k">do</span>
+  <span class="no">Process</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span><span class="ss">:TERM</span><span class="p">,</span> <span class="vg">$broker</span><span class="o">.</span><span class="n">pid</span><span class="p">)</span> <span class="k">if</span> <span class="vg">$broker</span>
+<span class="k">end</span>
+</pre></div>
+
+<p><a href="example_test.rb">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
