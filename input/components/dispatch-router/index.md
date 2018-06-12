@@ -44,7 +44,7 @@ they be clients, brokers or other AMQP-enabled services.  More about
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
- - [Dispatch router book]({{current_dispatch_release_url}}/book/index.html)
+ - [Dispatch router book]({{current_dispatch_release_url}}/user-guide/index.html)
  - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb={{current_dispatch_release}})
 
 </div>
