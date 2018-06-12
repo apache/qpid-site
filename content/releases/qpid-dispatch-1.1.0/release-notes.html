@@ -123,6 +123,9 @@ Dispatch</a>.</p>
 <p>For more information about this release, including download links and
 documentation, see the <a href="index.html">release overview</a>.</p>
 
+<p><strong>NOTE</strong>: In previous releases, inter-router and route container links were each created in their own sessions. This restricted the total number of links that can be established between routers or between routers and brokers,
+since the maximum number of sessions between two containers is limited to 32,768. To avoid this limitation, DISPATCH-952 changed to use a single session for all links. In concert with this change, DISPATCH-981 ensures that links initiated by the router have their name prefixed with the originating container_id, to prevent name collisions occurring during link routing. As a result of these changes, if you upgrade to Dispatch Router 1.1.0 from a prior release, any durable subscription links being routed through a router to a broker will see their subscription name change from the brokers perspective to incorporate the container_id prefix.    </p>
+
 <h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
