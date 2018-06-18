@@ -119,6 +119,8 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 <p>Qpid Broker-J is a message broker written in Java that stores, routes,
 and forwards messages using AMQP.</p>
 
+<p><strong>Note</strong>: This release addresses security vulnerability CVE-2018-8030.</p>
+
 <p>For more information about this release, including download links and
 documentation, see the <a href="index.html">release overview</a>.</p>
 
@@ -131,8 +133,15 @@ documentation, see the <a href="index.html">release overview</a>.</p>
 <h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="https://issues.apache.org/jira/browse/QPID-8203">QPID-8203</a> - [Broker-J] [AMQP 0-8...0-91] Improve maximum message size check</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8202">QPID-8202</a> - [Broker-J][AMQP 0-8...0-91] Large flowed to disk message can be re-loaded from store for every content chunk sent to the client</li>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8203">QPID-8203</a> - [Broker-J][AMQP 0-8...0-91] [CVE-2018-8030] Denial of Service Vulnerability when AMQP 0-8...0-91 messages exceed maximum size limit</li>
 <li><a href="https://issues.apache.org/jira/browse/QPID-8207">QPID-8207</a> - [Broker-J] Flow to disk might not be triggered in some circumstances</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPID-8205">QPID-8205</a> - [Broker-J] Release Qpid Broker-J 7.0.5</li>
 </ul>
 
 
