@@ -88,7 +88,7 @@ You can find older versions with our
 ### Dispatch router
 
  - [Overview]({{site_url}}/components/dispatch-router/index.html)
- - [Dispatch router book]({{current_dispatch_release_url}}/book/index.html)
+ - [Dispatch router book]({{current_dispatch_release_url}}/user-guide/index.html)
 
 </section>
 </div>
