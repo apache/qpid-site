@@ -27,8 +27,8 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid JMS 0.34.0](qpid-jms-0.34.0/index.html), June 2018
  - [Qpid Broker-J 7.0.6](qpid-broker-j-7.0.6/index.html), June 2018
- - [Qpid JMS 0.33.0](qpid-jms-0.33.0/index.html), June 2018
  - [Qpid Dispatch 1.1.0](qpid-dispatch-1.1.0/index.html), June 2018
  - [Qpid Proton 0.23.0](qpid-proton-0.23.0/index.html), May 2018
  - [Qpid JMS AMQP 0-x 6.3.1](qpid-jms-amqp-0-x-6.3.1/index.html), May 2017
@@ -43,6 +43,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid JMS 0.33.0](qpid-jms-0.33.0/index.html), June 2018
  - [Qpid Broker-J 7.0.5](qpid-broker-j-7.0.5/index.html), June 2018
  - [Qpid Broker-J 7.0.4](qpid-broker-j-7.0.4/index.html), June 2018
  - [Qpid JMS 0.32.0](qpid-jms-0.32.0/index.html), May 2018

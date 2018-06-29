@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.34.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,86 +111,31 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/components/index.html">Components</a></li><li>Qpid JMS</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.34.0/index.html">Qpid JMS 0.34.0</a></li><li>Qpid JMS 0.34.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <div id="-left-column">
+          <h1 id="qpid-jms-0340-release-notes">Qpid JMS 0.34.0 Release Notes</h1>
 
-<h1 id="qpid-jms">Qpid JMS</h1>
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
 
-<div class="feature">
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<h2 id="jms-with-the-strength-of-amqp">JMS with the strength of AMQP</h2>
-
-<p>Qpid JMS is an AMQP 1.0 <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
-using <a href="/proton/index.html">Qpid Proton</a>.</p>
-
-<p>Qpid also provides an alternate JMS client supporting
-<a href="amqp-0-x.html">earlier AMQP versions</a>.</p>
-
-</div>
-
-<h2 id="features">Features</h2>
+<h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
-<li><a href="https://jcp.org/aboutJava/communityprocess/mrel/jsr343/index.html">JMS 2.0</a>
-API</li>
-<li>Secure communication via SSL and SASL </li>
-<li>Producer flow control</li>
-<li>Failover</li>
-<li>Pure-Java implementation</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-396">QPIDJMS-396</a> - Performance improvements for inter-thread event signalling </li>
 </ul>
 
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
+<h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/0.34.0/qpid-jms-examples">Examples</a></li>
-<li><a href="/releases/qpid-jms-0.34.0/docs/index.html">Configuration</a></li>
-<li><a href="/releases/qpid-jms-0.34.0/building.html">Building Qpid JMS</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-393">QPIDJMS-393</a> - async send CompletionListener not signalled when sent while TX is in doubt</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-394">QPIDJMS-394</a> - CompletionListener can be signalled in error when send blocked waiting for failover</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-395">QPIDJMS-395</a> - remote connection closure can lead to send exception even though failover is enabled</li>
 </ul>
-
-</div>
-
-<p>For details about the AMQP 0-x JMS client, look <a href="amqp-0-x.html">here</a>.</p>
-
-</div>
-
-<div id="-right-column" class="right-column-adjusted">
-
-<h2 id="releases">Releases</h2>
-
-<ul>
-<li><a href="/releases/qpid-jms-0.34.0">Qpid JMS 0.34.0</a></li>
-<li><a href="/releases/index.html#past-releases">Past releases</a></li>
-</ul>
-
-<h2 id="issues">Issues</h2>
-
-<ul>
-<li><a href="https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12314524&amp;issuetype=1&amp;priority=3&amp;summary=[Enter%20a%20brief%20description]">Report a bug</a></li>
-<li><a href="https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12314524&amp;issuetype=4&amp;priority=3">Request an improvement</a></li>
-<li><form id="-jira-goto-form">Go to issue <input name="jira" value="QPIDJMS-"/></form></li>
-<li><a href="https://issues.apache.org/jira/browse/QPIDJMS">JIRA project page</a></li>
-</ul>
-
-<h2 id="source-code">Source code</h2>
-
-<ul>
-<li><a href="https://github.com/apache/qpid-jms">Browse via GitHub</a></li>
-<li><a href="https://git-wip-us.apache.org/repos/asf/qpid-jms.git">Git clone URL</a></li>
-</ul>
-
-<h2 id="resources">Resources</h2>
-
-<ul>
-<li><a href="security.html">Security</a></li>
-<li><a href="amqp-0-x.html">AMQP 0-x JMS Client</a></li>
-</ul>
-
-</div>
 
 
           <hr/>
