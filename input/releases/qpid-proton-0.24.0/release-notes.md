@@ -25,10 +25,11 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note**: This release contains a change in behaviour for SASL mechanism selection. The GSSAPI and GSS-SPNEGO SASL mechanisms are now disabled by default, and are only available for use if explicitly enabled. See [this comment](https://issues.apache.org/jira/browse/PROTON-1354?focusedCommentId=16528272&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-16528272) for more details on enabling use of the mechanisms.
 
 ## New features and improvements
 
- - [PROTON-1354](https://issues.apache.org/jira/browse/PROTON-1354) - Disable problematic SASL mechanisms if they are not explicitly enabled
+ - [PROTON-1354](https://issues.apache.org/jira/browse/PROTON-1354) - Disable GSSAPI and GSS-SPNEGO SASL mechanisms if they are not explicitly enabled
  - [PROTON-1683](https://issues.apache.org/jira/browse/PROTON-1683) - support static library output
  - [PROTON-1848](https://issues.apache.org/jira/browse/PROTON-1848) - [Python] Update to only support versions 2.6, 2.7 and 3.3 onwards
  - [PROTON-1850](https://issues.apache.org/jira/browse/PROTON-1850) - [Python] Split up monolithic proton __init__.py
