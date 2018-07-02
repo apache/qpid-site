@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>proton.reactor.Container</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="proton-module.html">Package&nbsp;proton</a> ::
+        <a href="proton.reactor-module.html" onclick="show_private();">Module&nbsp;reactor</a> ::
+        Class&nbsp;Container
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="proton.reactor.Container-class.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<!-- ==================== TYPE DESCRIPTION ==================== -->
+<h1 class="epydoc">type Container</h1><p class="nomargin-top"><span class="codelink"><a href="proton.reactor-pysrc.html#Container">source&nbsp;code</a></span></p>
+<center>
+
+</center>
+<hr />
+<p>A representation of the AMQP concept of a 'container', which loosely 
+  speaking is something that establishes links to or from another 
+  container, over which messages are transfered. This is an extension to 
+  the Reactor class that adds convenience methods for creating connections 
+  and sender- or receiver- links.</p>
+
+<!-- ==================== NESTED CLASSES ==================== -->
+<a name="section-NestedClasses"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Nested Classes</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.reactor.Reactor-class.html">Reactor</a></code></b>:
+      <code><a href="proton.reactor.Reactor.ErrorDelegate-class.html">ErrorDelegate</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== INSTANCE METHODS ==================== -->
+<a name="section-InstanceMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Instance Methods</span></td>
+</tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.reactor.Container-class.html#__init__" class="summary-sig-name">__init__</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">*handlers</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.__init__">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.reactor.Container-class.html#connect" class="summary-sig-name">connect</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">urls</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">address</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">handler</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">reconnect</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">heartbeat</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">ssl_domain</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">**kwargs</span>)</span><br />
+      Initiates the establishment of an AMQP connection.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.connect">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.reactor.Container-class.html#create_sender" class="summary-sig-name">create_sender</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">target</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">handler</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">tags</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initiates the establishment of a link over which messages can be 
+      sent.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.create_sender">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a href="proton.reactor.Container-class.html#create_receiver" class="summary-sig-name">create_receiver</a>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">source</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">target</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">name</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">dynamic</span>=<span class="summary-sig-default">False</span>,
+        <span class="summary-sig-arg">handler</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">options</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initiates the establishment of a link over which messages can be 
+      received (aka a subscription).</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.create_receiver">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="declare_transaction"></a><span class="summary-sig-name">declare_transaction</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">context</span>,
+        <span class="summary-sig-arg">handler</span>=<span class="summary-sig-default">None</span>,
+        <span class="summary-sig-arg">settle_before_discharge</span>=<span class="summary-sig-default">False</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.declare_transaction">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="listen"></a><span class="summary-sig-name">listen</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">url</span>,
+        <span class="summary-sig-arg">ssl_domain</span>=<span class="summary-sig-default">None</span>)</span><br />
+      Initiates a server socket, accepting incoming AMQP connections on the
+      interface and port specified.</td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.listen">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+<tr>
+    <td width="15%" align="right" valign="top" class="summary">
+      <span class="summary-type">&nbsp;</span>
+    </td><td class="summary">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td><span class="summary-sig"><a name="do_work"></a><span class="summary-sig-name">do_work</span>(<span class="summary-sig-arg">self</span>,
+        <span class="summary-sig-arg">timeout</span>=<span class="summary-sig-default">None</span>)</span></td>
+          <td align="right" valign="top">
+            <span class="codelink"><a href="proton.reactor-pysrc.html#Container.do_work">source&nbsp;code</a></span>
+            
+          </td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.reactor.Reactor-class.html">Reactor</a></code></b>:
+      <code><a href="proton.reactor.Reactor-class.html#acceptor">acceptor</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#connection">connection</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#connection_to_host">connection_to_host</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#get_connection_address">get_connection_address</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#mark">mark</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#on_error">on_error</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#on_error_delegate">on_error_delegate</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#process">process</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#push_event">push_event</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#run">run</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#schedule">schedule</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#selectable">selectable</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#set_connection_host">set_connection_host</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#start">start</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#stop">stop</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#update">update</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#wakeup">wakeup</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#yield_">yield_</a></code>
+      </p>
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton._wrapper.Wrapper-class.html">_wrapper.Wrapper</a></code></b>:
+      <code><a href="proton._wrapper.Wrapper-class.html#__del__">__del__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__delattr__">__delattr__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__eq__">__eq__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__getattr__">__getattr__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__hash__">__hash__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__ne__">__ne__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__repr__">__repr__</a></code>,
+      <code><a href="proton._wrapper.Wrapper-class.html#__setattr__">__setattr__</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== STATIC METHODS ==================== -->
+<a name="section-StaticMethods"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Static Methods</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.reactor.Reactor-class.html">Reactor</a></code></b>:
+      <code><a href="proton.reactor.Reactor-class.html#wrap">wrap</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== PROPERTIES ==================== -->
+<a name="section-Properties"></a>
+<table class="summary" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Properties</span></td>
+</tr>
+  <tr>
+    <td colspan="2" class="summary">
+    <p class="indent-wrapped-lines"><b>Inherited from <code><a href="proton.reactor.Reactor-class.html">Reactor</a></code></b>:
+      <code><a href="proton.reactor.Reactor-class.html#global_handler">global_handler</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#handler">handler</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#quiesced">quiesced</a></code>,
+      <code><a href="proton.reactor.Reactor-class.html#timeout">timeout</a></code>
+      </p>
+    </td>
+  </tr>
+</table>
+<!-- ==================== METHOD DETAILS ==================== -->
+<a name="section-MethodDetails"></a>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr bgcolor="#70b0f0" class="table-header">
+  <td align="left" colspan="2" class="table-header">
+    <span class="table-header">Method Details</span></td>
+</tr>
+</table>
+<a name="__init__"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">__init__</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">*handlers</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+    <br /><em class="fname">(Constructor)</em>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton.reactor-pysrc.html#Container.__init__">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  
+  <dl class="fields">
+    <dt>Overrides:
+        <a href="proton._wrapper.Wrapper-class.html#__init__">_wrapper.Wrapper.__init__</a>
+    </dt>
+  </dl>
+</td></tr></table>
+</div>
+<a name="connect"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">connect</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">url</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">urls</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">address</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">handler</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">reconnect</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">heartbeat</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">ssl_domain</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">**kwargs</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton.reactor-pysrc.html#Container.connect">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initiates the establishment of an AMQP connection. Returns an instance
+  of proton.Connection.</p>
+  <dl class="fields">
+    <dt>Parameters:</dt>
+    <dd><ul class="nomargin-top">
+        <li><strong class="pname"><code>url</code></strong> - URL string of process to connect to</li>
+        <li><strong class="pname"><code>urls</code></strong> - list of URL strings of process to try to connect to
+          <p>Only one of url or urls should be specified.</p></li>
+        <li><strong class="pname"><code>reconnect</code></strong> - Reconnect is enabled by default.  You can pass in an instance of 
+          Backoff to control reconnect behavior. A value of False will 
+          prevent the library from automatically trying to reconnect if the
+          underlying socket is disconnected before the connection has been 
+          closed.</li>
+        <li><strong class="pname"><code>heartbeat</code></strong> - A value in milliseconds indicating the desired frequency of 
+          heartbeats used to test the underlying socket is alive.</li>
+        <li><strong class="pname"><code>ssl_domain</code></strong> - SSL configuration in the form of an instance of proton.SSLDomain.</li>
+        <li><strong class="pname"><code>handler</code></strong> - a connection scoped handler that will be called to process any 
+          events in the scope of this connection or its child links</li>
+        <li><strong class="pname"><code>kwargs</code></strong> - 'sasl_enabled', which determines whether a sasl layer is used for
+          the connection; 'allowed_mechs', an optional string containing a 
+          space-separated list of SASL mechanisms to allow if sasl is 
+          enabled; 'allow_insecure_mechs', a flag indicating whether 
+          insecure mechanisms, such as PLAIN over a non-encrypted socket, 
+          are allowed; 'virtual_host', the hostname to set in the Open 
+          performative used by peer to determine the correct back-end 
+          service for the client. If 'virtual_host' is not supplied the 
+          host field from the URL is used instead; 'user', the user to 
+          authenticate; 'password', the authentication secret.</li>
+    </ul></dd>
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_sender"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_sender</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">target</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">source</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">handler</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">tags</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton.reactor-pysrc.html#Container.create_sender">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initiates the establishment of a link over which messages can be sent.
+  Returns an instance of proton.Sender.</p>
+  <p>There are two patterns of use. (1) A connection can be passed as the 
+  first argument, in which case the link is established on that connection.
+  In this case the target address can be specified as the second argument 
+  (or as a keyword argument). The source address can also be specified if 
+  desired. (2) Alternatively a URL can be passed as the first argument. In 
+  this case a new connection will be established on which the link will be 
+  attached. If a path is specified and the target is not, then the path of 
+  the URL is used as the target address.</p>
+  <p>The name of the link may be specified if desired, otherwise a unique 
+  name will be generated.</p>
+  <p>Various LinkOptions can be specified to further control the 
+  attachment.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<a name="create_receiver"></a>
+<div>
+<table class="details" border="1" cellpadding="3"
+       cellspacing="0" width="100%" bgcolor="white">
+<tr><td>
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr valign="top"><td>
+  <h3 class="epydoc"><span class="sig"><span class="sig-name">create_receiver</span>(<span class="sig-arg">self</span>,
+        <span class="sig-arg">context</span>,
+        <span class="sig-arg">source</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">target</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">name</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">dynamic</span>=<span class="sig-default">False</span>,
+        <span class="sig-arg">handler</span>=<span class="sig-default">None</span>,
+        <span class="sig-arg">options</span>=<span class="sig-default">None</span>)</span>
+  </h3>
+  </td><td align="right" valign="top"
+    ><span class="codelink"><a href="proton.reactor-pysrc.html#Container.create_receiver">source&nbsp;code</a></span>&nbsp;
+    </td>
+  </tr></table>
+  
+  <p>Initiates the establishment of a link over which messages can be 
+  received (aka a subscription). Returns an instance of 
+  proton.Receiver.</p>
+  <p>There are two patterns of use. (1) A connection can be passed as the 
+  first argument, in which case the link is established on that connection.
+  In this case the source address can be specified as the second argument 
+  (or as a keyword argument). The target address can also be specified if 
+  desired. (2) Alternatively a URL can be passed as the first argument. In 
+  this case a new connection will be established on which the link will be 
+  attached. If a path is specified and the source is not, then the path of 
+  the URL is used as the target address.</p>
+  <p>The name of the link may be specified if desired, otherwise a unique 
+  name will be generated.</p>
+  <p>Various LinkOptions can be specified to further control the 
+  attachment.</p>
+  <dl class="fields">
+  </dl>
+</td></tr></table>
+</div>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

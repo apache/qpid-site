@@ -1,0 +1,939 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>API Overview &#8212; Apache Qpid Proton 0.24.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.24.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Apache Qpid Proton 0.24.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">API Overview</a><ul>
+<li><a class="reference internal" href="#an-overview-of-the-model">An overview of the model</a></li>
+<li><a class="reference internal" href="#a-summary-of-the-most-commonly-used-classes-and-members">A summary of the most commonly used classes and members</a></li>
+<li><a class="reference internal" href="#delivery-guarantees">Delivery guarantees</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="previous chapter">Tutorial</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/overview.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="api-overview">
+<h1>API Overview<a class="headerlink" href="#api-overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="an-overview-of-the-model">
+<h2>An overview of the model<a class="headerlink" href="#an-overview-of-the-model" title="Permalink to this headline">¶</a></h2>
+<p>Messages are transferred between connected peers over &#8216;links&#8217;. At the
+sending peer the link is called a sender. At the receiving peer it is
+called a receiver. Messages are sent by senders and received by
+receivers. Links may have named &#8216;source&#8217; and &#8216;target&#8217; addresses (for
+example to identify the queue from which message were to be received
+or to which they were to be sent).</p>
+<p>Links are established over sessions. Sessions are established over
+connections. Connections are (generally) established between two
+uniquely identified containers. Though a connection can have multiple
+sessions, often this is not needed. The container API allows you to
+ignore sessions unless you actually require them.</p>
+<p>The sending of a message over a link is called a delivery. The message
+is the content sent, including all meta-data such as headers and
+annotations. The delivery is the protocol exchange associated with the
+transfer of that content.</p>
+<p>To indicate that a delivery is complete, either the sender or the
+receiver &#8216;settles&#8217; it. When the other side learns that it has been
+settled, they will no longer communicate about that delivery. The
+receiver can also indicate whether they accept or reject the
+message.</p>
+<p>Three different delivery levels or &#8216;guarantees&#8217; can be achieved:
+at-most-once, at-least-once or exactly-once. See
+<a class="reference internal" href="#delivery-guarantees"><span class="std std-ref">Delivery guarantees</span></a> for more detail.</p>
+</div>
+<div class="section" id="a-summary-of-the-most-commonly-used-classes-and-members">
+<h2>A summary of the most commonly used classes and members<a class="headerlink" href="#a-summary-of-the-most-commonly-used-classes-and-members" title="Permalink to this headline">¶</a></h2>
+<p>A brief summary of some of the key classes follows.</p>
+<p>The <a class="reference internal" href="#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal"><span class="pre">Container</span></code></a> class is a convenient entry
+point into the API, allowing connections and links to be
+established. Applications are structured as one or more event
+handlers. Handlers can be set at Container, Connection, or Link
+scope. Messages are sent by establishing an appropriate sender and
+invoking its <a class="reference internal" href="#proton.Sender.send" title="proton.Sender.send"><code class="xref py py-meth docutils literal"><span class="pre">send()</span></code></a> method. This is
+typically done when the sender is sendable, a condition indicated by
+the <a class="reference internal" href="#proton.handlers.MessagingHandler.on_sendable" title="proton.handlers.MessagingHandler.on_sendable"><code class="xref py py-meth docutils literal"><span class="pre">on_sendable()</span></code></a> event, to
+avoid excessive build up of messages. Messages can be received by
+establishing an appropriate receiver and handling the
+<a class="reference internal" href="#proton.handlers.MessagingHandler.on_message" title="proton.handlers.MessagingHandler.on_message"><code class="xref py py-meth docutils literal"><span class="pre">on_message()</span></code></a> event.</p>
+<dl class="class">
+<dt id="proton.reactor.Container">
+<em class="property">class </em><code class="descclassname">proton.reactor.</code><code class="descname">Container</code><span class="sig-paren">(</span><em>*handlers</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">proton.reactor.Reactor</span></code></p>
+<p>A representation of the AMQP concept of a &#8216;container&#8217;, which
+loosely speaking is something that establishes links to or from
+another container, over which messages are transfered. This is
+an extension to the Reactor class that adds convenience methods
+for creating connections and sender- or receiver- links.</p>
+<dl class="attribute">
+<dt id="Container.container_id">
+<code class="descname">container_id</code><a class="headerlink" href="#Container.container_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The identifier used to identify this container in any
+connections it establishes. Container names should be
+unique. By default a UUID will be used.</p>
+</dd></dl>
+
+<p>The <a class="reference internal" href="#proton.reactor.Container.connect" title="proton.reactor.Container.connect"><code class="xref py py-meth docutils literal"><span class="pre">connect()</span></code></a> method returns
+an instance of <a class="reference internal" href="#proton.Connection" title="proton.Connection"><code class="xref py py-class docutils literal"><span class="pre">Connection</span></code></a>, the
+<a class="reference internal" href="#proton.reactor.Container.create_receiver" title="proton.reactor.Container.create_receiver"><code class="xref py py-meth docutils literal"><span class="pre">create_receiver()</span></code></a> method
+returns an instance of <a class="reference internal" href="#proton.Receiver" title="proton.Receiver"><code class="xref py py-class docutils literal"><span class="pre">Receiver</span></code></a> and the
+<a class="reference internal" href="#proton.reactor.Container.create_sender" title="proton.reactor.Container.create_sender"><code class="xref py py-meth docutils literal"><span class="pre">create_sender()</span></code></a> method
+returns an instance of <a class="reference internal" href="#proton.Sender" title="proton.Sender"><code class="xref py py-class docutils literal"><span class="pre">Sender</span></code></a>.</p>
+<dl class="method">
+<dt id="proton.reactor.Container.connect">
+<code class="descname">connect</code><span class="sig-paren">(</span><em>url=None</em>, <em>urls=None</em>, <em>address=None</em>, <em>handler=None</em>, <em>reconnect=None</em>, <em>heartbeat=None</em>, <em>ssl_domain=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of an AMQP connection. Returns an
+instance of proton.Connection.</p>
+<p>&#64;param url: URL string of process to connect to</p>
+<p>&#64;param urls: list of URL strings of process to try to connect to</p>
+<p>Only one of url or urls should be specified.</p>
+<p>&#64;param reconnect: Reconnect is enabled by default.  You can
+pass in an instance of Backoff to control reconnect behavior.
+A value of False will prevent the library from automatically
+trying to reconnect if the underlying socket is disconnected
+before the connection has been closed.</p>
+<p>&#64;param heartbeat: A value in milliseconds indicating the
+desired frequency of heartbeats used to test the underlying
+socket is alive.</p>
+<p>&#64;param ssl_domain: SSL configuration in the form of an
+instance of proton.SSLDomain.</p>
+<p>&#64;param handler: a connection scoped handler that will be
+called to process any events in the scope of this connection
+or its child links</p>
+<p>&#64;param kwargs: &#8216;sasl_enabled&#8217;, which determines whether a sasl
+layer is used for the connection; &#8216;allowed_mechs&#8217;, an optional
+string containing a space-separated list of SASL mechanisms to
+allow if sasl is enabled; &#8216;allow_insecure_mechs&#8217;, a flag
+indicating whether insecure mechanisms, such as PLAIN over a
+non-encrypted socket, are allowed; &#8216;virtual_host&#8217;, the
+hostname to set in the Open performative used by peer to
+determine the correct back-end service for the client. If
+&#8216;virtual_host&#8217; is not supplied the host field from the URL is
+used instead; &#8216;user&#8217;, the user to authenticate; &#8216;password&#8217;,
+the authentication secret.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.reactor.Container.create_receiver">
+<code class="descname">create_receiver</code><span class="sig-paren">(</span><em>context</em>, <em>source=None</em>, <em>target=None</em>, <em>name=None</em>, <em>dynamic=False</em>, <em>handler=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container.create_receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of a link over which messages can
+be received (aka a subscription). Returns an instance of
+proton.Receiver.</p>
+<p>There are two patterns of use. (1) A connection can be passed
+as the first argument, in which case the link is established
+on that connection. In this case the source address can be
+specified as the second argument (or as a keyword
+argument). The target address can also be specified if
+desired. (2) Alternatively a URL can be passed as the first
+argument. In this case a new connection will be established on
+which the link will be attached. If a path is specified and
+the source is not, then the path of the URL is used as the
+target address.</p>
+<p>The name of the link may be specified if desired, otherwise a
+unique name will be generated.</p>
+<p>Various LinkOptions can be specified to further control the
+attachment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.reactor.Container.create_sender">
+<code class="descname">create_sender</code><span class="sig-paren">(</span><em>context</em>, <em>target=None</em>, <em>source=None</em>, <em>name=None</em>, <em>handler=None</em>, <em>tags=None</em>, <em>options=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container.create_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of a link over which messages can
+be sent. Returns an instance of proton.Sender.</p>
+<p>There are two patterns of use. (1) A connection can be passed
+as the first argument, in which case the link is established
+on that connection. In this case the target address can be
+specified as the second argument (or as a keyword
+argument). The source address can also be specified if
+desired. (2) Alternatively a URL can be passed as the first
+argument. In this case a new connection will be established on
+which the link will be attached. If a path is specified and
+the target is not, then the path of the URL is used as the
+target address.</p>
+<p>The name of the link may be specified if desired, otherwise a
+unique name will be generated.</p>
+<p>Various LinkOptions can be specified to further control the
+attachment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.reactor.Container.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="proton.reactor.Container.schedule">
+<code class="descname">schedule</code><span class="sig-paren">(</span><em>delay</em>, <em>task</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.reactor.Container.schedule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Connection">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Connection</code><span class="sig-paren">(</span><em>impl=&lt;built-in function pn_connection&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>A representation of an AMQP connection</p>
+<dl class="method">
+<dt id="proton.Connection.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Connection.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closes the connection.</p>
+<p>In more detail, this moves the local state of the connection to
+the CLOSED state and triggers a close frame to be sent to the
+peer. A connection is fully closed once both peers have closed it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.container">
+<code class="descname">container</code><a class="headerlink" href="#proton.Connection.container" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.hostname">
+<code class="descname">hostname</code><a class="headerlink" href="#proton.Connection.hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the name of the host (either fully qualified or relative) to which this
+connection is connecting to.  This information may be used by the remote
+peer to determine the correct back-end service to connect the client to.
+This value will be sent in the Open performative, and will be used by SSL
+and SASL layers to identify the peer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Connection.open">
+<code class="descname">open</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Connection.open" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens the connection.</p>
+<p>In more detail, this moves the local state of the connection to
+the ACTIVE state and triggers an open frame to be sent to the
+peer. A connection is fully active once both peers have opened it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.remote_container">
+<code class="descname">remote_container</code><a class="headerlink" href="#proton.Connection.remote_container" title="Permalink to this definition">¶</a></dt>
+<dd><p>The container identifier specified by the remote peer for this connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.remote_desired_capabilities">
+<code class="descname">remote_desired_capabilities</code><a class="headerlink" href="#proton.Connection.remote_desired_capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>The capabilities desired by the remote peer for this connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.remote_hostname">
+<code class="descname">remote_hostname</code><a class="headerlink" href="#proton.Connection.remote_hostname" title="Permalink to this definition">¶</a></dt>
+<dd><p>The hostname specified by the remote peer for this connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.remote_offered_capabilities">
+<code class="descname">remote_offered_capabilities</code><a class="headerlink" href="#proton.Connection.remote_offered_capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>The capabilities offered by the remote peer for this connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.remote_properties">
+<code class="descname">remote_properties</code><a class="headerlink" href="#proton.Connection.remote_properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>The properties specified by the remote peer for this connection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Connection.session">
+<code class="descname">session</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Connection.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a new session on this connection.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Connection.state">
+<code class="descname">state</code><a class="headerlink" href="#proton.Connection.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>The state of the connection as a bit field. The state has a local
+and a remote component. Each of these can be in one of three
+states: UNINIT, ACTIVE or CLOSED. These can be tested by masking
+against LOCAL_UNINIT, LOCAL_ACTIVE, LOCAL_CLOSED, REMOTE_UNINIT,
+REMOTE_ACTIVE and REMOTE_CLOSED.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Receiver">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Receiver</code><span class="sig-paren">(</span><em>impl</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">proton._endpoints.Link</span></code></p>
+<p>A link over which messages are received.</p>
+<dl class="method">
+<dt id="proton.Receiver.drain">
+<code class="descname">drain</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Receiver.drain" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="proton.Receiver.draining">
+<code class="descname">draining</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Receiver.draining" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="proton.Receiver.flow">
+<code class="descname">flow</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Receiver.flow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Increases the credit issued to the remote sender by the specified number of messages.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Receiver.recv">
+<code class="descname">recv</code><span class="sig-paren">(</span><em>limit</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Receiver.recv" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Sender">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Sender</code><span class="sig-paren">(</span><em>impl</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">proton._endpoints.Link</span></code></p>
+<p>A link over which messages are sent.</p>
+<dl class="method">
+<dt id="proton.Sender.offered">
+<code class="descname">offered</code><span class="sig-paren">(</span><em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Sender.offered" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="proton.Sender.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>obj</em>, <em>tag=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Sender.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send specified object over this sender; the object is expected to
+have a send() method on it that takes the sender and an optional
+tag as arguments.</p>
+<p>Where the object is a Message, this will send the message over
+this link, creating a new delivery for the purpose.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Link">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Link</code><span class="sig-paren">(</span><em>impl</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Link" title="Permalink to this definition">¶</a></dt>
+<dd><p>A representation of an AMQP link, of which there are two concrete
+implementations, Sender and Receiver.</p>
+<p>The <a class="reference internal" href="#proton.Link.source" title="proton.Link.source"><code class="xref py py-meth docutils literal"><span class="pre">source()</span></code></a>,
+<a class="reference internal" href="#proton.Link.target" title="proton.Link.target"><code class="xref py py-meth docutils literal"><span class="pre">target()</span></code></a>,
+<a class="reference internal" href="#proton.Link.remote_source" title="proton.Link.remote_source"><code class="xref py py-meth docutils literal"><span class="pre">remote_source()</span></code></a> and
+<a class="reference internal" href="#proton.Link.remote_target" title="proton.Link.remote_target"><code class="xref py py-meth docutils literal"><span class="pre">remote_target()</span></code></a> methods all return an
+instance of <a class="reference internal" href="#proton.Terminus" title="proton.Terminus"><code class="xref py py-class docutils literal"><span class="pre">Terminus</span></code></a>.</p>
+<dl class="attribute">
+<dt id="proton.Link.connection">
+<code class="descname">connection</code><a class="headerlink" href="#proton.Link.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>The connection on which this link was attached.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.credit">
+<code class="descname">credit</code><a class="headerlink" href="#proton.Link.credit" title="Permalink to this definition">¶</a></dt>
+<dd><p>The amount of outstanding credit on this link.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.is_receiver">
+<code class="descname">is_receiver</code><a class="headerlink" href="#proton.Link.is_receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if this link is a receiver.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.is_sender">
+<code class="descname">is_sender</code><a class="headerlink" href="#proton.Link.is_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if this link is a sender.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.name">
+<code class="descname">name</code><a class="headerlink" href="#proton.Link.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the link</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.queued">
+<code class="descname">queued</code><a class="headerlink" href="#proton.Link.queued" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.remote_source">
+<code class="descname">remote_source</code><a class="headerlink" href="#proton.Link.remote_source" title="Permalink to this definition">¶</a></dt>
+<dd><p>The source of the link as described by the remote peer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.remote_target">
+<code class="descname">remote_target</code><a class="headerlink" href="#proton.Link.remote_target" title="Permalink to this definition">¶</a></dt>
+<dd><p>The target of the link as described by the remote peer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.session">
+<code class="descname">session</code><a class="headerlink" href="#proton.Link.session" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.source">
+<code class="descname">source</code><a class="headerlink" href="#proton.Link.source" title="Permalink to this definition">¶</a></dt>
+<dd><p>The source of the link as described by the local peer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.state">
+<code class="descname">state</code><a class="headerlink" href="#proton.Link.state" title="Permalink to this definition">¶</a></dt>
+<dd><p>The state of the link as a bit field. The state has a local
+and a remote component. Each of these can be in one of three
+states: UNINIT, ACTIVE or CLOSED. These can be tested by masking
+against LOCAL_UNINIT, LOCAL_ACTIVE, LOCAL_CLOSED, REMOTE_UNINIT,
+REMOTE_ACTIVE and REMOTE_CLOSED.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Link.target">
+<code class="descname">target</code><a class="headerlink" href="#proton.Link.target" title="Permalink to this definition">¶</a></dt>
+<dd><p>The target of the link as described by the local peer.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Delivery">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Delivery</code><span class="sig-paren">(</span><em>impl</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Delivery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tracks and/or records the delivery of a message over a link.</p>
+<dl class="attribute">
+<dt id="proton.Delivery.connection">
+<code class="descname">connection</code><a class="headerlink" href="#proton.Delivery.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the connection over which the delivery was sent or received.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.link">
+<code class="descname">link</code><a class="headerlink" href="#proton.Delivery.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the link on which the delivery was sent or received.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.local_state">
+<code class="descname">local_state</code><a class="headerlink" href="#proton.Delivery.local_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the local state of the delivery.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.partial">
+<code class="descname">partial</code><a class="headerlink" href="#proton.Delivery.partial" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true for an incoming delivery if not all the data is
+yet available.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.readable">
+<code class="descname">readable</code><a class="headerlink" href="#proton.Delivery.readable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true for an incoming delivery that has data to read.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.remote_state">
+<code class="descname">remote_state</code><a class="headerlink" href="#proton.Delivery.remote_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the state of the delivery as indicated by the remote
+peer.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.session">
+<code class="descname">session</code><a class="headerlink" href="#proton.Delivery.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the session over which the delivery was sent or received.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Delivery.settle">
+<code class="descname">settle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Delivery.settle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settles the delivery locally. This indicates the application
+considers the delivery complete and does not wish to receive any
+further events about it. Every delivery should be settled locally.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.settled">
+<code class="descname">settled</code><a class="headerlink" href="#proton.Delivery.settled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the delivery has been settled by the remote peer.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Delivery.update">
+<code class="descname">update</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Delivery.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the local state of the delivery e.g. ACCEPTED, REJECTED, RELEASED.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Delivery.writable">
+<code class="descname">writable</code><a class="headerlink" href="#proton.Delivery.writable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true for an outgoing delivery to which data can now be written.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.handlers.MessagingHandler">
+<em class="property">class </em><code class="descclassname">proton.handlers.</code><code class="descname">MessagingHandler</code><span class="sig-paren">(</span><em>prefetch=10</em>, <em>auto_accept=True</em>, <em>auto_settle=True</em>, <em>peer_close_is_error=False</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>A general purpose handler that makes the proton-c events somewhat
+simpler to deal with and/or avoids repetitive tasks for common use
+cases.</p>
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.accept">
+<code class="descname">accept</code><span class="sig-paren">(</span><em>delivery</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts a received message.</p>
+<p>Note that this method cannot currently be used in combination
+with transactions.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_accepted">
+<code class="descname">on_accepted</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_accepted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer accepts an outgoing message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_connection_error">
+<code class="descname">on_connection_error</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_connection_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the connection with an error condition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_disconnected">
+<code class="descname">on_disconnected</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the socket is disconnected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_link_error">
+<code class="descname">on_link_error</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_link_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the link with an error condition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_message">
+<code class="descname">on_message</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a message is received. The message itself can be
+obtained as a property on the event. For the purpose of
+referring to this message in further actions (e.g. if
+explicitly accepting it, the <code class="docutils literal"><span class="pre">delivery</span></code> should be used, also
+obtainable via a property on the event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_reactor_init">
+<code class="descname">on_reactor_init</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_reactor_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop - the reactor - starts.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_rejected">
+<code class="descname">on_rejected</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_rejected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer rejects an outgoing message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_sendable">
+<code class="descname">on_sendable</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_sendable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the sender link has credit and messages can
+therefore be transferred.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_session_error">
+<code class="descname">on_session_error</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_session_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the session with an error condition.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_settled">
+<code class="descname">on_settled</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_settled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer has settled the outgoing
+message. This is the point at which it should never be
+retransmitted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.on_start">
+<code class="descname">on_start</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.on_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop starts. (Just an alias for on_reactor_init)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.reject">
+<code class="descname">reject</code><span class="sig-paren">(</span><em>delivery</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejects a received message that is considered invalid or
+unprocessable.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.release">
+<code class="descname">release</code><span class="sig-paren">(</span><em>delivery</em>, <em>delivered=True</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Releases a received message, making it available at the source
+for any (other) interested receiver. The <code class="docutils literal"><span class="pre">delivered</span></code>
+parameter indicates whether this should be considered a
+delivery attempt (and the delivery count updated) or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.handlers.MessagingHandler.settle">
+<code class="descname">settle</code><span class="sig-paren">(</span><em>delivery</em>, <em>state=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.MessagingHandler.settle" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Event">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Event</code><span class="sig-paren">(</span><em>impl</em>, <em>number</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Event" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="proton.Event.connection">
+<code class="descname">connection</code><a class="headerlink" href="#proton.Event.connection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the connection associated with the event, or null if none is associated with it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.context">
+<code class="descname">context</code><a class="headerlink" href="#proton.Event.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the context object associated with the event. The type of this depend on the type of event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.delivery">
+<code class="descname">delivery</code><a class="headerlink" href="#proton.Event.delivery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the delivery associated with the event, or null if none is associated with it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.link">
+<code class="descname">link</code><a class="headerlink" href="#proton.Event.link" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the link associated with the event, or null if none is associated with it.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.reactor">
+<code class="descname">reactor</code><a class="headerlink" href="#proton.Event.reactor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the reactor associated with the event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.receiver">
+<code class="descname">receiver</code><a class="headerlink" href="#proton.Event.receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the receiver link associated with the event, or null if
+none is associated with it. This is essentially an alias for
+link(), that does an additional checkon the type of the link.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.sender">
+<code class="descname">sender</code><a class="headerlink" href="#proton.Event.sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the sender link associated with the event, or null if
+none is associated with it. This is essentially an alias for
+link(), that does an additional checkon the type of the
+link.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Event.session">
+<code class="descname">session</code><a class="headerlink" href="#proton.Event.session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the session associated with the event, or null if none is associated with it.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Message">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Message</code><span class="sig-paren">(</span><em>body=None</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Message" title="Permalink to this definition">¶</a></dt>
+<dd><p>The L{Message} class is a mutable holder of message content.</p>
+<p>&#64;ivar instructions: delivery instructions for the message
+&#64;type instructions: dict
+&#64;ivar annotations: infrastructure defined message annotations
+&#64;type annotations: dict
+&#64;ivar properties: application defined message properties
+&#64;type properties: dict
+&#64;ivar body: message body
+&#64;type body: bytes | unicode | dict | list | int | long | float | UUID</p>
+<dl class="attribute">
+<dt id="proton.Message.address">
+<code class="descname">address</code><a class="headerlink" href="#proton.Message.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.content_encoding">
+<code class="descname">content_encoding</code><a class="headerlink" href="#proton.Message.content_encoding" title="Permalink to this definition">¶</a></dt>
+<dd><p>The content-encoding of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.content_type">
+<code class="descname">content_type</code><a class="headerlink" href="#proton.Message.content_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The content-type of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.correlation_id">
+<code class="descname">correlation_id</code><a class="headerlink" href="#proton.Message.correlation_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The correlation-id for the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.creation_time">
+<code class="descname">creation_time</code><a class="headerlink" href="#proton.Message.creation_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The creation time of the message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Message.decode">
+<code class="descname">decode</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Message.decode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.delivery_count">
+<code class="descname">delivery_count</code><a class="headerlink" href="#proton.Message.delivery_count" title="Permalink to this definition">¶</a></dt>
+<dd><p>The number of delivery attempts made for this message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.durable">
+<code class="descname">durable</code><a class="headerlink" href="#proton.Message.durable" title="Permalink to this definition">¶</a></dt>
+<dd><p>The durable property indicates that the message should be held durably
+by any intermediaries taking responsibility for the message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Message.encode">
+<code class="descname">encode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.Message.encode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.expiry_time">
+<code class="descname">expiry_time</code><a class="headerlink" href="#proton.Message.expiry_time" title="Permalink to this definition">¶</a></dt>
+<dd><p>The expiry time of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.first_acquirer">
+<code class="descname">first_acquirer</code><a class="headerlink" href="#proton.Message.first_acquirer" title="Permalink to this definition">¶</a></dt>
+<dd><p>True iff the recipient is the first to acquire the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.group_id">
+<code class="descname">group_id</code><a class="headerlink" href="#proton.Message.group_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The group id of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.group_sequence">
+<code class="descname">group_sequence</code><a class="headerlink" href="#proton.Message.group_sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sequence of the message within its group.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.id">
+<code class="descname">id</code><a class="headerlink" href="#proton.Message.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The id of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.priority">
+<code class="descname">priority</code><a class="headerlink" href="#proton.Message.priority" title="Permalink to this definition">¶</a></dt>
+<dd><p>The priority of the message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Message.recv">
+<code class="descname">recv</code><span class="sig-paren">(</span><em>link</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Message.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Receives and decodes the message content for the current delivery
+from the link. Upon success it will return the current delivery
+for the link. If there is no current delivery, or if the current
+delivery is incomplete, or if the link is not a receiver, it will
+return None.</p>
+<p>&#64;type link: Link
+&#64;param link: the link to receive a message from
+&#64;return the delivery associated with the decoded message (or None)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.reply_to">
+<code class="descname">reply_to</code><a class="headerlink" href="#proton.Message.reply_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>The reply-to address for the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.reply_to_group_id">
+<code class="descname">reply_to_group_id</code><a class="headerlink" href="#proton.Message.reply_to_group_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The group-id for any replies.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="proton.Message.send">
+<code class="descname">send</code><span class="sig-paren">(</span><em>sender</em>, <em>tag=None</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Message.send" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.subject">
+<code class="descname">subject</code><a class="headerlink" href="#proton.Message.subject" title="Permalink to this definition">¶</a></dt>
+<dd><p>The subject of the message.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.ttl">
+<code class="descname">ttl</code><a class="headerlink" href="#proton.Message.ttl" title="Permalink to this definition">¶</a></dt>
+<dd><p>The time to live of the message measured in seconds. Expired messages
+may be dropped.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Message.user_id">
+<code class="descname">user_id</code><a class="headerlink" href="#proton.Message.user_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>The user id of the message creator.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="proton.Terminus">
+<em class="property">class </em><code class="descclassname">proton.</code><code class="descname">Terminus</code><span class="sig-paren">(</span><em>impl</em><span class="sig-paren">)</span><a class="headerlink" href="#proton.Terminus" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="proton.Terminus.address">
+<code class="descname">address</code><a class="headerlink" href="#proton.Terminus.address" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address that identifies the source or target node</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Terminus.capabilities">
+<code class="descname">capabilities</code><a class="headerlink" href="#proton.Terminus.capabilities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Capabilities of the source or target.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Terminus.dynamic">
+<code class="descname">dynamic</code><a class="headerlink" href="#proton.Terminus.dynamic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates whether the source or target node was dynamically
+created</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Terminus.filter">
+<code class="descname">filter</code><a class="headerlink" href="#proton.Terminus.filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A filter on a source allows the set of messages transfered over
+the link to be restricted</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="proton.Terminus.properties">
+<code class="descname">properties</code><a class="headerlink" href="#proton.Terminus.properties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Properties of a dynamic source or target.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="delivery-guarantees">
+<span id="id1"></span><h2>Delivery guarantees<a class="headerlink" href="#delivery-guarantees" title="Permalink to this headline">¶</a></h2>
+<p>For at-most-once, the sender settles the message as soon as it sends
+it. If the connection is lost before the message is received by the
+receiver, the message will not be delivered.</p>
+<p>For at-least-once, the receiver accepts and settles the message on
+receipt. If the connection is lost before the sender is informed of
+the settlement, then the delivery is considered in-doubt and should be
+retried. This will ensure it eventually gets delivered (provided of
+course the connection and link can be reestablished). It may mean that
+it is delivered multiple times though.</p>
+<p>Finally, for exactly-once, the receiver accepts the message but
+doesn&#8217;t settle it. The sender settles once it is aware that the
+receiver accepted it. In this way the receiver retains knowledge of an
+accepted message until it is sure the sender knows it has been
+accepted. If the connection is lost before settlement, the receiver
+informs the sender of all the unsettled deliveries it knows about, and
+from this the sender can deduce which need to be redelivered. The
+sender likewise informs the receiver which deliveries it knows about,
+from which the receiver can deduce which have already been settled.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Apache Qpid Proton 0.24.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2015, Apache Qpid.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.
+    </div>
+  </body>
+</html>
