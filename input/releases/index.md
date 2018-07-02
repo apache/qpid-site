@@ -121,23 +121,6 @@ the
  - [Qpid JMS 0.8.0](qpid-jms-0.8.0/index.html), February 2016
  - [Qpid for Java 6.0.1](qpid-java-6.0.1/index.html), February 2016
  - [Qpid Proton 0.12.0](qpid-proton-0.12.0/index.html), February 2016
- - [Qpid for Java 6.0.0](qpid-java-6.0.0/index.html), December 2015
- - [Qpid JMS 0.7.0](qpid-jms-0.7.0/index.html), December 2015
- - [Qpid Proton 0.11.1](qpid-proton-0.11.1/index.html), December 2015
- - [Qpid Proton 0.11.0](qpid-proton-0.11.0/index.html), November 2015
- - [Qpid JMS 0.6.0](qpid-jms-0.6.0/index.html), October 2015
- - [Qpid Dispatch 0.5](qpid-dispatch-0.5/index.html), September 2015
- - [Qpid Proton 0.10](qpid-proton-0.10/index.html), August 2015
- - [Qpid JMS 0.5.0](qpid-jms-0.5.0/index.html), August 2015
- - [Qpid JMS 0.4.0](qpid-jms-0.4.0/index.html), August 2015
- - [Qpid C++ 0.34](qpid-cpp-0.34/index.html), June 2015
- - [Qpid JMS 0.3.0](qpid-jms-0.3.0/index.html), June 2015
- - [Qpid Proton 0.9.1](qpid-proton-0.9.1/index.html), May 2015
- - [Qpid JMS 0.2.0](qpid-jms-0.2.0/index.html), May 2015
- - [Qpid Dispatch 0.4](qpid-dispatch-0.4/index.html), April 2015
- - [Qpid JMS 0.1.0](qpid-jms-0.1.0/index.html), March 2015
- - [Qpid Proton 0.9](qpid-proton-0.9/index.html), March 2015
- - [Qpid Dispatch 0.3](qpid-dispatch-0.3/index.html), January 2015
 
 </div>
 
