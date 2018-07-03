@@ -28,9 +28,9 @@ def gen_dispatch_docs(release, source_dir, output_dir):
     with working_dir(build_dir):
         call("cmake {}", source_dir)
         call("make")
-        call("make doc")
+        call("make docs")
 
-    man_build_dir = join(build_dir, "doc", "man")
+    man_build_dir = join(build_dir, "docs", "man")
 
     for f in list_dir(man_build_dir, "*.html.in"):
         input_file = join(man_build_dir, f)
@@ -38,7 +38,7 @@ def gen_dispatch_docs(release, source_dir, output_dir):
 
         copy(input_file, output_file)
 
-    book_input_dir = join(source_dir, "doc", "new-book")
+    book_input_dir = join(source_dir, "docs", "books", "user-guide")
     book_input_file = join(book_input_dir, "book.adoc")
     book_output_dir = join(output_dir, "user-guide")
     book_output_file = join(book_output_dir, "index.html.in")
