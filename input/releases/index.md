@@ -27,6 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.28.0](qpid-proton-j-0.28.0/index.html), July 2018
  - [Qpid Proton-J 0.27.2](qpid-proton-j-0.27.2/index.html), July 2018
  - [Qpid Dispatch 1.2.0](qpid-dispatch-1.2.0/index.html), July 2018
  - [Qpid Proton 0.24.0](qpid-proton-0.24.0/index.html), June 2018
