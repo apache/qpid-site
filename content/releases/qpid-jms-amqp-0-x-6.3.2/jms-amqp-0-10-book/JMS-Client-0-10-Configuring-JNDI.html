@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>2.2.&#160;JNDI Properties - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-amqp-0-x-6.3.2/index.html">Qpid JMS AMQP 0-x 6.3.2</a></li><li><a href="/releases/qpid-jms-amqp-0-x-6.3.2/jms-amqp-0-10-book/index.html">Apache Qpid JMS Client for AMQP 0-10</a></li><li>2.2.&#160;JNDI Properties</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.2.&#160;JNDI Properties</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-10-Configuring.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;Configuring the Client</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-10-Configuring-JVM-Properties.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-10-Configuring-JNDI"></a>2.2.&#160;JNDI Properties</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="d0e159"></a>2.2.1.&#160;Properties File Format</h3></div></div></div><p>
+	The Client defines JNDI properties that can be used to specify JMS Connections and Destinations. Here is a typical JNDI properties file:
+      </p><div class="example"><a id="d0e164"></a><p class="title"><strong>Example&#160;2.1.&#160;JNDI Properties File</strong></p><div class="example-contents"><pre class="programlisting">
+java.naming.factory.initial
+= org.apache.qpid.jndi.PropertiesFileInitialContextFactory
+
+# connectionfactory.[jndiname] = [ConnectionURL]
+connectionfactory.qpidConnectionfactory
+= amqp://guest:guest@clientid/test?brokerlist='tcp://localhost:5672'
+# destination.[jndiname] = [address_string]
+destination.topicExchange = amq.topic</pre></div></div><br class="example-break" /><p>The following sections describe the JNDI properties syntax that Qpid uses.</p><div class="table"><a id="d0e171"></a><p class="title"><strong>Table&#160;2.1.&#160;JNDI Properties syntax</strong></p><div class="table-contents"><table border="1" summary="JNDI Properties syntax"><colgroup><col /><col /></colgroup><thead><tr><th>
+		  Property
+	        </th><th>
+		  Purpose
+	        </th></tr></thead><tbody><tr><td>
+		  connectionfactory.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    The Connection URL that the connection factory uses to perform connections.
+		  </p>
+	        </td></tr><tr><td>
+		  queue.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS queue, which is implemented as an amq.direct exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  topic.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    A JMS topic, which is implemented as an amq.topic exchange in Apache Qpid.
+		  </p>
+	        </td></tr><tr><td>
+		  destination.&lt;jndiname&gt;
+	        </td><td>
+		  <p>
+		    Can be used for defining all amq destinations,
+		    queues, topics and header matching, using an
+		    address string.
+
+		    <a class="footnote" href="#ftn.d0e213" id="d0e213"><sup class="footnote">[a]</sup></a>
+		  </p>
+	        </td></tr></tbody><tbody class="footnotes"><tr><td colspan="2"><div class="footnote" id="ftn.d0e213"><p><a class="para" href="#d0e213"><sup class="para">[a] </sup></a>Binding URLs, which were used in
+		    earlier versions of the Client, can
+		    still be used instead of address
+		    strings.</p></div></td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-10-Configuring-JNDI-Connection-URL"></a>2.2.2.&#160;Connection URLs</h3></div></div></div><p>
+	  In JNDI properties, a Connection URL specifies properties for a connection. The format for a Connection URL is:
+        </p><pre class="programlisting">amqp://[&lt;user&gt;:&lt;pass&gt;@][&lt;clientid&gt;]&lt;virtualhost&gt;[?&lt;option&gt;='&lt;value&gt;'[&amp;&lt;option&gt;='&lt;value&gt;']]
+        </pre><p>
+	  For instance, the following Connection URL specifies a user name, a password, a client ID, a virtual host ("test"), a broker list with a single broker, and a TCP host with the host name <span class="quote">&#8220;<span class="quote">localhost</span>&#8221;</span> using port 5672:
+        </p><pre class="programlisting">amqp://username:password@clientid/test?brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  Apache Qpid supports the following properties in Connection URLs:
+        </p><div class="table"><a id="d0e234"></a><p class="title"><strong>Table&#160;2.2.&#160;Connection URL Properties</strong></p><div class="table-contents"><table border="1" summary="Connection URL Properties" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  brokerlist
+	        </td><td>
+		  see below
+	        </td><td>
+		  List of one or more broker addresses.
+	        </td></tr><tr><td>
+		  maxprefetch
+	        </td><td>
+		  integer
+	        </td><td>
+		  <p>
+                    The maximum number of pre-fetched messages per consumer. If not specified, default value of 500 is used.
+		  </p>
+		  <p>
+                    Note: You can also set the default per-consumer prefetch value on a client-wide basis by configuring the client using <a class="link" href="JMS-Client-0-10-Configuring-JVM-Properties.html" title="2.3.&#160;JVM Properties">Java system properties.</a>
+		  </p>
+	        </td></tr><tr><td>
+		  sync_publish
+	        </td><td>
+		  {'persistent' | 'all'}
+	        </td><td>
+		  A sync command is sent after every persistent message to guarantee that it has been received; if the value is 'persistent', this is done only for persistent messages.
+	        </td></tr><tr><td>
+		  sync_ack
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  A sync command is sent after every acknowledgement to guarantee that it has been received.
+	        </td></tr><tr><td>sync_client_ack</td><td>Boolean</td><td>
+				<p>
+					If set <code class="literal">true</code>, for sessions using<a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#CLIENT_ACKNOWLEDGE" target="_top">
+					Session#CLIENT_ACKNOWLEDGE</a>,
+					a sync command is sent after every message <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Message.html#acknowledge()" target="_top">
+					Message#acknowledge()</a>.
+					This ensure that the client awaits the successful processing of the acknowledgement by server
+					before continuing.
+				</p>
+				<p>If <code class="literal">false</code>, the sync is not performed. This will improve performance but will
+					mean
+					duplicate messages are more likely to be received following a failure.
+				</p>
+				<p>
+					Defaults to<code class="literal">true</code>.
+				</p>
+				<p>
+					Note: You can also set the default on a client-wide basis by configuring the
+					client using
+					<a class="link" href="JMS-Client-0-10-Configuring-JVM-Properties.html" title="2.3.&#160;JVM Properties">Java system properties.</a>
+				</p>
+			</td></tr><tr><td>
+		  use_legacy_map_msg_format
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If you are using JMS Map messages and deploying a new client with any JMS client older than 0.8 release, you must set this to true to ensure the older clients can understand the map message encoding.
+	        </td></tr><tr><td>
+		  failover
+	        </td><td>
+		  {'singlebroker' | 'roundrobin' | 'failover_exchange' | 'nofailover' | '&lt;class&gt;'}
+	        </td><td>
+		  <p>
+		    This option controls failover behaviour.  The method <code class="literal">singlebroker</code> uses only the first broker in the list,
+		    <code class="literal">roundrobin</code> will try each broker given in the broker list until a connection is established,
+		    <code class="literal">failover_exchange</code> connects to the initial broker given in the broker URL and will receive membership updates
+		    via the failover exchange. <code class="literal">nofailover</code> disables all retry and failover logic.  Any other value is interpreted as a
+		    classname which must implement the <code class="literal">org.apache.qpid.jms.failover.FailoverMethod</code> interface.
+		  </p>
+		  <p>
+		    The broker list options <code class="literal">retries</code> and <code class="literal">connectdelay</code> (described below) determine the number of times a
+		    connection to a broker will be retried and the the length of time to wait between successive connection attempts before moving on to
+		    the next broker in the list. The failover option <code class="literal">cyclecount</code> controls the number of times to loop through the list of
+		    available brokers before finally giving up.
+		  </p>
+		  <p>
+		    Defaults to <code class="literal">roundrobin</code> if the brokerlist contains multiple brokers, or <code class="literal">singlebroker</code> otherwise.
+		  </p>
+	        </td></tr><tr><td>
+		        ssl
+	        </td><td>
+		        boolean
+	        </td><td>
+	            <p>
+	                If <code class="literal">ssl='true'</code>, use SSL for all broker connections. Overrides any per-broker settings in the brokerlist (see below) entries. If not specified, the brokerlist entry for each given broker is used to determine whether SSL is used.
+	            </p>
+	            <p>
+	                Introduced in version 0.22.
+	            </p>
+	        </td></tr></tbody></table></div></div><br class="table-break" /><p>
+	  Broker lists are specified using a URL in this format:
+        </p><pre class="programlisting">brokerlist=&lt;transport&gt;://&lt;host&gt;[:&lt;port&gt;](?&lt;param&gt;='&lt;value&gt;')(&amp;&lt;param&gt;='&lt;value&gt;')*</pre><p>
+	  For instance, this is a typical broker list:
+        </p><pre class="programlisting">brokerlist='tcp://localhost:5672'
+        </pre><p>
+	  A broker list can contain more than one broker address; if so, the connection is made to the first broker in the list that is available. In general, it is better to use the failover exchange when using multiple brokers, since it allows applications to fail over if a broker goes down.
+	</p><div class="example"><a id="d0e400"></a><p class="title"><strong>Example&#160;2.2.&#160;Broker Lists</strong></p><div class="example-contents"><p>A broker list can specify properties to be used when connecting to the broker, such as security options. This broker list specifies options for a Kerberos connection using GSSAPI:</p><pre class="programlisting">
+amqp://guest:guest@test/test?sync_ack='true'
+&amp;brokerlist='tcp://ip1:5672?sasl_mechs='GSSAPI''
+	  </pre><p>This broker list specifies SSL options:</p><pre class="programlisting">
+amqp://guest:guest@test/test?sync_ack='true'
+&amp;brokerlist='tcp://ip1:5672?ssl='true'&amp;ssl_cert_alias='cert1''
+	  </pre><p>
+	    This broker list specifies two brokers using the connectdelay and retries broker options. It also illustrates the failover connection URL
+	    property.
+	  </p><pre class="programlisting">
+amqp://guest:guest@/test?failover='roundrobin?cyclecount='2''
+&amp;brokerlist='tcp://ip1:5672?retries='5'&amp;connectdelay='2000';tcp://ip2:5672?retries='5'&amp;connectdelay='2000''
+	  </pre></div></div><br class="example-break" /><p>The following broker list options are supported.</p><div class="table"><a id="d0e417"></a><p class="title"><strong>Table&#160;2.3.&#160;Broker List Options</strong></p><div class="table-contents"><table border="1" summary="Broker List Options" width="100%"><colgroup><col /><col /><col /></colgroup><thead><tr><th>
+		  Option
+	        </th><th>
+		  Type
+	        </th><th>
+		  Description
+	        </th></tr></thead><tbody><tr><td>
+		  heartbeat
+	        </td><td>
+		  integer
+	        </td><td>
+		  Frequency of heartbeat messages (in seconds). A value of 0 disables heartbeating. <p>For compatibility
+                  with old client configuration, option <code class="varname">idle_timeout</code> (in milliseconds) is also supported.</p>
+	        </td></tr><tr><td>
+		  sasl_mechs
+	        </td><td>
+		  --
+	        </td><td>
+		  For secure applications, we suggest CRAM-MD5,
+		  DIGEST-MD5, or GSSAPI. The ANONYMOUS method is not
+		  secure. The PLAIN method is secure only when used
+		  together with SSL. For Kerberos, sasl_mechs must be
+		  set to GSSAPI, sasl_protocol must be set to the
+		  principal for the qpidd broker, e.g. qpidd/, and
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. sasl.com.  SASL External is supported
+		  using SSL certification, e.g.
+		  <code class="literal">ssl='true'&amp;sasl_mechs='EXTERNAL'</code>
+	        </td></tr><tr><td>
+		  sasl_encryption
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">sasl_encryption='true'</code>, the JMS client attempts to negotiate a security layer with the broker using GSSAPI to encrypt the connection. Note that for this to happen, GSSAPI must be selected as the sasl_mech.
+	        </td></tr><tr><td>
+		  sasl_protocol
+	        </td><td>
+		  --
+	        </td><td>
+		  Used only for
+		  Kerberos. <code class="literal">sasl_protocol</code> must be
+		  set to the principal for the qpidd broker,
+		  e.g. <code class="literal">qpidd/</code>
+	        </td></tr><tr><td>
+		  sasl_server
+	        </td><td>
+		  --
+	        </td><td>
+		  For Kerberos, sasl_mechs must be set to GSSAPI,
+		  sasl_server must be set to the host for the SASL
+		  server, e.g. <code class="literal">sasl.com</code>.
+	        </td></tr><tr><td>
+		  trust_store
+	        </td><td>
+		  --
+	        </td><td>
+		  path to trust store
+	        </td></tr><tr><td>
+		  trust_store_password
+	        </td><td>
+		        --
+	        </td><td>
+		  Trust store password
+	        </td></tr><tr><td>
+		  key_store
+	        </td><td>
+		        --
+	        </td><td>
+		  path to key store
+	        </td></tr><tr><td>
+		  key_store_password
+	        </td><td>
+		  --
+	        </td><td>
+		  key store password
+	        </td></tr><tr><td>
+		  ssl
+	        </td><td>
+		  Boolean
+	        </td><td>
+	            <p>If <code class="literal">ssl='true'</code>, the JMS client will encrypt the connection to this broker using SSL.</p>
+
+	            <p>This can also be set/overridden for all brokers using the <a class="link" href="JMS-Client-0-10-Configuring-JNDI.html#JMS-Client-0-10-Configuring-JNDI-Connection-URL" title="2.2.2.&#160;Connection URLs">Connection URL</a> options.</p>
+	        </td></tr><tr><td>
+		  ssl_verify_hostname
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  When using SSL you can enable hostname verification
+		  by using <code class="literal">ssl_verify_hostname='true'</code> in the broker
+		  URL.
+	        </td></tr><tr><td>
+		  ssl_cert_alias
+	        </td><td>
+		        --
+	        </td><td>
+		  If multiple certificates are present in the keystore, the alias will be used to extract the correct certificate.
+	        </td></tr><tr><td>
+		  retries
+	        </td><td>
+		  integer
+	        </td><td>
+		  The number of times to retry connection to each broker in the broker list. Defaults to 1.
+	        </td></tr><tr><td>
+		  connectdelay
+	        </td><td>
+		  integer
+	        </td><td>
+		  Length of time (in milliseconds) to wait before attempting to reconnect. Defaults to 0.
+	        </td></tr><tr><td>
+		  connecttimeout
+	        </td><td>
+		  integer
+	        </td><td>
+		  Length of time (in milliseconds) to wait for the socket connection to succeed. A value of 0 represents an infinite timeout, i.e. the connection attempt will block until established or an error occurs.  Defaults to 30000.
+	        </td></tr><tr><td>
+		  tcp_nodelay
+	        </td><td>
+		  Boolean
+	        </td><td>
+		  If <code class="literal">tcp_nodelay='true'</code>, TCP packet
+		  batching is disabled. Defaults to true since Qpid 0.14.
+	        </td></tr></tbody></table></div></div><br class="table-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="JMS-Client-0-10-Configuring.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="JMS-Client-0-10-Configuring.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="JMS-Client-0-10-Configuring-JVM-Properties.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;2.&#160;Configuring the Client&#160;</td><td align="center" width="20%"><a accesskey="h" href="JMS-Client-0-10-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.3.&#160;JVM Properties</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
