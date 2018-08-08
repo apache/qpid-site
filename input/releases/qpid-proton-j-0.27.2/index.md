@@ -57,7 +57,7 @@ Proton-J is also available [via Maven]({{site_url}}/maven.html).
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {
-      if ("0.27.2" === "{{other_current_proton_j_release}}") {
+      if ("0.27.2" === "{{current_proton_j_release}}") {
           _modifyCurrentReleaseLinks();
       }
   });
