@@ -177,10 +177,16 @@ function show_all_tables()
 {
   show_node('Constants');
   show_node('PrimTypeName');
+  show_node('PrimTypeCode');
   show_node('DescrTypes');
   show_node('EnumTypes');
   show_node('RestrTypes');
   show_node('ProvTypes');
+  show_node('TypesDiag');
+  show_node('TransportDiag');
+  show_node('MessagingDiag');
+  show_node('TransactionsDiag');
+  show_node('SecurityDiag');
   show_node('TypIndex');
   show_node('FldIndex');
   show_node('EnuIndex');
@@ -245,10 +251,16 @@ function hide_all_tables()
 {
   hide_node('Constants');
   hide_node('PrimTypeName');
+  hide_node('PrimTypeCode');
   hide_node('DescrTypes');
   hide_node('EnumTypes');
   hide_node('RestrTypes');
   hide_node('ProvTypes');
+  hide_node('TypesDiag');
+  hide_node('TransportDiag');
+  hide_node('MessagingDiag');
+  hide_node('TransactionsDiag');
+  hide_node('SecurityDiag');
   hide_node('TypIndex');
   hide_node('FldIndex');
   hide_node('EnuIndex');
@@ -317,6 +329,7 @@ function hide_all_tables()
 &#160;&#160;<a href="#RestrictedTypes">Restricted Types</a><br/>
 &#160;&#160;<a href="#DescribedTypes">Described Types</a><br/>
 &#160;&#160;<a href="#ProvidedTypes">Provided Types</a><br/>
+<a href="#Diagrams">Diagrams</a><br>
 <a href="#Indices">Indices</a><br/>
 &#160;&#160;<a href="#TypeIndex">Types</a><br/>
 &#160;&#160;<a href="#FieldIndex">Fields</a><br/>
@@ -331,7 +344,7 @@ function hide_all_tables()
 <a id="ConstantTypes"></a>
 <h2>Constants</h2>
 <a href="javascript:toggle_node('Constants')"> &#9674; </a>&#160;Constants<br/>
-<div style="display:none; margin-bottom: 2px" id="Constants">
+<div style="display: block; margin-bottom: 2px" id="Constants">
 <table>
 <tr>
  <th>Section</th>
@@ -425,7 +438,7 @@ function hide_all_tables()
 <a id="PrimitiveTypes"></a>
 <h3>Primitive Types</h3>
 <a href="javascript:toggle_node('PrimTypeName')"> &#9674; </a>&#160;by Name<br/>
-<div style="display:none; margin-bottom: 2px" id="PrimTypeName">
+<div style="display: block; margin-bottom: 2px" id="PrimTypeName">
 <table>
 <tr>
  <th>Section</th>
@@ -951,7 +964,7 @@ function hide_all_tables()
 </div>
 <br/>
 <a href="javascript:toggle_node('PrimTypeCode')"> &#9674; </a>&#160;by Code<br/>
-<div style="display:none; margin-bottom: 2px" id="PrimTypeCode">
+<div style="display: block; margin-bottom: 2px" id="PrimTypeCode">
 <table>
 <tr>
  <th>Section</th>
@@ -1279,7 +1292,7 @@ function hide_all_tables()
 <a id="EnumeratedTypes"></a>
 <h3>Enumerated Types</h3>
 <a href="javascript:toggle_node('EnumTypes')"> &#9674; </a>&#160;Enumerated Types<br/>
-<div style="display: none; margin-bottom: 2px" id="EnumTypes">
+<div style="display: block; margin-bottom: 2px" id="EnumTypes">
 <table>
 <tr>
  <th>Section</th>
@@ -1383,7 +1396,7 @@ function hide_all_tables()
 <br/>
 <a id="details_std-dist-mode"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETstd-dist-mode')"> &#9674; </a>&#160; Enumerated type: messaging:addressing - <strong><a href="#TYPE_std-dist-mode">std-dist-mode</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETstd-dist-mode">
+<div style="display: block; margin-bottom: 2px" id="ETstd-dist-mode">
 <table>
 <tr>
  <th>Name</th>
@@ -1410,7 +1423,7 @@ function hide_all_tables()
 </div>
 <a id="details_terminus-durability"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETterminus-durability')"> &#9674; </a>&#160; Enumerated type: messaging:addressing - <strong><a href="#TYPE_terminus-durability">terminus-durability</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETterminus-durability">
+<div style="display: block; margin-bottom: 2px" id="ETterminus-durability">
 <table>
 <tr>
  <th>Name</th>
@@ -1441,7 +1454,7 @@ function hide_all_tables()
 </div>
 <a id="details_terminus-expiry-policy"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETterminus-expiry-policy')"> &#9674; </a>&#160; Enumerated type: messaging:addressing - <strong><a href="#TYPE_terminus-expiry-policy">terminus-expiry-policy</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETterminus-expiry-policy">
+<div style="display: block; margin-bottom: 2px" id="ETterminus-expiry-policy">
 <table>
 <tr>
  <th>Name</th>
@@ -1476,7 +1489,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-code"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETsasl-code')"> &#9674; </a>&#160; Enumerated type: security:sasl - <strong><a href="#TYPE_sasl-code">sasl-code</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETsasl-code">
+<div style="display: block; margin-bottom: 2px" id="ETsasl-code">
 <table>
 <tr>
  <th>Name</th>
@@ -1515,7 +1528,7 @@ function hide_all_tables()
 </div>
 <a id="details_transaction-error"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETtransaction-error')"> &#9674; </a>&#160; Enumerated type: transactions:coordination - <strong><a href="#TYPE_transaction-error">transaction-error</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETtransaction-error">
+<div style="display: block; margin-bottom: 2px" id="ETtransaction-error">
 <table>
 <tr>
  <th>Name</th>
@@ -1546,7 +1559,7 @@ function hide_all_tables()
 </div>
 <a id="details_txn-capability"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETtxn-capability')"> &#9674; </a>&#160; Enumerated type: transactions:coordination - <strong><a href="#TYPE_txn-capability">txn-capability</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETtxn-capability">
+<div style="display: block; margin-bottom: 2px" id="ETtxn-capability">
 <table>
 <tr>
  <th>Name</th>
@@ -1585,7 +1598,7 @@ function hide_all_tables()
 </div>
 <a id="details_amqp-error"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETamqp-error')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_amqp-error">amqp-error</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETamqp-error">
+<div style="display: block; margin-bottom: 2px" id="ETamqp-error">
 <table>
 <tr>
  <th>Name</th>
@@ -1656,7 +1669,7 @@ function hide_all_tables()
 </div>
 <a id="details_connection-error"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETconnection-error')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_connection-error">connection-error</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETconnection-error">
+<div style="display: block; margin-bottom: 2px" id="ETconnection-error">
 <table>
 <tr>
  <th>Name</th>
@@ -1687,7 +1700,7 @@ function hide_all_tables()
 </div>
 <a id="details_link-error"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETlink-error')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_link-error">link-error</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETlink-error">
+<div style="display: block; margin-bottom: 2px" id="ETlink-error">
 <table>
 <tr>
  <th>Name</th>
@@ -1726,7 +1739,7 @@ function hide_all_tables()
 </div>
 <a id="details_receiver-settle-mode"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETreceiver-settle-mode')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_receiver-settle-mode">receiver-settle-mode</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETreceiver-settle-mode">
+<div style="display: block; margin-bottom: 2px" id="ETreceiver-settle-mode">
 <table>
 <tr>
  <th>Name</th>
@@ -1753,7 +1766,7 @@ function hide_all_tables()
 </div>
 <a id="details_role"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETrole')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_role">role</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETrole">
+<div style="display: block; margin-bottom: 2px" id="ETrole">
 <table>
 <tr>
  <th>Name</th>
@@ -1780,7 +1793,7 @@ function hide_all_tables()
 </div>
 <a id="details_sender-settle-mode"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETsender-settle-mode')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_sender-settle-mode">sender-settle-mode</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETsender-settle-mode">
+<div style="display: block; margin-bottom: 2px" id="ETsender-settle-mode">
 <table>
 <tr>
  <th>Name</th>
@@ -1811,7 +1824,7 @@ function hide_all_tables()
 </div>
 <a id="details_session-error"></a>
 &#160;&#160;<a href="javascript:toggle_node('ETsession-error')"> &#9674; </a>&#160; Enumerated type: transport:definitions - <strong><a href="#TYPE_session-error">session-error</a></strong><br/>
-<div style="display:none; margin-bottom: 2px" id="ETsession-error">
+<div style="display: block; margin-bottom: 2px" id="ETsession-error">
 <table>
 <tr>
  <th>Name</th>
@@ -1849,7 +1862,7 @@ function hide_all_tables()
 <a id="RestrictedTypes"></a>
 <h3>Restricted Types</h3>
 <a href="javascript:toggle_node('RestrTypes')"> &#9674; </a>&#160;Restricted Types<br/>
-<div style="display: none; margin-bottom: 2px" id="RestrTypes">
+<div style="display: block; margin-bottom: 2px" id="RestrTypes">
 <table>
 <tr>
  <th>Section</th>
@@ -2004,7 +2017,7 @@ function hide_all_tables()
 <a id="DescribedTypes"></a>
 <h3>Described Types</h3>
 <a href="javascript:toggle_node('DescrTypes')"> &#9674; </a>&#160;Described Types<br/>
-<div style="display:none; margin-bottom: 2px" id="DescrTypes">
+<div style="display: block; margin-bottom: 2px" id="DescrTypes">
 <table>
 <tr>
  <th>Section</th>
@@ -2338,7 +2351,7 @@ function hide_all_tables()
 <br/>
 <a id="details_open"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTopen')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_open">open</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTopen">
+<div style="display: block; margin-bottom: 2px" id="DTopen">
 <table>
 <tr>
  <th>Tag</th>
@@ -2465,7 +2478,7 @@ function hide_all_tables()
 </div>
 <a id="details_begin"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTbegin')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_begin">begin</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTbegin">
+<div style="display: block; margin-bottom: 2px" id="DTbegin">
 <table>
 <tr>
  <th>Tag</th>
@@ -2572,7 +2585,7 @@ function hide_all_tables()
 </div>
 <a id="details_attach"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTattach')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_attach">attach</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTattach">
+<div style="display: block; margin-bottom: 2px" id="DTattach">
 <table>
 <tr>
  <th>Tag</th>
@@ -2739,7 +2752,7 @@ function hide_all_tables()
 </div>
 <a id="details_flow"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTflow')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_flow">flow</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTflow">
+<div style="display: block; margin-bottom: 2px" id="DTflow">
 <table>
 <tr>
  <th>Tag</th>
@@ -2876,7 +2889,7 @@ function hide_all_tables()
 </div>
 <a id="details_transfer"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTtransfer')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_transfer">transfer</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTtransfer">
+<div style="display: block; margin-bottom: 2px" id="DTtransfer">
 <table>
 <tr>
  <th>Tag</th>
@@ -3013,7 +3026,7 @@ function hide_all_tables()
 </div>
 <a id="details_disposition"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdisposition')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_disposition">disposition</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdisposition">
+<div style="display: block; margin-bottom: 2px" id="DTdisposition">
 <table>
 <tr>
  <th>Tag</th>
@@ -3100,7 +3113,7 @@ function hide_all_tables()
 </div>
 <a id="details_detach"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdetach')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_detach">detach</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdetach">
+<div style="display: block; margin-bottom: 2px" id="DTdetach">
 <table>
 <tr>
  <th>Tag</th>
@@ -3157,7 +3170,7 @@ function hide_all_tables()
 </div>
 <a id="details_end"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTend')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_end">end</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTend">
+<div style="display: block; margin-bottom: 2px" id="DTend">
 <table>
 <tr>
  <th>Tag</th>
@@ -3194,7 +3207,7 @@ function hide_all_tables()
 </div>
 <a id="details_close"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTclose')"> &#9674; </a>&#160; Described type: transport:performatives - <strong><a href="#TYPE_close">close</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTclose">
+<div style="display: block; margin-bottom: 2px" id="DTclose">
 <table>
 <tr>
  <th>Tag</th>
@@ -3231,7 +3244,7 @@ function hide_all_tables()
 </div>
 <a id="details_error"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTerror')"> &#9674; </a>&#160; Described type: transport:definitions - <strong><a href="#TYPE_error">error</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTerror">
+<div style="display: block; margin-bottom: 2px" id="DTerror">
 <table>
 <tr>
  <th>Tag</th>
@@ -3288,7 +3301,7 @@ function hide_all_tables()
 </div>
 <a id="details_received"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTreceived')"> &#9674; </a>&#160; Described type: messaging:delivery-state - <strong><a href="#TYPE_received">received</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTreceived">
+<div style="display: block; margin-bottom: 2px" id="DTreceived">
 <table>
 <tr>
  <th>Tag</th>
@@ -3335,7 +3348,7 @@ function hide_all_tables()
 </div>
 <a id="details_accepted"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTaccepted')"> &#9674; </a>&#160; Described type: messaging:delivery-state - <strong><a href="#TYPE_accepted">accepted</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTaccepted">
+<div style="display: block; margin-bottom: 2px" id="DTaccepted">
 <table>
 <tr>
  <th>Tag</th>
@@ -3362,7 +3375,7 @@ function hide_all_tables()
 </div>
 <a id="details_rejected"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTrejected')"> &#9674; </a>&#160; Described type: messaging:delivery-state - <strong><a href="#TYPE_rejected">rejected</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTrejected">
+<div style="display: block; margin-bottom: 2px" id="DTrejected">
 <table>
 <tr>
  <th>Tag</th>
@@ -3399,7 +3412,7 @@ function hide_all_tables()
 </div>
 <a id="details_released"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTreleased')"> &#9674; </a>&#160; Described type: messaging:delivery-state - <strong><a href="#TYPE_released">released</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTreleased">
+<div style="display: block; margin-bottom: 2px" id="DTreleased">
 <table>
 <tr>
  <th>Tag</th>
@@ -3426,7 +3439,7 @@ function hide_all_tables()
 </div>
 <a id="details_modified"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTmodified')"> &#9674; </a>&#160; Described type: messaging:delivery-state - <strong><a href="#TYPE_modified">modified</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTmodified">
+<div style="display: block; margin-bottom: 2px" id="DTmodified">
 <table>
 <tr>
  <th>Tag</th>
@@ -3483,7 +3496,7 @@ function hide_all_tables()
 </div>
 <a id="details_source"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsource')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_source">source</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsource">
+<div style="display: block; margin-bottom: 2px" id="DTsource">
 <table>
 <tr>
  <th>Tag</th>
@@ -3620,7 +3633,7 @@ function hide_all_tables()
 </div>
 <a id="details_target"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTtarget')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_target">target</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTtarget">
+<div style="display: block; margin-bottom: 2px" id="DTtarget">
 <table>
 <tr>
  <th>Tag</th>
@@ -3717,7 +3730,7 @@ function hide_all_tables()
 </div>
 <a id="details_delete-on-close"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdelete-on-close')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_delete-on-close">delete-on-close</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdelete-on-close">
+<div style="display: block; margin-bottom: 2px" id="DTdelete-on-close">
 <table>
 <tr>
  <th>Tag</th>
@@ -3744,7 +3757,7 @@ function hide_all_tables()
 </div>
 <a id="details_delete-on-no-links"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdelete-on-no-links')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_delete-on-no-links">delete-on-no-links</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdelete-on-no-links">
+<div style="display: block; margin-bottom: 2px" id="DTdelete-on-no-links">
 <table>
 <tr>
  <th>Tag</th>
@@ -3771,7 +3784,7 @@ function hide_all_tables()
 </div>
 <a id="details_delete-on-no-messages"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdelete-on-no-messages')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_delete-on-no-messages">delete-on-no-messages</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdelete-on-no-messages">
+<div style="display: block; margin-bottom: 2px" id="DTdelete-on-no-messages">
 <table>
 <tr>
  <th>Tag</th>
@@ -3798,7 +3811,7 @@ function hide_all_tables()
 </div>
 <a id="details_delete-on-no-links-or-messages"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdelete-on-no-links-or-messages')"> &#9674; </a>&#160; Described type: messaging:addressing - <strong><a href="#TYPE_delete-on-no-links-or-messages">delete-on-no-links-or-messages</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdelete-on-no-links-or-messages">
+<div style="display: block; margin-bottom: 2px" id="DTdelete-on-no-links-or-messages">
 <table>
 <tr>
  <th>Tag</th>
@@ -3825,7 +3838,7 @@ function hide_all_tables()
 </div>
 <a id="details_coordinator"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTcoordinator')"> &#9674; </a>&#160; Described type: transactions:coordination - <strong><a href="#TYPE_coordinator">coordinator</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTcoordinator">
+<div style="display: block; margin-bottom: 2px" id="DTcoordinator">
 <table>
 <tr>
  <th>Tag</th>
@@ -3862,7 +3875,7 @@ function hide_all_tables()
 </div>
 <a id="details_declare"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdeclare')"> &#9674; </a>&#160; Described type: transactions:coordination - <strong><a href="#TYPE_declare">declare</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdeclare">
+<div style="display: block; margin-bottom: 2px" id="DTdeclare">
 <table>
 <tr>
  <th>Tag</th>
@@ -3899,7 +3912,7 @@ function hide_all_tables()
 </div>
 <a id="details_discharge"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdischarge')"> &#9674; </a>&#160; Described type: transactions:coordination - <strong><a href="#TYPE_discharge">discharge</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdischarge">
+<div style="display: block; margin-bottom: 2px" id="DTdischarge">
 <table>
 <tr>
  <th>Tag</th>
@@ -3946,7 +3959,7 @@ function hide_all_tables()
 </div>
 <a id="details_declared"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdeclared')"> &#9674; </a>&#160; Described type: transactions:coordination - <strong><a href="#TYPE_declared">declared</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdeclared">
+<div style="display: block; margin-bottom: 2px" id="DTdeclared">
 <table>
 <tr>
  <th>Tag</th>
@@ -3983,7 +3996,7 @@ function hide_all_tables()
 </div>
 <a id="details_transactional-state"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTtransactional-state')"> &#9674; </a>&#160; Described type: transactions:coordination - <strong><a href="#TYPE_transactional-state">transactional-state</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTtransactional-state">
+<div style="display: block; margin-bottom: 2px" id="DTtransactional-state">
 <table>
 <tr>
  <th>Tag</th>
@@ -4030,7 +4043,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-mechanisms"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsasl-mechanisms')"> &#9674; </a>&#160; Described type: security:sasl - <strong><a href="#TYPE_sasl-mechanisms">sasl-mechanisms</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsasl-mechanisms">
+<div style="display: block; margin-bottom: 2px" id="DTsasl-mechanisms">
 <table>
 <tr>
  <th>Tag</th>
@@ -4067,7 +4080,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-init"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsasl-init')"> &#9674; </a>&#160; Described type: security:sasl - <strong><a href="#TYPE_sasl-init">sasl-init</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsasl-init">
+<div style="display: block; margin-bottom: 2px" id="DTsasl-init">
 <table>
 <tr>
  <th>Tag</th>
@@ -4124,7 +4137,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-challenge"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsasl-challenge')"> &#9674; </a>&#160; Described type: security:sasl - <strong><a href="#TYPE_sasl-challenge">sasl-challenge</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsasl-challenge">
+<div style="display: block; margin-bottom: 2px" id="DTsasl-challenge">
 <table>
 <tr>
  <th>Tag</th>
@@ -4161,7 +4174,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-response"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsasl-response')"> &#9674; </a>&#160; Described type: security:sasl - <strong><a href="#TYPE_sasl-response">sasl-response</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsasl-response">
+<div style="display: block; margin-bottom: 2px" id="DTsasl-response">
 <table>
 <tr>
  <th>Tag</th>
@@ -4198,7 +4211,7 @@ function hide_all_tables()
 </div>
 <a id="details_sasl-outcome"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTsasl-outcome')"> &#9674; </a>&#160; Described type: security:sasl - <strong><a href="#TYPE_sasl-outcome">sasl-outcome</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTsasl-outcome">
+<div style="display: block; margin-bottom: 2px" id="DTsasl-outcome">
 <table>
 <tr>
  <th>Tag</th>
@@ -4245,7 +4258,7 @@ function hide_all_tables()
 </div>
 <a id="details_header"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTheader')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_header">header</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTheader">
+<div style="display: block; margin-bottom: 2px" id="DTheader">
 <table>
 <tr>
  <th>Tag</th>
@@ -4322,7 +4335,7 @@ function hide_all_tables()
 </div>
 <a id="details_delivery-annotations"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdelivery-annotations')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_delivery-annotations">delivery-annotations</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdelivery-annotations">
+<div style="display: block; margin-bottom: 2px" id="DTdelivery-annotations">
 <table>
 <tr>
  <th>Tag</th>
@@ -4349,7 +4362,7 @@ function hide_all_tables()
 </div>
 <a id="details_message-annotations"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTmessage-annotations')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_message-annotations">message-annotations</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTmessage-annotations">
+<div style="display: block; margin-bottom: 2px" id="DTmessage-annotations">
 <table>
 <tr>
  <th>Tag</th>
@@ -4376,7 +4389,7 @@ function hide_all_tables()
 </div>
 <a id="details_properties"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTproperties')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_properties">properties</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTproperties">
+<div style="display: block; margin-bottom: 2px" id="DTproperties">
 <table>
 <tr>
  <th>Tag</th>
@@ -4533,7 +4546,7 @@ function hide_all_tables()
 </div>
 <a id="details_application-properties"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTapplication-properties')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_application-properties">application-properties</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTapplication-properties">
+<div style="display: block; margin-bottom: 2px" id="DTapplication-properties">
 <table>
 <tr>
  <th>Tag</th>
@@ -4560,7 +4573,7 @@ function hide_all_tables()
 </div>
 <a id="details_data"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTdata')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_data">data</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTdata">
+<div style="display: block; margin-bottom: 2px" id="DTdata">
 <table>
 <tr>
  <th>Tag</th>
@@ -4587,7 +4600,7 @@ function hide_all_tables()
 </div>
 <a id="details_amqp-sequence"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTamqp-sequence')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_amqp-sequence">amqp-sequence</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTamqp-sequence">
+<div style="display: block; margin-bottom: 2px" id="DTamqp-sequence">
 <table>
 <tr>
  <th>Tag</th>
@@ -4614,7 +4627,7 @@ function hide_all_tables()
 </div>
 <a id="details_amqp-value"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTamqp-value')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_amqp-value">amqp-value</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTamqp-value">
+<div style="display: block; margin-bottom: 2px" id="DTamqp-value">
 <table>
 <tr>
  <th>Tag</th>
@@ -4641,7 +4654,7 @@ function hide_all_tables()
 </div>
 <a id="details_footer"></a>
 &#160;&#160;<a href="javascript:toggle_node('DTfooter')"> &#9674; </a>&#160; Described type: messaging:message-format - <strong><a href="#TYPE_footer">footer</a></strong><br/>
-<div style="display: none; margin-bottom: 2px" id="DTfooter">
+<div style="display: block; margin-bottom: 2px" id="DTfooter">
 <table>
 <tr>
  <th>Tag</th>
@@ -4671,7 +4684,7 @@ function hide_all_tables()
 <a id="ProvidedTypes"></a>
 <h3>Provided Types</h3>
 <a href="javascript:toggle_node('ProvTypes')"> &#9674; </a>&#160;Provided Types<br/>
-<div style="display: none; margin-bottom: 2px" id="ProvTypes">
+<div style="display: block; margin-bottom: 2px" id="ProvTypes">
 <table>
 <tr>
  <th>Provided Type</th>
@@ -4956,12 +4969,1916 @@ function hide_all_tables()
 </table>
 </div>
 <br/>
+<a id="Diagrams"></a>
+<h2>Diagrams</h2>
+These diagrams may not make sense when taken out of the context of the 
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html">
+AMQP 1.0 Specification</a>. Please refer to the spec to get the complete narrative.<br>
+<a name="TypesDiagrams"</a><br>
+<a href="javascript:toggle_node('TypesDiag')"> &#9674; </a>&#160;Types Diagrams<br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag">
+<a href="javascript:toggle_node('TypesDiag0')"> &#9674; </a>&#160;<strong>Types : Type Encodings :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag0">
+<pre>
+       constructor            untyped bytes
+            |                      |
+          +--+   +-----------------+-----------------+
+          |  |   |                                   |
+     ...  0xA1   0x1E "Hello Glorious Messaging World"  ...
+           |     |  |              |                 |
+           |     |  |         utf8 bytes             |
+           |     |  |                                |
+           |     | # of data octets                  |
+           |     |                                   |
+           |     +-----------------+-----------------+
+           |                       |
+           |        string value encoded according
+           |          to the str8-utf8 encoding
+           |
+  primitive format code
+for the str8-utf8 encoding
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag1')"> &#9674; </a>&#160;<strong>Types : Type Encodings :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag1">
+<pre>
+            constructor                       untyped bytes
+                 |                                 |
+     +-----------+-----------+   +-----------------+-----------------+
+     |                       |   |                                   |
+...  0x00 0xA1 0x03 "URL" 0xA1   0x1E "http://example.org/hello-world"  ...
+          |             |  |     |                                   |
+          +------+------+  |     |                                   |
+                 |         |     |                                   |
+            descriptor     |     +------------------+----------------+
+                           |                        |
+                           |         string value encoded according
+                           |           to the str8-utf8 encoding
+                           |
+                  primitive format code
+                for the str8-utf8 encoding
+
+     (Note: this example shows a string-typed descriptor, which should be
+      considered reserved)
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag2')"> &#9674; </a>&#160;<strong>Types : Type Encodings :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag2">
+<pre>
+  constructor = format-code
+              / %x00 descriptor constructor
+
+  format-code = fixed / variable / compound / array
+        fixed = empty / fixed-one / fixed-two / fixed-four
+              / fixed-eight / fixed-sixteen
+     variable = variable-one / variable-four
+     compound = compound-one / compound-four
+        array = array-one / array-four
+
+   descriptor = value
+        value = constructor untyped-bytes
+untyped-bytes = *OCTET ; this is not actually *OCTET, the
+                       ; valid byte sequences are restricted
+                       ; by the constructor
+
+; fixed width format codes
+        empty = %x40-4E / %x4F %x00-FF
+    fixed-one = %x50-5E / %x5F %x00-FF
+    fixed-two = %x60-6E / %x6F %x00-FF
+   fixed-four = %x70-7E / %x7F %x00-FF
+  fixed-eight = %x80-8E / %x8F %x00-FF
+fixed-sixteen = %x90-9E / %x9F %x00-FF
+
+; variable width format codes
+ variable-one = %xA0-AE / %xAF %x00-FF
+variable-four = %xB0-BE / %xBF %x00-FF
+
+; compound format codes
+ compound-one = %xC0-CE / %xCF %x00-FF
+compound-four = %xD0-DE / %xDF %x00-FF
+
+; array format codes
+    array-one = %xE0-EE / %xEF %x00-FF
+   array-four = %xF0-FE / %xFF %x00-FF
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag3')"> &#9674; </a>&#160;<strong>Types : Type Encodings :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag3">
+<pre>
+Bit:  7    6    5    4    3    2    1    0
+     +------------------------------------+ +----------+
+     |   subcategory   |     subtype      | | ext-type |
+     +------------------------------------+ +----------+
+                   1 octet                    1 octet
+     |                                                 |
+     +-------------------------------------------------+
+                             |
+                        format-code
+
+         ext-type: only present if subtype is 0xF
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag4')"> &#9674; </a>&#160;<strong>Types : Type Encodings :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag4">
+<pre>
+Subcategory  Category        Format
+==============================================================================
+0x4          Fixed Width     Zero octets of data.
+0x5          Fixed Width     One octet of data.
+0x6          Fixed Width     Two octets of data.
+0x7          Fixed Width     Four octets of data.
+0x8          Fixed Width     Eight octets of data.
+0x9          Fixed Width     Sixteen octets of data.
+
+0xA          Variable Width  One octet of size, 0-255 octets of data.
+0xB          Variable Width  Four octets of size, 0-4294967295 octets of data.
+
+0xC          Compound        One octet each of size and count, 0-255 distinctly
+                             typed values.
+0xD          Compound        Four octets each of size and count, 0-4294967295
+                             distinctly typed values.
+
+0xE          Array           One octet each of size and count, 0-255 uniformly
+                             typed values.
+0xF          Array           Four octets each of size and count, 0-4294967295
+                             uniformly typed values.
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag5')"> &#9674; </a>&#160;<strong>Types : Type Encodings : Fixed Width</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag5">
+<pre>
+    n OCTETs
+  +----------+
+  |   data   |
+  +----------+
+
+Subcategory     n
+=================
+0x4             0
+0x5             1
+0x6             2
+0x7             4
+0x8             8
+0x9             16
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag6')"> &#9674; </a>&#160;<strong>Types : Type Encodings : Variable Width</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag6">
+<pre>
+  n OCTETs   size OCTETs
++----------+-------------+
+|   size   |    value    |
++----------+-------------+
+
+    Subcategory     n
+    =================
+    0xA             1
+    0xB             4
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag7')"> &#9674; </a>&#160;<strong>Types : Type Encodings : Compound</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag7">
+<pre>
+                      +----------= count items =----------+
+                      |                                   |
+  n OCTETs   n OCTETs |                                   |
++----------+----------+--------------+------------+-------+
+|   size   |  count   |      ...    /|    item    |\ ...  |
++----------+----------+------------/ +------------+ \-----+
+                                  / /              \ \
+                                 / /                \ \
+                                / /                  \ \
+                               +-------------+----------+
+                               | constructor |   data   |
+                               +-------------+----------+
+
+                   Subcategory     n
+                   =================
+                   0xC             1
+                   0xD             4
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag8')"> &#9674; </a>&#160;<strong>Types : Type Encodings : Array</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag8">
+<pre>
+                                            +--= count elements =--+
+                                            |                      |
+  n OCTETs   n OCTETs                       |                      |
++----------+----------+---------------------+-------+------+-------+
+|   size   |  count   | element-constructor |  ...  | data |  ...  |
++----------+----------+---------------------+-------+------+-------+
+
+                        Subcategory     n
+                        =================
+                        0xE             1
+                        0xF             4
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag9')"> &#9674; </a>&#160;<strong>Types : Composite Types :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag9">
+<pre>
+&lt;type class="composite" name="book" label="example composite type"&gt;
+  &lt;doc&gt;
+    &lt;p&gt;An example composite type.&lt;/p&gt;
+  &lt;/doc&gt;
+
+  &lt;descriptor name="example:book:list" code="0x00000003:0x00000002"/&gt;
+
+  &lt;field name="title" type="string" mandatory="true" label="title of the book"/&gt;
+
+  &lt;field name="authors" type="string" multiple="true"/&gt;
+
+  &lt;field name="isbn" type="string" label="the ISBN code for the book"/&gt;
+&lt;/type&gt;
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TypesDiag10')"> &#9674; </a>&#160;<strong>Types : Composite Types : List Encoding</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TypesDiag10">
+<pre>
+             constructor                  list representation of a book
+                  |                                   |
++-----------------+-------------------+ +-------------+---------------+
+|                                     | |                             |
+0x00 0xA3 0x11 "example:book:list" 0xC0 0x40 0x03  title  authors  isbn
+      |                 |                            |       |       |
+      |      identifies composite type               |       |       |
+      |                                              |       |     0x40
+    sym8                      +----------------------+       |       |
+  (symbol)                    |                              |  null value
+               +--------------+----------------+             |
+               |                               |             |
+               0xA1 0x15 "AMQP for &amp; by Dummies"             |
+                                                             |
++------------------------------------------------------------+-----+
+|                                                                  |
+0xE0 0x25 0x02 0xA1 0x0E "Rob J. Godfrey" 0x13 "Rafael H. Schloming"
+      |    |    |   |                   | |                        |
+    size   |    |   +---------+---------+ +-----------+------------+
+           |    |             |                       |
+         count  |        first element          second element
+                |
+        element constructor
+
+      </pre><br>
+</div>
+</div>
+<br>
+<a name="TransportDiagrams"</a><br>
+<a href="javascript:toggle_node('TransportDiag')"> &#9674; </a>&#160;Transport Diagrams<br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag">
+<a href="javascript:toggle_node('TransportDiag0')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag0">
+<pre>
+        
+  +------------+                             +------------+
+ /    Node A    \                           /    Node B    \
++----------------+    +--filter            +----------------+
+|                |   /                     |                |
+|  MSG_3 &lt;MSG_1&gt; | _/                    _ |         MSG_1  |
+|                |(_)------------------&gt;(_)|                |
+| &lt;MSG_2&gt; MSG_4  | |                     | |  MSG_2         |
+|                | |    Link(Src,Tgt)    | |                |
++----------------+ |                     | +----------------+
+                   |                     |
+                  Src                   Tgt
+
+
+            Key: &lt;MSG_n&gt; = old location of MSG_n
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag1')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag1">
+<pre>
+        
+   +---------------+                       +----------+
+   | &lt;&lt;Container&gt;&gt; | 1..1             0..n | &lt;&lt;Node&gt;&gt; |
+   |---------------|&lt;&gt;--------------------&gt;|----------|
+   | container-id  |                       | name     |
+   +---------------+                       +----------+
+          /_\                                   /_\
+           |                                     |
+           |                                     |
+     +-----+-----+                    +----------+----------+
+     |           |                    |          |          |
+     |           |                    |          |          |
++--------+  +--------+        +----------+  +----------+  +-------+
+| Broker |  | Client |        | Producer |  | Consumer |  | Queue |
+|--------|  |--------|        |----------|  |----------|  |-------|
+|        |  |        |        |          |  |          |  |       |
++--------+  +--------+        +----------+  +----------+  +-------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag2')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag2">
+<pre>
+        
+    Session&lt;------+                           +------&gt;Session
+(ICH=1, OCH=1)    |                           |    (ICH=1, OCH=1)
+                 \|/                         \|/
+    Session&lt;--&gt; Connection &lt;---------&gt; Connection &lt;--&gt;Session
+(ICH=2, OCH=3)   /|\                         /|\   (ICH=3, OCH=2)
+                  |                           |
+    Session&lt;------+                           +------&gt;Session
+(ICH=3, OCH=2)                                     (ICH=2, OCH=3)
+
+        Key: ICH -&gt; Input Channel, OCH -&gt; Output Channel
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag3')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag3">
+<pre>
++-------------+
+|    Link     |  Message Transport
++-------------+  (Node to Node)
+| name        |
+| source      |
+| target      |
+| timeout     |
++-------------+
+     /|\ 0..n
+      |
+      |
+      |
+     \|/ 0..1
++------------+
+|  Session   |  Frame Transport
++------------+  (Container to Container)
+| name       |
++------------+
+     /|\ 0..n
+      |
+      |
+      |
+     \|/ 1..1
++------------+
+| Connection |  Frame Transport
++------------+  (Container to Container)
+| principal  |
++------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag4')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag4">
+<pre>
+Frame          Connection  Session  Link
+========================================
+open               H
+begin              I          H
+attach                        I      H
+flow                          I      H
+transfer                      I      H
+disposition                   I      H
+detach                        I      H
+end                I          H
+close              H
+----------------------------------------
+
+Key:
+     H: handled by the endpoint
+
+     I: intercepted (endpoint examines
+        the frame, but delegates
+        further processing to another
+        endpoint)
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag5')"> &#9674; </a>&#160;<strong>Transport : Version Negotiation :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag5">
+<pre>
+  4 OCTETS   1 OCTET   1 OCTET   1 OCTET   1 OCTET
++----------+---------+---------+---------+----------+
+|  "AMQP"  |   %d0   |  major  |  minor  | revision |
++----------+---------+---------+---------+----------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag6')"> &#9674; </a>&#160;<strong>Transport : Version Negotiation :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag6">
+<pre>
+TCP Client                               TCP Server
+======================================================
+AMQP%d0.1.0.0       -------------&gt;
+                    &lt;-------------       AMQP%d0.1.0.0 (1)
+                          ...            *proceed*
+
+AMQP%d0.1.1.0       -------------&gt;
+                    &lt;-------------       AMQP%d0.1.0.0 (2)
+                                         *TCP CLOSE*
+
+HTTP                -------------&gt;
+                    &lt;-------------       AMQP%d0.1.0.0 (3)
+                                         *TCP CLOSE*
+------------------------------------------------------
+  (1) Server accepts Connection for: AMQP, protocol=0,
+      major=1, minor=0, revision=0
+
+  (2) Server rejects Connection for: AMQP, protocol=0,
+      major=1, minor=1, revision=0, Server responds
+      that it supports: AMQP, protocol=0, major=1,
+      minor=0, revision=0
+
+  (3) Server rejects Connection for: HTTP. Server
+      responds it supports: AMQP, protocol=0, major=1,
+       minor=0, revision=0
+ 
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag7')"> &#9674; </a>&#160;<strong>Transport : Version Negotiation :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag7">
+<pre>
+TCP Client                               TCP Server
+======================================================
+AMQP%d0.1.0.0       -------------&gt;
+                    &lt;-------------       AMQP%d3.1.0.0
+                                         *TCP CLOSE*
+------------------------------------------------------
+      Server rejects Connection for: AMQP, protocol=0,
+      major=1, minor=0, revision=0, Server responds
+      that it requires: SASL security layer, protocol=3,
+      major=1, minor=0, revision=0
+ 
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag8')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag8">
+<pre>
+    required        optional        optional
++--------------+-----------------+------------+
+| frame header | extended header | frame body |
++--------------+-----------------+------------+
+    8 bytes        *variable*      *variable*
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag9')"> &#9674; </a>&#160;<strong>Transport :  : Frame Layout</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag9">
+<pre>
+           +0       +1       +2       +3
+       +-----------------------------------+ -.
+     0 |                SIZE               |  |
+       +-----------------------------------+  |---&gt; Frame Header
+     4 |  DOFF  |  TYPE  | &lt;TYPE-SPECIFIC&gt; |  |      (8 bytes)
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+     8 |                ...                |  |
+       .                                   .  |---&gt; Extended Header
+       .          &lt;TYPE-SPECIFIC&gt;          .  |  (DOFF * 4 - 8) bytes
+       |                ...                |  |
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+4*DOFF |                                   |  |
+       .                                   .  |
+       .                                   .  |
+       .                                   .  |
+       .          &lt;TYPE-SPECIFIC&gt;          .  |---&gt; Frame Body
+       .                                   .  |  (SIZE - DOFF * 4) bytes
+       .                                   .  |
+       .                                   .  |
+       .                           ________|  |
+       |                ...       |           |
+       +--------------------------+          -'
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag10')"> &#9674; </a>&#160;<strong>Transport :  : AMQP Frames</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag10">
+<pre>
+              type: 0x00 - AMQP frame
+
+           +0       +1       +2       +3
+       +-----------------------------------+ -.
+     0 |                SIZE               |  |
+       +-----------------------------------+  |---&gt; Frame Header
+     4 |  DOFF  |  TYPE  |     CHANNEL     |  |      (8 bytes)
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+     8 |                ...                |  |
+       .                                   .  |---&gt; Extended Header
+       .             &lt;IGNORED&gt;             .  |  (DOFF * 4 - 8) bytes
+       |                ...                |  |
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+4*DOFF |           PERFORMATIVE:           |  |
+       .      Open / Begin / Attach        .  |
+       .   Flow / Transfer / Disposition   .  |
+       .      Detach / End / Close         .  |
+       |-----------------------------------|  |
+       .                                   .  |---&gt; Frame Body
+       .                                   .  |  (SIZE - DOFF * 4) bytes
+       .             PAYLOAD               .  |
+       .                                   .  |
+       .                           ________|  |
+       |                ...       |           |
+       +--------------------------+          -'
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag11')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag11">
+<pre>
+                                  +-------OCHE X: 1
+                                  |
+                                  +-------OCHE Y: 7
+                                  |
+&lt;=== Frame[CH=1], Frame[CH=7] &lt;===+
+
+===&gt; Frame[CH=0], Frame[CH=1] ===&gt;+
+                                  |
+                                  +------&gt;0: ICHE A
+                                  |
+                                  +------&gt;1: ICHE B
+
+  OCHE: Outgoing Channel Endpoint
+  ICHE: Incoming Channel Endpoint
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag12')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag12">
+<pre>
+                                  +-------BIDI/O: 7
+                                  |
+&lt;=== Frame[CH=1], Frame[CH=7] &lt;===+
+
+===&gt; Frame[CH=0], Frame[CH=1] ===&gt;+
+                                  |
+                                  +------&gt;1: BIDI/I
+
+  BIDI/I: Incoming half of a single bidirectional endpoint
+  BIDI/O: Outgoing half of a single bidirectional endpoint
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag13')"> &#9674; </a>&#160;<strong>Transport :  : Opening a Connection</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag13">
+<pre>
+TCP Client              TCP Server
+==================================
+TCP-CONNECT             TCP-ACCEPT
+PROTO-HDR               PROTO-HDR
+OPEN        ---+   +--- OPEN
+                \ /
+wait             x      wait
+                / \
+proceed     &lt;--+   +--&gt; proceed
+
+                ...
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag14')"> &#9674; </a>&#160;<strong>Transport :  : Pipelined Open</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag14">
+<pre>
+TCP Client                    TCP Server
+=============================================
+TCP-CONNECT                   TCP-ACCEPT
+PROTO-HDR                     PROTO-HDR
+OPEN              ---+   +--- OPEN
+                      \ /
+pipelined frame        x      pipelined frame
+                      / \
+proceed           &lt;--+   +--&gt; proceed
+
+                      ...
+---------------------------------------------
+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag15')"> &#9674; </a>&#160;<strong>Transport :  : Closing a Connection</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag15">
+<pre>
+TCP Client         TCP Server
+=============================
+            ...
+
+CLOSE     -------&gt;
+               +-- CLOSE
+              /    TCP-CLOSE
+TCP-CLOSE &lt;--+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag16')"> &#9674; </a>&#160;<strong>Transport :  : Simultaneous Close</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag16">
+<pre>
+TCP Client            TCP Server
+================================
+              ...
+
+CLOSE     ---+   +--- CLOSE
+              \ /
+               x
+              / \
+TCP-CLOSE &lt;--+   +--&gt; TCP-CLOSE
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag17')"> &#9674; </a>&#160;<strong>Transport :  : Connection State Diagram</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag17">
+<pre>
+             R:HDR @=======@ S:HDR             R:HDR[!=S:HDR]
+          +--------| START |-----+    +--------------------------------+
+          |        @=======@     |    |                                |
+         \|/                    \|/   |                                |
+     @==========@             @==========@ S:OPEN                      |
++----| HDR_RCVD |             | HDR_SENT |------+                      |
+|    @==========@             @==========@      |      R:HDR[!=S:HDR]  |
+|   S:HDR |                      | R:HDR        |    +-----------------+
+|         +--------+      +------+              |    |                 |
+|                 \|/    \|/                   \|/   |                 |
+|                @==========@               +-----------+ S:CLOSE      |
+|                | HDR_EXCH |               | OPEN_PIPE |----+         |
+|                @==========@               +-----------+    |         |
+|           R:OPEN |      | S:OPEN              | R:HDR      |         |
+|         +--------+      +------+      +-------+            |         |
+|        \|/                    \|/    \|/                  \|/        |
+|   @===========@             @===========@ S:CLOSE       +---------+  |
+|   | OPEN_RCVD |             | OPEN_SENT |-----+         | OC_PIPE |--+
+|   @===========@             @===========@     |         +---------+  |
+|  S:OPEN |                      | R:OPEN      \|/           | R:HDR   |
+|         |       @========@     |          +------------+   |         |
+|         +------&gt;| OPENED |&lt;----+          | CLOSE_PIPE |&lt;--+         |
+|                 @========@                +------------+             |
+|           R:CLOSE |    | S:CLOSE              | R:OPEN               |
+|         +---------+    +-------+              |                      |
+|        \|/                    \|/             |                      |
+|   @============@          @=============@     |                      |
+|   | CLOSE_RCVD |          | CLOSE_SENT* |&lt;----+                      |
+|   @============@          @=============@                            |
+| S:CLOSE |                      | R:CLOSE                             |
+|         |         @=====@      |                                     |
+|         +--------&gt;| END |&lt;-----+                                     |
+|                   @=====@                                            |
+|                     /|\                                              |
+|    S:HDR[!=R:HDR]    |                R:HDR[!=S:HDR]                 |
++----------------------+-----------------------------------------------+
+
+                     R:&lt;CTRL&gt; = Received &lt;CTRL&gt;
+                     S:&lt;CTRL&gt; = Sent &lt;CTRL&gt;
+                     * Also could be DISCARDING if an error condition
+                       triggered the CLOSE
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag18')"> &#9674; </a>&#160;<strong>Transport :  : Connection State Diagram</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag18">
+<pre>
+State        Legal Sends     Legal Receives    Legal Connection Actions
+=======================================================================
+START        HDR             HDR
+HDR_RCVD     HDR             OPEN
+HDR_SENT     OPEN            HDR
+HDR_EXCH     OPEN            OPEN
+OPEN_RCVD    OPEN            *
+OPEN_SENT    **              OPEN
+OPEN_PIPE    **              HDR
+CLOSE_PIPE   -               OPEN              TCP Close for Write
+OC_PIPE      -               HDR               TCP Close for Write
+OPENED       *               *
+CLOSE_RCVD   *               -                 TCP Close for Read
+CLOSE_SENT   -               *                 TCP Close for Write
+DISCARDING   -               *                 TCP Close for Write
+END          -               -                 TCP Close
+
+*  = any frames
+-  = no frames
+** = any frame known a priori to conform to the
+     peer's capabilities and limitations
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag19')"> &#9674; </a>&#160;<strong>Transport :  :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag19">
+<pre>
+        
+Link A-------+                          +------&gt;Link A
+             |                          |
+            \|/       (attached)        |
+Link B&lt;--- Session &lt;--------------&gt; Session &lt;---Link B
+
+
+Link C------&gt;*        (detached)        *------&gt;Link C
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag20')"> &#9674; </a>&#160;<strong>Transport :  : Establishing a Session</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag20">
+<pre>
+    Endpoint                                      Endpoint
+    =====================================================================
+    [CH3] BEGIN(name=...,        ---------&gt;
+                remote-channel=null)
+                                        +-- [CH7] BEGIN(name=...,
+                                       /                remote-channel=3)
+                                      /
+                                 &lt;---+
+
+                                    ...
+
+    ---------------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag21')"> &#9674; </a>&#160;<strong>Transport :  : Ending a Session</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag21">
+<pre>
+    Endpoint A                              Endpoint B
+    ====================================================================
+
+                                     ...
+
+    [CH3] END(error=...)         ---------&gt;                          (1)
+                                        +-- [CH7] END(error=...)
+                                       /
+                                      /
+(2)                              &lt;---+
+
+                                     ...
+
+    --------------------------------------------------------------------
+
+      (1) At this point the session endpoint is disassociated from
+          the outgoing channel on A, and the incoming channel on B.
+
+      (2) At this point the session endpoint is disassociated from
+          the outgoing channel on B, and the incoming channel on A.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag22')"> &#9674; </a>&#160;<strong>Transport :  : Simultaneous End</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag22">
+<pre>
+    Endpoint A                            Endpoint B
+    =================================================================
+
+                                   ...
+
+    [CH3] END(error=...)        --+   +-- [CH7] END(error=...)
+(1)                                \ /                                (2)
+                                    x
+                                   / \
+(3)                             &lt;-+   +-&gt;                             (4)
+
+                                   ...
+
+    -----------------------------------------------------------------
+
+      (1) At this point no more frames may be sent by A.
+
+      (2) At this point no more frames may be sent by B.
+
+      (3) At this point Endpoint A is fully ended.
+
+      (4) At this point Endpoint B is fully ended.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag23')"> &#9674; </a>&#160;<strong>Transport :  : Session Errors</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag23">
+<pre>
+Endpoint                      Endpoint
+================================================
+FRAME 1           ----------&gt;
+FRAME 2           ----------&gt;
+FRAME 3           ---+   +--- END(error=...)
+                      \ /
+                       x
+                      / \
+                  &lt;--+   +--&gt; *discarded*
+END               ----------&gt;
+                      ...
+================================================
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag24')"> &#9674; </a>&#160;<strong>Transport :  : Session States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag24">
+<pre>
+                        UNMAPPED&lt;-------------------+
+                           |                        |
+                   +-------+-------+                |
+           S:BEGIN |               | R:BEGIN        |
+                   |               |                |
+                  \|/             \|/               |
+               BEGIN_SENT      BEGIN_RCVD           |
+                   |               |                |
+                   |               |                |
+           R:BEGIN |               | S:BEGIN        |
+                   +-------+-------+                |
+                           |                        |
+                          \|/                       |
+                         MAPPED                     |
+                           |                        |
+             +-------------+-------------+          |
+S:END(error) |       S:END |             | R:END    |
+             |             |             |          |
+            \|/           \|/           \|/         |
+         DISCARDING     END_SENT      END_RCVD      |
+             |             |             |          |
+             |             |             |          |
+       R:END |       R:END |             | S:END    |
+             +-------------+-------------+          |
+                           |                        |
+                           |                        |
+                           +------------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag25')"> &#9674; </a>&#160;<strong>Transport :  : Link Handles</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag25">
+<pre>
++-------------------+                             +-------------------+
+|    name: Link_1   |                             |    name: Link_1   |
+|  handle: i        |                             |  handle: j        |
+|-------------------|                             |-------------------|
+|    role: receiver |                             |    role: sender   |
+|  source: A        |&lt;---+                   +---&gt;|  source: A        |
+|  target: B        |    |                   |    |  target: B        |
++-------------------+    |                   |    +-------------------+
+                         |                   |
+                         |    +---------+    |
+        ...          &lt;---+---&gt;| Session |&lt;---+---&gt;        ...
+                         |    +---------+    |
+                         |                   |
++-------------------+    |                   |    +-------------------+
+|    name: Link_N   |    |                   |    |    name: Link_N   |
+|  handle: k        |&lt;---+                   +---&gt;|  handle: l        |
+|-------------------|                             |-------------------|
+|    role: sender   |                             |    role: receiver |
+|  source: C        |                             |  source: C        |
+|  target: D        |                             |  target: D        |
++-------------------+                             +-------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag26')"> &#9674; </a>&#160;<strong>Transport :  : Establishing or Resuming a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag26">
+<pre>
+Peer                                  Partner
+================================================================
+*create link endpoint*
+ATTACH(name=N, handle=1,    ----------&gt; *create link endpoint*
+       role=sender,                +--- ATTACH(name=N, handle=2,
+       source=A,                  /            role=receiver,
+       target=B)                 /             source=A,
+                                /              target=B)
+                            &lt;--+
+                              ...
+----------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag27')"> &#9674; </a>&#160;<strong>Transport :  : Establishing or Resuming a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag27">
+<pre>
+    Peer                                  Partner
+    ================================================================
+    *create link endpoint*
+    ATTACH(name=N, handle=1,    ----------&gt; *create link endpoint*  (1)
+           role=sender,                +--- ATTACH(name=N, handle=2,
+           source=A,                  /            role=receiver,
+           target=B)                 /             source=A,
+                                    /              target=-)
+(2)                             &lt;--+
+                                       +--- DETACH(handle=2,
+                                      /            closed=True)
+                                     /
+                                    /
+                                &lt;--+
+    DETACH(handle=1,            -----------&gt;
+           closed=True)
+                                  ...
+    ----------------------------------------------------------------
+      (1) The Link Endpoint is created, but no target is created.
+      (2) At this point the link is established, but it is to a
+          nonexistent target.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag28')"> &#9674; </a>&#160;<strong>Transport :  : Establishing or Resuming a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag28">
+<pre>
+    Peer                                   Partner
+    ================================================================
+    *existing source*
+    ATTACH(name=N, handle=1,   ----------&gt; *found existing target*
+           role=sender,               +--- ATTACH(name=N, handle=2,  (1)
+           source=X,                 /            role=receiver,
+           target=Y,                /             source=X,
+           unsettled=...)          /              target=Y,
+(2)                            &lt;--+               unsettled=...)
+                                   ...
+    ----------------------------------------------------------------
+      (1) The target already exists, and its properties
+          match the peer's expectations.
+      (2) At this point the Link is reestablished with source=X,
+          target=Y.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag29')"> &#9674; </a>&#160;<strong>Transport :  : Establishing or Resuming a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag29">
+<pre>
+    Peer                                 Partner
+    ================================================================
+    *existing source*
+    ATTACH(name=N, handle=1,   ----------&gt; *found existing target*
+           role=sender,               +--- ATTACH(name=N, handle=2,  (1)
+           source=A,                 /            role=receiver,
+           target=B,                /             source=A,
+           unsettled=...)          /              target=C,
+(2)                            &lt;--+               unsettled=...)
+                                   ...
+    ----------------------------------------------------------------
+      (1) The Terminus already exists, but its state
+          does not match the Peer's endpoint.
+      (2) At this point the Link is established with source=A,
+          target=C.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag30')"> &#9674; </a>&#160;<strong>Transport :  : Establishing or Resuming a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag30">
+<pre>
+    Peer                                   Partner
+    ================================================================
+    *create link endpoint*
+    ATTACH(name=N, handle=1,   ----------&gt; *found existing target*
+           role=sender,               +--- ATTACH(name=N, handle=2,  (1)
+           source=X                  /            role=receiver,
+           target=-)                /             source=X,
+(2)                            &lt;---+              target=Y)
+                                   ...
+    ----------------------------------------------------------------
+      (1) The target already exists, and its properties are
+          authoritative.
+      (2) At this point the Link is reestablished with source=X,
+          target=Y.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag31')"> &#9674; </a>&#160;<strong>Transport :  : Detaching and Reattaching a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag31">
+<pre>
+    Peer                                Partner
+    =============================================================
+    *create link endpoint*
+    ATTACH(name=N, handle=1   ----------&gt; *create link endpoint*
+           role=sender,              +--- ATTACH(name=N, handle=2,
+           source=A,                /            role=receiver,
+           target=B)               /             source=A,
+                                  /              target=B)
+                              &lt;--+
+                                  ...
+    *use link*                &lt;---------&gt; *use link*
+                                  ...
+    DETACH(handle=1)          ----------&gt; *detach input handle*
+(1) *detach output handle*    &lt;---------- DETACH(handle=2)
+                                  ...
+    -------------------------------------------------------------
+      (1) At this point both endpoints are detached.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag32')"> &#9674; </a>&#160;<strong>Transport :  : Detaching and Reattaching a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag32">
+<pre>
+    Peer                                Partner
+    =============================================================
+                                  ...
+    DETACH(handle=1)          ---+
+                                  \
+                                   \
+                                    \
+    *modify link endpoint*           \
+                                      +--&gt; *detach input handle*
+    ATTACH(name=N, handle=1   ---+    +--- DETACH(handle=2)
+           role=sender,           \  /
+           source=A',              \/
+           target=B')              /\
+                                  /  \
+     *detach input handle*    &lt;--+    +--&gt; *reattach input handle*
+                                           *modify link endpoint*
+                                      +--- ATTACH(name=N, handle=2
+                                     /            role=receiver,
+                                    /             source=A',
+                                   /              target=B')
+                                  /
+(1)  *reattach input handle*  &lt;--+
+                                  ...
+    *use link*               &lt;---------&gt; *use link*
+                                  ...
+    -------------------------------------------------------------
+      (1) At this point the link is updated and attached.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag33')"> &#9674; </a>&#160;<strong>Transport :  : Closing a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag33">
+<pre>
+    Peer                                Partner
+    =============================================================
+    *create link endpoint*
+    ATTACH(name=N, handle=1   ----------&gt; *create link endpoint*
+           role=sender,              +--- ATTACH(name=N, handle=2,
+           source=A,                /            role=receiver,
+           target=B)               /             source=A,
+                                  /              target=B)
+                              &lt;--+
+                                  ...
+    *use link*                &lt;---------&gt; *use link*
+                                  ...
+    DETACH(handle=1,          ----------&gt; *destroy link endpoint*
+           closed=True)
+(1) *destroy link endpoint*   &lt;---------- DETACH(handle=2,
+                                                 closed=True)
+    -------------------------------------------------------------
+      (1) At this point both endpoints are destroyed.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag34')"> &#9674; </a>&#160;<strong>Transport :  : Flow Control</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag34">
+<pre>
+     +----------+                                    +----------+
+     |  Sender  |---------------transfer------------&gt;| Receiver |
+     +----------+                                    +----------+
+      \        / &lt;----------------flow--------------- \        /
+       +------+                                        +------+
+          |
+          |
+          |
+ if link-credit &lt;= 0 then pause
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag35')"> &#9674; </a>&#160;<strong>Transport :  : Flow Control</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag35">
+<pre>
+                                flow state
+                                    |
+                                    | modifies
++------------------+                |               +------------------+
+|      Sender      |    .----------------------.    |     Receiver     |
++------------------+     attach, transfer, flow     +------------------+
+| delivery-count   |-------------------------------&gt;| delivery-count   |
+| link-credit      |                                | link-credit      |
+| available        |&lt;-------------------------------| available        |
+| drain            |              flow              | drain            |
++------------------+             '-----'            +------------------+
+                                    |
+                                    | modifies
+                                    |
+                                flow state
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag36')"> &#9674; </a>&#160;<strong>Transport :  : Flow Control</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag36">
+<pre>
+            +----------+                                    +----------+
+            | Receiver |&lt;--------------transfer-------------|  Sender  |
+            +----------+                                    +----------+
+             \        / -----------------flow--------------&gt; \        /
+              +------+                                        +------+
+                  |
+                  |
+                  |
+    sync-get: flow(link-credit=1, ...)      ----&gt;
+   timed-get: flow(link-credit=1, ...),
+              *wait*,
+              flow(drain=True, ...)         ----&gt;
+async-notify: flow(link-credit=delta, ...)  ----&gt;
+        stop: flow(link-credit=0, ...)      ----&gt;
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag37')"> &#9674; </a>&#160;<strong>Transport :  : Synchronous Get</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag37">
+<pre>
+Receiver                                      Sender
+=================================================================
+                                      ...
+flow(link-credit=1)               ----------&gt;
+                                        +---- transfer(...)
+*block until transfer arrives*         /
+                                  &lt;---+
+                                      ...
+-----------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag38')"> &#9674; </a>&#160;<strong>Transport :  : Synchronous Get</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag38">
+<pre>
+    Receiver                                      Sender
+    =================================================================
+                                          ...
+    flow(link-credit=1)               ----------&gt;
+  *wait for link-credit &lt;= 0*
+    flow(drain=True)                  ---+   +--- transfer(...)
+                                          \ /
+                                           x
+                                          / \
+(1)                                   &lt;--+   +--&gt;
+(2)                                   &lt;---------- flow(...)
+                                          ...
+    -----------------------------------------------------------------
+      (1) If a message is available within the timeout, it will
+          arrive at this point.
+      (2) If a message is not available within the timeout, the
+          drain flag will ensure that the Sender promptly advances the
+          delivery-count until link-credit is consumed.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag39')"> &#9674; </a>&#160;<strong>Transport :  : Asynchronous Notification</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag39">
+<pre>
+Receiver                                          Sender
+=====================================================================
+                                      ...
+                                  &lt;----------     transfer(...)
+                                  &lt;----------     transfer(...)
+flow(link-credit=delta)           ---+   +---     transfer(...)
+                                      \ /
+                                       x
+                                      / \
+                                  &lt;--+   +--&gt;
+                                  &lt;----------     transfer(...)
+                                  &lt;----------     transfer(...)
+flow(link-credit=delta)           ---+   +---     transfer(...)
+                                      \ /
+                                       x
+                                      / \
+                                  &lt;--+   +--&gt;
+                                      ...
+---------------------------------------------------------------------
+  The incoming message rate for the Link is limited by the
+  rate at which the Receiver updates the delivery-limit by
+  issuing link-credit.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag40')"> &#9674; </a>&#160;<strong>Transport :  : Stopping a Link</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag40">
+<pre>
+    Receiver                                       Sender
+    ================================================================
+                                           ...
+                                       &lt;---------- transfer(...)
+    flow(...,                          ---+   +--- transfer(...)
+         link-credit=0,                    \ /
+         echo=True)                         x
+                                           / \
+(1)                                    &lt;--+   +--&gt;
+(2)                                    &lt;---------- flow(...)
+                                           ...
+    ----------------------------------------------------------------
+      (1) In-flight transfers may still arrive until the flow state
+          is updated at the Sender.
+      (2) At this point no further transfers will arrive.
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag41')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag41">
+<pre>
+  +------------------+
+ /       Sender       \
++----------------------+
+| unsettled:           |    transfer(delivery-tag=DT, settled=False,
+|   ...                |             state=S_0, ...)
+|   DT -&gt; (local: S_0, |-----------------------------------------------&gt;
+|          remote: ?)  |
+|   ...                |
++----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag42')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag42">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+    transfer(delivery-tag=DT, settled=False,    | unsettled:           |
+             state=S_0, ...)                    |   ...                |
+-----------------------------------------------&gt;|   DT -&gt; (local: S_1, |
+                                                |          remote: S_0)|
+                                                |   ...                |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag43')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag43">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+                                                | unsettled:           |
+                                                |   ...                |
+&lt;-----------------------------------------------|   DT -&gt; (local: S_2, |
+    disp(role=receiver, ..., delivery-tag=DT,   |          remote: S_0)|
+         settled=False, state=S_2, ...)         |   ...                |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag44')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag44">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+                                                | unsettled:           |
+                                                |   ...                |
+&lt;-----------------------------------------------|   DT -&gt; (local: T_0, |
+    disp(role=receiver, ..., delivery-tag=DT,   |          remote: S_0)|
+         settled=False, state=T_0, ...)         |   ...                |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag45')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag45">
+<pre>
+  +------------------+
+ /       Sender       \
++----------------------+
+| unsettled:           |
+|   ...                |
+|   DT -&gt; (local: S_0, |&lt;-----------------------------------------------
+|          remote: T_0)|    disp(role=receiver, ..., delivery-tag=DT,
+|   ...                |         settled=False, state=T_0, ...)
++----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag46')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag46">
+<pre>
+  +------------------+
+ /       Sender       \
++----------------------+
+| unsettled:           |    disp(role=sender, ..., delivery-tag=DT,
+|   ...                |         settled=True, state=T_1, ...)
+|   - -&gt; -             |-----------------------------------------------&gt;
+|   ...                |
++----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag47')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag47">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+     disp(role=sender, ..., delivery-tag=DT,    | unsettled:           |
+          settled=True, state=T_1, ...)         |   ...                |
+-----------------------------------------------&gt;|   DT -&gt; (local: S_2, |
+                                                |          remote: - ) |
+                                                |   ...                |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag48')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag48">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+                                                | unsettled:           |
+                                                |   ...                |
+&lt;-----------------------------------------------|   - -&gt; -             |
+                                                |   ...                |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag49')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag49">
+<pre>
+  +------------------+
+ /       Sender       \
++----------------------+
+| unsettled:           |    transfer(delivery-tag=DT, settled=True,
+|   ...                |             state=T_0, ...)
+|   - -&gt; -             |-----------------------------------------------&gt;
+|   ...                |
++----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag50')"> &#9674; </a>&#160;<strong>Transport :  : Transferring a Message</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag50">
+<pre>
+                                                  +------------------+
+                                                 /      Receiver      \
+                                                +----------------------+
+                                                | unsettled:           |
+                                                |   ...                |
+&lt;-----------------------------------------------|   - -&gt; -             |
+    disp(role=receiver, ..., delivery-tag=DT,   |   ...                |
+         settled=True, state=T_0, ...)          |                      |
+                                                +----------------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag51')"> &#9674; </a>&#160;<strong>Transport :  : Transferring Large Messages</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag51">
+<pre>
+              +------------+  S:XFR(M=1,A=0)
+       +------|  NOT_SENT  |------+
+       |      +------------+      |
+       |                          |
+       | S:XFR(M=0,A=0)           |
+       |                          |     S:XFR(M=1,A=0)
+       |                          |      +----------+
+       |                          |      |          |
+       |                         \|/    \|/         |
+       |                       +------------+       |
+       |      +----------------|  SENDING   |-------+
+       |      | S:XFR(M=0,A=0) +------------+
+       |      |                      |
+       |      |                      |
+       |      |                      | S:XFR(M=0,A=1)
+       |      |                      |
+      \|/    \|/                    \|/
+    +------------+             +------------+
+    |    SENT    |             |  ABORTED   |
+    +------------+             +------------+
+
+Key: S:XFR(M=?,A=?) --&gt; Sent TRANSFER(more=?, aborted=?)
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransportDiag52')"> &#9674; </a>&#160;<strong>Transport :  : Transferring Large Messages</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransportDiag52">
+<pre>
+              +------------+  R:XFR(M=1,A=0)
+       +------|  NOT_RCVD  |------+
+       |      +------------+      |
+       |                          |
+       | R:XFR(M=0,A=0)           |
+       |                          |     R:XFR(M=1,A=0)
+       |                          |      +----------+
+       |                          |      |          |
+       |                         \|/    \|/         |
+       |                       +------------+       |
+       |      +----------------| RECEIVING  |-------+
+       |      | R:XFR(M=0,A=0) +------------+
+       |      |                      |
+       |      |                      |
+       |      |                      | R:XFR(M=0,A=1)
+       |      |                      |
+      \|/    \|/                    \|/
+    +------------+             +------------+
+    |  RECEIVED  |             |  ABORTED   |
+    +------------+             +------------+
+
+Key: R:XFR(M=?,A=?) --&gt; Received TRANSFER(more=?, aborted=?)
+
+      </pre><br>
+</div>
+</div>
+<br>
+<a name="MessagingDiagrams"</a><br>
+<a href="javascript:toggle_node('MessagingDiag')"> &#9674; </a>&#160;Messaging Diagrams<br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag">
+<a href="javascript:toggle_node('MessagingDiag0')"> &#9674; </a>&#160;<strong>Messaging : Message Format :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag0">
+<pre>
+                                                      Bare Message
+                                                            |
+                                      .---------------------+--------------------.
+                                      |                                          |
+ +--------+-------------+-------------+------------+--------------+--------------+--------+
+ | header | delivery-   | message-    | properties | application- | application- | footer |
+ |        | annotations | annotations |            | properties   | data         |        |
+ +--------+-------------+-------------+------------+--------------+--------------+--------+
+ |                                                                                        |
+ '-------------------------------------------+--------------------------------------------'
+                                             |
+                                      Annotated Message
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag1')"> &#9674; </a>&#160;<strong>Messaging : Distribution Nodes : Message States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag1">
+<pre>
+                         +------------+
+                      +-&gt;| AVAILABLE  |
+                      |  +------------+
+                      |        |
+                      |        |
+  terminal outcome:   |        |
+  RELEASED/MODIFIED   |        | TRANSFER (acquiring)
+                      |        |
+                      |        |
+                      |       \|/
+                      |  +------------+
+                      +--|  ACQUIRED  |
+                         +------------+
+                               |
+                               |
+                               |   terminal outcome:
+                               |   ACCEPTED/REJECTED
+                               |
+                               |
+                              \|/
+                         +------------+
+                         |  ARCHIVED  |
+                         +------------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag2')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag2">
+<pre>
+    Peer                                   Partner
+    =======================================================================
+
+    ATTACH(name=N, handle=1,   --+     +-- ATTACH(name=N, handle=2,
+           role=sender,           \   /           role=receiver,
+           source=X,               \ /            source=X,
+           target=Y,                x             target=Y,
+           unsettled=              / \            unsettled=
+            { 1 -&gt; null,          /   \            { 2 -&gt; Received(3,0),
+              2 -&gt; null,       &lt;-+     +-&gt;           3 -&gt; Accepted,
+              3 -&gt; null,                             4 -&gt; null,
+              4 -&gt; null,                             6 -&gt; Received(2,0),
+              5 -&gt; Received(0,200),                  7 -&gt; Received(0,100),
+              6 -&gt; Received(1,150),                  8 -&gt; Accepted,
+              7 -&gt; Received(0,500),                  9 -&gt; null,
+              8 -&gt; Received(3,5),                   11 -&gt; Received(1,2000),
+              9 -&gt; Received(2,0),                   12 -&gt; Accepted,
+             10 -&gt; Accepted,                        13 -&gt; Released,
+             11 -&gt; Accepted,                        14 -&gt; null }
+             12 -&gt; Accepted,
+             13 -&gt; Accepted,
+             14 -&gt; Accepted }
+
+    -----------------------------------------------------------------------
+    Key:
+
+    Received(x,y) means Received(section-number=x, section-offset=y)
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag3')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag3">
+<pre>
+    TRANSFER(delivery-id=1,    ----------&gt; ** Append message data not     **
+             delivery-tag=2,               ** seen previously to delivery **
+        (1)  state=Received(3,0),          ** state.                      **
+             resume=true)
+    { ** payload ** }
+
+
+    (1) state could be
+        a) null, meaning that the transfer is being resumed from the first
+           byte of section number 0 (and the receiver MUST ignore all data
+           up to the first position it has not previously received).
+        b) Received with section number 0, 1 or 2 and an offset, indicating
+           that the payload data on the first frame of the resumed delivery
+           starts at the given point, and that the receiver MUST ignore all
+           data up to the first position it has not previously received.
+        c) Received(3,0) indicating that the resumption will start at the
+           first point which the receiver has not previously received.     </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag4')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag4">
+<pre>
+    TRANSFER(delivery-id=2,    ----------&gt; ** Processes confirmation that **
+             delivery-tag=3,               ** was accepted, and settles.  **
+             settled=true,
+             more=false,
+             state=Accepted,
+             resume=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag5')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag5">
+<pre>
+    TRANSFER(delivery-id=3,    ----------&gt; ** Processes in the same way   **
+             delivery-tag=4,               ** as we be done for a non-    **
+        (1)  state=null,                   ** resumed delivery.           **
+             resume=true)
+    { ** payload ** }
+
+
+    (1) Alternatively (and equivalently) state could be
+        Received(section-number=0, section-offset=0)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag6')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag6">
+<pre>
+    TRANSFER(delivery-id=4,    ----------&gt; ** Append message data not     **
+             delivery-tag=6,               ** seen previously to delivery **
+        (1)  state=Received(2,0),          ** state.                      **
+             resume=true)
+    { ** payload ** }
+
+
+    (1) state could be any point between Received(1,150) and Received(2,0)
+        inclusive. The receiver MUST ignore all data up to the first
+        position it has not previously received (i.e. section 2 offset 0).     </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag7')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag7">
+<pre>
+    TRANSFER(delivery-id=5,    ----------&gt; ** Discard any state relating  **
+             delivery-tag=7,               ** to the message delivery.    **
+             resume=true,
+             aborted=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag8')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag8">
+<pre>
+    TRANSFER(delivery-id=6,    ----------&gt; ** Processes confirmation that **
+             delivery-tag=8,               ** was accepted, and settles.  **
+             settled=true,
+             more=false,
+             state=Accepted,
+             resume=true)   </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag9')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag9">
+<pre>
+    TRANSFER(delivery-id=7,    ----------&gt; ** Discard any state relating  **
+             delivery-tag=9,               ** to the message delivery.    **
+             resume=true,
+             aborted=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag10')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag10">
+<pre>
+    TRANSFER(delivery-id=8,    ----------&gt; ** Discard any state relating  **
+             delivery-tag=11,              ** to the message delivery.    **
+             resume=true,
+             aborted=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag11')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag11">
+<pre>
+    TRANSFER(delivery-id=9,    ----------&gt; ** Locally settle the delivery **
+             delivery-tag=12,
+             settled=true,
+             resume=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag12')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag12">
+<pre>
+    TRANSFER(delivery-id=10    ----------&gt; ** Update any state affected   **
+             delivery-tag=13,              ** by the actual outcome, then **
+             settled=false,                ** settle the delivery         **
+             state=Accepted
+             resume=true)
+                               &lt;---------- DISPOSITION(first=10, last=10,
+                                                       state=Accepted,
+                                                       settled=true)    </pre><br>
+</div>
+<a href="javascript:toggle_node('MessagingDiag13')"> &#9674; </a>&#160;<strong>Messaging : Delivery State : Resuming Deliveries Using Delivery States</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="MessagingDiag13">
+<pre>
+    TRANSFER(delivery-id=11,   ----------&gt; ** Discard any state relating  **
+             delivery-tag=14,              ** to the message delivery.    **
+             resume=true,
+             aborted=true)    </pre><br>
+</div>
+</div>
+<br>
+<a name="TransactionsDiagrams"</a><br>
+<a href="javascript:toggle_node('TransactionsDiag')"> &#9674; </a>&#160;Transactions Diagrams<br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag">
+<a href="javascript:toggle_node('TransactionsDiag0')"> &#9674; </a>&#160;<strong>Transactions : Declaring a Transaction :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag0">
+<pre>
+Transaction Controller                  Transactional Resource
+===============================================================================
+
+ATTACH(name=txn-ctl,          ---------&gt;
+       ...,
+       target=
+         Coordinator(
+           capabilities=
+             "amqp:local-transactions")
+      )
+
+                             &lt;--------- ATTACH(name=txn-ctl,
+                                               ...,
+                                               target=
+                                                 Coordinator(
+                                                   capabilities=
+                                                     ["amqp:local-transactions",
+                                                      "amqp:multi-txns-per-ssn"]
+                                                            )
+                                              )
+
+                             &lt;--------- FLOW(...,handle=1, link-credit=1)
+
+TRANSFER(delivery-id=0, ...) ---------&gt;
+{ AmqpValue( Declare() ) }
+
+                             &lt;--------- DISPOSITION(first=0, last=0,
+                                                    state=Declared(txn-id=0) )
+
+-------------------------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransactionsDiag1')"> &#9674; </a>&#160;<strong>Transactions : Discharging a Transaction :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag1">
+<pre>
+Transaction Controller                  Transactional Resource
+===============================================================================
+
+TRANSFER(delivery-id=0, ...) ---------&gt;
+{ AmqpValue( Declare() ) }
+
+                             &lt;--------- DISPOSITION(first=0, last=0,
+                                                    state=Declared(txn-id=0) )
+
+                                  :
+                          Transactional Work
+                                  :
+
+
+TRANSFER(delivery-id=57, ...) ---------&gt;
+{ AmqpValue(
+    Discharge(txn-id=0,
+              fail=false)
+           ) }
+
+                             &lt;--------- DISPOSITION(first=57, last=57,
+                                                    state=Accepted() )
+
+-------------------------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransactionsDiag2')"> &#9674; </a>&#160;<strong>Transactions : Transactional Work : Transactional Posting</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag2">
+<pre>
+Transaction Controller                  Transactional Resource
+===============================================================================
+
+TRANSFER(handle=0,           ---------&gt;
+         delivery-id=0, ...)
+{ AmqpValue( Declare() ) }
+
+                             &lt;--------- DISPOSITION(first=0, last=0,
+                                                    state=Declared(txn-id=0) )
+
+
+TRANSFER(handle=1,           ---------&gt;
+         delivery-id=1,
+         state=
+           TransactionalState(
+             txn-id=0) )
+{ ... payload ... }
+
+                             &lt;--------- DISPOSITION(first=1, last=1,
+                                                    state=TransactionalState(
+                                                            txn-id=0,
+                                                            outcome=Accepted())
+                                                   )
+
+-------------------------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransactionsDiag3')"> &#9674; </a>&#160;<strong>Transactions : Transactional Work : Transactional Retirement</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag3">
+<pre>
+Transaction Controller                  Transactional Resource
+===============================================================================
+
+TRANSFER(handle=0,           ---------&gt;
+         delivery-id=0, ...)
+{ AmqpValue( Declare() ) }
+
+                             &lt;--------- DISPOSITION(first=0, last=0,
+                                                    state=Declared(txn-id=0) )
+FLOW(handle=2,               ---------&gt;
+     link-credit=10)
+
+                             &lt;--------- TRANSFER(handle=2,
+                                                 delivery-id=11,
+                                                 state=null,
+                                        { ... payload ... }
+
+                                  :
+                                  :
+
+                             &lt;--------- TRANSFER(handle=2,
+                                                 delivery-id=20,
+                                                 state=null,
+                                        { ... payload ... }
+
+
+DISPOSITION(first=11,        ---------&gt;
+            last=20,
+            state=TransactionalState(
+                    txn-id=0,
+                    outcome=Accepted())
+           )
+
+-------------------------------------------------------------------------------
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('TransactionsDiag4')"> &#9674; </a>&#160;<strong>Transactions : Transactional Work : Transactional Acquisition</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="TransactionsDiag4">
+<pre>
+Transaction Controller                  Transactional Resource
+===============================================================================
+
+TRANSFER(handle=0,           ---------&gt;
+         delivery-id=0, ...)
+{ AmqpValue( Declare() ) }
+
+                             &lt;--------- DISPOSITION(first=0, last=0,
+                                                    state=Declared(txn-id=0) )
+FLOW(handle=2,               ---------&gt;
+     link-credit=10,
+     drain=true,
+     properties={
+       txn-id=0
+     })
+
+                             &lt;--------- TRANSFER(handle=2,
+                                                 delivery-id=11,
+                                                 state=
+                                                   TransactionalState(txn-id=0),
+                                        { ... payload ... }
+
+                                  :
+                                  :
+
+                             &lt;--------- TRANSFER(handle=2,
+                                                 delivery-id=20,
+                                                 state=
+                                                   TransactionalState(txn-id=0),
+                                        { ... payload ... }
+
+
+DISPOSITION(first=11,        ---------&gt;
+            last=20,
+            state=TransactionalState(
+                    txn-id=0,
+                    outcome=Accepted())
+           )
+
+-------------------------------------------------------------------------------
+
+      </pre><br>
+</div>
+</div>
+<br>
+<a name="SecurityDiagrams"</a><br>
+<a href="javascript:toggle_node('SecurityDiag')"> &#9674; </a>&#160;Security Diagrams<br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag">
+<a href="javascript:toggle_node('SecurityDiag0')"> &#9674; </a>&#160;<strong>Security : TLS :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag0">
+<pre>
+  4 OCTETS   1 OCTET   1 OCTET   1 OCTET   1 OCTET
++----------+---------+---------+---------+----------+
+|  "AMQP"  |   %d2   |  major  |  minor  | revision |
++----------+---------+---------+---------+----------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('SecurityDiag1')"> &#9674; </a>&#160;<strong>Security : TLS :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag1">
+<pre>
+TCP Client                 TCP Server
+=========================================
+AMQP%d2.1.0.0  ---------&gt;
+               &lt;---------  AMQP%d2.1.0.0
+                    :
+                    :
+            &lt;TLS negotiation&gt;
+                    :
+                    :
+AMQP%d0.1.0.0  ---------&gt;                (over TLS secured connection)
+               &lt;---------  AMQP%d0.1.0.0
+         open  ---------&gt;
+               &lt;---------  open
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('SecurityDiag2')"> &#9674; </a>&#160;<strong>Security : SASL :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag2">
+<pre>
+  4 OCTETS   1 OCTET   1 OCTET   1 OCTET   1 OCTET
++----------+---------+---------+---------+----------+
+|  "AMQP"  |   %d3   |  major  |  minor  | revision |
++----------+---------+---------+---------+----------+
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('SecurityDiag3')"> &#9674; </a>&#160;<strong>Security : SASL :</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag3">
+<pre>
+TCP Client                 TCP Server
+=========================================
+AMQP%d3.1.0.0  ---------&gt;
+               &lt;---------  AMQP%d3.1.0.0
+                    :
+                    :
+            &lt;SASL negotiation&gt;
+                    :
+                    :
+AMQP%d0.1.0.0  ---------&gt;                (over SASL secured connection)
+               &lt;---------  AMQP%d0.1.0.0
+         open  ---------&gt;
+               &lt;---------  open
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('SecurityDiag4')"> &#9674; </a>&#160;<strong>Security : SASL : SASL Frames</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag4">
+<pre>
+              type: 0x01 - SASL frame
+
+           +0       +1       +2       +3
+       +-----------------------------------+ -.
+     0 |                SIZE               |  |
+       +-----------------------------------+  |---&gt; Frame Header
+     4 |  DOFF  |  TYPE  |   &lt;IGNORED&gt;*1   |  |      (8 bytes)
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+     8 |                ...                |  |
+       .                                   .  |---&gt; Extended Header
+       .             &lt;IGNORED&gt;*2           .  |  (DOFF * 4 - 8) bytes
+       |                ...                |  |
+       +-----------------------------------+ -'
+       +-----------------------------------+ -.
+4*DOFF |                                   |  |
+       .                                   .  |
+       .                                   .  |
+       .    Sasl Mechanisms / Sasl Init    .  |
+       .   Sasl Challenge / Sasl Response  .  |---&gt; Frame Body
+       .           Sasl Outcome            .  |  (SIZE - DOFF * 4) bytes
+       .                                   .  |
+       .                                   .  |
+       .                           ________|  |
+       |                ...       |           |
+       +--------------------------+          -'
+
+        *1 SHOULD be set to 0x0000
+        *2 Ignored, so DOFF should be set to 0x02
+
+      </pre><br>
+</div>
+<a href="javascript:toggle_node('SecurityDiag5')"> &#9674; </a>&#160;<strong>Security : SASL : SASL Negotiation</strong><br>
+<div style="display: none; margin-bottom: 2px; margin-left: 10px" id="SecurityDiag5">
+<pre>
+SASL Client       SASL Server
+================================
+              &lt;-- SASL-MECHANISMS
+SASL-INIT     --&gt;
+              ...
+              &lt;-- SASL-CHALLENGE *
+SASL-RESPONSE --&gt;
+              ...
+              &lt;-- SASL-OUTCOME
+--------------------------------
+  * Note that the SASL
+    challenge/response step may
+    occur zero or more times
+    depending on the details of
+    the SASL mechanism chosen.
+
+      </pre><br>
+</div>
+</div>
+<br>
 <a id="Indices"></a>
 <h2>Indices</h2>
 <a id="TypeIndex"></a>
 <h3>Type Index</h3>
 <a href="javascript:toggle_node('TypIndex')"> &#9674; </a>&#160;Type Index<br/>
-<div style="display: none; margin-bottom: 2px" id="TypIndex">
+<div style="display: block; margin-bottom: 2px" id="TypIndex">
 <table>
 <tr>
  <th>Type Name</th>
@@ -5621,7 +7538,7 @@ function hide_all_tables()
 <a id="FieldIndex"></a>
 <h3>Field Index</h3>
 <a href="javascript:toggle_node('FldIndex')"> &#9674; </a>&#160;Field Index<br/>
-<div style="display: none; margin-bottom: 2px" id="FldIndex">
+<div style="display: block; margin-bottom: 2px" id="FldIndex">
 <table>
 <tr>
  <th>Field Name</th>
@@ -6259,7 +8176,7 @@ function hide_all_tables()
 <a id="EnumerationIndex"></a>
 <h3>Enumeration Index</h3>
 <a href="javascript:toggle_node('EnuIndex')"> &#9674; </a>&#160;Enumeration Index<br/>
-<div style="display: none; margin-bottom: 2px" id="EnuIndex">
+<div style="display: block; margin-bottom: 2px" id="EnuIndex">
 <table>
 <tr>
  <th>Enum Value</th>
@@ -6542,7 +8459,7 @@ function hide_all_tables()
 <a id="GrandIndex"></a>
 <h3>Grand Index</h3>
 <a href="javascript:toggle_node('GndIndex')"> &#9674; </a>&#160;Grand Index<br/>
-<div style="display: none; margin-bottom: 2px" id="GndIndex">
+<div style="display: block; margin-bottom: 2px" id="GndIndex">
 <table>
 <tr>
  <th>Name</th>
@@ -8602,7 +10519,7 @@ function hide_all_tables()
 <a id="XrefIndex3"></a>
 <h3>Cross Reference Index</h3>
 <a href="javascript:toggle_node('XrefIndex')"> &#9674; </a>&#160;Type Cross Reference<br/>
-<div style="display: none; margin-bottom: 2px" id="XrefIndex">
+<div style="display: block; margin-bottom: 2px" id="XrefIndex">
 <table>
 <tr>
  <th>Referenced Type</th>
