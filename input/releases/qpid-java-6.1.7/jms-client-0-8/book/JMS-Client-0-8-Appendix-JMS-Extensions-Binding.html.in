@@ -1,0 +1,20 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">C.2.&#160;Binding Management</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Appendix-JMS-Extensions.html">Prev</a>&#160;</td><th align="center" width="60%">Appendix&#160;C.&#160;JMS Extensions</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Appendix-PooledConnecytionFactory.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Appendix-JMS-Extensions-Binding"></a>C.2.&#160;Binding Management</h2></div></div></div><p>These extensions allow bindings to be created or removed.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="JMS-Client-0-8-Appendix-JMS-Extensions-Binding-Creation"></a>C.2.1.&#160;Binding creation</h3></div></div></div><p>The following example illustrates the creation of queue binding to topic exchange with
+        JMS client.</p><div class="example"><a id="d0e3092"></a><p class="title"><strong>Example&#160;C.2.&#160;Binding a queue using JMS</strong></p><div class="example-contents"><pre class="programlisting">ConnectionFactory connectionFactory = ...
+Connection connection = connectionFactory.createConnection();
+AMQSession&lt;?, ?&gt; session = (AMQSession&lt;?,?&gt;)connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+...
+
+AMQShortString queueName = new AMQShortString("testQueue");
+AMQShortString routingKey = new AMQShortString("testRoutingKey");
+AMQDestination destination = (AMQDestination) session.createQueue(queueName.asString());
+
+...
+
+// binding arguments
+Map&lt;String, Object&gt; arguments = new HashMap&lt;String, Object&gt;();
+arguments.put("x-filter-jms-selector", "application='app1'");
+
+// create binding
+session.bindQueue(queueName, routingKey, FieldTable.convertToFieldTable(arguments),
+    new AMQShortString("amq.topic"), destination);</pre></div></div><br class="example-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="JMS-Client-0-8-Appendix-JMS-Extensions.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="JMS-Client-0-8-Appendix-JMS-Extensions.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="JMS-Client-0-8-Appendix-PooledConnecytionFactory.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Appendix&#160;C.&#160;JMS Extensions&#160;</td><td align="center" width="20%"><a accesskey="h" href="JMS-Client-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Appendix&#160;D.&#160;PooledConnectionFactory</td></tr></table></div></div>
