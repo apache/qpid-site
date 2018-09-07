@@ -25,6 +25,10 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+NOTE: Dispatch 1.3.0 builds against Proton 0.25.0, but a number of tests will
+fail due to import errors. A patch can be found on
+[DISPATCH-1108](https://issues.apache.org/jira/browse/DISPATCH-1108)
+to resolve these test failures until a newer release of Dispatch is available.
 
 ## New features and improvements
 
