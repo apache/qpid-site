@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>ch02s02.html - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://git-wip-us.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-cpp-1.39.0/index.html">Qpid C++ 1.39.0</a></li><li><a href="/releases/qpid-cpp-1.39.0/cpp-broker/book/index.html">AMQP Messaging Broker (Implemented in C++)</a></li><li>ch02s02.html</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">2.2.&#160;
+      Qpid Management Framework
+    </th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chapter-Managing-CPP-Broker.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;2.&#160;
+      Managing the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="ch02s03.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="idm140333888730320"></a>2.2.&#160;
+      Qpid Management Framework
+    </h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-WhatIsQMF" title="2.2.1.&#160; What Is QMF">Section&#160;2.2.1, &#8220;
+            What Is QMF
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-GettingStartedwithQMF" title="2.2.2.&#160; Getting Started with QMF">Section&#160;2.2.2, &#8220;
+            Getting
+            Started with QMF
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-QMFConcepts" title="2.2.3.&#160; QMF Concepts">Section&#160;2.2.3, &#8220;
+            QMF Concepts
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                </p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem"><p>
+                    <a class="xref" href="ch02s02.html#QpidManagementFramework-Console-2CAgent-2CandBroker" title="2.2.3.1.&#160; Console, Agent, and Broker">Section&#160;2.2.3.1, &#8220;
+            Console,
+            Agent, and Broker
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch02s02.html#QpidManagementFramework-Schema" title="2.2.3.2.&#160; Schema">Section&#160;2.2.3.2, &#8220;
+            Schema
+          &#8221;</a>
+                  </p></li><li class="listitem"><p>
+                    <a class="xref" href="ch02s02.html#QpidManagementFramework-ClassKeysandClassVersioning" title="2.2.3.3.&#160; Class Keys and Class Versioning">Section&#160;2.2.3.3, &#8220;
+            Class
+            Keys and Class Versioning
+          &#8221;</a>
+                  </p></li></ul></div><p>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-TheQMFProtocol" title="2.2.4.&#160; The QMF Protocol">Section&#160;2.2.4, &#8220;
+            The QMF
+            Protocol
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-HowtoWriteaQMFConsole" title="2.2.5.&#160; How to Write a QMF Console">Section&#160;2.2.5, &#8220;
+            How
+            to Write a QMF Console
+          &#8221;</a>
+              </p></li><li class="listitem"><p>
+                <a class="xref" href="ch02s02.html#QpidManagementFramework-HowtoWriteaQMFAgent" title="2.2.6.&#160; How to Write a QMF Agent">Section&#160;2.2.6, &#8220;
+            How to
+            Write a QMF Agent
+          &#8221;</a>
+              </p></li></ul></div><p>
+              Please visit the <a class="xref" href="">???</a> for information
+              about the future of QMF.
+            </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-WhatIsQMF"></a>2.2.1.&#160;
+            What Is QMF
+          </h3></div></div></div><p>
+            QMF (Qpid Management Framework) is a general-purpose management
+            bus built on Qpid Messaging. It takes advantage of the
+            scalability, security, and rich capabilities of Qpid to provide
+            flexible and easy-to-use manageability to a large set of
+            applications.
+          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-GettingStartedwithQMF"></a>2.2.2.&#160;
+            Getting
+            Started with QMF
+          </h3></div></div></div><p>
+            QMF is used through two primary APIs. The <span class="emphasis"><em>console</em></span> API is
+            used for console applications that wish to access and manipulate
+            manageable components through QMF. The <span class="emphasis"><em>agent</em></span> API is used
+            for application that wish to be managed through QMF.
+          </p><p>
+            The fastest way to get started with QMF is to work through the
+            "How To" tutorials for consoles and agents. For a deeper
+            understanding of what is happening in the tutorials, it is
+            recommended that you look at the <span class="emphasis"><em>Qmf Concepts</em></span> section.
+          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-QMFConcepts"></a>2.2.3.&#160;
+            QMF Concepts
+          </h3></div></div></div><p>
+            This section introduces important concepts underlying QMF.
+          </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="QpidManagementFramework-Console-2CAgent-2CandBroker"></a>2.2.3.1.&#160;
+            Console,
+            Agent, and Broker
+          </h4></div></div></div><p>
+            The major architectural components of QMF are the Console, the
+            Agent, and the Broker. Console components are the "managing"
+            components of QMF and agent components are the "managed" parts.
+            The broker is a central (possibly distributed, clustered and
+            fault-tolerant) component that manages name spaces and caches
+            schema information.
+          </p><p>
+            A console application may be a command-line utility, a
+            three-tiered web-based GUI, a collection and storage device, a
+            specialized application that monitors and reacts to events and
+            conditions, or anything else somebody wishes to develop that uses
+            QMF management data.
+          </p><p>
+            An agent application is any application that has been enhanced to
+            allow itself to be managed via QMF.
+          </p><pre class="programlisting">
+       +-------------+    +---------+    +---------------+    +-------------------+
+       | CLI utility |    | Web app |    | Audit storage |    | Event correlation |
+       +-------------+    +---------+    +---------------+    +-------------------+
+              ^                ^                 ^                ^          |
+              |                |                 |                |          |
+              v                v                 v                v          v
+    +---------------------------------------------------------------------------------+
+    |                Qpid Messaging Bus (with QMF Broker capability)                  |
+    +---------------------------------------------------------------------------------+
+                    ^                     ^                     ^
+                    |                     |                     |
+                    v                     v                     v
+           +----------------+    +----------------+    +----------------+
+           | Manageable app |    | Manageable app |    | Manageable app |
+           +----------------+    +----------------+    +----------------+
+</pre><p>
+            In the above diagram, the <span class="emphasis"><em>Manageable apps</em></span> are agents,
+            the <span class="emphasis"><em>CLI utility</em></span>, <span class="emphasis"><em>Web app</em></span>, and <span class="emphasis"><em>Audit
+            storage</em></span> are consoles, and <span class="emphasis"><em>Event correlation</em></span> is both
+            a console and an agent because it can create events based on the
+            aggregation of what it sees.
+          </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="QpidManagementFramework-Schema"></a>2.2.3.2.&#160;
+            Schema
+          </h4></div></div></div><p>
+            A <span class="emphasis"><em>schema</em></span> describes the structure of management data.
+            Each <span class="emphasis"><em>agent</em></span> provides a schema that describes its
+            management model including the object classes, methods, events,
+            etc. that it provides. In the current QMF distribution, the
+            agent's schema is codified in an XML document. In the near
+            future, there will also be ways to programatically create QMF
+            schemata.
+          </p><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-Package"></a>
+            Package
+          </h5></div></div></div><p>
+            Each agent that exports a schema identifies itself using a
+            <span class="emphasis"><em>package</em></span> name. The package provides a unique namespace
+            for the classes in the agent's schema that prevent collisions
+            with identically named classes in other agents' schemata.
+          </p><p>
+            Package names are in "reverse domain name" form with levels of
+            hierarchy separated by periods. For example, the Qpid messaging
+            broker uses package "org.apache.qpid.broker" and the Access
+            Control List plugin for the broker uses package
+            "org.apache.qpid.acl". In general, the package name should be the
+            reverse of the internet domain name assigned to the organization
+            that owns the agent software followed by identifiers to uniquely
+            identify the agent.
+          </p><p>
+            The XML document for a package's schema uses an enclosing
+            &lt;schema&gt; tag. For example:
+          </p><pre class="programlisting">
+&lt;schema package="org.apache.qpid.broker"&gt;
+
+&lt;/schema&gt;
+</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-ObjectClasses"></a>
+            Object
+            Classes
+          </h5></div></div></div><p>
+            <span class="emphasis"><em>Object classes</em></span> define types for manageable objects. The
+            agent may create and destroy objects which are instances of
+            object classes in the schema. An object class is defined in the
+            XML document using the &lt;class&gt; tag. An object class is
+            composed of properties, statistics, and methods.
+          </p><pre class="programlisting">
+  &lt;class name="Exchange"&gt;
+    &lt;property name="vhostRef"   type="objId" references="Vhost" access="RC" index="y" parentRef="y"/&gt;
+    &lt;property name="name"       type="sstr"  access="RC" index="y"/&gt;
+    &lt;property name="type"       type="sstr"  access="RO"/&gt;
+    &lt;property name="durable"    type="bool"  access="RC"/&gt;
+    &lt;property name="arguments"  type="map"   access="RO" desc="Arguments supplied in exchange.declare"/&gt;
+
+    &lt;statistic name="producerCount" type="hilo32"  desc="Current producers on exchange"/&gt;
+    &lt;statistic name="bindingCount"  type="hilo32"  desc="Current bindings"/&gt;
+    &lt;statistic name="msgReceives"   type="count64" desc="Total messages received"/&gt;
+    &lt;statistic name="msgDrops"      type="count64" desc="Total messages dropped (no matching key)"/&gt;
+    &lt;statistic name="msgRoutes"     type="count64" desc="Total routed messages"/&gt;
+    &lt;statistic name="byteReceives"  type="count64" desc="Total bytes received"/&gt;
+    &lt;statistic name="byteDrops"     type="count64" desc="Total bytes dropped (no matching key)"/&gt;
+    &lt;statistic name="byteRoutes"    type="count64" desc="Total routed bytes"/&gt;
+  &lt;/class&gt;
+</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-PropertiesandStatistics"></a>
+            Properties
+            and Statistics
+          </h5></div></div></div><p>
+            &lt;property&gt; and &lt;statistic&gt; tags must be placed within
+            &lt;schema&gt; and &lt;/schema&gt; tags.
+          </p><p>
+            Properties, statistics, and methods are the building blocks of an
+            object class. Properties and statistics are both object
+            attributes, though they are treated differently. If an object
+            attribute is defining, seldom or never changes, or is large in
+            size, it should be defined as a <span class="emphasis"><em>property</em></span>. If an
+            attribute is rapidly changing or is used to instrument the object
+            (counters, etc.), it should be defined as a <span class="emphasis"><em>statistic</em></span>.
+          </p><p>
+            The XML syntax for &lt;property&gt; and &lt;statistic&gt; have
+            the following XML-attributes:
+          </p><div class="table"><a id="idm140333888351904"></a><p class="title"><strong>Table&#160;2.1.&#160;XML Attributes for QMF Properties and Statistics</strong></p><div class="table-contents"><table border="1" class="table" summary="XML Attributes for QMF Properties and Statistics"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+                  Attribute
+                </td><td>
+                  &lt;property&gt;
+                </td><td>
+                  &lt;statistic&gt;
+                </td><td>
+                  Meaning
+                </td></tr><tr><td>
+                  name
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  The name of the attribute
+                </td></tr><tr><td>
+                  type
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  The data type of the attribute
+                </td></tr><tr><td>
+                  unit
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Optional unit name - use the singular (i.e. MByte)
+                </td></tr><tr><td>
+                  desc
+                </td><td>
+                  Y
+                </td><td>
+                  Y
+                </td><td>
+                  Description to annotate the attribute
+                </td></tr><tr><td>
+                  references
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  If the type is "objId", names the referenced class
+                </td></tr><tr><td>
+                  access
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  Access rights (RC, RW, RO)
+                </td></tr><tr><td>
+                  index
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  "y" if this property is used to uniquely identify the
+                  object. There may be more than one index property in a
+                  class
+                </td></tr><tr><td>
+                  parentRef
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  "y" if this property references an object in which this
+                  object is in a child-parent relationship.
+                </td></tr><tr><td>
+                  optional
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  "y" if this property is optional (i.e. may be
+                  NULL/not-present)
+                </td></tr><tr><td>
+                  min
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  Minimum value of a numeric attribute
+                </td></tr><tr><td>
+                  max
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  Maximum value of a numeric attribute
+                </td></tr><tr><td>
+                  maxLen
+                </td><td>
+                  Y
+                </td><td>
+                  &#160;
+                </td><td>
+                  Maximum length of a string attribute
+                </td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-Methods"></a>
+            Methods
+          </h5></div></div></div><p>
+            &lt;method&gt; tags must be placed within &lt;schema&gt; and
+            &lt;/schema&gt; tags.
+          </p><p>
+            A <span class="emphasis"><em>method</em></span> is an invokable function to be performed on
+            instances of the object class (i.e. a Remote Procedure Call). A
+            &lt;method&gt; tag has a name, an optional description, and
+            encloses zero or more arguments. Method arguments are defined by
+            the &lt;arg&gt; tag and have a name, a type, a direction, and an
+            optional description. The argument direction can be "I", "O", or
+            "IO" indicating input, output, and input/output respectively. An
+            example:
+          </p><pre class="programlisting">
+   &lt;method name="echo" desc="Request a response to test the path to the management broker"&gt;
+     &lt;arg name="sequence" dir="IO" type="uint32"/&gt;
+     &lt;arg name="body"     dir="IO" type="lstr"/&gt;
+   &lt;/method&gt;
+</pre></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-EventClasses"></a>
+            Event Classes
+          </h5></div></div></div><p /></div><div class="section"><div class="titlepage"><div><div><h5 class="title"><a id="QpidManagementFramework-DataTypes"></a>
+            Data Types
+          </h5></div></div></div><p>
+            Object attributes, method arguments, and event arguments have
+            data types. The data types are based on the rich data typing
+            system provided by the AMQP messaging protocol. The following
+            table describes the data types available for QMF:
+          </p><div class="table"><a id="idm140333888279792"></a><p class="title"><strong>Table&#160;2.2.&#160;QMF Datatypes</strong></p><div class="table-contents"><table border="1" class="table" summary="QMF Datatypes"><colgroup><col /><col /></colgroup><tbody><tr><td>
+                  QMF Type
+                </td><td>
+                  Description
+                </td></tr><tr><td>
+                  REF
+                </td><td>
+                  QMF Object ID - Used to reference another QMF object.
+                </td></tr><tr><td>
+                  U8
+                </td><td>
+                  8-bit unsigned integer
+                </td></tr><tr><td>
+                  U16
+                </td><td>
+                  16-bit unsigned integer
+                </td></tr><tr><td>
+                  U32
+                </td><td>
+                  32-bit unsigned integer
+                </td></tr><tr><td>
+                  U64
+                </td><td>
+                  64-bit unsigned integer
+                </td></tr><tr><td>
+                  S8
+                </td><td>
+                  8-bit signed integer
+                </td></tr><tr><td>
+                  S16
+                </td><td>
+                  16-bit signed integer
+                </td></tr><tr><td>
+                  S32
+                </td><td>
+                  32-bit signed integer
+                </td></tr><tr><td>
+                  S64
+                </td><td>
+                  64-bit signed integer
+                </td></tr><tr><td>
+                  BOOL
+                </td><td>
+                  Boolean - True or False
+                </td></tr><tr><td>
+                  SSTR
+                </td><td>
+                  Short String - String of up to 255 bytes
+                </td></tr><tr><td>
+                  LSTR
+                </td><td>
+                  Long String - String of up to 65535 bytes
+                </td></tr><tr><td>
+                  ABSTIME
+                </td><td>
+                  Absolute time since the epoch in nanoseconds (64-bits)
+                </td></tr><tr><td>
+                  DELTATIME
+                </td><td>
+                  Delta time in nanoseconds (64-bits)
+                </td></tr><tr><td>
+                  FLOAT
+                </td><td>
+                  Single precision floating point number
+                </td></tr><tr><td>
+                  DOUBLE
+                </td><td>
+                  Double precision floating point number
+                </td></tr><tr><td>
+                  UUID
+                </td><td>
+                  UUID - 128 bits
+                </td></tr><tr><td>
+                  FTABLE
+                </td><td>
+                  Field-table - std::map in C++, dictionary in Python
+                </td></tr></tbody></table></div></div><br class="table-break" /><p>
+            In the XML schema definition, types go by different names and
+            there are a number of special cases. This is because the XML
+            schema is used in code-generation for the agent API. It provides
+            options that control what kind of accessors are generated for
+            attributes of different types. The following table enumerates the
+            types available in the XML format, which QMF types they map to,
+            and other special handling that occurs.
+          </p><div class="table"><a id="idm140333892269424"></a><p class="title"><strong>Table&#160;2.3.&#160;XML Schema Mapping for QMF Types</strong></p><div class="table-contents"><table border="1" class="table" summary="XML Schema Mapping for QMF Types"><colgroup><col /><col /><col /><col /></colgroup><tbody><tr><td>
+                  XML Type
+                </td><td>
+                  QMF Type
+                </td><td>
+                  Accessor Style
+                </td><td>
+                  Special Characteristics
+                </td></tr><tr><td>
+                  objId
+                </td><td>
+                  REF
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  uint8,16,32,64
+                </td><td>
+                  U8,16,32,64
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  int8,16,32,64
+                </td><td>
+                  S8,16,32,64
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  bool
+                </td><td>
+                  BOOL
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  sstr
+                </td><td>
+                  SSTR
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  lstr
+                </td><td>
+                  LSTR
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  absTime
+                </td><td>
+                  ABSTIME
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  deltaTime
+                </td><td>
+                  DELTATIME
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  float
+                </td><td>
+                  FLOAT
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  double
+                </td><td>
+                  DOUBLE
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  uuid
+                </td><td>
+                  UUID
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  map
+                </td><td>
+                  FTABLE
+                </td><td>
+                  Direct (get, set)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  hilo8,16,32,64
+                </td><td>
+                  U8,16,32,64
+                </td><td>
+                  Counter (inc, dec)
+                </td><td>
+                  Generates value, valueMin, valueMax
+                </td></tr><tr><td>
+                  count8,16,32,64
+                </td><td>
+                  U8,16,32,64
+                </td><td>
+                  Counter (inc, dec)
+                </td><td>
+                  &#160;
+                </td></tr><tr><td>
+                  mma32,64
+                </td><td>
+                  U32,64
+                </td><td>
+                  Direct
+                </td><td>
+                  Generates valueMin, valueMax, valueAverage, valueSamples
+                </td></tr><tr><td>
+                  mmaTime
+                </td><td>
+                  DELTATIME
+                </td><td>
+                  Direct
+                </td><td>
+                  Generates valueMin, valueMax, valueAverage, valueSamples
+                </td></tr></tbody></table></div></div><br class="table-break" /><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+                    When writing a schema using the XML format, types used in
+                    &lt;property&gt; or &lt;arg&gt; must be types that have
+                    <span class="emphasis"><em>Direct</em></span> accessor style. Any type may be used in
+                    &lt;statistic&gt; tags.
+                  </p></div></div></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="QpidManagementFramework-ClassKeysandClassVersioning"></a>2.2.3.3.&#160;
+            Class
+            Keys and Class Versioning
+          </h4></div></div></div><p /></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-TheQMFProtocol"></a>2.2.4.&#160;
+            The QMF
+            Protocol
+          </h3></div></div></div><p>
+            The QMF protocol defines the message formats and communication
+            patterns used by the different QMF components to communicate with
+            one another.
+          </p><p>
+            A description of the current version of the QMF protocol can be
+            found at <a class="xref" href="">???</a>.
+          </p><p>
+            A proposal for an updated protocol based on map-messages is in
+            progress and can be found at <a class="xref" href="">???</a>.
+          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-HowtoWriteaQMFConsole"></a>2.2.5.&#160;
+            How
+            to Write a QMF Console
+          </h3></div></div></div><p>
+            Please see the <a class="xref" href="">???</a> for information about using the console API with
+            Python.
+          </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="QpidManagementFramework-HowtoWriteaQMFAgent"></a>2.2.6.&#160;
+            How to
+            Write a QMF Agent
+          </h3></div></div></div><p /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="chapter-Managing-CPP-Broker.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="chapter-Managing-CPP-Broker.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="ch02s03.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;2.&#160;
+      Managing the AMQP Messaging Broker
+    &#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;2.3.&#160;
+      QMF Python Console Tutorial
+    </td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

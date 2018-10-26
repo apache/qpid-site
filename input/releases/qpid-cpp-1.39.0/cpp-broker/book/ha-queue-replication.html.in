@@ -1,0 +1,78 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">1.13.&#160;Replicating Queues with the HA module</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="chapter-ha.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;1.&#160;
+      Running the AMQP Messaging Broker
+    </th><td align="right" width="20%">&#160;<a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title"><a id="ha-queue-replication"></a>1.13.&#160;Replicating Queues with the HA module</h2></div></div></div><p>
+    As well as support for an active-passive cluster, the
+    HA module allows you to replicate individual queues,
+    even if the brokers are not in a cluster. The <em class="firstterm">original</em>
+    queue is used as normal.  The <em class="firstterm">replica</em> queue is
+    updated automatically as messages are added to or removed from the original
+    queue.
+  </p><div class="warning" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Warning</h3><p>
+      It is not safe to modify the replica queue
+      other than via the automatic updates from the original. Adding or removing
+      messages on the replica queue will make replication inconsistent and may
+      cause message loss.
+      The HA module does <span class="emphasis"><em>not</em></span> enforce
+      restricted access to the replica queue (as it does in the case of a cluster)
+      so it is up to the application to ensure the replica is not used until it has
+      been disconnected from the original.
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm140333891096176"></a>1.13.1.&#160;Replicating queues</h3></div></div></div><p>
+      To create a replica queue, the HA module must be
+      loaded on both the original and replica brokers (it is loaded by default.)
+      You also need to set the configuration option:
+      </p><pre class="programlisting">
+	ha-queue-replication=yes
+      </pre><p>
+      to enable this feature on a stand-alone broker. It is automatically
+      enabled for brokers that are part of a cluster.
+    </p><p>
+      Suppose that <span class="command"><strong>myqueue</strong></span> is a queue on
+      <span class="command"><strong>node1</strong></span> and we want to create a replica of
+      <span class="command"><strong>myqueue</strong></span> on <span class="command"><strong>node2</strong></span> (where both brokers
+      are using the default AMQP port.) This is accomplished by the command:
+      </p><pre class="programlisting">
+	qpid-config --broker=node2 add queue --start-replica node1 myqueue
+      </pre><p>
+      If <span class="command"><strong>myqueue</strong></span> already exists on the replica
+      broker you can start replication from the original queue like this:
+      </p><pre class="programlisting">
+	qpid-ha replicate -b node2 node1 myqueue
+      </pre><p>
+    </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="idm140333887382320"></a>1.13.2.&#160;Replicating queues between clusters</h3></div></div></div><p>
+      You can replicate queues between two standalone brokers, between a
+      standalone broker and a cluster, or between two clusters (see <a class="xref" href="chapter-ha.html" title="1.12.&#160;Active-Passive Messaging Clusters">Section&#160;1.12, &#8220;Active-Passive Messaging Clusters&#8221;</a>.) For failover in a cluster there are two cases to
+      consider.
+    </p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>
+	  When the <span class="emphasis"><em>original</em></span> queue is on the active node
+	  of a cluster, failover is automatic. If the active node
+	  fails, the replication link will automatically reconnect and the
+	  replica will continue to be updated from the new primary.
+	</p></li><li class="listitem"><p>
+	  When the <span class="emphasis"><em>replica</em></span> queue is on the active node of a
+	  cluster, there is no automatic failover. However you can use the
+	  following workaround.
+	</p></li></ol></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="idm140333890581776"></a>1.13.2.1.&#160;Work around for fail-over of replica queue in a cluster</h4></div></div></div><p>
+	When a primary broker fails the cluster resource manager calls a script
+	to promote a backup broker to be the new primary. By default this script
+	is <code class="filename">/etc/init.d/qpidd-primary</code> but you can modify
+	that in your <code class="filename">cluster.conf</code> file (see <a class="xref" href="chapter-ha.html#ha-rm-config" title="1.12.5.&#160;Configuring with rgmanager as resource manager">Section&#160;1.12.5, &#8220;Configuring with <span class="command"><strong>rgmanager</strong></span> as resource manager&#8221;</a>.)
+      </p><p>
+	You can modify this script (on each host in your cluster) by adding
+	commands to create your replica queues just before the broker is
+	promoted, as indicated in the following exceprt from the script:
+	</p><pre class="programlisting">
+start() {
+    service qpidd start
+    echo -n $"Promoting qpid daemon to cluster primary: "
+    ################################
+    #### Add your commands here ####
+    ################################
+    $QPID_HA -b localhost:$QPID_PORT promote
+    [ "$?" -eq 0 ] &amp;&amp; success || failure
+}
+	</pre><p>
+	Your commands will be run, and your replicas created, whenever 
+	the system fails over to a new primary.
+      </p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="chapter-ha.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="ch01.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="chapter-Managing-CPP-Broker.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">1.12.&#160;Active-Passive Messaging Clusters&#160;</td><td align="center" width="20%"><a accesskey="h" href="index.html">Home</a></td><td align="right" valign="top" width="40%">&#160;Chapter&#160;2.&#160;
+      Managing the AMQP Messaging Broker
+    </td></tr></table></div></div>
