@@ -27,6 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.30.0](qpid-proton-j-0.30.0/index.html), November 2018
  - [Qpid Dispatch 1.4.1](qpid-dispatch-1.4.1/index.html), October 2018
  - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
  - [Qpid Proton 0.26.0](qpid-proton-0.26.0/index.html), October 2018
@@ -34,7 +35,6 @@ the
  - [Qpid for Java 6.1.7](qpid-java-6.1.7/index.html), September 2018
  - [Qpid JMS AMQP 0-x 6.3.3](qpid-jms-amqp-0-x-6.3.3/index.html), August 2018
  - [Qpid Interop-test 0.2.0](qpid-interop-test-0.2.0/index.html), August 2018
- - [Qpid Proton-J 0.29.0](qpid-proton-j-0.29.0/index.html), August 2018
  - [Qpid Broker-J 7.0.6](qpid-broker-j-7.0.6/index.html), June 2018
  - [Qpid Python 1.37.0](qpid-python-1.37.0/index.html), November 2017
 
@@ -48,6 +48,7 @@ the
  - [Qpid Proton 0.25.0](qpid-proton-0.25.0/index.html), September 2018
  - [Qpid Dispatch 1.3.0](qpid-dispatch-1.3.0/index.html), August 2018
  - [Qpid JMS 0.36.0](qpid-jms-0.36.0/index.html), August 2018
+ - [Qpid Proton-J 0.29.0](qpid-proton-j-0.29.0/index.html), August 2018
  - [Qpid Proton-J 0.28.1](qpid-proton-j-0.28.1/index.html), August 2018
  - [Qpid Proton-J 0.27.3](qpid-proton-j-0.27.3/index.html), August 2018
  - [Qpid Dispatch 1.2.0](qpid-dispatch-1.2.0/index.html), July 2018
