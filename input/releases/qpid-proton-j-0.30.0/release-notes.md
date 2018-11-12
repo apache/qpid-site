@@ -25,6 +25,7 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note**: This release addresses security issue [CVE-2018-17187]({{site_url}}/cves/CVE-2018-17187.html), around hostname verification mode not being implemented in the optional transport TLS wrapper. Uses of proton-j not using this layer (e.g use within Qpid JMS) are not impacted.
 
 ## New features and improvements
 
@@ -37,3 +38,4 @@ documentation, see the [release overview](index.html).
 
  - [PROTON-1938](https://issues.apache.org/jira/browse/PROTON-1938) - misaligned Transport set/getErrorCondition and closed() behaviour
  - [PROTON-1958](https://issues.apache.org/jira/browse/PROTON-1958) - incorrect ordering for reactor timer tasks with matching deadlines
+ - [PROTON-1962](https://issues.apache.org/jira/browse/PROTON-1962) - [CVE-2018-17187] transport TLS wrapper hostname verification mode not implemented

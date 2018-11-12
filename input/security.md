@@ -39,6 +39,7 @@ Qpid components are detailed at:
  - [JMS client]({{site_url}}/components/jms/security.html)
  - [AMQP 0-x JMS client]({{site_url}}/components/jms/security-0-x.html)
  - [Proton]({{site_url}}/proton/security.html)
+ - [Proton-J]({{site_url}}/proton/security-j.html)
 
 </section>
 </div>

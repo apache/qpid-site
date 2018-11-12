@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid Proton-J 0.30.0 Release Notes - Apache Qpid&#8482;</title>
+    <title>Security - Proton-J - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,35 +111,34 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-j-0.30.0/index.html">Qpid Proton-J 0.30.0</a></li><li>Qpid Proton-J 0.30.0 Release Notes</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/proton/index.html">Qpid Proton</a></li><li>Security - Proton-J</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-proton-j-0300-release-notes">Qpid Proton-J 0.30.0 Release Notes</h1>
+          <h1 id="security-proton-j">Security - Proton-J</h1>
 
-<p>Proton is a high-performance, lightweight messaging library. More
-about <a href="/proton/index.html">Qpid Proton</a>.</p>
+<table>
+<thead>
+<tr>
+  <th>CVE-ID</th>
+  <th>Severity</th>
+  <th>Affected versions</th>
+  <th>Fixed versions</th>
+  <th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><a href="/cves/CVE-2018-17187.html">CVE-2018-17187</a></td>
+  <td>Important</td>
+  <td>0.3 to 0.29.0 inclusive</td>
+  <td>0.30.0 and later</td>
+  <td>Transport TLS wrapper hostname verification mode not implemented</td>
+</tr>
+</tbody>
+</table>
 
-<p>For more information about this release, including download links and
-documentation, see the <a href="index.html">release overview</a>.</p>
-
-<p><strong>Note</strong>: This release addresses security issue <a href="/cves/CVE-2018-17187.html">CVE-2018-17187</a>, around hostname verification mode not being implemented in the optional transport TLS wrapper. Uses of proton-j not using this layer (e.g use within Qpid JMS) are not impacted.</p>
-
-<h2 id="new-features-and-improvements">New features and improvements</h2>
-
-<ul>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1925">PROTON-1925</a> - Add some enums to Section and DeliveryState to make type determination simpler</li>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1941">PROTON-1941</a> - Add WritableBuffer API for requesting space when writing complex types</li>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1948">PROTON-1948</a> - Refactor FrameWriter to avoid reencodes when buffer space is insufficient</li>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1961">PROTON-1961</a> - Improve codec performance for certain common encoding operations</li>
-</ul>
-
-<h2 id="bugs-fixed">Bugs fixed</h2>
-
-<ul>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1938">PROTON-1938</a> - misaligned Transport set/getErrorCondition and closed() behaviour</li>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1958">PROTON-1958</a> - incorrect ordering for reactor timer tasks with matching deadlines</li>
-<li><a href="https://issues.apache.org/jira/browse/PROTON-1962">PROTON-1962</a> - [CVE-2018-17187] transport TLS wrapper hostname verification mode not implemented</li>
-</ul>
+<p>See the main <a href="/security.html">Security</a> page for general
+information and details for other components.</p>
 
 
           <hr/>
