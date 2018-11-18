@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid via Maven - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.38.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,53 +111,41 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Qpid via Maven</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.38.0/index.html">Qpid JMS 0.38.0</a></li><li>Qpid JMS 0.38.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-via-maven">Qpid via Maven</h1>
+          <h1 id="qpid-jms-0380-release-notes">Qpid JMS 0.38.0 Release Notes</h1>
 
-<p>The following dependencies can be added to the POM for your Maven build to utilise the artifacts via the <a href="http://search.maven.org/">Maven central repository</a>.</p>
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
 
-<h2 id="qpid-jms-amqp-10">Qpid JMS (AMQP 1.0)</h2>
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-jms-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.38.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-
-<h2 id="qpid-amqp-0-x-jms-client">Qpid AMQP 0-x JMS Client</h2>
-
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>6.3.3<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.geronimo.specs<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>geronimo-jms_1.1_spec<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-
-<h2 id="qpid-proton-j">Qpid Proton-J</h2>
-
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>proton-j<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.30.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-
-<h2 id="more-information">More information</h2>
+<h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
-<li><a href="https://repository.apache.org/content/repositories/snapshots/">Snapshot repository</a></li>
-<li><a href="http://maven.apache.org/">Maven project</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-416">QPIDJMS-416</a> - Move protocol processing work into the netty event loop thread</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-418">QPIDJMS-418</a> - Clean up the usage of Symbol type and conversion to Symbol from String</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-420">QPIDJMS-420</a> - Improve performance of MessageConsumer processing</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-421">QPIDJMS-421</a> - Improve performance of MessageProducer by caching common annotation encodings</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-423">QPIDJMS-423</a> - Log only connection URI in the connection initialized event handler</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-429">QPIDJMS-429</a> - Refactor sender and receive code to use newer proton-j APIs </li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-419">QPIDJMS-419</a> - JMS Session is sometimes not recovered on failover reconnect</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-415">QPIDJMS-415</a> - update test dependencies</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-424">QPIDJMS-424</a> - Update to Netty 4.1.31 (and netty-tcnative 2.0.19 test dep)</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-427">QPIDJMS-427</a> - update to proton-j 0.30.0</li>
 </ul>
 
 
