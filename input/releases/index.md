@@ -27,8 +27,8 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.31.0](qpid-proton-j-0.31.0/index.html), November 2018
  - [Qpid JMS 0.38.0](qpid-jms-0.38.0/index.html), November 2018
- - [Qpid Proton-J 0.30.0](qpid-proton-j-0.30.0/index.html), November 2018
  - [Qpid Dispatch 1.4.1](qpid-dispatch-1.4.1/index.html), October 2018
  - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
  - [Qpid Proton 0.26.0](qpid-proton-0.26.0/index.html), October 2018
@@ -43,6 +43,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.30.0](qpid-proton-j-0.30.0/index.html), November 2018
  - [Qpid JMS 0.37.0](qpid-jms-0.37.0/index.html), October 2018
  - [Qpid Dispatch 1.4.0](qpid-dispatch-1.4.0/index.html), October 2018
  - [Qpid C++ 1.38.0](qpid-cpp-1.38.0/index.html), March 2018
