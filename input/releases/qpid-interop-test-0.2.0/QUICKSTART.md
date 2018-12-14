@@ -222,7 +222,7 @@ option to the `cmake` command. If it is omitted, then qpid-interop-test will be 
 into the default system directories.  The source may be unpacked, or (if you need to use the
 latest and greatest), cloned from git:
 
-    git clone https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git
+    git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
     
 or
     

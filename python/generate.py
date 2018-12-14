@@ -131,7 +131,7 @@ def fetch_source(module, release):
     user_temp_dir = make_user_temp_dir()
     dir_name = "qpid-{}-{}".format(module, release)
     source_dir = join(user_temp_dir, "transom", dir_name)
-    url = "http://git-wip-us.apache.org/repos/asf/qpid-{}.git".format(module)
+    url = "http://gitbox.apache.org/repos/asf/qpid-{}.git".format(module)
 
     if is_dir(source_dir):
         debug("Source already exists")

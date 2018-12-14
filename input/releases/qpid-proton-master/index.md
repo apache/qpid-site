@@ -48,11 +48,11 @@ This content was generated at 06:28  on Tuesday, 01 May 2018.
  - [Python API reference](proton/python/api/index.html)
  - [Ruby examples](proton/ruby/examples/index.html)
  - [Ruby API reference](proton/ruby/api/index.html)
- - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=master)
+ - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=master)
 
 </div>
 
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-proton.git?a=tree)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-proton.git?a=tree)

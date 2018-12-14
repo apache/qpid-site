@@ -46,7 +46,7 @@ files you download.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md;hb=HEAD)
+ - [Installing Qpid Python](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md;hb=HEAD)
  - [Python API reference](messaging-api/api/index.html)
  - [Python examples](messaging-api/examples/index.html)
 
@@ -56,7 +56,7 @@ files you download.
 ## More information
 
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-python-1.35.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=tag;h=1.35.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=tag;h=1.35.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

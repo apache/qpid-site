@@ -43,4 +43,4 @@ This content was generated at 12:42  on Wednesday, 26 April 2017.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git)

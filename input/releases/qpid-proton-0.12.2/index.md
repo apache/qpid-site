@@ -51,7 +51,7 @@ the files you download.
  - [Python examples](proton/python/examples/index.html)
  - [Python API reference](proton/python/api/index.html)
 ;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
- - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=0.12.2)
+ - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=0.12.2)
 
 </div>
 
@@ -60,8 +60,8 @@ the files you download.
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/proton/0.12.2)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%270.12.2%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository branch](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tree;hb=0.12.2)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=tag;h=0.12.2)
+ - [Source repository branch](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=tree;hb=0.12.2)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=tag;h=0.12.2)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

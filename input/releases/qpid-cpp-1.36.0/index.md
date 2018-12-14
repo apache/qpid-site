@@ -48,7 +48,7 @@ files you download.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt;hb=HEAD)
+ - [Installing Qpid C++](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt;hb=HEAD)
  - [C++ broker book](cpp-broker/book/index.html) ([PDF](cpp-broker/cpp-broker-book.pdf))
  - [Using the Qpid Messaging API](messaging-api/book/using-the-qpid-messaging-api.html) ([PDF](messaging-api/qpid-messaging-api-book.pdf))
  - [C++ API reference](messaging-api/cpp/api/index.html)
@@ -60,7 +60,7 @@ files you download.
 ## More information
 
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-cpp-1.36.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-cpp.git/tree/refs/tags/1.36.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-cpp.git/tree/refs/tags/1.36.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

@@ -41,7 +41,7 @@ the files you download.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Dispatch](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=0.7.x)
+ - [Installing Qpid Dispatch](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=0.7.x)
  - [Dispatch Router User Guide](book/book.html)
  - [qdrouterd](man/qdrouterd.html) - Router daemon
  - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
@@ -55,7 +55,7 @@ the files you download.
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/dispatch/0.7.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH+AND+fixVersion+%3D+%270.7.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git/tree/refs/tags/0.7.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-dispatch.git/tree/refs/tags/0.7.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

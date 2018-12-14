@@ -58,7 +58,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/jms-amqp-0-x/6.3.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-client-0-x-6.3.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git/tree/refs/tags/6.3.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git/tree/refs/tags/6.3.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

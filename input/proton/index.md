@@ -57,7 +57,7 @@ platform, environment, or language. More about
  - [Python tutorial]({{current_proton_release_url}}/proton/python/book/tutorial.html)
  - [Python examples]({{current_proton_release_url}}/proton/python/examples/index.html)
  - [Python API reference]({{current_proton_release_url}}/proton/python/api/index.html)
- - [Installing Qpid Proton](https://git-wip-us.apache.org/repos/asf?p=qpid-proton.git;a=blob_plain;f=INSTALL.md;hb={{current_proton_release}})
+ - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob_plain;f=INSTALL.md;hb={{current_proton_release}})
 
 </div>
 </div>
@@ -81,10 +81,10 @@ platform, environment, or language. More about
 
  - Proton
      - [Browse via GitHub](https://github.com/apache/qpid-proton)
-     - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-proton.git)
+     - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-proton.git)
  - Proton-J
      - [Browse via GitHub](https://github.com/apache/qpid-proton-j)
-     - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-proton-j.git)
+     - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-proton-j.git)
 
 ## Resources
 

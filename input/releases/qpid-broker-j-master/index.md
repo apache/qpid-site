@@ -44,4 +44,4 @@ This content was generated at 12:03  on Wednesday, 26 April 2017.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-broker-j.git)

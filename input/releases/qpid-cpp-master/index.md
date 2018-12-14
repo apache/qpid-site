@@ -36,7 +36,7 @@ This content was generated at 09:11  on Sunday, 04 December 2016.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt;hb=HEAD)
+ - [Installing Qpid C++](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt;hb=HEAD)
  - [C++ broker book](cpp-broker/book/index.html) ([PDF](cpp-broker/cpp-broker-book.pdf))
  - [C++ API reference](messaging-api/cpp/api/index.html)
  - [C++ examples](messaging-api/cpp/examples/index.html)
@@ -46,4 +46,4 @@ This content was generated at 09:11  on Sunday, 04 December 2016.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-cpp.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-cpp.git)

@@ -58,7 +58,7 @@ files you download.
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/broker-j/7.0.1)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-broker-7.0.1%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/7.0.1)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/7.0.1)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

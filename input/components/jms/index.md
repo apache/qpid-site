@@ -76,7 +76,7 @@ For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
 ## Source code
 
  - [Browse via GitHub](https://github.com/apache/qpid-jms)
- - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-jms.git)
+ - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-jms.git)
 
 ## Resources
 

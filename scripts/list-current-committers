@@ -32,10 +32,10 @@ svn log -r{$DATE}:HEAD -q http://svn.apache.org/repos/asf/qpid | egrep '^r' | cu
 (
     cd $work_dir
 
-    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-proton.git"
-    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-dispatch.git"
-    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-jms.git"
-    git clone --bare --branch master "http://git-wip-us.apache.org/repos/asf/qpid-interop-test.git"
+    git clone --bare --branch master "http://gitbox.apache.org/repos/asf/qpid-proton.git"
+    git clone --bare --branch master "http://gitbox.apache.org/repos/asf/qpid-dispatch.git"
+    git clone --bare --branch master "http://gitbox.apache.org/repos/asf/qpid-jms.git"
+    git clone --bare --branch master "http://gitbox.apache.org/repos/asf/qpid-interop-test.git"
 
     (cd qpid-proton.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)
     (cd qpid-dispatch.git && git log --since "$DATE" --format="format:%ce%n" >> $temp_list)

@@ -36,7 +36,7 @@ To access code from one of the Git repositories, use the `git clone` command
 with its URL, e.g for Qpid JMS:
 
     Qpid JMS
-    % git clone https://git-wip-us.apache.org/repos/asf/qpid-jms.git qpid-jms
+    % git clone https://gitbox.apache.org/repos/asf/qpid-jms.git qpid-jms
 
 Alternatively, you can use the mirror repositories available on GitHub to
 create your own fork.
@@ -47,8 +47,8 @@ Consult the install documentation below, or see the respective component
 documentation for more details.
 
  - [How to build Qpid Broker-J](https://cwiki.apache.org/confluence/display/qpid/How+To+Build+Qpid+Broker-J)
- - [Installing Qpid C++](https://git-wip-us.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
- - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
+ - [Installing Qpid C++](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=INSTALL.txt)
+ - [Installing Qpid Python](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md)
 
 ## Notifications
 

@@ -46,4 +46,4 @@ This content was generated at 15:07  on Friday, 22 September 2017.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-jms.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-jms.git)

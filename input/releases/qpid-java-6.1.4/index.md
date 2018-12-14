@@ -70,7 +70,7 @@ files you download.
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/java/6.1.4)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-6.1.4%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/6.1.4)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/6.1.4)
  - [GitHub mirror](https://github.com/apache/qpid-broker-j/tree/6.1.4)
 
 <script type="text/javascript">

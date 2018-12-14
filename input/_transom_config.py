@@ -105,7 +105,7 @@ def dashboard_asf_jira_links(project_key, project_id, components=None):
 def dashboard_asf_git_links(repo_key):
     links = []
 
-    git_url = "https://git-wip-us.apache.org/repos/asf/{}.git".format(repo_key)
+    git_url = "https://gitbox.apache.org/repos/asf/{}.git".format(repo_key)
     github_url = "https://github.com/apache/{}".format(repo_key)
 
     links.append("<a href=\"{}\">Git</a>".format(git_url))

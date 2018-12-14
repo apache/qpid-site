@@ -12,5 +12,5 @@
 
 ## More information
 
- - [README](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=examples/README.txt;hb=master)
- - [Source location](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=tree;f=examples;hb=master)
+ - [README](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=examples/README.txt;hb=master)
+ - [Source location](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=tree;f=examples;hb=master)

@@ -41,16 +41,16 @@ the files you download.
 
  - [Quickstart guide](QUICKSTART.html)
  - [User guide](users-guide.html)
- - [Developer overview](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
- - [Test HOWTO](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Test_HOWTO.txt;hb=0.1.0)
- - [Shim HOWTO](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Shim_HOWTO.txt;hb=0.1.0)
+ - [Developer overview](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
+ - [Test HOWTO](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Test_HOWTO.txt;hb=0.1.0)
+ - [Shim HOWTO](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Shim_HOWTO.txt;hb=0.1.0)
 
 
 ## More information
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/interop-test/0.1.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDIT+AND+fixVersion+%3D+%270.1.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git/tree/refs/tags/0.1.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-interop-test.git/tree/refs/tags/0.1.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

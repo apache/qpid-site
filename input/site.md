@@ -66,5 +66,5 @@ other webfonts used here are licensed under the
 
 Source code for this site lives in its own git repository.
 
-  - [Site source location](https://git-wip-us.apache.org/repos/asf/qpid-site.git)
-  - [README](https://git-wip-us.apache.org/repos/asf?p=qpid-site.git;a=blob_plain;f=README.md)
+  - [Site source location](https://gitbox.apache.org/repos/asf/qpid-site.git)
+  - [README](https://gitbox.apache.org/repos/asf?p=qpid-site.git;a=blob_plain;f=README.md)

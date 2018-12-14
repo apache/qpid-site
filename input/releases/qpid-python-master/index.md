@@ -36,7 +36,7 @@ This content was generated at 09:12  on Sunday, 04 December 2016.
 
 <div class="two-column" markdown="1">
 
- - [Installing Qpid Python](https://git-wip-us.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md;hb=HEAD)
+ - [Installing Qpid Python](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=blob_plain;f=README.md;hb=HEAD)
  - [Python API reference](messaging-api/api/index.html)
  - [Python examples](messaging-api/examples/index.html)
 
@@ -45,4 +45,4 @@ This content was generated at 09:12  on Sunday, 04 December 2016.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-python.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-python.git)

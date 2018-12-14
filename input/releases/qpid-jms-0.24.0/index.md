@@ -57,7 +57,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
  - [All release artefacts](http://archive.apache.org/dist/qpid/jms/0.24.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.24.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://git-wip-us.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.24.0)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.24.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {

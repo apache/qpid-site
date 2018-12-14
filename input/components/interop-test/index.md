@@ -145,9 +145,9 @@ The following clients are currently supported:
 
  - [Quickstart guide]({{current_interop_test_release_url}}/QUICKSTART.html)
  - [User guide]({{current_interop_test_release_url}}/users-guide.html)
- - [Developer overview](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
- - [Test HOWTO](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Test_HOWTO.txt;hb=0.1.0)
- - [Shim HOWTO](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Shim_HOWTO.txt;hb=0.1.0)
+ - [Developer overview](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
+ - [Test HOWTO](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Test_HOWTO.txt;hb=0.1.0)
+ - [Shim HOWTO](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/Shim_HOWTO.txt;hb=0.1.0)
 
 </div>
 
@@ -170,6 +170,6 @@ The following clients are currently supported:
 ## Source code
 
  - [Browse via GitHub](https://github.com/apache/qpid-interop-test)
- - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git)
+ - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-interop-test.git)
  
 </div>

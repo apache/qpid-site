@@ -153,7 +153,7 @@ into the default system directories.  The source may be unpacked, or (if you nee
 latest and greatest), cloned from git:
 
 ````
-git clone https://git-wip-us.apache.org/repos/asf/qpid-interop-test.git
+git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
 ````
 
 Assuming the source tree is located in directory `qpid-interop-test`:

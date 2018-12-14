@@ -66,7 +66,7 @@ A JMS 1.1 implementation supporting AMQP versions 0-10, 0-9-1, 0-9, and
 ## Source code
 
  - [Browse via GitHub](https://github.com/apache/qpid-jms-amqp-0-x)
- - [Git clone URL](https://git-wip-us.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
+ - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
 
 ## Resources
 

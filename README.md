@@ -172,7 +172,7 @@ dependencies on Fedora or RHEL.
 
 Qpid uses gitpubsub to send new content to the Qpid website.  Any file
 committed under the `content/` directory on the `asf-site` branch of
-the https://git-wip-us.apache.org/repos/asf/qpid-site.git repo is
+the https://gitbox.apache.org/repos/asf/qpid-site.git repo is
 automatically propagated to the live site.  `make publish` renders to
 this same `content/` directory.
 

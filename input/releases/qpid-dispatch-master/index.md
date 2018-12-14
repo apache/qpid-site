@@ -38,7 +38,7 @@ This content was generated at 07:00  on Saturday, 28 April 2018.
 
  - [Using Qpid Dispatch](user-guide/index.html)
  - [Installing Qpid Dispatch from
-   source](https://git-wip-us.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master)
+   source](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=master)
  - [qdrouterd](man/qdrouterd.html) - Router daemon
  - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
  - [qdstat](man/qdstat.html) - Get router statistics
@@ -49,4 +49,4 @@ This content was generated at 07:00  on Saturday, 28 April 2018.
 
 ## More information
 
- - [Source repository](https://git-wip-us.apache.org/repos/asf/qpid-dispatch.git)
+ - [Source repository](https://gitbox.apache.org/repos/asf/qpid-dispatch.git)

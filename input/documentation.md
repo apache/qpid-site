@@ -105,7 +105,7 @@ You can find older versions with our
  - [Overview]({{site_url}}/components/interop-test/index.html)
  - [Quickstart guide]({{current_interop_test_release_url}}/QUICKSTART.html)
  - [User guide]({{current_interop_test_release_url}}/users-guide.html)
- - [Developer overview](https://git-wip-us.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
+ - [Developer overview](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
 
 </section>
 </div>
