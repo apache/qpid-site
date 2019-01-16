@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 1.5.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.5.0/index.html">Qpid Dispatch 1.5.0</a></li><li>Qpid Dispatch 1.5.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-150-release-notes">Qpid Dispatch 1.5.0 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP message router library. More about
+<a href="/components/dispatch-router/index.html">Qpid
+Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1141">DISPATCH-1141</a> - Add an event API in the router core to more cleanly support module interactions</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1142">DISPATCH-1142</a> - Edge Router Module - Connection manager to select the active uplink</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1143">DISPATCH-1143</a> - Connection-scoped link routes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1145">DISPATCH-1145</a> - Edge Router - Implement address proxy component</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1150">DISPATCH-1150</a> - A request/response message client API for core</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1152">DISPATCH-1152</a> - Improvements to the core-endpoint API</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1154">DISPATCH-1154</a> - Synchronize routed link configurations on edge router with interior router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1156">DISPATCH-1156</a> - Delivery echo-prevention for edge routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1158">DISPATCH-1158</a> - Add background map to console's topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1159">DISPATCH-1159</a> - Remove the term "uplink" from the edge router - It's confusing</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1160">DISPATCH-1160</a> - Add edge address tracking module to interior routers which will inform edges of mobile address receiver changes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1161">DISPATCH-1161</a> - Handle edge routers in the console</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1162">DISPATCH-1162</a> - Documentation updates related to Edge Router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1165">DISPATCH-1165</a> - Generate egress-link histograms for more kinds of connections</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1166">DISPATCH-1166</a> - Expand the mouseover area for connections on the console's topology page </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1168">DISPATCH-1168</a> - Display additional detail for end-point connections, and edge-routers on the console's topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1178">DISPATCH-1178</a> - Allow unspecified router-id in configuration - select a random ID</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1191">DISPATCH-1191</a> - Log files could use some analysis and summary tools</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1193">DISPATCH-1193</a> - Smoothly transition colors on console's traffic congestion view</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1194">DISPATCH-1194</a> - Asynchronous address lookup on attach for Edge to determine if there are link-route destinations</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1195">DISPATCH-1195</a> - Continually update detail info on conole topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1199">DISPATCH-1199</a> - [tools] Log scraper tool should be moved to tools directory</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1200">DISPATCH-1200</a> - [Test] system_tests_edge_router must import 're'</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1201">DISPATCH-1201</a> - [tools] Scraper is mishandling transfers with no AMQP properties</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1202">DISPATCH-1202</a> - [tools] Scraper README is stale</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1204">DISPATCH-1204</a> - Add console tests for edge router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1205">DISPATCH-1205</a> - Allow signed int values &gt;= 0 be parsed as unsigned int</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1206">DISPATCH-1206</a> - Consolidate similar HTML templates into an angularjs directive</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1207">DISPATCH-1207</a> - [tools] Scraper does not handle session recreation over same connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1208">DISPATCH-1208</a> - [tools] Scraper is slow with large number of links</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1209">DISPATCH-1209</a> - Add and enabling gate to control the initialization of core modules</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1210">DISPATCH-1210</a> - [tools] Scraper could find and show unsettled transfers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1211">DISPATCH-1211</a> - Show rate of acceptedDeliveries in console detail for edge routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1216">DISPATCH-1216</a> - [tools] Scraper should sort links by source/target address</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1224">DISPATCH-1224</a> - Waypoints may be attached by external containers without using auto-links</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1227">DISPATCH-1227</a> - Add a policy setting to allow or forbid dynamic link routes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1238">DISPATCH-1238</a> - [tools] Scraper does not roll up error counts for convienient viewing</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1146">DISPATCH-1146</a> - Core-endpoint can't receive deliveries on core-initiated links</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1153">DISPATCH-1153</a> - Router crash when a detach arrives on a link that is processing deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1155">DISPATCH-1155</a> - dueling httpRootDirs</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1163">DISPATCH-1163</a> - Coverity issues on master branch </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1164">DISPATCH-1164</a> - Failing to compile the router when only python3 is installed</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1169">DISPATCH-1169</a> - Remove stranded link info popup on console's topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1170">DISPATCH-1170</a> - System tests failing when executed on a python3 only machine</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1171">DISPATCH-1171</a> - Interior router crash when edge receiver disconnects</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1174">DISPATCH-1174</a> - Update console's address class logic for edge routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1176">DISPATCH-1176</a> - Router crash when connected to network that has &gt; 400 edge routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1180">DISPATCH-1180</a> - Console's traffic animation incorrectly shows traffic from an edge router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1181">DISPATCH-1181</a> - handling MAU when local address is not yet defined can result in wrong treatment</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1182">DISPATCH-1182</a> - Fix various drawing glitches with console</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1184">DISPATCH-1184</a> - Deal with router ids that differ only by spaces in the id</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1185">DISPATCH-1185</a> - Update .gitignore for a few generated files</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1187">DISPATCH-1187</a> - Allow router to be configured to log in UTC time</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1189">DISPATCH-1189</a> - "log" configuration is missing "module" attribute</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1190">DISPATCH-1190</a> - Fix console topology page not recognizing edge router connected to multiple routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1192">DISPATCH-1192</a> - Use black for idle (no traffic) color on console's topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1196">DISPATCH-1196</a> - Delivery reference count assertion can fail with released multiframe messages</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1197">DISPATCH-1197</a> - Released multi-frame deliveries can cause stalling of inbound links</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1198">DISPATCH-1198</a> - An early query of 'org.apache.qpid.dispatch.router.node' can crash the router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1203">DISPATCH-1203</a> - Console tests are skipped</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1212">DISPATCH-1212</a> - Incorrect "Dropped Presettled Count " in output of qdstat -g when receiver drops off </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1213">DISPATCH-1213</a> - Sender  link  sending  pre-settled multi-frame deliveries can stall if receiver drops  </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1217">DISPATCH-1217</a> - Dragging a new node doesn't freeze its position on console topology page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1219">DISPATCH-1219</a> - [tools] Scraper fails to parse AMQP error with no description</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1220">DISPATCH-1220</a> - Valgrid errors when running system_tests_edge_router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1221">DISPATCH-1221</a> - Syncing a new router to an existing network can fail</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1222">DISPATCH-1222</a> - coverity static analysis reports several issues</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1223">DISPATCH-1223</a> - [tools] Scraper miscounts transfers with 'more' set as unsettled</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1228">DISPATCH-1228</a> - qdstat -a fails with "KeyError: priority" against 1.4 version of router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1229">DISPATCH-1229</a> - System tests failing when executed with python3.7</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1231">DISPATCH-1231</a> - Edge router fails to sync link routes due to credit stall</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1232">DISPATCH-1232</a> - Edge router test failing on RHEL6</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1233">DISPATCH-1233</a> - system_tests_global_delivery_counts fails intermittently</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1234">DISPATCH-1234</a> - Router crash when edge tracking address handler tries to access freed endpoint</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1235">DISPATCH-1235</a> - peer deliveries for multicast are incorrectly unlinked</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1237">DISPATCH-1237</a> - large frame multicast can stall receivers if one receiver closes its connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1239">DISPATCH-1239</a> - System tests failing when executed with python 2.6</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1240">DISPATCH-1240</a> - core client api generates non-unique correlation id's on 32 bit systems</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1175">DISPATCH-1175</a> - Update console to use the latest rhea.js library</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
