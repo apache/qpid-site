@@ -26,6 +26,9 @@ Dispatch]({{site_url}}/components/dispatch-router/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+NOTE: A problem has been identified with OpenSSL v1.1.1 where the TLS protocols in actual use may be different from those specified in the sslProfile
+protocols attribute. Users who require OpenSSL version restrictions must use system-wide configuration to set the version limits.
+
 
 ## New features and improvements
 
