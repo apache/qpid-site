@@ -62,7 +62,7 @@ files you download.
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {
-      if ("7.0.7" === "{{current_broker_j_release}}") {
+      if ("7.0.7" === "{{other_current_broker_j_release}}") {
           _modifyCurrentReleaseLinks();
       }
   });
