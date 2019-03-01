@@ -28,6 +28,8 @@
 | [CVE-2017-15702]({{site_url}}/cves/CVE-2017-15702.html) | Important | 0.18, 0.20, 0.22, 0.24, 0.26, 0.28, 0.30, and 0.32 | 6.0.0 | Authentication vulnerability |
 | [CVE-2018-1298]({{site_url}}/cves/CVE-2018-1298.html) | Important | 7.0.0 | 7.0.1 | Denial of Service |
 | [CVE-2018-8030]({{site_url}}/cves/CVE-2018-8030.html) | Important | 7.0.0, 7.0.1, 7.0.2, 7.0.3 and 7.0.4 | 7.0.5 | Denial of Service |
+| [CVE-2019-0200]({{site_url}}/cves/CVE-2019-0200.html) | Important | 6.0.0, 6.0.1, 6.0.2, 6.0.3, 6.0.4, 6.0.5, 6.0.6, 6.0.7, 6.0.8, 6.1.0, 6.1.1, 6.1.2, 6.1.3, 6.1.4, 6.1.5, 6.1.6, 6.1.7, 7.0.0, 7.0.1, 7.0.2, 7.0.3, 7.0.4, 7.0.5, 7.0.6 and 7.1.0 | 7.0.7, 7.1.1 | Denial of Service |
+
 
 See the main [security]({{site_url}}/security.html) page for general
 information and details for other components.
