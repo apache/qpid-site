@@ -41,6 +41,7 @@ documentation, see the [release overview](index.html).
 ## Bugs fixed
 
  - [QPIDJMS-419](https://issues.apache.org/jira/browse/QPIDJMS-419) - JMS Session is sometimes not recovered on failover reconnect
+ - [QPIDJMS-451](https://issues.apache.org/jira/browse/QPIDJMS-451) - broken session recover() accounting for CLIENT_ACK session
 
 ## Tasks
 
