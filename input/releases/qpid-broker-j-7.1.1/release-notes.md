@@ -33,6 +33,10 @@ documentation, see the [release overview](index.html).
 
 ## Bugs fixed
 
- - [QPID-8273](https://issues.apache.org/jira/browse/QPID-8273) - [Broker-J][AMQP 0-8..0-91] Broker can crash with BufferOverflowException when sending message to consumer
+ - [QPID-8273](https://issues.apache.org/jira/browse/QPID-8273) - [CVE-2019-0200][Broker-J][AMQP 0-8..0-10] Broker can crash on receiving malformed commands using AMQP protocols 0-8...0-10 and resending malformed messages
  - [QPID-8276](https://issues.apache.org/jira/browse/QPID-8276) - [Broker-J] Broker can leak closed NonBlockingConnection objects and eventually run out of heap memory
  - [QPID-8280](https://issues.apache.org/jira/browse/QPID-8280) - [Broker-J] Legacy REST API for bindings fails to create and delete binding
+
+## Tasks
+
+ - [QPID-8277](https://issues.apache.org/jira/browse/QPID-8277) - [Broker-J] Release Qpid Broker-J 7.1.1
