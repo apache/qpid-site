@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Documentation - Apache Qpid&#8482;</title>
+    <title>QpidJMS - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,135 +111,57 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Documentation</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.41.0/index.html">Qpid JMS 0.41.0</a></li><li>QpidJMS</li></ul>
 
         <div id="-middle-content">
-          <h1 id="documentation">Documentation</h1>
+          <h1 id="qpidjms">QpidJMS</h1>
 
-<p>The documentation on this page is for our
-<a href="/releases/index.html#current-releases">current releases</a>,
-You can find older versions with our
-<a href="/releases/index.html#past-releases">past releases</a>.</p>
+<p>The QpidJMS project provides a JMS based client that uses the AMQP v1.0 protocol.</p>
 
-<hr />
+<p>Below are some quick pointers you might find useful.</p>
 
-<h2 id="messaging-apis">Messaging APIs</h2>
+<h2 id="building-the-code">Building the code</h2>
 
-<div class="flex">
+<p>The project requires Maven 3. Some example commands follow.</p>
 
-<section>
+<p>Clean previous builds output and install all modules to local repository without
+running the tests:</p>
 
-<h3 id="qpid-proton">Qpid Proton</h3>
+<pre><code>mvn clean install -DskipTests
+</code></pre>
 
-<ul>
-<li><a href="/proton/index.html">Overview</a></li>
-<li><a href="/releases/qpid-proton-0.27.0/proton/c/api/files.html">C API reference</a></li>
-<li><a href="/releases/qpid-proton-0.27.0/proton/cpp/api/annotated.html">C++ API reference</a></li>
-<li><a href="/releases/qpid-proton-0.27.0/proton/python/api/index.html">Python API reference</a></li>
-<li><a href="/releases/qpid-proton-j-0.32.0/api/index.html">Java API reference</a></li>
-</ul>
+<p>Install all modules to the local repository after running all the tests:</p>
 
-</section>
+<pre><code>mvn clean install
+</code></pre>
 
-<section>
+<p>Perform a subset tests on the packaged release artifacts without
+installing:</p>
 
-<h3 id="qpid-jms">Qpid JMS</h3>
+<pre><code>mvn clean verify -Dtest=TestNamePattern*
+</code></pre>
 
-<ul>
-<li><a href="/components/jms/index.html">Overview</a></li>
-<li><a href="/releases/qpid-jms-0.41.0/docs/index.html">Configuration</a></li>
-<li><a href="http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/0.41.0/qpid-jms-examples">Examples</a></li>
-</ul>
+<p>Execute the tests and produce code coverage report:</p>
 
-</section>
+<pre><code>mvn clean test jacoco:report
+</code></pre>
 
-<section>
+<h2 id="examples">Examples</h2>
 
-<h3 id="qpid-messaging-api">Qpid Messaging API</h3>
+<p>First build and install all the modules as detailed above (if running against
+a source checkout/release, rather than against released binaries) and then
+consult the README in the qpid-jms-examples module itself.</p>
 
-<ul>
-<li><a href="/components/messaging-api/index.html">Overview</a></li>
-<li><a href="/releases/qpid-cpp-1.39.0/messaging-api/book/using-the-qpid-messaging-api.html">Using the Qpid Messaging API</a> (<a href="/releases/qpid-cpp-1.39.0/messaging-api/qpid-messaging-api-book.pdf">PDF</a>)</li>
-<li><a href="/releases/qpid-cpp-1.39.0/messaging-api/cpp/api/index.html">C++ API reference</a></li>
-<li><a href="/releases/qpid-cpp-1.39.0/messaging-api/cpp/examples/index.html">C++ examples</a></li>
-</ul>
+<h2 id="documentation">Documentation</h2>
 
-</section>
+<p>There is some basic documentation in the qpid-jms-docs module.</p>
 
-</div>
+<h2 id="distribution-assemblies">Distribution assemblies</h2>
 
-<hr />
+<p>After building the modules, src and binary distribution assemblies can be found at:</p>
 
-<h2 id="messaging-servers">Messaging servers</h2>
-
-<div class="flex">
-
-<section>
-
-<h3 id="broker-j">Broker-J</h3>
-
-<ul>
-<li><a href="/components/broker-j/index.html">Overview</a></li>
-<li><a href="/releases/qpid-broker-j-7.1.2/book/index.html">Broker book</a></li>
-</ul>
-
-</section>
-
-<section>
-
-<h3 id="c-broker">C++ broker</h3>
-
-<ul>
-<li><a href="/components/cpp-broker/index.html">Overview</a></li>
-<li><a href="/releases/qpid-cpp-1.39.0/cpp-broker/book/index.html">C++ broker book</a> (<a href="/releases/qpid-cpp-1.39.0/cpp-broker/cpp-broker-book.pdf">PDF</a>)</li>
-</ul>
-
-</section>
-
-<section>
-
-<h3 id="dispatch-router">Dispatch router</h3>
-
-<ul>
-<li><a href="/components/dispatch-router/index.html">Overview</a></li>
-<li><a href="/releases/qpid-dispatch-1.6.0/user-guide/index.html">Dispatch router book</a></li>
-</ul>
-
-</section>
-
-</div>
-
-<hr />
-
-<h2 id="messaging-tools">Messaging tools</h2>
-
-<div class="flex">
-
-<section>
-
-<h3 id="qpid-interop-test">Qpid Interop Test</h3>
-
-<ul>
-<li><a href="/components/interop-test/index.html">Overview</a></li>
-<li><a href="/releases/qpid-interop-test-0.2.0/QUICKSTART.html">Quickstart guide</a></li>
-<li><a href="/releases/qpid-interop-test-0.2.0/users-guide.html">User guide</a></li>
-<li><a href="https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0">Developer overview</a></li>
-</ul>
-
-</section>
-
-</div>
-
-<hr />
-
-<h2 id="more-information">More information</h2>
-
-<ul>
-<li><a href="/releases/snapshots.html">Documentation snapshots</a></li>
-<li><a href="/releases/index.html">Past and current releases</a></li>
-<li><a href="/components/index.html">Components</a></li>
-</ul>
+<pre><code>apache-qpid-jms/target
+</code></pre>
 
 
           <hr/>
