@@ -1,0 +1,3011 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Qpid::Proton::Connection
+  
+    &mdash; Qpid Proton Ruby API
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Qpid::Proton::Connection";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (C)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Qpid.html" title="Qpid (module)">Qpid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Proton.html" title="Qpid::Proton (module)">Proton</a></span></span>
+     &raquo; 
+    <span class="title">Connection</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Qpid::Proton::Connection
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName"><span class='object_link'><a href="Endpoint.html" title="Qpid::Proton::Endpoint (class)">Endpoint</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="Endpoint.html" title="Qpid::Proton::Endpoint (class)">Endpoint</a></span></li>
+          
+            <li class="next">Qpid::Proton::Connection</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/core/connection.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>An AMQP connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="PROTON_METHOD_PREFIX-constant" class="">PROTON_METHOD_PREFIX =
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>pn_connection</span><span class='tstring_end'>&quot;</span></span></pre></dd>
+    
+  </dl>
+
+
+
+  
+  
+  <h3 class="inherited">Constants inherited
+     from <span class='object_link'><a href="Endpoint.html" title="Qpid::Proton::Endpoint (class)">Endpoint</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Endpoint.html#LOCAL_ACTIVE-constant" title="Qpid::Proton::Endpoint::LOCAL_ACTIVE (constant)">Endpoint::LOCAL_ACTIVE</a></span>, <span class='object_link'><a href="Endpoint.html#LOCAL_CLOSED-constant" title="Qpid::Proton::Endpoint::LOCAL_CLOSED (constant)">Endpoint::LOCAL_CLOSED</a></span>, <span class='object_link'><a href="Endpoint.html#LOCAL_MASK-constant" title="Qpid::Proton::Endpoint::LOCAL_MASK (constant)">Endpoint::LOCAL_MASK</a></span>, <span class='object_link'><a href="Endpoint.html#LOCAL_UNINIT-constant" title="Qpid::Proton::Endpoint::LOCAL_UNINIT (constant)">Endpoint::LOCAL_UNINIT</a></span>, <span class='object_link'><a href="Endpoint.html#REMOTE_ACTIVE-constant" title="Qpid::Proton::Endpoint::REMOTE_ACTIVE (constant)">Endpoint::REMOTE_ACTIVE</a></span>, <span class='object_link'><a href="Endpoint.html#REMOTE_CLOSED-constant" title="Qpid::Proton::Endpoint::REMOTE_CLOSED (constant)">Endpoint::REMOTE_CLOSED</a></span>, <span class='object_link'><a href="Endpoint.html#REMOTE_MASK-constant" title="Qpid::Proton::Endpoint::REMOTE_MASK (constant)">Endpoint::REMOTE_MASK</a></span>, <span class='object_link'><a href="Endpoint.html#REMOTE_UNINIT-constant" title="Qpid::Proton::Endpoint::REMOTE_UNINIT (constant)">Endpoint::REMOTE_UNINIT</a></span></p>
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#container-instance_method" title="#container (instance method)">#<strong>container</strong>  &#x21d2; Container </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The container managing this connection.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#work_queue-instance_method" title="#work_queue (instance method)">#<strong>work_queue</strong>  &#x21d2; WorkQueue </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Work queue to execute code serialized correctly for this connection.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#close-instance_method" title="#close (instance method)">#<strong>close</strong>(error = nil)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Closes the local end of the connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#connection-instance_method" title="#connection (instance method)">#<strong>connection</strong>  &#x21d2; Connection </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Self.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#container_id-instance_method" title="#container_id (instance method)">#<strong>container_id</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>To get the local container ID use <span class='object_link'><a href="#container-instance_method" title="Qpid::Proton::Connection#container (method)">#container</a></span> and <span class='object_link'><a href="Container.html#id-instance_method" title="Qpid::Proton::Container#id (method)">Qpid::Proton::Container#id</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#default_session-instance_method" title="#default_session (instance method)">#<strong>default_session</strong>  &#x21d2; Session </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Returns the default session for this connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#desired_capabilities-instance_method" title="#desired_capabilities (instance method)">#<strong>desired_capabilities</strong>  &#x21d2; Array&lt;Symbol&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Desired capabilities provided by the remote peer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_link-instance_method" title="#each_link (instance method)">#<strong>each_link</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the links on this connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_receiver-instance_method" title="#each_receiver (instance method)">#<strong>each_receiver</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the <span class='object_link'><a href="Receiver.html" title="Qpid::Proton::Receiver (class)">Receiver</a></span> links - see <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_sender-instance_method" title="#each_sender (instance method)">#<strong>each_sender</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the <span class='object_link'><a href="Sender.html" title="Qpid::Proton::Sender (class)">Sender</a></span> links - see <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span>.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#each_session-instance_method" title="#each_session (instance method)">#<strong>each_session</strong>(&amp;block)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Get the sessions on this connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#error-instance_method" title="#error (instance method)">#<strong>error</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'>Endpoint#condition</span></p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#idle_timeout-instance_method" title="#idle_timeout (instance method)">#<strong>idle_timeout</strong>  &#x21d2; Numeric<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Idle-timeout advertised by the remote peer, in seconds.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#link_head-instance_method" title="#link_head (instance method)">#<strong>link_head</strong>(mask)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span></p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_frame_size-instance_method" title="#max_frame_size (instance method)">#<strong>max_frame_size</strong>  &#x21d2; Integer<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Maximum frame size, in bytes, advertised by the remote peer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#max_sessions-instance_method" title="#max_sessions (instance method)">#<strong>max_sessions</strong>  &#x21d2; Integer<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Session limit advertised by the remote peer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#offered_capabilities-instance_method" title="#offered_capabilities (instance method)">#<strong>offered_capabilities</strong>  &#x21d2; Array&lt;Symbol&gt; </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Offered capabilities provided by the remote peer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open-instance_method" title="#open (instance method)">#<strong>open</strong>(opts = nil)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Open the local end of the connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open_receiver-instance_method" title="#open_receiver (instance method)">#<strong>open_receiver</strong>(opts = nil)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Open a  on the default_session.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open_sender-instance_method" title="#open_sender (instance method)">#<strong>open_sender</strong>(opts = nil)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Open a sender on the default_session.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#open_session-instance_method" title="#open_session (instance method)">#<strong>open_session</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Open a new session on this connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#overrides%3F-instance_method" title="#overrides? (instance method)">#<strong>overrides?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>no replacement</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#properties-instance_method" title="#properties (instance method)">#<strong>properties</strong>  &#x21d2; Hash </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Connection-properties provided by the remote peer.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#session_head-instance_method" title="#session_head (instance method)">#<strong>session_head</strong>(mask)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'><a href="#each_session-instance_method" title="Qpid::Proton::Connection#each_session (method)">#each_session</a></span></p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#session_policy%3F-instance_method" title="#session_policy? (instance method)">#<strong>session_policy?</strong>  &#x21d2; Boolean </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>no replacement</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#state-instance_method" title="#state (instance method)">#<strong>state</strong>  &#x21d2; Integer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Gets the endpoint current state flags.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#transport-instance_method" title="#transport (instance method)">#<strong>transport</strong>  &#x21d2; Transport<sup>?</sup> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Transport bound to this connection, or nil if unbound.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#user-instance_method" title="#user (instance method)">#<strong>user</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>or the authenticated user name (incoming connection).</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#virtual_host-instance_method" title="#virtual_host (instance method)">#<strong>virtual_host</strong>  &#x21d2; String </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>The AMQP hostname for the connection.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public deprecated">
+  <span class="summary_signature">
+    
+      <a href="#work_head-instance_method" title="#work_head (instance method)">#<strong>work_head</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  <span class="deprecated note title">deprecated</span>
+  
+
+  
+    <span class="summary_desc"><strong>Deprecated.</strong> <div class='inline'>
+<p>use #MessagingHandler to handle work</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods inherited from <span class='object_link'><a href="Endpoint.html" title="Qpid::Proton::Endpoint (class)">Endpoint</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Endpoint.html#closed%3F-instance_method" title="Qpid::Proton::Endpoint#closed? (method)">#closed?</a></span>, <span class='object_link'><a href="Endpoint.html#local_closed%3F-instance_method" title="Qpid::Proton::Endpoint#local_closed? (method)">#local_closed?</a></span>, <span class='object_link'><a href="Endpoint.html#local_open%3F-instance_method" title="Qpid::Proton::Endpoint#local_open? (method)">#local_open?</a></span>, <span class='object_link'><a href="Endpoint.html#local_uninit%3F-instance_method" title="Qpid::Proton::Endpoint#local_uninit? (method)">#local_uninit?</a></span>, <span class='object_link'><a href="Endpoint.html#open%3F-instance_method" title="Qpid::Proton::Endpoint#open? (method)">#open?</a></span>, <span class='object_link'><a href="Endpoint.html#remote_closed%3F-instance_method" title="Qpid::Proton::Endpoint#remote_closed? (method)">#remote_closed?</a></span>, <span class='object_link'><a href="Endpoint.html#remote_open%3F-instance_method" title="Qpid::Proton::Endpoint#remote_open? (method)">#remote_open?</a></span>, <span class='object_link'><a href="Endpoint.html#remote_uninit%3F-instance_method" title="Qpid::Proton::Endpoint#remote_uninit? (method)">#remote_uninit?</a></span></p>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="container-instance_method">
+  
+    #<strong>container</strong>  &#x21d2; <tt><span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the container managing this connection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the container managing this connection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+76
+77
+78</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 76</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_container'>container</span>
+  <span class='ivar'>@container</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="work_queue-instance_method">
+  
+    #<strong>work_queue</strong>  &#x21d2; <tt><span class='object_link'><a href="WorkQueue.html" title="Qpid::Proton::WorkQueue (class)">WorkQueue</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns work queue to execute code serialized correctly for this connection</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="WorkQueue.html" title="Qpid::Proton::WorkQueue (class)">WorkQueue</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>work queue to execute code serialized correctly for this connection</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+291
+292
+293</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 291</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_work_queue'>work_queue</span>
+  <span class='ivar'>@work_queue</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="close-instance_method">
+  
+    #<strong>close</strong>(error = nil)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Closes the local end of the connection. The remote end may or may not be
+closed.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>error</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Condition.html" title="Qpid::Proton::Condition (class)">Condition</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Optional error condition to send with the close.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+174
+175
+176
+177</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 174</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_close'>close</span><span class='lparen'>(</span><span class='id identifier rubyid_error'>error</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="Condition.html" title="Qpid::Proton::Condition (class)">Condition</a></span></span><span class='period'>.</span><span class='id identifier rubyid_assign'>assign</span><span class='lparen'>(</span><span class='id identifier rubyid__local_condition'>_local_condition</span><span class='comma'>,</span> <span class='id identifier rubyid_error'>error</span><span class='rparen'>)</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_close'>pn_connection_close</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="connection-instance_method">
+  
+    #<strong>connection</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Qpid::Proton::Connection (class)">Connection</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns self</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Qpid::Proton::Connection (class)">Connection</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>self</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_connection'>connection</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='kw'>self</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="container_id-instance_method">
+  
+    #<strong>container_id</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>To get the local container ID use <span class='object_link'><a href="#container-instance_method" title="Qpid::Proton::Connection#container (method)">#container</a></span> and <span class='object_link'><a href="Container.html#id-instance_method" title="Qpid::Proton::Container#id (method)">Qpid::Proton::Container#id</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'></span>
+      
+      
+      
+        
+        <div class='inline'>
+<p>AMQP container ID advertised by the remote peer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 72</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_container_id'>container_id</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_remote_container'>pn_connection_remote_container</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="default_session-instance_method">
+  
+    #<strong>default_session</strong>  &#x21d2; <tt><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns the default session for this connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The session.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+196
+197
+198</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 196</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_default_session'>default_session</span>
+  <span class='ivar'>@session</span> <span class='op'>||=</span> <span class='id identifier rubyid_open_session'>open_session</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="desired_capabilities-instance_method">
+  
+    #<strong>desired_capabilities</strong>  &#x21d2; <tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns desired capabilities provided by the remote peer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>desired capabilities provided by the remote peer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+86
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 86</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_desired_capabilities'>desired_capabilities</span>
+  <span class='comment'># Provide capabilities consistently as an array, even if encoded as a single symbol
+</span>  <span class='const'>Codec</span><span class='op'>::</span><span class='const'>Data</span><span class='period'>.</span><span class='id identifier rubyid_to_multiple'>to_multiple</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_remote_desired_capabilities'>pn_connection_remote_desired_capabilities</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_link-instance_method">
+  
+    
+      <span class="overload">#<strong>each_link</strong> {|l| ... } </span>
+    
+      <span class="overload">#<strong>each_link</strong>  &#x21d2; <tt>Enumerator</tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the links on this connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>each_link</strong> {|l| ... } </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>l</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Link.html" title="Qpid::Proton::Link (class)">Link</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pass each link to block</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>each_link</strong>  &#x21d2; <tt>Enumerator</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Returns enumerator over links</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>enumerator over links</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+  </ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 250</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_link'>each_link</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_link</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_l'>l</span> <span class='op'>=</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_link_head'>pn_link_head</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_l'>l</span>
+    <span class='id identifier rubyid_l2'>l2</span> <span class='op'>=</span> <span class='id identifier rubyid_l'>l</span>                  <span class='comment'>#  get next before yield, in case yield closes l and unlinks it
+</span>    <span class='id identifier rubyid_l'>l</span> <span class='op'>=</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_link_next'>pn_link_next</span><span class='lparen'>(</span><span class='id identifier rubyid_l'>l</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+    <span class='kw'>yield</span> <span class='const'><span class='object_link'><a href="Link.html" title="Qpid::Proton::Link (class)">Link</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_l2'>l2</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_receiver-instance_method">
+  
+    #<strong>each_receiver</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the <span class='object_link'><a href="Receiver.html" title="Qpid::Proton::Receiver (class)">Receiver</a></span> links - see <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+268
+269
+270
+271</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 268</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_receiver'>each_receiver</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_receiver</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_each_link'>each_link</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_l'>l</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_l'>l</span> <span class='kw'>if</span> <span class='id identifier rubyid_l'>l</span><span class='period'>.</span><span class='id identifier rubyid_receiver?'>receiver?</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_sender-instance_method">
+  
+    #<strong>each_sender</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the <span class='object_link'><a href="Sender.html" title="Qpid::Proton::Sender (class)">Sender</a></span> links - see <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+262
+263
+264
+265</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 262</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_sender'>each_sender</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_sender</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_each_link'>each_link</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_l'>l</span><span class='op'>|</span> <span class='kw'>yield</span> <span class='id identifier rubyid_l'>l</span> <span class='kw'>if</span> <span class='id identifier rubyid_l'>l</span><span class='period'>.</span><span class='id identifier rubyid_sender?'>sender?</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="each_session-instance_method">
+  
+    
+      <span class="overload">#<strong>each_session</strong> {|s| ... } </span>
+    
+      <span class="overload">#<strong>each_session</strong>  &#x21d2; <tt>Enumerator</tt> </span>
+    
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Get the sessions on this connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <p class="tag_title">Overloads:</p>
+  <ul class="overload">
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>each_session</strong> {|s| ... } </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Yield Parameters:</p>
+<ul class="yieldparam">
+  
+    <li>
+      
+        <span class='name'>s</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>pass each session to block</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+      
+      <li class="overload_item">
+        <span class="signature">#<strong>each_session</strong>  &#x21d2; <tt>Enumerator</tt> </span>
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Returns enumerator over sessions</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Enumerator</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>enumerator over sessions</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div>
+      </li>
+    
+  </ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+229
+230
+231
+232
+233
+234
+235
+236
+237</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 229</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_each_session'>each_session</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='id identifier rubyid_block'>block</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_enum_for'>enum_for</span><span class='lparen'>(</span><span class='symbol'>:each_session</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_block_given?'>block_given?</span>
+  <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_session_head'>pn_session_head</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+  <span class='kw'>while</span> <span class='id identifier rubyid_s'>s</span>
+    <span class='kw'>yield</span> <span class='const'><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_session_next'>pn_session_next</span><span class='lparen'>(</span><span class='id identifier rubyid_s'>s</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+  <span class='kw'>self</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="error-instance_method">
+  
+    #<strong>error</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'>Endpoint#condition</span></p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+280
+281
+282
+283</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 280</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_error'>error</span>
+  <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#condition</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_error_code'>pn_error_code</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_error'>pn_connection_error</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="idle_timeout-instance_method">
+  
+    #<strong>idle_timeout</strong>  &#x21d2; <tt>Numeric</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Idle-timeout advertised by the remote peer, in seconds.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Numeric</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Idle-timeout advertised by the remote peer, in seconds.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if the peer does not advertise an idle time-out</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+147
+148
+149
+150
+151</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 147</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_idle_timeout'>idle_timeout</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_transport'>transport</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='id identifier rubyid_transport'>transport</span><span class='period'>.</span><span class='id identifier rubyid_remote_idle_timeout'>remote_idle_timeout</span><span class='rparen'>)</span>
+    <span class='const'>Rational</span><span class='lparen'>(</span><span class='id identifier rubyid_t'>t</span><span class='comma'>,</span> <span class='int'>1000</span><span class='rparen'>)</span>       <span class='comment'># More precise than Float
+</span>  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="link_head-instance_method">
+  
+    #<strong>link_head</strong>(mask)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'><a href="#each_link-instance_method" title="Qpid::Proton::Connection#each_link (method)">#each_link</a></span></p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242
+243</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_link_head'>link_head</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#each_link</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="Link.html" title="Qpid::Proton::Link (class)">Link</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_link_head'>pn_link_head</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="max_frame_size-instance_method">
+  
+    #<strong>max_frame_size</strong>  &#x21d2; <tt>Integer</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Maximum frame size, in bytes, advertised by the remote peer. See
+<span class='object_link'><a href="#open-instance_method" title="Qpid::Proton::Connection#open (method)">:max_frame_size</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>maximum frame size</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>no limit</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="StateError.html" title="Qpid::Proton::StateError (class)">StateError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+166
+167
+168
+169
+170</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 166</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_max_frame_size'>max_frame_size</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="StateError.html" title="Qpid::Proton::StateError (class)">StateError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>connection not bound to transport</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_transport'>transport</span>
+  <span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='id identifier rubyid_transport'>transport</span><span class='period'>.</span><span class='id identifier rubyid_remote_max_frame'>remote_max_frame</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_max'>max</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='id identifier rubyid_max'>max</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="max_sessions-instance_method">
+  
+    #<strong>max_sessions</strong>  &#x21d2; <tt>Integer</tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Session limit advertised by the remote peer. See <span class='object_link'><a href="#open-instance_method" title="Qpid::Proton::Connection#open (method)">:max_sessions</a></span></p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>maximum number of sessions per connection allowed by remote peer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>no specific limit is set.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="StateError.html" title="Qpid::Proton::StateError (class)">StateError</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+156
+157
+158
+159
+160</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 156</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_max_sessions'>max_sessions</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="StateError.html" title="Qpid::Proton::StateError (class)">StateError</a></span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>connection not bound to transport</span><span class='tstring_end'>&quot;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_transport'>transport</span>
+  <span class='id identifier rubyid_max'>max</span> <span class='op'>=</span> <span class='id identifier rubyid_transport'>transport</span><span class='period'>.</span><span class='id identifier rubyid_remote_channel_max'>remote_channel_max</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_max'>max</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span> <span class='op'>?</span> <span class='kw'>nil</span> <span class='op'>:</span> <span class='id identifier rubyid_max'>max</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="offered_capabilities-instance_method">
+  
+    #<strong>offered_capabilities</strong>  &#x21d2; <tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns offered capabilities provided by the remote peer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>offered capabilities provided by the remote peer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_offered_capabilities'>offered_capabilities</span>
+  <span class='comment'># Provide capabilities consistently as an array, even if encoded as a single symbol
+</span>  <span class='const'>Codec</span><span class='op'>::</span><span class='const'>Data</span><span class='period'>.</span><span class='id identifier rubyid_to_multiple'>to_multiple</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_remote_offered_capabilities'>pn_connection_remote_offered_capabilities</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open-instance_method">
+  
+    #<strong>open</strong>(opts = nil)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Open the local end of the connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>opts</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Hash</span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a customizable set of options</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  
+    
+    
+    <p class="tag_title">Options Hash (<tt>opts</tt>):</p>
+    <ul class="option">
+      
+        <li>
+          <span class="name">:handler</span>
+          <span class="type">(<tt><span class='object_link'><a href="MessagingHandler.html" title="Qpid::Proton::MessagingHandler (class)">MessagingHandler</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>handler for events related to this connection.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:user</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>User name for authentication</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:password</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Authentication secret</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:virtual_host</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Virtual host name</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:container_id</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>provided by {Container}</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>override advertised container-id</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:properties</span>
+          <span class="type">(<tt><span class='object_link'>Hash</span>&lt;Symbol=&gt;Object&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Application-defined properties</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:offered_capabilities</span>
+          <span class="type">(<tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Extensions the endpoint supports</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:desired_capabilities</span>
+          <span class="type">(<tt><span class='object_link'>Array</span>&lt;Symbol&gt;</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Extensions the endpoint can use</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:idle_timeout</span>
+          <span class="type">(<tt>Numeric</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Seconds before closing an idle connection</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_sessions</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Limit the number of active sessions</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:max_frame_size</span>
+          <span class="type">(<tt>Integer</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Limit the size of AMQP frames</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sasl_enabled</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Enable or disable SASL.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sasl_allow_insecure_mechs</span>
+          <span class="type">(<tt>Boolean</tt>)</span>
+          <span class="default">
+            
+              &mdash; default:
+              <tt>false</tt>
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Allow mechanisms that send secrets in cleartext</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:sasl_allowed_mechs</span>
+          <span class="type">(<tt>String</tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>Specify the SASL mechanisms allowed for this connection.  The value is a
+space-separated list of mechanism names. The mechanisms allowed by default
+are determined by your SASL library and system configuration, with two
+exceptions: GSSAPI and GSS-SPNEGO are disabled by default.  To enable them,
+you must explicitly add them using this option. Clients must set the
+allowed mechanisms before the the outgoing connection is attempted. 
+Servers must set them before the listening connection is setup.</p>
+</div>
+          
+        </li>
+      
+        <li>
+          <span class="name">:ssl_domain</span>
+          <span class="type">(<tt><span class='object_link'><a href="SSLDomain.html" title="Qpid::Proton::SSLDomain (class)">SSLDomain</a></span></tt>)</span>
+          <span class="default">
+            
+          </span>
+          
+            &mdash; <div class='inline'>
+<p>SSL configuration domain.</p>
+</div>
+          
+        </li>
+      
+    </ul>
+  
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+121
+122
+123
+124
+125</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 121</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open'>open</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_local_active?'>local_active?</span>
+  <span class='id identifier rubyid_apply'>apply</span> <span class='id identifier rubyid_opts'>opts</span> <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_open'>pn_connection_open</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open_receiver-instance_method">
+  
+    #<strong>open_receiver</strong>(opts = nil)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Open a  on the default_session</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+216</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 216</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open_receiver'>open_receiver</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span> <span class='id identifier rubyid_default_session'>default_session</span><span class='period'>.</span><span class='id identifier rubyid_open_receiver'>open_receiver</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open_sender-instance_method">
+  
+    #<strong>open_sender</strong>(opts = nil)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Open a sender on the default_session</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+212</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 212</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open_sender'>open_sender</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span> <span class='id identifier rubyid_default_session'>default_session</span><span class='period'>.</span><span class='id identifier rubyid_open_sender'>open_sender</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="open_session-instance_method">
+  
+    #<strong>open_session</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Open a new session on this connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+204
+205
+206
+207
+208</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 204</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_open_session'>open_session</span>
+  <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_session'>pn_session</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_s'>s</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_s'>s</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="overrides?-instance_method">
+  
+    #<strong>overrides?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>no replacement</p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+59</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 59</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_overrides?'>overrides?</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="properties-instance_method">
+  
+    #<strong>properties</strong>  &#x21d2; <tt><span class='object_link'>Hash</span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns connection-properties provided by the remote peer</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'>Hash</span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>connection-properties provided by the remote peer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+93
+94
+95</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 93</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_properties'>properties</span>
+  <span class='const'>Codec</span><span class='op'>::</span><span class='const'>Data</span><span class='period'>.</span><span class='id identifier rubyid_to_object'>to_object</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_remote_properties'>pn_connection_remote_properties</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="session_head-instance_method">
+  
+    #<strong>session_head</strong>(mask)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>use <span class='object_link'><a href="#each_session-instance_method" title="Qpid::Proton::Connection#each_session (method)">#each_session</a></span></p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+219
+220
+221
+222</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 219</span>
+
+<span class='kw'>def</span>  <span class='id identifier rubyid_session_head'>session_head</span><span class='lparen'>(</span><span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>#each_session</span><span class='tstring_end'>&quot;</span></span>
+  <span class='const'><span class='object_link'><a href="Session.html" title="Qpid::Proton::Session (class)">Session</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_session_head'>pn_session_head</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='id identifier rubyid_mask'>mask</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="session_policy?-instance_method">
+  
+    #<strong>session_policy?</strong>  &#x21d2; <tt>Boolean</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>no replacement</p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 62</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_session_policy?'>session_policy?</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span><span class='semicolon'>;</span> <span class='kw'>false</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="state-instance_method">
+  
+    #<strong>state</strong>  &#x21d2; <tt>Integer</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Gets the endpoint current state flags</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The state flags.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li>Endpoint#LOCAL_UNINIT</li>
+    
+      <li>Endpoint#LOCAL_ACTIVE</li>
+    
+      <li>Endpoint#LOCAL_CLOSED</li>
+    
+      <li>Endpoint#LOCAL_MASK</li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+188
+189
+190</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 188</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_state'>state</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_state'>pn_connection_state</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="transport-instance_method">
+  
+    #<strong>transport</strong>  &#x21d2; <tt><span class='object_link'><a href="Transport.html" title="Qpid::Proton::Transport (class)">Transport</a></span></tt><sup>?</sup> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns transport bound to this connection, or nil if unbound.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Transport.html" title="Qpid::Proton::Transport (class)">Transport</a></span></tt>, <tt>nil</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>transport bound to this connection, or nil if unbound.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 68</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_transport'>transport</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='const'><span class='object_link'><a href="Transport.html" title="Qpid::Proton::Transport (class)">Transport</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'>wrap</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_transport'>pn_connection_transport</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="user-instance_method">
+  
+    #<strong>user</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>or the authenticated user name (incoming connection)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>User name used for authentication (outgoing connection)</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+54
+55
+56</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 54</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_user'>user</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_get_user'>pn_connection_get_user</span><span class='lparen'>(</span><span class='id identifier rubyid_impl'>impl</span><span class='rparen'>)</span> <span class='kw'>or</span> <span class='lparen'>(</span><span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_transport'>transport</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_connection'>connection</span><span class='period'>.</span><span class='id identifier rubyid_transport'>transport</span><span class='period'>.</span><span class='id identifier rubyid_user'>user</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="virtual_host-instance_method">
+  
+    #<strong>virtual_host</strong>  &#x21d2; <tt>String</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Returns The AMQP hostname for the connection.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The AMQP hostname for the connection.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_virtual_host'>virtual_host</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_remote_hostname'>pn_connection_remote_hostname</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="work_head-instance_method">
+  
+    #<strong>work_head</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <div class="note deprecated"><strong>Deprecated.</strong> <div class='inline'>
+<p>use #MessagingHandler to handle work</p>
+</div></div>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+274
+275
+276
+277</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/connection.rb', line 274</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_work_head'>work_head</span>
+  <span class='id identifier rubyid_deprecated'>deprecated</span> <span class='id identifier rubyid___method__'>__method__</span>
+  <span class='const'><span class='object_link'><a href="Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='period'>.</span><span class='id identifier rubyid_wrap'><span class='object_link'><a href="Transfer.html#wrap-class_method" title="Qpid::Proton::Transfer.wrap (method)">wrap</a></span></span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_work_head'>pn_work_head</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Apr 22 10:49:52 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.8 (ruby-2.4.4).
+</div>
+
+    </div>
+  </body>
+</html>
