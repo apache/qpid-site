@@ -25,6 +25,7 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**Note**: An issue was identified preventing driving the Python binding container using an external event loop such as Tornado. This will be addressed in a future release.
 
 ## New features and improvements
 
