@@ -34,8 +34,10 @@ documentation, see the [release overview](index.html).
  - [QPID-8243](https://issues.apache.org/jira/browse/QPID-8243) - [Broker-J] Optimize logback turbo filter implemented to provide a workaround for Logback1027
  - [QPID-8244](https://issues.apache.org/jira/browse/QPID-8244) - [Broker-J] Optimize fanout exchange routing functionality
  - [QPID-8256](https://issues.apache.org/jira/browse/QPID-8256) - [Broker-J] Update Guava to version 27.0
+ - [QPID-8259](https://issues.apache.org/jira/browse/QPID-8259) - [Broker-J] Upgrade Jetty to version 9.4.12.v20180830
  - [QPID-8260](https://issues.apache.org/jira/browse/QPID-8260) - [Broker-J] Add support for provided preferences store into Derby and JDBC system configs
  - [QPID-8264](https://issues.apache.org/jira/browse/QPID-8264) - [Broker-J] ClassCastException are thrown on creation and update of VirtualHostUserOrConnectionLogInclusionRule
+ - [QPID-8275](https://issues.apache.org/jira/browse/QPID-8275) - [Broker-J] Allow setting queue exclusive policy in Web Management Console
  - [QPID-8279](https://issues.apache.org/jira/browse/QPID-8279) - [Broker-J] Upgrade Jackson dependencies
 
 ## Bugs fixed
@@ -49,3 +51,9 @@ documentation, see the [release overview](index.html).
  - [QPID-8233](https://issues.apache.org/jira/browse/QPID-8233) - [Broker-J][AMQP 1.0] Failure on connecting to a virtual host which is not yet active should use connection-forced error
  - [QPID-8236](https://issues.apache.org/jira/browse/QPID-8236) - [Broker-J] [BDB HA] Changing of group name, address or node name in BDB HA virtual host node should be disallowed 
  - [QPID-8254](https://issues.apache.org/jira/browse/QPID-8254) - [Broker-J] Illegal ascii characters are used in keystore passwords
+ - [QPID-8273](https://issues.apache.org/jira/browse/QPID-8273) - [CVE-2019-0200][Broker-J][AMQP 0-8..0-10] Broker can crash on receiving malformed commands using AMQP protocols 0-8...0-10 and resending malformed messages
+ - [QPID-8276](https://issues.apache.org/jira/browse/QPID-8276) - [Broker-J] Broker can leak closed NonBlockingConnection objects and eventually run out of heap memory
+
+## Tasks
+
+ - [QPID-8239](https://issues.apache.org/jira/browse/QPID-8239) - [Broker-J] Release Qpid Broker-J 7.0.7
