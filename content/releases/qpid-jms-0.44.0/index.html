@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid via Maven - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.44.0 - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,54 +111,75 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Qpid via Maven</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS 0.44.0</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-via-maven">Qpid via Maven</h1>
+          <h1 id="qpid-jms-0440">Qpid JMS 0.44.0</h1>
 
-<p>The following dependencies can be added to the POM for your Maven build to utilise the artifacts via the <a href="http://search.maven.org/">Maven central repository</a>.</p>
+<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
+using the <a href="/proton/index.html">Qpid Proton</a> protocol engine.</p>
 
-<h2 id="qpid-jms-amqp-10">Qpid JMS (AMQP 1.0)</h2>
+<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
+notes</a>.</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-jms-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.44.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<h2 id="download">Download</h2>
 
-<h2 id="qpid-amqp-0-x-jms-client">Qpid AMQP 0-x JMS Client</h2>
+<p>It's important to <a href="/download.html#verify-what-you-download">verify the
+integrity</a> of the
+files you download.</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>6.3.4<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.geronimo.specs<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>geronimo-jms_1.1_spec<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<table>
+<thead>
+<tr>
+  <th>Content</th>
+  <th>Download</th>
+  <th>Verify</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Qpid JMS binaries</td>
+  <td><a href="http://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-bin.tar.gz">apache-qpid-jms-0.44.0-bin.tar.gz</a></td>
+  <td><a href="https://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-bin.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-bin.tar.gz.sha512">SHA512</a></td>
+</tr>
+<tr>
+  <td>Qpid JMS source code</td>
+  <td><a href="http://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-src.tar.gz">apache-qpid-jms-0.44.0-src.tar.gz</a></td>
+  <td><a href="https://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-src.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.44.0/apache-qpid-jms-0.44.0-src.tar.gz.sha512">SHA512</a></td>
+</tr>
+</tbody>
+</table>
 
-<h2 id="qpid-proton-j">Qpid Proton-J</h2>
+<p>The client is also available <a href="/maven.html">via Maven</a>.</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>proton-j<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.33.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<h2 id="documentation">Documentation</h2>
+
+<div class="two-column">
+
+<ul>
+<li><a href="http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html">API reference</a></li>
+<li><a href="https://github.com/apache/qpid-jms/tree/0.44.0/qpid-jms-examples">Examples</a></li>
+<li><a href="docs/index.html">Configuration</a></li>
+<li><a href="building.html">Building Qpid JMS</a></li>
+</ul>
+
+</div>
 
 <h2 id="more-information">More information</h2>
 
 <ul>
-<li><a href="https://repository.apache.org/content/repositories/snapshots/">Snapshot repository</a></li>
-<li><a href="http://maven.apache.org/">Maven project</a></li>
+<li><a href="http://archive.apache.org/dist/qpid/jms/0.44.0">All release artefacts</a></li>
+<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.44.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
+<li><a href="https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.44.0">Source repository tag</a></li>
 </ul>
+
+<script type="text/javascript">
+  _deferredFunctions.push(function() {
+      if ("0.44.0" === "0.44.0") {
+          _modifyCurrentReleaseLinks();
+      }
+  });
+</script>
 
 
           <hr/>
