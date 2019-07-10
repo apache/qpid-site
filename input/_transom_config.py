@@ -27,12 +27,12 @@ other_broker_j_release = "7.0.8"
 cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.39.0")
 dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.8.0")
 interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-test", "0.2.0")
-java_release = _Release(site_url, "Qpid for Java", "qpid-java", "6.1.7")
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "0.44.0")
 jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.3.4")
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.28.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.33.1")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
+java_release = _Release(site_url, "Qpid for Java", "qpid-java", "none")
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
