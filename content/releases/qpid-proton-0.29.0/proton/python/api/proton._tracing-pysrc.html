@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>proton._tracing</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        <a href="proton-module.html">Package&nbsp;proton</a> ::
+        Module&nbsp;_tracing
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="proton._tracing-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="proton._tracing-module.html">Module proton._tracing</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno">  1</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L2"></a><tt class="py-lineno">  2</tt>  <tt class="py-line"><tt class="py-comment"># Licensed to the Apache Software Foundation (ASF) under one</tt> </tt>
+<a name="L3"></a><tt class="py-lineno">  3</tt>  <tt class="py-line"><tt class="py-comment"># or more contributor license agreements.  See the NOTICE file</tt> </tt>
+<a name="L4"></a><tt class="py-lineno">  4</tt>  <tt class="py-line"><tt class="py-comment"># distributed with this work for additional information</tt> </tt>
+<a name="L5"></a><tt class="py-lineno">  5</tt>  <tt class="py-line"><tt class="py-comment"># regarding copyright ownership.  The ASF licenses this file</tt> </tt>
+<a name="L6"></a><tt class="py-lineno">  6</tt>  <tt class="py-line"><tt class="py-comment"># to you under the Apache License, Version 2.0 (the</tt> </tt>
+<a name="L7"></a><tt class="py-lineno">  7</tt>  <tt class="py-line"><tt class="py-comment"># "License"); you may not use this file except in compliance</tt> </tt>
+<a name="L8"></a><tt class="py-lineno">  8</tt>  <tt class="py-line"><tt class="py-comment"># with the License.  You may obtain a copy of the License at</tt> </tt>
+<a name="L9"></a><tt class="py-lineno">  9</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L10"></a><tt class="py-lineno"> 10</tt>  <tt class="py-line"><tt class="py-comment">#   http://www.apache.org/licenses/LICENSE-2.0</tt> </tt>
+<a name="L11"></a><tt class="py-lineno"> 11</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L12"></a><tt class="py-lineno"> 12</tt>  <tt class="py-line"><tt class="py-comment"># Unless required by applicable law or agreed to in writing,</tt> </tt>
+<a name="L13"></a><tt class="py-lineno"> 13</tt>  <tt class="py-line"><tt class="py-comment"># software distributed under the License is distributed on an</tt> </tt>
+<a name="L14"></a><tt class="py-lineno"> 14</tt>  <tt class="py-line"><tt class="py-comment"># "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</tt> </tt>
+<a name="L15"></a><tt class="py-lineno"> 15</tt>  <tt class="py-line"><tt class="py-comment"># KIND, either express or implied.  See the License for the</tt> </tt>
+<a name="L16"></a><tt class="py-lineno"> 16</tt>  <tt class="py-line"><tt class="py-comment"># specific language governing permissions and limitations</tt> </tt>
+<a name="L17"></a><tt class="py-lineno"> 17</tt>  <tt class="py-line"><tt class="py-comment"># under the License.</tt> </tt>
+<a name="L18"></a><tt class="py-lineno"> 18</tt>  <tt class="py-line"><tt class="py-comment">#</tt> </tt>
+<a name="L19"></a><tt class="py-lineno"> 19</tt>  <tt class="py-line"> </tt>
+<a name="L20"></a><tt class="py-lineno"> 20</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">atexit</tt> </tt>
+<a name="L21"></a><tt class="py-lineno"> 21</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">functools</tt> </tt>
+<a name="L22"></a><tt class="py-lineno"> 22</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L23"></a><tt class="py-lineno"> 23</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">sys</tt> </tt>
+<a name="L24"></a><tt class="py-lineno"> 24</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">time</tt> </tt>
+<a name="L25"></a><tt class="py-lineno"> 25</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">weakref</tt> </tt>
+<a name="L26"></a><tt class="py-lineno"> 26</tt>  <tt class="py-line"> </tt>
+<a name="L27"></a><tt class="py-lineno"> 27</tt>  <tt class="py-line"><tt class="py-keyword">try</tt><tt class="py-op">:</tt> </tt>
+<a name="L28"></a><tt class="py-lineno"> 28</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">opentracing</tt> </tt>
+<a name="L29"></a><tt class="py-lineno"> 29</tt>  <tt class="py-line">    <tt class="py-keyword">import</tt> <tt class="py-name">jaeger_client</tt> </tt>
+<a name="L30"></a><tt class="py-lineno"> 30</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">opentracing</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">tags</tt> </tt>
+<a name="L31"></a><tt class="py-lineno"> 31</tt>  <tt class="py-line">    <tt class="py-keyword">from</tt> <tt class="py-name">opentracing</tt><tt class="py-op">.</tt><tt class="py-name">propagation</tt> <tt class="py-keyword">import</tt> <tt class="py-name">Format</tt> </tt>
+<a name="L32"></a><tt class="py-lineno"> 32</tt>  <tt class="py-line"><tt class="py-keyword">except</tt> <tt class="py-name">ImportError</tt><tt class="py-op">:</tt> </tt>
+<a name="L33"></a><tt class="py-lineno"> 33</tt>  <tt class="py-line">    <tt class="py-keyword">raise</tt> <tt class="py-name">ImportError</tt><tt class="py-op">(</tt><tt class="py-string">'proton tracing requires opentracing and jaeger_client modules'</tt><tt class="py-op">)</tt> </tt>
+<a name="L34"></a><tt class="py-lineno"> 34</tt>  <tt class="py-line"> </tt>
+<a name="L35"></a><tt class="py-lineno"> 35</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt id="link-0" class="py-name" targets="Package proton=proton-module.html"><a title="proton" class="py-name" href="#" onclick="return doclink('link-0', 'proton', 'link-0');">proton</a></tt> </tt>
+<a name="L36"></a><tt class="py-lineno"> 36</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-1" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-1', 'proton', 'link-0');">proton</a></tt> <tt class="py-keyword">import</tt> <tt id="link-2" class="py-name" targets="Class proton._endpoints.Sender=proton._endpoints.Sender-class.html,Class proton._tracing.Sender=proton._tracing.Sender-class.html"><a title="proton._endpoints.Sender
+proton._tracing.Sender" class="py-name" href="#" onclick="return doclink('link-2', 'Sender', 'link-2');">Sender</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">ProtonSender</tt> </tt>
+<a name="L37"></a><tt class="py-lineno"> 37</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-3" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-3', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-4" class="py-name" targets="Method proton._events.Handler.handlers()=proton._events.Handler-class.html#handlers,Module proton.handlers=proton.handlers-module.html"><a title="proton._events.Handler.handlers
+proton.handlers" class="py-name" href="#" onclick="return doclink('link-4', 'handlers', 'link-4');">handlers</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">(</tt> </tt>
+<a name="L38"></a><tt class="py-lineno"> 38</tt>  <tt class="py-line">    <tt id="link-5" class="py-name" targets="Class proton._handlers.OutgoingMessageHandler=proton._handlers.OutgoingMessageHandler-class.html,Class proton._tracing.OutgoingMessageHandler=proton._tracing.OutgoingMessageHandler-class.html"><a title="proton._handlers.OutgoingMessageHandler
+proton._tracing.OutgoingMessageHandler" class="py-name" href="#" onclick="return doclink('link-5', 'OutgoingMessageHandler', 'link-5');">OutgoingMessageHandler</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">ProtonOutgoingMessageHandler</tt><tt class="py-op">,</tt> </tt>
+<a name="L39"></a><tt class="py-lineno"> 39</tt>  <tt class="py-line">    <tt id="link-6" class="py-name" targets="Class proton._handlers.IncomingMessageHandler=proton._handlers.IncomingMessageHandler-class.html,Class proton._tracing.IncomingMessageHandler=proton._tracing.IncomingMessageHandler-class.html"><a title="proton._handlers.IncomingMessageHandler
+proton._tracing.IncomingMessageHandler" class="py-name" href="#" onclick="return doclink('link-6', 'IncomingMessageHandler', 'link-6');">IncomingMessageHandler</a></tt> <tt class="py-keyword">as</tt> <tt class="py-name">ProtonIncomingMessageHandler</tt> </tt>
+<a name="L40"></a><tt class="py-lineno"> 40</tt>  <tt class="py-line"><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno"> 41</tt>  <tt class="py-line"> </tt>
+<a name="L42"></a><tt class="py-lineno"> 42</tt>  <tt class="py-line"><tt id="link-7" class="py-name" targets="Variable proton._tracing._tracer=proton._tracing-module.html#_tracer"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-7', '_tracer', 'link-7');">_tracer</a></tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt> </tt>
+<a name="L43"></a><tt class="py-lineno"> 43</tt>  <tt class="py-line"><tt id="link-8" class="py-name" targets="Variable proton._tracing._trace_key=proton._tracing-module.html#_trace_key"><a title="proton._tracing._trace_key" class="py-name" href="#" onclick="return doclink('link-8', '_trace_key', 'link-8');">_trace_key</a></tt> <tt class="py-op">=</tt> <tt id="link-9" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-9', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-10" class="py-name" targets="Class proton._data.symbol=proton._data.symbol-class.html"><a title="proton._data.symbol" class="py-name" href="#" onclick="return doclink('link-10', 'symbol', 'link-10');">symbol</a></tt><tt class="py-op">(</tt><tt class="py-string">'x-opt-qpid-tracestate'</tt><tt class="py-op">)</tt> </tt>
+<a name="L44"></a><tt class="py-lineno"> 44</tt>  <tt class="py-line"> </tt>
+<a name="get_tracer"></a><div id="get_tracer-def"><a name="L45"></a><tt class="py-lineno"> 45</tt> <a class="py-toggle" href="#" id="get_tracer-toggle" onclick="return toggle('get_tracer');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing-module.html#get_tracer">get_tracer</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="get_tracer-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="get_tracer-expanded"><a name="L46"></a><tt class="py-lineno"> 46</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-11" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-11', '_tracer', 'link-7');">_tracer</a></tt> </tt>
+<a name="L47"></a><tt class="py-lineno"> 47</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-12" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-12', '_tracer', 'link-7');">_tracer</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L48"></a><tt class="py-lineno"> 48</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-13" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-13', '_tracer', 'link-7');">_tracer</a></tt> </tt>
+<a name="L49"></a><tt class="py-lineno"> 49</tt>  <tt class="py-line">    <tt class="py-name">exe</tt> <tt class="py-op">=</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-keyword">if</tt> <tt class="py-name">sys</tt><tt class="py-op">.</tt><tt class="py-name">argv</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> <tt class="py-keyword">else</tt> <tt class="py-string">'interactive-session'</tt> </tt>
+<a name="L50"></a><tt class="py-lineno"> 50</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-14" class="py-name" targets="Function proton._tracing.init_tracer()=proton._tracing-module.html#init_tracer"><a title="proton._tracing.init_tracer" class="py-name" href="#" onclick="return doclink('link-14', 'init_tracer', 'link-14');">init_tracer</a></tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt id="link-15" class="py-name" targets="Variable proton._url.Url.path=proton._url.Url-class.html#path"><a title="proton._url.Url.path" class="py-name" href="#" onclick="return doclink('link-15', 'path', 'link-15');">path</a></tt><tt class="py-op">.</tt><tt class="py-name">basename</tt><tt class="py-op">(</tt><tt class="py-name">exe</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L51"></a><tt class="py-lineno"> 51</tt>  <tt class="py-line"> </tt>
+<a name="_fini_tracer"></a><div id="_fini_tracer-def"><a name="L52"></a><tt class="py-lineno"> 52</tt> <a class="py-toggle" href="#" id="_fini_tracer-toggle" onclick="return toggle('_fini_tracer');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing-module.html#_fini_tracer">_fini_tracer</a><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="_fini_tracer-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="_fini_tracer-expanded"><a name="L53"></a><tt class="py-lineno"> 53</tt>  <tt class="py-line">    <tt class="py-name">time</tt><tt class="py-op">.</tt><tt id="link-16" class="py-name" targets="Static Method proton._io.IO.sleep()=proton._io.IO-class.html#sleep"><a title="proton._io.IO.sleep" class="py-name" href="#" onclick="return doclink('link-16', 'sleep', 'link-16');">sleep</a></tt><tt class="py-op">(</tt><tt class="py-number">1</tt><tt class="py-op">)</tt> </tt>
+<a name="L54"></a><tt class="py-lineno"> 54</tt>  <tt class="py-line">    <tt class="py-name">c</tt> <tt class="py-op">=</tt> <tt class="py-name">opentracing</tt><tt class="py-op">.</tt><tt class="py-name">global_tracer</tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">.</tt><tt id="link-17" class="py-name" targets="Method proton._endpoints.Connection.close()=proton._endpoints.Connection-class.html#close,Method proton._endpoints.Link.close()=proton._endpoints.Link-class.html#close,Method proton._endpoints.Session.close()=proton._endpoints.Session-class.html#close,Static Method proton._io.IO.close()=proton._io.IO-class.html#close,Method proton._reactor.Acceptor.close()=proton._reactor.Acceptor-class.html#close,Method proton._reactor.EventInjector.close()=proton._reactor.EventInjector-class.html#close,Method proton._utils.BlockingConnection.close()=proton._utils.BlockingConnection-class.html#close,Method proton._utils.BlockingLink.close()=proton._utils.BlockingLink-class.html#close"><a title="proton._endpoints.Connection.close
+proton._endpoints.Link.close
+proton._endpoints.Session.close
+proton._io.IO.close
+proton._reactor.Acceptor.close
+proton._reactor.EventInjector.close
+proton._utils.BlockingConnection.close
+proton._utils.BlockingLink.close" class="py-name" href="#" onclick="return doclink('link-17', 'close', 'link-17');">close</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L55"></a><tt class="py-lineno"> 55</tt>  <tt class="py-line">    <tt class="py-keyword">while</tt> <tt class="py-keyword">not</tt> <tt class="py-name">c</tt><tt class="py-op">.</tt><tt id="link-18" class="py-name" targets="Method proton._transport.SASL.done()=proton._transport.SASL-class.html#done"><a title="proton._transport.SASL.done" class="py-name" href="#" onclick="return doclink('link-18', 'done', 'link-18');">done</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L56"></a><tt class="py-lineno"> 56</tt>  <tt class="py-line">        <tt class="py-name">time</tt><tt class="py-op">.</tt><tt id="link-19" class="py-name"><a title="proton._io.IO.sleep" class="py-name" href="#" onclick="return doclink('link-19', 'sleep', 'link-16');">sleep</a></tt><tt class="py-op">(</tt><tt class="py-number">0.5</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L57"></a><tt class="py-lineno"> 57</tt>  <tt class="py-line"> </tt>
+<a name="init_tracer"></a><div id="init_tracer-def"><a name="L58"></a><tt class="py-lineno"> 58</tt> <a class="py-toggle" href="#" id="init_tracer-toggle" onclick="return toggle('init_tracer');">-</a><tt class="py-line"><tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing-module.html#init_tracer">init_tracer</a><tt class="py-op">(</tt><tt class="py-param">service_name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="init_tracer-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="init_tracer-expanded"><a name="L59"></a><tt class="py-lineno"> 59</tt>  <tt class="py-line">    <tt class="py-keyword">global</tt> <tt id="link-20" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-20', '_tracer', 'link-7');">_tracer</a></tt> </tt>
+<a name="L60"></a><tt class="py-lineno"> 60</tt>  <tt class="py-line">    <tt class="py-keyword">if</tt> <tt id="link-21" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-21', '_tracer', 'link-7');">_tracer</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L61"></a><tt class="py-lineno"> 61</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-22" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-22', '_tracer', 'link-7');">_tracer</a></tt> </tt>
+<a name="L62"></a><tt class="py-lineno"> 62</tt>  <tt class="py-line"> </tt>
+<a name="L63"></a><tt class="py-lineno"> 63</tt>  <tt class="py-line">    <tt class="py-name">config</tt> <tt class="py-op">=</tt> <tt class="py-name">jaeger_client</tt><tt class="py-op">.</tt><tt class="py-name">Config</tt><tt class="py-op">(</tt> </tt>
+<a name="L64"></a><tt class="py-lineno"> 64</tt>  <tt class="py-line">        <tt class="py-name">config</tt><tt class="py-op">=</tt><tt class="py-op">{</tt><tt class="py-op">}</tt><tt class="py-op">,</tt> </tt>
+<a name="L65"></a><tt class="py-lineno"> 65</tt>  <tt class="py-line">        <tt class="py-name">service_name</tt><tt class="py-op">=</tt><tt class="py-name">service_name</tt><tt class="py-op">,</tt> </tt>
+<a name="L66"></a><tt class="py-lineno"> 66</tt>  <tt class="py-line">        <tt class="py-name">validate</tt><tt class="py-op">=</tt><tt class="py-name">True</tt> </tt>
+<a name="L67"></a><tt class="py-lineno"> 67</tt>  <tt class="py-line">    <tt class="py-op">)</tt> </tt>
+<a name="L68"></a><tt class="py-lineno"> 68</tt>  <tt class="py-line">    <tt class="py-name">config</tt><tt class="py-op">.</tt><tt class="py-name">initialize_tracer</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L69"></a><tt class="py-lineno"> 69</tt>  <tt class="py-line">    <tt id="link-23" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-23', '_tracer', 'link-7');">_tracer</a></tt> <tt class="py-op">=</tt> <tt class="py-name">opentracing</tt><tt class="py-op">.</tt><tt class="py-name">global_tracer</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L70"></a><tt class="py-lineno"> 70</tt>  <tt class="py-line">    <tt class="py-comment"># A nasty hack to ensure enough time for the tracing data to be flushed</tt> </tt>
+<a name="L71"></a><tt class="py-lineno"> 71</tt>  <tt class="py-line">    <tt class="py-name">atexit</tt><tt class="py-op">.</tt><tt class="py-name">register</tt><tt class="py-op">(</tt><tt class="py-name">_fini_tracer</tt><tt class="py-op">)</tt> </tt>
+<a name="L72"></a><tt class="py-lineno"> 72</tt>  <tt class="py-line">    <tt class="py-keyword">return</tt> <tt id="link-24" class="py-name"><a title="proton._tracing._tracer" class="py-name" href="#" onclick="return doclink('link-24', '_tracer', 'link-7');">_tracer</a></tt> </tt>
+</div><a name="L73"></a><tt class="py-lineno"> 73</tt>  <tt class="py-line"> </tt>
+<a name="L74"></a><tt class="py-lineno"> 74</tt>  <tt class="py-line"> </tt>
+<a name="IncomingMessageHandler"></a><div id="IncomingMessageHandler-def"><a name="L75"></a><tt class="py-lineno"> 75</tt> <a class="py-toggle" href="#" id="IncomingMessageHandler-toggle" onclick="return toggle('IncomingMessageHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="proton._tracing.IncomingMessageHandler-class.html">IncomingMessageHandler</a><tt class="py-op">(</tt><tt class="py-base-class">ProtonIncomingMessageHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="IncomingMessageHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="IncomingMessageHandler-expanded"><a name="IncomingMessageHandler.on_message"></a><div id="IncomingMessageHandler.on_message-def"><a name="L76"></a><tt class="py-lineno"> 76</tt> <a class="py-toggle" href="#" id="IncomingMessageHandler.on_message-toggle" onclick="return toggle('IncomingMessageHandler.on_message');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing.IncomingMessageHandler-class.html#on_message">on_message</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="IncomingMessageHandler.on_message-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="IncomingMessageHandler.on_message-expanded"><a name="L77"></a><tt class="py-lineno"> 77</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">delegate</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L78"></a><tt class="py-lineno"> 78</tt>  <tt class="py-line">            <tt id="link-25" class="py-name" targets="Variable proton._transport.Transport.tracer=proton._transport.Transport-class.html#tracer"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-25', 'tracer', 'link-25');">tracer</a></tt> <tt class="py-op">=</tt> <tt id="link-26" class="py-name" targets="Function proton._tracing.get_tracer()=proton._tracing-module.html#get_tracer"><a title="proton._tracing.get_tracer" class="py-name" href="#" onclick="return doclink('link-26', 'get_tracer', 'link-26');">get_tracer</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L79"></a><tt class="py-lineno"> 79</tt>  <tt class="py-line">            <tt class="py-name">message</tt> <tt class="py-op">=</tt> <tt class="py-name">event</tt><tt class="py-op">.</tt><tt class="py-name">message</tt> </tt>
+<a name="L80"></a><tt class="py-lineno"> 80</tt>  <tt class="py-line">            <tt id="link-27" class="py-name" targets="Method proton._endpoints.Session.receiver()=proton._endpoints.Session-class.html#receiver,Variable proton._events.Event.receiver=proton._events.Event-class.html#receiver"><a title="proton._endpoints.Session.receiver
+proton._events.Event.receiver" class="py-name" href="#" onclick="return doclink('link-27', 'receiver', 'link-27');">receiver</a></tt> <tt class="py-op">=</tt> <tt class="py-name">event</tt><tt class="py-op">.</tt><tt id="link-28" class="py-name"><a title="proton._endpoints.Session.receiver
+proton._events.Event.receiver" class="py-name" href="#" onclick="return doclink('link-28', 'receiver', 'link-27');">receiver</a></tt> </tt>
+<a name="L81"></a><tt class="py-lineno"> 81</tt>  <tt class="py-line">            <tt id="link-29" class="py-name" targets="Variable proton._delivery.Delivery.connection=proton._delivery.Delivery-class.html#connection,Variable proton._endpoints.Connection.connection=proton._endpoints.Connection-class.html#connection,Variable proton._endpoints.Link.connection=proton._endpoints.Link-class.html#connection,Variable proton._endpoints.Session.connection=proton._endpoints.Session-class.html#connection,Variable proton._events.Event.connection=proton._events.Event-class.html#connection,Method proton._reactor.Reactor.connection()=proton._reactor.Reactor-class.html#connection,Variable proton._transport.Transport.connection=proton._transport.Transport-class.html#connection"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-29', 'connection', 'link-29');">connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">event</tt><tt class="py-op">.</tt><tt id="link-30" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-30', 'connection', 'link-29');">connection</a></tt> </tt>
+<a name="L82"></a><tt class="py-lineno"> 82</tt>  <tt class="py-line">            <tt class="py-name">span_tags</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L83"></a><tt class="py-lineno"> 83</tt>  <tt class="py-line">                <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">SPAN_KIND</tt><tt class="py-op">:</tt> <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">SPAN_KIND_CONSUMER</tt><tt class="py-op">,</tt> </tt>
+<a name="L84"></a><tt class="py-lineno"> 84</tt>  <tt class="py-line">                <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">MESSAGE_BUS_DESTINATION</tt><tt class="py-op">:</tt> <tt id="link-31" class="py-name"><a title="proton._endpoints.Session.receiver
+proton._events.Event.receiver" class="py-name" href="#" onclick="return doclink('link-31', 'receiver', 'link-27');">receiver</a></tt><tt class="py-op">.</tt><tt id="link-32" class="py-name" targets="Variable proton._endpoints.Link.source=proton._endpoints.Link-class.html#source"><a title="proton._endpoints.Link.source" class="py-name" href="#" onclick="return doclink('link-32', 'source', 'link-32');">source</a></tt><tt class="py-op">.</tt><tt id="link-33" class="py-name" targets="Variable proton._endpoints.Terminus.address=proton._endpoints.Terminus-class.html#address,Variable proton._message.Message.address=proton._message.Message-class.html#address"><a title="proton._endpoints.Terminus.address
+proton._message.Message.address" class="py-name" href="#" onclick="return doclink('link-33', 'address', 'link-33');">address</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L85"></a><tt class="py-lineno"> 85</tt>  <tt class="py-line">                <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">PEER_ADDRESS</tt><tt class="py-op">:</tt> <tt id="link-34" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-34', 'connection', 'link-29');">connection</a></tt><tt class="py-op">.</tt><tt id="link-35" class="py-name" targets="Variable proton._endpoints.Connection.connected_address=proton._endpoints.Connection-class.html#connected_address"><a title="proton._endpoints.Connection.connected_address" class="py-name" href="#" onclick="return doclink('link-35', 'connected_address', 'link-35');">connected_address</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L86"></a><tt class="py-lineno"> 86</tt>  <tt class="py-line">                <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">PEER_HOSTNAME</tt><tt class="py-op">:</tt> <tt id="link-36" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-36', 'connection', 'link-29');">connection</a></tt><tt class="py-op">.</tt><tt id="link-37" class="py-name" targets="Variable proton._endpoints.Connection.hostname=proton._endpoints.Connection-class.html#hostname"><a title="proton._endpoints.Connection.hostname" class="py-name" href="#" onclick="return doclink('link-37', 'hostname', 'link-37');">hostname</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L87"></a><tt class="py-lineno"> 87</tt>  <tt class="py-line">                <tt class="py-string">'inserted_by'</tt><tt class="py-op">:</tt> <tt class="py-string">'proton-message-tracing'</tt> </tt>
+<a name="L88"></a><tt class="py-lineno"> 88</tt>  <tt class="py-line">            <tt class="py-op">}</tt> </tt>
+<a name="L89"></a><tt class="py-lineno"> 89</tt>  <tt class="py-line">            <tt class="py-keyword">if</tt> <tt class="py-name">message</tt><tt class="py-op">.</tt><tt id="link-38" class="py-name" targets="Variable proton._delivery.Disposition.annotations=proton._delivery.Disposition-class.html#annotations"><a title="proton._delivery.Disposition.annotations" class="py-name" href="#" onclick="return doclink('link-38', 'annotations', 'link-38');">annotations</a></tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L90"></a><tt class="py-lineno"> 90</tt>  <tt class="py-line">                <tt class="py-name">headers</tt> <tt class="py-op">=</tt> <tt class="py-name">message</tt><tt class="py-op">.</tt><tt id="link-39" class="py-name"><a title="proton._delivery.Disposition.annotations" class="py-name" href="#" onclick="return doclink('link-39', 'annotations', 'link-38');">annotations</a></tt><tt class="py-op">[</tt><tt id="link-40" class="py-name"><a title="proton._tracing._trace_key" class="py-name" href="#" onclick="return doclink('link-40', '_trace_key', 'link-8');">_trace_key</a></tt><tt class="py-op">]</tt> </tt>
+<a name="L91"></a><tt class="py-lineno"> 91</tt>  <tt class="py-line">                <tt class="py-name">span_ctx</tt> <tt class="py-op">=</tt> <tt id="link-41" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-41', 'tracer', 'link-25');">tracer</a></tt><tt class="py-op">.</tt><tt class="py-name">extract</tt><tt class="py-op">(</tt><tt class="py-name">Format</tt><tt class="py-op">.</tt><tt class="py-name">TEXT_MAP</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">)</tt> </tt>
+<a name="L92"></a><tt class="py-lineno"> 92</tt>  <tt class="py-line">                <tt class="py-keyword">with</tt> <tt id="link-42" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-42', 'tracer', 'link-25');">tracer</a></tt><tt class="py-op">.</tt><tt class="py-name">start_active_span</tt><tt class="py-op">(</tt><tt class="py-string">'amqp-delivery-receive'</tt><tt class="py-op">,</tt> <tt class="py-name">child_of</tt><tt class="py-op">=</tt><tt class="py-name">span_ctx</tt><tt class="py-op">,</tt> <tt class="py-name">tags</tt><tt class="py-op">=</tt><tt class="py-name">span_tags</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L93"></a><tt class="py-lineno"> 93</tt>  <tt class="py-line">                    <tt id="link-43" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-43', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-44" class="py-name" targets="Module proton._events=proton._events-module.html"><a title="proton._events" class="py-name" href="#" onclick="return doclink('link-44', '_events', 'link-44');">_events</a></tt><tt class="py-op">.</tt><tt class="py-name">_dispatch</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">delegate</tt><tt class="py-op">,</tt> <tt class="py-string">'on_message'</tt><tt class="py-op">,</tt> <tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+<a name="L94"></a><tt class="py-lineno"> 94</tt>  <tt class="py-line">            <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L95"></a><tt class="py-lineno"> 95</tt>  <tt class="py-line">                <tt class="py-keyword">with</tt> <tt id="link-45" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-45', 'tracer', 'link-25');">tracer</a></tt><tt class="py-op">.</tt><tt class="py-name">start_active_span</tt><tt class="py-op">(</tt><tt class="py-string">'amqp-delivery-receive'</tt><tt class="py-op">,</tt> <tt class="py-name">ignore_active_span</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">,</tt> <tt class="py-name">tags</tt><tt class="py-op">=</tt><tt class="py-name">span_tags</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L96"></a><tt class="py-lineno"> 96</tt>  <tt class="py-line">                    <tt id="link-46" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-46', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-47" class="py-name"><a title="proton._events" class="py-name" href="#" onclick="return doclink('link-47', '_events', 'link-44');">_events</a></tt><tt class="py-op">.</tt><tt class="py-name">_dispatch</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">delegate</tt><tt class="py-op">,</tt> <tt class="py-string">'on_message'</tt><tt class="py-op">,</tt> <tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L97"></a><tt class="py-lineno"> 97</tt>  <tt class="py-line"> </tt>
+<a name="OutgoingMessageHandler"></a><div id="OutgoingMessageHandler-def"><a name="L98"></a><tt class="py-lineno"> 98</tt> <a class="py-toggle" href="#" id="OutgoingMessageHandler-toggle" onclick="return toggle('OutgoingMessageHandler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="proton._tracing.OutgoingMessageHandler-class.html">OutgoingMessageHandler</a><tt class="py-op">(</tt><tt class="py-base-class">ProtonOutgoingMessageHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OutgoingMessageHandler-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="OutgoingMessageHandler-expanded"><a name="OutgoingMessageHandler.on_settled"></a><div id="OutgoingMessageHandler.on_settled-def"><a name="L99"></a><tt class="py-lineno"> 99</tt> <a class="py-toggle" href="#" id="OutgoingMessageHandler.on_settled-toggle" onclick="return toggle('OutgoingMessageHandler.on_settled');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing.OutgoingMessageHandler-class.html#on_settled">on_settled</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">event</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="OutgoingMessageHandler.on_settled-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="OutgoingMessageHandler.on_settled-expanded"><a name="L100"></a><tt class="py-lineno">100</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">delegate</tt> <tt class="py-keyword">is</tt> <tt class="py-keyword">not</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L101"></a><tt class="py-lineno">101</tt>  <tt class="py-line">            <tt id="link-48" class="py-name" targets="Method proton._endpoints.Link.delivery()=proton._endpoints.Link-class.html#delivery,Variable proton._events.Event.delivery=proton._events.Event-class.html#delivery"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-48', 'delivery', 'link-48');">delivery</a></tt> <tt class="py-op">=</tt> <tt class="py-name">event</tt><tt class="py-op">.</tt><tt id="link-49" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-49', 'delivery', 'link-48');">delivery</a></tt> </tt>
+<a name="L102"></a><tt class="py-lineno">102</tt>  <tt class="py-line">            <tt id="link-50" class="py-name" targets="Variable proton._endpoints.Connection.state=proton._endpoints.Connection-class.html#state,Variable proton._endpoints.Link.state=proton._endpoints.Link-class.html#state,Variable proton._endpoints.Session.state=proton._endpoints.Session-class.html#state"><a title="proton._endpoints.Connection.state
+proton._endpoints.Link.state
+proton._endpoints.Session.state" class="py-name" href="#" onclick="return doclink('link-50', 'state', 'link-50');">state</a></tt> <tt class="py-op">=</tt> <tt id="link-51" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-51', 'delivery', 'link-48');">delivery</a></tt><tt class="py-op">.</tt><tt id="link-52" class="py-name" targets="Variable proton._delivery.Delivery.remote_state=proton._delivery.Delivery-class.html#remote_state"><a title="proton._delivery.Delivery.remote_state" class="py-name" href="#" onclick="return doclink('link-52', 'remote_state', 'link-52');">remote_state</a></tt> </tt>
+<a name="L103"></a><tt class="py-lineno">103</tt>  <tt class="py-line">            <tt class="py-name">span</tt> <tt class="py-op">=</tt> <tt id="link-53" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-53', 'delivery', 'link-48');">delivery</a></tt><tt class="py-op">.</tt><tt class="py-name">span</tt> </tt>
+<a name="L104"></a><tt class="py-lineno">104</tt>  <tt class="py-line">            <tt class="py-name">span</tt><tt class="py-op">.</tt><tt class="py-name">set_tag</tt><tt class="py-op">(</tt><tt class="py-string">'delivery-terminal-state'</tt><tt class="py-op">,</tt> <tt id="link-54" class="py-name"><a title="proton._endpoints.Connection.state
+proton._endpoints.Link.state
+proton._endpoints.Session.state" class="py-name" href="#" onclick="return doclink('link-54', 'state', 'link-50');">state</a></tt><tt class="py-op">.</tt><tt id="link-55" class="py-name" targets="Variable proton._endpoints.Link.name=proton._endpoints.Link-class.html#name"><a title="proton._endpoints.Link.name" class="py-name" href="#" onclick="return doclink('link-55', 'name', 'link-55');">name</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L105"></a><tt class="py-lineno">105</tt>  <tt class="py-line">            <tt class="py-name">span</tt><tt class="py-op">.</tt><tt class="py-name">log_kv</tt><tt class="py-op">(</tt><tt class="py-op">{</tt><tt class="py-string">'event'</tt><tt class="py-op">:</tt> <tt class="py-string">'delivery settled'</tt><tt class="py-op">,</tt> <tt class="py-string">'state'</tt><tt class="py-op">:</tt> <tt id="link-56" class="py-name"><a title="proton._endpoints.Connection.state
+proton._endpoints.Link.state
+proton._endpoints.Session.state" class="py-name" href="#" onclick="return doclink('link-56', 'state', 'link-50');">state</a></tt><tt class="py-op">.</tt><tt id="link-57" class="py-name"><a title="proton._endpoints.Link.name" class="py-name" href="#" onclick="return doclink('link-57', 'name', 'link-55');">name</a></tt><tt class="py-op">}</tt><tt class="py-op">)</tt> </tt>
+<a name="L106"></a><tt class="py-lineno">106</tt>  <tt class="py-line">            <tt class="py-name">span</tt><tt class="py-op">.</tt><tt class="py-name">finish</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L107"></a><tt class="py-lineno">107</tt>  <tt class="py-line">            <tt id="link-58" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-58', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-59" class="py-name"><a title="proton._events" class="py-name" href="#" onclick="return doclink('link-59', '_events', 'link-44');">_events</a></tt><tt class="py-op">.</tt><tt class="py-name">_dispatch</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">delegate</tt><tt class="py-op">,</tt> <tt class="py-string">'on_settled'</tt><tt class="py-op">,</tt> <tt class="py-name">event</tt><tt class="py-op">)</tt> </tt>
+</div></div><a name="L108"></a><tt class="py-lineno">108</tt>  <tt class="py-line"> </tt>
+<a name="Sender"></a><div id="Sender-def"><a name="L109"></a><tt class="py-lineno">109</tt> <a class="py-toggle" href="#" id="Sender-toggle" onclick="return toggle('Sender');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="proton._tracing.Sender-class.html">Sender</a><tt class="py-op">(</tt><tt class="py-base-class">ProtonSender</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Sender-collapsed" style="display:none;" pad="+++" indent="++++"></div><div id="Sender-expanded"><a name="Sender.send"></a><div id="Sender.send-def"><a name="L110"></a><tt class="py-lineno">110</tt> <a class="py-toggle" href="#" id="Sender.send-toggle" onclick="return toggle('Sender.send');">-</a><tt class="py-line">    <tt class="py-keyword">def</tt> <a class="py-def-name" href="proton._tracing.Sender-class.html#send">send</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">msg</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Sender.send-collapsed" style="display:none;" pad="+++" indent="++++++++"></div><div id="Sender.send-expanded"><a name="L111"></a><tt class="py-lineno">111</tt>  <tt class="py-line">        <tt id="link-60" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-60', 'tracer', 'link-25');">tracer</a></tt> <tt class="py-op">=</tt> <tt id="link-61" class="py-name"><a title="proton._tracing.get_tracer" class="py-name" href="#" onclick="return doclink('link-61', 'get_tracer', 'link-26');">get_tracer</a></tt><tt class="py-op">(</tt><tt class="py-op">)</tt> </tt>
+<a name="L112"></a><tt class="py-lineno">112</tt>  <tt class="py-line">        <tt id="link-62" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-62', 'connection', 'link-29');">connection</a></tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-63" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-63', 'connection', 'link-29');">connection</a></tt> </tt>
+<a name="L113"></a><tt class="py-lineno">113</tt>  <tt class="py-line">        <tt class="py-name">span_tags</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> </tt>
+<a name="L114"></a><tt class="py-lineno">114</tt>  <tt class="py-line">            <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">SPAN_KIND</tt><tt class="py-op">:</tt> <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">SPAN_KIND_PRODUCER</tt><tt class="py-op">,</tt> </tt>
+<a name="L115"></a><tt class="py-lineno">115</tt>  <tt class="py-line">            <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">MESSAGE_BUS_DESTINATION</tt><tt class="py-op">:</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-64" class="py-name" targets="Variable proton._endpoints.Link.target=proton._endpoints.Link-class.html#target"><a title="proton._endpoints.Link.target" class="py-name" href="#" onclick="return doclink('link-64', 'target', 'link-64');">target</a></tt><tt class="py-op">.</tt><tt id="link-65" class="py-name"><a title="proton._endpoints.Terminus.address
+proton._message.Message.address" class="py-name" href="#" onclick="return doclink('link-65', 'address', 'link-33');">address</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L116"></a><tt class="py-lineno">116</tt>  <tt class="py-line">            <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">PEER_ADDRESS</tt><tt class="py-op">:</tt> <tt id="link-66" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-66', 'connection', 'link-29');">connection</a></tt><tt class="py-op">.</tt><tt id="link-67" class="py-name"><a title="proton._endpoints.Connection.connected_address" class="py-name" href="#" onclick="return doclink('link-67', 'connected_address', 'link-35');">connected_address</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L117"></a><tt class="py-lineno">117</tt>  <tt class="py-line">            <tt class="py-name">tags</tt><tt class="py-op">.</tt><tt class="py-name">PEER_HOSTNAME</tt><tt class="py-op">:</tt> <tt id="link-68" class="py-name"><a title="proton._delivery.Delivery.connection
+proton._endpoints.Connection.connection
+proton._endpoints.Link.connection
+proton._endpoints.Session.connection
+proton._events.Event.connection
+proton._reactor.Reactor.connection
+proton._transport.Transport.connection" class="py-name" href="#" onclick="return doclink('link-68', 'connection', 'link-29');">connection</a></tt><tt class="py-op">.</tt><tt id="link-69" class="py-name"><a title="proton._endpoints.Connection.hostname" class="py-name" href="#" onclick="return doclink('link-69', 'hostname', 'link-37');">hostname</a></tt><tt class="py-op">,</tt> </tt>
+<a name="L118"></a><tt class="py-lineno">118</tt>  <tt class="py-line">            <tt class="py-string">'inserted_by'</tt><tt class="py-op">:</tt> <tt class="py-string">'proton-message-tracing'</tt> </tt>
+<a name="L119"></a><tt class="py-lineno">119</tt>  <tt class="py-line">        <tt class="py-op">}</tt> </tt>
+<a name="L120"></a><tt class="py-lineno">120</tt>  <tt class="py-line">        <tt class="py-name">span</tt> <tt class="py-op">=</tt> <tt id="link-70" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-70', 'tracer', 'link-25');">tracer</a></tt><tt class="py-op">.</tt><tt class="py-name">start_span</tt><tt class="py-op">(</tt><tt class="py-string">'amqp-delivery-send'</tt><tt class="py-op">,</tt> <tt class="py-name">tags</tt><tt class="py-op">=</tt><tt class="py-name">span_tags</tt><tt class="py-op">)</tt> </tt>
+<a name="L121"></a><tt class="py-lineno">121</tt>  <tt class="py-line">        <tt class="py-name">headers</tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt><tt class="py-op">}</tt> </tt>
+<a name="L122"></a><tt class="py-lineno">122</tt>  <tt class="py-line">        <tt id="link-71" class="py-name"><a title="proton._transport.Transport.tracer" class="py-name" href="#" onclick="return doclink('link-71', 'tracer', 'link-25');">tracer</a></tt><tt class="py-op">.</tt><tt class="py-name">inject</tt><tt class="py-op">(</tt><tt class="py-name">span</tt><tt class="py-op">,</tt> <tt class="py-name">Format</tt><tt class="py-op">.</tt><tt class="py-name">TEXT_MAP</tt><tt class="py-op">,</tt> <tt class="py-name">headers</tt><tt class="py-op">)</tt> </tt>
+<a name="L123"></a><tt class="py-lineno">123</tt>  <tt class="py-line">        <tt class="py-keyword">if</tt> <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt id="link-72" class="py-name"><a title="proton._delivery.Disposition.annotations" class="py-name" href="#" onclick="return doclink('link-72', 'annotations', 'link-38');">annotations</a></tt> <tt class="py-keyword">is</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L124"></a><tt class="py-lineno">124</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt id="link-73" class="py-name"><a title="proton._delivery.Disposition.annotations" class="py-name" href="#" onclick="return doclink('link-73', 'annotations', 'link-38');">annotations</a></tt> <tt class="py-op">=</tt> <tt class="py-op">{</tt> <tt id="link-74" class="py-name"><a title="proton._tracing._trace_key" class="py-name" href="#" onclick="return doclink('link-74', '_trace_key', 'link-8');">_trace_key</a></tt><tt class="py-op">:</tt> <tt class="py-name">headers</tt> <tt class="py-op">}</tt> </tt>
+<a name="L125"></a><tt class="py-lineno">125</tt>  <tt class="py-line">        <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L126"></a><tt class="py-lineno">126</tt>  <tt class="py-line">            <tt class="py-name">msg</tt><tt class="py-op">.</tt><tt id="link-75" class="py-name"><a title="proton._delivery.Disposition.annotations" class="py-name" href="#" onclick="return doclink('link-75', 'annotations', 'link-38');">annotations</a></tt><tt class="py-op">[</tt><tt id="link-76" class="py-name"><a title="proton._tracing._trace_key" class="py-name" href="#" onclick="return doclink('link-76', '_trace_key', 'link-8');">_trace_key</a></tt><tt class="py-op">]</tt> <tt class="py-op">=</tt> <tt class="py-name">headers</tt> </tt>
+<a name="L127"></a><tt class="py-lineno">127</tt>  <tt class="py-line">        <tt id="link-77" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-77', 'delivery', 'link-48');">delivery</a></tt> <tt class="py-op">=</tt> <tt class="py-name">ProtonSender</tt><tt class="py-op">.</tt><tt id="link-78" class="py-name" targets="Method proton._endpoints.Sender.send()=proton._endpoints.Sender-class.html#send,Method proton._message.Message.send()=proton._message.Message-class.html#send,Method proton._reactor.Transaction.send()=proton._reactor.Transaction-class.html#send,Method proton._tracing.Sender.send()=proton._tracing.Sender-class.html#send,Method proton._utils.BlockingSender.send()=proton._utils.BlockingSender-class.html#send"><a title="proton._endpoints.Sender.send
+proton._message.Message.send
+proton._reactor.Transaction.send
+proton._tracing.Sender.send
+proton._utils.BlockingSender.send" class="py-name" href="#" onclick="return doclink('link-78', 'send', 'link-78');">send</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-name">msg</tt><tt class="py-op">)</tt> </tt>
+<a name="L128"></a><tt class="py-lineno">128</tt>  <tt class="py-line">        <tt id="link-79" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-79', 'delivery', 'link-48');">delivery</a></tt><tt class="py-op">.</tt><tt class="py-name">span</tt> <tt class="py-op">=</tt> <tt class="py-name">span</tt> </tt>
+<a name="L129"></a><tt class="py-lineno">129</tt>  <tt class="py-line">        <tt class="py-name">span</tt><tt class="py-op">.</tt><tt class="py-name">set_tag</tt><tt class="py-op">(</tt><tt class="py-string">'delivery-tag'</tt><tt class="py-op">,</tt> <tt id="link-80" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-80', 'delivery', 'link-48');">delivery</a></tt><tt class="py-op">.</tt><tt id="link-81" class="py-name" targets="Variable proton._delivery.Delivery.tag=proton._delivery.Delivery-class.html#tag"><a title="proton._delivery.Delivery.tag" class="py-name" href="#" onclick="return doclink('link-81', 'tag', 'link-81');">tag</a></tt><tt class="py-op">)</tt> </tt>
+<a name="L130"></a><tt class="py-lineno">130</tt>  <tt class="py-line">        <tt class="py-keyword">return</tt> <tt id="link-82" class="py-name"><a title="proton._endpoints.Link.delivery
+proton._events.Event.delivery" class="py-name" href="#" onclick="return doclink('link-82', 'delivery', 'link-48');">delivery</a></tt> </tt>
+</div></div><a name="L131"></a><tt class="py-lineno">131</tt>  <tt class="py-line"> </tt>
+<a name="L132"></a><tt class="py-lineno">132</tt>  <tt class="py-line"><tt class="py-comment"># Monkey patch proton for tracing (need to patch both internal and external names)</tt> </tt>
+<a name="L133"></a><tt class="py-lineno">133</tt>  <tt class="py-line"><tt id="link-83" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-83', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-84" class="py-name" targets="Module proton._handlers=proton._handlers-module.html"><a title="proton._handlers" class="py-name" href="#" onclick="return doclink('link-84', '_handlers', 'link-84');">_handlers</a></tt><tt class="py-op">.</tt><tt id="link-85" class="py-name"><a title="proton._handlers.IncomingMessageHandler
+proton._tracing.IncomingMessageHandler" class="py-name" href="#" onclick="return doclink('link-85', 'IncomingMessageHandler', 'link-6');">IncomingMessageHandler</a></tt> <tt class="py-op">=</tt> <tt id="link-86" class="py-name"><a title="proton._handlers.IncomingMessageHandler
+proton._tracing.IncomingMessageHandler" class="py-name" href="#" onclick="return doclink('link-86', 'IncomingMessageHandler', 'link-6');">IncomingMessageHandler</a></tt> </tt>
+<a name="L134"></a><tt class="py-lineno">134</tt>  <tt class="py-line"><tt id="link-87" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-87', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-88" class="py-name"><a title="proton._handlers" class="py-name" href="#" onclick="return doclink('link-88', '_handlers', 'link-84');">_handlers</a></tt><tt class="py-op">.</tt><tt id="link-89" class="py-name"><a title="proton._handlers.OutgoingMessageHandler
+proton._tracing.OutgoingMessageHandler" class="py-name" href="#" onclick="return doclink('link-89', 'OutgoingMessageHandler', 'link-5');">OutgoingMessageHandler</a></tt> <tt class="py-op">=</tt> <tt id="link-90" class="py-name"><a title="proton._handlers.OutgoingMessageHandler
+proton._tracing.OutgoingMessageHandler" class="py-name" href="#" onclick="return doclink('link-90', 'OutgoingMessageHandler', 'link-5');">OutgoingMessageHandler</a></tt> </tt>
+<a name="L135"></a><tt class="py-lineno">135</tt>  <tt class="py-line"><tt id="link-91" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-91', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-92" class="py-name" targets="Module proton._endpoints=proton._endpoints-module.html"><a title="proton._endpoints" class="py-name" href="#" onclick="return doclink('link-92', '_endpoints', 'link-92');">_endpoints</a></tt><tt class="py-op">.</tt><tt id="link-93" class="py-name"><a title="proton._endpoints.Sender
+proton._tracing.Sender" class="py-name" href="#" onclick="return doclink('link-93', 'Sender', 'link-2');">Sender</a></tt> <tt class="py-op">=</tt> <tt id="link-94" class="py-name"><a title="proton._endpoints.Sender
+proton._tracing.Sender" class="py-name" href="#" onclick="return doclink('link-94', 'Sender', 'link-2');">Sender</a></tt> </tt>
+<a name="L136"></a><tt class="py-lineno">136</tt>  <tt class="py-line"><tt id="link-95" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-95', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-96" class="py-name"><a title="proton._events.Handler.handlers
+proton.handlers" class="py-name" href="#" onclick="return doclink('link-96', 'handlers', 'link-4');">handlers</a></tt><tt class="py-op">.</tt><tt id="link-97" class="py-name"><a title="proton._handlers.IncomingMessageHandler
+proton._tracing.IncomingMessageHandler" class="py-name" href="#" onclick="return doclink('link-97', 'IncomingMessageHandler', 'link-6');">IncomingMessageHandler</a></tt> <tt class="py-op">=</tt> <tt id="link-98" class="py-name"><a title="proton._handlers.IncomingMessageHandler
+proton._tracing.IncomingMessageHandler" class="py-name" href="#" onclick="return doclink('link-98', 'IncomingMessageHandler', 'link-6');">IncomingMessageHandler</a></tt> </tt>
+<a name="L137"></a><tt class="py-lineno">137</tt>  <tt class="py-line"><tt id="link-99" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-99', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-100" class="py-name"><a title="proton._events.Handler.handlers
+proton.handlers" class="py-name" href="#" onclick="return doclink('link-100', 'handlers', 'link-4');">handlers</a></tt><tt class="py-op">.</tt><tt id="link-101" class="py-name"><a title="proton._handlers.OutgoingMessageHandler
+proton._tracing.OutgoingMessageHandler" class="py-name" href="#" onclick="return doclink('link-101', 'OutgoingMessageHandler', 'link-5');">OutgoingMessageHandler</a></tt> <tt class="py-op">=</tt> <tt id="link-102" class="py-name"><a title="proton._handlers.OutgoingMessageHandler
+proton._tracing.OutgoingMessageHandler" class="py-name" href="#" onclick="return doclink('link-102', 'OutgoingMessageHandler', 'link-5');">OutgoingMessageHandler</a></tt> </tt>
+<a name="L138"></a><tt class="py-lineno">138</tt>  <tt class="py-line"><tt id="link-103" class="py-name"><a title="proton" class="py-name" href="#" onclick="return doclink('link-103', 'proton', 'link-0');">proton</a></tt><tt class="py-op">.</tt><tt id="link-104" class="py-name"><a title="proton._endpoints.Sender
+proton._tracing.Sender" class="py-name" href="#" onclick="return doclink('link-104', 'Sender', 'link-2');">Sender</a></tt> <tt class="py-op">=</tt> <tt id="link-105" class="py-name"><a title="proton._endpoints.Sender
+proton._tracing.Sender" class="py-name" href="#" onclick="return doclink('link-105', 'Sender', 'link-2');">Sender</a></tt> </tt>
+<a name="L139"></a><tt class="py-lineno">139</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+  <!-- Home link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="proton-module.html">Home</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Project homepage -->
+      <th class="navbar" align="right" width="100%">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr><th class="navbar" align="center"
+            ><a class="navbar" target="_top" href="http://qpid.apache.org/index.html">Qpid Proton Python API</a></th>
+          </tr></table></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

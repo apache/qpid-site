@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>test_examples.py - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.29.0/index.html">Qpid Proton 0.29.0</a></li><li><a href="/releases/qpid-proton-0.29.0/proton/python/examples/index.html">Proton Python Examples</a></li><li>test_examples.py</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>test_examples.py</h1>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+<span class="k">def</span> <span class="nf">remove_unicode_prefix</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;u([&#39;</span><span class="se">\&quot;</span><span class="s2">])&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">ExamplesTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_helloworld</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">example</span><span class="o">=</span><span class="s2">&quot;helloworld.py&quot;</span><span class="p">):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">example</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">p</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_direct.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_blocking</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_blocking.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_tornado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_tornado.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_direct_tornado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_direct_tornado.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_simple_send_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recv</span><span class="o">=</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="n">send</span><span class="o">=</span><span class="s1">&#39;simple_send.py&#39;</span><span class="p">):</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">recv</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="n">send</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;client.py&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">server</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">sleep</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">c</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Twas brillig, and the slithy toves&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;Did gire and gymble in the wabe.&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;All mimsy were the borogroves,&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;And the mome raths outgrabe.&quot;</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> =&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server_tx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_tx.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server_tx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_tx.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;client.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888/examples&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_direct.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888/examples&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_direct.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_db_send_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># setup databases</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./src_db&#39;</span><span class="p">])</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./dst_db&#39;</span><span class="p">])</span>
+        <span class="n">fill</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="s1">&#39;./src_db&#39;</span><span class="p">],</span>
+                                <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                                <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+            <span class="n">fill</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Message-</span><span class="si">%i</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">fill</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+        <span class="n">fill</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="c1"># run send and recv</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="c1"># verify output of receive</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;inserted message </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+        <span class="c1"># verify state of databases</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="s1">&#39;./dst_db&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">v</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;(</span><span class="si">%i</span><span class="s2">, &#39;Message-</span><span class="si">%i</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_tx_send_tx_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_simple_send_recv</span><span class="p">(</span><span class="n">recv</span><span class="o">=</span><span class="s1">&#39;tx_recv.py&#39;</span><span class="p">,</span> <span class="n">send</span><span class="o">=</span><span class="s1">&#39;tx_send.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_simple_send_direct_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;direct_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_direct_send_simple_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;direct_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_selected_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;colour_send.py&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">s</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;selected_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;green </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+        <span class="n">r2</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">],</span> <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span> <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                             <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+        <span class="n">r2</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+        <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r2</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+        <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+
+<p><a href="test_examples.py">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
