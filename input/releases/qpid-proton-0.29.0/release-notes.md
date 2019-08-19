@@ -31,6 +31,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-2040](https://issues.apache.org/jira/browse/PROTON-2040) - [cpp] Allow connection options to be updated for automatic reconnect.
  - [PROTON-2048](https://issues.apache.org/jira/browse/PROTON-2048) - Proton-C build process compiles a lot of files twice
  - [PROTON-2068](https://issues.apache.org/jira/browse/PROTON-2068) - Allow CMake builds using proton-c clients to import targets
+ - [PROTON-2082](https://issues.apache.org/jira/browse/PROTON-2082) - [Python] Message tracing using OpenTracing and Jaeger
 
 ## Bugs fixed
 
