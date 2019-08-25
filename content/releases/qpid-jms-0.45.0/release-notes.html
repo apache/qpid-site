@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS 0.41.0 - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 0.45.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,75 +111,39 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS 0.41.0</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-0.45.0/index.html">Qpid JMS 0.45.0</a></li><li>Qpid JMS 0.45.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-jms-0410">Qpid JMS 0.41.0</h1>
+          <h1 id="qpid-jms-0450-release-notes">Qpid JMS 0.45.0 Release Notes</h1>
 
 <p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
-using the <a href="/proton/index.html">Qpid Proton</a> protocol engine.</p>
+using the <a href="/proton/index.html">Qpid Proton</a> protocol
+engine.</p>
 
-<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
-notes</a>.</p>
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<h2 id="download">Download</h2>
-
-<p>It's important to <a href="/download.html#verify-what-you-download">verify the
-integrity</a> of the
-files you download.</p>
-
-<table>
-<thead>
-<tr>
-  <th>Content</th>
-  <th>Download</th>
-  <th>Verify</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Qpid JMS binaries</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-bin.tar.gz">apache-qpid-jms-0.41.0-bin.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-bin.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-bin.tar.gz.sha512">SHA512</a></td>
-</tr>
-<tr>
-  <td>Qpid JMS source code</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-src.tar.gz">apache-qpid-jms-0.41.0-src.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-src.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.41.0/apache-qpid-jms-0.41.0-src.tar.gz.sha512">SHA512</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>The client is also available <a href="/maven.html">via Maven</a>.</p>
-
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
+<h2 id="new-features-and-improvements">New features and improvements</h2>
 
 <ul>
-<li><a href="http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/0.41.0/qpid-jms-examples">Examples</a></li>
-<li><a href="docs/index.html">Configuration</a></li>
-<li><a href="building.html">Building Qpid JMS</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-471">QPIDJMS-471</a> - support message tracing using OpenTracing</li>
 </ul>
 
-</div>
-
-<h2 id="more-information">More information</h2>
+<h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="http://archive.apache.org/dist/qpid/jms/0.41.0">All release artefacts</a></li>
-<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.41.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
-<li><a href="https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.41.0">Source repository tag</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-467">QPIDJMS-467</a> - Provide consistent stack trace information in client JMS Exceptions</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-468">QPIDJMS-468</a> - send dispositions when CLIENT_ACK session closed without calling acknowledge</li>
 </ul>
 
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("0.41.0" === "0.45.0") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-465">QPIDJMS-465</a> - update to Netty 4.1.39</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-466">QPIDJMS-466</a> - update various test dependencies</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-469">QPIDJMS-469</a> - Remove some unused code leftover from previous refactoring</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-470">QPIDJMS-470</a> - update to Proton-J 0.33.2</li>
+</ul>
 
 
           <hr/>
