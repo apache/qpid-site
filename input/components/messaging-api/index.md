@@ -53,6 +53,7 @@ find previous versions with our
   | *C++* | [hello_world.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/hello_world.cpp.html) | [client.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/client.cpp.html) | [server.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/server.cpp.html) | [spout.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/spout.cpp.html) | [drain.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/drain.cpp.html) |
   | *Python* | [hello]({{current_python_release_url}}/messaging-api/examples/hello.html) |  | [server]({{current_python_release_url}}/messaging-api/examples/server.html) | [spout]({{current_python_release_url}}/messaging-api/examples/spout.html) | [drain]({{current_python_release_url}}/messaging-api/examples/drain.html) |
 
+**NOTE**: For Python, look instead to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
 ## Issues
 
 For more information about finding and reporting bugs, see
