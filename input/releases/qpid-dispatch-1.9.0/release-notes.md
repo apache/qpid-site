@@ -50,6 +50,7 @@ documentation, see the [release overview](index.html).
 
 ## Bugs fixed
 
+ - [DISPATCH-1256](https://issues.apache.org/jira/browse/DISPATCH-1256) - Throughput gets worse as more routers are added
  - [DISPATCH-1359](https://issues.apache.org/jira/browse/DISPATCH-1359) - Set ctest timeout to 300 seconds.
  - [DISPATCH-1361](https://issues.apache.org/jira/browse/DISPATCH-1361) - system_tests_fallback_dest hanging in some cases
  - [DISPATCH-1362](https://issues.apache.org/jira/browse/DISPATCH-1362) - Shutdown crash when trying to clean up fallback addresses

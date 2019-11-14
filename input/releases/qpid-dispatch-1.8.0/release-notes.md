@@ -52,6 +52,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1325](https://issues.apache.org/jira/browse/DISPATCH-1325) - Sender connections to edge router that connect 'too soon' never get credit
  - [DISPATCH-1326](https://issues.apache.org/jira/browse/DISPATCH-1326) - Anonymous messages are released by edge router even if there is a receiver for the messages
  - [DISPATCH-1330](https://issues.apache.org/jira/browse/DISPATCH-1330) - Q2 stall due to incorrect msg buffer ref count decrement on link detach
+ - [DISPATCH-1333](https://issues.apache.org/jira/browse/DISPATCH-1333) - Console test fails printing to file with python 3
  - [DISPATCH-1334](https://issues.apache.org/jira/browse/DISPATCH-1334) - Background map on topology page incorrect height
  - [DISPATCH-1335](https://issues.apache.org/jira/browse/DISPATCH-1335) - After adding client, topology page shows new icon in upper-left corner
  - [DISPATCH-1339](https://issues.apache.org/jira/browse/DISPATCH-1339) - Multiple consoles attached to a router are showing as separate icons
