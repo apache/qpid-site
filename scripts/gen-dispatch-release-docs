@@ -38,15 +38,16 @@ def gen_dispatch_docs(release, source_dir, output_dir):
 
         copy(input_file, output_file)
 
-    book_input_dir = join(source_dir, "docs", "books", "user-guide")
-    book_input_file = join(book_input_dir, "book.adoc")
+    books_input_dir = join(source_dir, "docs", "books")
+    book_input_file = join(books_input_dir, "user-guide", "book.adoc")
     book_output_dir = join(output_dir, "user-guide")
     book_output_file = join(book_output_dir, "index.html.in")
 
+    remove(book_output_dir)
     make_dir(book_output_dir)
 
     call("asciidoctor --no-header-footer -o {} {}", book_output_file, book_input_file)
-    copy(join(book_input_dir, "../_images"), join(book_output_dir, "_images"))
+    copy(join(books_input_dir, "images"), join(book_output_dir, "images"))
 
     # Asciidoctor strips the title - add it back
     prepend(book_output_file, "<h1>Using Qpid Dispatch</h1>\n")
