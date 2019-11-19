@@ -45,6 +45,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1381](https://issues.apache.org/jira/browse/DISPATCH-1381) - Create documentation for configuring fallback destinations
  - [DISPATCH-1382](https://issues.apache.org/jira/browse/DISPATCH-1382) - Document ability to force-close a connection from the web console
  - [DISPATCH-1388](https://issues.apache.org/jira/browse/DISPATCH-1388) - Authorization doc fails to describe vhost abstraction clearly
+ - [DISPATCH-1389](https://issues.apache.org/jira/browse/DISPATCH-1389) - Optimize the parsing of message annotations
  - [DISPATCH-1396](https://issues.apache.org/jira/browse/DISPATCH-1396) - Doc how to start the router
  - [DISPATCH-1402](https://issues.apache.org/jira/browse/DISPATCH-1402) - Document unsettled multicast
 
