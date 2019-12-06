@@ -1,0 +1,32 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.7.&#160;Consumers</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime-Flow-To-Disk.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Background-Recovery.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Consumers"></a>9.7.&#160;Consumers</h2></div></div></div><p>A Consumer is created when an AMQP connection wishes to receive messages from a message source (such as a
+    Queue).  The standard behaviours of consumers are defined by the respective AMQP specification, however in addition
+    to the standard behaviours a number of Qpid specific enhancements are available</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Consumers-Prioirty"></a>9.7.1.&#160;Priority</h3></div></div></div><p>By default, when there are multiple competing consumers attached to the same message source, the Broker
+      attempts to distribute messages from the queue in a "fair" manner. Some use cases require allocation of messages
+      to consumers to be based on the "priority" of the consumer. Where there are multiple consumers having differing
+      priorities, the Broker will always attempt to deliver a message to a higher priority consumer before attempting
+      delivery to a lower priority consumer. That is, a lower priority consumer will only receive a message if no
+      higher priority consumers currently have credit available to consume the message, or those consumers have declined
+      to accept the message (for instance because it does not meet the criteria of any selectors associated with the
+      consumer).</p><p>Where a consumer is created with no explicit priority provided, the consumer is given the highest possible
+      priority.</p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6072"></a>9.7.1.1.&#160;Creating a Consumer with a non-standard priority</h4></div></div></div><p>
+        In AMQP 0-9 and 0-9-1 the priority of the consumer can be set by adding an entry into the table provided as the
+        <code class="literal">arguments</code> field (known as the <code class="literal">filter</code> field on AMQP 0-9) of the
+        <code class="literal">basic.consume</code> method. The key for the entry must be the literal short string
+        <code class="literal">x-priority</code>, and the value of the entry must be an integral number in the range
+        -2<sup>31</sup> to 2<sup>31</sup>-1.
+      </p><p>
+        In AMQP 0-10 the priority of the consumer can be set in the map provided as the <code class="literal">arguments</code>
+        field of the <code class="literal">message.subscribe</code> method. The key for the entry must be the literal string
+        <code class="literal">x-priority</code>, and the value of the entry must be an integral number in the range
+        -2<sup>31</sup> to 2<sup>31</sup>-1.
+      </p><p>
+        In AMQP 1.0 the priority of the consumer is set in the <code class="literal">properties</code> map of the
+        <code class="literal">attach</code> frame where the broker side of the link represents the sending side of the link.
+        The key for the entry must be the literal string <code class="literal">priority</code>, and the value of the entry must
+        be an integral number in the range -2<sup>31</sup> to 2<sup>31</sup>-1.
+      </p><p>
+        When using the Qpid JMS client for AMQP 0-9/0-9-1/0-10 the consumer priority can be set in the address being
+        used for the Destination object.
+
+        </p><div class="table"><a id="d0e6131"></a><p class="title"><strong>Table&#160;9.1.&#160;Setting the consumer priority</strong></p><div class="table-contents"><table border="1" summary="Setting the consumer priority"><colgroup><col /><col /></colgroup><thead><tr><th>Syntax</th><th>Example</th></tr></thead><tbody><tr><td>Addressing</td><td>myqueue : { link : { x-subscribe: { arguments : { x-priority : '10' } } } }</td></tr><tr><td>Binding URL</td><td>direct://amq.direct/myqueue/myqueue?x-qpid-replay-priority='10'</td></tr></tbody></table></div></div><p><br class="table-break" />
+      </p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Runtime-Flow-To-Disk.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Background-Recovery.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">9.6.&#160;Flow to Disk&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;9.8.&#160;Background Recovery</td></tr></table></div></div>

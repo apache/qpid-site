@@ -1,0 +1,41 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.2.&#160;Disk Space Management</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Transaction-Timeout.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Disk-Space-Management"></a>9.2.&#160;Disk Space Management</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Disk-Space-Management-Producer-Flow-Control"></a>9.2.1.&#160;Disk quota-based flow control</h3></div></div></div><p>
+        The Apache Qpid Broker-J supports a flow control mechanism which is triggered when a configured
+        disk quota is exceeded. This is supported by the BDB and Derby virtualhosts.
+    </p><p>
+        This functionality blocks all producers on reaching the disk overflow limit. When consumers consume the
+        messages, causing disk space usage to falls below the underflow limit, the producers are unblocked and continue
+        working as normal.
+    </p><p>
+        Two limits can be configured:
+    </p><p>
+        overfull limit - the maximum space on disk (in bytes).
+    </p><p>
+        underfull limit - when the space on disk drops below this limit, producers are allowed to resume publishing.
+    </p><p>
+        The overfull and underful limit can be specified when a new virtualhost is created or an exiting virtualhost is
+        edited. This can be done using the Store Overflow and Store Underfull settings within the virtual host creation
+        and edit dialogue. If editing an existing virtualhost, the virtualhost must be restarted for the new values to
+        take effect.
+    </p><p>
+        The disk quota functionality is based on "best effort" principle. This means the broker cannot guarantee that
+        the disk space limit will not be exceeded. If several concurrent transactions are started before the limit is
+        reached, which collectively cause the limit to be exceeded, the broker may allow all of them to be committed.
+    </p><p>
+        The Broker will also impose flow control if the filesystem hosting a virtualhost exceeds a <a class="link" href="Java-Broker-Management-Managing-Broker.html#Java-Broker-Management-Managing-Broker-Context-StoreFilesystemMaxUsagePercent">configured
+        percentage.</a>.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+            The <span class="emphasis"><em>Producer Flow Control</em></span> can be configured on individual queue using
+            <span class="emphasis"><em>Producer Flow Control</em></span> overflow policy.
+            For more details, please read<a class="xref" href="Java-Broker-Concepts-Queues.html#Java-Broker-Concepts-Queue-OverflowPolicy" title="4.7.5.&#160;Controlling Queue Size">Section&#160;4.7.5, &#8220;Controlling Queue Size&#8221;</a>.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e5852"></a>9.2.1.1.&#160;Broker Log Messages for quota flow control</h4></div></div></div><p>
+            There are two broker log messages that may occur if flow control through disk quota limits is enabled. When
+            the virtual host is blocked due to exceeding of the disk quota limit the following message appears in the
+            broker log
+            </p><pre class="programlisting">
+                [vh(/test)/ms(BDBMessageStore)] MST-1008 : Store overfull, flow control will be enforced
+            </pre><p>
+            When virtual host is unblocked after cleaning the disk space the following message appears in the broker log
+            </p><pre class="programlisting">
+                [vh(/test)/ms(BDBMessageStore)] MST-1009 : Store overfull condition cleared
+            </pre><p>
+        </p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Runtime.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Transaction-Timeout.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Chapter&#160;9.&#160;Runtime&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;9.3.&#160;Transaction Timeout</td></tr></table></div></div>
