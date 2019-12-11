@@ -1,5 +1,6 @@
 var group__core =
 [
+    [ "Logger", "group__logger.html", "group__logger" ],
     [ "Connection", "group__connection.html", "group__connection" ],
     [ "Session", "group__session.html", "group__session" ],
     [ "Link", "group__link.html", "group__link" ],

@@ -5,9 +5,9 @@ var NAVTREE =
     [ "IO integration", "io_page.html", null ],
     [ "Multithreading", "mt_page.html", null ],
     [ "Overview", "overview_page.html", null ],
-    [ "AMQP and C++ types", "types_page.html", null ],
     [ "Tutorial", "tutorial_page.html", null ],
-    [ "Deprecated List", "deprecated.html", null ],
+    [ "Connection Configuration", "connect-config.html", null ],
+    [ "AMQP and C++ types", "types_page.html", null ],
     [ "Namespaces", null, [
       [ "Namespace List", "namespaces.html", "namespaces" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -41,10 +41,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"classproton_1_1decimal32.html#afdb67657e63a66ed3fae7b0c9fd81b48",
-"classproton_1_1receiver.html#a24b1f20b28b31ee266f387d1fe31b627",
-"classproton_1_1transfer.html",
-"message_properties_8cpp-example.html"
+"classproton_1_1error__condition.html#a4f32954b9494f55fa28e99c3402f254b",
+"classproton_1_1scalar__base.html#a89dd77b1757d854f49d49e379f8f9db8",
+"default__container_8hpp_source.html",
+"transfer_8hpp.html#a22ce9087b2eab98f4bab87d8afd0ce5e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

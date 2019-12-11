@@ -1,6 +1,7 @@
 var classproton_1_1session =
 [
     [ "session", "classproton_1_1session.html#a912187b9bad05f8454864cc5eef14395", null ],
+    [ "~session", "classproton_1_1session.html#a77564c5ed1e89fde8c4b3cea122f8521", null ],
     [ "uninitialized", "classproton_1_1session.html#ab51c3843057c4c187574e2d44839f815", null ],
     [ "active", "classproton_1_1session.html#ad9735e23cb0888fb98e1c5893aecff7e", null ],
     [ "closed", "classproton_1_1session.html#ae54500202b0333927a28c440c85cf07e", null ],

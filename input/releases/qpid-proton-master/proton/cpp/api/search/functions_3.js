@@ -2,6 +2,7 @@ var searchData=
 [
   ['decode',['decode',['../classproton_1_1codec_1_1decoder.html#a2db9ebfc344a8b1718099047639e32b2',1,'proton::codec::decoder::decode(const char *buffer, size_t size)'],['../classproton_1_1codec_1_1decoder.html#a8a2c9746655f00930f1d609b2bb9ff17',1,'proton::codec::decoder::decode(const std::string &amp;)'],['../classproton_1_1message.html#a53538e1ae48ba56e7285ca859d9cee50',1,'proton::message::decode()']]],
   ['decoder',['decoder',['../classproton_1_1codec_1_1decoder.html#ac9222fed91a5066887b42f471de0be8a',1,'proton::codec::decoder::decoder(const data &amp;d, bool exact=false)'],['../classproton_1_1codec_1_1decoder.html#adaca283b3eeb8861b7f7e8e94f784810',1,'proton::codec::decoder::decoder(const internal::value_base &amp;, bool exact=false)']]],
+  ['default_5ffile',['default_file',['../namespaceproton_1_1connect__config.html#aa26e0091906ace58b29b28bb4fac0768',1,'proton::connect_config']]],
   ['default_5fsession',['default_session',['../classproton_1_1connection.html#a0e37f5c26858e9fa4399acbbcdbb6462',1,'proton::connection']]],
   ['delay',['delay',['../classproton_1_1reconnect__options.html#a700d91bfa7a95ee851dd94eda092721b',1,'proton::reconnect_options']]],
   ['delay_5fmultiplier',['delay_multiplier',['../classproton_1_1reconnect__options.html#a8456389a8174cf6d2ae2550e05e3e650',1,'proton::reconnect_options']]],
@@ -9,6 +10,7 @@ var searchData=
   ['delivery_5fcount',['delivery_count',['../classproton_1_1message.html#ab8eed6909bec0a2ca6a76abed732a7e2',1,'proton::message::delivery_count() const'],['../classproton_1_1message.html#aaaf044a6b10403eafed371d20d5ba5c1',1,'proton::message::delivery_count(uint32_t)']]],
   ['delivery_5fmode',['delivery_mode',['../classproton_1_1receiver__options.html#a582bced77754ed8a85f9597e2e457079',1,'proton::receiver_options::delivery_mode()'],['../classproton_1_1sender__options.html#ab7dc71a7b5737c2ca642058a296292db',1,'proton::sender_options::delivery_mode()']]],
   ['description',['description',['../classproton_1_1error__condition.html#a07ffe70037e0a16554c868bcdd8f83b5',1,'proton::error_condition']]],
+  ['desired_5fcapabilities',['desired_capabilities',['../classproton_1_1connection.html#a7c47682917af9e9888c836bf69d3682a',1,'proton::connection::desired_capabilities()'],['../classproton_1_1connection__options.html#a37785c499f7e1b0f30dcbe8a0b9458e9',1,'proton::connection_options::desired_capabilities()']]],
   ['detach',['detach',['../classproton_1_1link.html#ac295bade8aee589f6718dfa79edc2a34',1,'proton::link']]],
   ['disconnected',['disconnected',['../classproton_1_1io_1_1connection__driver.html#a3f4d44bc02e9c32598aa40f03e6c5ae7',1,'proton::io::connection_driver']]],
   ['dispatch',['dispatch',['../classproton_1_1io_1_1connection__driver.html#a4c79ad1c9029d967b9e1b4daf91b7537',1,'proton::io::connection_driver']]],

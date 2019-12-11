@@ -129,14 +129,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a7e6b1a75735da02638374a317a232428"><td class="mdescLeft">&#160;</td><td class="mdescRight">The maximum number of reconnect attempts.  <a href="#a7e6b1a75735da02638374a317a232428">More...</a><br /></td></tr>
 <tr class="separator:a7e6b1a75735da02638374a317a232428"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a342bae3e139b785604e4ed0c7599a068"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1reconnect__options.html#a342bae3e139b785604e4ed0c7599a068">failover_urls</a> (const std::vector&lt; std::string &gt; &amp;conn_urls)</td></tr>
-<tr class="memdesc:a342bae3e139b785604e4ed0c7599a068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alternative connection URLs used for failover.  <a href="#a342bae3e139b785604e4ed0c7599a068">More...</a><br /></td></tr>
+<tr class="memdesc:a342bae3e139b785604e4ed0c7599a068"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deprecated - use <a class="el" href="classproton_1_1connection__options.html#abcfa30511c5b02318105ff214ea6eab7" title="Unsettled API - Set Fail-over URLs. ">connection_options::failover_urls</a> Alternative connection URLs used for failover.  <a href="#a342bae3e139b785604e4ed0c7599a068">More...</a><br /></td></tr>
 <tr class="separator:a342bae3e139b785604e4ed0c7599a068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><b>Unsettled API</b> - Options for reconnect and failover after connection loss. </p>
 <p>These options determine a series of delays to coordinate reconnection attempts. They may be open-ended or limited in time. They may be evenly spaced or increasing at an exponential rate.</p>
-<p>Options can be "chained". See <a class="el" href="classproton_1_1connection__options.html">proton::connection_options</a>.</p>
-<p>Normal value semantics: copy or assign creates a separate copy of the options. </p>
+<p>Normal value semantics: copy or assign creates a separate copy of the options.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a>, <a class="el" href="classproton_1_1connection__options.html#ad053f0ac823eefd100731c1b5248e7e8" title="Unsettled API - Set reconnect timing options. ">connection_options::reconnect()</a> </dd></dl>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a700d91bfa7a95ee851dd94eda092721b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a700d91bfa7a95ee851dd94eda092721b">&#9670;&nbsp;</a></span>delay()</h2>
@@ -238,7 +238,7 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Alternative connection URLs used for failover. </p>
+<p>Deprecated - use <a class="el" href="classproton_1_1connection__options.html#abcfa30511c5b02318105ff214ea6eab7" title="Unsettled API - Set Fail-over URLs. ">connection_options::failover_urls</a> Alternative connection URLs used for failover. </p>
 <p>There are none by default. </p>
 
 </div>

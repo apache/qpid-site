@@ -31,6 +31,7 @@ var classproton_1_1codec_1_1decoder =
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#aa4708f111d1c046cb1184f5877df3735", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a93c5ccb222d57853fd0f97f2b6cbdf62", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#affae6ad78f8a4884bcb1a37e2119f00a", null ],
+    [ "operator>>", "classproton_1_1codec_1_1decoder.html#a8178fbcb022e9403e7b0978d7eb4fddb", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a010d92fa617e5921f73b80bac0bc5690", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#a29037b1d70f61e041b2d5be7c67b577d", null ],
     [ "operator>>", "classproton_1_1codec_1_1decoder.html#ac6c6ddca9af56625b28bc7989b02f24b", null ],

@@ -18,8 +18,12 @@ var classproton_1_1connection__options =
     [ "sasl_enabled", "classproton_1_1connection__options.html#aedcd8a70f24d08ab0bb6178524ae6a0d", null ],
     [ "sasl_allow_insecure_mechs", "classproton_1_1connection__options.html#afbabea03db40dee25da7bbdc7e918322", null ],
     [ "sasl_allowed_mechs", "classproton_1_1connection__options.html#a52f0724b86920647ef8624922aa54ab6", null ],
+    [ "offered_capabilities", "classproton_1_1connection__options.html#af49134c3e2ac611a4dbf37fb85f2f9e9", null ],
+    [ "desired_capabilities", "classproton_1_1connection__options.html#a37785c499f7e1b0f30dcbe8a0b9458e9", null ],
     [ "sasl_config_name", "classproton_1_1connection__options.html#ad8e93a44cab5e65949046fb036c237a6", null ],
     [ "sasl_config_path", "classproton_1_1connection__options.html#a0fc40d55673b5c89e4b5a13c630edca5", null ],
     [ "reconnect", "classproton_1_1connection__options.html#ad053f0ac823eefd100731c1b5248e7e8", null ],
+    [ "reconnect_url", "classproton_1_1connection__options.html#abc8a2670fc733415dca0a723f23d0729", null ],
+    [ "failover_urls", "classproton_1_1connection__options.html#abcfa30511c5b02318105ff214ea6eab7", null ],
     [ "update", "classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604", null ]
 ];

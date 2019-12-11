@@ -7,5 +7,6 @@ var value_8hpp =
     [ "coerce", "value_8hpp.html#a486dfed974ca6f79e75039b3eee6c44c", null ],
     [ "coerce", "value_8hpp.html#a4896ec87beab7d691e1985c221c36e49", null ],
     [ "get< null >", "value_8hpp.html#a669620a0968de2603fe8922405f1331b", null ],
+    [ "get< decltype(nullptr)>", "value_8hpp.html#a565c609b3fe24b92ae8294ea1318a6bd", null ],
     [ "to_string", "value_8hpp.html#a8c46a4cbeb5a6150ab40ea81ee4bfb81", null ]
 ];

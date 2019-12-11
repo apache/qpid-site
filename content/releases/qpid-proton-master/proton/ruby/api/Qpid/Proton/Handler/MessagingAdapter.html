@@ -560,15 +560,15 @@ and receiver on the messaging API.</p>
       <pre class="lines">
 
 
-134
-135
-136
-137
-138
-139</pre>
+140
+141
+142
+143
+144
+145</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_credit'>add_credit</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_r'>r</span> <span class='op'>=</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_receiver'>receiver</span><span class='rparen'>)</span>
@@ -761,10 +761,6 @@ and receiver on the messaging API.</p>
       <pre class="lines">
 
 
-94
-95
-96
-97
 98
 99
 100
@@ -793,10 +789,16 @@ and receiver on the messaging API.</p>
 123
 124
 125
-126</pre>
+126
+127
+128
+129
+130
+131
+132</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_delivery'>on_delivery</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_receiver?'>receiver?</span>       <span class='comment'># Incoming message
@@ -809,11 +811,11 @@ and receiver on the messaging API.</p>
 </span>      <span class='kw'>else</span>
         <span class='kw'>begin</span>
           <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_message</span><span class='comma'>,</span> <span class='id identifier rubyid_d'>d</span><span class='comma'>,</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
-          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span> <span class='kw'>if</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_receiver'>receiver</span><span class='period'>.</span><span class='id identifier rubyid_auto_accept'>auto_accept</span>  <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_settled?'>settled?</span>
+          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_accept'>accept</span> <span class='kw'>if</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_receiver'>receiver</span><span class='period'>.</span><span class='id identifier rubyid_auto_accept'>auto_accept</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_local_state'>local_state</span> <span class='op'>==</span> <span class='int'>0</span>
         <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Reject.html" title="Qpid::Proton::Reject (class)">Reject</a></span></span>
-          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span> <span class='kw'>unless</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_settled?'>settled?</span>
+          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_reject'>reject</span>
         <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../Release.html" title="Qpid::Proton::Release (class)">Release</a></span></span>
-          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_release'>release</span> <span class='kw'>unless</span> <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_settled?'>settled?</span>
+          <span class='id identifier rubyid_d'>d</span><span class='period'>.</span><span class='id identifier rubyid_release'>release</span>
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
@@ -822,13 +824,15 @@ and receiver on the messaging API.</p>
   <span class='kw'>else</span>                      <span class='comment'># Outgoing message
 </span>    <span class='id identifier rubyid_t'>t</span> <span class='op'>=</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_tracker'>tracker</span>
     <span class='kw'>case</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_state'>state</span>
-    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Transfer/State.html#ACCEPTED-constant" title="Qpid::Proton::Transfer::State::ACCEPTED (constant)">ACCEPTED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_accept</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Transfer/State.html#REJECTED-constant" title="Qpid::Proton::Transfer::State::REJECTED (constant)">REJECTED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_reject</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Transfer/State.html#RELEASED-constant" title="Qpid::Proton::Transfer::State::RELEASED (constant)">RELEASED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_release</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
-    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Transfer/State.html#MODIFIED-constant" title="Qpid::Proton::Transfer::State::MODIFIED (constant)">MODIFIED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_modify</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Disposition/State.html#ACCEPTED-constant" title="Qpid::Proton::Disposition::State::ACCEPTED (constant)">ACCEPTED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_accept</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Disposition/State.html#REJECTED-constant" title="Qpid::Proton::Disposition::State::REJECTED (constant)">REJECTED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_reject</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Disposition/State.html#RELEASED-constant" title="Qpid::Proton::Disposition::State::RELEASED (constant)">RELEASED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_release</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
+    <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="../Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Disposition/State.html#MODIFIED-constant" title="Qpid::Proton::Disposition::State::MODIFIED (constant)">MODIFIED</a></span></span> <span class='kw'>then</span> <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_modify</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
     <span class='kw'>end</span>
-    <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_settle</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_settled?'>settled?</span>
-    <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_settle'>settle</span> <span class='kw'>if</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_sender'>sender</span><span class='period'>.</span><span class='id identifier rubyid_auto_settle'>auto_settle</span>
+    <span class='kw'>if</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_settled?'>settled?</span>
+      <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_tracker_settle</span><span class='comma'>,</span> <span class='id identifier rubyid_t'>t</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_settle'>settle</span> <span class='kw'>if</span> <span class='id identifier rubyid_t'>t</span><span class='period'>.</span><span class='id identifier rubyid_sender'>sender</span><span class='period'>.</span><span class='id identifier rubyid_auto_settle'>auto_settle</span>
+    <span class='kw'>end</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -860,14 +864,14 @@ and receiver on the messaging API.</p>
       <pre class="lines">
 
 
-128
-129
-130
-131
-132</pre>
+134
+135
+136
+137
+138</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_link_flow'>on_link_flow</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_add_credit'>add_credit</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
@@ -905,10 +909,10 @@ and receiver on the messaging API.</p>
       <pre class="lines">
 
 
-92</pre>
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 92</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_link_local_open'>on_link_local_open</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='id identifier rubyid_add_credit'>add_credit</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -940,16 +944,16 @@ and receiver on the messaging API.</p>
       <pre class="lines">
 
 
-75
-76
-77
-78
 79
 80
-81</pre>
+81
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 79</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_link_remote_close'>on_link_remote_close</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_s'>s</span> <span class='op'>=</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_sender?'>sender?</span>
@@ -995,12 +999,20 @@ and receiver on the messaging API</p>
 70
 71
 72
-73</pre>
+73
+74
+75
+76
+77</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_link_remote_open'>on_link_remote_open</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
+  <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_local_active?'>local_active?</span> <span class='comment'># Copy remote terminus data to local
+</span>    <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_source'>source</span><span class='period'>.</span><span class='id identifier rubyid_replace'>replace</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_remote_source'>remote_source</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+    <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_target'>target</span><span class='period'>.</span><span class='id identifier rubyid_replace'>replace</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_remote_target'>remote_target</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+  <span class='kw'>end</span>
   <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_sender?'>sender?</span> <span class='op'>?</span> <span class='symbol'>:on_sender_open</span> <span class='op'>:</span> <span class='symbol'>:on_receiver_open</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_open'>open</span> <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_link'>link</span><span class='period'>.</span><span class='id identifier rubyid_local_uninit?'>local_uninit?</span>
   <span class='id identifier rubyid_add_credit'>add_credit</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
@@ -1035,12 +1047,12 @@ and receiver on the messaging API</p>
       <pre class="lines">
 
 
-87
-88
-89</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_transport_closed'>on_transport_closed</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='symbol'>:on_transport_close</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span> <span class='kw'>rescue</span> <span class='const'><span class='object_link'><a href="../StopAutoResponse.html" title="Qpid::Proton::StopAutoResponse (class)">StopAutoResponse</a></span></span>
@@ -1074,12 +1086,12 @@ and receiver on the messaging API</p>
       <pre class="lines">
 
 
-83
-84
-85</pre>
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/handler/messaging_adapter.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_on_transport_error'>on_transport_error</span><span class='lparen'>(</span><span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_delegate_error'>delegate_error</span><span class='lparen'>(</span><span class='symbol'>:on_transport_error</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
@@ -1094,9 +1106,9 @@ and receiver on the messaging API</p>
 </div>
 
       <div id="footer">
-  Generated on Tue May  1 06:28:34 2018 by
+  Generated on Wed Dec 11 15:05:12 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.3).
+  0.9.8 (ruby-2.4.4).
 </div>
 
     </div>

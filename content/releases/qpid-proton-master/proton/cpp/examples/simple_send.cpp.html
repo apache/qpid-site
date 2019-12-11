@@ -153,6 +153,12 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="n">sender</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">open_sender</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">co</span><span class="p">);</span>
     <span class="p">}</span>
 
+    <span class="kt">void</span> <span class="n">on_connection_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">connection</span><span class="o">&amp;</span> <span class="n">c</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">reconnected</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">sent</span> <span class="o">=</span> <span class="n">confirmed</span><span class="p">;</span>   <span class="c1">// Re-send unconfirmed messages after a reconnect</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
     <span class="kt">void</span> <span class="n">on_sendable</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
         <span class="k">while</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">sent</span> <span class="o">&lt;</span> <span class="n">total</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="n">msg</span><span class="p">;</span>

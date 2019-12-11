@@ -131,7 +131,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga1737191972d5dded0993bf1431e71df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do we support extended SASL negotiation.  <a href="#ga1737191972d5dded0993bf1431e71df0">More...</a><br /></td></tr>
 <tr class="separator:ga1737191972d5dded0993bf1431e71df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0199871440c4ff89a204cc1d8a09f283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga0199871440c4ff89a204cc1d8a09f283">pn_sasl_done</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl, <a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a> outcome)</td></tr>
-<tr class="memdesc:ga0199871440c4ff89a204cc1d8a09f283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the outcome of SASL negotiation.  <a href="#ga0199871440c4ff89a204cc1d8a09f283">More...</a><br /></td></tr>
+<tr class="memdesc:ga0199871440c4ff89a204cc1d8a09f283"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Do not use.  <a href="#ga0199871440c4ff89a204cc1d8a09f283">More...</a><br /></td></tr>
 <tr class="separator:ga0199871440c4ff89a204cc1d8a09f283"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga03b6daf742db6a07bd7d03cb197aedb6"><td class="memItemLeft" align="right" valign="top"><a id="ga03b6daf742db6a07bd7d03cb197aedb6"></a>
 <a class="el" href="group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b">pn_sasl_outcome_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__sasl.html#ga03b6daf742db6a07bd7d03cb197aedb6">pn_sasl_outcome</a> (<a class="el" href="group__sasl.html#ga4d21fddba80d3f88d0529aafe12328b0">pn_sasl_t</a> *sasl)</td></tr>
@@ -228,8 +228,10 @@ Functions</h2></td></tr>
 <p>Construct an Authentication and Security Layer object. </p>
 <p>This will return the SASL layer object for the supplied transport object. If there is currently no SASL layer one will be created.</p>
 <p>On the client side of an AMQP connection this will have the effect of ensuring that the AMQP SASL layer is used for that connection.</p>
+<dl class="section note"><dt>Note</dt><dd>For incoming connections you must call <a class="el" href="group__transport.html#gac5bebd26c0942bc17d7fad36577110f8" title="Configure a transport as a server. ">pn_transport_set_server()</a> before <a class="el" href="group__sasl.html#ga7968e80e2fe9360fc14cf865dd1ac21c" title="Construct an Authentication and Security Layer object. ">pn_sasl()</a> in order to set up a server SASL configuration.</dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>an object representing the SASL layer. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a37">broker.c</a>, and <a class="el" href="direct_8c-example.html#a64">direct.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga1737191972d5dded0993bf1431e71df0"></a>
@@ -281,7 +283,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Set the outcome of SASL negotiation. </p>
+<p><b>Deprecated</b> - Do not use. </p>
+<p>There is no correct way to use this API.</p>
+<p>Set the outcome of SASL negotiation</p>
 <p>Used by the server to set the result of the negotiation process. </p>
 
 </div>
@@ -371,6 +375,9 @@ Functions</h2></td></tr>
 
 <p>SASL mechanisms that are to be considered for authentication. </p>
 <p>This can be used on either the client or the server to restrict the SASL mechanisms that may be used to the mechanisms on the list.</p>
+<dl class="section note"><dt>Note</dt><dd>By default the GSSAPI and GSS-SPNEGO mechanisms are not enabled for clients. This is because these mechanisms have the problematic behaviour of 'capturing' the client whenever they are installed so that they will be used by the client if offered by the server even if the client can't successfully authenticate this way. This can lead to some very hard to debug failures.</dd>
+<dd>
+The GSSAPI or GSS-SPNEGO mechanisms need to be explicitly enabled if they are required (together with any other required mechanisms).</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">sasl</td><td>the SASL layer </td></tr>
@@ -378,7 +385,8 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a36">broker.c</a>, and <a class="el" href="direct_8c-example.html#a63">direct.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="gaf472325bc055bb18a5a6f5ca03eda315"></a>

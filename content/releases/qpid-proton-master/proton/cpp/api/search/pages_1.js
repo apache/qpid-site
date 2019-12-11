@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['deprecated_20list',['Deprecated List',['../deprecated.html',1,'']]]
+  ['connection_20configuration',['Connection Configuration',['../connect-config.html',1,'']]]
 ];

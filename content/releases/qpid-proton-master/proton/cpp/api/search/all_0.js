@@ -11,6 +11,7 @@ var searchData=
   ['annotation_5fkey',['annotation_key',['../classproton_1_1annotation__key.html',1,'annotation_key'],['../classproton_1_1annotation__key.html#a056f77e21066cbf900772853454102a8',1,'proton::annotation_key::annotation_key()'],['../classproton_1_1annotation__key.html#afdd676d37486aa26af7fdd588f994d26',1,'proton::annotation_key::annotation_key(const T &amp;x)']]],
   ['annotation_5fkey_2ehpp',['annotation_key.hpp',['../annotation__key_8hpp.html',1,'']]],
   ['annotation_5fmap',['annotation_map',['../classproton_1_1message.html#a3c6892bfc5d3b4b1972dc23c004929b7',1,'proton::message']]],
+  ['anonymous',['anonymous',['../classproton_1_1source__options.html#af5b5466b8ec3d24975fccb7f394fec38',1,'proton::source_options::anonymous()'],['../classproton_1_1target__options.html#a5daa885470cf76a7224f5f177a95f70d',1,'proton::target_options::anonymous()'],['../classproton_1_1terminus.html#a6a20cc0c11ce5a1e369fdd0a51f992f5',1,'proton::terminus::anonymous()']]],
   ['anonymous_5fpeer',['ANONYMOUS_PEER',['../classproton_1_1ssl.html#abe68233596c90fd29d934854560ff5f3ac0c5cd6b794574267c2ad08f485bd76d',1,'proton::ssl']]],
   ['array',['ARRAY',['../namespaceproton.html#a83c2656d467d69eb49725c18f5aa13a9a1e029fbf0c881b85d80fc8e89b753688',1,'proton']]],
   ['assert_5ftype_5fequal',['assert_type_equal',['../namespaceproton.html#aa77887032372174b09ee779f5df12056',1,'proton']]],

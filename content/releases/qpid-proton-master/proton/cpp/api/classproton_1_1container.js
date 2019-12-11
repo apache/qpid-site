@@ -7,6 +7,7 @@ var classproton_1_1container =
     [ "~container", "classproton_1_1container.html#a7c64e64cedfa36303be53f0f581d1d24", null ],
     [ "connect", "classproton_1_1container.html#adbd9ed231804512a47cca3c81f00cdf1", null ],
     [ "connect", "classproton_1_1container.html#a422bf1e05b6a01039f0ef603b2f165a4", null ],
+    [ "connect", "classproton_1_1container.html#a32d867e171bce707cc73c7003ec489db", null ],
     [ "listen", "classproton_1_1container.html#a9e138b28e9589583915cf5c5e0e7a524", null ],
     [ "listen", "classproton_1_1container.html#ae234654c72fe7b272728028cd88b8c1c", null ],
     [ "listen", "classproton_1_1container.html#acf444f30e25454196894dbee96ba2a44", null ],

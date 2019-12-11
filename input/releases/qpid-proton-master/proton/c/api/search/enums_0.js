@@ -4,6 +4,8 @@ var searchData=
   ['pn_5fdurability_5ft',['pn_durability_t',['../group__terminus.html#ga213267363be45848f3299471ea93089b',1,'terminus.h']]],
   ['pn_5fevent_5ftype_5ft',['pn_event_type_t',['../group__event.html#ga4876e2eed24a4d4e4c52b99842103cda',1,'event.h']]],
   ['pn_5fexpiry_5fpolicy_5ft',['pn_expiry_policy_t',['../group__terminus.html#gab4089b27ee99a348deab776f3d4931f0',1,'terminus.h']]],
+  ['pn_5flog_5flevel_5ft',['pn_log_level_t',['../group__logger.html#gacff7629aa49e187a5e6182b80febabf1',1,'logger.h']]],
+  ['pn_5flog_5fsubsystem_5ft',['pn_log_subsystem_t',['../group__logger.html#gac861c944f890f31c1c2b22a3271250e4',1,'logger.h']]],
   ['pn_5frcv_5fsettle_5fmode_5ft',['pn_rcv_settle_mode_t',['../group__link.html#gad1c2388cdae687be26222a5d66fd2d58',1,'link.h']]],
   ['pn_5fsasl_5foutcome_5ft',['pn_sasl_outcome_t',['../group__sasl.html#gad44e79f52e0669b1930689b56dfa9c3b',1,'sasl.h']]],
   ['pn_5fsnd_5fsettle_5fmode_5ft',['pn_snd_settle_mode_t',['../group__link.html#ga3fb58bd0b88d37407ebb615c2630e608',1,'link.h']]],

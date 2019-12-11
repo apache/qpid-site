@@ -7,7 +7,6 @@
  - [client.rb](client.rb.html)
  - [direct_recv.rb](direct_recv.rb.html)
  - [direct_send.rb](direct_send.rb.html)
- - [example_test.rb](example_test.rb.html)
  - [helloworld.rb](helloworld.rb.html)
  - [server.rb](server.rb.html)
  - [simple_recv.rb](simple_recv.rb.html)

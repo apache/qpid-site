@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('classproton_1_1message.html','');});
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
+<a href="#friends">Friends</a> &#124;
 <a href="classproton_1_1message-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">message</div>  </div>
@@ -345,11 +346,18 @@ Static Public Attributes</h2></td></tr>
 static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1message.html#a2014354e2553f4acc49fc9a921da7e92">default_priority</a></td></tr>
 <tr class="memdesc:a2014354e2553f4acc49fc9a921da7e92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default priority assigned to new messages. <br /></td></tr>
 <tr class="separator:a2014354e2553f4acc49fc9a921da7e92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
+Friends</h2></td></tr>
+<tr class="memitem:a73bbb12abb592f610dc46ee3cc00ffa8"><td class="memItemLeft" align="right" valign="top"><a id="a73bbb12abb592f610dc46ee3cc00ffa8"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1message.html#a73bbb12abb592f610dc46ee3cc00ffa8">operator&lt;&lt;</a> (std::ostream &amp;, const <a class="el" href="classproton_1_1message.html">message</a> &amp;)</td></tr>
+<tr class="memdesc:a73bbb12abb592f610dc46ee3cc00ffa8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Human readable string representation. <br /></td></tr>
+<tr class="separator:a73bbb12abb592f610dc46ee3cc00ffa8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>An AMQP message. </p>
 <p>Value semantics: A message can be copied or assigned to make a new message. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a7">broker.cpp</a>, <a class="el" href="client_8cpp-example.html#_a10">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#_a7">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#_a8">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a10">helloworld.cpp</a>, <a class="el" href="message_properties_8cpp-example.html#_a0">message_properties.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a3">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a6">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#_a18">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#_a16">scheduled_send_03.cpp</a>, <a class="el" href="server_8cpp-example.html#_a8">server.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#_a13">server_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a22">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a10">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a10">simple_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a6">broker.cpp</a>, <a class="el" href="client_8cpp-example.html#_a10">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#_a7">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#_a8">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a10">helloworld.cpp</a>, <a class="el" href="message_properties_8cpp-example.html#_a0">message_properties.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a3">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a6">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#_a18">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#_a16">scheduled_send_03.cpp</a>, <a class="el" href="server_8cpp-example.html#_a8">server.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#_a13">server_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a22">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a10">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a13">simple_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aa99aeff68b6093da4e3c11ecf898376d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa99aeff68b6093da4e3c11ecf898376d">&#9670;&nbsp;</a></span>message()</h2>
@@ -390,7 +398,7 @@ static const uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class
 
 <p>Set the message ID. </p>
 <p>The message ID uniquely identifies a message within a messaging system. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="direct_recv_8cpp-example.html#a8">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a9">direct_send.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a11">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a11">simple_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="direct_recv_8cpp-example.html#a8">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a9">direct_send.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a11">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a14">simple_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>

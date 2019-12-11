@@ -1,7 +1,10 @@
 var searchData=
 [
   ['codec',['codec',['../namespaceproton_1_1codec.html',1,'proton']]],
+  ['connect_5fconfig',['connect_config',['../namespaceproton_1_1connect__config.html',1,'proton']]],
   ['io',['io',['../namespaceproton_1_1io.html',1,'proton']]],
+  ['parse',['parse',['../namespaceproton_1_1connect__config.html#a9d0cff314322d852ef1bbb8a48456df7',1,'proton::connect_config']]],
+  ['parse_5fdefault',['parse_default',['../namespaceproton_1_1connect__config.html#a8b0a17a0a807bcb4e899359b6f6d4e5b',1,'proton::connect_config']]],
   ['password',['password',['../classproton_1_1connection__options.html#a78a90a1387cf91915dbe39b888955d75',1,'proton::connection_options::password()'],['../classproton_1_1url.html#a7d831b27c411bf8939849914c29e452e',1,'proton::url::password()']]],
   ['path',['path',['../classproton_1_1url.html#ac4cb5f95f1d720ef0cc94b74152cf50b',1,'proton::url']]],
   ['perm',['PERM',['../classproton_1_1sasl.html#af47997198e7e7301a1cd8602c7f02acdae0a57d717d9f8c8fdba757be1b0afdcf',1,'proton::sasl']]],

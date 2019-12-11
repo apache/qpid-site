@@ -32,6 +32,7 @@ var group__terminus =
     [ "pn_terminus_get_durability", "group__terminus.html#gad9f06855cd6538f672c63836b8ef0ae5", null ],
     [ "pn_terminus_set_durability", "group__terminus.html#gac5e15021927b18d0aa3fd712e4b0ac73", null ],
     [ "pn_terminus_get_expiry_policy", "group__terminus.html#ga0f9df2253065f81fd304f39a846e6468", null ],
+    [ "pn_terminus_has_expiry_policy", "group__terminus.html#ga7e3a1f4feb75f594e3b0ad7ad4e0426b", null ],
     [ "pn_terminus_set_expiry_policy", "group__terminus.html#gaaad123d27d82b2f7d051489a8bff73c6", null ],
     [ "pn_terminus_get_timeout", "group__terminus.html#ga62ba74b0c8fad5417a62cffe53996690", null ],
     [ "pn_terminus_set_timeout", "group__terminus.html#ga8b6c30afc3aa73aac6fc30875fbc386d", null ],

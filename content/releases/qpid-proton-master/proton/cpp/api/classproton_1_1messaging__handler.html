@@ -97,7 +97,7 @@ $(document).ready(function(){initNavTree('classproton_1_1messaging__handler.html
 </div><!--header-->
 <div class="contents">
 
-<p>A handler for Proton messaging events.  
+<p>Handler for Proton messaging events.  
  <a href="classproton_1_1messaging__handler.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="messaging__handler_8hpp_source.html">messaging_handler.hpp</a>&gt;</code></p>
@@ -122,24 +122,20 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#aa68ce0021c22cc956890c6bcc5384b84">on_transport_open</a> (<a class="el" href="classproton_1_1transport.html">transport</a> &amp;)</td></tr>
 <tr class="memdesc:aa68ce0021c22cc956890c6bcc5384b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying network transport is open. <br /></td></tr>
 <tr class="separator:aa68ce0021c22cc956890c6bcc5384b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8a60c2f6628f44a9587deea8c8729f0f"><td class="memItemLeft" align="right" valign="top"><a id="a8a60c2f6628f44a9587deea8c8729f0f"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a8a60c2f6628f44a9587deea8c8729f0f">on_transport_close</a> (<a class="el" href="classproton_1_1transport.html">transport</a> &amp;)</td></tr>
-<tr class="memdesc:a8a60c2f6628f44a9587deea8c8729f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying network transport has closed. <br /></td></tr>
+<tr class="memitem:a8a60c2f6628f44a9587deea8c8729f0f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a8a60c2f6628f44a9587deea8c8729f0f">on_transport_close</a> (<a class="el" href="classproton_1_1transport.html">transport</a> &amp;)</td></tr>
+<tr class="memdesc:a8a60c2f6628f44a9587deea8c8729f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The final event for a connection: there will be no more reconnect attempts and no more event functions.  <a href="#a8a60c2f6628f44a9587deea8c8729f0f">More...</a><br /></td></tr>
 <tr class="separator:a8a60c2f6628f44a9587deea8c8729f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab719e98555bab69986acf4ab1fe43665"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#ab719e98555bab69986acf4ab1fe43665">on_transport_error</a> (<a class="el" href="classproton_1_1transport.html">transport</a> &amp;)</td></tr>
-<tr class="memdesc:ab719e98555bab69986acf4ab1fe43665"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying network transport has closed with an error condition.  <a href="#ab719e98555bab69986acf4ab1fe43665">More...</a><br /></td></tr>
+<tr class="memdesc:ab719e98555bab69986acf4ab1fe43665"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unexpected disconnect, <a class="el" href="classproton_1_1transport.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition. ">transport::error()</a> provides details; if <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> are enabled there may be an automatic re-connect.  <a href="#ab719e98555bab69986acf4ab1fe43665">More...</a><br /></td></tr>
 <tr class="separator:ab719e98555bab69986acf4ab1fe43665"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a41277abe0e33a3df2764b08dcc12d768"><td class="memItemLeft" align="right" valign="top"><a id="a41277abe0e33a3df2764b08dcc12d768"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a41277abe0e33a3df2764b08dcc12d768">on_connection_open</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
-<tr class="memdesc:a41277abe0e33a3df2764b08dcc12d768"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer opened the connection. <br /></td></tr>
+<tr class="memitem:a41277abe0e33a3df2764b08dcc12d768"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a41277abe0e33a3df2764b08dcc12d768">on_connection_open</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
+<tr class="memdesc:a41277abe0e33a3df2764b08dcc12d768"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer opened the connection: called once on initial open, and again on each successful automatic re-connect (see <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a>)  <a href="#a41277abe0e33a3df2764b08dcc12d768">More...</a><br /></td></tr>
 <tr class="separator:a41277abe0e33a3df2764b08dcc12d768"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8368c2f41b5c1dab4aa063c1c78a6e19"><td class="memItemLeft" align="right" valign="top"><a id="a8368c2f41b5c1dab4aa063c1c78a6e19"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a8368c2f41b5c1dab4aa063c1c78a6e19">on_connection_close</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
-<tr class="memdesc:a8368c2f41b5c1dab4aa063c1c78a6e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer closed the connection. <br /></td></tr>
+<tr class="memitem:a8368c2f41b5c1dab4aa063c1c78a6e19"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#a8368c2f41b5c1dab4aa063c1c78a6e19">on_connection_close</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
+<tr class="memdesc:a8368c2f41b5c1dab4aa063c1c78a6e19"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer closed the connection.  <a href="#a8368c2f41b5c1dab4aa063c1c78a6e19">More...</a><br /></td></tr>
 <tr class="separator:a8368c2f41b5c1dab4aa063c1c78a6e19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae93110a9bad4868663f37d15cd3139a4"><td class="memItemLeft" align="right" valign="top"><a id="ae93110a9bad4868663f37d15cd3139a4"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#ae93110a9bad4868663f37d15cd3139a4">on_connection_error</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
-<tr class="memdesc:ae93110a9bad4868663f37d15cd3139a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer closed the connection with an error condition. <br /></td></tr>
+<tr class="memitem:ae93110a9bad4868663f37d15cd3139a4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#ae93110a9bad4868663f37d15cd3139a4">on_connection_error</a> (<a class="el" href="classproton_1_1connection.html">connection</a> &amp;)</td></tr>
+<tr class="memdesc:ae93110a9bad4868663f37d15cd3139a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The remote peer indicated a fatal error, <a class="el" href="classproton_1_1connection.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition of the remote endpoint. ">connection::error()</a> provides details.  <a href="#ae93110a9bad4868663f37d15cd3139a4">More...</a><br /></td></tr>
 <tr class="separator:ae93110a9bad4868663f37d15cd3139a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad43a0028727310bcdbd8f63feb99537"><td class="memItemLeft" align="right" valign="top"><a id="aad43a0028727310bcdbd8f63feb99537"></a>
 virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1messaging__handler.html#aad43a0028727310bcdbd8f63feb99537">on_session_open</a> (<a class="el" href="classproton_1_1session.html">session</a> &amp;)</td></tr>
@@ -220,18 +216,19 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="separator:a042f595d1807eb1abe0195ab79357edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A handler for Proton messaging events. </p>
+<div class="textblock"><p>Handler for Proton messaging events. </p>
 <p>Subclass and override the event-handling member functions.</p>
-<h4>Close and error handling</h4>
-<p>There are several objects that have <code>on_X_close</code> and <code>on_X_error</code> functions. They are called as follows:</p>
-<ul>
-<li>If <code>X</code> is closed cleanly, with no error status, then <code>on_X_close</code> is called.</li>
-<li>If <code>X</code> is closed with an error, then <code>on_X_error</code> is called, followed by <code>on_X_close</code>. The error condition is also available in <code>on_X_close</code> from <code>X::error()</code>.</li>
-</ul>
-<p>By default, if you do not implement <code>on_X_error</code>, it will call <code>on_error</code>. If you do not implement <code>on_error</code> it will throw a <code><a class="el" href="structproton_1_1error.html" title="The base Proton error. ">proton::error</a></code> exception, which may not be what you want but does help to identify forgotten error handling quickly.</p>
-<h4>Resource cleanup</h4>
-<p>Every <code>on_X_open</code> event is paired with an <code>on_X_close</code> event which can clean up any resources created by the open handler. In particular this is still true if an error is reported with an <code>on_X_error</code> event. The error-handling logic doesn't have to manage resource clean up. It can assume that the close event will be along to handle it. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a0">broker.cpp</a>, <a class="el" href="client_8cpp-example.html#_a2">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#_a0">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#_a0">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a0">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a0">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a0">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#_a0">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#_a0">scheduled_send_03.cpp</a>, <a class="el" href="server_8cpp-example.html#_a0">server.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#_a0">server_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a4">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a0">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a0">simple_send.cpp</a>.</dd>
+<p><b>Thread-safety</b>: A thread-safe handler can use the objects passed as arguments, and other objects belonging to the same <a class="el" href="classproton_1_1connection.html" title="A connection to a remote AMQP peer. ">proton::connection</a>. It <em>must not</em> use objects belonging to a different connection. See <a class="el" href="mt_page.html">Multithreading</a> and <a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a> for safe ways to communicate between connections. Thread-safe handlers can also be used in single-threaded code.</p>
+<p><b>Single-threaded only</b>: An application is single-threaded if it calls <a class="el" href="classproton_1_1container.html#a13a43e6d814de94978c515cb084873b1" title="Run the container in the current thread. ">container::run()</a> exactly once, and only makes make proton calls from handler functions. Single-threaded handler functions can use objects belonging to another connection, but <em>must</em> call <a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">connection::wake()</a> on the other connection before returning. Such a handler is not thread-safe.</p>
+<h3>Overview of connection life-cycle and automatic re-connect</h3>
+<p>See the documentation of individual event functions for more details.</p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#a41277abe0e33a3df2764b08dcc12d768" title="The remote peer opened the connection: called once on initial open, and again on each successful auto...">on_connection_open()</a> - The remote peer opened the connection: called once on initial open, and again on each successful automatic re-connect (see <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a>)</p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#ab719e98555bab69986acf4ab1fe43665" title="Unexpected disconnect, transport::error() provides details; if reconnect_options are enabled there ma...">on_transport_error()</a> -Unexpected disconnect, <a class="el" href="classproton_1_1transport.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition. ">transport::error()</a> provides details; if <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> are enabled there may be an automatic re-connect.</p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#ae93110a9bad4868663f37d15cd3139a4" title="The remote peer indicated a fatal error, connection::error() provides details. ">on_connection_error()</a> - The remote peer indicated a fatal error, <a class="el" href="classproton_1_1connection.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition of the remote endpoint. ">connection::error()</a> provides details.</p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#a8368c2f41b5c1dab4aa063c1c78a6e19" title="The remote peer closed the connection. ">on_connection_close()</a> - The remote peer closed the connection.</p>
+<p><a class="el" href="classproton_1_1messaging__handler.html#a8a60c2f6628f44a9587deea8c8729f0f" title="The final event for a connection: there will be no more reconnect attempts and no more event function...">on_transport_close()</a> - The final event for a connection: there will be no more reconnect attempts and no more event functions.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1reconnect__options.html" title="Unsettled API - Options for reconnect and failover after connection loss. ">reconnect_options</a> </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a0">broker.cpp</a>, <a class="el" href="client_8cpp-example.html#_a2">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#_a0">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#_a0">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a0">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a0">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#_a0">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#_a0">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#_a0">scheduled_send_03.cpp</a>, <a class="el" href="server_8cpp-example.html#_a0">server.cpp</a>, <a class="el" href="server_direct_8cpp-example.html#_a0">server_direct.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a5">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#_a0">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a0">simple_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a9188622c33638e076d2214080129c824"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9188622c33638e076d2214080129c824">&#9670;&nbsp;</a></span>on_container_start()</h2>
@@ -292,6 +289,37 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 </div>
 </div>
+<a id="a8a60c2f6628f44a9587deea8c8729f0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a60c2f6628f44a9587deea8c8729f0f">&#9670;&nbsp;</a></span>on_transport_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void on_transport_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1transport.html">transport</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The final event for a connection: there will be no more reconnect attempts and no more event functions. </p>
+<p>Called exactly once regardless of how many times the connection was re-connected, whether it failed due to transport or connection errors or was closed without error.</p>
+<p>This is a good place to do per-connection clean-up. <a class="el" href="classproton_1_1transport.html#aff302bb6016f2ae29f01bb4e07389a52" title="Get the connection associated with this transport. ">transport::connection()</a> is always valid at this point. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_send_8cpp-example.html#a21">simple_send.cpp</a>.</dd>
+</dl>
+</div>
+</div>
 <a id="ab719e98555bab69986acf4ab1fe43665"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab719e98555bab69986acf4ab1fe43665">&#9670;&nbsp;</a></span>on_transport_error()</h2>
 
@@ -316,7 +344,109 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>The underlying network transport has closed with an error condition. </p>
+<p>Unexpected disconnect, <a class="el" href="classproton_1_1transport.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition. ">transport::error()</a> provides details; if <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a> are enabled there may be an automatic re-connect. </p>
+<p>If there is a successful automatic reconnect, <a class="el" href="classproton_1_1messaging__handler.html#a41277abe0e33a3df2764b08dcc12d768" title="The remote peer opened the connection: called once on initial open, and again on each successful auto...">on_connection_open()</a> will be called again.</p>
+<p><a class="el" href="classproton_1_1transport.html#aff302bb6016f2ae29f01bb4e07389a52" title="Get the connection associated with this transport. ">transport::connection()</a> is always valid at this point.</p>
+<p>Calling <a class="el" href="classproton_1_1connection.html#a5ae591df94fc66ccb85cbb6565368bca" title="Close the connection. ">connection::close()</a> will cancel automatic re-connect and force the transport to close immediately, see <a class="el" href="classproton_1_1messaging__handler.html#a8a60c2f6628f44a9587deea8c8729f0f" title="The final event for a connection: there will be no more reconnect attempts and no more event function...">on_transport_close()</a> </p>
+
+</div>
+</div>
+<a id="a41277abe0e33a3df2764b08dcc12d768"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41277abe0e33a3df2764b08dcc12d768">&#9670;&nbsp;</a></span>on_connection_open()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void on_connection_open </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1connection.html">connection</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The remote peer opened the connection: called once on initial open, and again on each successful automatic re-connect (see <a class="el" href="classproton_1_1reconnect__options.html">reconnect_options</a>) </p>
+<p><a class="el" href="classproton_1_1connection.html#a99c8890565994f68c80b032639f13571" title="Unsettled API - True if this connection has been automatically re-connected. ">connection::reconnected()</a> is false for the initial call, true for any subsequent calls due to reconnect.</p>
+<dl class="section note"><dt>Note</dt><dd>You can use the initial call to open initial <a class="el" href="classproton_1_1session.html">session</a>, <a class="el" href="classproton_1_1sender.html">sender</a> and <a class="el" href="classproton_1_1receiver.html">receiver</a> endpoints. All active endpoints are <em>automatically</em> re-opened after an automatic re-connect so you should take care not to open them again, for example: <pre class="fragment">if (!c.reconnected()) {
+    // Do initial per-connection setup here.
+    // Open initial senders/receivers if needed.
+} else {
+    // Handle a successful reconnect here.
+    // NOTE: Don't re-open active senders/receivers
+}
+</pre></dd></dl>
+<p>For a server <a class="el" href="classproton_1_1messaging__handler.html#a41277abe0e33a3df2764b08dcc12d768" title="The remote peer opened the connection: called once on initial open, and again on each successful auto...">on_connection_open()</a> is called when a client attempts to open a connection. The server can call <a class="el" href="classproton_1_1connection.html#a9e8555112049fc2b4945120b3c45f8ab" title="Open the connection. ">connection::open()</a> to accept or <a class="el" href="classproton_1_1connection.html#a817883d28ce0ac8a29d917d196796f68" title="Close the connection. ">connection::close(const error_condition&amp;)</a> to reject.</p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1reconnect__options.html" title="Unsettled API - Options for reconnect and failover after connection loss. ">reconnect_options</a>, <a class="el" href="classproton_1_1messaging__handler.html#ab719e98555bab69986acf4ab1fe43665" title="Unexpected disconnect, transport::error() provides details; if reconnect_options are enabled there ma...">on_transport_error()</a> </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="helloworld_8cpp-example.html#a4">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a11">multithreaded_client.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a12">service_bus.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a8">simple_send.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="a8368c2f41b5c1dab4aa063c1c78a6e19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8368c2f41b5c1dab4aa063c1c78a6e19">&#9670;&nbsp;</a></span>on_connection_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void on_connection_close </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1connection.html">connection</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The remote peer closed the connection. </p>
+<p>If there was a connection error, this is called immediately after <a class="el" href="classproton_1_1messaging__handler.html#ae93110a9bad4868663f37d15cd3139a4" title="The remote peer indicated a fatal error, connection::error() provides details. ">on_connection_error()</a> and <a class="el" href="classproton_1_1connection.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition of the remote endpoint. ">connection::error()</a> is set </p>
+
+</div>
+</div>
+<a id="ae93110a9bad4868663f37d15cd3139a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae93110a9bad4868663f37d15cd3139a4">&#9670;&nbsp;</a></span>on_connection_error()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void on_connection_error </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classproton_1_1connection.html">connection</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The remote peer indicated a fatal error, <a class="el" href="classproton_1_1connection.html#a090a10fab22d7faf0f74c8ccda0f1470" title="Get the error condition of the remote endpoint. ">connection::error()</a> provides details. </p>
+<p>A connection error is an application problem, for example an illegal action or a lack of resources. There will be no automatic re-connect attempts, <a class="el" href="classproton_1_1messaging__handler.html#a8368c2f41b5c1dab4aa063c1c78a6e19" title="The remote peer closed the connection. ">on_connection_close()</a> will be called immediately after.</p>
+<dl class="section note"><dt>Note</dt><dd>A connection close with the special error condition <code>amqp:connection-forced</code> is treated as a transport error, not a connection error, see <a class="el" href="classproton_1_1messaging__handler.html#ab719e98555bab69986acf4ab1fe43665" title="Unexpected disconnect, transport::error() provides details; if reconnect_options are enabled there ma...">on_transport_error()</a> </dd></dl>
 
 </div>
 </div>

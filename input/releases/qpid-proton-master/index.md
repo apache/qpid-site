@@ -6,9 +6,9 @@
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -27,7 +27,7 @@ Documentation found here may be incorrect or incomplete.  For a
 smoother experience, see the [current stable
 release]({{current_proton_release_url}}/index.html).
 
-This content was generated at 06:28  on Tuesday, 01 May 2018.
+This content was generated at 15:04  on Wednesday, 11 December 2019.
 
 </div>
 
@@ -42,10 +42,10 @@ This content was generated at 06:28  on Tuesday, 01 May 2018.
  - [C++ examples](proton/cpp/examples/index.html)
  - [C++ API reference](proton/cpp/api/annotated.html)
 ;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
- - [Python overview](proton/python/book/overview.html)
- - [Python tutorial](proton/python/book/tutorial.html)
+ - [Python overview](proton/python/docs/overview.html)
+ - [Python tutorial](proton/python/docs/tutorial.html)
  - [Python examples](proton/python/examples/index.html)
- - [Python API reference](proton/python/api/index.html)
+ - [Python API reference](proton/python/docs/index.html#modules)
  - [Ruby examples](proton/ruby/examples/index.html)
  - [Ruby API reference](proton/ruby/api/index.html)
  - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=master)

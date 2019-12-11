@@ -38,6 +38,6 @@ var type__id_8hpp =
     [ "type_id_is_signed", "type__id_8hpp.html#a97cb3b1f640cf8d0036998ecb61dbb3a", null ],
     [ "type_id_is_string_like", "type__id_8hpp.html#a8a83051cc916ba5b67144b2e4d78ecb1", null ],
     [ "type_id_is_container", "type__id_8hpp.html#aef7d66407548e1722486a5acd94cf01c", null ],
-    [ "type_id_is_scalar", "type__id_8hpp.html#a4fa5da15b5f9ede62f8167c50c7dc656", null ],
-    [ "type_id_is_null", "type__id_8hpp.html#a7c5a62fde33feb4887fea1935be0a518", null ]
+    [ "type_id_is_null", "type__id_8hpp.html#a7c5a62fde33feb4887fea1935be0a518", null ],
+    [ "type_id_is_scalar", "type__id_8hpp.html#a4fa5da15b5f9ede62f8167c50c7dc656", null ]
 ];

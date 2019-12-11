@@ -9,6 +9,7 @@ var searchData=
   ['unsettled_5fstate',['UNSETTLED_STATE',['../classproton_1_1terminus.html#a61db0571ab7d1a29ad77549ff99d6b3da9a971a7b3eb61a4e22701f1f4099909f',1,'proton::terminus']]],
   ['unspecified',['UNSPECIFIED',['../classproton_1_1source.html#ad049690d03cac384636e0c2055726089aa876f4fb4e5f7f0c5c48fcf66c9ce7ce',1,'proton::source']]],
   ['update',['update',['../classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604',1,'proton::connection_options::update()'],['../classproton_1_1receiver__options.html#a7bbed67f2faac1cd6a5c490dac90bda3',1,'proton::receiver_options::update()'],['../classproton_1_1sender__options.html#a16b609dbb6a9df5ab7e719f0de05026b',1,'proton::sender_options::update()']]],
+  ['update_5foptions',['update_options',['../classproton_1_1connection.html#aa8322acd886ff87d19f153ba21270945',1,'proton::connection']]],
   ['url',['url',['../classproton_1_1url.html',1,'url'],['../classproton_1_1url.html#a2ac6e124f5c2a7a3c8464099b5c4fde7',1,'proton::url::url(const std::string &amp;url_str)'],['../classproton_1_1url.html#a0665da617d0ca28be2721c5f16368dd5',1,'proton::url::url(const url &amp;)']]],
   ['url_2ehpp',['url.hpp',['../url_8hpp.html',1,'']]],
   ['url_5ferror',['url_error',['../structproton_1_1url__error.html',1,'proton']]],

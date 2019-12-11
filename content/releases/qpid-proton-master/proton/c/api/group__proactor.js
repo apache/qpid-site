@@ -31,5 +31,6 @@ var group__proactor =
     [ "pn_connection_wake", "group__proactor.html#ga0f49c771fe3bff54f58c9d583ca30560", null ],
     [ "pn_connection_proactor", "group__proactor.html#ga4727a4e26f19efcff0d48960cbba2f40", null ],
     [ "pn_event_proactor", "group__proactor.html#gac412771217decd84bd70931acbd0828a", null ],
-    [ "pn_proactor_now", "group__proactor.html#gad45b60b98f2bf385ee6ca5dca7b3f42d", null ]
+    [ "pn_proactor_now", "group__proactor.html#gad45b60b98f2bf385ee6ca5dca7b3f42d", null ],
+    [ "pn_proactor_now_64", "group__proactor.html#ga0c0c192327e7057e3446c1e41bf5fe5e", null ]
 ];

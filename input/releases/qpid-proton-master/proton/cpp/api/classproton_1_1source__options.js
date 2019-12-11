@@ -6,6 +6,7 @@ var classproton_1_1source__options =
     [ "operator=", "classproton_1_1source__options.html#a4c7e157cd06e40dd7fd243fcb47297be", null ],
     [ "address", "classproton_1_1source__options.html#a36fa9e64134459cfe70707e0439ba850", null ],
     [ "dynamic", "classproton_1_1source__options.html#ab491bddac8a47b9478c748f43ab583d7", null ],
+    [ "anonymous", "classproton_1_1source__options.html#af5b5466b8ec3d24975fccb7f394fec38", null ],
     [ "distribution_mode", "classproton_1_1source__options.html#a41ffaf202d22b3276c15bfcf5b5c3ed6", null ],
     [ "durability_mode", "classproton_1_1source__options.html#a89176218ec0f2754c6499935368627ab", null ],
     [ "timeout", "classproton_1_1source__options.html#a5fca9a55327631935b124badfebea989", null ],

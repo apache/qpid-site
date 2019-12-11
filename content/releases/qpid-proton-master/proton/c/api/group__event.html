@@ -348,10 +348,10 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <p>This is the first event that will ever be issued for a connection. Events of this type point to the relevant connection. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaaf61aa79ca82b3a8f5017dc735843fae5"></a>PN_CONNECTION_BOUND&#160;</td><td class="fielddoc"><p>The connection has been bound to a transport. </p>
-<p>This event is issued when the <a class="el" href="group__transport.html#ga1a769e2e6c900c78c710407296cb4e13" title="Binds the transport to an AMQP connection. ">pn_transport_bind()</a> operation is invoked. </p>
+<p>This event is issued when the <a class="el" href="group__transport.html#ga1a769e2e6c900c78c710407296cb4e13" title="Deprecated - Use pn_connection_driver_init(). ">pn_transport_bind()</a> operation is invoked. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaac683ba544c12cbf36a3d3015ae818498"></a>PN_CONNECTION_UNBOUND&#160;</td><td class="fielddoc"><p>The connection has been unbound from its transport. </p>
-<p>This event is issued when the <a class="el" href="group__transport.html#ga2a66ff267333651eb166f3f6fa4ede50" title="Unbinds a transport from its AMQP connection. ">pn_transport_unbind()</a> operation is invoked. </p>
+<p>This event is issued when the <a class="el" href="group__transport.html#ga2a66ff267333651eb166f3f6fa4ede50" title="Deprecated - Use pn_connection_driver_destroy(). ">pn_transport_unbind()</a> operation is invoked. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa5d285c46982df224c3e4733b05c3540a"></a>PN_CONNECTION_LOCAL_OPEN&#160;</td><td class="fielddoc"><p>The local connection endpoint has been closed. </p>
 <p>Events of this type point to the relevant connection. </p>
@@ -372,7 +372,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <p>This is the first event that will ever be issued for a session. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa0862b8e3613b7a2b5a08a779474df424"></a>PN_SESSION_LOCAL_OPEN&#160;</td><td class="fielddoc"><p>The local session endpoint has been opened. </p>
-<p>Events of this type point ot the relevant session. </p>
+<p>Events of this type point to the relevant session. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaaf67df046bea45df34aea863d9541e806"></a>PN_SESSION_REMOTE_OPEN&#160;</td><td class="fielddoc"><p>The remote endpoint has opened the session. </p>
 <p>Events of this type point to the relevant session. </p>
@@ -396,7 +396,7 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 <p>Events of this type point to the relevant link. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa3b27f8d1c91cc05b47bed1905d42373a"></a>PN_LINK_LOCAL_CLOSE&#160;</td><td class="fielddoc"><p>The local link endpoint has been closed. </p>
-<p>Events of this type point ot the relevant link. </p>
+<p>Events of this type point to the relevant link. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="gga4876e2eed24a4d4e4c52b99842103cdaa1153f0108be071c31210dd1cd3e40a1f"></a>PN_LINK_REMOTE_CLOSE&#160;</td><td class="fielddoc"><p>The remote endpoint has closed the link. </p>
 <p>Events of this type point to the relevant link. </p>
@@ -485,7 +485,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a human readable name </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a23">broker.c</a>, <a class="el" href="direct_8c-example.html#a4">direct.c</a>, <a class="el" href="receive_8c-example.html#a2">receive.c</a>, and <a class="el" href="send_8c-example.html#a2">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga7c7754316e257d4ce7660730953000ac"></a>
@@ -803,7 +804,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the type of the event </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a24">broker.c</a>, <a class="el" href="direct_8c-example.html#a5">direct.c</a>, <a class="el" href="receive_8c-example.html#a3">receive.c</a>, and <a class="el" href="send_8c-example.html#a3">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga1f3f0a01db5cce634c5d0ccd5d9b50be"></a>
@@ -857,7 +859,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the connection associated with the event (or NULL) </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a27">broker.c</a>, <a class="el" href="direct_8c-example.html#a8">direct.c</a>, <a class="el" href="receive_8c-example.html#a7">receive.c</a>, and <a class="el" href="send_8c-example.html#a7">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="gaf4af0bfbe0e0a8e432f0e803df14ecb5"></a>
@@ -884,7 +887,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the session associated with the event (or NULL) </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a51">broker.c</a>, <a class="el" href="direct_8c-example.html#a69">direct.c</a>, <a class="el" href="receive_8c-example.html#a51">receive.c</a>, and <a class="el" href="send_8c-example.html#a45">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga75f230ef55f03a1f943df79279f8d111"></a>
@@ -911,7 +915,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the link associated with the event (or NULL) </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a53">broker.c</a>, <a class="el" href="direct_8c-example.html#a26">direct.c</a>, <a class="el" href="receive_8c-example.html#a55">receive.c</a>, and <a class="el" href="send_8c-example.html#a30">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga10fa6f53bdabe0851ebb2d8a0bf6a52c"></a>
@@ -938,7 +943,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the delivery associated with the event (or NULL) </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a63">broker.c</a>, <a class="el" href="direct_8c-example.html#a30">direct.c</a>, <a class="el" href="receive_8c-example.html#a26">receive.c</a>, and <a class="el" href="send_8c-example.html#a35">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga14525ae84870388141898bbf57f2b151"></a>
@@ -965,7 +971,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the transport associated with the event (or NULL) </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a79">broker.c</a>, <a class="el" href="direct_8c-example.html#a61">direct.c</a>, <a class="el" href="receive_8c-example.html#a46">receive.c</a>, and <a class="el" href="send_8c-example.html#a40">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga5989cf0c187bd12899596fe06931476e"></a>
@@ -1034,7 +1041,8 @@ void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gr
 
 <p><b>Unsettled API</b> - Remove the next event from the batch and return it. </p>
 <p>NULL means the batch is empty. The returned event pointer is valid until <a class="el" href="group__event.html#gac3fbf151357d3101ac294cb675348c76" title="Unsettled API - Remove the next event from the batch and return it. ">pn_event_batch_next()</a> is called again on the same batch. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a95">broker.c</a>, <a class="el" href="direct_8c-example.html#a91">direct.c</a>, <a class="el" href="receive_8c-example.html#a58">receive.c</a>, and <a class="el" href="send_8c-example.html#a51">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 </div><!-- contents -->

@@ -120,13 +120,13 @@
   
   <h3 class="inherited">Constants inherited
      from <span class='object_link'><a href="Transfer.html" title="Qpid::Proton::Transfer (class)">Transfer</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Transfer.html#PROTON_METHOD_PREFIX-constant" title="Qpid::Proton::Transfer::PROTON_METHOD_PREFIX (constant)">Transfer::PROTON_METHOD_PREFIX</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Transfer.html#PROTON_METHOD_PREFIX-constant" title="Qpid::Proton::Transfer::PROTON_METHOD_PREFIX (constant)">Transfer::PROTON_METHOD_PREFIX</a></span>, <span class='object_link'><a href="Transfer.html#State-constant" title="Qpid::Proton::Transfer::State (constant)">Transfer::State</a></span></p>
 
   
   
   <h3 class="inherited">Constants included
-     from <span class='object_link'><a href="Transfer/State.html" title="Qpid::Proton::Transfer::State (module)">Transfer::State</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Transfer/State.html#ACCEPTED-constant" title="Qpid::Proton::Transfer::State::ACCEPTED (constant)">Transfer::State::ACCEPTED</a></span>, <span class='object_link'><a href="Transfer/State.html#MODIFIED-constant" title="Qpid::Proton::Transfer::State::MODIFIED (constant)">Transfer::State::MODIFIED</a></span>, <span class='object_link'><a href="Transfer/State.html#RECEIVED-constant" title="Qpid::Proton::Transfer::State::RECEIVED (constant)">Transfer::State::RECEIVED</a></span>, <span class='object_link'><a href="Transfer/State.html#REJECTED-constant" title="Qpid::Proton::Transfer::State::REJECTED (constant)">Transfer::State::REJECTED</a></span>, <span class='object_link'><a href="Transfer/State.html#RELEASED-constant" title="Qpid::Proton::Transfer::State::RELEASED (constant)">Transfer::State::RELEASED</a></span></p>
+     from <span class='object_link'><a href="Disposition/State.html" title="Qpid::Proton::Disposition::State (module)">Qpid::Proton::Disposition::State</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Disposition/State.html#ACCEPTED-constant" title="Qpid::Proton::Disposition::State::ACCEPTED (constant)">Qpid::Proton::Disposition::State::ACCEPTED</a></span>, <span class='object_link'><a href="Disposition/State.html#MODIFIED-constant" title="Qpid::Proton::Disposition::State::MODIFIED (constant)">Qpid::Proton::Disposition::State::MODIFIED</a></span>, <span class='object_link'><a href="Disposition/State.html#RECEIVED-constant" title="Qpid::Proton::Disposition::State::RECEIVED (constant)">Qpid::Proton::Disposition::State::RECEIVED</a></span>, <span class='object_link'><a href="Disposition/State.html#REJECTED-constant" title="Qpid::Proton::Disposition::State::REJECTED (constant)">Qpid::Proton::Disposition::State::REJECTED</a></span>, <span class='object_link'><a href="Disposition/State.html#RELEASED-constant" title="Qpid::Proton::Disposition::State::RELEASED (constant)">Qpid::Proton::Disposition::State::RELEASED</a></span></p>
 
 
 
@@ -389,6 +389,17 @@ may be delivered again to this or another receiver.</p>
   
   
   
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Disposition/State/ClassMethods.html" title="Qpid::Proton::Disposition::State::ClassMethods (module)">Qpid::Proton::Disposition::State::ClassMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Disposition/State/ClassMethods.html#name_of-instance_method" title="Qpid::Proton::Disposition::State::ClassMethods#name_of (method)">#name_of</a></span></p>
+
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -525,7 +536,7 @@ may be delivered again to this or another receiver.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/core/delivery.rb', line 27</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_settle'>settle</span> <span class='const'><span class='object_link'><a href="Transfer/State.html#ACCEPTED-constant" title="Qpid::Proton::Transfer::State::ACCEPTED (constant)">ACCEPTED</a></span></span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_accept'>accept</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_settle'>settle</span> <span class='const'><span class='object_link'><a href="Disposition/State.html#ACCEPTED-constant" title="Qpid::Proton::Disposition::State::ACCEPTED (constant)">ACCEPTED</a></span></span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -839,7 +850,7 @@ be delivered again to this or any other receiver.</p>
     <td>
       <pre class="code"><span class="info file"># File 'lib/core/delivery.rb', line 31</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_reject'>reject</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_settle'>settle</span> <span class='const'><span class='object_link'><a href="Transfer/State.html#REJECTED-constant" title="Qpid::Proton::Transfer::State::REJECTED (constant)">REJECTED</a></span></span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
+<span class='kw'>def</span> <span class='id identifier rubyid_reject'>reject</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='id identifier rubyid_settle'>settle</span> <span class='const'><span class='object_link'><a href="Disposition/State.html#REJECTED-constant" title="Qpid::Proton::Disposition::State::REJECTED (constant)">REJECTED</a></span></span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -984,9 +995,9 @@ receiver, although it may be delivered other receivers.</p>
     <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_disposition_set_failed'>pn_disposition_set_failed</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_failed'>failed</span>
     <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_disposition_set_undeliverable'>pn_disposition_set_undeliverable</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='comma'>,</span> <span class='kw'>true</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_undeliverable'>undeliverable</span>
     <span class='const'>Codec</span><span class='op'>::</span><span class='const'>Data</span><span class='period'>.</span><span class='id identifier rubyid_from_object'>from_object</span><span class='lparen'>(</span><span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_disposition_annotations'>pn_disposition_annotations</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='id identifier rubyid_annotations'>annotations</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_annotations'>annotations</span>
-    <span class='id identifier rubyid_settle'>settle</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Transfer/State.html#MODIFIED-constant" title="Qpid::Proton::Transfer::State::MODIFIED (constant)">MODIFIED</a></span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_settle'>settle</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Disposition/State.html#MODIFIED-constant" title="Qpid::Proton::Disposition::State::MODIFIED (constant)">MODIFIED</a></span></span><span class='rparen'>)</span>
   <span class='kw'>else</span>
-    <span class='id identifier rubyid_settle'>settle</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Transfer/State.html#RELEASED-constant" title="Qpid::Proton::Transfer::State::RELEASED (constant)">RELEASED</a></span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_settle'>settle</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Disposition/State.html#RELEASED-constant" title="Qpid::Proton::Disposition::State::RELEASED (constant)">RELEASED</a></span></span><span class='rparen'>)</span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -999,9 +1010,9 @@ receiver, although it may be delivered other receivers.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue May  1 06:28:33 2018 by
+  Generated on Wed Dec 11 15:05:09 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.3).
+  0.9.8 (ruby-2.4.4).
 </div>
 
     </div>

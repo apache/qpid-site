@@ -19,6 +19,7 @@
 #
 
 from __future__ import print_function
+
 from proton_server import Server
 
 class Application(Server):

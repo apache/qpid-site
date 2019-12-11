@@ -16,6 +16,7 @@ var transport_8h =
     [ "pn_transport_require_encryption", "group__transport.html#gaeb7e30ead4a6ab080d0005379be20e34", null ],
     [ "pn_transport_is_encrypted", "group__transport.html#ga737021ca419e948932071aad2ad38c5b", null ],
     [ "pn_transport_condition", "group__transport.html#gac458d9fdb684f9501e89b96fc51f5c34", null ],
+    [ "pn_transport_logger", "group__transport.html#ga3a539904a3de515110377b41c185c615", null ],
     [ "pn_transport_error", "group__transport.html#gaede0bc2a0038ccdc7e1b193e322147fa", null ],
     [ "pn_transport_bind", "group__transport.html#ga1a769e2e6c900c78c710407296cb4e13", null ],
     [ "pn_transport_unbind", "group__transport.html#ga2a66ff267333651eb166f3f6fa4ede50", null ],
@@ -53,7 +54,7 @@ var transport_8h =
     [ "pn_transport_head_closed", "group__transport.html#ga3eb018b426d168de8c8d9b3441be036c", null ],
     [ "pn_transport_tail_closed", "group__transport.html#ga65e4c70675f7e94dfaa9d58b2a590694", null ],
     [ "pn_transport_closed", "group__transport.html#ga55c589d9b3e69057b130036c3c2173df", null ],
-    [ "pn_transport_tick", "group__transport.html#ga0f2abc6827e9370c0aebb2e5dd7535a9", null ],
+    [ "pn_transport_tick", "group__transport.html#ga8cb42b06900d6b52389f2e5c5289ab73", null ],
     [ "pn_transport_get_frames_output", "group__transport.html#ga3887e8d8c60d06df9978947edaf4d461", null ],
     [ "pn_transport_get_frames_input", "group__transport.html#ga92ce0b44ab956c182d646824b4e9ed61", null ],
     [ "pn_transport_connection", "group__transport.html#ga2b98f594e012c24e7b17dcc91e3d4caf", null ]

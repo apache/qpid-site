@@ -8,6 +8,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "byte_array.hpp", "byte__array_8hpp.html", [
       [ "byte_array", "classproton_1_1byte__array.html", "classproton_1_1byte__array" ]
     ] ],
+    [ "connect_config.hpp", "connect__config_8hpp_source.html", null ],
     [ "connection.hpp", "connection_8hpp.html", [
       [ "connection", "classproton_1_1connection.html", "classproton_1_1connection" ]
     ] ],
@@ -34,9 +35,7 @@ var dir_25143d27009f52d175c1d192441a738a =
       [ "timeout_error", "structproton_1_1timeout__error.html", "structproton_1_1timeout__error" ],
       [ "conversion_error", "structproton_1_1conversion__error.html", "structproton_1_1conversion__error" ]
     ] ],
-    [ "error_condition.hpp", "error__condition_8hpp.html", [
-      [ "error_condition", "classproton_1_1error__condition.html", "classproton_1_1error__condition" ]
-    ] ],
+    [ "error_condition.hpp", "error__condition_8hpp.html", "error__condition_8hpp" ],
     [ "function.hpp", "function_8hpp.html", null ],
     [ "fwd.hpp", "fwd_8hpp.html", [
       [ "returned", "classproton_1_1returned.html", "classproton_1_1returned" ]
@@ -51,9 +50,7 @@ var dir_25143d27009f52d175c1d192441a738a =
       [ "listener", "classproton_1_1listener.html", "classproton_1_1listener" ]
     ] ],
     [ "map.hpp", "map_8hpp.html", "map_8hpp" ],
-    [ "message.hpp", "message_8hpp.html", [
-      [ "message", "classproton_1_1message.html", "classproton_1_1message" ]
-    ] ],
+    [ "message.hpp", "message_8hpp.html", "message_8hpp" ],
     [ "message_id.hpp", "message__id_8hpp.html", "message__id_8hpp" ],
     [ "messaging_handler.hpp", "messaging__handler_8hpp.html", [
       [ "messaging_handler", "classproton_1_1messaging__handler.html", "classproton_1_1messaging__handler" ]
@@ -118,9 +115,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "tracker.hpp", "tracker_8hpp.html", [
       [ "tracker", "classproton_1_1tracker.html", "classproton_1_1tracker" ]
     ] ],
-    [ "transfer.hpp", "transfer_8hpp.html", [
-      [ "transfer", "classproton_1_1transfer.html", "classproton_1_1transfer" ]
-    ] ],
+    [ "transfer.hpp", "transfer_8hpp.html", "transfer_8hpp" ],
     [ "transport.hpp", "transport_8hpp.html", [
       [ "transport", "classproton_1_1transport.html", "classproton_1_1transport" ]
     ] ],

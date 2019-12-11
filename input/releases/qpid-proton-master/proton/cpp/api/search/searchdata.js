@@ -10,7 +10,7 @@ var indexSectionsWithContent =
   7: "demorstv",
   8: "abcdfilmnoprstuv",
   9: "ost",
-  10: "adimot"
+  10: "acimot"
 };
 
 var indexSectionNames =

@@ -142,10 +142,10 @@ Functions</h2></td></tr>
 <tr class="memdesc:ga6a7ef2e317b4ed292cafbb358f0ba6ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a delivery on a link.  <a href="#ga6a7ef2e317b4ed292cafbb358f0ba6ad">More...</a><br /></td></tr>
 <tr class="separator:ga6a7ef2e317b4ed292cafbb358f0ba6ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga17c16f34252597f9e737efae1e2ebb81"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__delivery.html#ga17c16f34252597f9e737efae1e2ebb81">pn_delivery_get_context</a> (<a class="el" href="group__delivery.html#gacdfce854066c0a4ff4db9f9a0478f340">pn_delivery_t</a> *delivery)</td></tr>
-<tr class="memdesc:ga17c16f34252597f9e737efae1e2ebb81"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Use <a class="el" href="group__delivery.html#ga3e014fc1759a212bc3ee9e513a274331" title="Get the attachments that are associated with a delivery object. ">pn_delivery_attachments()</a>.  <a href="#ga17c16f34252597f9e737efae1e2ebb81">More...</a><br /></td></tr>
+<tr class="memdesc:ga17c16f34252597f9e737efae1e2ebb81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the application context that is associated with a delivery object.  <a href="#ga17c16f34252597f9e737efae1e2ebb81">More...</a><br /></td></tr>
 <tr class="separator:ga17c16f34252597f9e737efae1e2ebb81"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga91519d3e4568ee8b622d3653e20f60a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__delivery.html#ga91519d3e4568ee8b622d3653e20f60a6">pn_delivery_set_context</a> (<a class="el" href="group__delivery.html#gacdfce854066c0a4ff4db9f9a0478f340">pn_delivery_t</a> *delivery, void *context)</td></tr>
-<tr class="memdesc:ga91519d3e4568ee8b622d3653e20f60a6"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Use <a class="el" href="group__delivery.html#ga3e014fc1759a212bc3ee9e513a274331" title="Get the attachments that are associated with a delivery object. ">pn_delivery_attachments()</a>.  <a href="#ga91519d3e4568ee8b622d3653e20f60a6">More...</a><br /></td></tr>
+<tr class="memdesc:ga91519d3e4568ee8b622d3653e20f60a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a new application context for a delivery object.  <a href="#ga91519d3e4568ee8b622d3653e20f60a6">More...</a><br /></td></tr>
 <tr class="separator:ga91519d3e4568ee8b622d3653e20f60a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3e014fc1759a212bc3ee9e513a274331"><td class="memItemLeft" align="right" valign="top">pn_record_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__delivery.html#ga3e014fc1759a212bc3ee9e513a274331">pn_delivery_attachments</a> (<a class="el" href="group__delivery.html#gacdfce854066c0a4ff4db9f9a0478f340">pn_delivery_t</a> *delivery)</td></tr>
 <tr class="memdesc:ga3e014fc1759a212bc3ee9e513a274331"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the attachments that are associated with a delivery object.  <a href="#ga3e014fc1759a212bc3ee9e513a274331">More...</a><br /></td></tr>
@@ -274,7 +274,8 @@ const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 
 <p>The PN_ACCEPTED delivery state is a terminal state indicating that the delivery was successfully processed. </p>
 <p>Once in this state there will be no further state changes prior to the delivery being settled. </p>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a76">broker.c</a>, <a class="el" href="direct_8c-example.html#a44">direct.c</a>, <a class="el" href="receive_8c-example.html#a39">receive.c</a>, and <a class="el" href="send_8c-example.html#a37">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga44a2635392fe2e6f8869a7e1cd64db2f"></a>
@@ -434,7 +435,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the delivery tag </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a5">broker.c</a>, <a class="el" href="direct_8c-example.html#a50">direct.c</a>, and <a class="el" href="send_8c-example.html#a33">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga6a7ef2e317b4ed292cafbb358f0ba6ad"></a>
@@ -473,7 +475,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a newly created delivery, or NULL if there was an error </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a4">broker.c</a>, <a class="el" href="direct_8c-example.html#a49">direct.c</a>, and <a class="el" href="send_8c-example.html#a32">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga17c16f34252597f9e737efae1e2ebb81"></a>
@@ -492,9 +495,8 @@ least once" semantics.</p>
       </table>
 </div><div class="memdoc">
 
-<p><b>Deprecated</b> - Use <a class="el" href="group__delivery.html#ga3e014fc1759a212bc3ee9e513a274331" title="Get the attachments that are associated with a delivery object. ">pn_delivery_attachments()</a>. </p>
-<p>Get the application context that is associated with a delivery object.</p>
-<p>The application context for a delivery may be set using <a class="el" href="group__delivery.html#ga91519d3e4568ee8b622d3653e20f60a6" title="Deprecated - Use pn_delivery_attachments(). ">pn_delivery_set_context</a>.</p>
+<p>Get the application context that is associated with a delivery object. </p>
+<p>The application context for a delivery may be set using <a class="el" href="group__delivery.html#ga91519d3e4568ee8b622d3653e20f60a6" title="Set a new application context for a delivery object. ">pn_delivery_set_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">delivery</td><td>the delivery whose context is to be returned. </td></tr>
@@ -531,9 +533,8 @@ least once" semantics.</p>
       </table>
 </div><div class="memdoc">
 
-<p><b>Deprecated</b> - Use <a class="el" href="group__delivery.html#ga3e014fc1759a212bc3ee9e513a274331" title="Get the attachments that are associated with a delivery object. ">pn_delivery_attachments()</a>. </p>
-<p>Set a new application context for a delivery object.</p>
-<p>The application context for a delivery object may be retrieved using <a class="el" href="group__delivery.html#ga17c16f34252597f9e737efae1e2ebb81" title="Deprecated - Use pn_delivery_attachments(). ">pn_delivery_get_context</a>.</p>
+<p>Set a new application context for a delivery object. </p>
+<p>The application context for a delivery object may be retrieved using <a class="el" href="group__delivery.html#ga17c16f34252597f9e737efae1e2ebb81" title="Get the application context that is associated with a delivery object. ">pn_delivery_get_context</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">delivery</td><td>the delivery object </td></tr>
@@ -622,7 +623,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the parent link </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a65">broker.c</a>, <a class="el" href="direct_8c-example.html#a32">direct.c</a>, and <a class="el" href="receive_8c-example.html#a28">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga404728c55cb6984dbb51956d764265a0"></a>
@@ -732,7 +734,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the remote disposition state </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="direct_8c-example.html#a51">direct.c</a>, and <a class="el" href="send_8c-example.html#a36">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga516aee25357ac7cfde863bbceef02529"></a>
@@ -786,7 +789,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the amount of pending message data in bytes </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a66">broker.c</a>, <a class="el" href="direct_8c-example.html#a33">direct.c</a>, and <a class="el" href="receive_8c-example.html#a29">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga23c7b3c678228ccb21378e7c8ec9a72d"></a>
@@ -814,7 +818,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the delivery only contains part of a message, false otherwise </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a74">broker.c</a>, <a class="el" href="direct_8c-example.html#a42">direct.c</a>, and <a class="el" href="receive_8c-example.html#a37">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga712690e0cc84419d7b7ca7c49a10b776"></a>
@@ -901,7 +906,8 @@ least once" semantics.</p>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if the delivery is readable, false otherwise </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a64">broker.c</a>, <a class="el" href="direct_8c-example.html#a31">direct.c</a>, and <a class="el" href="receive_8c-example.html#a27">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga56d7f16a93e5dd16147a2ecd4896fcb9"></a>
@@ -967,7 +973,8 @@ least once" semantics.</p>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a75">broker.c</a>, <a class="el" href="direct_8c-example.html#a43">direct.c</a>, and <a class="el" href="receive_8c-example.html#a38">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga2e5da4adf0738458ba8568d894e6ea5b"></a>
@@ -1079,7 +1086,8 @@ least once" semantics.</p>
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a9">broker.c</a>, <a class="el" href="direct_8c-example.html#a36">direct.c</a>, and <a class="el" href="receive_8c-example.html#a32">receive.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga0dbbc51564aea5b181d161ee7add1ddb"></a>

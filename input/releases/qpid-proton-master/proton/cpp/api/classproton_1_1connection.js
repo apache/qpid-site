@@ -1,6 +1,7 @@
 var classproton_1_1connection =
 [
     [ "connection", "classproton_1_1connection.html#a7fa48f6882eccec91ea9c433e1ad2a57", null ],
+    [ "~connection", "classproton_1_1connection.html#a6f7ec547601de6cc2a08150c8d38f8ba", null ],
     [ "uninitialized", "classproton_1_1connection.html#ab51c3843057c4c187574e2d44839f815", null ],
     [ "active", "classproton_1_1connection.html#ad9735e23cb0888fb98e1c5893aecff7e", null ],
     [ "closed", "classproton_1_1connection.html#ae54500202b0333927a28c440c85cf07e", null ],
@@ -29,6 +30,10 @@ var classproton_1_1connection =
     [ "senders", "classproton_1_1connection.html#a2e6d8395032b1d590a9e1586c7de0fb5", null ],
     [ "max_frame_size", "classproton_1_1connection.html#a491981c839dbde2411267e0654d73c4f", null ],
     [ "max_sessions", "classproton_1_1connection.html#a089389fc8a798fec049618c96c53444c", null ],
+    [ "offered_capabilities", "classproton_1_1connection.html#a1c0f78485149fbed5e8755d0633d10ed", null ],
+    [ "desired_capabilities", "classproton_1_1connection.html#a7c47682917af9e9888c836bf69d3682a", null ],
     [ "idle_timeout", "classproton_1_1connection.html#a94680c89dde19dcee4c6a7c5508e9659", null ],
-    [ "wake", "classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074", null ]
+    [ "wake", "classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074", null ],
+    [ "reconnected", "classproton_1_1connection.html#a99c8890565994f68c80b032639f13571", null ],
+    [ "update_options", "classproton_1_1connection.html#aa8322acd886ff87d19f153ba21270945", null ]
 ];

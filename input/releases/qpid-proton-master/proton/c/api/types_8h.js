@@ -1,7 +1,7 @@
 var types_8h =
 [
     [ "PN_MILLIS_MAX", "group__api__types.html#ga46d74369b8b364df95fd7cfa843f6d64", null ],
-    [ "pn_sequence_t", "group__api__types.html#ga92033eaa8a158e7e4bb5d1f0e94ca606", null ],
+    [ "pn_sequence_t", "group__api__types.html#ga0aa3ebc7c0f1f273a874dcb1553ccb0f", null ],
     [ "pn_millis_t", "group__api__types.html#ga9a701bc6dc9af9f42c3f4679172a723c", null ],
     [ "pn_seconds_t", "group__api__types.html#gafdede9be0526a8d0b9ab5d3149069af1", null ],
     [ "pn_timestamp_t", "group__amqp__types.html#gad337c365b498106064ec28e00e5fb6dd", null ],
@@ -20,5 +20,7 @@ var types_8h =
     [ "pn_transport_t", "group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8", null ],
     [ "pn_proactor_t", "group__proactor.html#gabba42c7929dfceb9d296535bad0c93dc", null ],
     [ "pn_bytes", "group__api__types.html#gab4f7e8d204246a3702c6e31a404b0edb", null ],
-    [ "pn_rwbytes", "group__api__types.html#ga9fb5bee0255a52b1b8b8fa1b8620cbca", null ]
+    [ "pn_rwbytes", "group__api__types.html#ga9fb5bee0255a52b1b8b8fa1b8620cbca", null ],
+    [ "pn_bytes_null", "types_8h.html#ae009a8d4d89c6fea40a33a0dbc16e047", null ],
+    [ "pn_rwbytes_null", "types_8h.html#a5c960f552a6432938a06df22917e842c", null ]
 ];

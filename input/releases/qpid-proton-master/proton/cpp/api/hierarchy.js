@@ -21,6 +21,9 @@ var hierarchy =
     [ "comparable< duration >", null, [
       [ "duration", "classproton_1_1duration.html", null ]
     ] ],
+    [ "comparable< null >", null, [
+      [ "null", "classproton_1_1null.html", null ]
+    ] ],
     [ "comparable< object< pn_connection_t > >", null, [
       [ "object< pn_connection_t >", null, [
         [ "connection", "classproton_1_1connection.html", null ]
@@ -96,7 +99,6 @@ var hierarchy =
     [ "message", "classproton_1_1message.html", null ],
     [ "messaging_handler", "classproton_1_1messaging__handler.html", null ],
     [ "mutable_buffer", "structproton_1_1io_1_1mutable__buffer.html", null ],
-    [ "null", "classproton_1_1null.html", null ],
     [ "receiver_options", "classproton_1_1receiver__options.html", null ],
     [ "reconnect_options", "classproton_1_1reconnect__options.html", null ],
     [ "returned< T >", "classproton_1_1returned.html", null ],

@@ -165,6 +165,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga0f9df2253065f81fd304f39a846e6468"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__terminus.html#gab4089b27ee99a348deab776f3d4931f0">pn_expiry_policy_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminus.html#ga0f9df2253065f81fd304f39a846e6468">pn_terminus_get_expiry_policy</a> (<a class="el" href="group__terminus.html#gad202baf5c904d6991e13521b7c93fdc2">pn_terminus_t</a> *terminus)</td></tr>
 <tr class="memdesc:ga0f9df2253065f81fd304f39a846e6468"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the expiry policy of a terminus object.  <a href="#ga0f9df2253065f81fd304f39a846e6468">More...</a><br /></td></tr>
 <tr class="separator:ga0f9df2253065f81fd304f39a846e6468"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e3a1f4feb75f594e3b0ad7ad4e0426b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminus.html#ga7e3a1f4feb75f594e3b0ad7ad4e0426b">pn_terminus_has_expiry_policy</a> (const <a class="el" href="group__terminus.html#gad202baf5c904d6991e13521b7c93fdc2">pn_terminus_t</a> *terminus)</td></tr>
+<tr class="memdesc:ga7e3a1f4feb75f594e3b0ad7ad4e0426b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return true if the terminus has an explicit expiry policy set, false if it does not.  <a href="#ga7e3a1f4feb75f594e3b0ad7ad4e0426b">More...</a><br /></td></tr>
+<tr class="separator:ga7e3a1f4feb75f594e3b0ad7ad4e0426b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaad123d27d82b2f7d051489a8bff73c6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__terminus.html#gaaad123d27d82b2f7d051489a8bff73c6">pn_terminus_set_expiry_policy</a> (<a class="el" href="group__terminus.html#gad202baf5c904d6991e13521b7c93fdc2">pn_terminus_t</a> *terminus, <a class="el" href="group__terminus.html#gab4089b27ee99a348deab776f3d4931f0">pn_expiry_policy_t</a> policy)</td></tr>
 <tr class="memdesc:gaaad123d27d82b2f7d051489a8bff73c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the expiry policy of a terminus object.  <a href="#gaaad123d27d82b2f7d051489a8bff73c6">More...</a><br /></td></tr>
 <tr class="separator:gaaad123d27d82b2f7d051489a8bff73c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -411,7 +414,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the address </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a18">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga0603db45f03fcef0ef18f4f89ebf3de1"></a>
@@ -449,7 +453,8 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success or an error code on failure </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a55">broker.c</a>, <a class="el" href="direct_8c-example.html#a46">direct.c</a>, <a class="el" href="receive_8c-example.html#a21">receive.c</a>, and <a class="el" href="send_8c-example.html#a26">send.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga5edfc0f1d61880e1951c21f92c19af53"></a>
@@ -606,6 +611,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the expiry policy of the terminus </dd></dl>
+
+</div>
+</div>
+<a id="ga7e3a1f4feb75f594e3b0ad7ad4e0426b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7e3a1f4feb75f594e3b0ad7ad4e0426b">&#9670;&nbsp;</a></span>pn_terminus_has_expiry_policy()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool pn_terminus_has_expiry_policy </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="group__terminus.html#gad202baf5c904d6991e13521b7c93fdc2">pn_terminus_t</a> *&#160;</td>
+          <td class="paramname"><em>terminus</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Return true if the terminus has an explicit expiry policy set, false if it does not. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">terminus</td><td>a terminus object </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>whether the terminus has an explicit expiry-policy </dd></dl>
 
 </div>
 </div>

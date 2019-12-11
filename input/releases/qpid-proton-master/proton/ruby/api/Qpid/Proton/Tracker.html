@@ -104,7 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Track the <span class='object_link'><a href="Transfer/State.html" title="Qpid::Proton::Transfer::State (module)">Qpid::Proton::Transfer::State</a></span> of a sent message.</p>
+<p>Track the <span class='object_link'><a href="Transfer.html#State-constant" title="Qpid::Proton::Transfer::State (constant)">Qpid::Proton::Transfer::State</a></span> of a sent message.</p>
 
 
   </div>
@@ -119,13 +119,13 @@
   
   <h3 class="inherited">Constants inherited
      from <span class='object_link'><a href="Transfer.html" title="Qpid::Proton::Transfer (class)">Transfer</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Transfer.html#PROTON_METHOD_PREFIX-constant" title="Qpid::Proton::Transfer::PROTON_METHOD_PREFIX (constant)">Qpid::Proton::Transfer::PROTON_METHOD_PREFIX</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="Transfer.html#PROTON_METHOD_PREFIX-constant" title="Qpid::Proton::Transfer::PROTON_METHOD_PREFIX (constant)">Qpid::Proton::Transfer::PROTON_METHOD_PREFIX</a></span>, <span class='object_link'><a href="Transfer.html#State-constant" title="Qpid::Proton::Transfer::State (constant)">Qpid::Proton::Transfer::State</a></span></p>
 
   
   
   <h3 class="inherited">Constants included
-     from <span class='object_link'><a href="Transfer/State.html" title="Qpid::Proton::Transfer::State (module)">Qpid::Proton::Transfer::State</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="Transfer/State.html#ACCEPTED-constant" title="Qpid::Proton::Transfer::State::ACCEPTED (constant)">Qpid::Proton::Transfer::State::ACCEPTED</a></span>, <span class='object_link'><a href="Transfer/State.html#MODIFIED-constant" title="Qpid::Proton::Transfer::State::MODIFIED (constant)">Qpid::Proton::Transfer::State::MODIFIED</a></span>, <span class='object_link'><a href="Transfer/State.html#RECEIVED-constant" title="Qpid::Proton::Transfer::State::RECEIVED (constant)">Qpid::Proton::Transfer::State::RECEIVED</a></span>, <span class='object_link'><a href="Transfer/State.html#REJECTED-constant" title="Qpid::Proton::Transfer::State::REJECTED (constant)">Qpid::Proton::Transfer::State::REJECTED</a></span>, <span class='object_link'><a href="Transfer/State.html#RELEASED-constant" title="Qpid::Proton::Transfer::State::RELEASED (constant)">Qpid::Proton::Transfer::State::RELEASED</a></span></p>
+     from <span class='object_link'><a href="Disposition/State.html" title="Qpid::Proton::Disposition::State (module)">Disposition::State</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Disposition/State.html#ACCEPTED-constant" title="Qpid::Proton::Disposition::State::ACCEPTED (constant)">Disposition::State::ACCEPTED</a></span>, <span class='object_link'><a href="Disposition/State.html#MODIFIED-constant" title="Qpid::Proton::Disposition::State::MODIFIED (constant)">Disposition::State::MODIFIED</a></span>, <span class='object_link'><a href="Disposition/State.html#RECEIVED-constant" title="Qpid::Proton::Disposition::State::RECEIVED (constant)">Disposition::State::RECEIVED</a></span>, <span class='object_link'><a href="Disposition/State.html#REJECTED-constant" title="Qpid::Proton::Disposition::State::REJECTED (constant)">Disposition::State::REJECTED</a></span>, <span class='object_link'><a href="Disposition/State.html#RELEASED-constant" title="Qpid::Proton::Disposition::State::RELEASED (constant)">Disposition::State::RELEASED</a></span></p>
 
 
 
@@ -232,6 +232,17 @@
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  <h3 class="inherited">Methods included from <span class='object_link'><a href="Disposition/State/ClassMethods.html" title="Qpid::Proton::Disposition::State::ClassMethods (module)">Disposition::State::ClassMethods</a></span></h3>
+  <p class="inherited"><span class='object_link'><a href="Disposition/State/ClassMethods.html#name_of-instance_method" title="Qpid::Proton::Disposition::State::ClassMethods#name_of (method)">#name_of</a></span></p>
+
   
   
   
@@ -369,7 +380,7 @@ calling <span class='object_link'><a href="#abort-instance_method" title="Qpid::
       <pre class="code"><span class="info file"># File 'lib/core/tracker.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_modifications'>modifications</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="Transfer/State.html#MODIFIED-constant" title="Qpid::Proton::Transfer::State::MODIFIED (constant)">MODIFIED</a></span></span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='kw'>nil</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='id identifier rubyid_state'>state</span> <span class='op'>!=</span> <span class='const'><span class='object_link'><a href="Disposition/State.html#MODIFIED-constant" title="Qpid::Proton::Disposition::State::MODIFIED (constant)">MODIFIED</a></span></span><span class='rparen'>)</span>
   <span class='id identifier rubyid_d'>d</span> <span class='op'>=</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_delivery_remote'>pn_delivery_remote</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span>
   <span class='lbrace'>{</span>
    <span class='symbol'>:failed</span> <span class='op'>=&gt;</span> <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_disposition_is_failed'>pn_disposition_is_failed</span><span class='lparen'>(</span><span class='id identifier rubyid_d'>d</span><span class='rparen'>)</span><span class='comma'>,</span>
@@ -442,9 +453,9 @@ calling <span class='object_link'><a href="#abort-instance_method" title="Qpid::
 </div>
 
       <div id="footer">
-  Generated on Tue May  1 06:28:33 2018 by
+  Generated on Wed Dec 11 15:05:09 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.3).
+  0.9.8 (ruby-2.4.4).
 </div>
 
     </div>

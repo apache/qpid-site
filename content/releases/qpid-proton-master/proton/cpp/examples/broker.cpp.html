@@ -143,10 +143,6 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
 
 <span class="cp">#if PN_CPP_HAS_STD_THREAD</span>
 <span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
-
-<span class="kt">int</span> <span class="nf">hardware_concurrency</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">::</span><span class="n">hardware_concurrency</span><span class="p">();}</span>
-<span class="cp">#else</span>
-<span class="kt">int</span> <span class="nf">hardware_concurrency</span><span class="p">()</span> <span class="p">{</span><span class="k">return</span> <span class="mi">1</span><span class="p">;}</span>
 <span class="cp">#endif</span>
 
 <span class="cp">#include</span> <span class="cpf">&quot;fake_cpp11.hpp&quot;</span><span class="cp"></span>
@@ -440,18 +436,8 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="c1">// A receiver receives messages from a publisher to a queue.</span>
     <span class="kt">void</span> <span class="n">on_receiver_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="o">&amp;</span><span class="n">receiver</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="n">qname</span> <span class="o">=</span> <span class="n">receiver</span><span class="p">.</span><span class="n">target</span><span class="p">().</span><span class="n">address</span><span class="p">();</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">qname</span> <span class="o">==</span> <span class="s">&quot;shutdown&quot;</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;broker shutting down&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
-            <span class="c1">// Sending to the special &quot;shutdown&quot; queue stops the broker.</span>
-            <span class="n">receiver</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">container</span><span class="p">().</span><span class="n">stop</span><span class="p">(</span>
-                <span class="n">proton</span><span class="o">::</span><span class="n">error_condition</span><span class="p">(</span><span class="s">&quot;shutdown&quot;</span><span class="p">,</span> <span class="s">&quot;stop broker&quot;</span><span class="p">));</span>
-        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">qname</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span> <span class="p">{</span>
-                <span class="n">DOUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;ODD - trying to attach to a empty address</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;);</span>
-            <span class="p">}</span>
-            <span class="n">Receiver</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Receiver</span><span class="p">(</span><span class="n">receiver</span><span class="p">);</span>
-            <span class="n">queue_manager_</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">make_work</span><span class="p">(</span><span class="o">&amp;</span><span class="n">QueueManager</span><span class="o">::</span><span class="n">findQueueReceiver</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queue_manager_</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">qname</span><span class="p">));</span>
-        <span class="p">}</span>
+        <span class="n">Receiver</span><span class="o">*</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Receiver</span><span class="p">(</span><span class="n">receiver</span><span class="p">);</span>
+        <span class="n">queue_manager_</span><span class="p">.</span><span class="n">add</span><span class="p">(</span><span class="n">make_work</span><span class="p">(</span><span class="o">&amp;</span><span class="n">QueueManager</span><span class="o">::</span><span class="n">findQueueReceiver</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">queue_manager_</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">qname</span><span class="p">));</span>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">on_session_close</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">session</span> <span class="o">&amp;</span><span class="n">session</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
@@ -468,7 +454,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">on_error</span><span class="p">(</span><span class="k">const</span> <span class="n">proton</span><span class="o">::</span><span class="n">error_condition</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="n">OVERRIDE</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;protocol error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
 
     <span class="c1">// The container calls on_transport_close() last.</span>
@@ -495,14 +481,9 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="p">}</span>
 
     <span class="kt">void</span> <span class="n">run</span><span class="p">()</span> <span class="p">{</span>
-<span class="cp">#if PN_CPP_SUPPORTS_THREADS</span>
-        <span class="kt">int</span> <span class="n">threads</span> <span class="o">=</span> <span class="n">hardware_concurrency</span><span class="p">();</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;starting &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">threads</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; listening threads</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
-        <span class="n">container_</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">threads</span><span class="p">);</span>
+<span class="cp">#if PN_CPP_HAS_STD_THREAD</span>
+        <span class="n">container_</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">::</span><span class="n">hardware_concurrency</span><span class="p">());</span>
 <span class="cp">#else</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;no thread support - starting 1 listening thread</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="p">.</span><span class="n">flush</span><span class="p">();</span>
         <span class="n">container_</span><span class="p">.</span><span class="n">run</span><span class="p">();</span>
 <span class="cp">#endif</span>
     <span class="p">}</span>
@@ -547,7 +528,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">example</span><span class="o">::</span><span class="n">bad_option</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">opts</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;broker shutdown: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;broker shutdown: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">}</span>

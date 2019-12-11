@@ -176,7 +176,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:gac3da0f48aeeb11d8149a559a2a064ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Configure the list of permitted ciphers.  <a href="#gac3da0f48aeeb11d8149a559a2a064ddc">More...</a><br /></td></tr>
 <tr class="separator:gac3da0f48aeeb11d8149a559a2a064ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2ac989a62dcd138be770fae0bbb85e74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0bbb85e74">pn_ssl_domain_allow_unsecured_client</a> (<a class="el" href="group__ssl.html#gaba83c3a1779c8b35a479bf3a7bb5b175">pn_ssl_domain_t</a> *domain)</td></tr>
-<tr class="memdesc:ga2ac989a62dcd138be770fae0bbb85e74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit a server to accept connection requests from non-SSL clients.  <a href="#ga2ac989a62dcd138be770fae0bbb85e74">More...</a><br /></td></tr>
+<tr class="memdesc:ga2ac989a62dcd138be770fae0bbb85e74"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Deprecated</b> - Use ::pn_transport_require_encrytion()  <a href="#ga2ac989a62dcd138be770fae0bbb85e74">More...</a><br /></td></tr>
 <tr class="separator:ga2ac989a62dcd138be770fae0bbb85e74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaaeb5284b45f9e2146ff671b1ddc9420c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__ssl.html#ga215da63662423b00d34605ba4f9761f5">pn_ssl_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__ssl.html#gaaeb5284b45f9e2146ff671b1ddc9420c">pn_ssl</a> (<a class="el" href="group__transport.html#gac26eda05f649bbf0399f3d8d78d12fa8">pn_transport_t</a> *transport)</td></tr>
 <tr class="memdesc:gaaeb5284b45f9e2146ff671b1ddc9420c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a new SSL session object associated with a transport.  <a href="#gaaeb5284b45f9e2146ff671b1ddc9420c">More...</a><br /></td></tr>
@@ -232,14 +232,12 @@ Functions</h2></td></tr>
 <p>This SSL implementation defines the following objects:</p>
 <ul>
 <li>A top-level object that stores the configuration used by one or more SSL sessions (pn_ssl_domain_t). </li>
-<li>A per-connection SSL session object that performs the encryption/authentication associated with the transport (pn_ssl_t). </li>
-<li>The encryption parameters negotiated for the SSL session (pn_ssl_state_t).</li>
+<li>A per-connection SSL session object that performs the encryption/authentication associated with the transport (pn_ssl_t).</li>
 </ul>
-<p>A pn_ssl_domain_t object must be created and configured before an SSL session can be established. The pn_ssl_domain_t is used to construct an SSL session (pn_ssl_t). The session "adopts" its configuration from the pn_ssl_domain_t that was used to create it. For example, pn_ssl_domain_t can be configured as either a "client" or a "server". SSL sessions constructed from this domain will perform the corresponding role (either client or server).</p>
+<p>The pn_ssl_domain_t is used to construct an SSL session (pn_ssl_t). The session "adopts" its configuration from the pn_ssl_domain_t that was used to create it. For example, pn_ssl_domain_t can be configured as either a "client" or a "server". SSL sessions constructed from this domain will perform the corresponding role (either client or server).</p>
+<p>If an SSL session is created without a pn_ssl_domain_t object then a default will be used (see <a class="el" href="group__ssl.html#ga45f319dd31ad456b8a85927888f94acf" title="Initialize an SSL session. ">pn_ssl_init()</a>).</p>
 <p>If either an SSL server or client needs to identify itself with the remote node, it must have its SSL certificate configured (see <a class="el" href="group__ssl.html#ga7311e46bb756474513f3c331e0c1b0aa" title="Set the certificate that identifies the local node to the remote. ">pn_ssl_domain_set_credentials()</a>).</p>
-<p>If either an SSL server or client needs to verify the identity of the remote node, it must have its database of trusted CAs configured (see <a class="el" href="group__ssl.html#ga6cdf12ad6ff3d50ac1d31db3cff11c2d" title="Configure the set of trusted CA certificates used by this domain to verify peers. ...">pn_ssl_domain_set_trusted_ca_db()</a>).</p>
-<p>An SSL server connection may allow the remote client to connect without SSL (eg. "in
-the clear"), see <a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0bbb85e74" title="Permit a server to accept connection requests from non-SSL clients. ">pn_ssl_domain_allow_unsecured_client()</a>.</p>
+<p>If either an SSL server or client needs to verify the identity of the remote node, it must have its database of trusted CAs configured. By default this will be set up to use the default system database of trusted CA. But this can be changed (see <a class="el" href="group__ssl.html#ga6cdf12ad6ff3d50ac1d31db3cff11c2d" title="Configure the set of trusted CA certificates used by this domain to verify peers. ...">pn_ssl_domain_set_trusted_ca_db()</a>).</p>
 <p>The level of verification required of the remote may be configured (see <a class="el" href="group__ssl.html#ga39b67bd22fb8f0a47bcdbdfd40f80b11" title="Configure the level of verification used on the peer certificate. ">pn_ssl_domain_set_peer_authentication</a>)</p>
 <p>Support for SSL Client Session resume is provided (see <a class="el" href="group__ssl.html#ga45f319dd31ad456b8a85927888f94acf" title="Initialize an SSL session. ">pn_ssl_init</a>, <a class="el" href="group__ssl.html#ga5f1a1d6697994bac00edc3df200a8f5f" title="Check whether the state has been resumed. ">pn_ssl_resume_status</a>). </p>
 
@@ -384,7 +382,8 @@ the clear"), see <a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0b
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the SSL domain, if SSL support is present. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a98">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga5452ded9c36d78a17c6dea292a01c80d"></a>
@@ -410,7 +409,8 @@ the clear"), see <a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0b
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a104">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga7311e46bb756474513f3c331e0c1b0aa"></a>
@@ -495,7 +495,9 @@ the clear"), see <a class="el" href="group__ssl.html#ga2ac989a62dcd138be770fae0b
 
 <p>Configure the set of trusted CA certificates used by this domain to verify peers. </p>
 <p>If the local SSL client/server needs to verify the identity of the remote, it must validate the signature of the remote's certificate. This function sets the database of trusted CAs that will be used to verify the signature of the remote's certificate.</p>
-<dl class="section note"><dt>Note</dt><dd>This setting effects only those pn_ssl_t objects created after this call returns. pn_ssl_t objects created before invoking this method will use the domain's previous setting.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>This setting effects only those pn_ssl_t objects created after this call returns. pn_ssl_t objects created before invoking this method will use the domain's previous setting.</dd>
+<dd>
+By default the list of trusted CA certificates will be set to the system default. What this is is depends on the OS and the SSL implementation used: For OpenSSL the default will depend on how the OS is set up. When using the Windows SChannel implementation the default will be the users default trusted certificate store.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain that will use the database. </td></tr>
@@ -588,7 +590,7 @@ This setting effects only those pn_ssl_t objects created after this call returns
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain to configure. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">protocols</td><td>string representing the protocol list. This list is a space separated string of the allowed TLS protocols, The current possibilities are TLSv1 TLSv1.1 TLSv1.2. None of the earlier SSL protocols are allowed for security reason.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">protocols</td><td>string representing the protocol list. This list is a space separated string of the allowed TLS protocols, The current possibilities are TLSv1 TLSv1.1 TLSv1.2 TLSv1.3. None of the earlier SSL protocols are allowed for security reason.</td></tr>
   </table>
   </dd>
 </dl>
@@ -652,7 +654,8 @@ This setting effects only those pn_ssl_t objects created after this call returns
       </table>
 </div><div class="memdoc">
 
-<p>Permit a server to accept connection requests from non-SSL clients. </p>
+<p><b>Deprecated</b> - Use ::pn_transport_require_encrytion() </p>
+<p>Permit a server to accept connection requests from non-SSL clients.</p>
 <p>This configures the server to "sniff" the incoming client data stream, and dynamically determine whether SSL/TLS is being used. This option is disabled by default: only clients using SSL/TLS are accepted.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -689,7 +692,8 @@ This setting effects only those pn_ssl_t objects created after this call returns
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a pointer to the SSL object configured for this transport. Returns NULL if no SSL session is associated with the transport. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a39">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga45f319dd31ad456b8a85927888f94acf"></a>
@@ -725,17 +729,21 @@ This setting effects only those pn_ssl_t objects created after this call returns
 </div><div class="memdoc">
 
 <p>Initialize an SSL session. </p>
-<p>This method configures an SSL object using the configuration provided by the given domain.</p>
+<p>This method configures an SSL object with defaults or the configuration provided by the given domain.</p>
+<dl class="section note"><dt>Note</dt><dd>The default client domain is a secure default generally usable. This uses the system default certificates and requires peer name verification.</dd>
+<dd>
+However the default server domain is only really useful for test servers. This is because for a useful server you <em>need</em> to set up certificates to identify it so that clients can connect without being subject to "man-in-the-middle" attacks - see <a class="el" href="group__ssl.html#ga7311e46bb756474513f3c331e0c1b0aa" title="Set the certificate that identifies the local node to the remote. ">pn_ssl_domain_set_credentials()</a> for details.</dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">ssl</td><td>the ssl session to configured. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain used to configure the SSL session. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">domain</td><td>the ssl domain used to configure the SSL session. If this value is NULL then use a default domain. This will be a client domain if the ssl object is part of a client transport and a server domain if the ssl object is part of a server transport. the transport the pn_ssl_t object </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">session_id</td><td>if supplied, attempt to resume a previous SSL session that used the same session_id. If no previous SSL session is available, a new session will be created using the session_id and stored for future session restore (see ::<a class="el" href="group__ssl.html#ga5f1a1d6697994bac00edc3df200a8f5f" title="Check whether the state has been resumed. ">pn_ssl_resume_status</a>). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, else an error code. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8c-example.html#a38">broker.c</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="ga47653f84f4b5e3bad46c08d4e82a2c52"></a>

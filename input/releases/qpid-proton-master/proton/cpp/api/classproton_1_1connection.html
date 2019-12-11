@@ -146,11 +146,11 @@ class <a class="el" href="classproton_1_1transport.html">transport</a>&#160;</td
 <tr class="separator:a579bcab77cddadcb8ba07d2bc576c3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a58c45cfdcca234c692559be81f206421"><td class="memItemLeft" align="right" valign="top"><a id="a58c45cfdcca234c692559be81f206421"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a58c45cfdcca234c692559be81f206421">virtual_host</a> () const</td></tr>
-<tr class="memdesc:a58c45cfdcca234c692559be81f206421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the AMQP hostname attribute for the connection. <br /></td></tr>
+<tr class="memdesc:a58c45cfdcca234c692559be81f206421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the remote AMQP hostname attribute for the connection. <br /></td></tr>
 <tr class="separator:a58c45cfdcca234c692559be81f206421"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc9e81b6e8ae83f2043ab1db57478b33"><td class="memItemLeft" align="right" valign="top"><a id="acc9e81b6e8ae83f2043ab1db57478b33"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#acc9e81b6e8ae83f2043ab1db57478b33">container_id</a> () const</td></tr>
-<tr class="memdesc:acc9e81b6e8ae83f2043ab1db57478b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the container ID for the connection. <br /></td></tr>
+<tr class="memdesc:acc9e81b6e8ae83f2043ab1db57478b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the remote container ID for the connection. <br /></td></tr>
 <tr class="separator:acc9e81b6e8ae83f2043ab1db57478b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9444df7d81bd265e0a8e1726fd12b058"><td class="memItemLeft" align="right" valign="top"><a id="a9444df7d81bd265e0a8e1726fd12b058"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a9444df7d81bd265e0a8e1726fd12b058">user</a> () const</td></tr>
@@ -163,10 +163,10 @@ std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 <tr class="memdesc:a91b014b59b8b14d7f5a26e2e4950cc93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open the connection.  <a href="#a91b014b59b8b14d7f5a26e2e4950cc93">More...</a><br /></td></tr>
 <tr class="separator:a91b014b59b8b14d7f5a26e2e4950cc93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5ae591df94fc66ccb85cbb6565368bca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a5ae591df94fc66ccb85cbb6565368bca">close</a> ()</td></tr>
-<tr class="memdesc:a5ae591df94fc66ccb85cbb6565368bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the endpoint.  <a href="#a5ae591df94fc66ccb85cbb6565368bca">More...</a><br /></td></tr>
+<tr class="memdesc:a5ae591df94fc66ccb85cbb6565368bca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the connection.  <a href="#a5ae591df94fc66ccb85cbb6565368bca">More...</a><br /></td></tr>
 <tr class="separator:a5ae591df94fc66ccb85cbb6565368bca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a817883d28ce0ac8a29d917d196796f68"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a817883d28ce0ac8a29d917d196796f68">close</a> (const <a class="el" href="classproton_1_1error__condition.html">error_condition</a> &amp;)</td></tr>
-<tr class="memdesc:a817883d28ce0ac8a29d917d196796f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the endpoint with an error condition.  <a href="#a817883d28ce0ac8a29d917d196796f68">More...</a><br /></td></tr>
+<tr class="memdesc:a817883d28ce0ac8a29d917d196796f68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Close the connection.  <a href="#a817883d28ce0ac8a29d917d196796f68">More...</a><br /></td></tr>
 <tr class="separator:a817883d28ce0ac8a29d917d196796f68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a417060fdeea996b1684bd0fecc6c6420"><td class="memItemLeft" align="right" valign="top"><a id="a417060fdeea996b1684bd0fecc6c6420"></a>
 <a class="el" href="classproton_1_1session.html">session</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a417060fdeea996b1684bd0fecc6c6420">open_session</a> ()</td></tr>
@@ -214,16 +214,30 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:a089389fc8a798fec049618c96c53444c"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a089389fc8a798fec049618c96c53444c">max_sessions</a> () const</td></tr>
 <tr class="memdesc:a089389fc8a798fec049618c96c53444c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the maximum number of open sessions allowed by the remote peer.  <a href="#a089389fc8a798fec049618c96c53444c">More...</a><br /></td></tr>
 <tr class="separator:a089389fc8a798fec049618c96c53444c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c0f78485149fbed5e8755d0633d10ed"><td class="memItemLeft" align="right" valign="top"><a id="a1c0f78485149fbed5e8755d0633d10ed"></a>
+std::vector&lt; <a class="el" href="classproton_1_1symbol.html">symbol</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a1c0f78485149fbed5e8755d0633d10ed">offered_capabilities</a> () const</td></tr>
+<tr class="memdesc:a1c0f78485149fbed5e8755d0633d10ed"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Extension capabilities offered by the remote peer. <br /></td></tr>
+<tr class="separator:a1c0f78485149fbed5e8755d0633d10ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c47682917af9e9888c836bf69d3682a"><td class="memItemLeft" align="right" valign="top"><a id="a7c47682917af9e9888c836bf69d3682a"></a>
+std::vector&lt; <a class="el" href="classproton_1_1symbol.html">symbol</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a7c47682917af9e9888c836bf69d3682a">desired_capabilities</a> () const</td></tr>
+<tr class="memdesc:a7c47682917af9e9888c836bf69d3682a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Extension capabilities desired by the remote peer. <br /></td></tr>
+<tr class="separator:a7c47682917af9e9888c836bf69d3682a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a94680c89dde19dcee4c6a7c5508e9659"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a94680c89dde19dcee4c6a7c5508e9659">idle_timeout</a> () const</td></tr>
 <tr class="memdesc:a94680c89dde19dcee4c6a7c5508e9659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the idle timeout set by the remote peer.  <a href="#a94680c89dde19dcee4c6a7c5508e9659">More...</a><br /></td></tr>
 <tr class="separator:a94680c89dde19dcee4c6a7c5508e9659"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a473371542eaeba6f67660582fe6a6074"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074">wake</a> () const</td></tr>
 <tr class="memdesc:a473371542eaeba6f67660582fe6a6074"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Trigger an event from another thread.  <a href="#a473371542eaeba6f67660582fe6a6074">More...</a><br /></td></tr>
 <tr class="separator:a473371542eaeba6f67660582fe6a6074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99c8890565994f68c80b032639f13571"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#a99c8890565994f68c80b032639f13571">reconnected</a> () const</td></tr>
+<tr class="memdesc:a99c8890565994f68c80b032639f13571"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - True if this connection has been automatically re-connected.  <a href="#a99c8890565994f68c80b032639f13571">More...</a><br /></td></tr>
+<tr class="separator:a99c8890565994f68c80b032639f13571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8322acd886ff87d19f153ba21270945"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classproton_1_1connection.html#aa8322acd886ff87d19f153ba21270945">update_options</a> (const <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;)</td></tr>
+<tr class="memdesc:aa8322acd886ff87d19f153ba21270945"><td class="mdescLeft">&#160;</td><td class="mdescRight"><b>Unsettled API</b> - Update the connection options for this connection  <a href="#aa8322acd886ff87d19f153ba21270945">More...</a><br /></td></tr>
+<tr class="separator:aa8322acd886ff87d19f153ba21270945"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A connection to a remote AMQP peer. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a17">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a5">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a1">server.cpp</a>, and <a class="el" href="service_bus_8cpp-example.html#_a12">service_bus.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#_a17">broker.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#_a5">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#_a12">multithreaded_client.cpp</a>, <a class="el" href="server_8cpp-example.html#_a1">server.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#_a13">service_bus.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#_a9">simple_send.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2f632b80247e868b8264b8a025b84baf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f632b80247e868b8264b8a025b84baf">&#9670;&nbsp;</a></span>container()</h2>
@@ -247,8 +261,7 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a25">broker.cpp</a>.</dd>
-</dl>
+
 </div>
 </div>
 <a id="a9e8555112049fc2b4945120b3c45f8ab"></a>
@@ -267,9 +280,8 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Open the connection. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="broker_8cpp-example.html#a18">broker.cpp</a>.</dd>
-</dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a> </dd></dl>
+
 </div>
 </div>
 <a id="a91b014b59b8b14d7f5a26e2e4950cc93"></a>
@@ -289,7 +301,7 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div><div class="memdoc">
 
 <p>Open the connection. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a> </dd></dl>
 
 </div>
 </div>
@@ -316,11 +328,11 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>Close the endpoint. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+<p>Close the connection. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a> </dd></dl>
 
 <p>Implements <a class="el" href="classproton_1_1endpoint.html#af6ee7eacbde6b379b68d954e44f6e549">endpoint</a>.</p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a14">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a17">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a25">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a17">simple_send.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="client_8cpp-example.html#a20">client.cpp</a>, <a class="el" href="direct_recv_8cpp-example.html#a13">direct_recv.cpp</a>, <a class="el" href="direct_send_8cpp-example.html#a14">direct_send.cpp</a>, <a class="el" href="helloworld_8cpp-example.html#a17">helloworld.cpp</a>, <a class="el" href="multithreaded_client_8cpp-example.html#a7">multithreaded_client.cpp</a>, <a class="el" href="multithreaded_client_flow_control_8cpp-example.html#a9">multithreaded_client_flow_control.cpp</a>, <a class="el" href="scheduled_send_8cpp-example.html#a14">scheduled_send.cpp</a>, <a class="el" href="scheduled_send_03_8cpp-example.html#a12">scheduled_send_03.cpp</a>, <a class="el" href="service_bus_8cpp-example.html#a25">service_bus.cpp</a>, <a class="el" href="simple_recv_8cpp-example.html#a16">simple_recv.cpp</a>, and <a class="el" href="simple_send_8cpp-example.html#a20">simple_send.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -348,8 +360,8 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </table>
 </div><div class="memdoc">
 
-<p>Close the endpoint with an error condition. </p>
-<dl class="section see"><dt>See also</dt><dd>endpoint_lifecycle </dd></dl>
+<p>Close the connection. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a> </dd></dl>
 
 <p>Implements <a class="el" href="classproton_1_1endpoint.html#ad4fcddcba5b74ba7766ac6f125469644">endpoint</a>.</p>
 
@@ -573,6 +585,49 @@ sender_range&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <dd>
 Multiple calls to <code><a class="el" href="classproton_1_1connection.html#a473371542eaeba6f67660582fe6a6074" title="Unsettled API - Trigger an event from another thread. ">wake()</a></code> may be coalesced into a single call to <code><a class="el" href="classproton_1_1messaging__handler.html#a29bfba2d26604e5d8d7f3183f1374481" title="Unsettled API - An event that can be triggered from another thread. ">messaging_handler::on_connection_wake()</a></code> that occurs after all of them.</dd></dl>
 <p>The <code><a class="el" href="classproton_1_1work__queue.html" title="Unsettled API - A context for thread-safe execution of work. ">proton::work_queue</a></code> interface provides an easier way execute code safely in the event-handler thread. </p>
+
+</div>
+</div>
+<a id="a99c8890565994f68c80b032639f13571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99c8890565994f68c80b032639f13571">&#9670;&nbsp;</a></span>reconnected()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool reconnected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>Unsettled API</b> - True if this connection has been automatically re-connected. </p>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1reconnect__options.html" title="Unsettled API - Options for reconnect and failover after connection loss. ">reconnect_options</a>, <a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a> </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="simple_send_8cpp-example.html#a10">simple_send.cpp</a>.</dd>
+</dl>
+</div>
+</div>
+<a id="aa8322acd886ff87d19f153ba21270945"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa8322acd886ff87d19f153ba21270945">&#9670;&nbsp;</a></span>update_options()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void update_options </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classproton_1_1connection__options.html">connection_options</a> &amp;&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><b>Unsettled API</b> - Update the connection options for this connection </p>
+<p>This method can be used to update the connection options used with this connection. Usually the connection options are only used during the initial connection attempt so this ability is only useful when automatically reconnect is enabled and you wish to change the connection options before the next reconnect attempt. This would usually be in the handler for the <code>on_transport_error</code> event </p><dl class="section see"><dt>See also</dt><dd><a class="el" href="classproton_1_1messaging__handler.html" title="Handler for Proton messaging events. ">messaging_handler</a>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Connection options supplied in the parameter will be merged with the existing parameters as if <code><a class="el" href="classproton_1_1connection__options.html#a68a8c198dfa16653afc4a70a2b845604" title="Update option values from values set in other. ">connection_options::update()</a></code> was used. </dd></dl>
 
 </div>
 </div>

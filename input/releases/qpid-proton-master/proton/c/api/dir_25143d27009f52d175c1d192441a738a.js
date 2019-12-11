@@ -15,6 +15,7 @@ var dir_25143d27009f52d175c1d192441a738a =
     [ "link.h", "link_8h.html", "link_8h" ],
     [ "listener.h", "listener_8h.html", "listener_8h" ],
     [ "log.h", "log_8h_source.html", null ],
+    [ "logger.h", "logger_8h.html", "logger_8h" ],
     [ "message.h", "message_8h.html", "message_8h" ],
     [ "messenger.h", "messenger_8h.html", "messenger_8h" ],
     [ "netaddr.h", "netaddr_8h.html", "netaddr_8h" ],

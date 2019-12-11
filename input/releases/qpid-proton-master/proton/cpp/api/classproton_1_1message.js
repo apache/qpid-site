@@ -59,5 +59,6 @@ var classproton_1_1message =
     [ "message_annotations", "classproton_1_1message.html#a5d96699458d8be84d821f5651a7b3717", null ],
     [ "message_annotations", "classproton_1_1message.html#a05ea365ef83130c85ffbb74498955ca3", null ],
     [ "delivery_annotations", "classproton_1_1message.html#adb613430bba5478feb0c458d8a9e7145", null ],
-    [ "delivery_annotations", "classproton_1_1message.html#a61a343c78248490a76ea6999e8fccb65", null ]
+    [ "delivery_annotations", "classproton_1_1message.html#a61a343c78248490a76ea6999e8fccb65", null ],
+    [ "operator<<", "classproton_1_1message.html#a73bbb12abb592f610dc46ee3cc00ffa8", null ]
 ];
