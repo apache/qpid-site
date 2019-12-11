@@ -25,7 +25,6 @@ def gen_proton_apis(release, source_dir, release_dir):
 
     gen_proton_c_api(release, source_dir, component_dir)
     gen_proton_cpp_api(release, source_dir, component_dir)
-    gen_proton_python_api(release, source_dir, component_dir)
     gen_proton_ruby_api(release, source_dir, component_dir)
 
 def gen_proton_c_api(release, source_dir, component_dir):
@@ -66,19 +65,6 @@ def gen_proton_cpp_api(release, source_dir, component_dir):
                 example_paths=(join(source_dir, "cpp", "examples"),),
                 config_file=config_file)
 
-def gen_proton_python_api(release, source_dir, component_dir):
-    input_dir = join(source_dir, "python")
-    input_namespace = "proton"
-    output_dir = join(component_dir, "python", "api")
-
-    remove(output_dir)
-
-    gen_epydoc(release=release,
-               title="Qpid Proton Python API",
-               input_paths=(input_dir,),
-               input_namespaces=(input_namespace,),
-               output_dir=output_dir)
-
 def gen_proton_ruby_api(release, source_dir, component_dir):
     input_dir = join(source_dir, "ruby")
     output_dir = join(component_dir, "ruby", "api")
@@ -91,10 +77,22 @@ def gen_proton_ruby_api(release, source_dir, component_dir):
              input_namespaces=("Qpid::Proton",),
              output_dir=output_dir)
 
+
+_htaccess_template = """
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteBase /releases/qpid-proton-{}/proton/python
+
+   RewriteRule ^book/(.*)$ docs/$1 [R=301,L]
+   RewriteRule ^api/(.*)$ docs/ [R=301,L]
+</IfModule>
+"""
+
 def gen_proton_books(release, source_dir, release_dir, build_dir):
     component_dir = join(release_dir, "proton")
-    input_dir = join(build_dir, "python", "tutorial")
-    output_dir = join(component_dir, "python", "book")
+    input_dir = join(build_dir, "python", "docs")
+    output_dir = join(component_dir, "python", "docs")
+    htaccess = join(component_dir, "python", ".htaccess")
 
     remove(output_dir)
 
@@ -102,6 +100,9 @@ def gen_proton_books(release, source_dir, release_dir, build_dir):
     touch(join(output_dir, "_transom_ignore_pages"))
 
     remove(join(output_dir, ".doctrees"))
+
+    htaccess_content = _htaccess_template.format(release)
+    write(htaccess, htaccess_content)
 
 def gen_proton_examples(release, source_dir, release_dir):
     component_dir = join(release_dir, "proton")
@@ -167,7 +168,7 @@ build_dir = make_temp_dir()
 
 with working_dir(build_dir):
     call("cmake {}", source_dir)
-    call("make tutorial-py")
+    call("make docs-py")
 
 gen_proton_apis(release, source_dir, release_dir)
 gen_proton_books(release, source_dir, release_dir, build_dir)
