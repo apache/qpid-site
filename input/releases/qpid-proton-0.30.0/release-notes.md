@@ -29,8 +29,11 @@ documentation, see the [release overview](index.html).
 ## New features and improvements
 
  - [PROTON-2096](https://issues.apache.org/jira/browse/PROTON-2096) - Drop Python 3 &lt; 3.5
+ - [PROTON-2105](https://issues.apache.org/jira/browse/PROTON-2105) - Support Go modules
  - [PROTON-2124](https://issues.apache.org/jira/browse/PROTON-2124) - Disable GS2-KRB5 and GS2-IAKERB SASL mechanisms if they are not explicitly enabled
+ - [PROTON-2131](https://issues.apache.org/jira/browse/PROTON-2131) - Improved logging API
  - [PROTON-2140](https://issues.apache.org/jira/browse/PROTON-2140) - proton-c has very high memory footprint for links
+ - [PROTON-2144](https://issues.apache.org/jira/browse/PROTON-2144) - [C] Memory usage tracking
  - [PROTON-2146](https://issues.apache.org/jira/browse/PROTON-2146) - Reduce memory per connection
  - [PROTON-2148](https://issues.apache.org/jira/browse/PROTON-2148) - Reduce size of shared object data segment
  - [PROTON-2150](https://issues.apache.org/jira/browse/PROTON-2150) - Small reorganisation of object system to allow finer grained memory tracking
