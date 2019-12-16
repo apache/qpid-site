@@ -57,7 +57,7 @@ The following clients are currently supported:
  - [Qpid Proton C++]({{current_proton_release_url}}/proton/c/api/files.html)
  - [Qpid Proton Python]({{current_proton_release_url}}/proton/python/docs/index.html)
  - [Qpid JMS]({{site_url}}/components/jms/index.html)
- - [Rhea Javascript](https://github.com/grs/rhea)
+ - [Rhea Javascript](https://github.com/amqp/rhea)
  - [AMQP .Net Lite](https://github.com/Azure/amqpnetlite)
 
 ## AMQP test coverage
