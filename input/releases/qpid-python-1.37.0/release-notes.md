@@ -25,6 +25,8 @@ for AMQP conformance.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+**NOTE**: Look to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
+
 
 ## Bugs fixed
 

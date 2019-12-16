@@ -22,11 +22,13 @@
 A connection-oriented messaging API that supports many languages and
 platforms.
 
-  - *Languages* - C++, Python
+  - *Languages* - C++, Python 2
   - *Platforms* - Linux, Windows
-  - *AMQP versions* - 1.0, 0-10
+  - *AMQP versions* - C++: 1.0, 0-10, Python: 0-10
   - *Downloads* - C++, bindings: [qpid-cpp-{{current_cpp_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz) \[[ASC](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.asc), [MD5](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.md5), [SHA512](https://www.apache.org/dist/qpid/cpp/{{current_cpp_release}}/qpid-cpp-{{current_cpp_release}}.tar.gz.sha512)],<br/>Python: [qpid-python-{{current_python_release}}.tar.gz](http://www.apache.org/dyn/closer.lua/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz) \[[ASC](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.asc), [MD5](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.md5), [SHA512](https://www.apache.org/dist/qpid/python/{{current_python_release}}/qpid-python-{{current_python_release}}.tar.gz.sha512)]
   - *Source location* -  <https://gitbox.apache.org/repos/asf/qpid-cpp.git>,<br/> <https://gitbox.apache.org/repos/asf/qpid-python.git>
+
+**NOTE**: For Python, look instead to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
 
 ## Documentation
 
@@ -53,7 +55,7 @@ find previous versions with our
   | *C++* | [hello_world.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/hello_world.cpp.html) | [client.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/client.cpp.html) | [server.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/server.cpp.html) | [spout.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/spout.cpp.html) | [drain.cpp]({{current_cpp_release_url}}/messaging-api/cpp/examples/drain.cpp.html) |
   | *Python* | [hello]({{current_python_release_url}}/messaging-api/examples/hello.html) |  | [server]({{current_python_release_url}}/messaging-api/examples/server.html) | [spout]({{current_python_release_url}}/messaging-api/examples/spout.html) | [drain]({{current_python_release_url}}/messaging-api/examples/drain.html) |
 
-**NOTE**: For Python, look instead to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
+For Python, look instead to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
 ## Issues
 
 For more information about finding and reporting bugs, see

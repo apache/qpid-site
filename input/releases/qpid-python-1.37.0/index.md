@@ -39,7 +39,9 @@ files you download.
 
 | Component | Languages | Platforms | AMQP versions |
 |-----------|-----------|-----------|---------------|
-| [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | Python | Linux, Windows | 0-10 |
+| [Qpid Messaging API]({{site_url}}/components/messaging-api/index.html) | Python 2 | Linux, Windows | 0-10 |
+
+**NOTE**: Look to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
 
 ## Documentation
 
