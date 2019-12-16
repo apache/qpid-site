@@ -53,10 +53,10 @@ platform, environment, or language. More about
  - [C++ examples]({{current_proton_release_url}}/proton/cpp/examples/index.html)
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
  - [Java API reference]({{current_proton_j_release_url}}/api/index.html)
- - [Python overview]({{current_proton_release_url}}/proton/python/book/overview.html)
- - [Python tutorial]({{current_proton_release_url}}/proton/python/book/tutorial.html)
+ - [Python overview]({{current_proton_release_url}}/proton/python/docs/overview.html)
+ - [Python tutorial]({{current_proton_release_url}}/proton/python/docs/tutorial.html)
  - [Python examples]({{current_proton_release_url}}/proton/python/examples/index.html)
- - [Python API reference]({{current_proton_release_url}}/proton/python/api/index.html)
+ - [Python API reference]({{current_proton_release_url}}/proton/python/docs/index.html)
  - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob_plain;f=INSTALL.md;hb={{current_proton_release}})
 
 </div>

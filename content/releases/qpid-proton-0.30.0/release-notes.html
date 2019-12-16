@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Proton 0.30.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.30.0/index.html">Qpid Proton 0.30.0</a></li><li>Qpid Proton 0.30.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-proton-0300-release-notes">Qpid Proton 0.30.0 Release Notes</h1>
+
+<p>Proton is a high-performance, lightweight messaging library. More
+about <a href="/proton/index.html">Qpid Proton</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2096">PROTON-2096</a> - Drop Python 3 &lt; 3.5</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2124">PROTON-2124</a> - Disable GS2-KRB5 and GS2-IAKERB SASL mechanisms if they are not explicitly enabled</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2140">PROTON-2140</a> - proton-c has very high memory footprint for links</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2146">PROTON-2146</a> - Reduce memory per connection</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2148">PROTON-2148</a> - Reduce size of shared object data segment</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2150">PROTON-2150</a> - Small reorganisation of object system to allow finer grained memory tracking</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2155">PROTON-2155</a> - Switch helloworld.py back to connect with args</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2091">PROTON-2091</a> - [python] example broker never removes empty queues</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2092">PROTON-2092</a> - [C++] When we use proton::connection::connect() [no arguments] allow no connect.json to get purely default settings</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2098">PROTON-2098</a> - [Python] client abruptly disconnects after receiving disconnect-close-half socket close sequence</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2099">PROTON-2099</a> - [Python] example test runner script leaks file handles</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2102">PROTON-2102</a> - [Python] Improve python build and packaging</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2103">PROTON-2103</a> - [Python] abstract_server example has incorrect import</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2109">PROTON-2109</a> - [Python] Correct default JSON schema to amqps</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2110">PROTON-2110</a> - [Python] Expand tilde symbol as user's home directory when searching for connect.json file</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2116">PROTON-2116</a> - Memory leak in python client</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2126">PROTON-2126</a> - Appveyor: pip install --user setuptools tox: <code>exec code in run_globals</code> File "C:\Python27\Scripts\pip.exe__main__.py", line 9, in &lt;module&gt; TypeError: 'module' object is not callable Command exited with code 1</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2127">PROTON-2127</a> - Proton doesn't build on FreeBSD currently</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2132">PROTON-2132</a> - proton-cpp fails to build with build on clang 9.0 when libc++ is used instead of libstdc++</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2137">PROTON-2137</a> - [cpp] Performance regression found in 0.29.0</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2138">PROTON-2138</a> - Capabilities not retrieved from transaction coordinator target</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2143">PROTON-2143</a> - Linkage warnings build proton-c/python bindings</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2149">PROTON-2149</a> - Handler incorrectly uses session state a method call</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2153">PROTON-2153</a> - Python Proton Reactor get_connection_address attempts to call non-existent connection.get_address method</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

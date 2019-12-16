@@ -1,0 +1,624 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>proton._message &#8212; Qpid Proton Python API 0.30.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.30.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for proton._message</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">cproton</span> <span class="k">import</span> <span class="n">PN_DEFAULT_PRIORITY</span><span class="p">,</span> <span class="n">PN_OVERFLOW</span><span class="p">,</span> <span class="n">pn_error_text</span><span class="p">,</span> <span class="n">pn_message</span><span class="p">,</span> \
+    <span class="n">pn_message_annotations</span><span class="p">,</span> <span class="n">pn_message_body</span><span class="p">,</span> <span class="n">pn_message_clear</span><span class="p">,</span> <span class="n">pn_message_correlation_id</span><span class="p">,</span> <span class="n">pn_message_decode</span><span class="p">,</span> \
+    <span class="n">pn_message_encode</span><span class="p">,</span> <span class="n">pn_message_error</span><span class="p">,</span> <span class="n">pn_message_free</span><span class="p">,</span> <span class="n">pn_message_get_address</span><span class="p">,</span> <span class="n">pn_message_get_content_encoding</span><span class="p">,</span> \
+    <span class="n">pn_message_get_content_type</span><span class="p">,</span> <span class="n">pn_message_get_creation_time</span><span class="p">,</span> <span class="n">pn_message_get_delivery_count</span><span class="p">,</span> \
+    <span class="n">pn_message_get_expiry_time</span><span class="p">,</span> <span class="n">pn_message_get_group_id</span><span class="p">,</span> <span class="n">pn_message_get_group_sequence</span><span class="p">,</span> <span class="n">pn_message_get_priority</span><span class="p">,</span> \
+    <span class="n">pn_message_get_reply_to</span><span class="p">,</span> <span class="n">pn_message_get_reply_to_group_id</span><span class="p">,</span> <span class="n">pn_message_get_subject</span><span class="p">,</span> <span class="n">pn_message_get_ttl</span><span class="p">,</span> \
+    <span class="n">pn_message_get_user_id</span><span class="p">,</span> <span class="n">pn_message_id</span><span class="p">,</span> <span class="n">pn_message_instructions</span><span class="p">,</span> <span class="n">pn_message_is_durable</span><span class="p">,</span> <span class="n">pn_message_is_first_acquirer</span><span class="p">,</span> \
+    <span class="n">pn_message_is_inferred</span><span class="p">,</span> <span class="n">pn_message_properties</span><span class="p">,</span> <span class="n">pn_message_set_address</span><span class="p">,</span> <span class="n">pn_message_set_content_encoding</span><span class="p">,</span> \
+    <span class="n">pn_message_set_content_type</span><span class="p">,</span> <span class="n">pn_message_set_creation_time</span><span class="p">,</span> <span class="n">pn_message_set_delivery_count</span><span class="p">,</span> <span class="n">pn_message_set_durable</span><span class="p">,</span> \
+    <span class="n">pn_message_set_expiry_time</span><span class="p">,</span> <span class="n">pn_message_set_first_acquirer</span><span class="p">,</span> <span class="n">pn_message_set_group_id</span><span class="p">,</span> <span class="n">pn_message_set_group_sequence</span><span class="p">,</span> \
+    <span class="n">pn_message_set_inferred</span><span class="p">,</span> <span class="n">pn_message_set_priority</span><span class="p">,</span> <span class="n">pn_message_set_reply_to</span><span class="p">,</span> <span class="n">pn_message_set_reply_to_group_id</span><span class="p">,</span> \
+    <span class="n">pn_message_set_subject</span><span class="p">,</span> <span class="n">pn_message_set_ttl</span><span class="p">,</span> <span class="n">pn_message_set_user_id</span>
+
+<span class="kn">from</span> <span class="nn">.</span> <span class="k">import</span> <span class="n">_compat</span>
+<span class="kn">from</span> <span class="nn">._common</span> <span class="k">import</span> <span class="n">isinteger</span><span class="p">,</span> <span class="n">millis2secs</span><span class="p">,</span> <span class="n">secs2millis</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">,</span> <span class="n">utf82unicode</span>
+<span class="kn">from</span> <span class="nn">._data</span> <span class="k">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">ulong</span><span class="p">,</span> <span class="n">AnnotationDict</span>
+<span class="kn">from</span> <span class="nn">._endpoints</span> <span class="k">import</span> <span class="n">Link</span>
+<span class="kn">from</span> <span class="nn">._exceptions</span> <span class="k">import</span> <span class="n">EXCEPTIONS</span><span class="p">,</span> <span class="n">MessageException</span>
+
+<span class="c1">#</span>
+<span class="c1"># Hack to provide Python2 &lt;---&gt; Python3 compatibility</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">unicode</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="n">unicode</span> <span class="o">=</span> <span class="nb">str</span>
+
+
+<div class="viewcode-block" id="Message"><a class="viewcode-back" href="../../proton.html#proton.Message">[docs]</a><span class="k">class</span> <span class="nc">Message</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;The :py:class:`Message` class is a mutable holder of message content.</span>
+
+<span class="sd">    :ivar instructions: delivery instructions for the message (&quot;Delivery Annotations&quot; in the AMQP 1.0 spec)</span>
+<span class="sd">    :vartype instructions: ``dict``</span>
+<span class="sd">    :ivar ~.annotations: infrastructure defined message annotations (&quot;Message Annotations&quot; in the AMQP 1.0 spec)</span>
+<span class="sd">    :vartype ~.annotations: ``dict``</span>
+<span class="sd">    :ivar ~.properties: application defined message properties</span>
+<span class="sd">    :vartype ~.properties: ``dict``</span>
+<span class="sd">    :ivar body: message body</span>
+<span class="sd">    :vartype body: bytes | unicode | dict | list | int | long | float | UUID</span>
+
+<span class="sd">    :param kwargs: Message property name/value pairs to initialize the Message</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DEFAULT_PRIORITY</span> <span class="o">=</span> <span class="n">PN_DEFAULT_PRIORITY</span>
+    <span class="sd">&quot;&quot;&quot; Default AMQP message priority&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span> <span class="o">=</span> <span class="n">pn_message</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_correlation_id</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">body</span>
+        <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">_compat</span><span class="o">.</span><span class="n">iteritems</span><span class="p">(</span><span class="n">kwargs</span><span class="p">):</span>
+            <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>  <span class="c1"># Raise exception if it&#39;s not a valid attribute.</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s2">&quot;_msg&quot;</span><span class="p">):</span>
+            <span class="n">pn_message_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_msg</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exc</span> <span class="o">=</span> <span class="n">EXCEPTIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">MessageException</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exc</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">pn_error_text</span><span class="p">(</span><span class="n">pn_message_error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">err</span>
+
+    <span class="k">def</span> <span class="nf">_check_property_keys</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">unicode</span><span class="p">):</span>
+                <span class="c1"># py2 unicode, py3 str (via hack definition)</span>
+                <span class="k">continue</span>
+            <span class="c1"># If key is binary then change to string</span>
+            <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                <span class="c1"># py2 str</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">[</span><span class="n">k</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">MessageException</span><span class="p">(</span><span class="s1">&#39;Application property key is not string type: key=</span><span class="si">%s</span><span class="s1"> </span><span class="si">%s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">k</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">_pre_encode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inst</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_instructions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">ann</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_annotations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_body</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+        <span class="n">inst</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">inst</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">instructions</span><span class="p">)</span>
+        <span class="n">ann</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">ann</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">annotations</span><span class="p">)</span>
+        <span class="n">props</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_property_keys</span><span class="p">()</span>
+            <span class="n">props</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">)</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_post_decode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">inst</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_instructions</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">ann</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_annotations</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+        <span class="n">body</span> <span class="o">=</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_message_body</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">inst</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="n">inst</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">ann</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">ann</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">props</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="n">props</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">body</span><span class="o">.</span><span class="n">next</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="Message.clear"><a class="viewcode-back" href="../../proton.html#proton.Message.clear">[docs]</a>    <span class="k">def</span> <span class="nf">clear</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Clears the contents of the :class:`Message`. All fields will be reset to</span>
+<span class="sd">        their default values.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_message_clear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">body</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+    <span class="k">def</span> <span class="nf">_is_inferred</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_is_inferred</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_inferred</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_inferred</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">inferred</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_is_inferred</span><span class="p">,</span> <span class="n">_set_inferred</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The inferred flag for a message indicates how the message content</span>
+<span class="s2">        is encoded into AMQP sections. If inferred is true then binary and</span>
+<span class="s2">        list values in the body of the message will be encoded as AMQP DATA</span>
+<span class="s2">        and AMQP SEQUENCE sections, respectively. If inferred is false,</span>
+<span class="s2">        then all values in the body of the message will be encoded as AMQP</span>
+<span class="s2">        VALUE sections regardless of their type.</span>
+
+<span class="s2">        :type: ``bool``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_is_durable</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_is_durable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_durable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_durable</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">durable</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_is_durable</span><span class="p">,</span> <span class="n">_set_durable</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The durable property indicates that the message should be held durably</span>
+<span class="s2">        by any intermediaries taking responsibility for the message.</span>
+
+<span class="s2">        :type: ``bool``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_priority</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_get_priority</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_priority</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_priority</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="n">priority</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_priority</span><span class="p">,</span> <span class="n">_set_priority</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The relative priority of the message, with higher numbers indicating</span>
+<span class="s2">        higher priority. The number of available priorities depends</span>
+<span class="s2">        on the implementation, but AMQP defines the default priority as</span>
+<span class="s2">        the value ``4``. See the</span>
+<span class="s2">        `OASIS AMQP 1.0 standard &lt;http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-messaging-v1.0-os.html#type-header&gt;`_</span>
+<span class="s2">        for more details on message priority.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_ttl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">millis2secs</span><span class="p">(</span><span class="n">pn_message_get_ttl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_ttl</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_ttl</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">secs2millis</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">ttl</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_ttl</span><span class="p">,</span> <span class="n">_set_ttl</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The time to live of the message measured in seconds. Expired messages</span>
+<span class="s2">        may be dropped.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_is_first_acquirer</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_is_first_acquirer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_first_acquirer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_first_acquirer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">first_acquirer</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_is_first_acquirer</span><span class="p">,</span> <span class="n">_set_first_acquirer</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        ``True`` iff the recipient is the first to acquire the message,</span>
+<span class="s2">        ``False`` otherwise.</span>
+
+<span class="s2">        :type: ``bool``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_delivery_count</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_get_delivery_count</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_delivery_count</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_delivery_count</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="n">delivery_count</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_delivery_count</span><span class="p">,</span> <span class="n">_set_delivery_count</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The number of delivery attempts made for this message.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_set_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isinteger</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">ulong</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">rewind</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_id</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="nb">id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_id</span><span class="p">,</span> <span class="n">_set_id</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The globally unique id of the message, and can be used</span>
+<span class="s2">        to determine if a received message is a duplicate. The allowed</span>
+<span class="s2">        types to set the id are:</span>
+
+<span class="s2">        :type: The valid AMQP types for an id are one of:</span>
+
+<span class="s2">               * ``int`` (unsigned)</span>
+<span class="s2">               * ``uuid.UUID``</span>
+<span class="s2">               * ``bytes``</span>
+<span class="s2">               * ``str``</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_user_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_get_user_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_user_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_user_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="n">user_id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_user_id</span><span class="p">,</span> <span class="n">_set_user_id</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The user id of the message creator.</span>
+
+<span class="s2">        :type: ``bytes``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_address</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">address</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_address</span><span class="p">,</span> <span class="n">_set_address</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The address of the message.</span>
+
+<span class="s2">        :type: ``str``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_subject</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_subject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_subject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_subject</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">subject</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_subject</span><span class="p">,</span> <span class="n">_set_subject</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The subject of the message.</span>
+
+<span class="s2">        :type: ``str``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_reply_to</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_reply_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_reply_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_reply_to</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">reply_to</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_reply_to</span><span class="p">,</span> <span class="n">_set_reply_to</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The reply-to address for the message.</span>
+
+<span class="s2">        :type: ``str``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_correlation_id</span><span class="o">.</span><span class="n">get_object</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_set_correlation_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isinteger</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="n">ulong</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_correlation_id</span><span class="o">.</span><span class="n">rewind</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_correlation_id</span><span class="o">.</span><span class="n">put_object</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+    <span class="n">correlation_id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_correlation_id</span><span class="p">,</span> <span class="n">_set_correlation_id</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The correlation-id for the message.</span>
+
+<span class="s2">        :type: The valid AMQP types for a correlation-id are one of:</span>
+
+<span class="s2">               * ``int`` (unsigned)</span>
+<span class="s2">               * ``uuid.UUID``</span>
+<span class="s2">               * ``bytes``</span>
+<span class="s2">               * ``str``</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_content_type</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">symbol</span><span class="p">(</span><span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_content_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">_set_content_type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_content_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">content_type</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_content_type</span><span class="p">,</span> <span class="n">_set_content_type</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The RFC-2046 [RFC2046] MIME type for the message body.</span>
+
+<span class="s2">        :type: :class:`symbol`</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_content_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">symbol</span><span class="p">(</span><span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_content_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)))</span>
+
+    <span class="k">def</span> <span class="nf">_set_content_encoding</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_content_encoding</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">content_encoding</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_content_encoding</span><span class="p">,</span> <span class="n">_set_content_encoding</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The content-encoding of the message.</span>
+
+<span class="s2">        :type: :class:`symbol`</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_expiry_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">millis2secs</span><span class="p">(</span><span class="n">pn_message_get_expiry_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_expiry_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_expiry_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">secs2millis</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">expiry_time</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_expiry_time</span><span class="p">,</span> <span class="n">_set_expiry_time</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The absolute expiry time of the message in seconds using the Unix time_t [IEEE1003] encoding.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_creation_time</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">millis2secs</span><span class="p">(</span><span class="n">pn_message_get_creation_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_creation_time</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_creation_time</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">secs2millis</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">creation_time</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_creation_time</span><span class="p">,</span> <span class="n">_set_creation_time</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The creation time of the message in seconds using the Unix time_t [IEEE1003] encoding.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_group_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_group_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_group_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_group_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">group_id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_group_id</span><span class="p">,</span> <span class="n">_set_group_id</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The group id of the message.</span>
+
+<span class="s2">        :type: ``str``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_group_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_message_get_group_sequence</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_set_group_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_group_sequence</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+
+    <span class="n">group_sequence</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_group_sequence</span><span class="p">,</span> <span class="n">_set_group_sequence</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The sequence of the message within its group.</span>
+
+<span class="s2">        :type: ``int``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_reply_to_group_id</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_message_get_reply_to_group_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_set_reply_to_group_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_set_reply_to_group_id</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">value</span><span class="p">)))</span>
+
+    <span class="n">reply_to_group_id</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_reply_to_group_id</span><span class="p">,</span> <span class="n">_set_reply_to_group_id</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">        The group-id for any replies.</span>
+
+<span class="s2">        :type: ``str``</span>
+<span class="s2">        :raise: :exc:`MessageException` if there is any Proton error when using the setter.        </span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">instruction_dict</span>
+
+    <span class="k">def</span> <span class="nf">_set_instructions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">instructions</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">instructions</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instruction_dict</span> <span class="o">=</span> <span class="n">AnnotationDict</span><span class="p">(</span><span class="n">instructions</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">instruction_dict</span> <span class="o">=</span> <span class="n">instructions</span>
+
+    <span class="n">instructions</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_instructions</span><span class="p">,</span> <span class="n">_set_instructions</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Delivery annotations as a dictionary of key/values. The AMQP 1.0</span>
+<span class="s2">    specification restricts this dictionary to have keys that are either</span>
+<span class="s2">    :class:`symbol` or :class:`ulong` types. It is possible to use</span>
+<span class="s2">    the special ``dict`` subclass :class:`AnnotationDict` which</span>
+<span class="s2">    will by default enforce these restrictions on construction. In addition,</span>
+<span class="s2">    if string types are used, this class will be silently convert them into</span>
+<span class="s2">    symbols.</span>
+
+<span class="s2">    :type: :class:`AnnotationDict`. Any ``dict`` with :class:`ulong` or :class:`symbol` keys.</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">annotation_dict</span>
+
+    <span class="k">def</span> <span class="nf">_set_annotations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">annotations</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">annotations</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotation_dict</span> <span class="o">=</span> <span class="n">AnnotationDict</span><span class="p">(</span><span class="n">annotations</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">annotation_dict</span> <span class="o">=</span> <span class="n">annotations</span>
+
+    <span class="n">annotations</span> <span class="o">=</span> <span class="nb">property</span><span class="p">(</span><span class="n">_get_annotations</span><span class="p">,</span> <span class="n">_set_annotations</span><span class="p">,</span> <span class="n">doc</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Message annotations as a dictionary of key/values. The AMQP 1.0</span>
+<span class="s2">    specification restricts this dictionary to have keys that are either</span>
+<span class="s2">    :class:`symbol` or :class:`ulong` types. It is possible to use</span>
+<span class="s2">    the special ``dict`` subclass :class:`AnnotationDict` which</span>
+<span class="s2">    will by default enforce these restrictions on construction. In addition,</span>
+<span class="s2">    if a string types are used, this class will silently convert them into</span>
+<span class="s2">    symbols.</span>
+
+<span class="s2">    :type: :class:`AnnotationDict`. Any ``dict`` with :class:`ulong` or :class:`symbol` keys.</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Message.encode"><a class="viewcode-back" href="../../overview.html#proton.Message.encode">[docs]</a>    <span class="k">def</span> <span class="nf">encode</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_pre_encode</span><span class="p">()</span>
+        <span class="n">sz</span> <span class="o">=</span> <span class="mi">16</span>
+        <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+            <span class="n">err</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">pn_message_encode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">sz</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">err</span> <span class="o">==</span> <span class="n">PN_OVERFLOW</span><span class="p">:</span>
+                <span class="n">sz</span> <span class="o">*=</span> <span class="mi">2</span>
+                <span class="k">continue</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+                <span class="k">return</span> <span class="n">data</span></div>
+
+<div class="viewcode-block" id="Message.decode"><a class="viewcode-back" href="../../overview.html#proton.Message.decode">[docs]</a>    <span class="k">def</span> <span class="nf">decode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_message_decode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_msg</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_post_decode</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="Message.send"><a class="viewcode-back" href="../../proton.html#proton.Message.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sender</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Encodes and sends the message content using the specified sender,</span>
+<span class="sd">        and, if present, using the specified tag. Upon success, will</span>
+<span class="sd">        return the :class:`Delivery` object for the sent message.</span>
+
+<span class="sd">        :param sender: The sender to send the message</span>
+<span class="sd">        :type sender: :class:`Sender`</span>
+<span class="sd">        :param tag: The delivery tag for the sent message</span>
+<span class="sd">        :type tag: ``bytes``</span>
+<span class="sd">        :return: The delivery associated with the sent message</span>
+<span class="sd">        :rtype: :class:`Delivery`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">dlv</span> <span class="o">=</span> <span class="n">sender</span><span class="o">.</span><span class="n">delivery</span><span class="p">(</span><span class="n">tag</span> <span class="ow">or</span> <span class="n">sender</span><span class="o">.</span><span class="n">delivery_tag</span><span class="p">())</span>
+        <span class="n">encoded</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+        <span class="n">sender</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="n">sender</span><span class="o">.</span><span class="n">advance</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">sender</span><span class="o">.</span><span class="n">snd_settle_mode</span> <span class="o">==</span> <span class="n">Link</span><span class="o">.</span><span class="n">SND_SETTLED</span><span class="p">:</span>
+            <span class="n">dlv</span><span class="o">.</span><span class="n">settle</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">dlv</span></div>
+
+<div class="viewcode-block" id="Message.recv"><a class="viewcode-back" href="../../proton.html#proton.Message.recv">[docs]</a>    <span class="k">def</span> <span class="nf">recv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">link</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Receives and decodes the message content for the current :class:`Delivery`</span>
+<span class="sd">        from the link. Upon success it will return the current delivery</span>
+<span class="sd">        for the link. If there is no current delivery, or if the current</span>
+<span class="sd">        delivery is incomplete, or if the link is not a receiver, it will</span>
+<span class="sd">        return ``None``.</span>
+
+<span class="sd">        :param link: The link to receive a message from</span>
+<span class="sd">        :type link: :class:`Link`</span>
+<span class="sd">        :return: the delivery associated with the decoded message (or None)</span>
+<span class="sd">        :rtype: :class:`Delivery`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">is_sender</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">dlv</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">current</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">dlv</span> <span class="ow">or</span> <span class="n">dlv</span><span class="o">.</span><span class="n">partial</span><span class="p">:</span> <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">dlv</span><span class="o">.</span><span class="n">encoded</span> <span class="o">=</span> <span class="n">link</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">dlv</span><span class="o">.</span><span class="n">pending</span><span class="p">)</span>
+        <span class="n">link</span><span class="o">.</span><span class="n">advance</span><span class="p">()</span>
+        <span class="c1"># the sender has already forgotten about the delivery, so we might</span>
+        <span class="c1"># as well too</span>
+        <span class="k">if</span> <span class="n">link</span><span class="o">.</span><span class="n">remote_snd_settle_mode</span> <span class="o">==</span> <span class="n">Link</span><span class="o">.</span><span class="n">SND_SETTLED</span><span class="p">:</span>
+            <span class="n">dlv</span><span class="o">.</span><span class="n">settle</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">dlv</span><span class="o">.</span><span class="n">encoded</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dlv</span></div>
+
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">props</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;inferred&quot;</span><span class="p">,</span> <span class="s2">&quot;address&quot;</span><span class="p">,</span> <span class="s2">&quot;reply_to&quot;</span><span class="p">,</span> <span class="s2">&quot;durable&quot;</span><span class="p">,</span> <span class="s2">&quot;ttl&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;priority&quot;</span><span class="p">,</span> <span class="s2">&quot;first_acquirer&quot;</span><span class="p">,</span> <span class="s2">&quot;delivery_count&quot;</span><span class="p">,</span> <span class="s2">&quot;id&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;correlation_id&quot;</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="s2">&quot;group_id&quot;</span><span class="p">,</span> <span class="s2">&quot;group_sequence&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;reply_to_group_id&quot;</span><span class="p">,</span> <span class="s2">&quot;instructions&quot;</span><span class="p">,</span> <span class="s2">&quot;annotations&quot;</span><span class="p">,</span>
+                     <span class="s2">&quot;properties&quot;</span><span class="p">,</span> <span class="s2">&quot;body&quot;</span><span class="p">):</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">value</span><span class="p">:</span> <span class="n">props</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">=</span><span class="si">%r</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
+        <span class="k">return</span> <span class="s2">&quot;Message(</span><span class="si">%s</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">props</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.30.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

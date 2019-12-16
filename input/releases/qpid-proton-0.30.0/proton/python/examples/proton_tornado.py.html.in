@@ -1,0 +1,105 @@
+
+<h1>proton_tornado.py</h1>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tornado.ioloop</span>
+<span class="kn">from</span> <span class="nn">proton.reactor</span> <span class="kn">import</span> <span class="n">Container</span> <span class="k">as</span> <span class="n">BaseContainer</span>
+<span class="kn">from</span> <span class="nn">proton.handlers</span> <span class="kn">import</span> <span class="n">IOHandler</span>
+
+
+<span class="k">class</span> <span class="nc">TornadoLoopHandler</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">loop</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">handler_base</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span> <span class="o">=</span> <span class="n">loop</span> <span class="ow">or</span> <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">io</span> <span class="o">=</span> <span class="n">handler_base</span> <span class="ow">or</span> <span class="n">IOHandler</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span> <span class="nf">on_reactor_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">reactor</span>
+
+    <span class="k">def</span> <span class="nf">on_reactor_quiesced</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">reactor</span><span class="o">.</span><span class="n">yield_</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_unhandled</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">event</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">io</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_events</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">):</span>
+        <span class="n">events</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">ERROR</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">reading</span><span class="p">:</span>
+            <span class="n">events</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">READ</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">writing</span><span class="p">:</span>
+            <span class="n">events</span> <span class="o">|=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">WRITE</span>
+        <span class="k">return</span> <span class="n">events</span>
+
+    <span class="k">def</span> <span class="nf">_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">deadline</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_timeout</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">deadline</span><span class="p">,</span> <span class="k">lambda</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_expired</span><span class="p">(</span><span class="n">sel</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_expired</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactor</span><span class="o">.</span><span class="n">mark</span><span class="p">()</span>
+        <span class="n">sel</span><span class="o">.</span><span class="n">expired</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactor</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">reactor</span><span class="o">.</span><span class="n">quiesced</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sel</span><span class="p">,</span> <span class="n">events</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">READ</span> <span class="o">&amp;</span> <span class="n">events</span><span class="p">:</span>
+            <span class="n">sel</span><span class="o">.</span><span class="n">readable</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">WRITE</span> <span class="o">&amp;</span> <span class="n">events</span><span class="p">:</span>
+            <span class="n">sel</span><span class="o">.</span><span class="n">writable</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">on_selectable_init</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">context</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_handler</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="k">lambda</span> <span class="n">fd</span><span class="p">,</span> <span class="n">events</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_callback</span><span class="p">(</span><span class="n">sel</span><span class="p">,</span> <span class="n">events</span><span class="p">),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">(</span><span class="n">sel</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="k">def</span> <span class="nf">on_selectable_updated</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">context</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">update_handler</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">_events</span><span class="p">(</span><span class="n">sel</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_schedule</span><span class="p">(</span><span class="n">sel</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">on_selectable_final</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+        <span class="n">sel</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">context</span>
+        <span class="k">if</span> <span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">remove_handler</span><span class="p">(</span><span class="n">sel</span><span class="o">.</span><span class="n">fileno</span><span class="p">())</span>
+        <span class="n">sel</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_stop</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reactor</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">loop</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Container</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">handlers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tornado_loop</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;loop&#39;</span><span class="p">,</span> <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;global_handler&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">TornadoLoopHandler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tornado_loop</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;handler_base&#39;</span><span class="p">,</span> <span class="bp">None</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span> <span class="o">=</span> <span class="n">BaseContainer</span><span class="p">(</span><span class="o">*</span><span class="n">handlers</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">initialise</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">initialise</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tornado_loop</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">touch</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_process</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">quiesced</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">tornado_loop</span><span class="o">.</span><span class="n">add_callback</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_process</span><span class="p">)</span>
+</pre></div>
+
+<p><a href="proton_tornado.py">Download this file</a></p>
