@@ -58,3 +58,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-2143](https://issues.apache.org/jira/browse/PROTON-2143) - Linkage warnings build proton-c/python bindings
  - [PROTON-2149](https://issues.apache.org/jira/browse/PROTON-2149) - Handler incorrectly uses session state a method call
  - [PROTON-2153](https://issues.apache.org/jira/browse/PROTON-2153) - Python Proton Reactor get_connection_address attempts to call non-existent connection.get_address method
+
+## Tasks
+
+ - [PROTON-1801](https://issues.apache.org/jira/browse/PROTON-1801) - Strip the version from the /usr/share/proton dir
