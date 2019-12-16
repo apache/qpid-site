@@ -144,29 +144,29 @@ loop, and programs written using this utility are generally structured
 to react to various events. This reactive style is particularly suited
 to messaging applications.</p>
 <p>To be notified of a particular event, you define a class with the
-appropriately name method on it. That method is then called by the
+appropriately named method on it. That method is then called by the
 event loop when the event occurs.</p>
 <p>We define a class here, <code class="docutils literal notranslate"><span class="pre">HelloWorld</span></code>, which handles the key events of
 interest in sending and receiving a message.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">on_start()</span></code> method is called when the event loop first
-starts. We handle that by establishing our connection (line 12), a
-sender over which to send the message (line 13) and a receiver over
+starts. We handle that by establishing our connection (line 13), a
+sender over which to send the message (line 15) and a receiver over
 which to receive it back again (line 14).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">on_sendable()</span></code> method is called when message can be transferred
 over the associated sender link to the remote peer. We send out our
-<code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code> message (line 17), then close the sender (line 18) as
+<code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code> message (line 18), then close the sender (line 19) as
 we only want to send one message. The closing of the sender will
 prevent further calls to <code class="docutils literal notranslate"><span class="pre">on_sendable()</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">on_message()</span></code> method is called when a message is
 received. Within that we simply print the body of the message (line
-21) and then close the connection (line 22).</p>
+22) and then close the connection (line 23).</p>
 <p>Now that we have defined the logic for handling these events, we
 create an instance of a <a class="reference internal" href="proton.reactor.html#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a>, pass it
 our handler and then enter the event loop by calling
-<a class="reference internal" href="proton.reactor.html#proton.reactor.Container.run" title="proton.reactor.Container.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>. At this point control
+<a class="reference internal" href="proton.reactor.html#proton.reactor.Container.run" title="proton.reactor.Container.run"><code class="xref py py-meth docutils literal notranslate"><span class="pre">run()</span></code></a>. At this point, control
 passes to the container instance, which will make the appropriate
 callbacks to any defined handlers.</p>
-<p>To run the example you will need to have a broker (or similar)
+<p>To run the example, you will need to have a broker (or similar)
 accepting connections on that url either with a queue (or topic)
 matching the given address or else configured to create such a queue
 (or topic) dynamically. There is a simple broker.py script included
@@ -177,7 +177,7 @@ gives an example of a slightly more involved application).</p>
 <div class="section" id="hello-world-direct">
 <h2>Hello World, Direct!<a class="headerlink" href="#hello-world-direct" title="Permalink to this headline">¶</a></h2>
 <p>Though often used in conjunction with a broker, AMQP does not
-<em>require</em> this. It also allows senders and receivers can communicate
+<em>require</em> this. It also allows senders and receivers to communicate
 directly if desired.</p>
 <p>Let’s modify our example to demonstrate this.</p>
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -217,9 +217,9 @@ directly if desired.</p>
         <span class="nb">super</span><span class="p">(</span><span class="n">HelloWorld</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">url</span>
 
-<span class="hll">    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_sender</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span>        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_sender</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">on_sendable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">event</span><span class="o">.</span><span class="n">sender</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">Message</span><span class="p">(</span><span class="n">body</span><span class="o">=</span><span class="s2">&quot;Hello World!&quot;</span><span class="p">))</span>
@@ -227,17 +227,17 @@ directly if desired.</p>
 
     <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
-<span class="hll">
-</span><span class="hll">    <span class="k">def</span> <span class="nf">on_accepted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-</span>        <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="hll">
-</span><span class="hll">    <span class="k">def</span> <span class="nf">on_connection_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
+<span class="hll">    <span class="k">def</span> <span class="nf">on_accepted</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+</span><span class="hll">        <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span>
+<span class="hll">    <span class="k">def</span> <span class="nf">on_connection_closed</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+</span><span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span>
 <span class="n">Container</span><span class="p">(</span><span class="n">HelloWorld</span><span class="p">(</span><span class="s2">&quot;localhost:8888/examples&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </pre></div>
 </td></tr></table></div>
-<p>The first difference, on line 11, is that rather than creating a
+<p>The first difference, on line 12, is that rather than creating a
 receiver on the same connection as our sender, we listen for incoming
 connections by invoking the
 <a class="reference internal" href="proton.reactor.html#proton.reactor.Container.listen" title="proton.reactor.Container.listen"><code class="xref py py-meth docutils literal notranslate"><span class="pre">listen()</span></code></a> method on the
@@ -250,11 +250,11 @@ print the message out in response to the <code class="docutils literal notransla
 exactly as before.</p>
 <p>However we also handle two new events. We now close the connection
 from the senders side once the message has been accepted (line
-22). The acceptance of the message is an indication of successful
+23). The acceptance of the message is an indication of successful
 transfer to the peer. We are notified of that event through the
 <code class="docutils literal notranslate"><span class="pre">on_accepted()</span></code> callback. Then, once the connection has been closed,
 of which we are notified through the <code class="docutils literal notranslate"><span class="pre">on_closed()</span></code> callback, we stop
-accepting incoming connections (line 25) at which point there is no
+accepting incoming connections (line 26) at which point there is no
 work to be done and the event loop exits, and the run() method will
 return.</p>
 <p>So now we have our example working without a broker involved!</p>
@@ -372,8 +372,8 @@ overwhelmed by the number of messages it is sent.</p>
 <p>In the <code class="docutils literal notranslate"><span class="pre">on_sendable()</span></code> callback, we check that our sender has credit
 before sending messages. We also check that we haven’t already sent
 the required number of messages.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">send()</span></code> call on line 20 is of course asynchronous. When it
-returns the message has not yet actually been transferred across the
+<p>The <code class="docutils literal notranslate"><span class="pre">send()</span></code> call on line 21 is of course asynchronous. When it
+returns, the message has not yet actually been transferred across the
 network to the receiver. By handling the <code class="docutils literal notranslate"><span class="pre">on_accepted()</span></code> event, we
 can get notified when the receiver has received and accepted the
 message. In our example we use this event to track the confirmation of
@@ -473,16 +473,15 @@ know the receiver got to.</p>
 <p>Here we handle the <code class="docutils literal notranslate"><span class="pre">on_start()</span></code> by creating our receiver, much like
 we did for the sender. We also handle the <code class="docutils literal notranslate"><span class="pre">on_message()</span></code> event for
 received messages and print the message out as in the <code class="docutils literal notranslate"><span class="pre">Hello</span> <span class="pre">World!</span></code>
-examples. However we add some logic to allow the receiver to wait for
-a given number of messages, then to close the connection and exit. We
+examples. However, we add some logic to allow the receiver to wait for
+a given number of messages, then close the connection and exit. We
 also add some logic to check for and ignore duplicates, using a simple
 sequential id scheme.</p>
 <p>Again, though sending between these two examples requires some sort of
 intermediary process (e.g. a broker), AMQP allows us to send messages
 directly between two processes without this if we so wish. In that
-case one or other of the processes needs to accept incoming socket
-connections. Let’s create a modified version of the receiving example
-that does this:</p>
+case, one of the processes needs to accept incoming socket connections.
+Let’s create a modified version of the receiving example that does this:</p>
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -534,9 +533,9 @@ that does this:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="o">=</span> <span class="n">count</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="hll">    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span>
     <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">id</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">received</span><span class="p">:</span>
             <span class="c1"># ignore duplicate message</span>
@@ -546,9 +545,9 @@ that does this:</p>
             <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>
                 <span class="n">event</span><span class="o">.</span><span class="n">receiver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-<span class="hll">                <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span>                <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
+                <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="hll">                <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span>
 <span class="n">parser</span> <span class="o">=</span> <span class="n">optparse</span><span class="o">.</span><span class="n">OptionParser</span><span class="p">(</span><span class="n">usage</span><span class="o">=</span><span class="s2">&quot;usage: %prog [options]&quot;</span><span class="p">)</span>
 <span class="n">parser</span><span class="o">.</span><span class="n">add_option</span><span class="p">(</span><span class="s2">&quot;-a&quot;</span><span class="p">,</span> <span class="s2">&quot;--address&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;localhost:5672/examples&quot;</span><span class="p">,</span>
                   <span class="n">help</span><span class="o">=</span><span class="s2">&quot;address from which messages are received (default </span><span class="si">%d</span><span class="s2">efault)&quot;</span><span class="p">)</span>
@@ -564,17 +563,17 @@ that does this:</p>
 
 </pre></div>
 </td></tr></table></div>
-<p>There are only two differences here. On line 13, instead of initiating
+<p>There are only two differences here. On line 14, instead of initiating
 a link (and implicitly a connection), we listen for incoming
-connections. On line 25, when we have received all the expected
+connections. On line 26, when we have received all the expected
 messages, we then stop listening for incoming connections by closing
 the listener object.</p>
 <p>You can use the original send example now to send to this receiver
 directly. (Note: you will need to stop any broker that is listening on
 the 5672 port, or else change the port used by specifying a different
 address to each example via the -a command line switch).</p>
-<p>We could equally well modify the original sender to allow the original
-receiver to connect to it. Again that just requires two modifications:</p>
+<p>We could also modify the original sender to allow the original
+receiver to connect to it. Again, that just requires two modifications:</p>
 <div class="highlight-default notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -632,9 +631,9 @@ receiver to connect to it. Again that just requires two modifications:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">confirmed</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">total</span> <span class="o">=</span> <span class="n">messages</span>
 
-<span class="hll">    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-
+    <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
+<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+</span>
     <span class="k">def</span> <span class="nf">on_sendable</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="k">while</span> <span class="n">event</span><span class="o">.</span><span class="n">sender</span><span class="o">.</span><span class="n">credit</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sent</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">:</span>
             <span class="n">msg</span> <span class="o">=</span> <span class="n">Message</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sent</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">body</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;sequence&#39;</span><span class="p">:(</span><span class="bp">self</span><span class="o">.</span><span class="n">sent</span><span class="o">+</span><span class="mi">1</span><span class="p">)})</span>
@@ -645,9 +644,9 @@ receiver to connect to it. Again that just requires two modifications:</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">confirmed</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">confirmed</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">total</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;all messages confirmed&quot;</span><span class="p">)</span>
-<span class="hll">            <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</span>            <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
+            <span class="n">event</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="hll">            <span class="bp">self</span><span class="o">.</span><span class="n">acceptor</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span>
     <span class="k">def</span> <span class="nf">on_disconnected</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">confirmed</span>
 
@@ -665,8 +664,8 @@ receiver to connect to it. Again that just requires two modifications:</p>
 </pre></div>
 </td></tr></table></div>
 <p>As with the modified receiver, instead of initiating establishment of
-a link, we listen for incoming connections on line 15 and then on line
-28, when we have received confirmation of all the messages we sent, we
+a link, we listen for incoming connections on line 16 and then on line
+29, when we have received confirmation of all the messages we sent, we
 can close the listener in order to exit. The symmetry in the
 underlying AMQP that enables this is quite unique and elegant, and in
 reflecting this the proton API provides a flexible toolkit for
@@ -858,16 +857,15 @@ requests with the same reply_to.</p>
 </pre></div>
 </td></tr></table></div>
 <p>As well as sending requests, we need to be able to get back the
-responses. We create a receiver for that (see line 14), but we don’t
+responses. We create a receiver for that (see line 15), but we don’t
 specify an address, we set the dynamic option which tells the broker
-we are connected to to create a temporary address over which we can
-receive our responses.</p>
+to create a temporary address over which we can receive our responses.</p>
 <p>We need to use the address allocated by the broker as the reply_to
 address of our requests, so we can’t send them until the broker has
 confirmed our receiving link has been set up (at which point we will
 have our allocated address). To do that, we add an
 <code class="docutils literal notranslate"><span class="pre">on_link_opened()</span></code> method to our handler class, and if the link
-associated with event is the receiver, we use that as the trigger to
+associated with the event is the receiver, we use that as the trigger to
 send our first request.</p>
 <p>Again, we could avoid having any intermediary process here if we
 wished. The following code implementas a server to which the client
@@ -1021,14 +1019,14 @@ can be achieved:</p>
 <span class="k">class</span> <span class="nc">Recv</span><span class="p">(</span><span class="n">MessagingHandler</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">count</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">Recv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-<span class="hll">        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">Url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-</span>        <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="o">=</span> <span class="n">count</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="n">Url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="o">=</span> <span class="n">count</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="n">conn</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
-        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_receiver</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">Selector</span><span class="p">(</span><span class="s2">&quot;colour = &#39;green&#39;&quot;</span><span class="p">))</span>
-
+<span class="hll">        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_receiver</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="o">.</span><span class="n">path</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">Selector</span><span class="p">(</span><span class="s2">&quot;colour = &#39;green&#39;&quot;</span><span class="p">))</span>
+</span>
     <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -1089,9 +1087,9 @@ queues). An example of that is shown next:</p>
         <span class="nb">super</span><span class="p">(</span><span class="n">Recv</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">on_start</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
-<span class="hll">        <span class="n">conn</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;localhost:5672&quot;</span><span class="p">)</span>
-</span>        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_receiver</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">Copy</span><span class="p">())</span>
-
+        <span class="n">conn</span> <span class="o">=</span> <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;localhost:5672&quot;</span><span class="p">)</span>
+<span class="hll">        <span class="n">event</span><span class="o">.</span><span class="n">container</span><span class="o">.</span><span class="n">create_receiver</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s2">&quot;examples&quot;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="n">Copy</span><span class="p">())</span>
+</span>
     <span class="k">def</span> <span class="nf">on_message</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">receiver</span><span class="o">.</span><span class="n">queued</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">event</span><span class="o">.</span><span class="n">receiver</span><span class="o">.</span><span class="n">drained</span><span class="p">:</span>
