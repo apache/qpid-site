@@ -27,11 +27,11 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Dispatch 1.10.0](qpid-dispatch-1.10.0/index.html), December 2019
  - [Qpid Proton 0.30.0](qpid-proton-0.30.0/index.html), December 2019
  - [Qpid JMS 0.48.0](qpid-jms-0.48.0/index.html), December 2019
  - [Qpid Proton-J 0.33.3](qpid-proton-j-0.33.3/index.html), December 2019
  - [Qpid Broker-J 7.1.6](qpid-broker-j-7.1.6/index.html), December 2019
- - [Qpid Dispatch 1.9.0](qpid-dispatch-1.9.0/index.html), September 2019
  - [Qpid Broker-J 7.0.8](qpid-broker-j-7.0.8/index.html), July 2019
  - [Qpid JMS AMQP 0-x 6.3.4](qpid-jms-amqp-0-x-6.3.4/index.html), May 2019
  - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
@@ -45,6 +45,7 @@ the
 <div class="two-column" markdown="1">
  - [Qpid JMS 0.47.0](qpid-jms-0.47.0/index.html), November 2019
  - [Qpid Broker-J 7.1.5](qpid-broker-j-7.1.5/index.html), October 2019
+ - [Qpid Dispatch 1.9.0](qpid-dispatch-1.9.0/index.html), September 2019
  - [Qpid JMS 0.46.0](qpid-jms-0.46.0/index.html), September 2019
  - [Qpid JMS 0.45.0](qpid-jms-0.45.0/index.html), August 2019
  - [Qpid Proton-J 0.33.2](qpid-proton-j-0.33.2/index.html), August 2019
