@@ -34,3 +34,10 @@ documentation, see the [release overview](index.html).
 ## Bugs fixed
 
  - [QPID-8393](https://issues.apache.org/jira/browse/QPID-8393) - [Broker-J] Broker can crash with StackOverflowError when deleting messages
+ - [QPID-8394](https://issues.apache.org/jira/browse/QPID-8394) - [Broker-J][WMC] Fix message table
+ - [QPID-8398](https://issues.apache.org/jira/browse/QPID-8398) - [Broker-J] [AMQP 0-9] Improve heap usage utilization by small transient messages with headers
+
+## Tasks
+
+ - [QPID-8399](https://issues.apache.org/jira/browse/QPID-8399) - [Broker-J] Release Qpid Broker-J version 7.1.7
+ - [QPID-8400](https://issues.apache.org/jira/browse/QPID-8400) - [Broker-J] Upgrade jackson dependencies to version 2.10.2
