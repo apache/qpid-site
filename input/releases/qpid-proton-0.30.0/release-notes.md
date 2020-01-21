@@ -28,6 +28,7 @@ documentation, see the [release overview](index.html).
 
 ## New features and improvements
 
+ - [PROTON-2030](https://issues.apache.org/jira/browse/PROTON-2030) - Use CLOCK_MONOTONIC in proactors for pn_transport_tick
  - [PROTON-2096](https://issues.apache.org/jira/browse/PROTON-2096) - Drop Python 3 &lt; 3.5
  - [PROTON-2105](https://issues.apache.org/jira/browse/PROTON-2105) - Support Go modules
  - [PROTON-2124](https://issues.apache.org/jira/browse/PROTON-2124) - Disable GS2-KRB5 and GS2-IAKERB SASL mechanisms if they are not explicitly enabled
@@ -56,6 +57,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-2137](https://issues.apache.org/jira/browse/PROTON-2137) - [cpp] Performance regression found in 0.29.0
  - [PROTON-2138](https://issues.apache.org/jira/browse/PROTON-2138) - Capabilities not retrieved from transaction coordinator target
  - [PROTON-2143](https://issues.apache.org/jira/browse/PROTON-2143) - Linkage warnings build proton-c/python bindings
+ - [PROTON-2145](https://issues.apache.org/jira/browse/PROTON-2145) - libqpid-proton-cpp-static.a not included in make install
  - [PROTON-2149](https://issues.apache.org/jira/browse/PROTON-2149) - Handler incorrectly uses session state a method call
  - [PROTON-2153](https://issues.apache.org/jira/browse/PROTON-2153) - Python Proton Reactor get_connection_address attempts to call non-existent connection.get_address method
 
