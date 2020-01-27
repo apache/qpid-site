@@ -16,7 +16,13 @@
 <div class="paragraph"><p>-h, --help
 :   show this help message and exit</p></div>
 <div class="paragraph"><p>--version
-:   Print version and exit.</p></div>
+:   show program&#8217;s version number and exit</p></div>
+<div class="paragraph"><p>-v, --verbose
+:   Show maximum detail</p></div>
+<div class="paragraph"><p>--limit LIMIT
+:   Limit number of output rows. Unlimited if limit is</p></div>
+<div class="paragraph"><p>--csv
+:   Render tabular output in csv format</p></div>
 <div class="paragraph"><p>-g, --general
 :   Show General Router Stats</p></div>
 <div class="paragraph"><p>-c, --connections
@@ -25,6 +31,8 @@
 :   Show Router Links</p></div>
 <div class="paragraph"><p>-n, --nodes
 :   Show Router Nodes</p></div>
+<div class="paragraph"><p>-e, --edge
+:   Show edge connections</p></div>
 <div class="paragraph"><p>-a, --address
 :   Show Router Addresses</p></div>
 <div class="paragraph"><p>-m, --memory
@@ -33,46 +41,275 @@
 :   Show Auto Links</p></div>
 <div class="paragraph"><p>--linkroutes
 :   Show Link Routes</p></div>
-<div class="paragraph"><p>-v, --verbose
-:   Show maximum detail</p></div>
 <div class="paragraph"><p>--log
 :   Show recent log entries</p></div>
-<div class="paragraph"><p>--limit=LIMIT
-:   Limit number of output rows</p></div>
-<div class="sect2">
-<h3 id="_connection_options">Connection Options</h3>
-<div class="paragraph"><p>-b URL, --bus=URL
-:   URL of the messaging bus to connect to (default 0.0.0.0)</p></div>
-<div class="paragraph"><p>-r ROUTER-ID, --router=ROUTER-ID
+<div class="paragraph"><p>--all-entities
+:   Show all router entities. Can be combined with --all-</p></div>
+<div class="paragraph"><p>--all-routers
+:   Show entities for all routers in network. Can also be</p></div>
+<div class="paragraph"><p>-r ROUTER-ID, --router ROUTER-ID
 :   Router to be queried</p></div>
-<div class="paragraph"><p>-t SECS, --timeout=SECS
-:   Maximum time to wait for connection in seconds (default 5)</p></div>
-<div class="paragraph"><p>--ssl-certificate=CERT
+<div class="paragraph"><p>-b URL, --bus URL
+:   URL of the messaging bus to connect to default 0.0.0.0</p></div>
+<div class="paragraph"><p>-t SECS, --timeout SECS
+:   Maximum time to wait for connection in seconds default 5</p></div>
+<div class="paragraph"><p>--ssl-certificate CERT
 :   Client SSL certificate (PEM Format)</p></div>
-<div class="paragraph"><p>--ssl-key=KEY
+<div class="paragraph"><p>--ssl-key KEY
 :   Client SSL private key (PEM Format)</p></div>
-<div class="paragraph"><p>--ssl-trustfile=TRUSTED-CA-DB
+<div class="paragraph"><p>--ssl-trustfile TRUSTED-CA-DB
 :   Trusted Certificate Authority Database file (PEM Format)</p></div>
-<div class="paragraph"><p>--ssl-password=PASSWORD
+<div class="paragraph"><p>--ssl-password PASSWORD
 :   Certificate password, will be prompted if not specifed.</p></div>
-<div class="paragraph"><p>--ssl-password-file=SSL-PASSWORD-FILE
+<div class="paragraph"><p>--ssl-password-file SSL-PASSWORD-FILE
 :   Certificate password, will be prompted if not specifed.</p></div>
-<div class="paragraph"><p>--sasl-mechanisms=SASL-MECHANISMS
+<div class="paragraph"><p>--sasl-mechanisms SASL-MECHANISMS
 :   Allowed sasl mechanisms to be supplied during the sasl handshake.</p></div>
-<div class="paragraph"><p>--sasl-username=SASL-USERNAME
+<div class="paragraph"><p>--sasl-username SASL-USERNAME
 :   User name for SASL plain authentication</p></div>
-<div class="paragraph"><p>--sasl-password=SASL-PASSWORD
+<div class="paragraph"><p>--sasl-password SASL-PASSWORD
 :   Password for SASL plain authentication</p></div>
-<div class="paragraph"><p>--sasl-password-file=SASL-PASSWORD-FILE
+<div class="paragraph"><p>--sasl-password-file SASL-PASSWORD-FILE
 :   Password for SASL plain authentication</p></div>
 <div class="paragraph"><p>--ssl-disable-peer-name-verify
 :   Disables SSL peer name verification. WARNING - This option is insecure and must not be used in production environments</p></div>
 </div>
 </div>
-</div>
 <div class="sect1">
 <h2 id="_output_columns">OUTPUT COLUMNS</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_qdstat_g">qdstat -g</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Version
+</dt>
+<dd>
+<p>
+The version of Dispatch Router.
+</p>
+</dd>
+<dt class="hdlist1">
+Mode
+</dt>
+<dd>
+<p>
+The router&#8217;s operating mode:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<code>standalone</code> - The router operates as a single, standalone network node.
+</p>
+</li>
+<li>
+<p>
+<code>interior</code> - The router operates in cooperation with other interior routers in an interconnected network.
+</p>
+</li>
+<li>
+<p>
+<code>edge</code> - The router operates at the edge of the router network. It maintains an uplink connection to an interior router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+Router Id
+</dt>
+<dd>
+<p>
+The router&#8217;s ID.
+</p>
+</dd>
+<dt class="hdlist1">
+Uptime
+</dt>
+<dd>
+<p>
+Time this router has been up. Displayed in the days:hours:minutes:seconds format.
+</p>
+</dd>
+</dl></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Link Routes
+</dt>
+<dd>
+<p>
+The number of active and inactive link routes configured for this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Auto Links
+</dt>
+<dd>
+<p>
+The number of incoming and outgoing auto links configured for this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Links
+</dt>
+<dd>
+<p>
+The number of incoming and outgoing links attached to the router.
+</p>
+</dd>
+<dt class="hdlist1">
+Nodes
+</dt>
+<dd>
+<p>
+The number of peer routers connected to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Addresses
+</dt>
+<dd>
+<p>
+The number of addresses with links attached to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Connections
+</dt>
+<dd>
+<p>
+The number of connections to the router. This includes connections from and to any AMQP route container.
+</p>
+</dd>
+<dt class="hdlist1">
+Presettled Count
+</dt>
+<dd>
+<p>
+The number of presettled deliveries forwarded by this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Dropped Presettled Count
+</dt>
+<dd>
+<p>
+The number of presettled deliveries that this router dropped due to congestion.
+</p>
+</dd>
+<dt class="hdlist1">
+Accepted Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were accepted.
+</p>
+</dd>
+<dt class="hdlist1">
+Rejected Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were rejected.
+</p>
+</dd>
+<dt class="hdlist1">
+Released Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were released.
+</p>
+</dd>
+<dt class="hdlist1">
+Modified Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were modified.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Delayed &gt; 1sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were unsettled for more than one second.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Delayed &gt; 10sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were unsettled for more than ten seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Stuck &gt; 10sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were stuck for more than ten seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries to Fallback
+</dt>
+<dd>
+<p>
+The number of deliveries that were forwarded to a fallback destination.
+</p>
+</dd>
+<dt class="hdlist1">
+Links Blocked
+</dt>
+<dd>
+<p>
+The number of links that are blocked. A blocked link is one in which the available credit has remained zero for more than 10 seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Ingress Count
+</dt>
+<dd>
+<p>
+The number of messages sent to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Egress Count
+</dt>
+<dd>
+<p>
+The number of messages sent from this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Transit Count
+</dt>
+<dd>
+<p>
+The number of deliveries sent to another router in the network.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries from Route Container
+</dt>
+<dd>
+<p>
+The number of deliveries this router has received from AMQP route containers.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries to Route Container
+</dt>
+<dd>
+<p>
+The number of deliveries this router has sent to AMQP route containers.
+</p>
+</dd>
+</dl></div>
+</div>
 <div class="sect2">
 <h3 id="_qdstat_c">qdstat -c</h3>
 <div class="dlist"><dl>
@@ -123,6 +360,11 @@ The connection&#8217;s role:
 <em>route-container</em> - The connection to or from a broker or other host to receive link routes and waypoints.
 </p>
 </li>
+<li>
+<p>
+<em>edge</em> - The connection between an edge router and an interior router.
+</p>
+</li>
 </ul></div>
 </dd>
 <dt class="hdlist1">
@@ -159,6 +401,30 @@ authentication
 <dd>
 <p>
 The authentication method and user ID of the connection&#8217;s authenticated user.
+</p>
+</dd>
+<dt class="hdlist1">
+tenant
+</dt>
+<dd>
+<p>
+If the connection is to a listener using multi-tenancy, this column displays the tenant namespace for the connection.
+</p>
+</dd>
+<dt class="hdlist1">
+last dlv
+</dt>
+<dd>
+<p>
+Time since the last delivery arrived on this connection. Displayed in the days:hours:minutes:seconds format.
+</p>
+</dd>
+<dt class="hdlist1">
+uptime
+</dt>
+<dd>
+<p>
+Time this connection has been up. Displayed in the days:hours:minutes:seconds format.
 </p>
 </dd>
 </dl></div>
@@ -302,6 +568,15 @@ The capacity, in deliveries, of the link.
 </p>
 </dd>
 <dt class="hdlist1">
+pri
+</dt>
+<dd>
+<p>
+The priority of the link.  Priority influences the order in which links are processed within a connection.
+Higher numbers represent higher priorities.
+</p>
+</dd>
+<dt class="hdlist1">
 undel
 </dt>
 <dd>
@@ -318,7 +593,7 @@ The number of unsettled deliveries being tracked by the link.
 </p>
 </dd>
 <dt class="hdlist1">
-del
+deliv
 </dt>
 <dd>
 <p>
@@ -374,11 +649,51 @@ The number of deliveries on this link that were modified.
 </p>
 </dd>
 <dt class="hdlist1">
+delay
+</dt>
+<dd>
+<p>
+The number of settled deliveries on this link that were unsettled for more than one second.
+</p>
+</dd>
+<dt class="hdlist1">
+rate
+</dt>
+<dd>
+<p>
+The average rate (over a period of five seconds) at which deliveries have been settled on this link.
+</p>
+</dd>
+<dt class="hdlist1">
+stuck
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that are flagged as "stuck".  A delivery is considered stuck if it has been either undelivered or unsettled for more than 10 seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+cred
+</dt>
+<dd>
+<p>
+The number of flow credits currently available on this link.
+</p>
+</dd>
+<dt class="hdlist1">
+blkd
+</dt>
+<dd>
+<p>
+The time elapsed since the available credit for this link became zero and has remained zero.
+</p>
+</dd>
+<dt class="hdlist1">
 admin
 </dt>
 <dd>
 <p>
-The administrative status of the link:
+The administrative status of the link (with -v option only):
 </p>
 <div class="ulist"><ul>
 <li>
@@ -398,7 +713,7 @@ oper
 </dt>
 <dd>
 <p>
-The operational status of the link:
+The operational status of the link (with -v option only):
 </p>
 <div class="ulist"><ul>
 <li>
@@ -432,8 +747,9 @@ The link name (only shown if the -v option is provided).
 </p>
 </dd>
 </dl></div>
-<div class="sect3">
-<h4 id="_qdstat_n">qdstat -n</h4>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_n">qdstat -n</h3>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 router-id
@@ -485,6 +801,78 @@ The list of origin routers for which the best path to the listed router passes t
 </dd>
 </dl></div>
 </div>
+<div class="sect2">
+<h3 id="_qdstat_e">qdstat -e</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+id
+</dt>
+<dd>
+<p>
+The connection&#8217;s unique identifier.
+</p>
+</dd>
+<dt class="hdlist1">
+host
+</dt>
+<dd>
+<p>
+The hostname or internet address of the remotely-connected edge router.
+</p>
+</dd>
+<dt class="hdlist1">
+container
+</dt>
+<dd>
+<p>
+The container name of the remotely-connected edge router.
+</p>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction in which the connection was established:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>in</em> - The connection was initiated by the edge router.
+</p>
+</li>
+<li>
+<p>
+<em>out</em> - The connection was initiated by this router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+security
+</dt>
+<dd>
+<p>
+The security or encryption method, if any, used for this connection.
+</p>
+</dd>
+<dt class="hdlist1">
+authentication
+</dt>
+<dd>
+<p>
+The authentication method and user ID of the connection&#8217;s authenticated user.
+</p>
+</dd>
+<dt class="hdlist1">
+tenant
+</dt>
+<dd>
+<p>
+If the connection is to a listener using multi-tenancy, this column displays the tenant namespace for the connection.
+</p>
+</dd>
+</dl></div>
 </div>
 <div class="sect2">
 <h3 id="_qdstat_a">qdstat -a</h3>
@@ -566,6 +954,15 @@ One of the following distribution methods used for this address:
 </ul></div>
 </dd>
 <dt class="hdlist1">
+pri
+</dt>
+<dd>
+<p>
+The priority of the address.  If the address prefix/pattern is configured with a priority, that priority will appear
+in this column.  Messages for addresses configured with a priority will be forwarded according to the address&#8217;s priority.
+</p>
+</dd>
+<dt class="hdlist1">
 in-proc
 </dt>
 <dd>
@@ -578,7 +975,7 @@ local
 </dt>
 <dd>
 <p>
-For this router, the number of local consumers for this address.
+For this router, the number of local consumers for this address, or for link-routed addresses, the number of locally-attached containers that are destinations for this address.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -587,14 +984,6 @@ remote
 <dd>
 <p>
 The number of remote routers that have at least one consumer for this address.
-</p>
-</dd>
-<dt class="hdlist1">
-cntnr
-</dt>
-<dd>
-<p>
-The number of locally-attached containers that are destinations for link routes on this address.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -689,7 +1078,7 @@ The operational status of the link route:
 </dl></div>
 </div>
 <div class="sect2">
-<h3 id="_qstat_autolinks">qstat --autolinks</h3>
+<h3 id="_qdstat_autolinks">qdstat --autolinks</h3>
 <div class="dlist"><dl>
 <dt class="hdlist1">
 addr

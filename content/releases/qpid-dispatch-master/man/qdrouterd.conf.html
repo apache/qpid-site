@@ -196,15 +196,15 @@ listener {
 </dt>
 <dd>
 <p>
-  Router&#8217;s unique identity. The router will fail to start without id.
+  Router&#8217;s unique identity. If not specified, a random identity will be assigned at startup.
 </p>
 </dd>
 <dt class="hdlist1">
-<em>mode</em> (One of [<em>standalone</em>, <em>interior</em>], default=<em>standalone</em>)
+<em>mode</em> (One of [<em>standalone</em>, <em>interior</em>, <em>edge</em>], default=<em>standalone</em>)
 </dt>
 <dd>
 <p>
-  In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.
+  In standalone mode, the router operates as a single component.  It does not participate in the routing protocol and therefore will not cooperate with other routers. In interior mode, the router operates in cooperation with other interior routers in an interconnected network.  In edge mode, the router can make a connection to an interior router and join a network without causing that network to recompute paths.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -288,6 +288,22 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>timestampsInUTC</em> (boolean)
+</dt>
+<dd>
+<p>
+  Use UTC time rather than localtime in logs.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>timestampFormat</em> (string)
+</dt>
+<dd>
+<p>
+  Format string to use for timestamps in logs.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>allowUnsettledMulticast</em> (boolean)
 </dt>
 <dd>
@@ -300,7 +316,15 @@ listener {
 </dt>
 <dd>
 <p>
-  Default forwarding treatment for any address without a specified treatment. multicast - one copy of each message delivered to all subscribers; closest - messages delivered to only the closest subscriber; balanced - messages delivered to one subscriber with load balanced across subscribers; unavailable - this address is unavailable, link attaches to an address of unavilable distribution will be rejected.
+  Default forwarding treatment for any address without a specified treatment. multicast - one copy of each message delivered to all subscribers; closest - messages delivered to only the closest subscriber; balanced - messages delivered to one subscriber with load balanced across subscribers; unavailable - this address is unavailable, messages sent and link attaches to the address will be rejected.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>metadata</em> (string)
+</dt>
+<dd>
+<p>
+  Optional metadata text to describe or label this router. This text does not affect the function of the router, but it can be used by external tools (such as the console or orchestration software) to control how the router is displayed.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -410,7 +434,7 @@ listener {
 </dt>
 <dd>
 <p>
-  If the above private key is password protected, this is the absolute path to a file containing the password that unlocks the certificate key. This file should be permission protected to limit access
+  (DEPRECATED) If the above private key is password protected, this is the absolute path to the file containing the password that unlocks the certificate key. This file should be permission protected to limit access. This has been deprecated. Use the file: prefix in the password field to specify the absolute path of the file containing the password. If both password and passwordFile are provided, the passwordFile is ignored
 </p>
 </dd>
 <dt class="hdlist1">
@@ -418,7 +442,7 @@ listener {
 </dt>
 <dd>
 <p>
-  (DEPRECATED) An alternative to storing the password in a file referenced by passwordFile is to supply the password right here in the configuration file.  This takes precedence over the passwordFile if both are specified. This attribute has been deprecated because it is unsafe to store plain text passwords in config files. Use the passwordFile instead
+  The password that unlocks the certificate key. You can specify the password by specifying an environment variable that stores the password, a file that stores the password, or by entering the password in clear text. To use an environment variable, specify <em>password: env:&lt;var&gt;</em>. Use this option with caution, because the environment of other processes is visible on certain platforms (for example, ps on certain Unix OSs). To use a file, specify <em>password: file:&lt;absolute-path-to-file&gt;</em>. This option is the most secure, because permissions can be set on the file that contains the password. To specify the password in clear text, specify <em>password: pass:&lt;password&gt;</em>, or <em>password: literal:&lt;password&gt;</em>, or <em>password: &lt;password&gt;</em>. This option is insecure, so it should only be used if security is not a concern. If both password and passwordFile are provided, the passwordFile is ignored.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -554,11 +578,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>], default=<em>normal</em>)
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>edge</em>], default=<em>normal</em>)
 </dt>
 <dd>
 <p>
-  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.  In the edge role, the connection is assumed to be between an edge router and an interior router.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -698,6 +722,30 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>healthz</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Provide a simple HTTP based liveness test (using path /healthz). Assumes listener is enabled for http.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>metrics</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Export metrics in prometheus text format for the router (using path /metrics). Assumes listener is enabled for http.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>websockets</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  For an http enabled listener, determines whether websockets access is enabled (true by default).
+</p>
+</dd>
+<dt class="hdlist1">
 <em>http</em> (boolean)
 </dt>
 <dd>
@@ -710,7 +758,7 @@ listener {
 </dt>
 <dd>
 <p>
-  Serve HTTP files from this directory, defaults to the installed stand-alone console directory
+  Absolute path to a directory from which to serve static HTML files. Defaults to the stand-alone console installation directory (typically /usr/share/qpid-dispatch/console).
 </p>
 </dd>
 <dt class="hdlist1">
@@ -719,6 +767,14 @@ listener {
 <dd>
 <p>
   A comma separated list that indicates which components of the message should be logged. Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. No spaces are allowed
+</p>
+</dd>
+<dt class="hdlist1">
+<em>policyVhost</em> (string)
+</dt>
+<dd>
+<p>
+  A listener may optionally define a virtual host to index to a specific policy to restrict the remote container to access only specific resources. This attribute defines the name of the policy vhost for this listener.  If multi-tenancy is enabled for the listener, this vhost will override the peer-supplied vhost for the purposes of identifying the desired policy settings for the connections.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -750,7 +806,7 @@ listener {
 </dt>
 <dd>
 <p>
-  (DEPRECATED) Serve HTTP files from this directory, defaults to the installed stand-alone console directory This attribute has been deprecated. Use httpRootDir instead.
+  (DEPRECATED) Absolute path to a directory from which to serve static HTML files. Defaults to the stand-alone console installation directory (typically /usr/share/qpid-dispatch/console). This attribute has been deprecated. Use httpRootDir instead.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -792,11 +848,11 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>], default=<em>normal</em>)
+<em>role</em> (One of [<em>normal</em>, <em>inter-router</em>, <em>route-container</em>, <em>edge</em>], default=<em>normal</em>)
 </dt>
 <dd>
 <p>
-  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.
+  The role of an established connection. In the normal role, the connection is assumed to be used for AMQP clients that are doing normal message delivery over the connection.  In the inter-router role, the connection is assumed to be to another router in the network.  Inter-router discovery and routing protocols can only be used over inter-router connections. route-container role can be used for router-container connections, for example, a router-broker connection.  In the edge role, the connection is assumed to be between and edge router and an interior router.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -900,7 +956,7 @@ listener {
 </dt>
 <dd>
 <p>
-  The password that the connector is using to connect to a peer.
+  The password that the connector is using to connect to a peer. You can specify the password by specifying an environment variable that stores the password, a file that stores the password, or by entering the password in clear text. To use an environment variable, specify <em>saslPassword: env:&lt;var&gt;</em>. Use this option with caution, because the environment of other processes is visible on certain platforms (for example, ps on certain Unix OSs). To use a file, specify <em>saslPassword: file:&lt;absolute-path-to-file&gt;</em>. This option is the most secure, because permissions can be set on the file that contains the password. To specify the password in clear text, specify <em>saslPassword: pass:&lt;password&gt;</em> or <em>saslPassword: &lt;password&gt;</em>. This option is insecure, so it should only be used if security is not a concern.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -909,6 +965,14 @@ listener {
 <dd>
 <p>
   A comma separated list that indicates which components of the message should be logged (no spaces allowed between list components). Defaults to <em>none</em> (log nothing). If you want all properties and application properties of the message logged use <em>all</em>. Specific components of the message can be logged by indicating the components via a comma separated list. The components are message-id, user-id, to, subject, reply-to, correlation-id, content-type, content-encoding, absolute-expiry-time, creation-time, group-id, group-sequence, reply-to-group-id, app-properties. The application-data part of the bare message will not be logged. This log message is written to the MESSAGE logging module. In the <em>log</em> entity, set <em>module</em> property to MESSAGE or DEFAULT and <em>enable</em> to trace+ to see this log message
+</p>
+</dd>
+<dt class="hdlist1">
+<em>policyVhost</em> (string)
+</dt>
+<dd>
+<p>
+  A connector may optionally define a policy to restrict the remote container to access only specific resources. This attribute defines the name of the policy vhost for this connector. Within the vhost the connector will use the vhost policy settings from user group <em>$connector</em>. If the vhost policy is absent or if the user group <em>$connector</em> within that policy is absent then the connector will fail to start.  In policy specified via connector attribute <em>policyVhost</em> the following vhostUserGroupSettings attributes are unused:  <em>users</em>, <em>remoteHosts</em>, <em>maxFrameSize</em>, <em>maxSessionWindow</em>, <em>maxSessions</em>.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -934,7 +998,7 @@ listener {
 <div class="paragraph"><p>Configure logging for a particular module. You can use the <code>UPDATE</code> operation to change log settings while the router is running.</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>HTTP</em>, <em>CONN_MGR</em>, <em>PYTHON</em>, <em>DEFAULT</em>], required)
+<em>module</em> (One of [<em>ROUTER</em>, <em>ROUTER_CORE</em>, <em>ROUTER_HELLO</em>, <em>ROUTER_LS</em>, <em>ROUTER_MA</em>, <em>MESSAGE</em>, <em>SERVER</em>, <em>AGENT</em>, <em>AUTHSERVICE</em>, <em>CONTAINER</em>, <em>ERROR</em>, <em>POLICY</em>, <em>HTTP</em>, <em>CONN_MGR</em>, <em>PYTHON</em>, <em>DEFAULT</em>], required)
 </dt>
 <dd>
 <p>
@@ -1051,6 +1115,22 @@ listener {
   Advanced - Override the egress phase for this address
 </p>
 </dd>
+<dt class="hdlist1">
+<em>priority</em> (integer)
+</dt>
+<dd>
+<p>
+  All messages sent to this address which lack an intrinsic priority will be assigned this priority.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>enableFallback</em> (boolean)
+</dt>
+<dd>
+<p>
+  If false, undeliverable messages are released.  If true, undeliverable messages shall be re-delivered to a fallback destination.  The fallback destination uses the same address, but is attached using an autoLink with <em>fallback</em> enabled or a link with the qd.fallback capability.
+</p>
+</dd>
 </dl></div>
 </div>
 <div class="sect2">
@@ -1071,6 +1151,22 @@ listener {
 <dd>
 <p>
   A wildcarded pattern for address matching. Link addresses are matched against this pattern. Matching addresses use the configured settings. The pattern consists of one or more tokens separated by a forward slash <em>/</em>. A token can be one of the following: a * character, a # character, or a sequence of characters that do not include /, *, or #.  The * token matches any single token.  The # token matches zero or more tokens. * has higher precedence than #, and exact match has the highest precedence. Cannot be used with the prefix attribute.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>addExternalPrefix</em> (string)
+</dt>
+<dd>
+<p>
+  add the specified prefix to the address of the remote terminus on the route container link
+</p>
+</dd>
+<dt class="hdlist1">
+<em>delExternalPrefix</em> (string)
+</dt>
+<dd>
+<p>
+  remove the specified prefix to the address of the remote terminus on the route container link
 </p>
 </dd>
 <dt class="hdlist1">
@@ -1120,7 +1216,7 @@ listener {
 <div class="paragraph"><p>Entity type for configuring auto-links.  Auto-links are links whose lifecycle is managed by the router.  These are typically used to attach to waypoints on remote containers (brokers, etc.).</p></div>
 <div class="dlist"><dl>
 <dt class="hdlist1">
-<em>addr</em> (string, required)
+<em>address</em> (string, required)
 </dt>
 <dd>
 <p>
@@ -1160,11 +1256,27 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
-<em>externalAddr</em> (string)
+<em>externalAddress</em> (string)
 </dt>
 <dd>
 <p>
   If present, an alternate address of the node on the remote container.  This is used if the node has a different address than the address used internally by the router to route deliveries.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>fallback</em> (boolean)
+</dt>
+<dd>
+<p>
+  If true, this auto-link is attached to a fallback destination for an address.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>addr</em> (string, required)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) The address of the provisioned object This attribute has been deprecated. Use address instead.
 </p>
 </dd>
 <dt class="hdlist1">
@@ -1173,6 +1285,14 @@ listener {
 <dd>
 <p>
   (DEPRECATED) The direction of the link to be created.  In means into the router, out means out of the router. This attribute has been deprecated. Use direction instead.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>externalAddr</em> (string)
+</dt>
+<dd>
+<p>
+  (DEPRECATED) If present, an alternate address of the node on the remote container.  This is used if the node has a different address than the address used internally by the router to route deliveries. This attribute has been deprecated. Use externalAddress instead.
 </p>
 </dd>
 </dl></div>
@@ -1328,6 +1448,14 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>enableVhostNamePatterns</em> (boolean)
+</dt>
+<dd>
+<p>
+  Enable vhost name patterns. When false vhost hostnames are treated as literal strings. When true vhost hostnames are treated as match patterns.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>policyDir</em> (path)
 </dt>
 <dd>
@@ -1340,7 +1468,7 @@ listener {
 </dt>
 <dd>
 <p>
-  The name of the default vhost policy, which is applied to any connection for which a vhost policy has not been configured. If <em>defaultVhost</em> is not defined, then default vhost processing is disabled.
+  The name of the default vhost policy. This policy rule set is applied to a connection for which a vhost policy has not otherwise been configured. Processing for the default vhost is enabled by default and set to select vhost <em>$default</em>. To disable default vhost processing set defaultVhost to blank or do not define a vhost named <em>$default</em>.
 </p>
 </dd>
 </dl></div>
@@ -1476,6 +1604,38 @@ listener {
 </p>
 </dd>
 <dt class="hdlist1">
+<em>allowWaypointLinks</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to claim <em>waypoint.N</em> capability for attached links.  This allows endpoints to act as waypoints without needing auto-links.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowDynamicLinkRoutes</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to dynamically create connection-scoped link route destinations.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowAdminStatusUpdate</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to update the admin status of other connections. Note: Inter-router connections cannot be deleted at any time.
+</p>
+</dd>
+<dt class="hdlist1">
+<em>allowFallbackLinks</em> (boolean, default=<em>True</em>)
+</dt>
+<dd>
+<p>
+  Whether this connection is allowed to claim <em>qd.fallback</em> capability for attached links.  This allows endpoints to act as fallback destinations for addresses that have fallback capability enabled.
+</p>
+</dd>
+<dt class="hdlist1">
 <em>sources</em> (string)
 </dt>
 <dd>
@@ -1484,6 +1644,20 @@ listener {
 </dd>
 <dt class="hdlist1">
 <em>targets</em> (string)
+</dt>
+<dd>
+<p>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>sourcePattern</em> (string)
+</dt>
+<dd>
+<p>
+</p>
+</dd>
+<dt class="hdlist1">
+<em>targetPattern</em> (string)
 </dt>
 <dd>
 <p>
