@@ -30,7 +30,7 @@ interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-tes
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "0.50.0")
 jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.3.4")
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.30.0")
-proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.33.3")
+proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.33.4")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
 java_release = _Release(site_url, "Qpid for Java", "qpid-java", "none")
 
