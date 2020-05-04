@@ -19,7 +19,7 @@
 
 # Qpid Dispatch 1.9.0
 
-Dispatch is a lightweight AMQP message router library. More about
+Dispatch is a lightweight AMQP 1.0 message router. More about
 [Qpid
 Dispatch]({{site_url}}/components/dispatch-router/index.html).
 
