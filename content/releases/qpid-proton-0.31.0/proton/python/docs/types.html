@@ -1,0 +1,346 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AMQP Types &#8212; Qpid Proton Python API 0.31.0 documentation</title>
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="API Overview" href="overview.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="API Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.31.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">AMQP Types</a><ul>
+<li><a class="reference internal" href="#scalar-types">Scalar Types</a></li>
+<li><a class="reference internal" href="#compound-types">Compound Types</a></li>
+<li><a class="reference internal" href="#specialized-types">Specialized Types</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter">API Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tutorial.html"
+                        title="next chapter">Tutorial</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/types.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="amqp-types">
+<span id="types"></span><h1>AMQP Types<a class="headerlink" href="#amqp-types" title="Permalink to this headline">¶</a></h1>
+<p>These tables summarize the various AMQP types and their Python API equivalents as used in the API.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="scalar-types">
+<h2>Scalar Types<a class="headerlink" href="#scalar-types" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="9%" />
+<col width="15%" />
+<col width="21%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">AMQP Type</th>
+<th class="head">Proton C API Type</th>
+<th class="head">Proton Python API Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>null</td>
+<td>PN_NONE</td>
+<td><code class="docutils literal notranslate"><span class="pre">None</span></code></td>
+<td>Indicates an empty value.</td>
+</tr>
+<tr class="row-odd"><td>boolean</td>
+<td>PN_BOOL</td>
+<td><code class="docutils literal notranslate"><span class="pre">bool</span></code></td>
+<td>Represents a true or false value.</td>
+</tr>
+<tr class="row-even"><td>ubyte</td>
+<td>PN_UBYTE</td>
+<td><a class="reference internal" href="proton.html#proton.ubyte" title="proton.ubyte"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.ubyte</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^8 - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-odd"><td>byte</td>
+<td>PN_BYTE</td>
+<td><a class="reference internal" href="proton.html#proton.byte" title="proton.byte"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.byte</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(-(2^7)\)</span> to <span class="math notranslate nohighlight">\(2^7 - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-even"><td>ushort</td>
+<td>PN_USHORT</td>
+<td><a class="reference internal" href="proton.html#proton.ushort" title="proton.ushort"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.ushort</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^{16} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-odd"><td>short</td>
+<td>PN_SHORT</td>
+<td><a class="reference internal" href="proton.html#proton.short" title="proton.short"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.short</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(-(2^{15})\)</span> to <span class="math notranslate nohighlight">\(2^{15} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-even"><td>uint</td>
+<td>PN_UINT</td>
+<td><a class="reference internal" href="proton.html#proton.uint" title="proton.uint"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.uint</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^{32} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-odd"><td>int</td>
+<td>PN_INT</td>
+<td><a class="reference internal" href="proton.html#proton.int32" title="proton.int32"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.int32</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(-(2^{31})\)</span> to <span class="math notranslate nohighlight">\(2^{31} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-even"><td>char</td>
+<td>PN_CHAR</td>
+<td><a class="reference internal" href="proton.html#proton.char" title="proton.char"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.char</span></code></a></td>
+<td>A single Unicode character.</td>
+</tr>
+<tr class="row-odd"><td>ulong</td>
+<td>PN_ULONG</td>
+<td><a class="reference internal" href="proton.html#proton.ulong" title="proton.ulong"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.ulong</span></code></a></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2^{64} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-even"><td>long</td>
+<td>PN_LONG</td>
+<td><code class="docutils literal notranslate"><span class="pre">int</span></code> or <code class="docutils literal notranslate"><span class="pre">long</span></code></td>
+<td>Integer in the range <span class="math notranslate nohighlight">\(-(2^{63})\)</span> to <span class="math notranslate nohighlight">\(2^{63} - 1\)</span> inclusive.</td>
+</tr>
+<tr class="row-odd"><td>timestamp</td>
+<td>PN_TIMESTAMP</td>
+<td><a class="reference internal" href="proton.html#proton.timestamp" title="proton.timestamp"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.timestamp</span></code></a></td>
+<td>An absolute point in time with millisecond precision.</td>
+</tr>
+<tr class="row-even"><td>float</td>
+<td>PN_FLOAT</td>
+<td><a class="reference internal" href="proton.html#proton.float32" title="proton.float32"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.float32</span></code></a></td>
+<td>32-bit floating point number (IEEE 754-2008 binary32).</td>
+</tr>
+<tr class="row-odd"><td>double</td>
+<td>PN_DOUBLE</td>
+<td><code class="docutils literal notranslate"><span class="pre">double</span></code></td>
+<td>64-bit floating point number (IEEE 754-2008 binary64).</td>
+</tr>
+<tr class="row-even"><td>decimal32</td>
+<td>PN_DECIMAL32</td>
+<td><a class="reference internal" href="proton.html#proton.decimal32" title="proton.decimal32"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.decimal32</span></code></a></td>
+<td>32-bit decimal number (IEEE 754-2008 decimal32).</td>
+</tr>
+<tr class="row-odd"><td>decimal64</td>
+<td>PN_DECIMAL64</td>
+<td><a class="reference internal" href="proton.html#proton.decimal64" title="proton.decimal64"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.decimal64</span></code></a></td>
+<td>64-bit decimal number (IEEE 754-2008 decimal64).</td>
+</tr>
+<tr class="row-even"><td>decimal128</td>
+<td>PN_DECIMAL128</td>
+<td><a class="reference internal" href="proton.html#proton.decimal128" title="proton.decimal128"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.decimal128</span></code></a></td>
+<td>128-bit decimal number (IEEE 754-2008 decimal128).</td>
+</tr>
+<tr class="row-odd"><td>uuid</td>
+<td>PN_UUID</td>
+<td><code class="docutils literal notranslate"><span class="pre">uuid.UUID</span></code></td>
+<td>A universally unique identifier as defined by RFC-4122 section 4.1.2.</td>
+</tr>
+<tr class="row-even"><td>binary</td>
+<td>PN_BINARY</td>
+<td><code class="docutils literal notranslate"><span class="pre">bytes</span></code></td>
+<td>A sequence of octets.</td>
+</tr>
+<tr class="row-odd"><td>string</td>
+<td>PN_STRING</td>
+<td><code class="docutils literal notranslate"><span class="pre">str</span></code></td>
+<td>A sequence of Unicode characters.</td>
+</tr>
+<tr class="row-even"><td>symbol</td>
+<td>PN_SYMBOL</td>
+<td><a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a></td>
+<td>Symbolic values from a constrained domain.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="compound-types">
+<h2>Compound Types<a class="headerlink" href="#compound-types" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="17%" />
+<col width="25%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">AMQP Type</th>
+<th class="head">Proton C API Type</th>
+<th class="head">Proton Python API Type</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>array</td>
+<td>PN_ARRAY</td>
+<td><a class="reference internal" href="proton.html#proton.Array" title="proton.Array"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Array</span></code></a></td>
+<td>A sequence of values of a single type.</td>
+</tr>
+<tr class="row-odd"><td>list</td>
+<td>PN_LIST</td>
+<td><code class="docutils literal notranslate"><span class="pre">list</span></code></td>
+<td>A sequence of polymorphic values.</td>
+</tr>
+<tr class="row-even"><td>map</td>
+<td>PN_MAP</td>
+<td><code class="docutils literal notranslate"><span class="pre">dict</span></code></td>
+<td>A polymorphic mapping from distinct keys to values.</td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="specialized-types">
+<h2>Specialized Types<a class="headerlink" href="#specialized-types" title="Permalink to this headline">¶</a></h2>
+<p>The following classes implement specialized or restricted types to help
+enforce type restrictions in the AMQP specification.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="52%" />
+<col width="29%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Proton Python API Type</th>
+<th class="head">Description</th>
+<th class="head">Where used in API</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><a class="reference internal" href="proton.html#proton.SymbolList" title="proton.SymbolList"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.SymbolList</span></code></a></td>
+<td>A <code class="docutils literal notranslate"><span class="pre">list</span></code> that only accepts <a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a> elements. However, will
+silently convert strings to symbols.</td>
+<td><a class="reference internal" href="proton.html#proton.Connection.desired_capabilities" title="proton.Connection.desired_capabilities"><code class="xref py py-attr docutils literal notranslate"><span class="pre">proton.Connection.desired_capabilities</span></code></a>
+<a class="reference internal" href="proton.html#proton.Connection.offered_capabilities" title="proton.Connection.offered_capabilities"><code class="xref py py-attr docutils literal notranslate"><span class="pre">proton.Connection.offered_capabilities</span></code></a></td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="proton.html#proton.PropertyDict" title="proton.PropertyDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.PropertyDict</span></code></a></td>
+<td>A <code class="docutils literal notranslate"><span class="pre">dict</span></code> that only accppts <a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a> keys. However, will silently
+convert strings to symbols.</td>
+<td><a class="reference internal" href="proton.html#proton.Connection.properties" title="proton.Connection.properties"><code class="xref py py-attr docutils literal notranslate"><span class="pre">proton.Connection.properties</span></code></a></td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="proton.html#proton.AnnotationDict" title="proton.AnnotationDict"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.AnnotationDict</span></code></a></td>
+<td>A <code class="docutils literal notranslate"><span class="pre">dict</span></code> that only accppts <a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a> or <a class="reference internal" href="proton.html#proton.ulong" title="proton.ulong"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.ulong</span></code></a> keys.
+However, will silently convert strings to symbols.</td>
+<td><a class="reference internal" href="proton.html#proton.Message.annotations" title="proton.Message.annotations"><code class="xref py py-attr docutils literal notranslate"><span class="pre">proton.Message.annotations</span></code></a>
+<a class="reference internal" href="proton.html#proton.Message.instructions" title="proton.Message.instructions"><code class="xref py py-attr docutils literal notranslate"><span class="pre">proton.Message.instructions</span></code></a></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>These types would typically be used where the the above attributes are set. They will silently convert strings to symbols,
+but will raise an error if a not-allowed type is used. For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">proton</span> <span class="k">import</span> <span class="n">symbol</span><span class="p">,</span> <span class="n">ulong</span><span class="p">,</span> <span class="n">Message</span><span class="p">,</span> <span class="n">AnnotationDict</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span> <span class="o">=</span> <span class="n">Message</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">AnnotationDict</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">symbol</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span> <span class="n">ulong</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span><span class="s1">&#39;three&#39;</span><span class="p">})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">msg</span><span class="o">.</span><span class="n">annotations</span>
+<span class="go">AnnotationDict({symbol(&#39;one&#39;): 1, symbol(&#39;two&#39;): 2, ulong(3): &#39;three&#39;})</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">instructions</span> <span class="o">=</span> <span class="n">AnnotationDict</span><span class="p">({</span><span class="s1">&#39;one&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="n">symbol</span><span class="p">(</span><span class="s1">&#39;two&#39;</span><span class="p">):</span><span class="mi">2</span><span class="p">,</span> <span class="n">ulong</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span><span class="s1">&#39;three&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span><span class="s1">&#39;four&#39;</span><span class="p">})</span>
+<span class="go">  ...</span>
+<span class="go">KeyError: &quot;invalid non-symbol key: &lt;class &#39;int&#39;&gt;: 4&quot;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">m</span><span class="o">.</span><span class="n">instructions</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tutorial.html" title="Tutorial"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="API Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.31.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,169 @@
+
+<h1>test_examples.py</h1>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">unittest</span>
+
+
+<span class="k">class</span> <span class="nc">Popen</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">):</span>
+
+    <span class="c1"># We always use these options</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Popen</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span>\
+            <span class="fm">__init__</span><span class="p">(</span><span class="n">args</span><span class="p">,</span>
+                     <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
+                     <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
+                     <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># For Python 2 compatibility add context manager support to Popen if it&#39;s not there</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">,</span> <span class="s1">&#39;__enter__&#39;</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="c1"># For Python 2 compatibility add context manager support to Popen if it&#39;s not there</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">,</span> <span class="s1">&#39;__exit__&#39;</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exc_type</span><span class="p">,</span> <span class="n">exc_val</span><span class="p">,</span> <span class="n">exc_tb</span><span class="p">):</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">remove_unicode_prefix</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;u([&#39;</span><span class="se">\&quot;</span><span class="s2">])&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\1&quot;</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ExamplesTest</span><span class="p">(</span><span class="n">unittest</span><span class="o">.</span><span class="n">TestCase</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">test_helloworld</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">example</span><span class="o">=</span><span class="s2">&quot;helloworld.py&quot;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="n">example</span><span class="p">])</span> <span class="k">as</span> <span class="n">p</span><span class="p">:</span>
+            <span class="n">p</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_direct.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_blocking</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_blocking.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_tornado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_tornado.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_helloworld_direct_tornado</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_helloworld</span><span class="p">(</span><span class="s1">&#39;helloworld_direct_tornado.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_simple_send_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recv</span><span class="o">=</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="n">send</span><span class="o">=</span><span class="s1">&#39;simple_send.py&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="n">recv</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="n">send</span><span class="p">]):</span>
+                <span class="k">pass</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="n">expected_py2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="n">expected_py3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: </span><span class="si">%i</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">actual</span><span class="p">,[</span><span class="n">expected_py2</span><span class="p">,</span> <span class="n">expected_py3</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;client.py&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="n">server</span><span class="p">)</span> <span class="k">as</span> <span class="n">s</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">sleep</span><span class="p">:</span>
+                <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">sleep</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">Popen</span><span class="p">(</span><span class="n">client</span><span class="p">)</span> <span class="k">as</span> <span class="n">c</span><span class="p">:</span>
+                <span class="n">c</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+                <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">c</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+                <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Twas brillig, and the slithy toves&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;Did gire and gymble in the wabe.&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;All mimsy were the borogroves,&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;And the mome raths outgrabe.&quot;</span><span class="p">]</span>
+                <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> =&gt; </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">l</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">inputs</span><span class="p">]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server_tx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_tx.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server_tx</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_tx.py&#39;</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_client_server_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;client.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888/examples&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_direct.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_sync_client_server_direct</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888/examples&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_direct.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_db_send_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="c1"># setup databases</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./src_db&#39;</span><span class="p">])</span>
+        <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./dst_db&#39;</span><span class="p">])</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;insert&#39;</span><span class="p">,</span> <span class="s1">&#39;./src_db&#39;</span><span class="p">],</span> <span class="n">stdin</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">)</span> <span class="k">as</span> <span class="n">fill</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+                <span class="n">fill</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;Message-</span><span class="si">%i</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+            <span class="n">fill</span><span class="o">.</span><span class="n">stdin</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+        <span class="c1"># run send and recv</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+            <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">]):</span>
+                <span class="k">pass</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="c1"># verify output of receive</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;inserted message </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+        <span class="c1"># verify state of databases</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;list&#39;</span><span class="p">,</span> <span class="s1">&#39;./dst_db&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">v</span><span class="p">:</span>
+            <span class="n">v</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;(</span><span class="si">%i</span><span class="s2">, &#39;Message-</span><span class="si">%i</span><span class="s2">&#39;)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_tx_send_tx_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">test_simple_send_recv</span><span class="p">(</span><span class="n">recv</span><span class="o">=</span><span class="s1">&#39;tx_recv.py&#39;</span><span class="p">,</span> <span class="n">send</span><span class="o">=</span><span class="s1">&#39;tx_send.py&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">test_simple_send_direct_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;direct_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">]):</span>
+                <span class="k">pass</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="n">expected_py2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="n">expected_py3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: </span><span class="si">%i</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">actual</span><span class="p">,[</span><span class="n">expected_py2</span><span class="p">,</span> <span class="n">expected_py3</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_direct_send_simple_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;direct_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">]):</span>
+            <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+            <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+                <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+                <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">remove_unicode_prefix</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+                <span class="n">expected_py2</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: int32(</span><span class="si">%i</span><span class="s2">)}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+                <span class="n">expected_py3</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;{&#39;sequence&#39;: </span><span class="si">%i</span><span class="s2">}&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)]</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">assertIn</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="p">[</span><span class="n">expected_py2</span><span class="p">,</span> <span class="n">expected_py3</span><span class="p">])</span>
+
+    <span class="k">def</span> <span class="nf">test_selected_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;colour_send.py&#39;</span><span class="p">]):</span>
+            <span class="k">pass</span>
+
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;selected_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;green </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+
+        <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-m&#39;</span><span class="p">,</span> <span class="s1">&#39;50&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+            <span class="n">r</span><span class="o">.</span><span class="n">wait</span><span class="p">()</span>
+            <span class="n">actual</span> <span class="o">=</span> <span class="p">[</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">r</span><span class="o">.</span><span class="n">stdout</span><span class="p">]</span>
+            <span class="n">expected</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;red </span><span class="si">%i</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">assertEqual</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">expected</span><span class="p">)</span>
+</pre></div>
+
+<p><a href="test_examples.py">Download this file</a></p>
