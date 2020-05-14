@@ -31,6 +31,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-2030](https://issues.apache.org/jira/browse/PROTON-2030) - Use CLOCK_MONOTONIC in proactors for pn_transport_tick
  - [PROTON-2096](https://issues.apache.org/jira/browse/PROTON-2096) - Drop Python 3 &lt; 3.5
  - [PROTON-2105](https://issues.apache.org/jira/browse/PROTON-2105) - Support Go modules
+ - [PROTON-2119](https://issues.apache.org/jira/browse/PROTON-2119) - [Python] Change API to better handle strings where symbols are required
  - [PROTON-2124](https://issues.apache.org/jira/browse/PROTON-2124) - Disable GS2-KRB5 and GS2-IAKERB SASL mechanisms if they are not explicitly enabled
  - [PROTON-2131](https://issues.apache.org/jira/browse/PROTON-2131) - Improved logging API
  - [PROTON-2140](https://issues.apache.org/jira/browse/PROTON-2140) - proton-c has very high memory footprint for links
