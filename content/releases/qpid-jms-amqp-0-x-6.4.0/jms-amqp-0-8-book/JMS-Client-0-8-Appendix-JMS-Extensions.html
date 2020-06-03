@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Appendix&#160;C.&#160;JMS Extensions - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-amqp-0-x-6.4.0/index.html">Qpid JMS AMQP 0-x 6.4.0</a></li><li><a href="/releases/qpid-jms-amqp-0-x-6.4.0/jms-amqp-0-8-book/index.html">Apache Qpid JMS AMQP 0-8/0-9/0-9-1</a></li><li>Appendix&#160;C.&#160;JMS Extensions</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Appendix&#160;C.&#160;JMS Extensions</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="JMS-Client-0-8-Appendix-Maven.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="JMS-Client-0-8-Appendix-JMS-Extensions-ConnectAttemptListener.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="JMS-Client-0-8-Appendix-JMS-Extensions"></a>Appendix&#160;C.&#160;JMS Extensions</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions.html#JMS-Client-0-8-Appendix-JMS-Extensions-Connection">C.1. Connection extensions</a></span></dt><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions-ConnectAttemptListener.html">C.2. ConnectAttemptListener</a></span></dt><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions-Queue.html">C.3. Queue Management</a></span></dt><dd><dl><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions-Queue.html#JMS-Client-0-8-Appendix-JMS-Extensions-Queue-Creation">C.3.1. Queue creation</a></span></dt></dl></dd><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions-Binding.html">C.4. Binding Management</a></span></dt><dd><dl><dt><span class="section"><a href="JMS-Client-0-8-Appendix-JMS-Extensions-Binding.html#JMS-Client-0-8-Appendix-JMS-Extensions-Binding-Creation">C.4.1. Binding creation</a></span></dt></dl></dd></dl></div><p>This section illustrates using Qpid specific extensions to JMS for the management of connections, queues,
+  exchanges and bindings.</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>It is not recommended that these extensions are generally used. These interfaces are
+      subject to change and will not be supported in this form for AMQP 1.0. Instead, the reader is
+      directed towards the Managment interfaces of the Broker.</p></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="JMS-Client-0-8-Appendix-JMS-Extensions-Connection"></a>C.1.&#160;Connection extensions</h2></div></div></div><p>Connection extensions allows overriding connection configurations like username or password
+          in response to some environment changes like account rotation or authentication token expiration.</p><p>
+          The extensions take the form of a BiFunction&lt;Connection, URI, Object&gt; passed into the
+          ConnectionFactory using the AMQConnectionFactory#setExtension(String, BiFunction) or
+          PooledConnectionFactory#setExtension(String, BiFunction).
+      </p><p>A table below lists supported extensions.</p><div class="table"><a id="d0e3250"></a><p class="title"><strong>Table&#160;C.1.&#160;Connection Extensions</strong></p><div class="table-contents"><table border="1" summary="Connection Extensions" width="100%"><colgroup><col /><col /></colgroup><thead><tr><th>Extension Name</th><th>Description</th></tr></thead><tbody><tr><td>username</td><td><p>Allows to hook a custom code for provisioning of user name which would be used in authentication
+              with a remote host.</p></td></tr><tr><td>password</td><td><p>Allows to hook a custom code for provisioning of user password which would be used in
+                  authentication with a remote host.</p></td></tr></tbody></table></div></div><br class="table-break" /><p>The following example illustrates how expired OAUTH2 authentication token can be recreated.</p><div class="example"><a id="d0e3275"></a><p class="title"><strong>Example&#160;C.1.&#160;Inject password extension</strong></p><div class="example-contents"><pre class="programlisting">
+final String connectionURL = "...";                                                                    <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-url" id="ext-token-url"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a>
+final TokenGenerator tokenGenerator = new TokenGenerator(...);                                         <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-generator" id="ext-token-generator"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a>
+
+final BiFunction&lt;Connection, URI, Object&gt; tokenExtension = new BiFunction&lt;Connection, URI, Object&gt;()   <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-extension" id="ext-token-extension"><span><img alt="3" border="0" src="images/callouts/3.png" /></span></a>
+{
+    private volatile String token;
+    private long currentTokenExpirationTime;
+
+    @Override
+    public Object apply(final Connection connection, final URI uri)
+    {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime &gt; currentTokenExpirationTime)                                                  <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-expiration-check" id="ext-token-expiration-check"><span><img alt="4" border="0" src="images/callouts/4.png" /></span></a>
+        {
+            this.token = tokenGenerator.generateAccessToken();                                         <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-generation" id="ext-token-generation"><span><img alt="5" border="0" src="images/callouts/5.png" /></span></a>
+            this.currentTokenExpirationTime = tokenGenerator.getTokenExpirationTime(token);            <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-exp-time" id="ext-token-exp-time"><span><img alt="6" border="0" src="images/callouts/6.png" /></span></a>
+        }
+        return this.token;
+    }
+};
+final AMQConnectionFactory factory = new AMQConnectionFactory(connectionURL);                          <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-connection-factory" id="ext-token-connection-factory"><span><img alt="7" border="0" src="images/callouts/7.png" /></span></a>
+factory.setExtension(ConnectionExtension.PASSWORD_OVERRIDE.name(), tokenExtension);                    <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-override" id="ext-token-override"><span><img alt="8" border="0" src="images/callouts/8.png" /></span></a>
+
+final Connection connection = factory.createConnection();                                              <a class="co" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#callout-ext-token-connection" id="ext-token-connection"><span><img alt="9" border="0" src="images/callouts/9.png" /></span></a>
+          </pre></div></div><br class="example-break" /><div class="calloutlist"><table border="0" summary="Callout list"><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-url"></a><a href="#ext-token-url"><span><img alt="1" border="0" src="images/callouts/1.png" /></span></a> </p></td><td align="left" valign="top"><p>Connection URL</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-generator"></a><a href="#ext-token-generator"><span><img alt="2" border="0" src="images/callouts/2.png" /></span></a> </p></td><td align="left" valign="top"><p>Helper object to generate access token for a specific OAUTH2 implementation </p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-extension"></a><a href="#ext-token-extension"><span><img alt="3" border="0" src="images/callouts/3.png" /></span></a> </p></td><td align="left" valign="top"><p>Password extension for token renewal</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-expiration-check"></a><a href="#ext-token-expiration-check"><span><img alt="4" border="0" src="images/callouts/4.png" /></span></a> </p></td><td align="left" valign="top"><p>Check token expiration</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-generation"></a><a href="#ext-token-generation"><span><img alt="5" border="0" src="images/callouts/5.png" /></span></a> </p></td><td align="left" valign="top"><p>Get new token</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-exp-time"></a><a href="#ext-token-exp-time"><span><img alt="6" border="0" src="images/callouts/6.png" /></span></a> </p></td><td align="left" valign="top"><p>Preserve token expiration time</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-connection-factory"></a><a href="#ext-token-connection-factory"><span><img alt="7" border="0" src="images/callouts/7.png" /></span></a> </p></td><td align="left" valign="top"><p>Create connection factory</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-override"></a><a href="#ext-token-override"><span><img alt="8" border="0" src="images/callouts/8.png" /></span></a> </p></td><td align="left" valign="top"><p>Register password extension for token regeneration</p></td></tr><tr><td align="left" valign="top" width="5%"><p><a id="callout-ext-token-connection"></a><a href="#ext-token-connection"><span><img alt="9" border="0" src="images/callouts/9.png" /></span></a> </p></td><td align="left" valign="top"><p>Open connection</p></td></tr></table></div><p>In the snippet above an implementation of  BiFunction&lt;Connection, URI, Object&gt; is created at (3) for
+          access token provisioning. The function implementation checks the token expiration at (4) and regenerate
+          the token at (5) using a helper object (2) implementing calls to OAUTH2 specific API.
+          The token expiration time is preserved at (6) for the following reconnects attempts.
+          An instance of AMQConnectionFactory is created  at (7) for a given connection URL (1).
+          A password extension is registered at (8). JMS connection is open at (9). The example uses a hypothetical
+          class TokenGenerator invoking underlying  OAUTH2 API to generate/renew access token and get token expiration time.</p><p><span class="emphasis"><em>Connection Extensions</em></span> can be used together with
+          <a class="link" href="JMS-Client-0-8-Appendix-JMS-Extensions.html#JMS-Client-0-8-Appendix-JMS-Extensions-Connection" title="C.1.&#160;Connection extensions">ConnectAttemptListener</a> to
+          change credentials on connectivity failures. Please check
+          <a class="xref" href="JMS-Client-0-8-Appendix-JMS-Extensions-ConnectAttemptListener.html" title="C.2.&#160;ConnectAttemptListener">Section&#160;C.2, &#8220;ConnectAttemptListener&#8221;</a> for more details.
+      </p></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="JMS-Client-0-8-Appendix-Maven.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="JMS-Client-0-8-Appendix-JMS-Extensions-ConnectAttemptListener.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Appendix&#160;B.&#160;Minimal Maven POM&#160;</td><td align="center" width="20%"><a accesskey="h" href="JMS-Client-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;C.2.&#160;ConnectAttemptListener</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
