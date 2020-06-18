@@ -46,13 +46,6 @@ using. For example, "I'm using the Qpid Broker-J
 &lt;version&gt; with the Qpid JMS &lt;version&gt; AMQP 1.0 client"
 rather than "I'm using the broker and JMS client".
 
-## Chat
-
-We hang out on `#qpid` on [freenode](https://freenode.net).
-
- - <a href="irc://irc.freenode.net/qpid">irc://irc.freenode.net/qpid</a>
- - [freenode webchat](http://webchat.freenode.net/?channels=#qpid)
-
 ## More information
  
  - [Mailing lists at Apache](http://www.apache.org/foundation/mailinglists.html)
