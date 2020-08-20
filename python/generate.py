@@ -28,7 +28,6 @@ from pygments.formatters import HtmlFormatter
 from xml.sax.saxutils import escape as escape_html
 
 from plano import *
-
 ## General ##
 
 def setup_release_script():
@@ -58,8 +57,8 @@ def setup_release_script():
     call_and_print_on_error("cmake --version")
     call_and_print_on_error("dot -V")
     call_and_print_on_error("doxygen --version")
-    call_and_print_on_error("epydoc --version")
-    call_and_print_on_error("fop -version")
+    #call_and_print_on_error("epydoc --version")
+    #call_and_print_on_error("fop -version")
     call_and_print_on_error("gcc --version")
     call_and_print_on_error("make --version")
     call_and_print_on_error("rdoc --version")
@@ -444,11 +443,9 @@ def _fetch_issues(project, release):
 
     for i in range(100):
         params["startAt"] = i * page_size
-
-        url = "https://issues.apache.org/jira/rest/api/2/search?{}".format \
-            (urllib.urlencode(params))
-
-        filename, headers = urllib.urlretrieve(url)
+        
+        url = "https://issues.apache.org/jira/rest/api/2/search?{}".format(urllib.parse.urlencode(params))
+        filename, headers = urllib.request.urlretrieve(url)
 
         with open(filename) as f:
             data = yaml.load(f)

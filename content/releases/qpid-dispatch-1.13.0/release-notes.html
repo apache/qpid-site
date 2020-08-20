@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 1.13.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.13.0/index.html">Qpid Dispatch 1.13.0</a></li><li>Qpid Dispatch 1.13.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-1130-release-notes">Qpid Dispatch 1.13.0 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP 1.0 message router. More about
+<a href="/components/dispatch-router/index.html">Qpid
+Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1568">DISPATCH-1568</a> - Add unittest framework for testing C code</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1633">DISPATCH-1633</a> - system_tests_sasl_plain intermittent test failure</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1636">DISPATCH-1636</a> - Extract the version advertized in the Open performative by the peer router </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1642">DISPATCH-1642</a> - Avoid extra search when adding address configs to parse tree</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1646">DISPATCH-1646</a> - Unable to delete listener with http enabled</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1656">DISPATCH-1656</a> - Allow user-configured connection properties in the Open performative</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1667">DISPATCH-1667</a> - Increase minimum required LibWebSockets version from 2.1.0 to 2.4.2</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1668">DISPATCH-1668</a> - Dockerfile instructions show how to use router debug core dump files</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1675">DISPATCH-1675</a> - system_tests_stuck_deliveries failure with AttributeError: 'DelayedSettlementTest' object has no attribute 'proxy'", </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1685">DISPATCH-1685</a> - Provide heap memory allocation wrappers that call abort() on failure to allocate</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1688">DISPATCH-1688</a> - Scraper needs a way to inject debug statements into log data web page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1692">DISPATCH-1692</a> - Scraper improvements for sequence diagrams</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1717">DISPATCH-1717</a> - Fallback_destination test improvements: mnemonic names, unique msg data and link names</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1726">DISPATCH-1726</a> - Upgrade dependencies using dependabot PRs before the 1.13.0 release</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1732">DISPATCH-1732</a> - segfault when connecting to multitenant listener with policy but  no hostname in open</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1739">DISPATCH-1739</a> - Use GitHub Actions w/ sharding and bubblewrap for some fast CI</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-960">DISPATCH-960</a> - TCP port randomly assigned when using 'port: amqp' along with 'http: yes' on a listener</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1444">DISPATCH-1444</a> - Top level Dockerfile fails to build on centos:latest</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1494">DISPATCH-1494</a> - Qdstat heading for a memory display is Types</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1505">DISPATCH-1505</a> - [tools] Add policy and vhost information to qdstat</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1545">DISPATCH-1545</a> - Streaming deliveries can be delayed by head-of-line blocking on inter-router links</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1637">DISPATCH-1637</a> - Adding new config address, autolinks and link routes become slower as more get added </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1641">DISPATCH-1641</a> - If an oversize transfer is rejected then provide details in rejected outcome error field</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1644">DISPATCH-1644</a> - Suppress cmake warning about LIBWEBSOCKETS</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1645">DISPATCH-1645</a> - Max message size is demoted to INT from UINT64</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1657">DISPATCH-1657</a> - system_tests_router_mesh ASAN failure</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1658">DISPATCH-1658</a> - Receiver unable to receive messages on waypointed addresses</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1661">DISPATCH-1661</a> - system_tests_edge_router fails with ASAN leak</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1662">DISPATCH-1662</a> - system_tests_policy_oversize_compound fails with ASAN leak</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1664">DISPATCH-1664</a> - test_verify_z_connection_stats failing in system_tests_policy</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1669">DISPATCH-1669</a> - Compilation fails on macOS [-Werror,-Wformat]</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1670">DISPATCH-1670</a> - system_tests_edge_router.LinkRouteProxyTest.test_50_link_topology reports many objects that remain allocated after test finishes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1676">DISPATCH-1676</a> - system_tests_policy failure on router shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1682">DISPATCH-1682</a> - Optimize the parse tree match algorithm to avoid O(N) lookup</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1690">DISPATCH-1690</a> - Pre-delivery messages leak on link close</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1691">DISPATCH-1691</a> - Hash symbol in vhost hostname is treated as a comment delimiter</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1693">DISPATCH-1693</a> - Edge router closes fallback receiver link when local primary receiver closes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1694">DISPATCH-1694</a> - sys_thread_self() returns NULL pointer if called by main process thread</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1695">DISPATCH-1695</a> - Policy vhost groups description error</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1703">DISPATCH-1703</a> - router drops TransactionalState on produced messages on link routes</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1707">DISPATCH-1707</a> - Policy config file fails with cryptic error if trailing brace on wrong line</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1708">DISPATCH-1708</a> - Fallback destination test receives messages on wrong receiver</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1709">DISPATCH-1709</a> - Fallback destination rcvr on edge router is unaware that primary rcvr exited</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1715">DISPATCH-1715</a> - [clang-10] error: variable length array folded to constant array as an extension</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1716">DISPATCH-1716</a> - [clang] -fsanitize=address and -Wl,-z,defs compiler options are incompatible</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1718">DISPATCH-1718</a> - Qdstat for policy and vhostgroups not backwards compatible</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1721">DISPATCH-1721</a> - Qdstat table for vhostgroupsettings:  too wide; missing default settings</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1722">DISPATCH-1722</a> - system_tests_qdstat fails when checking for presence Worker Threads</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1724">DISPATCH-1724</a> - Fallback destination fails when primary consumer is on an auto-link</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1727">DISPATCH-1727</a> - Dispatch Console mixes usage of <code>npm</code> with <code>yarn</code></li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1729">DISPATCH-1729</a> - Update console test file for DropdownMenu.js to pass required properties.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1730">DISPATCH-1730</a> - Revert console's @testing-library/react from 10.4.7 to 9.5.0</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1733">DISPATCH-1733</a> - system_tests_open_properties failure due to qdr_connection_t leak</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1737">DISPATCH-1737</a> - Policy config parse errors report wrong line and column numbers </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1738">DISPATCH-1738</a> - system_tests_multicast failing on Ubuntu Focal</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1741">DISPATCH-1741</a> - Update console dependency for yargs-parser to avoid security warning</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1624">DISPATCH-1624</a> - Doc max message size</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1629">DISPATCH-1629</a> - Doc how to enable trace logging for a connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1719">DISPATCH-1719</a> - Add note about vhost</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

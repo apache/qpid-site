@@ -121,7 +121,7 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     downloads = "\n".join(downloads)
 
     jql = "project = DISPATCH AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
-    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.quote_plus(jql))
+    issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.parse.quote_plus(jql))
 
     vars = locals()
     vars["documentation"] = documentation.format(release=release, source_release=source_release)
