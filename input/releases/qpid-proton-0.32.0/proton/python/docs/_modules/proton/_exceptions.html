@@ -1,0 +1,194 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>proton._exceptions &#8212; Qpid Proton Python API 0.32.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.32.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for proton._exceptions</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+
+<span class="kn">from</span> <span class="nn">cproton</span> <span class="k">import</span> <span class="n">PN_TIMEOUT</span><span class="p">,</span> <span class="n">PN_INTR</span>
+
+
+<div class="viewcode-block" id="ProtonException"><a class="viewcode-back" href="../../proton.html#proton.ProtonException">[docs]</a><span class="k">class</span> <span class="nc">ProtonException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The root of the proton exception hierarchy. All proton exception</span>
+<span class="sd">    classes derive from this exception.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Timeout"><a class="viewcode-back" href="../../proton.html#proton.Timeout">[docs]</a><span class="k">class</span> <span class="nc">Timeout</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A timeout exception indicates that a blocking operation has timed</span>
+<span class="sd">    out.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Interrupt"><a class="viewcode-back" href="../../proton.html#proton.Interrupt">[docs]</a><span class="k">class</span> <span class="nc">Interrupt</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An interrupt exception indicates that a blocking operation was interrupted.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<span class="n">EXCEPTIONS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">PN_TIMEOUT</span><span class="p">:</span> <span class="n">Timeout</span><span class="p">,</span>
+    <span class="n">PN_INTR</span><span class="p">:</span> <span class="n">Interrupt</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="MessageException"><a class="viewcode-back" href="../../proton.html#proton.MessageException">[docs]</a><span class="k">class</span> <span class="nc">MessageException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The MessageException class is the root of the message exception</span>
+<span class="sd">    hierarchy. All exceptions generated by the Message class derive from</span>
+<span class="sd">    this exception.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="DataException"><a class="viewcode-back" href="../../proton.html#proton.DataException">[docs]</a><span class="k">class</span> <span class="nc">DataException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The DataException class is the root of the Data exception hierarchy.</span>
+<span class="sd">    All exceptions raised by the Data class extend this exception.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="TransportException"><a class="viewcode-back" href="../../proton.html#proton.TransportException">[docs]</a><span class="k">class</span> <span class="nc">TransportException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to the AMQP</span>
+<span class="sd">    transport arise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SSLException"><a class="viewcode-back" href="../../proton.html#proton.SSLException">[docs]</a><span class="k">class</span> <span class="nc">SSLException</span><span class="p">(</span><span class="n">TransportException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to SSL usage</span>
+<span class="sd">    arise. These typically include problems with initializing or configuring</span>
+<span class="sd">    SSL.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SSLUnavailable"><a class="viewcode-back" href="../../proton.html#proton.SSLUnavailable">[docs]</a><span class="k">class</span> <span class="nc">SSLUnavailable</span><span class="p">(</span><span class="n">SSLException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to SSL</span>
+<span class="sd">    availability arise. These typically include problems finding the SSL</span>
+<span class="sd">    libraries.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="ConnectionException"><a class="viewcode-back" href="../../proton.html#proton.ConnectionException">[docs]</a><span class="k">class</span> <span class="nc">ConnectionException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to a</span>
+<span class="sd">    connection arise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="SessionException"><a class="viewcode-back" href="../../proton.html#proton.SessionException">[docs]</a><span class="k">class</span> <span class="nc">SessionException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to a</span>
+<span class="sd">    session arise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="LinkException"><a class="viewcode-back" href="../../proton.html#proton.LinkException">[docs]</a><span class="k">class</span> <span class="nc">LinkException</span><span class="p">(</span><span class="n">ProtonException</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    An exception class raised when exceptions or errors related to a</span>
+<span class="sd">    link arise.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">pass</span></div>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.32.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+    </div>
+  </body>
+</html>

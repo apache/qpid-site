@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Qpid::Proton::SSLDomain
+  
+    &mdash; Qpid Proton Ruby API
+  
+</title>
+
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Qpid::Proton::SSLDomain";
+  relpath = '../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../_index.html">Index (S)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../Qpid.html" title="Qpid (module)">Qpid</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../Proton.html" title="Qpid::Proton (module)">Proton</a></span></span>
+     &raquo; 
+    <span class="title">SSLDomain</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Qpid::Proton::SSLDomain
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Qpid::Proton::SSLDomain</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/core/ssl_domain.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The top-level object that stores the configuration used by one or more SSL
+sessions.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="SSL.html" title="Qpid::Proton::SSL (class)">SSL</a></span></li>
+    
+  </ul>
+
+</div>
+  <h2>Constant Summary</h2>
+  <dl class="constants">
+    
+      <dt id="VERIFY_PEER-constant" class="">VERIFY_PEER =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Require the peer to provide a valid identifying certificate.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER</span></pre></dd>
+    
+      <dt id="ANONYMOUS_PEER-constant" class="">ANONYMOUS_PEER =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Do no require a certificate nor a cipher authorization.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_ANONYMOUS_PEER</span></pre></dd>
+    
+      <dt id="VERIFY_PEER_NAME-constant" class="">VERIFY_PEER_NAME =
+        <div class="docstring">
+  <div class="discussion">
+    
+<p>Require a valid certficate and matching name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+      </dt>
+      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER_NAME</span></pre></dd>
+    
+  </dl>
+
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#allow_unsecured_client-instance_method" title="#allow_unsecured_client (instance method)">#<strong>allow_unsecured_client</strong>  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Permit a server to accept connection requests from non-SSL clients.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#credentials-instance_method" title="#credentials (instance method)">#<strong>credentials</strong>(cert_file, key_file, password)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Set the certificate that identifies the local node to the remote.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#peer_authentication-instance_method" title="#peer_authentication (instance method)">#<strong>peer_authentication</strong>(verify_mode, trusted_CAs = nil)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Configures the level of verification used on the peer certificate.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#trusted_ca_db-instance_method" title="#trusted_ca_db (instance method)">#<strong>trusted_ca_db</strong>(certificate_db)  </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Configures the set of trusted CA certificates used by this domain to verify
+peers.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="allow_unsecured_client-instance_method">
+  
+    #<strong>allow_unsecured_client</strong>  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Permit a server to accept connection requests from non-SSL clients.</p>
+
+<p>This configures the server to “sniff” the incomfing client data stream and
+dynamically determine whether SSL/TLS is being used. This option is
+disabled by default: only clients using SSL/TLS are accepted by default.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SSLError.html" title="Qpid::Proton::SSLError (class)">SSLError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If an error occurs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+144
+145
+146</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/ssl_domain.rb', line 144</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_allow_unsecured_client'>allow_unsecured_client</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_ssl_domain_allow_unsecured_client'>pn_ssl_domain_allow_unsecured_client</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='rparen'>)</span><span class='semicolon'>;</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="credentials-instance_method">
+  
+    #<strong>credentials</strong>(cert_file, key_file, password)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Set the certificate that identifies the local node to the remote.</p>
+
+<p>This certificate establishes the identity for thelocal node for all SSL
+sessions created from this domain. It will be sent to the remote if the
+remote needs to verify the dientify of this node. This may be used for both
+SSL servers and SSL clients (if client authentication is required by the
+server).</p>
+
+<p><strong>NOTE:</strong> This setting affects only those instances of SSL
+created <strong>after</strong> this call returns. SSL objects created
+before invoking this method will use the domain&#39;s previous settings.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>cert_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The filename containing the identify certificate. For OpenSSL users, this
+is a PEM file. For Windows SChannel users, this is the PKCS#12 file or
+system store.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_file</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An option key to access the identifying certificate. For OpenSSL users,
+this is an optional PEM file containing the private key used to sign the
+certificate. For Windows SChannel users, this is the friendly name of the
+self-identifying certficate if there are multiple certfificates in the
+store.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The password used to sign the key, or <strong>nil</strong> if the key is
+not protected.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SSLError.html" title="Qpid::Proton::SSLError (class)">SSLError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If an error occurs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+79
+80
+81
+82</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/ssl_domain.rb', line 79</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_credentials'>credentials</span><span class='lparen'>(</span><span class='id identifier rubyid_cert_file'>cert_file</span><span class='comma'>,</span> <span class='id identifier rubyid_key_file'>key_file</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_ssl_domain_set_credentials'>pn_ssl_domain_set_credentials</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span>
+                                        <span class='id identifier rubyid_cert_file'>cert_file</span><span class='comma'>,</span> <span class='id identifier rubyid_key_file'>key_file</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="peer_authentication-instance_method">
+  
+    #<strong>peer_authentication</strong>(verify_mode, trusted_CAs = nil)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Configures the level of verification used on the peer certificate.</p>
+
+<p>This method congtrols how the peer&#39;s certificate is validated, if at
+all. By default, neither servers nor clients attempt to verify their peers
+(<strong>ANONYMOUS_PEER</strong>). Once certficates and trusted CAs are
+configured, peer verification can be enabled.</p>
+
+<p><strong>NOTE:</strong> In order to verify a peer, a trusted CA must be
+configured.</p>
+
+<p><strong>NOTE:</strong> Servers must provide their own certficate when
+verifying a peer.</p>
+
+<p><strong>NOTE:</strong> This setting affects only those SSL instances
+created after this call returns. SSL instances created before invoking this
+method will use the domain&#39;s previous setting.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>verify_mode</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The level of validation to apply to the peer.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>trusted_CAs</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The path to a database of trusted CAs that the server will advertise to the
+peer client if the server has been configured to verify its peer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SSLError.html" title="Qpid::Proton::SSLError (class)">SSLError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If an error occurs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="#VERIFY_PEER-constant" title="Qpid::Proton::SSLDomain::VERIFY_PEER (constant)">VERIFY_PEER</a></span></li>
+    
+      <li><span class='object_link'><a href="#ANONYMOUS_PEER-constant" title="Qpid::Proton::SSLDomain::ANONYMOUS_PEER (constant)">ANONYMOUS_PEER</a></span></li>
+    
+      <li><span class='object_link'><a href="#VERIFY_PEER_NAME-constant" title="Qpid::Proton::SSLDomain::VERIFY_PEER_NAME (constant)">VERIFY_PEER_NAME</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+131
+132
+133
+134</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/ssl_domain.rb', line 131</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_peer_authentication'>peer_authentication</span><span class='lparen'>(</span><span class='id identifier rubyid_verify_mode'>verify_mode</span><span class='comma'>,</span> <span class='id identifier rubyid_trusted_CAs'>trusted_CAs</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_ssl_domain_set_peer_authentication'>pn_ssl_domain_set_peer_authentication</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span>
+                                                <span class='id identifier rubyid_verify_mode'>verify_mode</span><span class='comma'>,</span> <span class='id identifier rubyid_trusted_CAs'>trusted_CAs</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="trusted_ca_db-instance_method">
+  
+    #<strong>trusted_ca_db</strong>(certificate_db)  
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Configures the set of trusted CA certificates used by this domain to verify
+peers.</p>
+
+<p>If the local SSL client/server needs to verify the identify of the remote,
+it must validate the signature of the remote&#39;s certificate. This
+function sets the database of trusted CAs that will be used to verify the
+signature of the remote&#39;s certificate.</p>
+
+<p>*NOTE:# This setting affects only those SSL instances created
+<strong>after</strong> this call returns. SSL objects created before
+invoking this method will use the domain&#39;s previous setting.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>certificate_db</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The filename for the databse of trusted CAs, used to authenticate the peer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SSLError.html" title="Qpid::Proton::SSLError (class)">SSLError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>If an error occurs.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+101
+102
+103</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/core/ssl_domain.rb', line 101</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_trusted_ca_db'>trusted_ca_db</span><span class='lparen'>(</span><span class='id identifier rubyid_certificate_db'>certificate_db</span><span class='rparen'>)</span>
+  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_ssl_domain_set_trusted_ca_db'>pn_ssl_domain_set_trusted_ca_db</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='id identifier rubyid_certificate_db'>certificate_db</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Thu Aug 27 15:43:17 2020 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.8 (ruby-2.4.4).
+</div>
+
+    </div>
+  </body>
+</html>

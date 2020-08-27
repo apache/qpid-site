@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>multithreaded_client_flow_control.cpp - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.32.0/index.html">Qpid Proton 0.32.0</a></li><li><a href="/releases/qpid-proton-0.32.0/proton/cpp/examples/index.html">Proton C++ Examples</a></li><li>multithreaded_client_flow_control.cpp</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>multithreaded_client_flow_control.cpp</h1>
+<div class="highlight"><pre><span></span><span class="c1">//</span>
+<span class="c1">// C++11 or greater</span>
+<span class="c1">//</span>
+<span class="c1">// A multi-threaded client that sends and receives messages from multiple AMQP</span>
+<span class="c1">// addresses.</span>
+<span class="c1">//</span>
+<span class="c1">// Demonstrates how to:</span>
+<span class="c1">//</span>
+<span class="c1">// - implement proton handlers that interact with user threads safely</span>
+<span class="c1">// - block sender threads to respect AMQP flow control</span>
+<span class="c1">// - use AMQP flow control to limit message buffering for receivers threads</span>
+<span class="c1">//</span>
+<span class="c1">// We define sender and receiver classes with simple, thread-safe blocking</span>
+<span class="c1">// send() and receive() functions.</span>
+<span class="c1">//</span>
+<span class="c1">// These classes are also privately proton::message_handler instances. They use</span>
+<span class="c1">// the thread-safe proton::work_queue and standard C++ synchronization (std::mutex</span>
+<span class="c1">// etc.) to pass messages between user and proton::container threads.</span>
+<span class="c1">//</span>
+<span class="c1">// NOTE: no proper error handling</span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/receiver.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/receiver_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/sender.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/work_queue.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;atomic&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;condition_variable&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;mutex&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;queue&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;thread&gt;</span><span class="cp"></span>
+
+<span class="c1">// Lock output from threads to avoid scrambling</span>
+<span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">out_lock</span><span class="p">;</span>
+<span class="cp">#define OUT(x) do { std::lock_guard&lt;std::mutex&gt; l(out_lock); x; } while (false)</span>
+
+<span class="c1">// Exception raised if a sender or receiver is closed when trying to send/receive</span>
+<span class="k">class</span> <span class="nc">closed</span> <span class="o">:</span> <span class="k">public</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span> <span class="p">{</span>
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">closed</span><span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">msg</span><span class="p">)</span> <span class="o">:</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">};</span>
+
+<span class="c1">// A thread-safe sending connection that blocks sending threads when there</span>
+<span class="c1">// is no AMQP credit to send messages.</span>
+<span class="k">class</span> <span class="nc">sender</span> <span class="o">:</span> <span class="k">private</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
+    <span class="c1">// Only used in proton handler thread</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="n">sender_</span><span class="p">;</span>
+
+    <span class="c1">// Shared by proton and user threads, protected by lock_</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">lock_</span><span class="p">;</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">work_queue</span> <span class="o">*</span><span class="n">work_queue_</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span> <span class="n">sender_ready_</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">queued_</span><span class="p">;</span>                       <span class="c1">// Queued messages waiting to be sent</span>
+    <span class="kt">int</span> <span class="n">credit_</span><span class="p">;</span>                       <span class="c1">// AMQP credit - number of messages we can send</span>
+
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">sender</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="o">&amp;</span> <span class="n">cont</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">url</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">address</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">work_queue_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">queued_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">credit_</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">cont</span><span class="p">.</span><span class="n">open_sender</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s">&quot;/&quot;</span><span class="o">+</span><span class="n">address</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">connection_options</span><span class="p">().</span><span class="n">handler</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Thread safe</span>
+    <span class="kt">void</span> <span class="n">send</span><span class="p">(</span><span class="k">const</span> <span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="o">&amp;</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+            <span class="c1">// Don&#39;t queue up more messages than we have credit for</span>
+            <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">work_queue_</span> <span class="o">||</span> <span class="n">queued_</span> <span class="o">&gt;=</span> <span class="n">credit_</span><span class="p">)</span> <span class="n">sender_ready_</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+            <span class="o">++</span><span class="n">queued_</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">work_queue_</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">do_send</span><span class="p">(</span><span class="n">m</span><span class="p">);</span> <span class="p">});</span> <span class="c1">// work_queue_ is thread safe</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Thread safe</span>
+    <span class="kt">void</span> <span class="n">close</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">work_queue</span><span class="p">()</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span> <span class="p">{</span> <span class="n">sender_</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">close</span><span class="p">();</span> <span class="p">});</span>
+    <span class="p">}</span>
+
+  <span class="k">private</span><span class="o">:</span>
+
+    <span class="n">proton</span><span class="o">::</span><span class="n">work_queue</span><span class="o">*</span> <span class="n">work_queue</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Wait till work_queue_ and sender_ are initialized.</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">work_queue_</span><span class="p">)</span> <span class="n">sender_ready_</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">work_queue_</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// == messaging_handler overrides, only called in proton handler thread</span>
+
+    <span class="kt">void</span> <span class="n">on_sender_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="c1">// Make sure sender_ and work_queue_ are set atomically</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="n">sender_</span> <span class="o">=</span> <span class="n">s</span><span class="p">;</span>
+        <span class="n">work_queue_</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">.</span><span class="n">work_queue</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_sendable</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="n">credit_</span> <span class="o">=</span> <span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">();</span>
+        <span class="n">sender_ready_</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span> <span class="c1">// Notify senders we have credit</span>
+    <span class="p">}</span>
+
+    <span class="c1">// work_queue work items is are automatically dequeued and called by proton</span>
+    <span class="c1">// This function is called because it was queued by send()</span>
+    <span class="kt">void</span> <span class="n">do_send</span><span class="p">(</span><span class="k">const</span> <span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="o">&amp;</span> <span class="n">m</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sender_</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="o">--</span><span class="n">queued_</span><span class="p">;</span>                    <span class="c1">// work item was consumed from the work_queue</span>
+        <span class="n">credit_</span> <span class="o">=</span> <span class="n">sender_</span><span class="p">.</span><span class="n">credit</span><span class="p">();</span>   <span class="c1">// update credit</span>
+        <span class="n">sender_ready_</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>       <span class="c1">// Notify senders we have space on queue</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_error</span><span class="p">(</span><span class="k">const</span> <span class="n">proton</span><span class="o">::</span><span class="n">error_condition</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;unexpected error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// A thread safe receiving connection that blocks receiving threads when there</span>
+<span class="c1">// are no messages available, and maintains a bounded buffer of incoming</span>
+<span class="c1">// messages by issuing AMQP credit only when there is space in the buffer.</span>
+<span class="k">class</span> <span class="nc">receiver</span> <span class="o">:</span> <span class="k">private</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
+    <span class="k">static</span> <span class="k">const</span> <span class="kt">size_t</span> <span class="n">MAX_BUFFER</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="c1">// Max number of buffered messages</span>
+
+    <span class="c1">// Used in proton threads only</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="n">receiver_</span><span class="p">;</span>
+
+    <span class="c1">// Used in proton and user threads, protected by lock_</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">mutex</span> <span class="n">lock_</span><span class="p">;</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">work_queue</span><span class="o">*</span> <span class="n">work_queue_</span><span class="p">;</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">queue</span><span class="o">&lt;</span><span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="o">&gt;</span> <span class="n">buffer_</span><span class="p">;</span> <span class="c1">// Messages not yet returned by receive()</span>
+    <span class="n">std</span><span class="o">::</span><span class="n">condition_variable</span> <span class="n">can_receive_</span><span class="p">;</span> <span class="c1">// Notify receivers of messages</span>
+    <span class="kt">bool</span> <span class="n">closed_</span><span class="p">;</span>
+
+  <span class="k">public</span><span class="o">:</span>
+
+    <span class="c1">// Connect to url</span>
+    <span class="n">receiver</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="o">&amp;</span> <span class="n">cont</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">url</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&amp;</span> <span class="n">address</span><span class="p">)</span>
+        <span class="o">:</span> <span class="n">work_queue_</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">closed_</span><span class="p">(</span><span class="nb">false</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// NOTE:credit_window(0) disables automatic flow control.</span>
+        <span class="c1">// We will use flow control to match AMQP credit to buffer capacity.</span>
+        <span class="n">cont</span><span class="p">.</span><span class="n">open_receiver</span><span class="p">(</span><span class="n">url</span><span class="o">+</span><span class="s">&quot;/&quot;</span><span class="o">+</span><span class="n">address</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">receiver_options</span><span class="p">().</span><span class="n">credit_window</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+                           <span class="n">proton</span><span class="o">::</span><span class="n">connection_options</span><span class="p">().</span><span class="n">handler</span><span class="p">(</span><span class="o">*</span><span class="k">this</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Thread safe receive</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="n">receive</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">unique_lock</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="c1">// Wait for buffered messages</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">closed_</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="o">!</span><span class="n">work_queue_</span> <span class="o">||</span> <span class="n">buffer_</span><span class="p">.</span><span class="n">empty</span><span class="p">()))</span> <span class="p">{</span>
+            <span class="n">can_receive_</span><span class="p">.</span><span class="n">wait</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">closed_</span><span class="p">)</span> <span class="k">throw</span> <span class="n">closed</span><span class="p">(</span><span class="s">&quot;receiver closed&quot;</span><span class="p">);</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="n">m</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">buffer_</span><span class="p">.</span><span class="n">front</span><span class="p">());</span>
+        <span class="n">buffer_</span><span class="p">.</span><span class="n">pop</span><span class="p">();</span>
+        <span class="c1">// Add a lambda to the work queue to call receive_done().</span>
+        <span class="c1">// This will tell the handler to add more credit.</span>
+        <span class="n">work_queue_</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">([</span><span class="o">=</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">receive_done</span><span class="p">();</span> <span class="p">});</span>
+        <span class="k">return</span> <span class="n">m</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Thread safe</span>
+    <span class="kt">void</span> <span class="n">close</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">closed_</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">closed_</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+            <span class="n">can_receive_</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">work_queue_</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">work_queue_</span><span class="o">-&gt;</span><span class="n">add</span><span class="p">([</span><span class="k">this</span><span class="p">]()</span> <span class="p">{</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">receiver_</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">close</span><span class="p">();</span> <span class="p">});</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="k">private</span><span class="o">:</span>
+    <span class="c1">// ==== The following are called by proton threads only.</span>
+
+    <span class="kt">void</span> <span class="n">on_receiver_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">receiver_</span> <span class="o">=</span> <span class="n">r</span><span class="p">;</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="n">work_queue_</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">receiver_</span><span class="p">.</span><span class="n">work_queue</span><span class="p">();</span>
+        <span class="n">receiver_</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="n">MAX_BUFFER</span><span class="p">);</span> <span class="c1">// Buffer is empty, initial credit is the limit</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_message</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">delivery</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="c1">// Proton automatically reduces credit by 1 before calling on_message</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">lock_guard</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">mutex</span><span class="o">&gt;</span> <span class="n">l</span><span class="p">(</span><span class="n">lock_</span><span class="p">);</span>
+        <span class="n">buffer_</span><span class="p">.</span><span class="n">push</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+        <span class="n">can_receive_</span><span class="p">.</span><span class="n">notify_all</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// called via work_queue</span>
+    <span class="kt">void</span> <span class="n">receive_done</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// Add 1 credit, a receiver has taken a message out of the buffer.</span>
+        <span class="n">receiver_</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_error</span><span class="p">(</span><span class="k">const</span> <span class="n">proton</span><span class="o">::</span><span class="n">error_condition</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;unexpected error: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">e</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// ==== Example code using the sender and receiver</span>
+
+<span class="c1">// Send n messages</span>
+<span class="kt">void</span> <span class="nf">send_thread</span><span class="p">(</span><span class="n">sender</span><span class="o">&amp;</span> <span class="n">s</span><span class="p">,</span> <span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">auto</span> <span class="n">id</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">get_id</span><span class="p">();</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">ss</span><span class="p">;</span>
+        <span class="n">ss</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">get_id</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;-&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">i</span><span class="p">;</span>
+        <span class="n">s</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="p">(</span><span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">()));</span>
+        <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; sent </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;&quot;&#39;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; sent &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Receive messages till atomic remaining count is 0.</span>
+<span class="c1">// remaining is shared among all receiving threads</span>
+<span class="kt">void</span> <span class="nf">receive_thread</span><span class="p">(</span><span class="n">receiver</span><span class="o">&amp;</span> <span class="n">r</span><span class="p">,</span> <span class="n">std</span><span class="o">::</span><span class="n">atomic_int</span><span class="o">&amp;</span> <span class="n">remaining</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">auto</span> <span class="n">id</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">this_thread</span><span class="o">::</span><span class="n">get_id</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">n</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="c1">// atomically check and decrement remaining *before* receiving.</span>
+        <span class="c1">// If it is 0 or less then return, as there are no more</span>
+        <span class="c1">// messages to receive so calling r.receive() would block forever.</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">remaining</span><span class="o">--</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">auto</span> <span class="n">m</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">receive</span><span class="p">();</span>
+            <span class="o">++</span><span class="n">n</span><span class="p">;</span>
+            <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; received </span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">.</span><span class="n">body</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="sc">&#39;&quot;&#39;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">OUT</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">id</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; received &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">n</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; messages&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">closed</span><span class="o">&amp;</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">5</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span>
+                <span class="s">&quot;Usage: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; CONNECTION-URL AMQP-ADDRESS MESSAGE-COUNT THREAD-COUNT</span><span class="se">\n</span><span class="s">&quot;</span>
+                <span class="s">&quot;CONNECTION-URL: connection address, e.g.&#39;amqp://127.0.0.1&#39;</span><span class="se">\n</span><span class="s">&quot;</span>
+                <span class="s">&quot;AMQP-ADDRESS: AMQP node address, e.g. &#39;examples&#39;</span><span class="se">\n</span><span class="s">&quot;</span>
+                <span class="s">&quot;MESSAGE-COUNT: number of messages to send</span><span class="se">\n</span><span class="s">&quot;</span>
+                <span class="s">&quot;THREAD-COUNT: number of sender/receiver thread pairs</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">url</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+        <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">address</span> <span class="o">=</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+        <span class="kt">int</span> <span class="n">n_messages</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+        <span class="kt">int</span> <span class="n">n_threads</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">4</span><span class="p">]);</span>
+        <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="n">n_messages</span> <span class="o">*</span> <span class="n">n_threads</span><span class="p">;</span>
+
+        <span class="c1">// Total messages to be received, multiple receiver threads will decrement this.</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">atomic_int</span> <span class="n">remaining</span><span class="p">;</span>
+        <span class="n">remaining</span><span class="p">.</span><span class="n">store</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+
+        <span class="c1">// Run the proton container</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span> <span class="n">container</span><span class="p">;</span>
+        <span class="k">auto</span> <span class="n">container_thread</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span> <span class="p">{</span> <span class="n">container</span><span class="p">.</span><span class="n">run</span><span class="p">();</span> <span class="p">});</span>
+
+        <span class="c1">// A single sender and receiver to be shared by all the threads</span>
+        <span class="n">sender</span> <span class="n">send</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+        <span class="n">receiver</span> <span class="n">recv</span><span class="p">(</span><span class="n">container</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">address</span><span class="p">);</span>
+
+        <span class="c1">// Start receiver threads, then sender threads.</span>
+        <span class="c1">// Starting receivers first gives all receivers a chance to compete for messages.</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="o">&gt;</span> <span class="n">threads</span><span class="p">;</span>
+        <span class="n">threads</span><span class="p">.</span><span class="n">reserve</span><span class="p">(</span><span class="n">n_threads</span><span class="o">*</span><span class="mi">2</span><span class="p">);</span> <span class="c1">// Avoid re-allocation once threads are started</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_threads</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">threads</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span> <span class="p">{</span> <span class="n">receive_thread</span><span class="p">(</span><span class="n">recv</span><span class="p">,</span> <span class="n">remaining</span><span class="p">);</span> <span class="p">}));</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">n_threads</span><span class="p">;</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span>
+            <span class="n">threads</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="kr">thread</span><span class="p">([</span><span class="o">&amp;</span><span class="p">]()</span> <span class="p">{</span> <span class="n">send_thread</span><span class="p">(</span><span class="n">send</span><span class="p">,</span> <span class="n">n_messages</span><span class="p">);</span> <span class="p">}));</span>
+
+        <span class="c1">// Wait for threads to finish</span>
+        <span class="k">for</span> <span class="p">(</span><span class="k">auto</span><span class="o">&amp;</span> <span class="nl">t</span> <span class="p">:</span> <span class="n">threads</span><span class="p">)</span> <span class="n">t</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+        <span class="n">send</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+        <span class="n">recv</span><span class="p">.</span><span class="n">close</span><span class="p">();</span>
+        <span class="n">container_thread</span><span class="p">.</span><span class="n">join</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">remaining</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;not all messages were received&quot;</span><span class="p">);</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">count</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; messages sent and received&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="multithreaded_client_flow_control.cpp">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
