@@ -31,6 +31,9 @@ documentation, see the [release overview](index.html).
  - [QPID-8451](https://issues.apache.org/jira/browse/QPID-8451) - [Broker-J][AMQP 1.0] Queues with enforced producer flow control should not allow to produce messages on sender links created on new connections
  - [QPID-8454](https://issues.apache.org/jira/browse/QPID-8454) - [Broker-J] Expose configured object statistics in prometheus format
  - [QPID-8455](https://issues.apache.org/jira/browse/QPID-8455) - [Broker-J]Use allow/deny list terminology for existing attributes and context variables
+ - [QPID-8458](https://issues.apache.org/jira/browse/QPID-8458) - [Broker-J] Remove RewriteServlet from HTTP management
+ - [QPID-8459](https://issues.apache.org/jira/browse/QPID-8459) - [Broker-J] Remove parsing of request URL from AnonymousInteractiveAuthenticator
+ - [QPID-8461](https://issues.apache.org/jira/browse/QPID-8461) - [Broker-J] Replace Random with SecureRandom
 
 ## Bugs fixed
 
