@@ -1,0 +1,112 @@
+<div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">Appendix&#160;H.&#160;BDB HA initial configuration</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Appendix-Queue-Declare-Arguments.html">Prev</a>&#160;</td><th align="center" width="60%">&#160;</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Appendix-BDB-HA-initial-configuration-creation.html">Next</a></td></tr></table><hr /></div><div class="appendix"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Appendix-BDB-HA-initial-configuration"></a>Appendix&#160;H.&#160;BDB HA initial configuration</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="Java-Broker-Appendix-BDB-HA-initial-configuration.html#Java-Broker-Appendix-BDB-HA-initial-configuration-example">H.1. Example of BDB HA 'Initial Configuration'</a></span></dt><dt><span class="section"><a href="Java-Broker-Appendix-BDB-HA-initial-configuration-creation.html">H.2. Creation of BDB HA group using an initial configuration.</a></span></dt></dl></div><p>The section <a class="xref" href="Java-Broker-Initial-Configuration.html#Java-Broker-Initial-Configuration-Introduction" title="5.1.&#160;Introduction">Section&#160;5.1, &#8220;Introduction&#8221;</a>
+    provides an introduction into Broker-J initial configuration and how broker configuration can be created from
+    initial configuration on first broker start-up. This appendix illustrates how to create a BDB HA group from an
+    initial configuration file. For creation of BDB HA group using Web Management Console please refer <a class="xref" href="Java-Broker-Management-Channel-Web-Console.html" title="6.2.&#160;Web Management Console">Section&#160;6.2, &#8220;Web Management Console&#8221;</a>.
+  </p><p>The BDB HA group usually consists of two or more nodes hosting a distributed virtual host.</p><p>When BDB HA node is created the following attributes has to be provided
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>groupName</em></span>; a name of BDB HA group</p></li><li class="listitem"><p><span class="emphasis"><em>nodeName</em></span>; a name of BDB HA node</p></li><li class="listitem"><p><span class="emphasis"><em>address</em></span>; a node address as colon-separated pair of host name and port</p></li><li class="listitem"><p><span class="emphasis"><em>helperAddress</em></span>; an address of existing helper node. It is required when node joins an existing group.</p></li><li class="listitem"><p><span class="emphasis"><em>helperNodeName</em></span>; a name of existing helper node. It is required when node joins an existing group.</p></li><li class="listitem"><p><span class="emphasis"><em>permittedNodes</em></span>; an array containing all addresses of nodes allowed to join the group.</p></li></ul></div><p>
+  </p><p>
+    A node priority can be optionally specified for the node to influence master election among nodes with the most current set of data.
+    An attribute <span class="emphasis"><em>priority</em></span> is used to specify a priority as an integer number.
+  </p><p>Apart from a group name and permitted nodes, the rest of node attribute values varies from node to node.</p><p>In order to use the same initial configuration for creation of BDB HA nodes, the context variable can be used for varying attribute values.</p><p>In the example of initial configuration illustrated in this apendix, the following context variables are defined.
+    </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>${ha.group_name}</em></span>; used to pass an HA group name</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.node_name}</em></span>; used to pass a node name</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.node_address}</em></span>; used to pass a node address</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.helper_address}</em></span>; used to pass an address of helper node.</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.helper_node_name}</em></span>; used to pass an address of helper node.</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.permitted_nodes}</em></span>; used to pass a stringified json array containing permitted nodes for the group.</p></li><li class="listitem"><p><span class="emphasis"><em>${ha.priority}</em></span>; used to pass a node priority.</p></li></ul></div><p>
+  </p><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Appendix-BDB-HA-initial-configuration-example"></a>H.1.&#160;Example of BDB HA 'Initial Configuration'</h2></div></div></div><p> An example of 'Initial Configuration' for BDB HA:</p><div class="example"><a id="d0e10449"></a><p class="title"><strong>Example&#160;H.1.&#160;BDB HA 'Initial configuration'</strong></p><div class="example-contents"><pre class="programlisting">
+{
+  "name": "${broker.name}",
+  "modelVersion" : "8.0",
+  "authenticationproviders" : [ {
+    "name" : "plain",
+    "type" : "Plain",
+    "users" : [ {
+    "name" : "guest",
+    "type" : "managed",
+    "password" : "guest"
+  } ]
+  } ],
+  "brokerloggers" : [ {
+    "name" : "logfile",
+    "type" : "File",
+    "fileName" : "${qpid.work_dir}${file.separator}log${file.separator}qpid.log",
+    "brokerloginclusionrules" : [ {
+      "name" : "Root",
+      "type" : "NameAndLevel",
+      "level" : "WARN",
+      "loggerName" : "ROOT"
+    }, {
+      "name" : "Qpid",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "org.apache.qpid.*"
+    }, {
+      "name" : "Operational",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "qpid.message.*"
+    }, {
+      "name" : "Statistics",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "qpid.statistics.*"
+    } ]
+  }, {
+    "name" : "memory",
+    "type" : "Memory",
+    "brokerloginclusionrules" : [ {
+      "name" : "Root",
+      "type" : "NameAndLevel",
+      "level" : "WARN",
+      "loggerName" : "ROOT"
+    }, {
+      "name" : "Qpid",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "org.apache.qpid.*"
+    }, {
+      "name" : "Operational",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "qpid.message.*"
+    }, {
+      "name" : "Statistics",
+      "type" : "NameAndLevel",
+      "level" : "INFO",
+      "loggerName" : "qpid.statistics.*"
+    } ]
+  } ],
+  "ports" : [  {
+    "name" : "AMQP",
+    "port" : "${qpid.amqp_port}",
+    "authenticationProvider" : "plain",
+    "virtualhostaliases" : [ {
+      "name" : "nameAlias",
+      "type" : "nameAlias"
+    }, {
+      "name" : "defaultAlias",
+      "type" : "defaultAlias"
+    }, {
+      "name" : "hostnameAlias",
+      "type" : "hostnameAlias"
+    } ]
+  }, {
+  "name" : "HTTP",
+    "port" : "${qpid.http_port}",
+    "authenticationProvider" : "plain",
+    "protocols" : [ "HTTP" ]
+  }],
+  "virtualhostnodes" : [ {
+    "name" : "${ha.node_name}",
+    "type" : "BDB_HA",
+    "address" : "${ha.node_address}",
+    "groupName" : "${ha.group_name}",
+    "helperAddress" : "${ha.helper_address}",
+    "helperNodeName" : "${ha.helper_node_name}",
+    "permittedNodes" : "${ha.permitted_nodes}",
+    "priority" : "${ha.priority}",
+    "defaultVirtualHostNode" : "true",
+    "virtualHostInitialConfiguration" : "${qpid.initial_config_virtualhost_config}"
+  } ],
+  "plugins" : [ {
+    "type" : "MANAGEMENT-HTTP",
+    "name" : "httpManagement"
+  } ]
+}
+      </pre></div></div><br class="example-break" /></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Appendix-Queue-Declare-Arguments.html">Prev</a>&#160;</td><td align="center" width="20%">&#160;</td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Appendix-BDB-HA-initial-configuration-creation.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">Appendix&#160;G.&#160;Queue Declaration Arguments supported by the Broker&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;H.2.&#160;Creation of BDB HA group using an initial configuration.</td></tr></table></div></div>
