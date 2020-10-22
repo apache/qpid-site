@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>9.4.&#160;Handing Undeliverable Messages - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-7.1.10/index.html">Qpid Broker-J 7.1.10</a></li><li><a href="/releases/qpid-broker-j-7.1.10/book/index.html">Apache Qpid Broker-J</a></li><li>9.4.&#160;Handing Undeliverable Messages</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table summary="Navigation header" width="100%"><tr><th align="center" colspan="3">9.4.&#160;Handing Undeliverable Messages</th></tr><tr><td align="left" width="20%"><a accesskey="p" href="Java-Broker-Runtime-Transaction-Timeout.html">Prev</a>&#160;</td><th align="center" width="60%">Chapter&#160;9.&#160;Runtime</th><td align="right" width="20%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages"></a>9.4.&#160;Handing Undeliverable Messages</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Introduction"></a>9.4.1.&#160;Introduction</h3></div></div></div><p> Messages that cannot be delivered successfully to a consumer (for instance, because the
+   client is using a transacted session and rolls-back the transaction) can be made available on
+   the queue again and then subsequently be redelivered, depending on the precise session
+   acknowledgement mode and messaging model used by the application. This is normally desirable
+   behaviour that contributes to the ability of a system to withstand unexpected errors. However, it
+   leaves open the possibility for a message to be repeatedly redelivered (potentially indefinitely),
+   consuming system resources and preventing the delivery of other messages. Such undeliverable
+   messages are sometimes known as poison messages.</p><p>For an example, consider a stock ticker application that has been designed to consume prices
+   contained within JMS TextMessages. What if inadvertently a BytesMessage is placed onto the queue?
+   As the ticker application does not expect the BytesMessage, its processing might fail and cause it
+   to roll-back the transaction, however the default behavior of the Broker would mean that the
+   BytesMessage would be delivered over and over again, preventing the delivery of other legitimate
+   messages, until an operator intervenes and removes the erroneous message from the queue. </p><p>Qpid has maximum delivery count and dead-letter queue (DLQ) features which can be used in
+   concert to construct a system that automatically handles such a condition. These features are
+   described in the following sections.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Maximum-Delivery-Count"></a>9.4.2.&#160;Maximum Delivery Count</h3></div></div></div><p> Maximum delivery count is an attribute of a queue. If a consumer application is unable to
+   process a message more than the specified number of times, then the Broker will either route the
+   message via the queue's <span class="emphasis"><em>alternate binding</em></span> (if one has been defined), or will
+   discard the message.</p><p>When using AMQP 1.0 the current delivery count of a message is available to the consuming
+   application via the<code class="literal">message-count</code> message header (exposed via the
+   <code class="literal">JMSXDeliveryCount</code> JMS message property when using JMS).  When using the
+   AMQP 0-8..0-10 protocols this information is not available.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> When using AMQP 0-8..0-10, in order for a maximum delivery count to be enforced, the consuming application
+    <span class="emphasis"><em>must</em></span> call <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#rollback()" target="_top">Session#rollback()</a> (or <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#recover()" target="_top">Session#recover()</a> if the session is not transacted). It is during the Broker's
+    processing of Session#rollback() (or Session#recover()) that if a message has been seen
+    at least the maximum number of times then it will move the message to the DLQ or discard the
+    message. If the consuming application fails in another manner, for instance, closes the connection, the
+    message will not be re-routed and consumer application will see the same poison message again
+    once it reconnects.</p><p> If the consuming application is using Qpid JMS Client 0-x and using AMQP 0-8, 0-9, or 0-9-1
+    protocols, it is necessary to set the client system property <code class="varname">qpid.reject.behaviour</code> or
+    connection or binding URL option <code class="varname">rejectbehaviour</code> to the value <code class="literal">server</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Dead-Letter-Queues"></a>9.4.3.&#160;Alternate Binding</h3></div></div></div><p>Once the maximum delivery count is exceeded, if the queue has an <code class="literal">alternateBinding</code>
+    specified, the Broker automatically routes the message via the alternate binding.  The alternate binding
+    would normally specify a queue designated for that purpose of receiving the undeliverable messages.
+    By convention such queues are known as dead-letter queues or simply DLQs.</p><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Avoid excessive queue depth</h3><p>Applications making use of DLQs <span class="emphasis"><em>should</em></span> make provision for the frequent
+    examination of messages arriving on DLQs so that both corrective actions can be taken to resolve
+    the underlying cause and organise for their timely removal from the DLQ. Messages on DLQs
+    consume system resources in the same manner as messages on normal queues so excessive queue
+    depths should not be permitted to develop.</p></div></div></div><div class="navfooter"><hr /><table summary="Navigation footer" width="100%"><tr><td align="left" width="40%"><a accesskey="p" href="Java-Broker-Runtime-Transaction-Timeout.html">Prev</a>&#160;</td><td align="center" width="20%"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td align="right" width="40%">&#160;<a accesskey="n" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html">Next</a></td></tr><tr><td align="left" valign="top" width="40%">9.3.&#160;Transaction Timeout&#160;</td><td align="center" width="20%"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td align="right" valign="top" width="40%">&#160;9.5.&#160;Closing client connections on unroutable mandatory messages</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
