@@ -2,7 +2,7 @@ var group__api__types =
 [
     [ "pn_atom_t", "group__api__types.html#structpn__atom__t", [
       [ "type", "group__api__types.html#a27df760d7bd97cf728fc3e633a1ba604", null ],
-      [ "u", "group__api__types.html#a40718ebaefa0aa99686fb027a4dfc120", null ]
+      [ "u", "group__api__types.html#a6bbdd696540adf79b8b43482fd928bce", null ]
     ] ],
     [ "pn_bytes_t", "group__api__types.html#structpn__bytes__t", [
       [ "size", "group__api__types.html#a854352f53b148adc24983a58a1866d66", null ],

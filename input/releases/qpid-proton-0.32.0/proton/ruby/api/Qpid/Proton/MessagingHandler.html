@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::MessagingHandler";
   relpath = '../../';
 </script>
@@ -104,19 +104,11 @@
     
 <p>A handler for AMQP messaging events.</p>
 
-<p>Subclass the handler and provide the #on_xxx methods with your
-event-handling code.</p>
+<p>Subclass the handler and provide the #on_xxx methods with your event-handling code.</p>
 
-<p>An AMQP endpoint (connection, session or link) must be opened and closed at
-each end.  Normally proton responds automatically to an incoming
-open/close. You can prevent the automatic response by raising
-<span class='object_link'><a href="StopAutoResponse.html" title="Qpid::Proton::StopAutoResponse (class)">StopAutoResponse</a></span> from <code>#on_xxx_open</code> or
-<code>#on_xxx_close</code>. The application becomes responsible for calling
-<tt>#open/#close</tt> at a later point.</p>
+<p>An AMQP endpoint (connection, session or link) must be opened and closed at each end.  Normally proton responds automatically to an incoming open/close. You can prevent the automatic response by raising <span class='object_link'><a href="StopAutoResponse.html" title="Qpid::Proton::StopAutoResponse (class)">StopAutoResponse</a></span> from <code>#on_xxx_open</code> or <code>#on_xxx_close</code>. The application becomes responsible for calling <tt>#open/#close</tt> at a later point.</p>
 
-<p><strong>Note</strong>: If a <span class='object_link'><a href="" title="Qpid::Proton::MessagingHandler (class)">MessagingHandler</a></span> method raises an exception,
-it will stop the <span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span> that the handler is running in. See
-<span class='object_link'><a href="Container.html#run-instance_method" title="Qpid::Proton::Container#run (method)">Container#run</a></span></p>
+<p><strong>Note</strong>: If a <span class='object_link'><a href="" title="Qpid::Proton::MessagingHandler (class)">MessagingHandler</a></span> method raises an exception, it will stop the <span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span> that the handler is running in. See <span class='object_link'><a href="Container.html#run-instance_method" title="Qpid::Proton::Container#run (method)">Container#run</a></span></p>
 
 
   </div>
@@ -183,7 +175,7 @@ it will stop the <span class='object_link'><a href="Container.html" title="Qpid:
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns handler options, see #initialize</p>
+<p>Returns handler options, see #initialize.</p>
 
 
   </div>
@@ -236,9 +228,9 @@ it will stop the <span class='object_link'><a href="Container.html" title="Qpid:
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:17 2020 by
+  Generated on Wed Nov 11 12:57:53 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::Link";
   relpath = '../../';
 </script>
@@ -104,8 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>The base for both Sender and Receiver, providing common functionality
-between both ends.</p>
+<p>The base for both Sender and Receiver, providing common functionality between both ends.</p>
 
 <p>A Link has a single parent Qpid::Proton::Session instance.</p>
 
@@ -120,11 +119,16 @@ between both ends.</p>
   <p class="children"><span class='object_link'><a href="Receiver.html" title="Qpid::Proton::Receiver (class)">Receiver</a></span>, <span class='object_link'><a href="Sender.html" title="Qpid::Proton::Sender (class)">Sender</a></span></p>
 </div>
 
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="SND_UNSETTLED-constant" class="">SND_UNSETTLED =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="SND_UNSETTLED-constant" class="">SND_UNSETTLED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The sender will send all deliveries initially unsettled.</p>
@@ -136,11 +140,11 @@ between both ends.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_UNSETTLED</span></pre></dd>
-    
-      <dt id="SND_SETTLED-constant" class="">SND_SETTLED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_UNSETTLED</span></pre></dd>
+      
+        <dt id="SND_SETTLED-constant" class="">SND_SETTLED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The sender will send all deliveries settled to the receiver.</p>
@@ -152,11 +156,11 @@ between both ends.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_SETTLED</span></pre></dd>
-    
-      <dt id="SND_MIXED-constant" class="">SND_MIXED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_SETTLED</span></pre></dd>
+      
+        <dt id="SND_MIXED-constant" class="">SND_MIXED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The sender may send a mixture of settled and unsettled deliveries.</p>
@@ -168,11 +172,11 @@ between both ends.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_MIXED</span></pre></dd>
-    
-      <dt id="RCV_FIRST-constant" class="">RCV_FIRST =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SND_MIXED</span></pre></dd>
+      
+        <dt id="RCV_FIRST-constant" class="">RCV_FIRST =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The receiver will settle deliveries regardless of what the sender does.</p>
@@ -184,11 +188,11 @@ between both ends.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_RCV_FIRST</span></pre></dd>
-    
-      <dt id="RCV_SECOND-constant" class="">RCV_SECOND =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_RCV_FIRST</span></pre></dd>
+      
+        <dt id="RCV_SECOND-constant" class="">RCV_SECOND =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The receiver will only settle deliveries after the sender settles.</p>
@@ -200,10 +204,11 @@ between both ends.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_RCV_SECOND</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_RCV_SECOND</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -742,13 +747,9 @@ between both ends.</p>
     
 <p>Advance the current delivery to the next on the link.</p>
 
-<p>For sending links, this operation is used to finish sending message data
-for the current outgoing delivery and move on to the next outgoing delivery
-(if any).</p>
+<p>For sending links, this operation is used to finish sending message data for the current outgoing delivery and move on to the next outgoing delivery (if any).</p>
 
-<p>For receiving links, this operatoin is used to finish accessing message
-data from the current incoming delivery and move on to the next incoming
-delivery (if any).</p>
+<p>For receiving links, this operatoin is used to finish accessing message data from the current incoming delivery and move on to the next incoming delivery (if any).</p>
 
 
   </div>
@@ -936,15 +937,9 @@ delivery (if any).</p>
     
 <p>Returns the current delivery.</p>
 
-<p>Each link maintains a sequence of deliveries in the order they were
-created, along with a reference to the <strong>current</strong> delivery.
-All send and receive operations on a link take place on the
-<strong>current</strong> delivery. If a link has no current delivery, the
-current delivery is automatically pointed to the <strong>next</strong>
-delivery created on the link.</p>
+<p>Each link maintains a sequence of deliveries in the order they were created, along with a reference to the <strong>current</strong> delivery. All send and receive operations on a link take place on the <strong>current</strong> delivery. If a link has no current delivery, the current delivery is automatically pointed to the <strong>next</strong> delivery created on the link.</p>
 
-<p>Once initialized, the current delivery remains the same until it is changed
-by advancing, or until it is settled.</p>
+<p>Once initialized, the current delivery remains the same until it is changed by advancing, or until it is settled.</p>
 
 
   </div>
@@ -1058,17 +1053,11 @@ by advancing, or until it is settled.</p>
     
 <p>Drains excess credit.</p>
 
-<p>When a link is in drain mode, the sender must use all excess credit
-immediately and release any excess credit back to the receiver if there are
-no deliveries available to send.</p>
+<p>When a link is in drain mode, the sender must use all excess credit immediately and release any excess credit back to the receiver if there are no deliveries available to send.</p>
 
-<p>When invoked on a Sender that is in drain mode, this operation will release
-all excess credit back to the receiver and return the number of credits
-released back to the sender. If the link is not in drain mode, this
-operation is a noop.</p>
+<p>When invoked on a Sender that is in drain mode, this operation will release all excess credit back to the receiver and return the number of credits released back to the sender. If the link is not in drain mode, this operation is a noop.</p>
 
-<p>When invoked on a Receiver, this operation will return and reset the number
-of credits the sender has released back to it.</p>
+<p>When invoked on a Receiver, this operation will return and reset the number of credits the sender has released back to it.</p>
 
 
   </div>
@@ -1125,9 +1114,7 @@ of credits the sender has released back to it.</p>
     
 <p>Returns additional error information.</p>
 
-<p>Whenever a link operation fails (i.e., returns an error code) additional
-error details can be obtained from this method. Ther error object that is
-returned may also be used to clear the error condition.</p>
+<p>Whenever a link operation fails (i.e., returns an error code) additional error details can be obtained from this method. Ther error object that is returned may also be used to clear the error condition.</p>
 
 
   </div>
@@ -1785,9 +1772,9 @@ returned may also be used to clear the error condition.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:18 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

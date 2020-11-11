@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::SSL";
   relpath = '../../';
 </script>
@@ -104,20 +104,13 @@
     
 <p>The SSL support for Transport.</p>
 
-<p>A Transport may be configured ot use SLL for encryption and/or
-authentication. A Transport can be configured as either the SSL client or
-the server. An SSL client is the party that proctively establishes a
-connection to an SSL server. An SSL server is the party that accepts a
-connection request from the remote SSL client.</p>
+<p>A Transport may be configured ot use SLL for encryption and/or authentication. A Transport can be configured as either the SSL client or the server. An SSL client is the party that proctively establishes a connection to an SSL server. An SSL server is the party that accepts a connection request from the remote SSL client.</p>
 
-<p>If either the client or the server needs to identify itself with the remote
-node, it must have its SSL certificate configured.</p>
+<p>If either the client or the server needs to identify itself with the remote node, it must have its SSL certificate configured.</p>
 
-<p>If either the client or the server needs to verify the identify of the
-remote node, it must have its database of trusted CAs configured.</p>
+<p>If either the client or the server needs to verify the identify of the remote node, it must have its database of trusted CAs configured.</p>
 
-<p>An SSL server connection may allow the remote client to connect without SS
-(i.e., “in the clear”).</p>
+<p>An SSL server connection may allow the remote client to connect without SS (i.e., “in the clear”).</p>
 
 <p>The level of verification required of the remote may be configured.</p>
 
@@ -147,11 +140,16 @@ remote node, it must have its database of trusted CAs configured.</p>
   </ul>
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="RESUME_UNKNOWN-constant" class="">RESUME_UNKNOWN =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="RESUME_UNKNOWN-constant" class="">RESUME_UNKNOWN =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Session resume state is unkonnwn or not supported.</p>
@@ -163,11 +161,11 @@ remote node, it must have its database of trusted CAs configured.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_UNKNOWN</span></pre></dd>
-    
-      <dt id="RESUME_NEW-constant" class="">RESUME_NEW =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_UNKNOWN</span></pre></dd>
+      
+        <dt id="RESUME_NEW-constant" class="">RESUME_NEW =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Session renegotiated and not resumed.</p>
@@ -179,11 +177,11 @@ remote node, it must have its database of trusted CAs configured.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_NEW</span></pre></dd>
-    
-      <dt id="RESUME_REUSED-constant" class="">RESUME_REUSED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_NEW</span></pre></dd>
+      
+        <dt id="RESUME_REUSED-constant" class="">RESUME_REUSED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Session resumed from the previous session.</p>
@@ -195,10 +193,11 @@ remote node, it must have its database of trusted CAs configured.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_REUSED</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_RESUME_REUSED</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -313,8 +312,7 @@ remote node, it must have its database of trusted CAs configured.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the name of the SSL protocol that is currently active, or returns
-nil if SSL is nota ctive.</p>
+<p>Returns the name of the SSL protocol that is currently active, or returns nil if SSL is nota ctive.</p>
 </div></span>
   
 </li>
@@ -444,9 +442,7 @@ nil if SSL is nota ctive.</p>
     
 <p>Returns the cipher name that is currently in used.</p>
 
-<p>Gets the text description of the cipher that is currently active, or
-returns nil if SSL is not active. Note that the cipher in use my change
-over time due to renegotiation or other changes to the SSL layer.</p>
+<p>Gets the text description of the cipher that is currently active, or returns nil if SSL is not active. Note that the cipher in use my change over time due to renegotiation or other changes to the SSL layer.</p>
 
 
   </div>
@@ -585,9 +581,7 @@ over time due to renegotiation or other changes to the SSL layer.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the name of the SSL protocol that is currently active, or returns
-nil if SSL is nota ctive. Not that the protocol may change over time due to
-renegotation.</p>
+<p>Returns the name of the SSL protocol that is currently active, or returns nil if SSL is nota ctive. Not that the protocol may change over time due to renegotation.</p>
 
 
   </div>
@@ -650,13 +644,9 @@ renegotation.</p>
     
 <p>Checks whether or not the state has resumed.</p>
 
-<p>Used for client session resume. When called on an active session, it
-indicates wehther the state has been resumed from a previous session.</p>
+<p>Used for client session resume. When called on an active session, it indicates wehther the state has been resumed from a previous session.</p>
 
-<p><strong>NOTE:</strong> This is a best-effort service - there is no
-guarantee that the remote server will accept the resumed parameters. The
-remote server may choose to ignore these parameters, and request a
-renegotation instead.</p>
+<p><strong>NOTE:</strong> This is a best-effort service - there is no guarantee that the remote server will accept the resumed parameters. The remote server may choose to ignore these parameters, and request a renegotation instead.</p>
 
 
   </div>
@@ -690,9 +680,9 @@ renegotation instead.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:18 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

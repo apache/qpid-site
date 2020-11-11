@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::Terminus";
   relpath = '../../';
 </script>
@@ -104,12 +104,9 @@
     
 <p>Represents an endpoint for an AMQP connection..</p>
 
-<p>An AMQP terminus acts as either a source or a target for messages, but
-never as both. Every Link is associated iwth both a source and a target
-Terminus that is negotiated during link establishment.</p>
+<p>An AMQP terminus acts as either a source or a target for messages, but never as both. Every Link is associated iwth both a source and a target Terminus that is negotiated during link establishment.</p>
 
-<p>A terminus is composed of an AMQP address along with a number of other
-properties defining the quality of service and behavior of the Link.</p>
+<p>A terminus is composed of an AMQP address along with a number of other properties defining the quality of service and behavior of the Link.</p>
 
 
   </div>
@@ -118,11 +115,16 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="UNSPECIFIED-constant" class="">UNSPECIFIED =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="UNSPECIFIED-constant" class="">UNSPECIFIED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Indicates a non-existent source or target terminus.</p>
@@ -134,11 +136,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_UNSPECIFIED</span></pre></dd>
-    
-      <dt id="SOURCE-constant" class="">SOURCE =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_UNSPECIFIED</span></pre></dd>
+      
+        <dt id="SOURCE-constant" class="">SOURCE =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Indicates a source for messages.</p>
@@ -150,11 +152,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SOURCE</span></pre></dd>
-    
-      <dt id="TARGET-constant" class="">TARGET =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SOURCE</span></pre></dd>
+      
+        <dt id="TARGET-constant" class="">TARGET =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Indicates a target for messages.</p>
@@ -166,11 +168,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_TARGET</span></pre></dd>
-    
-      <dt id="COORDINATOR-constant" class="">COORDINATOR =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_TARGET</span></pre></dd>
+      
+        <dt id="COORDINATOR-constant" class="">COORDINATOR =
+          <div class="docstring">
   <div class="discussion">
     
 <p>A special target identifying a transaction coordinator.</p>
@@ -182,11 +184,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_COORDINATOR</span></pre></dd>
-    
-      <dt id="EXPIRE_WITH_LINK-constant" class="">EXPIRE_WITH_LINK =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_COORDINATOR</span></pre></dd>
+      
+        <dt id="EXPIRE_WITH_LINK-constant" class="">EXPIRE_WITH_LINK =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The terminus is orphaned when the parent link is closed.</p>
@@ -198,11 +200,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_LINK</span></pre></dd>
-    
-      <dt id="EXPIRE_WITH_SESSION-constant" class="">EXPIRE_WITH_SESSION =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_LINK</span></pre></dd>
+      
+        <dt id="EXPIRE_WITH_SESSION-constant" class="">EXPIRE_WITH_SESSION =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The terminus is orphaned whent he parent sessio is closed.</p>
@@ -214,11 +216,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_SESSION</span></pre></dd>
-    
-      <dt id="EXPIRE_WITH_CONNECTION-constant" class="">EXPIRE_WITH_CONNECTION =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_SESSION</span></pre></dd>
+      
+        <dt id="EXPIRE_WITH_CONNECTION-constant" class="">EXPIRE_WITH_CONNECTION =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The terminus is orphaned when the parent connection is closed.</p>
@@ -230,11 +232,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_CONNECTION</span></pre></dd>
-    
-      <dt id="EXPIRE_NEVER-constant" class="">EXPIRE_NEVER =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_WITH_CONNECTION</span></pre></dd>
+      
+        <dt id="EXPIRE_NEVER-constant" class="">EXPIRE_NEVER =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The terminus is never considered orphaned.</p>
@@ -246,11 +248,11 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_NEVER</span></pre></dd>
-    
-      <dt id="NONDURABLE-constant" class="">NONDURABLE =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_EXPIRE_NEVER</span></pre></dd>
+      
+        <dt id="NONDURABLE-constant" class="">NONDURABLE =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Indicates a non-durable Terminus.</p>
@@ -262,15 +264,14 @@ properties defining the quality of service and behavior of the Link.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_NONDURABLE</span></pre></dd>
-    
-      <dt id="CONFIGURATION-constant" class="">CONFIGURATION =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_NONDURABLE</span></pre></dd>
+      
+        <dt id="CONFIGURATION-constant" class="">CONFIGURATION =
+          <div class="docstring">
   <div class="discussion">
     
-<p>Indicates a Terminus with durably held configuration, but not the delivery
-state.</p>
+<p>Indicates a Terminus with durably held configuration, but not the delivery state.</p>
 
 
   </div>
@@ -279,15 +280,14 @@ state.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_CONFIGURATION</span></pre></dd>
-    
-      <dt id="DELIVERIES-constant" class="">DELIVERIES =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_CONFIGURATION</span></pre></dd>
+      
+        <dt id="DELIVERIES-constant" class="">DELIVERIES =
+          <div class="docstring">
   <div class="discussion">
     
-<p>Indicates a Terminus with both durably held configuration and durably held
-delivery states.</p>
+<p>Indicates a Terminus with both durably held configuration and durably held delivery states.</p>
 
 
   </div>
@@ -296,11 +296,11 @@ delivery states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DELIVERIES</span></pre></dd>
-    
-      <dt id="DIST_MODE_UNSPECIFIED-constant" class="">DIST_MODE_UNSPECIFIED =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DELIVERIES</span></pre></dd>
+      
+        <dt id="DIST_MODE_UNSPECIFIED-constant" class="">DIST_MODE_UNSPECIFIED =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The behavior is defined by the nod.e</p>
@@ -312,11 +312,11 @@ delivery states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_UNSPECIFIED</span></pre></dd>
-    
-      <dt id="DIST_MODE_COPY-constant" class="">DIST_MODE_COPY =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_UNSPECIFIED</span></pre></dd>
+      
+        <dt id="DIST_MODE_COPY-constant" class="">DIST_MODE_COPY =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The receiver gets all messages.</p>
@@ -328,11 +328,11 @@ delivery states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_COPY</span></pre></dd>
-    
-      <dt id="DIST_MODE_MOVE-constant" class="">DIST_MODE_MOVE =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_COPY</span></pre></dd>
+      
+        <dt id="DIST_MODE_MOVE-constant" class="">DIST_MODE_MOVE =
+          <div class="docstring">
   <div class="discussion">
     
 <p>The receives compete for messages.</p>
@@ -344,10 +344,11 @@ delivery states.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_MOVE</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_DIST_MODE_MOVE</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -649,8 +650,7 @@ delivery states.</p>
           </span>
           
             &mdash; <div class='inline'>
-<p>if true, request a new node with a unique address to be created.
-<code>:address</code> is ignored.</p>
+<p>if true, request a new node with a unique address to be created. <code>:address</code> is ignored.</p>
 </div>
           
         </li>
@@ -804,10 +804,7 @@ delivery states.</p>
     
 <p>Access and modify the AMQP capabilities data for the Terminus.</p>
 
-<p>This operation will return an instance of Data that is valid until the
-Terminus is freed due to its parent being freed. Any data contained in the
-object will be sent as the AMQP properties for the parent Terminus
-instance.</p>
+<p>This operation will return an instance of Data that is valid until the Terminus is freed due to its parent being freed. Any data contained in the object will be sent as the AMQP properties for the parent Terminus instance.</p>
 
 <p>NOTE: this MUST take the form of a symbol keyed map to be valid.</p>
 
@@ -868,13 +865,9 @@ instance.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Access and modify the AMQP filter set for a source terminus. Only relevant
-for a message source.</p>
+<p>Access and modify the AMQP filter set for a source terminus. Only relevant for a message source.</p>
 
-<p>This operation will return an instance of Data that is valid until the
-Terminus is freed due to its parent being freed. Any data contained in the
-object will be sent as the AMQP properties for the parent Terminus
-instance.</p>
+<p>This operation will return an instance of Data that is valid until the Terminus is freed due to its parent being freed. Any data contained in the object will be sent as the AMQP properties for the parent Terminus instance.</p>
 
 <p>NOTE: this MUST take the form of a symbol keyed map to be valid.</p>
 
@@ -976,10 +969,7 @@ instance.</p>
     
 <p>Access and modify the AMQP outcomes for the Terminus.</p>
 
-<p>This operaiton will return an instance of Data that is valid until the
-Terminus is freed due to its parent being freed. Any data contained in the
-object will be sent as the AMQP properties for the parent Terminus
-instance.</p>
+<p>This operaiton will return an instance of Data that is valid until the Terminus is freed due to its parent being freed. Any data contained in the object will be sent as the AMQP properties for the parent Terminus instance.</p>
 
 <p>NOTE: this MUST take the form of a symbol keyed map to be valid.</p>
 
@@ -1042,10 +1032,7 @@ instance.</p>
     
 <p>Access and modify the AMQP properties data for the Terminus.</p>
 
-<p>This operation will return an instance of Data that is valid until the
-Terminus is freed due to its parent being freed. Any data contained in the
-object will be sent as the AMQP properties for the parent Terminus
-instance.</p>
+<p>This operation will return an instance of Data that is valid until the Terminus is freed due to its parent being freed. Any data contained in the object will be sent as the AMQP properties for the parent Terminus instance.</p>
 
 <p>NOTE: this MUST take the form of a symbol keyed map to be valid.</p>
 
@@ -1197,9 +1184,9 @@ instance.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:16 2020 by
+  Generated on Wed Nov 11 12:57:52 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

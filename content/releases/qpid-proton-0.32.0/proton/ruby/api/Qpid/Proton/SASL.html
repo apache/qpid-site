@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::SASL";
   relpath = '../../';
 </script>
@@ -110,13 +110,11 @@
   </div>
 
 
-<p>The SASL layer is responsible for establishing an authenticated and/or
-encrypted tunnel over which AMQP frames are passed between peers.</p>
+<p>The SASL layer is responsible for establishing an authenticated and/or encrypted tunnel over which AMQP frames are passed between peers.</p>
 
 <p>The peer acting as the SASL client must provide authentication credentials.</p>
 
-<p>The peer acting as the SASL server must provide authentication against the
-received credentials.</p>
+<p>The peer acting as the SASL server must provide authentication against the received credentials.</p>
 
 
   </div>
@@ -125,11 +123,16 @@ received credentials.</p>
   
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="NONE-constant" class="">NONE =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="NONE-constant" class="">NONE =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Negotation has not completed.</p>
@@ -141,11 +144,11 @@ received credentials.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_NONE</span></pre></dd>
-    
-      <dt id="OK-constant" class="">OK =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_NONE</span></pre></dd>
+      
+        <dt id="OK-constant" class="">OK =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Authentication succeeded.</p>
@@ -157,11 +160,11 @@ received credentials.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_OK</span></pre></dd>
-    
-      <dt id="AUTH-constant" class="">AUTH =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_OK</span></pre></dd>
+      
+        <dt id="AUTH-constant" class="">AUTH =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Authentication failed due to bad credentials.</p>
@@ -173,10 +176,11 @@ received credentials.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_AUTH</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SASL_AUTH</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -332,10 +336,7 @@ received credentials.</p>
     
 <p>Set the configuration file name, without extension</p>
 
-<p>The name with an a “.conf” extension will be searched for in the
-configuration path.  If not set, it defaults to “proton-server” or
-“proton-client” for a server (incoming) or client (outgoing) connection
-respectively.</p>
+<p>The name with an a “.conf” extension will be searched for in the configuration path.  If not set, it defaults to “proton-server” or “proton-client” for a server (incoming) or client (outgoing) connection respectively.</p>
 
 
   </div>
@@ -398,12 +399,9 @@ respectively.</p>
     
 <p>Set the sasl configuration path</p>
 
-<p>This is used to tell SASL where to look for the configuration file. In the
-current implementation it can be a colon separated list of directories.</p>
+<p>This is used to tell SASL where to look for the configuration file. In the current implementation it can be a colon separated list of directories.</p>
 
-<p>The environment variable PN_SASL_CONFIG_PATH can also be used to set this
-path, but if both methods are used then this pn_sasl_config_path() will
-take precedence.</p>
+<p>The environment variable PN_SASL_CONFIG_PATH can also be used to set this path, but if both methods are used then this pn_sasl_config_path() will take precedence.</p>
 
 <p>If not set the underlying implementation default will be used.</p>
 
@@ -470,11 +468,9 @@ take precedence.</p>
     
 <p>True if extended SASL negotiation is supported</p>
 
-<p>All implementations of Proton support ANONYMOUS and EXTERNAL on both client
-and server sides and PLAIN on the client side.</p>
+<p>All implementations of Proton support ANONYMOUS and EXTERNAL on both client and server sides and PLAIN on the client side.</p>
 
-<p>Extended SASL implememtations use an external library (Cyrus SASL) to
-support other mechanisms.</p>
+<p>Extended SASL implememtations use an external library (Cyrus SASL) to support other mechanisms.</p>
 
 
   </div>
@@ -593,9 +589,9 @@ support other mechanisms.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:18 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

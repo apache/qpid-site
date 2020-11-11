@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::SSLDomain";
   relpath = '../../';
 </script>
@@ -102,8 +102,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>The top-level object that stores the configuration used by one or more SSL
-sessions.</p>
+<p>The top-level object that stores the configuration used by one or more SSL sessions.</p>
 
 
   </div>
@@ -119,11 +118,16 @@ sessions.</p>
   </ul>
 
 </div>
-  <h2>Constant Summary</h2>
-  <dl class="constants">
-    
-      <dt id="VERIFY_PEER-constant" class="">VERIFY_PEER =
-        <div class="docstring">
+  
+    <h2>
+      Constant Summary
+      <small><a href="#" class="constants_summary_toggle">collapse</a></small>
+    </h2>
+
+    <dl class="constants">
+      
+        <dt id="VERIFY_PEER-constant" class="">VERIFY_PEER =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Require the peer to provide a valid identifying certificate.</p>
@@ -135,11 +139,11 @@ sessions.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER</span></pre></dd>
-    
-      <dt id="ANONYMOUS_PEER-constant" class="">ANONYMOUS_PEER =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER</span></pre></dd>
+      
+        <dt id="ANONYMOUS_PEER-constant" class="">ANONYMOUS_PEER =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Do no require a certificate nor a cipher authorization.</p>
@@ -151,11 +155,11 @@ sessions.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_ANONYMOUS_PEER</span></pre></dd>
-    
-      <dt id="VERIFY_PEER_NAME-constant" class="">VERIFY_PEER_NAME =
-        <div class="docstring">
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_ANONYMOUS_PEER</span></pre></dd>
+      
+        <dt id="VERIFY_PEER_NAME-constant" class="">VERIFY_PEER_NAME =
+          <div class="docstring">
   <div class="discussion">
     
 <p>Require a valid certficate and matching name.</p>
@@ -167,10 +171,11 @@ sessions.</p>
   
 
 </div>
-      </dt>
-      <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER_NAME</span></pre></dd>
-    
-  </dl>
+        </dt>
+        <dd><pre class="code"><span class='const'>Cproton</span><span class='op'>::</span><span class='const'>PN_SSL_VERIFY_PEER_NAME</span></pre></dd>
+      
+    </dl>
+  
 
 
 
@@ -276,8 +281,7 @@ sessions.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Configures the set of trusted CA certificates used by this domain to verify
-peers.</p>
+<p>Configures the set of trusted CA certificates used by this domain to verify peers.</p>
 </div></span>
   
 </li>
@@ -312,9 +316,7 @@ peers.</p>
     
 <p>Permit a server to accept connection requests from non-SSL clients.</p>
 
-<p>This configures the server to “sniff” the incomfing client data stream and
-dynamically determine whether SSL/TLS is being used. This option is
-disabled by default: only clients using SSL/TLS are accepted by default.</p>
+<p>This configures the server to “sniff” the incomfing client data stream and dynamically determine whether SSL/TLS is being used. This option is disabled by default: only clients using SSL/TLS are accepted by default.</p>
 
 
   </div>
@@ -375,15 +377,9 @@ disabled by default: only clients using SSL/TLS are accepted by default.</p>
     
 <p>Set the certificate that identifies the local node to the remote.</p>
 
-<p>This certificate establishes the identity for thelocal node for all SSL
-sessions created from this domain. It will be sent to the remote if the
-remote needs to verify the dientify of this node. This may be used for both
-SSL servers and SSL clients (if client authentication is required by the
-server).</p>
+<p>This certificate establishes the identity for thelocal node for all SSL sessions created from this domain. It will be sent to the remote if the remote needs to verify the dientify of this node. This may be used for both SSL servers and SSL clients (if client authentication is required by the server).</p>
 
-<p><strong>NOTE:</strong> This setting affects only those instances of SSL
-created <strong>after</strong> this call returns. SSL objects created
-before invoking this method will use the domain&#39;s previous settings.</p>
+<p><strong>NOTE:</strong> This setting affects only those instances of SSL created <strong>after</strong> this call returns. SSL objects created before invoking this method will use the domain&#39;s previous settings.</p>
 
 
   </div>
@@ -403,9 +399,7 @@ before invoking this method will use the domain&#39;s previous settings.</p>
       
         &mdash;
         <div class='inline'>
-<p>The filename containing the identify certificate. For OpenSSL users, this
-is a PEM file. For Windows SChannel users, this is the PKCS#12 file or
-system store.</p>
+<p>The filename containing the identify certificate. For OpenSSL users, this is a PEM file. For Windows SChannel users, this is the PKCS#12 file or system store.</p>
 </div>
       
     </li>
@@ -421,11 +415,7 @@ system store.</p>
       
         &mdash;
         <div class='inline'>
-<p>An option key to access the identifying certificate. For OpenSSL users,
-this is an optional PEM file containing the private key used to sign the
-certificate. For Windows SChannel users, this is the friendly name of the
-self-identifying certficate if there are multiple certfificates in the
-store.</p>
+<p>An option key to access the identifying certificate. For OpenSSL users, this is an optional PEM file containing the private key used to sign the certificate. For Windows SChannel users, this is the friendly name of the self-identifying certficate if there are multiple certfificates in the store.</p>
 </div>
       
     </li>
@@ -441,8 +431,7 @@ store.</p>
       
         &mdash;
         <div class='inline'>
-<p>The password used to sign the key, or <strong>nil</strong> if the key is
-not protected.</p>
+<p>The password used to sign the key, or <strong>nil</strong> if the key is not protected.</p>
 </div>
       
     </li>
@@ -505,20 +494,13 @@ not protected.</p>
     
 <p>Configures the level of verification used on the peer certificate.</p>
 
-<p>This method congtrols how the peer&#39;s certificate is validated, if at
-all. By default, neither servers nor clients attempt to verify their peers
-(<strong>ANONYMOUS_PEER</strong>). Once certficates and trusted CAs are
-configured, peer verification can be enabled.</p>
+<p>This method congtrols how the peer&#39;s certificate is validated, if at all. By default, neither servers nor clients attempt to verify their peers (<strong>ANONYMOUS_PEER</strong>). Once certficates and trusted CAs are configured, peer verification can be enabled.</p>
 
-<p><strong>NOTE:</strong> In order to verify a peer, a trusted CA must be
-configured.</p>
+<p><strong>NOTE:</strong> In order to verify a peer, a trusted CA must be configured.</p>
 
-<p><strong>NOTE:</strong> Servers must provide their own certficate when
-verifying a peer.</p>
+<p><strong>NOTE:</strong> Servers must provide their own certficate when verifying a peer.</p>
 
-<p><strong>NOTE:</strong> This setting affects only those SSL instances
-created after this call returns. SSL instances created before invoking this
-method will use the domain&#39;s previous setting.</p>
+<p><strong>NOTE:</strong> This setting affects only those SSL instances created after this call returns. SSL instances created before invoking this method will use the domain&#39;s previous setting.</p>
 
 
   </div>
@@ -556,8 +538,7 @@ method will use the domain&#39;s previous setting.</p>
       
         &mdash;
         <div class='inline'>
-<p>The path to a database of trusted CAs that the server will advertise to the
-peer client if the server has been configured to verify its peer.</p>
+<p>The path to a database of trusted CAs that the server will advertise to the peer client if the server has been configured to verify its peer.</p>
 </div>
       
     </li>
@@ -629,17 +610,11 @@ peer client if the server has been configured to verify its peer.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Configures the set of trusted CA certificates used by this domain to verify
-peers.</p>
+<p>Configures the set of trusted CA certificates used by this domain to verify peers.</p>
 
-<p>If the local SSL client/server needs to verify the identify of the remote,
-it must validate the signature of the remote&#39;s certificate. This
-function sets the database of trusted CAs that will be used to verify the
-signature of the remote&#39;s certificate.</p>
+<p>If the local SSL client/server needs to verify the identify of the remote, it must validate the signature of the remote&#39;s certificate. This function sets the database of trusted CAs that will be used to verify the signature of the remote&#39;s certificate.</p>
 
-<p>*NOTE:# This setting affects only those SSL instances created
-<strong>after</strong> this call returns. SSL objects created before
-invoking this method will use the domain&#39;s previous setting.</p>
+<p>*NOTE:# This setting affects only those SSL instances created <strong>after</strong> this call returns. SSL objects created before invoking this method will use the domain&#39;s previous setting.</p>
 
 
   </div>
@@ -711,9 +686,9 @@ invoking this method will use the domain&#39;s previous setting.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:17 2020 by
+  Generated on Wed Nov 11 12:57:53 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

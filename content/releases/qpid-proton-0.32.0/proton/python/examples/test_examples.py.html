@@ -130,7 +130,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
             <span class="fm">__init__</span><span class="p">(</span><span class="n">args</span><span class="p">,</span>
                      <span class="n">stderr</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">STDOUT</span><span class="p">,</span>
                      <span class="n">stdout</span><span class="o">=</span><span class="n">subprocess</span><span class="o">.</span><span class="n">PIPE</span><span class="p">,</span>
-                     <span class="n">universal_newlines</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+                     <span class="n">universal_newlines</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># For Python 2 compatibility add context manager support to Popen if it&#39;s not there</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">subprocess</span><span class="o">.</span><span class="n">Popen</span><span class="p">,</span> <span class="s1">&#39;__enter__&#39;</span><span class="p">):</span>
@@ -214,7 +214,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_client_server</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sync_client.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888/examples&#39;</span><span class="p">],</span> <span class="n">server</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;server_direct.py&#39;</span><span class="p">],</span> <span class="n">sleep</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">test_db_send_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="c1"># setup databases</span>
         <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./src_db&#39;</span><span class="p">])</span>
         <span class="n">subprocess</span><span class="o">.</span><span class="n">check_call</span><span class="p">([</span><span class="s1">&#39;db_ctrl.py&#39;</span><span class="p">,</span> <span class="s1">&#39;init&#39;</span><span class="p">,</span> <span class="s1">&#39;./dst_db&#39;</span><span class="p">])</span>
@@ -244,7 +244,7 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
         <span class="bp">self</span><span class="o">.</span><span class="n">test_simple_send_recv</span><span class="p">(</span><span class="n">recv</span><span class="o">=</span><span class="s1">&#39;tx_recv.py&#39;</span><span class="p">,</span> <span class="n">send</span><span class="o">=</span><span class="s1">&#39;tx_send.py&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">test_simple_send_direct_recv</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="bp">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxDiff</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;direct_recv.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">])</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
             <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
             <span class="k">with</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;simple_send.py&#39;</span><span class="p">,</span> <span class="s1">&#39;-a&#39;</span><span class="p">,</span> <span class="s1">&#39;localhost:8888&#39;</span><span class="p">]):</span>

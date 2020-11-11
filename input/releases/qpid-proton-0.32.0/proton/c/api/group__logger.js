@@ -1,5 +1,12 @@
 var group__logger =
 [
+    [ "The wake function", "threads.html#autotoc_md17", null ],
+    [ "Outgoing Data", "buffering.html#autotoc_md10", [
+      [ "Priority", "buffering.html#autotoc_md11", null ]
+    ] ],
+    [ "Incoming Data", "buffering.html#autotoc_md12", null ],
+    [ "Backward compatible logging control", "logging.html#autotoc_md13", null ],
+    [ "Logger control introduced with the logger API", "logging.html#autotoc_md14", null ],
     [ "pn_logger_t", "group__logger.html#gaff413c562d91f0c5eb2ec3ef4082165e", null ],
     [ "pn_log_sink_t", "group__logger.html#ga9caac23d5ca18bd2a9e93ca2d5fd2a38", null ],
     [ "pn_log_subsystem_t", "group__logger.html#gac861c944f890f31c1c2b22a3271250e4", [

@@ -1,20 +1,19 @@
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>proton._events &#8212; Qpid Proton Python API 0.32.0 documentation</title>
     <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
-    <script type="text/javascript" src="../../_static/jquery.js"></script>
-    <script type="text/javascript" src="../../_static/underscore.js"></script>
-    <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/language_data.js"></script>
-    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" /> 
   </head><body>
@@ -25,25 +24,10 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.32.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._events</a></li> 
       </ul>
-    </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
+    </div>  
 
     <div class="document">
       <div class="documentwrapper">
@@ -70,11 +54,11 @@
 <span class="c1"># under the License.</span>
 <span class="c1">#</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">absolute_import</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span>
 
 <span class="kn">import</span> <span class="nn">threading</span>
 
-<span class="kn">from</span> <span class="nn">cproton</span> <span class="k">import</span> <span class="n">PN_CONNECTION_BOUND</span><span class="p">,</span> <span class="n">PN_CONNECTION_FINAL</span><span class="p">,</span> <span class="n">PN_CONNECTION_INIT</span><span class="p">,</span> <span class="n">PN_CONNECTION_LOCAL_CLOSE</span><span class="p">,</span> \
+<span class="kn">from</span> <span class="nn">cproton</span> <span class="kn">import</span> <span class="n">PN_CONNECTION_BOUND</span><span class="p">,</span> <span class="n">PN_CONNECTION_FINAL</span><span class="p">,</span> <span class="n">PN_CONNECTION_INIT</span><span class="p">,</span> <span class="n">PN_CONNECTION_LOCAL_CLOSE</span><span class="p">,</span> \
     <span class="n">PN_CONNECTION_LOCAL_OPEN</span><span class="p">,</span> <span class="n">PN_CONNECTION_REMOTE_CLOSE</span><span class="p">,</span> <span class="n">PN_CONNECTION_REMOTE_OPEN</span><span class="p">,</span> <span class="n">PN_CONNECTION_UNBOUND</span><span class="p">,</span> <span class="n">PN_DELIVERY</span><span class="p">,</span> \
     <span class="n">PN_LINK_FINAL</span><span class="p">,</span> <span class="n">PN_LINK_FLOW</span><span class="p">,</span> <span class="n">PN_LINK_INIT</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_CLOSE</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_DETACH</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_OPEN</span><span class="p">,</span> \
     <span class="n">PN_LINK_REMOTE_CLOSE</span><span class="p">,</span> <span class="n">PN_LINK_REMOTE_DETACH</span><span class="p">,</span> <span class="n">PN_LINK_REMOTE_OPEN</span><span class="p">,</span> <span class="n">PN_PYREF</span><span class="p">,</span> <span class="n">PN_SESSION_FINAL</span><span class="p">,</span> <span class="n">PN_SESSION_INIT</span><span class="p">,</span> \
@@ -85,14 +69,14 @@
     <span class="n">pn_collector_put</span><span class="p">,</span> <span class="n">pn_collector_release</span><span class="p">,</span> <span class="n">pn_event_class</span><span class="p">,</span> <span class="n">pn_event_connection</span><span class="p">,</span> <span class="n">pn_event_context</span><span class="p">,</span> <span class="n">pn_event_delivery</span><span class="p">,</span> \
     <span class="n">pn_event_link</span><span class="p">,</span> <span class="n">pn_event_session</span><span class="p">,</span> <span class="n">pn_event_transport</span><span class="p">,</span> <span class="n">pn_event_type</span><span class="p">,</span> <span class="n">pn_event_type_name</span><span class="p">,</span> <span class="n">pn_py2void</span><span class="p">,</span> <span class="n">pn_void2py</span>
 
-<span class="kn">from</span> <span class="nn">._delivery</span> <span class="k">import</span> <span class="n">Delivery</span>
-<span class="kn">from</span> <span class="nn">._endpoints</span> <span class="k">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Link</span><span class="p">,</span> <span class="n">Session</span>
-<span class="kn">from</span> <span class="nn">._transport</span> <span class="k">import</span> <span class="n">Transport</span>
+<span class="kn">from</span> <span class="nn">._delivery</span> <span class="kn">import</span> <span class="n">Delivery</span>
+<span class="kn">from</span> <span class="nn">._endpoints</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Link</span><span class="p">,</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">._transport</span> <span class="kn">import</span> <span class="n">Transport</span>
 
 
 <span class="k">class</span> <span class="nc">Collector</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">pn_collector</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">etype</span><span class="p">):</span>
@@ -111,14 +95,14 @@
     <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">pn_collector_release</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">pn_collector_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
         <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span>
 
 
 <span class="k">if</span> <span class="s2">&quot;TypeExtender&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
     <span class="k">class</span> <span class="nc">TypeExtender</span><span class="p">:</span>
-        <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
 
         <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -141,7 +125,7 @@
     <span class="n">_extended</span> <span class="o">=</span> <span class="n">TypeExtender</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
     <span class="n">TYPES</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">number</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;extended events require a name&quot;</span><span class="p">)</span>
         <span class="k">try</span><span class="p">:</span>
@@ -163,10 +147,10 @@
         <span class="k">finally</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;EventType(name=</span><span class="si">%s</span><span class="s2">, number=</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
 
 
@@ -180,7 +164,7 @@
 
 <span class="k">class</span> <span class="nc">EventBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span>
 
     <span class="nd">@property</span>
@@ -217,7 +201,7 @@
             <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">handler</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
 
 
@@ -482,7 +466,7 @@
         <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">impl</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">event</span>
 
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="n">EventType</span><span class="o">.</span><span class="n">TYPES</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_clsname</span> <span class="o">=</span> <span class="n">clsname</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">context</span>
@@ -587,7 +571,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">_reactor</span>
 
-    <span class="k">def</span> <span class="nf">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        This will look for a property of the event as an attached context object of the same</span>
 <span class="sd">        type as the property (but lowercase)</span>
@@ -683,7 +667,7 @@
 
 
 <span class="k">class</span> <span class="nc">LazyHandlers</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">clazz</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__get__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">clazz</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">obj</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">return</span> <span class="bp">self</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
@@ -720,7 +704,22 @@
         <span class="k">pass</span>
 </pre></div>
 
+            <div class="clearer"></div>
           </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -732,12 +731,13 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.32.0 documentation</a> &#187;</li>
-          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li> 
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._events</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2019, Apache Qpid Contributors.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.8.5.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.2.1.
     </div>
   </body>
 </html>

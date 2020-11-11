@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::Handler::ReactorMessagingAdapter";
   relpath = '../../../';
 </script>
@@ -104,8 +104,7 @@
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
     
-<p>Adapter to convert raw proton events for the old
-<span class='object_link'><a href="MessagingHandler.html" title="Qpid::Proton::Handler::MessagingHandler (class)">MessagingHandler</a></span> used by the Reactor.</p>
+<p>Adapter to convert raw proton events for the old <span class='object_link'><a href="MessagingHandler.html" title="Qpid::Proton::Handler::MessagingHandler (class)">MessagingHandler</a></span> used by the Reactor.</p>
 
 
   </div>
@@ -460,7 +459,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns a new instance of ReactorMessagingAdapter</p>
+<p>Returns a new instance of ReactorMessagingAdapter.</p>
 
 
   </div>
@@ -579,18 +578,18 @@
       <pre class="code"><span class="info file"># File 'lib/handler/reactor_messaging_adapter.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_open_close'>open_close</span><span class='lparen'>(</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_on_opening'>on_opening</span> <span class='op'>=</span> <span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_opening</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_on_opened'>on_opened</span> <span class='op'>=</span> <span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_opened</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_on_closing'>on_closing</span> <span class='op'>=</span> <span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_closing</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_on_closed'>on_closed</span> <span class='op'>=</span> <span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_closed</span><span class='tstring_end'>&quot;</span></span>
-  <span class='id identifier rubyid_on_error'>on_error</span> <span class='op'>=</span> <span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_error</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_on_opening'>on_opening</span> <span class='op'>=</span> <span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_opening</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_on_opened'>on_opened</span> <span class='op'>=</span> <span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_opened</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_on_closing'>on_closing</span> <span class='op'>=</span> <span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_closing</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_on_closed'>on_closed</span> <span class='op'>=</span> <span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_closed</span><span class='tstring_end'>&quot;</span></span>
+  <span class='id identifier rubyid_on_error'>on_error</span> <span class='op'>=</span> <span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_error</span><span class='tstring_end'>&quot;</span></span>
 
   <span class='const'>Module</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span> <span class='kw'>do</span>
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_local_open</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_local_open</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
       <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='id identifier rubyid_on_opened'>on_opened</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_remote_open?'>remote_open?</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_remote_open</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_remote_open</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_local_open?'>local_open?</span>
         <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='id identifier rubyid_on_opened'>on_opened</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
       <span class='kw'>elsif</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_local_uninit?'>local_uninit?</span>
@@ -599,11 +598,11 @@
       <span class='kw'>end</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_local_close</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_local_close</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
       <span class='id identifier rubyid_delegate'>delegate</span><span class='lparen'>(</span><span class='id identifier rubyid_on_closed'>on_closed</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_remote_closed?'>remote_closed?</span>
     <span class='kw'>end</span>
 
-    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_remote_close</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
+    <span class='id identifier rubyid_define_method'>define_method</span><span class='lparen'>(</span><span class='symbol'>:&quot;on_</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_endpoint'>endpoint</span><span class='embexpr_end'>}</span><span class='tstring_content'>_remote_close</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_event'>event</span><span class='op'>|</span>
       <span class='kw'>if</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_remote_condition'>remote_condition</span>
         <span class='id identifier rubyid_delegate_error'>delegate_error</span><span class='lparen'>(</span><span class='id identifier rubyid_on_error'>on_error</span><span class='comma'>,</span> <span class='id identifier rubyid_event'>event</span><span class='rparen'>)</span>
       <span class='kw'>elsif</span> <span class='id identifier rubyid_event'>event</span><span class='period'>.</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_local_closed?'>local_closed?</span>
@@ -1129,9 +1128,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:17 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

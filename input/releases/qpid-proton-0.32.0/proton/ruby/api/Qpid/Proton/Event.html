@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::Event";
   relpath = '../../';
 </script>
@@ -553,7 +553,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns method name that this event will call in <span class='object_link'><a href="#dispatch-instance_method" title="Qpid::Proton::Event#dispatch (method)">#dispatch</a></span></p>
+<p>Returns method name that this event will call in <span class='object_link'><a href="#dispatch-instance_method" title="Qpid::Proton::Event#dispatch (method)">#dispatch</a></span>.</p>
 
 
   </div>
@@ -680,7 +680,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the connection for this event</p>
+<p>Returns the connection for this event.</p>
 
 
   </div>
@@ -735,7 +735,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns container for this event</p>
+<p>Returns container for this event.</p>
 
 
   </div>
@@ -790,7 +790,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the event context object</p>
+<p>Returns the event context object.</p>
 
 
   </div>
@@ -845,7 +845,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns delivery for this event</p>
+<p>Returns delivery for this event.</p>
 
 
   </div>
@@ -890,9 +890,9 @@
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delivery'>delivery</span><span class='lparen'>(</span><span class='rparen'>)</span>
   <span class='ivar'>@delivery</span> <span class='op'>||=</span> <span class='kw'>case</span> <span class='id identifier rubyid_context'>context</span>
-                <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span> <span class='kw'>then</span> <span class='ivar'>@delivery</span> <span class='op'>=</span> <span class='ivar'>@context</span>
-                  <span class='comment'># deprecated: for backwards compat allow a Tracker to be treated as a Delivery
-</span>                <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Tracker.html" title="Qpid::Proton::Tracker (class)">Tracker</a></span></span> <span class='kw'>then</span> <span class='ivar'>@delivery</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Delivery.html#initialize-instance_method" title="Qpid::Proton::Delivery#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_impl'>impl</span><span class='rparen'>)</span>
+                <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span> <span class='kw'>then</span> <span class='ivar'>@delivery</span> <span class='op'>=</span> <span class='ivar'>@context</span>                  <span class='comment'># deprecated: for backwards compat allow a Tracker to be treated as a Delivery
+</span>
+                <span class='kw'>when</span> <span class='const'><span class='object_link'><a href="Tracker.html" title="Qpid::Proton::Tracker (class)">Tracker</a></span></span> <span class='kw'>then</span> <span class='ivar'>@delivery</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Delivery.html" title="Qpid::Proton::Delivery (class)">Delivery</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Delivery.html#initialize-instance_method" title="Qpid::Proton::Delivery#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_impl'>impl</span><span class='rparen'>)</span>
                 <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1006,7 +1006,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns link for this event</p>
+<p>Returns link for this event.</p>
 
 
   </div>
@@ -1061,7 +1061,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns message for this event</p>
+<p>Returns message for this event.</p>
 
 
   </div>
@@ -1116,7 +1116,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns receiver associated with this event</p>
+<p>Returns receiver associated with this event.</p>
 
 
   </div>
@@ -1171,7 +1171,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns sender associated with this event</p>
+<p>Returns sender associated with this event.</p>
 
 
   </div>
@@ -1226,7 +1226,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns session for this event</p>
+<p>Returns session for this event.</p>
 
 
   </div>
@@ -1316,7 +1316,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns delivery for this event</p>
+<p>Returns delivery for this event.</p>
 
 
   </div>
@@ -1371,7 +1371,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns transport for this event</p>
+<p>Returns transport for this event.</p>
 
 
   </div>
@@ -1419,9 +1419,9 @@
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:18 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

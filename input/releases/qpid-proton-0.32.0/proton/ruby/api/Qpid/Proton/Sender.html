@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::Sender";
   relpath = '../../';
 </script>
@@ -363,7 +363,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns auto_settle flag, see <span class='object_link'><a href="#open-instance_method" title="Qpid::Proton::Sender#open (method)">#open</a></span></p>
+<p>Returns auto_settle flag, see <span class='object_link'><a href="#open-instance_method" title="Qpid::Proton::Sender#open (method)">#open</a></span>.</p>
 
 
   </div>
@@ -467,8 +467,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Hint to the remote receiver about the number of messages available. The
-receiver may use this to optimize credit flow, or may ignore it.</p>
+<p>Hint to the remote receiver about the number of messages available. The receiver may use this to optimize credit flow, or may ignore it.</p>
 
 
   </div>
@@ -798,9 +797,9 @@ receiver may use this to optimize credit flow, or may ignore it.</p>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_args'>args</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_tag'>tag</span> <span class='op'>=</span> <span class='kw'>nil</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-    <span class='comment'># deprecated: allow tag in args[0] for backwards compat
-</span>    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ArgumentError.html" title="Qpid::Proton::ArgumentError (class)">ArgumentError</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>1</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>    <span class='comment'># deprecated: allow tag in args[0] for backwards compat
+</span>
+    <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ArgumentError.html" title="Qpid::Proton::ArgumentError (class)">ArgumentError</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>too many arguments</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_args'>args</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>1</span>
     <span class='id identifier rubyid_tag'>tag</span> <span class='op'>=</span> <span class='id identifier rubyid_args'>args</span><span class='lbracket'>[</span><span class='int'>0</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
   <span class='id identifier rubyid_tag'>tag</span> <span class='op'>||=</span> <span class='id identifier rubyid_next_tag'>next_tag</span>
@@ -864,9 +863,9 @@ receiver may use this to optimize credit flow, or may ignore it.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:17 2020 by
+  Generated on Wed Nov 11 12:57:54 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

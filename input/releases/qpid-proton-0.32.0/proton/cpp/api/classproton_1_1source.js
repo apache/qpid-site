@@ -11,5 +11,7 @@ var classproton_1_1source =
     [ "source", "classproton_1_1source.html#a6cfde826a3d3092bd8a3a636e2336bbb", null ],
     [ "address", "classproton_1_1source.html#a4744eb217c976c199b678bb5a0d55acf", null ],
     [ "distribution_mode", "classproton_1_1source.html#abb1886a3a928bddfaf76dc67e3d15525", null ],
-    [ "filters", "classproton_1_1source.html#a5872b2a2f80f74a6f4f5b02791861a6d", null ]
+    [ "filters", "classproton_1_1source.html#a5872b2a2f80f74a6f4f5b02791861a6d", null ],
+    [ "durability_mode", "classproton_1_1source.html#aeb6439d6ea5d274a59dd8e90d97f31d8", null ],
+    [ "expiry_policy", "classproton_1_1source.html#afc97dbb9b04812da5be8a41eb9434904", null ]
 ];

@@ -10,11 +10,11 @@
   
 </title>
 
-  <link rel="stylesheet" href="../../css/style.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/style.css" type="text/css" />
 
-  <link rel="stylesheet" href="../../css/common.css" type="text/css" charset="utf-8" />
+  <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
-<script type="text/javascript" charset="utf-8">
+<script type="text/javascript">
   pathId = "Qpid::Proton::ConnectionDriver";
   relpath = '../../';
 </script>
@@ -113,9 +113,7 @@
 <p><span class='object_link'><a href="#write-instance_method" title="Qpid::Proton::ConnectionDriver#write (method)">#write</a></span> writes AMQP binary data to the IO</p>
 </li></ul>
 
-<p>Thread safety: The <span class='object_link'><a href="" title="Qpid::Proton::ConnectionDriver (class)">ConnectionDriver</a></span> is not thread safe but separate
-<span class='object_link'><a href="" title="Qpid::Proton::ConnectionDriver (class)">ConnectionDriver</a></span> instances can be processed concurrently. The <span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span>
-handles multiple connections concurrently in multiple threads.</p>
+<p>Thread safety: The <span class='object_link'><a href="" title="Qpid::Proton::ConnectionDriver (class)">ConnectionDriver</a></span> is not thread safe but separate <span class='object_link'><a href="" title="Qpid::Proton::ConnectionDriver (class)">ConnectionDriver</a></span> instances can be processed concurrently. The <span class='object_link'><a href="Container.html" title="Qpid::Proton::Container (class)">Container</a></span> handles multiple connections concurrently in multiple threads.</p>
 
 
   </div>
@@ -240,8 +238,7 @@ handles multiple connections concurrently in multiple threads.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Disconnect both sides of the transport sending/waiting for AMQP close
-frames.</p>
+<p>Disconnect both sides of the transport sending/waiting for AMQP close frames.</p>
 </div></span>
   
 </li>
@@ -265,8 +262,7 @@ frames.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Disconnect the read side of the transport, without waiting for an AMQP
-close frame.</p>
+<p>Disconnect the read side of the transport, without waiting for an AMQP close frame.</p>
 </div></span>
   
 </li>
@@ -290,8 +286,7 @@ close frame.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Disconnect the write side of the transport, <strong>without</strong>
-sending an AMQP close frame.</p>
+<p>Disconnect the write side of the transport, <strong>without</strong> sending an AMQP close frame.</p>
 </div></span>
   
 </li>
@@ -409,8 +404,7 @@ sending an AMQP close frame.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>True if the ConnectionDriver has nothing left to do: both sides of the
-transport are closed and there are no events to dispatch.</p>
+<p>True if the ConnectionDriver has nothing left to do: both sides of the transport are closed and there are no events to dispatch.</p>
 </div></span>
   
 </li>
@@ -460,8 +454,7 @@ transport are closed and there are no events to dispatch.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Non-blocking read from #io, generate events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> IO errors are
-returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised.</p>
+<p>Non-blocking read from #io, generate events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> IO errors are returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised.</p>
 </div></span>
   
 </li>
@@ -579,8 +572,7 @@ returned as transport errors by <span class='object_link'><a href="#event-instan
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Non-blocking write to #io IO errors are returned as transport errors by
-<span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised.</p>
+<p>Non-blocking write to #io IO errors are returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised.</p>
 </div></span>
   
 </li>
@@ -648,8 +640,7 @@ returned as transport errors by <span class='object_link'><a href="#event-instan
       
         &mdash;
         <div class='inline'>
-<p>An IO or IO-like object that responds to IO#read_nonblock and
-IO#write_nonblock</p>
+<p>An IO or IO-like object that responds to IO#read_nonblock and IO#write_nonblock</p>
 </div>
       
     </li>
@@ -749,7 +740,7 @@ IO#write_nonblock</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns True if the driver can read more data</p>
+<p>Returns True if the driver can read more data.</p>
 
 
   </div>
@@ -804,7 +795,7 @@ IO#write_nonblock</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns True if the driver has data to write</p>
+<p>Returns True if the driver has data to write.</p>
 
 
   </div>
@@ -859,8 +850,7 @@ IO#write_nonblock</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Disconnect both sides of the transport sending/waiting for AMQP close
-frames. See comments on <span class='object_link'><a href="#close_write-instance_method" title="Qpid::Proton::ConnectionDriver#close_write (method)">#close_write</a></span></p>
+<p>Disconnect both sides of the transport sending/waiting for AMQP close frames. See comments on <span class='object_link'><a href="#close_write-instance_method" title="Qpid::Proton::ConnectionDriver#close_write (method)">#close_write</a></span></p>
 
 
   </div>
@@ -903,8 +893,7 @@ frames. See comments on <span class='object_link'><a href="#close_write-instance
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Disconnect the read side of the transport, without waiting for an AMQP
-close frame. See comments on <span class='object_link'><a href="#close_write-instance_method" title="Qpid::Proton::ConnectionDriver#close_write (method)">#close_write</a></span></p>
+<p>Disconnect the read side of the transport, without waiting for an AMQP close frame. See comments on <span class='object_link'><a href="#close_write-instance_method" title="Qpid::Proton::ConnectionDriver#close_write (method)">#close_write</a></span></p>
 
 
   </div>
@@ -949,10 +938,7 @@ close frame. See comments on <span class='object_link'><a href="#close_write-ins
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Disconnect the write side of the transport, <strong>without</strong>
-sending an AMQP close frame. To close politely, you should use
-<span class='object_link'><a href="Connection.html#close-instance_method" title="Qpid::Proton::Connection#close (method)">Qpid::Proton::Connection#close</a></span>, the transport will close itself once the protocol close
-is complete.</p>
+<p>Disconnect the write side of the transport, <strong>without</strong> sending an AMQP close frame. To close politely, you should use <span class='object_link'><a href="Connection.html#close-instance_method" title="Qpid::Proton::Connection#close (method)">Qpid::Proton::Connection#close</a></span>, the transport will close itself once the protocol close is complete.</p>
 
 
   </div>
@@ -1187,8 +1173,7 @@ is complete.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>True if the ConnectionDriver has nothing left to do: both sides of the
-transport are closed and there are no events to dispatch.</p>
+<p>True if the ConnectionDriver has nothing left to do: both sides of the transport are closed and there are no events to dispatch.</p>
 
 
   </div>
@@ -1238,8 +1223,7 @@ transport are closed and there are no events to dispatch.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Non-blocking read from #io, generate events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> IO errors are
-returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised</p>
+<p>Non-blocking read from #io, generate events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> IO errors are returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised</p>
 
 
   </div>
@@ -1274,9 +1258,9 @@ returned as transport errors by <span class='object_link'><a href="#event-instan
   <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_size'>size</span> <span class='op'>&lt;=</span> <span class='int'>0</span>
   <span class='ivar'>@io</span><span class='period'>.</span><span class='id identifier rubyid_read_nonblock'>read_nonblock</span><span class='lparen'>(</span><span class='id identifier rubyid_size'>size</span><span class='comma'>,</span> <span class='ivar'>@rbuf</span><span class='rparen'>)</span> <span class='comment'># Use the same string rbuf for reading each time
 </span>  <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pni_connection_driver_read_copy'>pni_connection_driver_read_copy</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='ivar'>@rbuf</span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='ivar'>@rbuf</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
-<span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EWOULDBLOCK</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EAGAIN</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>
-  <span class='comment'># Try again later.
-</span><span class='kw'>rescue</span> <span class='const'>EOFError</span>         <span class='comment'># EOF is not an error
+<span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EWOULDBLOCK</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EAGAIN</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>  <span class='comment'># Try again later.
+</span>
+<span class='kw'>rescue</span> <span class='const'>EOFError</span>         <span class='comment'># EOF is not an error
 </span>  <span class='id identifier rubyid_close_read'>close_read</span>
 <span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
   <span class='id identifier rubyid_close'>close</span> <span class='id identifier rubyid_e'>e</span>
@@ -1348,11 +1332,9 @@ returned as transport errors by <span class='object_link'><a href="#event-instan
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Handle time-related work, for example idle-timeout events. May generate
-events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> and change <span class='object_link'><a href="#can_read%3F-instance_method" title="Qpid::Proton::ConnectionDriver#can_read? (method)">#can_read?</a></span>, <span class='object_link'><a href="#can_write%3F-instance_method" title="Qpid::Proton::ConnectionDriver#can_write? (method)">#can_write?</a></span></p>
+<p>Handle time-related work, for example idle-timeout events. May generate events for <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span> and change <span class='object_link'><a href="#can_read%3F-instance_method" title="Qpid::Proton::ConnectionDriver#can_read? (method)">#can_read?</a></span>, <span class='object_link'><a href="#can_write%3F-instance_method" title="Qpid::Proton::ConnectionDriver#can_write? (method)">#can_write?</a></span></p>
 
-<p>scheduled events. If non-nil you must call <span class='object_link'><a href="#tick-instance_method" title="Qpid::Proton::ConnectionDriver#tick (method)">#tick</a></span> again no later than this
-time.</p>
+<p>scheduled events. If non-nil you must call <span class='object_link'><a href="#tick-instance_method" title="Qpid::Proton::ConnectionDriver#tick (method)">#tick</a></span> again no later than this time.</p>
 
 
   </div>
@@ -1447,7 +1429,7 @@ time.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns Allows ConnectionDriver to be passed directly to IO#select</p>
+<p>Returns Allows ConnectionDriver to be passed directly to IO#select.</p>
 
 
   </div>
@@ -1554,8 +1536,7 @@ time.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Non-blocking write to #io IO errors are returned as transport errors by
-<span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised</p>
+<p>Non-blocking write to #io IO errors are returned as transport errors by <span class='object_link'><a href="#event-instance_method" title="Qpid::Proton::ConnectionDriver#event (method)">#event</a></span>, not raised</p>
 
 
   </div>
@@ -1588,9 +1569,9 @@ time.</p>
   <span class='kw'>return</span> <span class='kw'>unless</span> <span class='id identifier rubyid_data'>data</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_data'>data</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>&gt;</span> <span class='int'>0</span>
   <span class='id identifier rubyid_n'>n</span> <span class='op'>=</span> <span class='ivar'>@io</span><span class='period'>.</span><span class='id identifier rubyid_write_nonblock'>write_nonblock</span><span class='lparen'>(</span><span class='id identifier rubyid_data'>data</span><span class='rparen'>)</span>
   <span class='const'>Cproton</span><span class='period'>.</span><span class='id identifier rubyid_pn_connection_driver_write_done'>pn_connection_driver_write_done</span><span class='lparen'>(</span><span class='ivar'>@impl</span><span class='comma'>,</span> <span class='id identifier rubyid_n'>n</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_n'>n</span> <span class='op'>&gt;</span> <span class='int'>0</span>
-<span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EWOULDBLOCK</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EAGAIN</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>
-  <span class='comment'># Try again later.
-</span><span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
+<span class='kw'>rescue</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EWOULDBLOCK</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EAGAIN</span><span class='comma'>,</span> <span class='const'>Errno</span><span class='op'>::</span><span class='const'>EINTR</span>  <span class='comment'># Try again later.
+</span>
+<span class='kw'>rescue</span> <span class='const'>IOError</span><span class='comma'>,</span> <span class='const'>SystemCallError</span> <span class='op'>=&gt;</span> <span class='id identifier rubyid_e'>e</span>
   <span class='id identifier rubyid_close'>close</span> <span class='id identifier rubyid_e'>e</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -1653,9 +1634,9 @@ time.</p>
 </div>
 
       <div id="footer">
-  Generated on Thu Aug 27 15:43:17 2020 by
+  Generated on Wed Nov 11 12:57:53 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.8 (ruby-2.4.4).
+  0.9.24 (ruby-2.7.2).
 </div>
 
     </div>

@@ -20,7 +20,7 @@
             <span class="c1"># ignore duplicate message</span>
             <span class="k">return</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>
-            <span class="k">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">received</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">expected</span><span class="p">:</span>
                 <span class="n">event</span><span class="o">.</span><span class="n">receiver</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
