@@ -121,14 +121,14 @@ def appveyor_ci_badge(party_key, job_key, badge_key, branch="master"):
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
 def asf_jenkins_badge(job_key):
-    job_url = "https://builds.apache.org/blue/organizations/jenkins/{}/activity".format(job_key)
-    image_url = "https://builds.apache.org/buildStatus/icon?job={}".format(job_key)
+    job_url = "https://builds.apache.org/blue/organizations/jenkins/Qpid%2F{}/activity".format(job_key)
+    image_url = "https://builds.apache.org/buildStatus/icon?job=Qpid/{}".format(job_key)
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
 def asf_jenkins_pipeline_badge(job_key, branch="master"):
-    job_url = "https://builds.apache.org/blue/organizations/jenkins/{}/activity".format(job_key)
-    image_url = "https://builds.apache.org/buildStatus/icon?job={}/{}".format(job_key, branch)
+    job_url = "https://builds.apache.org/blue/organizations/jenkins/Qpid%2F{}/activity".format(job_key)
+    image_url = "https://builds.apache.org/buildStatus/icon?job=Qpid/{}/{}".format(job_key, branch)
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
