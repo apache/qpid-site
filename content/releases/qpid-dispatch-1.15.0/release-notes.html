@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 1.15.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.15.0/index.html">Qpid Dispatch 1.15.0</a></li><li>Qpid Dispatch 1.15.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-1150-release-notes">Qpid Dispatch 1.15.0 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP 1.0 message router. More about
+<a href="/components/dispatch-router/index.html">Qpid
+Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1654">DISPATCH-1654</a> - tcp protocol bridging (ingress and egress)</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1743">DISPATCH-1743</a> - Add HTTP/2 support to the router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1744">DISPATCH-1744</a> - Add HTTP/1.1 support to the router</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1767">DISPATCH-1767</a> - [console] add typescript to console dependencies</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1779">DISPATCH-1779</a> - http stats/metrics</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1780">DISPATCH-1780</a> - multicast support for http 1.1 adaptor</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1781">DISPATCH-1781</a> - Scraper could inject any log module output into data web page</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1790">DISPATCH-1790</a> - HTTP1.x needs raw octet counters on a per-request basis</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1794">DISPATCH-1794</a> - Router annotation window padding is off by one</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1795">DISPATCH-1795</a> - Avoid clutter in debug output by not printing traceback of suppressed leaks</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1804">DISPATCH-1804</a> - Add AMQ Footer support to Body Data API </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1806">DISPATCH-1806</a> - TCP adaptor mishandles outgoing body_data</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1807">DISPATCH-1807</a> - TCP adaptor has no system tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1812">DISPATCH-1812</a> - Add the "C" prefix in log messages to connection identifiers in server.c </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1813">DISPATCH-1813</a> - Rename qd_http_lsnr to qd_http_listener</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1815">DISPATCH-1815</a> - Send PING frames to keep the router-http2 server connection alive</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1817">DISPATCH-1817</a> - TCP adaptor leaks pooled qd_message_body_data_t objects</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1841">DISPATCH-1841</a> - HTTP1: close corresponding connection when connector deleted</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1853">DISPATCH-1853</a> - [test] SkipIfNeeded decorator prints comment too often</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1854">DISPATCH-1854</a> - Delivery id numbers could be added for better log message comprehension</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1882">DISPATCH-1882</a> - Tcp adaptor self test fails when all tests skipped</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1883">DISPATCH-1883</a> - [Test] Travis Xenial AMD64 should have Python 'selectors' module</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1898">DISPATCH-1898</a> - support event channel option  in http1 adaptor</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1907">DISPATCH-1907</a> - Make policy enforceable in internal message receivers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1911">DISPATCH-1911</a> - Allow internal message endpoints using core-subscribe to set terminal disposition of received deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1912">DISPATCH-1912</a> - Fix TSAN failures in the test suite</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1929">DISPATCH-1929</a> - Allow producing a release build with asserts enabled</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1750">DISPATCH-1750</a> - Update PatternFly packages for the 1.15.0 release</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1751">DISPATCH-1751</a> - unexpected incoming-window in begin frame when running Dispatch on 32 bit system</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1784">DISPATCH-1784</a> - HTTP1.x adaptor does not handle folded header lines</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1788">DISPATCH-1788</a> - HTTP1.x adaptor fails to honor HTTP/1.0 connection semantics</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1791">DISPATCH-1791</a> - HTTP1.x adaptor leaks message buffers and deliveries</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1793">DISPATCH-1793</a> - Bump python-checker version support to include python3.8</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1801">DISPATCH-1801</a> - Link routed outcomes do not propagate all associated state</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1802">DISPATCH-1802</a> - Router crash during HTTP connection activation</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1803">DISPATCH-1803</a> - HTTP1.x adaptor stall when body data section &gt; Q2 limit</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1810">DISPATCH-1810</a> - HTTP1.x: qdr_delivery_t's are not processed (leaked)</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1811">DISPATCH-1811</a> - HTTP2 does not work in an edge to interior network</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1816">DISPATCH-1816</a> - HTTP1.x race between activation timer and raw connection events</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1820">DISPATCH-1820</a> - TCP adaptor test time out with single one-byte message</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1823">DISPATCH-1823</a> - TCP adaptor does not honor discard flag in core callbacks</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1824">DISPATCH-1824</a> - TCP adaptor leaks tcp connectors and listeners at shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1825">DISPATCH-1825</a> - TCP adaptor tests use selectors module not available in python 2.7</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1826">DISPATCH-1826</a> - Various instabilities in the tcp protocol adaptor</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1829">DISPATCH-1829</a> - multi-hop TCP does not seem to work</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1830">DISPATCH-1830</a> - TCP adaptor test can not create concurrent client sessions</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1831">DISPATCH-1831</a> - TCP adaptor test topology needs a longer backbone of interior routers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1833">DISPATCH-1833</a> - stream_data buffer fanout count wrap buffer leak</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1840">DISPATCH-1840</a> - HTTP1: shutdown crash when HTTP1 connection activated</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1845">DISPATCH-1845</a> - HTTP1: fails to deal with unsolicited responses from the server</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1846">DISPATCH-1846</a> - TCP adaptor basic connectivity test improvements</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1848">DISPATCH-1848</a> - TCP test echo client/server mishandle socket errors</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1849">DISPATCH-1849</a> - Router crash when fetching large message HTTP2 GET request</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1851">DISPATCH-1851</a> - TCP adaptor logs do not identify connection ID</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1856">DISPATCH-1856</a> - qd_message_received occasionally inserts empty message buffers</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1859">DISPATCH-1859</a> - HTTP1: crash on access to null codec state on server-facing connection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1867">DISPATCH-1867</a> - Router is crashing at startup on RHEL 8 </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1868">DISPATCH-1868</a> - New system test system_tests_grpc is failing on Fedora 33</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1869">DISPATCH-1869</a> - Adaptors must set message discard if message is invalid</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1872">DISPATCH-1872</a> - TCP Adaptor mishandles dropped server connections.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1874">DISPATCH-1874</a> - [http2] qd_buffer_t and qd_compose_t objects leaks when clients are abruptly terminated</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1875">DISPATCH-1875</a> - [tcp, http1, http2] Protocol Adaptors leaking pn_data_t objects </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1876">DISPATCH-1876</a> - TCP adaptor crash handling fast socket open/close</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1879">DISPATCH-1879</a> - system_tests_http2 failing with ASAN use after free error and memory leak</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1880">DISPATCH-1880</a> - HTTP1: fails to propagate PN_REJECTED due to race</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1881">DISPATCH-1881</a> - libnghttp2 is required to compile Dispatch</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1884">DISPATCH-1884</a> - TCP Adaptor fails asan leak tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1886">DISPATCH-1886</a> - Review and fix races between connection activation and closure</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1894">DISPATCH-1894</a> - Make libnghttp2 library not required</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1899">DISPATCH-1899</a> - Coverity issues on master branch</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1900">DISPATCH-1900</a> - qd_calloc: Assertion `nmemb &amp;&amp; size' failed.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1901">DISPATCH-1901</a> - Bad configuration self test does not recognize all types of connection failure</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1902">DISPATCH-1902</a> - qdr_link_complete_sent_message fails to update delivery work value</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1904">DISPATCH-1904</a> - Compilation error on qpid-dispatch master on Fedora 32</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1906">DISPATCH-1906</a> - Coverity error relating to adding delivery id in trace logs</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1916">DISPATCH-1916</a> - Coverity flags use-after-free errors on delivery decref</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1920">DISPATCH-1920</a> - Enable TSAN tests in travis configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1924">DISPATCH-1924</a> - CI failure in disposition state forwarding tests</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1927">DISPATCH-1927</a> - TCP adaptor Assertion `(link-&gt;undelivered).head' failed.</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1937">DISPATCH-1937</a> - system_tests_grpc failure due to leak from handle_outgoing_http -&gt; qd_iterator_copy</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1938">DISPATCH-1938</a> - Unify .eslintrc settings</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1944">DISPATCH-1944</a> - Qpid dispatch console dashboard is showing incorrect number of in/out counts at the "most active addresses" section</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1945">DISPATCH-1945</a> - Cleanup some GUI glitches on console's visualization pages</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1946">DISPATCH-1946</a> - [docker] Schema compile fails in ubuntu xenial container</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1950">DISPATCH-1950</a> - Knock down the minimum required version of the nghttp2 library to 1.33.0</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1951">DISPATCH-1951</a> - system_tests_http2 failing with router crash</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1952">DISPATCH-1952</a> - qd_bitmask_t leak on streaming message arrival</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
