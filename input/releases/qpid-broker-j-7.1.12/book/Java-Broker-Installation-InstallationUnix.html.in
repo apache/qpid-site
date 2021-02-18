@@ -1,0 +1,25 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">2.5.&#160;Installation on UNIX platforms</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Installation-InstallationWindows.html">Prev</a>&#160;</td><th width="60%" align="center">Chapter&#160;2.&#160;Installation</th><td width="20%" align="right">&#160;<a accesskey="n" href="Java-Broker-Installation-OptionalDependencies.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Installation-InstallationUnix" />2.5.&#160;Installation on UNIX platforms</h2></div></div></div><p> Firstly, verify that your JVM is installed properly by following <a class="link" href="Java-Broker-Miscellaneous.html#Java-Broker-Miscellaneous-JVM-Verification-Unix" title="F.1.2.&#160;Verify JVM on Unix">these instructions.</a>
+    </p><p>Now chose a directory for Qpid broker installation. This directory will be used for the
+      Qpid JARs and configuration files. It need not be the same location as the work directory used
+      for the persistent message store or the log file (you will choose this location later). For
+      the remainder this example we will assume that location /usr/local/qpid has been
+      chosen.</p><p>Next extract the qpid-broker-7.1.12-bin.tgz package into the directory.</p><pre class="programlisting">mkdir /usr/local/qpid
+cd /usr/local/qpid
+tar xvzf qpid-broker-7.1.12-bin.tgz</pre><p>The extraction of the broker package will have created a directory
+      qpid-broker/7.1.12 within /usr/local/qpid</p><pre class="screen">ls -la qpid-broker/7.1.12/
+total 56
+drwxrwxr-x. 5 alex alex  4096 Nov 25 11:43 .
+drwxrwxr-x. 3 alex alex  4096 Nov 25 11:43 ..
+drwxr-xr-x. 2 alex alex  4096 Nov 24 23:38 bin
+drwxr-xr-x. 2 alex alex  4096 Nov 24 23:38 etc
+drwxrwxr-x. 2 alex alex  4096 Nov 25 11:43 lib
+-rw-r--r--. 1 alex alex 28143 Nov 24 23:38 LICENSE
+-rw-r--r--. 1 alex alex  3409 Nov 24 23:38 NOTICE
+-rw-r--r--. 1 alex alex   116 Nov 24 23:38 README.txt
+    </pre><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Installation-InstallationUnix-SettingQPIDWORK" />2.5.1.&#160;Setting the working directory</h3></div></div></div><p>Qpid requires a work directory. This directory is used for the default location of the
+        Qpid log file and is used for the storage of persistent messages. The work directory can be
+        set on the command-line (for the lifetime of the current shell), but you will normally want
+        to set the environment variable permanently the user's shell profile file (~/.bash_profile
+        for Bash etc).</p><pre class="screen">export QPID_WORK=/var/qpidwork
+      </pre><p>If the directory referred to by <a class="link" href="Java-Broker-Appendix-Environment-Variables.html#Java-Broker-Appendix-Environment-Variables-Qpid-Work">QPID_WORK</a> does not
+        exist, the Broker will attempt to create it on start-up. </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Installation-InstallationWindows.html">Prev</a>&#160;</td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Installation.html">Up</a></td><td width="40%" align="right">&#160;<a accesskey="n" href="Java-Broker-Installation-OptionalDependencies.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">2.4.&#160;Installation on Windows&#160;</td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top">&#160;2.6.&#160;Optional Dependencies</td></tr></table></div></div>
