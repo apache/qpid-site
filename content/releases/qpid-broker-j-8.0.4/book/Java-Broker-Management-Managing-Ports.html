@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>7.9.&#160;Ports - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-8.0.4/index.html">Qpid Broker-J 8.0.4</a></li><li><a href="/releases/qpid-broker-j-8.0.4/book/index.html">Apache Qpid Broker-J</a></li><li>7.9.&#160;Ports</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">7.9.&#160;Ports</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Management-Managing-Consumers.html">Prev</a>&#160;</td><th width="60%" align="center">Chapter&#160;7.&#160;Managing Entities</th><td width="20%" align="right">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-Authentication-Providers.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Management-Managing-Ports" />7.9.&#160;Ports</h2></div></div></div><p>Ports provide TCP/IP connectivity for messaging and management. A port is defined to use a
+        protocol. This can be an AMQP protocol for messaging or HTTP for management.</p><p>A port is defined to have one or more transports. A transport can either be plain (TCP) or
+        SSL (TLS). When SSL is in use, the port can be configured to accept or require client
+        authentication.</p><p>Any number of ports defined to use AMQP or HTTP protocols can be defined.</p><p>Ports can only be managed by the HTTP management channel.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Ports-Context" />7.9.1.&#160;Context</h3></div></div></div><p>
+            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>qpid.port.max_open_connections</em></span>. The default maximum number
+                       of concurrent connections supported by an AMQP port.</p></li><li class="listitem"><p><span class="emphasis"><em>qpid.port.amqp.acceptBacklog</em></span>. The backlog is the maximum
+                        number of pending connections that may be queued by the AMQP port. Once the queue
+                        is full, further connections will be refused. This is a request to the operating system
+                        which may or may not be respected. The operating system itself may impose a ceiling.
+                        <a href="#ftn.d0e3649" class="footnote" id="d0e3649"><sup class="footnote">[8]</sup></a></p></li><li class="listitem"><p><span class="emphasis"><em>qpid.port.heartbeatDelay</em></span>. For AMQP 0-8..0-10 the default period with
+                        which Broker and client will exchange heartbeat messages (in seconds). Clients may negotiate a
+                        different heartbeat frequency or disable it altogether. For AMQP 1.0 this setting controls the
+                        incoming idle timeout only.  A value of 0 disables.</p></li></ul></div><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Ports-Attributes" />7.9.2.&#160;Attributes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Name the port</em></span>.</p></li><li class="listitem"><p><span class="emphasis"><em>Port number</em></span>.</p></li><li class="listitem"><p><span class="emphasis"><em>Binding address</em></span>. Used to limit port binding to a
+                        single network interface.</p></li><li class="listitem"><p><span class="emphasis"><em>Authentication Provider</em></span>. The <a class="link" href="Java-Broker-Concepts-Authentication-Providers.html" title="4.9.&#160;Authentication Providers">authentication
+                            provider</a> used to authenticate incoming connections.</p></li><li class="listitem"><p><span class="emphasis"><em>Protocol(s)</em></span>. A list of protocols to be supported by
+                        the port. For messaging choose one or more AMQP protocols. For management
+                        choose HTTP.</p></li><li class="listitem"><p><span class="emphasis"><em>Transports</em></span>. A list of transports supported by the
+                        port. For messaging or HTTP management chose TCP, SSL or both.</p></li><li class="listitem"><p><span class="emphasis"><em>Enabled/Disabled Cipher Suites</em></span>. Allows cipher
+                        suites supported by the JVM to be enabled or disabled.  The cipher
+                        suite names are those understood by the JVM.
+                    </p><p>SSLv3 is disabled by default.</p></li><li class="listitem"><p><span class="emphasis"><em>Keystore</em></span>. <a class="link" href="Java-Broker-Management-Managing-Keystores.html" title="7.11.&#160;Keystores">Keystore</a>
+                        containing the Broker's private key. Required if SSL is in use.</p></li><li class="listitem"><p><span class="emphasis"><em>Want/Need Client Auth</em></span>. Client authentication can be
+                        either accepted if offered (want), or demanded (need). When Client
+                        Certificate Authentication is in use a Truststore must be configured. When
+                        using Client Certificate Authentication it may be desirable to use the <a class="link" href="Java-Broker-Security.html#Java-Broker-Security-External-Provider" title="8.1.4.&#160;External (SSL Client Certificates)">External Authentication
+                            Provider</a>.</p></li><li class="listitem"><p><span class="emphasis"><em>Truststore</em></span>. <a class="link" href="Java-Broker-Management-Managing-Truststores.html" title="7.12.&#160;Truststores">Trust store</a>
+                        contain an issuer certificate or the public keys of the clients themselves
+                        if peers only is desired.</p></li><li class="listitem"><p><span class="emphasis"><em>Maximum Open Connections</em></span>. AMQP ports only.  Limits
+                     the number of connections that may be open at any one time.</p></li><li class="listitem"><p><span class="emphasis"><em>Thread pool size</em></span>. AMQP ports only.  Number of worker threads
+                    used to process AMQP connections during connection negotiation phase.</p><p>Defaults to 8.</p></li><li class="listitem"><p><span class="emphasis"><em>Number of selectors</em></span>. AMQP ports only.  Number of worker threads
+                    used from the thread pool to dispatch I/O activity to the worker threads.</p><p>Defaults to one eighth of the thread pool size. Minimum 1.</p></li></ul></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Ports-Children" />7.9.3.&#160;Children</h3></div></div></div><p>
+            </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>Connection</p></li></ul></div><p>
+        </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Management-Managing-Ports-Lifecycle" />7.9.4.&#160;Lifecycle</h3></div></div></div><p>Not supported</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>When updating an existing port, changes to SSL settings, binding address and port
+                numbers do not become effective until the Broker is restarted.</p></div></div><div class="footnotes"><br /><hr style="width:100; text-align:left;margin-left: 0" /><div id="ftn.d0e3649" class="footnote"><p><a href="#d0e3649" class="para"><sup class="para">[8] </sup></a>Some Linux distributions govern the ceiling with a <code class="literal">sysctl</code>
+                            setting <code class="literal">net.core.somaxconn</code>.</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Management-Managing-Consumers.html">Prev</a>&#160;</td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Management-Managing-Entities.html">Up</a></td><td width="40%" align="right">&#160;<a accesskey="n" href="Java-Broker-Management-Managing-Authentication-Providers.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">7.8.&#160;Consumers&#160;</td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top">&#160;7.10.&#160;Authentication Providers</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
