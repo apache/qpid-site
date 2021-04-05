@@ -121,7 +121,9 @@ def get_git_release_branch_url(module, release, path=""):
     }
 
     if release == "trunk":
-        release = "master"
+        release = "main"
+    elif release == "master":
+        release = "main"
 
     return "{}/{}/{}".format(modules[module], release, path.lstrip("/"))
 

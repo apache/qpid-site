@@ -43,8 +43,8 @@ find previous versions with our
  - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
  - [Python API reference]({{current_python_release_url}}/messaging-api/api/index.html)
  - [Python examples]({{current_python_release_url}}/messaging-api/examples/index.html)
- - [Installing Qpid C++](https://raw.githubusercontent.com/apache/qpid-cpp/master/INSTALL.txt)
- - [Installing Qpid Python](https://raw.githubusercontent.com/apache/qpid-python/master/README.md)
+ - [Installing Qpid C++](https://raw.githubusercontent.com/apache/qpid-cpp/main/INSTALL.txt)
+ - [Installing Qpid Python](https://raw.githubusercontent.com/apache/qpid-python/main/README.md)
 
 </div>
 

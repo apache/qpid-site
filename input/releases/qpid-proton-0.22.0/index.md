@@ -49,7 +49,6 @@ the files you download.
  - [Python tutorial](proton/python/book/tutorial.html)
  - [Python examples](proton/python/examples/index.html)
  - [Python API reference](proton/python/api/index.html)
-;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
  - [Installing Qpid Proton](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=blob;f=INSTALL.md;hb=0.22.0)
 
 </div>

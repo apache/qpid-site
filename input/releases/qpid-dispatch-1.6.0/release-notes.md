@@ -64,11 +64,11 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1285](https://issues.apache.org/jira/browse/DISPATCH-1285) - Router crashes occasionally on system_tests_delivery_abort
  - [DISPATCH-1287](https://issues.apache.org/jira/browse/DISPATCH-1287) - router gets confused by clients response to drain and subsequently issue too little credit
  - [DISPATCH-1288](https://issues.apache.org/jira/browse/DISPATCH-1288) - Optionally enforce access policy on connections established by the router
- - [DISPATCH-1292](https://issues.apache.org/jira/browse/DISPATCH-1292) - Coverity issues on master branch
+ - [DISPATCH-1292](https://issues.apache.org/jira/browse/DISPATCH-1292) - Coverity issues on main branch
  - [DISPATCH-1293](https://issues.apache.org/jira/browse/DISPATCH-1293) - Show traffic for stand-alone router
  - [DISPATCH-1297](https://issues.apache.org/jira/browse/DISPATCH-1297) - Fix buffer reference counting for multiframe fanout messages
  - [DISPATCH-1301](https://issues.apache.org/jira/browse/DISPATCH-1301) - Management messages lost
 
 ## Tasks
 
- - [DISPATCH-1115](https://issues.apache.org/jira/browse/DISPATCH-1115) - Configure Travis to run Dispatch tests agianst the latest Proton release and Proton master branch
+ - [DISPATCH-1115](https://issues.apache.org/jira/browse/DISPATCH-1115) - Configure Travis to run Dispatch tests agianst the latest Proton release and Proton main branch

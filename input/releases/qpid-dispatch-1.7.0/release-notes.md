@@ -42,4 +42,4 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1314](https://issues.apache.org/jira/browse/DISPATCH-1314) - spurious error in log when using healthz or metrics
  - [DISPATCH-1315](https://issues.apache.org/jira/browse/DISPATCH-1315) - attempt to wake a deleted http connection
  - [DISPATCH-1316](https://issues.apache.org/jira/browse/DISPATCH-1316) - race in remote_sasl can cause use after free
- - [DISPATCH-1319](https://issues.apache.org/jira/browse/DISPATCH-1319) - Coverity issues on master branch
+ - [DISPATCH-1319](https://issues.apache.org/jira/browse/DISPATCH-1319) - Coverity issues on main branch

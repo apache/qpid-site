@@ -17,5 +17,5 @@
 
 ## More information
 
- - [README](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=examples/README.txt;hb=refs/heads/master)
- - [Source location](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=tree;f=examples/messaging;hb=refs/heads/master)
+ - [README](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=blob_plain;f=examples/README.txt;hb=refs/heads/main)
+ - [Source location](https://gitbox.apache.org/repos/asf?p=qpid-cpp.git;a=tree;f=examples/messaging;hb=refs/heads/main)

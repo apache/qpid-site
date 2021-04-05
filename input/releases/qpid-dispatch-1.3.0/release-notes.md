@@ -69,4 +69,4 @@ to resolve these test failures until a newer release of Dispatch is available.
  - [DISPATCH-1093](https://issues.apache.org/jira/browse/DISPATCH-1093) - adding connectors dynamically causes extra connections for existing connectors
  - [DISPATCH-1094](https://issues.apache.org/jira/browse/DISPATCH-1094) - Log file messages out of order according to time stamps
  - [DISPATCH-1095](https://issues.apache.org/jira/browse/DISPATCH-1095) - Skipped system tests are marked as failed on rhel6 
- - [DISPATCH-1097](https://issues.apache.org/jira/browse/DISPATCH-1097) - Fix Coverity issue on master branch
+ - [DISPATCH-1097](https://issues.apache.org/jira/browse/DISPATCH-1097) - Fix Coverity issue on main branch

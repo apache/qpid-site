@@ -45,7 +45,6 @@ the files you download.
  - [C++ tutorial](proton/cpp/api/tutorial_page.html)
  - [C++ examples](proton/cpp/examples/index.html)
  - [C++ API reference](proton/cpp/api/annotated.html)
-;; - [Go binding](https://github.com/apache/qpid-proton/tree/master/proton-c/bindings/go/README.md)
  - [Python overview](proton/python/docs/overview.html)
  - [Python tutorial](proton/python/docs/tutorial.html)
  - [Python examples](proton/python/examples/index.html)

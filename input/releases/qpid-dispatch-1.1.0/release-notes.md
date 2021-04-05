@@ -76,7 +76,7 @@ since the maximum number of sessions between two containers is limited to 32,768
  - [DISPATCH-893](https://issues.apache.org/jira/browse/DISPATCH-893) - Compile fails using libwebsockets 7
  - [DISPATCH-894](https://issues.apache.org/jira/browse/DISPATCH-894) - Unable to run system tests on CentOS 6 (Python 2.6)
  - [DISPATCH-902](https://issues.apache.org/jira/browse/DISPATCH-902) - Intermittent crash with link to broker when broker closed
- - [DISPATCH-905](https://issues.apache.org/jira/browse/DISPATCH-905) - Dispatch Router not failing over to slave broker when master broker goes away
+ - [DISPATCH-905](https://issues.apache.org/jira/browse/DISPATCH-905) - Dispatch Router not failing over to backup broker when main broker goes away
  - [DISPATCH-907](https://issues.apache.org/jira/browse/DISPATCH-907) - cannot set address phase via qdmanage tool
  - [DISPATCH-910](https://issues.apache.org/jira/browse/DISPATCH-910) - Inter-router connections with dir 'in' have no host name
  - [DISPATCH-912](https://issues.apache.org/jira/browse/DISPATCH-912) - system_tests_user_id_proxy and system_tests_policy failing
@@ -91,18 +91,18 @@ since the maximum number of sessions between two containers is limited to 32,768
  - [DISPATCH-943](https://issues.apache.org/jira/browse/DISPATCH-943) - segfault in remote_sasl
  - [DISPATCH-944](https://issues.apache.org/jira/browse/DISPATCH-944) - remote_sasl plugin leaving connections open
  - [DISPATCH-945](https://issues.apache.org/jira/browse/DISPATCH-945) - Crash on shutdown when a http+websocket connection is open
- - [DISPATCH-947](https://issues.apache.org/jira/browse/DISPATCH-947) - system tests on master branch failing when run against latest master proton
+ - [DISPATCH-947](https://issues.apache.org/jira/browse/DISPATCH-947) - system tests on main branch failing when run against latest main proton
  - [DISPATCH-948](https://issues.apache.org/jira/browse/DISPATCH-948) - Move rhea npm dependency from dispatch-management to stand-alone 
  - [DISPATCH-952](https://issues.apache.org/jira/browse/DISPATCH-952) - qdrouterd seg fault after reporting "too many sessions"
  - [DISPATCH-953](https://issues.apache.org/jira/browse/DISPATCH-953) - Relative path name self test fails unless dispatch is installed
- - [DISPATCH-954](https://issues.apache.org/jira/browse/DISPATCH-954) - Fix Coverity issue on master branch
+ - [DISPATCH-954](https://issues.apache.org/jira/browse/DISPATCH-954) - Fix Coverity issue on main branch
  - [DISPATCH-962](https://issues.apache.org/jira/browse/DISPATCH-962) - links established to 'unavailable' addresses are not refused correctly
  - [DISPATCH-964](https://issues.apache.org/jira/browse/DISPATCH-964) - Auto-links are closed with an incorrect error indication
  - [DISPATCH-966](https://issues.apache.org/jira/browse/DISPATCH-966) - Qpid dispatch unstable inter-router connections
  - [DISPATCH-967](https://issues.apache.org/jira/browse/DISPATCH-967) - Policy management interface does not forward log warning messages
  - [DISPATCH-981](https://issues.apache.org/jira/browse/DISPATCH-981) - link routing results in name collisions now that single session is used
  - [DISPATCH-983](https://issues.apache.org/jira/browse/DISPATCH-983) - link routed receiver link did not issue flow
- - [DISPATCH-986](https://issues.apache.org/jira/browse/DISPATCH-986) - Coverity issues on master
+ - [DISPATCH-986](https://issues.apache.org/jira/browse/DISPATCH-986) - Coverity issues on main
  - [DISPATCH-991](https://issues.apache.org/jira/browse/DISPATCH-991) - Master qdstat throws keyError when running against 1.0.1 router
  - [DISPATCH-992](https://issues.apache.org/jira/browse/DISPATCH-992) - System test is failing in some scenarios - system_tests_delivery_abort.py
  - [DISPATCH-994](https://issues.apache.org/jira/browse/DISPATCH-994) - segfault in qdr_link_second_attach

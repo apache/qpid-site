@@ -61,7 +61,7 @@ that stores, routes, and forwards messages using AMQP.
 ## Documentation
 
  - [Broker book]({{current_broker_j_release_url}}/book/index.html)
- - [How to build Apache Qpid Broker-J](https://github.com/apache/qpid-broker-j/blob/master/README.md)
+ - [How to build Apache Qpid Broker-J](https://github.com/apache/qpid-broker-j/blob/main/README.md)
 
 </div>
 

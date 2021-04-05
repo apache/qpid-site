@@ -56,7 +56,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1491](https://issues.apache.org/jira/browse/DISPATCH-1491) - bottleneck adding or removing addresses in mobile address engine
  - [DISPATCH-1500](https://issues.apache.org/jira/browse/DISPATCH-1500) - inefficiencies in handling large MAU messages
  - [DISPATCH-1516](https://issues.apache.org/jira/browse/DISPATCH-1516) - Trace log the peer delivery id and link id when linking and unlinking peers
- - [DISPATCH-1525](https://issues.apache.org/jira/browse/DISPATCH-1525) - KeyError when executing master branch qdstat -l (links) against 1.9.0 router on Python 3
+ - [DISPATCH-1525](https://issues.apache.org/jira/browse/DISPATCH-1525) - KeyError when executing main branch qdstat -l (links) against 1.9.0 router on Python 3
 
 ## Bugs fixed
 

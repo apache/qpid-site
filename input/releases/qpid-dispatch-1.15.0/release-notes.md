@@ -101,11 +101,11 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1884](https://issues.apache.org/jira/browse/DISPATCH-1884) - TCP Adaptor fails asan leak tests
  - [DISPATCH-1886](https://issues.apache.org/jira/browse/DISPATCH-1886) - Review and fix races between connection activation and closure
  - [DISPATCH-1894](https://issues.apache.org/jira/browse/DISPATCH-1894) - Make libnghttp2 library not required
- - [DISPATCH-1899](https://issues.apache.org/jira/browse/DISPATCH-1899) - Coverity issues on master branch
+ - [DISPATCH-1899](https://issues.apache.org/jira/browse/DISPATCH-1899) - Coverity issues on main branch
  - [DISPATCH-1900](https://issues.apache.org/jira/browse/DISPATCH-1900) - qd_calloc: Assertion `nmemb &amp;&amp; size' failed.
  - [DISPATCH-1901](https://issues.apache.org/jira/browse/DISPATCH-1901) - Bad configuration self test does not recognize all types of connection failure
  - [DISPATCH-1902](https://issues.apache.org/jira/browse/DISPATCH-1902) - qdr_link_complete_sent_message fails to update delivery work value
- - [DISPATCH-1904](https://issues.apache.org/jira/browse/DISPATCH-1904) - Compilation error on qpid-dispatch master on Fedora 32
+ - [DISPATCH-1904](https://issues.apache.org/jira/browse/DISPATCH-1904) - Compilation error on qpid-dispatch main on Fedora 32
  - [DISPATCH-1906](https://issues.apache.org/jira/browse/DISPATCH-1906) - Coverity error relating to adding delivery id in trace logs
  - [DISPATCH-1916](https://issues.apache.org/jira/browse/DISPATCH-1916) - Coverity flags use-after-free errors on delivery decref
  - [DISPATCH-1920](https://issues.apache.org/jira/browse/DISPATCH-1920) - Enable TSAN tests in travis configuration

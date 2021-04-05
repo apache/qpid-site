@@ -45,7 +45,7 @@ documentation, see the [release overview](index.html).
  - [PROTON-2067](https://issues.apache.org/jira/browse/PROTON-2067) - Enable linktime optimization by default
  - [PROTON-2073](https://issues.apache.org/jira/browse/PROTON-2073) - Travis CI build test fails on Ubuntu 1604
  - [PROTON-2074](https://issues.apache.org/jira/browse/PROTON-2074) - Using a connection url with characters that need to be urlencoded can cause a hang
- - [PROTON-2079](https://issues.apache.org/jira/browse/PROTON-2079) - Coverity issues related to printf on master branch
+ - [PROTON-2079](https://issues.apache.org/jira/browse/PROTON-2079) - Coverity issues related to printf on main branch
  - [PROTON-2081](https://issues.apache.org/jira/browse/PROTON-2081) - Hang in Windows proactor during connect
  - [PROTON-2087](https://issues.apache.org/jira/browse/PROTON-2087) - [Python] Detection of tox caches failure instaead of trying again if not initially found
  - [PROTON-2088](https://issues.apache.org/jira/browse/PROTON-2088) - [Python] Changing a python file and building does not ensure the changed file ends up in the installable

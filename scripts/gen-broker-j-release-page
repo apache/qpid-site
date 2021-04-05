@@ -200,7 +200,7 @@ This content was generated at {time} on {day}, {date}.
  - [Source repository](https://gitbox.apache.org/repos/asf/qpid-broker-j.git)
 """
     
-def gen_master_release_page(release_dir):
+def gen_main_release_page(release_dir):
     output_path = join(release_dir, "index.md")
 
     now = datetime.now()
@@ -221,8 +221,8 @@ def gen_master_release_page(release_dir):
 
 release, issues_release, source_release, release_dir, checkout_dir = setup_release_script()
 
-if release == "master":
-    gen_master_release_page(release_dir)
+if release == "main":
+    gen_main_release_page(release_dir)
 else:
     gen_release_page(release, issues_release, source_release, release_dir)
 

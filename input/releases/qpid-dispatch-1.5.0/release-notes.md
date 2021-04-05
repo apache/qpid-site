@@ -75,7 +75,7 @@ protocols attribute. Users who require OpenSSL version restrictions must use sys
  - [DISPATCH-1146](https://issues.apache.org/jira/browse/DISPATCH-1146) - Core-endpoint can't receive deliveries on core-initiated links
  - [DISPATCH-1153](https://issues.apache.org/jira/browse/DISPATCH-1153) - Router crash when a detach arrives on a link that is processing deliveries
  - [DISPATCH-1155](https://issues.apache.org/jira/browse/DISPATCH-1155) - dueling httpRootDirs
- - [DISPATCH-1163](https://issues.apache.org/jira/browse/DISPATCH-1163) - Coverity issues on master branch 
+ - [DISPATCH-1163](https://issues.apache.org/jira/browse/DISPATCH-1163) - Coverity issues on main branch 
  - [DISPATCH-1164](https://issues.apache.org/jira/browse/DISPATCH-1164) - Failing to compile the router when only python3 is installed
  - [DISPATCH-1169](https://issues.apache.org/jira/browse/DISPATCH-1169) - Remove stranded link info popup on console's topology page
  - [DISPATCH-1170](https://issues.apache.org/jira/browse/DISPATCH-1170) - System tests failing when executed on a python3 only machine

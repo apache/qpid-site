@@ -63,7 +63,7 @@ that stores, routes, and forwards messages using AMQP.
 
  - [C++ broker book]({{current_cpp_release_url}}/cpp-broker/book/index.html)
  - [Managing the C++ broker]({{current_cpp_release_url}}/cpp-broker/book/chapter-Managing-CPP-Broker.html#section-Managing-CPP-Broker)
- - [Installing Qpid C++](https://raw.githubusercontent.com/apache/qpid-cpp/master/INSTALL.txt)
+ - [Installing Qpid C++](https://raw.githubusercontent.com/apache/qpid-cpp/main/INSTALL.txt)
  - [Qpid extensions to AMQP](https://cwiki.apache.org/confluence/display/qpid/qpid+extensions+to+amqp)
 
 </div>

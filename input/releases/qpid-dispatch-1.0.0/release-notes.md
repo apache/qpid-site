@@ -59,7 +59,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-430](https://issues.apache.org/jira/browse/DISPATCH-430) - Cursor snaps way above peaks in a rate chart
  - [DISPATCH-571](https://issues.apache.org/jira/browse/DISPATCH-571) - Driver spins when a listener accepts a socket while FDs are all in use
  - [DISPATCH-737](https://issues.apache.org/jira/browse/DISPATCH-737) - qdstat and qdmanage always force sasl exchange
- - [DISPATCH-741](https://issues.apache.org/jira/browse/DISPATCH-741) - Coverity scan reported errors in Qpid Dispatch master
+ - [DISPATCH-741](https://issues.apache.org/jira/browse/DISPATCH-741) - Coverity scan reported errors in Qpid Dispatch main
  - [DISPATCH-743](https://issues.apache.org/jira/browse/DISPATCH-743) - Intermittent SSL Failure
  - [DISPATCH-747](https://issues.apache.org/jira/browse/DISPATCH-747) - Console does not handle connection errors well
  - [DISPATCH-748](https://issues.apache.org/jira/browse/DISPATCH-748) - Error message shown when rapidly clicking treeview on left side of hawtio console: Uncaught TypeError: Cannot read property 'height' of null
@@ -112,7 +112,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-826](https://issues.apache.org/jira/browse/DISPATCH-826) - Specifying an invalid host on the connector crashes the router
  - [DISPATCH-829](https://issues.apache.org/jira/browse/DISPATCH-829) - The router does not set the "aborted" indication on truncated, streamed deliveries
  - [DISPATCH-835](https://issues.apache.org/jira/browse/DISPATCH-835) - The DETACH/CLOSE sequence causes a memory leak
- - [DISPATCH-837](https://issues.apache.org/jira/browse/DISPATCH-837) - Coverity scan reported errors in Qpid Dispatch master
+ - [DISPATCH-837](https://issues.apache.org/jira/browse/DISPATCH-837) - Coverity scan reported errors in Qpid Dispatch main
  - [DISPATCH-841](https://issues.apache.org/jira/browse/DISPATCH-841) - Decrease default limit of rows returned by qdstat from 1000 to 100
  - [DISPATCH-842](https://issues.apache.org/jira/browse/DISPATCH-842) - Include missing license information in the LICENSE file
  - [DISPATCH-846](https://issues.apache.org/jira/browse/DISPATCH-846) - Memory leaks in ctest with valgrind

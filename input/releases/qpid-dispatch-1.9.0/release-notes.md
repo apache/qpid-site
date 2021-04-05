@@ -59,7 +59,7 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1378](https://issues.apache.org/jira/browse/DISPATCH-1378) - missing lock of connection's links_with_work list
  - [DISPATCH-1380](https://issues.apache.org/jira/browse/DISPATCH-1380) - qdrouterd leaves dangling qd_link_t pointer
  - [DISPATCH-1383](https://issues.apache.org/jira/browse/DISPATCH-1383) - system_tests_policy is timing out
- - [DISPATCH-1387](https://issues.apache.org/jira/browse/DISPATCH-1387) - Coverity issues on master branch
+ - [DISPATCH-1387](https://issues.apache.org/jira/browse/DISPATCH-1387) - Coverity issues on main branch
  - [DISPATCH-1391](https://issues.apache.org/jira/browse/DISPATCH-1391) - Proton link reference not cleared on router link objects during session close
  - [DISPATCH-1394](https://issues.apache.org/jira/browse/DISPATCH-1394) - qd_check_message() incorrectly validates partially received messages
  - [DISPATCH-1398](https://issues.apache.org/jira/browse/DISPATCH-1398) - "Expression with no effect" warning for console web

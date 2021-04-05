@@ -53,4 +53,4 @@ documentation, see the [release overview](index.html).
  - [DISPATCH-1626](https://issues.apache.org/jira/browse/DISPATCH-1626) - On released callback invoked twice for same delivery tag
  - [DISPATCH-1627](https://issues.apache.org/jira/browse/DISPATCH-1627) - Occasional leak of qd_iterator_buffer during system_tests_link_route_credit test
  - [DISPATCH-1628](https://issues.apache.org/jira/browse/DISPATCH-1628) - Crash after enforcing oversize message connection close
- - [DISPATCH-1630](https://issues.apache.org/jira/browse/DISPATCH-1630) - Coverity issues on master branch
+ - [DISPATCH-1630](https://issues.apache.org/jira/browse/DISPATCH-1630) - Coverity issues on main branch

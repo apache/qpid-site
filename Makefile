@@ -119,4 +119,4 @@ $(foreach module,${SOURCE_MODULES},$(eval $(call RELEASE_TEMPLATE,${module})))
 
 .PHONY: update-%
 update-%:
-	curl "https://raw.githubusercontent.com/ssorj/$*/master/python/$*.py" -o python/$*.py
+	curl "https://raw.githubusercontent.com/ssorj/$*/main/python/$*.py" -o python/$*.py
