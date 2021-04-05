@@ -65,7 +65,6 @@ they be clients, brokers or other AMQP-enabled services.  More about
 
  - {{current_dispatch_release_link}}
  - [Past releases]({{site_url}}/releases/index.html#past-releases)
- - [Work in progress]({{site_url}}/releases/qpid-dispatch-master/index.html)
 
 ## Issues
 

@@ -114,6 +114,5 @@ You can find older versions with our
 
 ## More information
 
- - [Documentation snapshots]({{site_url}}/releases/snapshots.html)
  - [Past and current releases]({{site_url}}/releases/index.html)
  - [Components]({{site_url}}/components/index.html)
