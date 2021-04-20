@@ -32,7 +32,6 @@ jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amq
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.34.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.33.8")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
-java_release = _Release(site_url, "Qpid for Java", "qpid-java", "none")
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
@@ -49,10 +48,6 @@ current_dispatch_release_link = dispatch_release.link
 current_interop_test_release = interop_test_release.number
 current_interop_test_release_url = interop_test_release.url
 current_interop_test_release_link = interop_test_release.link
-
-current_java_release = java_release.number
-current_java_release_url = java_release.url
-current_java_release_link = java_release.link
 
 current_jms_release = jms_release.number
 current_jms_release_url = jms_release.url

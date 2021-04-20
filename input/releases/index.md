@@ -103,6 +103,7 @@ the
  - [Qpid Proton-J 0.32.0](qpid-proton-j-0.32.0/index.html), April 2019
  - [Qpid Dispatch 1.6.0](qpid-dispatch-1.6.0/index.html), March 2019
  - [Qpid Broker-J 7.1.1](qpid-broker-j-7.1.1/index.html), March 2019
+ - [Qpid Broker-J 7.0.7](qpid-broker-j-7.0.7/index.html), March 2019
  - [Qpid Proton 0.27.0](qpid-proton-0.27.0/index.html), February 2019
  - [Qpid Dispatch 1.5.0](qpid-dispatch-1.5.0/index.html), January 2019
  - [Qpid Broker-J 7.1.0](qpid-broker-j-7.1.0/index.html), January 2019
@@ -116,11 +117,7 @@ the
  - [Qpid Dispatch 1.4.0](qpid-dispatch-1.4.0/index.html), October 2018
  - [Qpid Proton 0.26.0](qpid-proton-0.26.0/index.html), October 2018
  - [Qpid C++ 1.38.0](qpid-cpp-1.38.0/index.html), March 2018
- - [Qpid Broker-J 7.0.7](qpid-broker-j-7.0.7/index.html), March 2019
  - [Qpid Proton 0.25.0](qpid-proton-0.25.0/index.html), September 2018
- - [Qpid for Java 6.1.7](qpid-java-6.1.7/index.html), September 2018
- - [Qpid Dispatch 1.3.0](qpid-dispatch-1.3.0/index.html), August 2018
- - [Qpid JMS AMQP 0-x 6.3.3](qpid-jms-amqp-0-x-6.3.3/index.html), August 2018
 
 </div>
 
