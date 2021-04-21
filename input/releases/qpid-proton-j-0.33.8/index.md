@@ -33,8 +33,8 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Proton-J (binary) | [apache-qpid-proton-j-0.33.8-bin.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz.sha512) |
-| Qpid Proton-J (source release) | [apache-qpid-proton-j-0.33.8-src.tar.gz](http://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz.sha512) |
+| Qpid Proton-J (binary) | [apache-qpid-proton-j-0.33.8-bin.tar.gz](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-bin.tar.gz.sha512) |
+| Qpid Proton-J (source release) | [apache-qpid-proton-j-0.33.8-src.tar.gz](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/proton-j/0.33.8/apache-qpid-proton-j-0.33.8-src.tar.gz.sha512) |
 
 Proton-J is also available [via Maven]({{site_url}}/maven.html).
 
@@ -51,7 +51,7 @@ Proton-J is also available [via Maven]({{site_url}}/maven.html).
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/proton-j/0.33.8)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/proton-j/0.33.8)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+PROTON+AND+fixVersion+%3D+%27proton-j-0.33.8%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf?p=qpid-proton-j.git;a=tag;h=0.33.8)
 

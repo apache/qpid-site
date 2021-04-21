@@ -34,14 +34,14 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-src.tar.gz](http://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-src.tar.gz](https://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/apache-qpid-broker-j-8.0.4-src.tar.gz.sha512) |
 
 ## Binaries
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-bin.tar.gz](http://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz.sha512) |
-| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-bin.zip](http://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-bin.tar.gz](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.tar.gz.sha512) |
+| Qpid Broker-J | [apache-qpid-broker-j-8.0.4-bin.zip](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip) | [ASC](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip.asc), [SHA512](https://archive.apache.org/dist/qpid/broker-j/8.0.4/binaries/apache-qpid-broker-j-8.0.4-bin.zip.sha512) |
 
 ## Documentation
 
@@ -56,7 +56,7 @@ files you download.
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/broker-j/8.0.4)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/broker-j/8.0.4)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-broker-8.0.4%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-broker-j.git/tree/refs/tags/8.0.4)
 

@@ -34,7 +34,7 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| C++ broker, Qpid Messaging API (C++) | [qpid-cpp-1.39.0.tar.gz](http://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz.sha512) |
+| C++ broker, Qpid Messaging API (C++) | [qpid-cpp-1.39.0.tar.gz](https://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/cpp/1.39.0/qpid-cpp-1.39.0.tar.gz.sha512) |
 
 ## Components
 

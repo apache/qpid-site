@@ -409,12 +409,16 @@ function _modifyCurrentReleaseLinks() {
         var ext = href.substring(href.length - 4)
         var ext7 = href.substring(href.length - 7)
 
-        if (ext === ".asc" || ext === ".md5" || ext === "sha1" || ext === ".sha" || ext7 === ".sha512") {
+        if (ext === ".asc" || ext7 === ".sha512") {
             href = href.replace("https://archive.apache.org/dist/qpid/",
-                                "https://www.apache.org/dist/qpid/");
+                                "https://downloads.apache.org/qpid/");
+        } else if ((ext === ".zip" || ext7 === ".tar.gz") && href.indexOf("https://archive.apache.org/dist/qpid/") == 0) {
+                href = href.replace("https://archive.apache.org/dist/qpid/",
+                                    "https://www.apache.org/dyn/closer.lua?filename=qpid/");
+                href = href.concat("&action=download");
         } else {
-            href = href.replace("http://archive.apache.org/dist/qpid/",
-                                "http://www.apache.org/dyn/closer.lua/qpid/");
+            href = href.replace("https://archive.apache.org/dist/qpid/",
+                                "https://www.apache.org/dyn/closer.lua/qpid/");
         }
 
         elems[i].href = href;

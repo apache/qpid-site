@@ -91,7 +91,7 @@ the files you download.
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/proton/{release})
+ - [All release artefacts](https://archive.apache.org/dist/qpid/proton/{release})
  - [Resolved issues in JIRA]({issues_url})
  - [Source repository tag](https://gitbox.apache.org/repos/asf?p=qpid-proton.git;a=tag;h={release})
 
@@ -108,17 +108,15 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     output_path = join(release_dir, "index.md")
 
     downloads = list()
-    artifact_url_template = "http://archive.apache.org/dist/qpid/proton/{}/{}"
-    artifact_url_template_https = "https://archive.apache.org/dist/qpid/proton/{}/{}"
+    artifact_url_template = "https://archive.apache.org/dist/qpid/proton/{}/{}"
 
     for artifact, summary in download_records:
         artifact = artifact.format(release)
         artifact_url = artifact_url_template.format(release, artifact)
-        artifact_url_https = artifact_url_template_https.format(release, artifact)
-        asc_url = "{}.asc".format(artifact_url_https)
-        sha512_url = "{}.sha512".format(artifact_url_https)
+        asc_url = "{}.asc".format(artifact_url)
+        sha_url = "{}.sha512".format(artifact_url)
 
-        args = summary, artifact, artifact_url, asc_url, sha512_url
+        args = summary, artifact, artifact_url, asc_url, sha_url
         downloads.append("| {} | [{}]({}) | [ASC]({}), [SHA512]({}) |".format(*args))
 
     downloads = "\n".join(downloads)

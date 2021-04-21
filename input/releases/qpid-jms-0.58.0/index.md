@@ -35,8 +35,8 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid JMS binaries | [apache-qpid-jms-0.58.0-bin.tar.gz](http://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz.sha512) |
-| Qpid JMS source code | [apache-qpid-jms-0.58.0-src.tar.gz](http://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz.sha512) |
+| Qpid JMS binaries | [apache-qpid-jms-0.58.0-bin.tar.gz](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-bin.tar.gz.sha512) |
+| Qpid JMS source code | [apache-qpid-jms-0.58.0-src.tar.gz](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/0.58.0/apache-qpid-jms-0.58.0-src.tar.gz.sha512) |
 
 The client is also available [via Maven]({{site_url}}/maven.html).
 
@@ -55,7 +55,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/jms/0.58.0)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/jms/0.58.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.58.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.58.0)
 

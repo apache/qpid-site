@@ -34,7 +34,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Dispatch router | [qpid-dispatch-1.15.0.tar.gz](http://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz.sha512) |
+| Dispatch router | [qpid-dispatch-1.15.0.tar.gz](https://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/dispatch/1.15.0/qpid-dispatch-1.15.0.tar.gz.sha512) |
 
 ## Documentation
 
@@ -54,7 +54,7 @@ the files you download.
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/dispatch/1.15.0)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/dispatch/1.15.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+DISPATCH+AND+fixVersion+%3D+%271.15.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-dispatch.git/tree/refs/tags/1.15.0)
 

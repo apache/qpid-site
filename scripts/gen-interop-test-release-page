@@ -85,7 +85,7 @@ the files you download.
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/interop-test/{release})
+ - [All release artefacts](https://archive.apache.org/dist/qpid/interop-test/{release})
  - [Resolved issues in JIRA]({issues_url})
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-interop-test.git/tree/refs/tags/{release})
 
@@ -104,15 +104,15 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     downloads = list()
     components = list()
 
-    source_artifact_url = "http://archive.apache.org/dist/qpid/interop-test/{}/{}"
+    artifact_url_template = "https://archive.apache.org/dist/qpid/interop-test/{}/{}"
 
     for artifact, summary in download_records:
         artifact = artifact.format(release)
-        artifact_url = source_artifact_url.format(release, artifact)
-        sig_url = "https://archive.apache.org/dist/qpid/interop-test/{}/{}.asc".format(release, artifact)
-        sha_url = "https://archive.apache.org/dist/qpid/interop-test/{}/{}.sha512".format(release, artifact)
+        artifact_url = artifact_url_template.format(release, artifact)
+        asc_url = "{}.asc".format(artifact_url)
+        sha_url = "{}.sha512".format(artifact_url)
 
-        args = summary, artifact, artifact_url, sig_url, sha_url
+        args = summary, artifact, artifact_url, asc_url, sha_url
         downloads.append("| {} | [{}]({}) | [ASC]({}), [SHA512]({})|".format(*args))
 
     for key, name, languages, platforms, amqp_versions in component_records:

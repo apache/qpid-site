@@ -34,7 +34,7 @@ the files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Interop Test | [qpid-interop-test-0.2.0.tar.gz](http://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz.sha512)|
+| Interop Test | [qpid-interop-test-0.2.0.tar.gz](https://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/interop-test/0.2.0/qpid-interop-test-0.2.0.tar.gz.sha512)|
 
 ## Documentation
 
@@ -48,7 +48,7 @@ the files you download.
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/interop-test/0.2.0)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/interop-test/0.2.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDIT+AND+fixVersion+%3D+%270.2.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-interop-test.git/tree/refs/tags/0.2.0)
 

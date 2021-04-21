@@ -33,7 +33,7 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid Messaging API (Python) | [qpid-python-1.37.0.tar.gz](http://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz.asc), [MD5](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz.md5), [SHA512](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz.sha512) |
+| Qpid Messaging API (Python) | [qpid-python-1.37.0.tar.gz](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/python/1.37.0/qpid-python-1.37.0.tar.gz.sha512) |
 
 ## Components
 

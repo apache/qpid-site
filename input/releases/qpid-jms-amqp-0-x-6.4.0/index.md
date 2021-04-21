@@ -34,9 +34,9 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid JMS binaries | [apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz](http://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz.sha512) |
-| Qpid JMS binaries | [apache-qpid-jms-amqp-0-x-6.4.0-bin.zip](http://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip.sha512) |
-| Qpid JMS source code | [apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz](http://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz.sha512) |
+| Qpid JMS binaries | [apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.tar.gz.sha512) |
+| Qpid JMS binaries | [apache-qpid-jms-amqp-0-x-6.4.0-bin.zip](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/binaries/apache-qpid-jms-amqp-0-x-6.4.0-bin.zip.sha512) |
+| Qpid JMS source code | [apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0/apache-qpid-jms-amqp-0-x-6.4.0-src.tar.gz.sha512) |
 
 The client is also available [via Maven]({{site_url}}/maven.html).
 
@@ -56,7 +56,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 ## More information
 
- - [All release artefacts](http://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0)
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-client-0-x-6.4.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git/tree/refs/tags/6.4.0)
 
