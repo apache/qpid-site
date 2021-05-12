@@ -32,7 +32,7 @@ ifdef RELEASE
     endif
 endif
 
-SOURCE_MODULES := broker-j cpp dispatch interop-test jms jms-amqp-0-x proton proton-j python
+SOURCE_MODULES := broker-j cpp dispatch interop-test jms jms-amqp-0-x proton proton-j protonj2 python
 
 .PHONY: default
 default: render
@@ -49,6 +49,8 @@ help:
 	@echo "                Generate Qpid Proton release content"
 	@echo "gen-proton-j-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid Proton-J release content"
+	@echo "gen-protonj2-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
+	@echo "                Generate Qpid ProtonJ2 release content"
 	@echo "gen-dispatch-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"
 	@echo "                Generate Qpid Dispatch release content"
 	@echo "gen-jms-release RELEASE=\$$VERSION [CHECKOUT_DIR=\$$DIR]"

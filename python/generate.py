@@ -426,6 +426,10 @@ def _fetch_issues(project, release):
         project = "proton"
         fix_version = "proton-j-{}".format(release)
 
+    if project == "protonj2":
+        project = "proton"
+        fix_version = "protonj2-{}".format(release)
+
     query.append("project = '{}'".format(project))
     query.append("fixVersion = '{}'".format(fix_version))
     query.append("resolution = 'fixed'")

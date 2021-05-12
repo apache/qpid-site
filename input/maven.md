@@ -58,6 +58,21 @@ The following dependencies can be added to the POM for your Maven build to utili
 <span class="nt">&lt;/dependency&gt;</span>
 </pre></div>
 
+## Qpid ProtonJ2
+
+<div class="highlight"><pre>
+<span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>protonj2<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>{{current_protonj2_release}}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
+  <span class="nt">&lt;artifactId&gt;</span>protonj2-client<span class="nt">&lt;/artifactId&gt;</span>
+  <span class="nt">&lt;version&gt;</span>{{current_protonj2_release}}<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+
 ## More information
 
  - [Snapshot repository](https://repository.apache.org/content/repositories/snapshots/)

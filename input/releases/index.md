@@ -27,6 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid ProtonJ2 1.0.0-M1](qpid-protonj2-1.0.0-M1/index.html), May 2021
  - [Qpid JMS 0.58.0](qpid-jms-0.58.0/index.html), April 2021
  - [Qpid Proton 0.34.0](qpid-proton-0.34.0/index.html), April 2021
  - [Qpid Broker-J 8.0.4](qpid-broker-j-8.0.4/index.html), February 2021
