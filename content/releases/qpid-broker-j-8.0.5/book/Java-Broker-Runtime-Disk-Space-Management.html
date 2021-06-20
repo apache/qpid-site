@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>9.2.&#160;Disk Space Management - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-8.0.5/index.html">Qpid Broker-J 8.0.5</a></li><li><a href="/releases/qpid-broker-j-8.0.5/book/index.html">Apache Qpid Broker-J</a></li><li>9.2.&#160;Disk Space Management</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">9.2.&#160;Disk Space Management</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Runtime.html">Prev</a>&#160;</td><th width="60%" align="center">Chapter&#160;9.&#160;Runtime</th><td width="20%" align="right">&#160;<a accesskey="n" href="Java-Broker-Runtime-Transaction-Timeout.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Disk-Space-Management" />9.2.&#160;Disk Space Management</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Disk-Space-Management-Producer-Flow-Control" />9.2.1.&#160;Disk quota-based flow control</h3></div></div></div><p>
+        The Apache Qpid Broker-J supports a flow control mechanism which is triggered when a configured
+        disk quota is exceeded. This is supported by the BDB and Derby virtualhosts.
+    </p><p>
+        This functionality blocks all producers on reaching the disk overflow limit. When consumers consume the
+        messages, causing disk space usage to falls below the underflow limit, the producers are unblocked and continue
+        working as normal.
+    </p><p>
+        Two limits can be configured:
+    </p><p>
+        overfull limit - the maximum space on disk (in bytes).
+    </p><p>
+        underfull limit - when the space on disk drops below this limit, producers are allowed to resume publishing.
+    </p><p>
+        The overfull and underful limit can be specified when a new virtualhost is created or an exiting virtualhost is
+        edited. This can be done using the Store Overflow and Store Underfull settings within the virtual host creation
+        and edit dialogue. If editing an existing virtualhost, the virtualhost must be restarted for the new values to
+        take effect.
+    </p><p>
+        The disk quota functionality is based on "best effort" principle. This means the broker cannot guarantee that
+        the disk space limit will not be exceeded. If several concurrent transactions are started before the limit is
+        reached, which collectively cause the limit to be exceeded, the broker may allow all of them to be committed.
+    </p><p>
+        The Broker will also impose flow control if the filesystem hosting a virtualhost exceeds a <a class="link" href="Java-Broker-Management-Managing-Broker.html#Java-Broker-Management-Managing-Broker-Context-StoreFilesystemMaxUsagePercent">configured
+        percentage.</a>.
+    </p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p>
+            The <span class="emphasis"><em>Producer Flow Control</em></span> can be configured on individual queue using
+            <span class="emphasis"><em>Producer Flow Control</em></span> overflow policy.
+            For more details, please read<a class="xref" href="Java-Broker-Concepts-Queues.html#Java-Broker-Concepts-Queue-OverflowPolicy" title="4.7.5.&#160;Controlling Queue Size">Section&#160;4.7.5, &#8220;Controlling Queue Size&#8221;</a>.
+        </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="d0e6012" />9.2.1.1.&#160;Broker Log Messages for quota flow control</h4></div></div></div><p>
+            There are two broker log messages that may occur if flow control through disk quota limits is enabled. When
+            the virtual host is blocked due to exceeding of the disk quota limit the following message appears in the
+            broker log
+            </p><pre class="programlisting">
+                [vh(/test)/ms(BDBMessageStore)] MST-1008 : Store overfull, flow control will be enforced
+            </pre><p>
+            When virtual host is unblocked after cleaning the disk space the following message appears in the broker log
+            </p><pre class="programlisting">
+                [vh(/test)/ms(BDBMessageStore)] MST-1009 : Store overfull condition cleared
+            </pre><p>
+        </p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Runtime.html">Prev</a>&#160;</td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td width="40%" align="right">&#160;<a accesskey="n" href="Java-Broker-Runtime-Transaction-Timeout.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter&#160;9.&#160;Runtime&#160;</td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top">&#160;9.3.&#160;Transaction Timeout</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

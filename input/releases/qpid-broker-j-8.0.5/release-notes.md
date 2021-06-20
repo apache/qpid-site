@@ -37,7 +37,7 @@ documentation, see the [release overview](index.html).
 ## Bugs fixed
 
  - [QPID-8509](https://issues.apache.org/jira/browse/QPID-8509) - [Broker-J] java.util.NoSuchElementException in AMQPConnection_1_0Impl.next()
- - [QPID-8510](https://issues.apache.org/jira/browse/QPID-8510) - [Broker-J] Incorect use of volatile modifier for array
+ - [QPID-8510](https://issues.apache.org/jira/browse/QPID-8510) - [Broker-J] [AMQP 1.0] Connection transaction management is not thread-safe
  - [QPID-8514](https://issues.apache.org/jira/browse/QPID-8514) - [Broker-J] High CPU usage and stucked connections
  - [QPID-8518](https://issues.apache.org/jira/browse/QPID-8518) - [Broker-J] Message transfer freezes when session runs out of transfer frames
  - [QPID-8520](https://issues.apache.org/jira/browse/QPID-8520) - [Broker-J] ReadPendingException thrown by Broker-J intermittently
