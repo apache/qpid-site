@@ -63,10 +63,10 @@
 
 ### List archives
 
- - [Users](http://qpid.2158936.n2.nabble.com/Apache-Qpid-users-f2158936.html)
- - [Developers](http://qpid.2158936.n2.nabble.com/Apache-Qpid-developers-f7254403.html)
- - [Commits](http://qpid.2158936.n2.nabble.com/Apache-Qpid-commits-f7106555.html)
- - [Notifications](http://mail-archives.apache.org/mod_mbox/qpid-notifications/)
+ - [Users](https://lists.apache.org/list.html?users@qpid.apache.org)
+ - [Developers](https://lists.apache.org/list.html?dev@qpid.apache.org)
+ - [Commits](https://lists.apache.org/list.html?commits@qpid.apache.org)
+ - [Notifications](https://lists.apache.org/list.html?notifications@qpid.apache.org)
 
 </section>
 <section markdown="1">

@@ -10,12 +10,9 @@
 
 ### Search mailing lists
 
-<form action="http://qpid.2158936.n2.nabble.com/template/NamlServlet.jtp" method="get">
-  <input type="hidden" name="macro" value="search_page"/>
-  <input type="hidden" name="node" value="7106518"/>
-  <input type="text" name="query" tabindex="2"/>
-  <button type="submit">Search</button>
-</form>
+
+ - [Users List](https://lists.apache.org/list.html?users@qpid.apache.org)
+ - [Dev List](https://lists.apache.org/list.html?dev@qpid.apache.org)
 
 ### Search issues
 
@@ -24,10 +21,3 @@
   <button type="submit">Search</button>
 </form>
 
-### Search the wiki
-
-<form id="-wiki-search-form" action="https://www.google.com/search" method="get">
-  <input type="hidden" name="sitesearch" value="cwiki.apache.org/confluence/display/qpid"/>
-  <input type="text" name="q" maxlength="255" value="" tabindex="4"/>
-  <button type="submit">Search</button>
-</form>

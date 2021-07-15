@@ -61,12 +61,12 @@ address.
 
 ### Commits list
 
-Alerts for changes committed to the Qpid source.  
+Alerts for changes committed to the Qpid source.
 
  - Send "subscribe" to <commits-subscribe@qpid.apache.org>
  - Send "unsubscribe" to <commits-unsubscribe@qpid.apache.org>
- - [List information](http://mail-archives.apache.org/mod_mbox/qpid-commits/)
- - [Archive](http://qpid.2158936.n2.nabble.com/Apache-Qpid-commits-f7106555.html)
+ - [List information](https://mail-archives.apache.org/mod_mbox/qpid-commits/)
+ - [Archive](https://lists.apache.org/list.html?commits@qpid.apache.org)
  - [News feed](http://mail-archives.apache.org/mod_mbox/qpid-commits/?format=atom)
 
 ### Notifications list
