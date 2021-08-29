@@ -1,0 +1,18 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">5.5. Configuration Store Type</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Initial-Configuration-Create-Initial-Config.html">Prev</a> </td><th width="60%" align="center">Chapter 5. Initial Configuration</th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-Initial-Configuration-Configuration-Properties.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Initial-Configuration-Type"></a>5.5. Configuration Store Type</h2></div></div></div><p> There are currently several implementations of the pluggable Broker Configuration Store:
+            </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">JSON</span></dt><dd><p>the default one which persists content to disk in a JSON file</p></dd><dt><span class="term">Memory</span></dt><dd><p>operates only in-memory and so does not retain changes across broker
+                        restarts and always relies on the current <a class="link" href="Java-Broker-Initial-Configuration-Initial-Config-Location.html" title="5.3. 'Initial Configuration' Location">'Initial
+                            Configuration'</a> to provide the configuration to start the broker with.
+                    </p></dd><dt><span class="term">DERBY</span></dt><dd><p>stores configuration in embedded derby store</p></dd><dt><span class="term">BDB</span></dt><dd><p>stores configuration in Berkeley DB store</p></dd><dt><span class="term">JDBC</span></dt><dd><p>stores configuration in external RDBMS using JDBC</p></dd></dl></div><p>
+        </p><p> The command line argument <span class="emphasis"><em>-st</em></span> (or
+                <span class="emphasis"><em>--store-type</em></span>) can be used to override the default
+                <span class="emphasis"><em>json</em></span>)configuration store type and allow choosing an alternative,
+            such as <span class="emphasis"><em>Memory</em></span>) </p><pre class="screen">
+$ ./qpid-server -st memory
+        </pre><p> This can be useful when running tests, or always wishing to start the broker with the
+            same <a class="link" href="Java-Broker-Initial-Configuration-Initial-Config-Location.html" title="5.3. 'Initial Configuration' Location">'Initial
+                Configuration'</a>
+        </p><p>Another example of broker startup with configuration in DERBY network server</p><pre class="screen">
+$ ./qpid-server -st JDBC \
+  -prop "systemConfig.connectionUrl=jdbc:derby://localhost:1527/path/to/store;create=true" \
+  -prop "systemConfig.username=test" -prop "systemConfig.password=password"
+        </pre></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Initial-Configuration-Create-Initial-Config.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Initial-Configuration.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Initial-Configuration-Configuration-Properties.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.4. Creating an 'Initial Configuration' JSON File </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 5.6. Customising Configuration using Configuration Properties</td></tr></table></div></div>
