@@ -29,3 +29,7 @@ documentation, see the [release overview](index.html).
 ## Bugs fixed
 
  - [PROTON-2416](https://issues.apache.org/jira/browse/PROTON-2416) - frame writer should reset its position on failure
+
+## Tasks
+
+ - [PROTON-2415](https://issues.apache.org/jira/browse/PROTON-2415) - update test dependencies
