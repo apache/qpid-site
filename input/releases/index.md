@@ -27,6 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Proton-J 0.33.9](qpid-proton-j-0.33.9/index.html), August 2021
  - [Qpid Broker-J 8.0.6](qpid-broker-j-8.0.6/index.html), August 2021
  - [Qpid Dispatch 1.17.0](qpid-dispatch-1.17.0/index.html), August 2021
  - [Qpid JMS 1.1.0](qpid-jms-1.1.0/index.html), July 2021
@@ -34,7 +35,6 @@ the
  - [Qpid ProtonJ2 1.0.0-M2](qpid-protonj2-1.0.0-M2/index.html), May 2021
  - [Qpid JMS 0.59.0](qpid-jms-0.59.0/index.html), May 2021
  - [Qpid Broker-J 7.1.12](qpid-broker-j-7.1.12/index.html), February 2021
- - [Qpid Proton-J 0.33.8](qpid-proton-j-0.33.8/index.html), November 2020
  - [Qpid JMS AMQP 0-x 6.4.0](qpid-jms-amqp-0-x-6.4.0/index.html), June 2020
  - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
  - [Qpid Interop-test 0.2.0](qpid-interop-test-0.2.0/index.html), August 2018
@@ -59,6 +59,7 @@ the
  - [Qpid Broker-J 7.1.11](qpid-broker-j-7.1.11/index.html), January 2021
  - [Qpid JMS 0.56.0](qpid-jms-0.56.0/index.html), December 2020
  - [Qpid JMS 0.55.0](qpid-jms-0.55.0/index.html), November 2020
+ - [Qpid Proton-J 0.33.8](qpid-proton-j-0.33.8/index.html), November 2020
  - [Qpid Proton 0.33.0](qpid-proton-0.33.0/index.html), November 2020
  - [Qpid Broker-J 8.0.2](qpid-broker-j-8.0.2/index.html), October 2020
  - [Qpid Broker-J 7.1.10](qpid-broker-j-7.1.10/index.html), October 2020
