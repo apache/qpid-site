@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS 0.49.0 - Apache Qpid&#8482;</title>
+    <title>Qpid JMS - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,75 +111,59 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS 0.49.0</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-1.2.0/index.html">Qpid JMS 1.2.0</a></li><li>Qpid JMS</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-jms-0490">Qpid JMS 0.49.0</h1>
+          <h1 id="qpid-jms">Qpid JMS</h1>
 
-<p>Qpid JMS is a complete <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> 2.0 client built
-using the <a href="/proton/index.html">Qpid Proton</a> protocol engine.</p>
+<p><a href="https://qpid.apache.org/components/jms/">Qpid JMS</a> is a JMS 2.0 client that uses
+the AMQP 1.0 protocol, enabling it to interact with various AMQP 1.0 servers.</p>
 
-<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
-notes</a>.</p>
+<p>Below are some quick pointers you might find useful.</p>
 
-<h2 id="download">Download</h2>
+<h2 id="building-the-code">Building the code</h2>
 
-<p>It's important to <a href="/download.html#verify-what-you-download">verify the
-integrity</a> of the
-files you download.</p>
+<p>The project requires Maven 3. Some example commands follow.</p>
 
-<table>
-<thead>
-<tr>
-  <th>Content</th>
-  <th>Download</th>
-  <th>Verify</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Qpid JMS binaries</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-bin.tar.gz">apache-qpid-jms-0.49.0-bin.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-bin.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-bin.tar.gz.sha512">SHA512</a></td>
-</tr>
-<tr>
-  <td>Qpid JMS source code</td>
-  <td><a href="http://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-src.tar.gz">apache-qpid-jms-0.49.0-src.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-src.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/0.49.0/apache-qpid-jms-0.49.0-src.tar.gz.sha512">SHA512</a></td>
-</tr>
-</tbody>
-</table>
+<p>Clean previous builds output and install all modules to local repository without
+running the tests:</p>
 
-<p>The client is also available <a href="/maven.html">via Maven</a>.</p>
+<pre><code>mvn clean install -DskipTests
+</code></pre>
+
+<p>Install all modules to the local repository after running all the tests:</p>
+
+<pre><code>mvn clean install
+</code></pre>
+
+<p>Perform a subset tests on the packaged release artifacts without
+installing:</p>
+
+<pre><code>mvn clean verify -Dtest=TestNamePattern*
+</code></pre>
+
+<p>Execute the tests and produce code coverage report:</p>
+
+<pre><code>mvn clean test jacoco:report
+</code></pre>
+
+<h2 id="examples">Examples</h2>
+
+<p>First build and install all the modules as detailed above (if running against
+a source checkout/release, rather than against released binaries) and then
+consult the README in the qpid-jms-examples module itself.</p>
 
 <h2 id="documentation">Documentation</h2>
 
-<div class="two-column">
+<p>Documentation source can be found in the qpid-jms-docs module, with a published
+version available on the <a href="https://qpid.apache.org/components/jms/">website</a>.</p>
 
-<ul>
-<li><a href="http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/0.49.0/qpid-jms-examples">Examples</a></li>
-<li><a href="docs/index.html">Configuration</a></li>
-<li><a href="building.html">Building Qpid JMS</a></li>
-</ul>
+<h2 id="distribution-assemblies">Distribution assemblies</h2>
 
-</div>
+<p>After building the modules, src and binary distribution assemblies can be found at:</p>
 
-<h2 id="more-information">More information</h2>
-
-<ul>
-<li><a href="http://archive.apache.org/dist/qpid/jms/0.49.0">All release artefacts</a></li>
-<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%270.49.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
-<li><a href="https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/0.49.0">Source repository tag</a></li>
-</ul>
-
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("0.49.0" === "1.2.0") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
+<pre><code>apache-qpid-jms/target
+</code></pre>
 
 
           <hr/>
