@@ -6,9 +6,9 @@
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -27,6 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Interop-test 0.3.0](qpid-interop-test-0.3.0/index.html), November 2021
  - [Qpid Proton 0.36.0](qpid-proton-0.36.0/index.html), November 2021
  - [Qpid Dispatch 1.17.1](qpid-dispatch-1.17.1/index.html), November 2021
  - [Qpid ProtonJ2 1.0.0-M3](qpid-protonj2-1.0.0-M3/index.html), October 2021
@@ -37,7 +38,6 @@ the
  - [Qpid Broker-J 7.1.12](qpid-broker-j-7.1.12/index.html), February 2021
  - [Qpid JMS AMQP 0-x 6.4.0](qpid-jms-amqp-0-x-6.4.0/index.html), June 2020
  - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
- - [Qpid Interop-test 0.2.0](qpid-interop-test-0.2.0/index.html), August 2018
  - [Qpid Python 1.37.0](qpid-python-1.37.0/index.html), November 2017
 
 </div>
@@ -134,6 +134,7 @@ the
  - [Qpid JMS 0.37.0](qpid-jms-0.37.0/index.html), October 2018
  - [Qpid Dispatch 1.4.0](qpid-dispatch-1.4.0/index.html), October 2018
  - [Qpid Proton 0.26.0](qpid-proton-0.26.0/index.html), October 2018
+ - [Qpid Interop-test 0.2.0](qpid-interop-test-0.2.0/index.html), August 2018
  - [Qpid C++ 1.38.0](qpid-cpp-1.38.0/index.html), March 2018
  - [Qpid Proton 0.25.0](qpid-proton-0.25.0/index.html), September 2018
 
