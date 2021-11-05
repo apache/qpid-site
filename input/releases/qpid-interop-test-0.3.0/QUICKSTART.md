@@ -77,23 +77,20 @@ Git repository: https://gitbox.apache.org/repos/asf/qpid-interop-test.git
 By default, qpid-interop-test will install to `/usr/local`, use `--CMAKE_INSTALL_PREFIX`
 option to change.
 
-```bash
-# If you want to use Rhea Javascript client:
-git clone https://github.com/amqp/rhea.git
-git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
-cd qpid-interop-test && mkdir build && cd build
-cmake ..
-make
-sudo make install
-```
+    # If you want to use Rhea Javascript client:
+    git clone https://github.com/amqp/rhea.git
+    git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
+    cd qpid-interop-test && mkdir build && cd build
+    cmake ..
+    make
+    sudo make install
 
 ## 4. Run the Tests
 
 Start a broker. Then:
 
-```bash
-qpid-interop-test <test-name> [test-options...]
-```
+    qpid-interop-test <test-name> [test-options...]
+
 
 `<test-name>` may be one of:
 * `amqp-types-test` - a test of AMQP simple types
@@ -104,14 +101,12 @@ qpid-interop-test <test-name> [test-options...]
 * `all` - run all the above tests sequentially.
 
 For help on tests that can be run and options, run:
-```bash
-qpid-interop-test --help
-```
+
+    qpid-interop-test --help
 
 For help on options for an individual test, run:
-```bash
-qpid-interop-test <test-name> --help
-```
+
+    qpid-interop-test <test-name> --help
 
 ## 5. Containers
 
@@ -121,13 +116,11 @@ process builds and installs Qpid Interop Test as well as the Qpid Dispatch
 Router for use as a local broker.
 
 For example:
-```bash
-podman build -f containers/Dockerfile.f34 -t fedora34.qit
-podman run -it fedora34.qit /bin/bash
-```
+
+    podman build -f containers/Dockerfile.f34 -t fedora34.qit
+    podman run -it fedora34.qit /bin/bash
 
 In the container:
-```bash
-sudo /sbin/qdrouterd --daemon
-qpid-interop-test all
-```
+
+    sudo /sbin/qdrouterd --daemon
+    qpid-interop-test all

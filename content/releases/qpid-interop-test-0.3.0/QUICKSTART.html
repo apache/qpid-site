@@ -261,25 +261,21 @@ work. Suggestions: Apache ActiveMQ Artemis, Qpid Dispatch Router.</p>
 <p>By default, qpid-interop-test will install to <code>/usr/local</code>, use <code>--CMAKE_INSTALL_PREFIX</code>
 option to change.</p>
 
-<p>```bash</p>
-
-<h1 id="if-you-want-to-use-rhea-javascript-client">If you want to use Rhea Javascript client:</h1>
-
-<p>git clone https://github.com/amqp/rhea.git
+<pre><code># If you want to use Rhea Javascript client:
+git clone https://github.com/amqp/rhea.git
 git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
 cd qpid-interop-test &amp;&amp; mkdir build &amp;&amp; cd build
 cmake ..
 make
 sudo make install
-```</p>
+</code></pre>
 
 <h2 id="4-run-the-tests">4. Run the Tests</h2>
 
 <p>Start a broker. Then:</p>
 
-<p><code>bash
-qpid-interop-test &lt;test-name&gt; [test-options...]
-</code></p>
+<pre><code>qpid-interop-test &lt;test-name&gt; [test-options...]
+</code></pre>
 
 <p><code>&lt;test-name&gt;</code> may be one of:
 * <code>amqp-types-test</code> - a test of AMQP simple types
@@ -289,15 +285,15 @@ qpid-interop-test &lt;test-name&gt; [test-options...]
 * <code>jms-hdrs-props-test</code> - a test of user-definable message headers and properties as implemented by qpid-jms.
 * <code>all</code> - run all the above tests sequentially.</p>
 
-<p>For help on tests that can be run and options, run:
-<code>bash
-qpid-interop-test --help
-</code></p>
+<p>For help on tests that can be run and options, run:</p>
 
-<p>For help on options for an individual test, run:
-<code>bash
-qpid-interop-test &lt;test-name&gt; --help
-</code></p>
+<pre><code>qpid-interop-test --help
+</code></pre>
+
+<p>For help on options for an individual test, run:</p>
+
+<pre><code>qpid-interop-test &lt;test-name&gt; --help
+</code></pre>
 
 <h2 id="5-containers">5. Containers</h2>
 
@@ -306,17 +302,17 @@ contains Dockerfiles for Fedora 34, CentOS 8 and Ubuntu Focal. The build
 process builds and installs Qpid Interop Test as well as the Qpid Dispatch
 Router for use as a local broker.</p>
 
-<p>For example:
-<code>bash
-podman build -f containers/Dockerfile.f34 -t fedora34.qit
-podman run -it fedora34.qit /bin/bash
-</code></p>
+<p>For example:</p>
 
-<p>In the container:
-<code>bash
-sudo /sbin/qdrouterd --daemon
+<pre><code>podman build -f containers/Dockerfile.f34 -t fedora34.qit
+podman run -it fedora34.qit /bin/bash
+</code></pre>
+
+<p>In the container:</p>
+
+<pre><code>sudo /sbin/qdrouterd --daemon
 qpid-interop-test all
-</code></p>
+</code></pre>
 
 <div class="footnotes">
 <hr />
