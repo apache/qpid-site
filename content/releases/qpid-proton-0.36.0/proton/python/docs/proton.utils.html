@@ -1,0 +1,668 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module proton.utils &#8212; Qpid Proton Python API 0.36.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Overview" href="overview.html" />
+    <link rel="prev" title="Module proton.reactor" href="proton.reactor.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="API Overview"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="proton.reactor.html" title="Module proton.reactor"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.utils</span></code></a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-proton-utils">
+<h1>Module <code class="docutils literal notranslate"><span class="pre">proton.utils</span></code><a class="headerlink" href="#module-proton-utils" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-summary">
+<h2>Module Summary<a class="headerlink" href="#module-summary" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.utils.BlockingConnection" title="proton.utils.BlockingConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockingConnection</span></code></a></p></td>
+<td><p>A synchronous style connection wrapper.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.utils.BlockingSender" title="proton.utils.BlockingSender"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockingSender</span></code></a></p></td>
+<td><p>A synchronous sender wrapper.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.utils.BlockingReceiver" title="proton.utils.BlockingReceiver"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockingReceiver</span></code></a></p></td>
+<td><p>A synchronous receiver wrapper.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.utils.SyncRequestResponse" title="proton.utils.SyncRequestResponse"><code class="xref py py-class docutils literal notranslate"><span class="pre">SyncRequestResponse</span></code></a></p></td>
+<td><p>Implementation of the synchronous request-response (aka RPC) pattern.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="exceptions">
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.utils.SendException" title="proton.utils.SendException"><code class="xref py py-class docutils literal notranslate"><span class="pre">SendException</span></code></a></p></td>
+<td><p>Exception used to indicate an exceptional state/condition on a send request.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.utils.LinkDetached" title="proton.utils.LinkDetached"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinkDetached</span></code></a></p></td>
+<td><p>The exception raised when the remote peer unexpectedly closes a link in a blocking context, or
+an unexpected link error occurs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.utils.ConnectionClosed" title="proton.utils.ConnectionClosed"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConnectionClosed</span></code></a></p></td>
+<td><p>The exception raised when the remote peer unexpectedly closes a connection in a blocking context,
+or an unexpected connection error occurs.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-detail">
+<h2>Module Detail<a class="headerlink" href="#module-detail" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="py class">
+<dt id="proton.utils.BlockingConnection">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">BlockingConnection</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>proton._url.Url<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">container</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._reactor.Container<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ssl_domain</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>SSLDomain<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">heartbeat</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">urls</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reconnect</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Literal<span class="p">[</span>False<span class="p">]</span><span class="p">, </span>Backoff<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._events.Handler</span></code></p>
+<p>A synchronous style connection wrapper.</p>
+<p>This object’s implementation uses OS resources.  To ensure they
+are released when the object is no longer in use, make sure that
+object operations are enclosed in a try block and that close() is
+always executed on exit.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – The connection URL.</p></li>
+<li><p><strong>timeout</strong> – Connection timeout in seconds. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, defaults to 60 seconds.</p></li>
+<li><p><strong>container</strong> – Container to process the events on the connection. If <code class="docutils literal notranslate"><span class="pre">None</span></code>,
+a new <code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Container</span></code> will be created.</p></li>
+<li><p><strong>ssl_domain</strong> – </p></li>
+<li><p><strong>heartbeat</strong> – A value in seconds indicating the desired frequency of
+heartbeats used to test the underlying socket is alive.</p></li>
+<li><p><strong>urls</strong> – A list of connection URLs to try to connect to.</p></li>
+<li><p><strong>kwargs</strong> – Container keyword arguments. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Container</span></code></a>
+for a list of the valid kwargs.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">on_error</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.BlockingConnection.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a child handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Handler</span></code> or one of its derivatives.) – A child handler</p></li>
+<li><p><strong>on_error</strong> – Not used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.create_receiver">
+<code class="sig-name descname">create_receiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">credit</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dynamic</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.Handler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>ReceiverOption<span class="p">, </span>List<span class="p">[</span>ReceiverOption<span class="p">]</span><span class="p">, </span>LinkOption<span class="p">, </span>List<span class="p">[</span>LinkOption<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._utils.BlockingReceiver<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.create_receiver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.create_receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a blocking receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address of source node.</p></li>
+<li><p><strong>credit</strong> – Initial link flow credit. If not set, will default to 1.</p></li>
+<li><p><strong>dynamic</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, indicates dynamic creation of the receiver.</p></li>
+<li><p><strong>handler</strong> – Event handler for this receiver.</p></li>
+<li><p><strong>name</strong> – Receiver name.</p></li>
+<li><p><strong>options</strong> – A single option, or a list of receiver options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New blocking receiver instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.create_sender">
+<code class="sig-name descname">create_sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.Handler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>SenderOption<span class="p">, </span>List<span class="p">[</span>SenderOption<span class="p">]</span><span class="p">, </span>LinkOption<span class="p">, </span>List<span class="p">[</span>LinkOption<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._utils.BlockingSender<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.create_sender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.create_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a blocking sender.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>address</strong> – Address of target node.</p></li>
+<li><p><strong>handler</strong> – Event handler for this sender.</p></li>
+<li><p><strong>name</strong> – Sender name.</p></li>
+<li><p><strong>options</strong> – A single option, or a list of sender options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New blocking sender instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="proton.utils.BlockingConnection.handlers">
+<code class="sig-name descname">handlers</code><a class="headerlink" href="#proton.utils.BlockingConnection.handlers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.on_connection_remote_close">
+<code class="sig-name descname">on_connection_remote_close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.on_connection_remote_close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.on_connection_remote_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event callback for when the link peer closes the connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.on_link_remote_close">
+<code class="sig-name descname">on_link_remote_close</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.on_link_remote_close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.on_link_remote_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event callback for when the remote terminus closes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.on_unhandled">
+<code class="sig-name descname">on_unhandled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.BlockingConnection.on_unhandled" title="Permalink to this definition">¶</a></dt>
+<dd><p>The callback for handling events which are not handled by
+any other handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – The name of the intended handler method.</p></li>
+<li><p><strong>args</strong> – Arguments for the intended handler method.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hand control over to the event loop (e.g. if waiting indefinitely for incoming messages)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.url">
+<em class="property">property </em><code class="sig-name descname">url</code><a class="headerlink" href="#proton.utils.BlockingConnection.url" title="Permalink to this definition">¶</a></dt>
+<dd><p>The address for this connection.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingConnection.wait">
+<code class="sig-name descname">wait</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">condition</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">]</span><span class="p">, </span>bool<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Literal<span class="p">[</span>False<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">msg</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingConnection.wait"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingConnection.wait" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process events until <code class="docutils literal notranslate"><span class="pre">condition()</span></code> returns <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>condition</strong> – Condition which determines when the wait will end.</p></li>
+<li><p><strong>timeout</strong> – Timeout in seconds. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">timeout</span></code> used in the
+constructor of this object will be used. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, there is no timeout. Any other
+value is treated as a timeout in seconds.</p></li>
+<li><p><strong>msg</strong> – Context message for <a class="reference internal" href="proton.html#proton.Timeout" title="proton.Timeout"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Timeout</span></code></a> exception</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.BlockingSender">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">BlockingSender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#proton.utils.BlockingConnection" title="proton.utils.BlockingConnection">BlockingConnection</a></span></em>, <em class="sig-param"><span class="n">sender</span><span class="p">:</span> <span class="n">Sender</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#BlockingSender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingSender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._utils.BlockingLink</span></code></p>
+<p>A synchronous sender wrapper. This is typically created by calling
+<a class="reference internal" href="#proton.utils.BlockingConnection.create_sender" title="proton.utils.BlockingConnection.create_sender"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BlockingConnection.create_sender()</span></code></a>.</p>
+<dl class="py method">
+<dt id="proton.utils.BlockingSender.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.BlockingSender.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the link.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingSender.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span></em>, <em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Literal<span class="p">[</span>False<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">error_states</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>DispositionType<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._delivery.Delivery<a class="reference internal" href="_modules/proton/_utils.html#BlockingSender.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingSender.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blocking send which will return only when the send is complete
+and the message settled.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>timeout</strong> – Timeout in seconds. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">timeout</span></code> used in the
+constructor of the <a class="reference internal" href="#proton.utils.BlockingConnection" title="proton.utils.BlockingConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockingConnection</span></code></a> object used in the constructor will be used.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, there is no timeout. Any other value is treated as a timeout in seconds.</p></li>
+<li><p><strong>error_states</strong> – List of delivery flags which when present in Delivery object
+will cause a <a class="reference internal" href="#proton.utils.SendException" title="proton.utils.SendException"><code class="xref py py-class docutils literal notranslate"><span class="pre">SendException</span></code></a> exception to be raised. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, these
+will default to a list containing <a class="reference internal" href="proton.html#proton.Delivery.REJECTED" title="proton.Delivery.REJECTED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.REJECTED</span></code></a> and <a class="reference internal" href="proton.html#proton.Delivery.RELEASED" title="proton.Delivery.RELEASED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.RELEASED</span></code></a>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Delivery object for this message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.BlockingReceiver">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">BlockingReceiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#proton.utils.BlockingConnection" title="proton.utils.BlockingConnection">BlockingConnection</a></span></em>, <em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em>, <em class="sig-param"><span class="n">fetcher</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._utils.Fetcher<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">credit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._utils.BlockingLink</span></code></p>
+<p>A synchronous receiver wrapper. This is typically created by calling
+<a class="reference internal" href="#proton.utils.BlockingConnection.create_receiver" title="proton.utils.BlockingConnection.create_receiver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">BlockingConnection.create_receiver()</span></code></a>.</p>
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver.accept"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept and settle the received message. The delivery is set to
+<a class="reference internal" href="proton.html#proton.Delivery.ACCEPTED" title="proton.Delivery.ACCEPTED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.ACCEPTED</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.BlockingReceiver.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the link.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.receive">
+<code class="sig-name descname">receive</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Literal<span class="p">[</span>False<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; Message<a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver.receive"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver.receive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Blocking receive call which will return only when a message is received or
+a timeout (if supplied) occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>timeout</strong> – Timeout in seconds. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">timeout</span></code> used in the
+constructor of the <a class="reference internal" href="#proton.utils.BlockingConnection" title="proton.utils.BlockingConnection"><code class="xref py py-class docutils literal notranslate"><span class="pre">BlockingConnection</span></code></a> object used in the constructor will be used.
+If <code class="docutils literal notranslate"><span class="pre">None</span></code>, there is no timeout. Any other value is treated as a timeout in seconds.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.reject">
+<code class="sig-name descname">reject</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver.reject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver.reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reject the received message. The delivery is set to
+<a class="reference internal" href="proton.html#proton.Delivery.REJECTED" title="proton.Delivery.REJECTED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.REJECTED</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.release">
+<code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivered</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver.release"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Release the received message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivered</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the message delivery is being set to
+<a class="reference internal" href="proton.html#proton.Delivery.MODIFIED" title="proton.Delivery.MODIFIED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.MODIFIED</span></code></a>, ie being returned to the sender
+and annotated. If <code class="docutils literal notranslate"><span class="pre">False</span></code>, the message is returned without
+annotations and the delivery set to  <a class="reference internal" href="proton.html#proton.Delivery.RELEASED" title="proton.Delivery.RELEASED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.RELEASED</span></code></a>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.BlockingReceiver.settle">
+<code class="sig-name descname">settle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>DispositionType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#BlockingReceiver.settle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.BlockingReceiver.settle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settle any received messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> (<code class="docutils literal notranslate"><span class="pre">None</span></code> or a valid delivery state (see
+<a class="reference internal" href="proton.html#proton.Delivery" title="proton.Delivery"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Delivery</span></code></a>.) – Update the delivery of all unsettled messages with the
+supplied state, then settle them.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.ConnectionClosed">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">ConnectionClosed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span><span class="p">:</span> <span class="n">Connection</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#ConnectionClosed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.ConnectionClosed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._exceptions.ConnectionException</span></code></p>
+<p>The exception raised when the remote peer unexpectedly closes a connection in a blocking
+context, or an unexpected connection error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>connection</strong> – The connection which closed unexpectedly.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.LinkDetached">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">LinkDetached</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#LinkDetached"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.LinkDetached" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._exceptions.LinkException</span></code></p>
+<p>The exception raised when the remote peer unexpectedly closes a link in a blocking
+context, or an unexpected link error occurs.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> – The link which closed unexpectedly.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.SendException">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">SendException</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#SendException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.SendException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._exceptions.ProtonException</span></code></p>
+<p>Exception used to indicate an exceptional state/condition on a send request.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>state</strong> – The delivery state which caused the exception.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.utils.SyncRequestResponse">
+<em class="property">class </em><code class="sig-prename descclassname">proton.utils.</code><code class="sig-name descname">SyncRequestResponse</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">connection</span><span class="p">:</span> <span class="n">proton._utils.BlockingConnection</span></em>, <em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_utils.html#SyncRequestResponse"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.SyncRequestResponse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._handlers.IncomingMessageHandler</span></code></p>
+<p>Implementation of the synchronous request-response (aka RPC) pattern.
+A single instance can send many requests to the same or different
+addresses.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>connection</strong> – Connection for requests and responses.</p></li>
+<li><p><strong>address</strong> – Address for all requests. If not specified, each request
+must have the address property set. Successive messages may have
+different addresses.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts a received message.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – The message delivery tracking object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.add">
+<code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span></em>, <em class="sig-param"><span class="n">on_error</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.SyncRequestResponse.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a child handler</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Handler</span></code> or one of its derivatives.) – A child handler</p></li>
+<li><p><strong>on_error</strong> – Not used</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.call">
+<code class="sig-name descname">call</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">request</span><span class="p">:</span> <span class="n">Message</span></em><span class="sig-paren">)</span> &#x2192; Message<a class="reference internal" href="_modules/proton/_utils.html#SyncRequestResponse.call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.SyncRequestResponse.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a request message, wait for and return the response message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> – Request message. If <code class="docutils literal notranslate"><span class="pre">self.address</span></code> is not set the
+request message address must be set and will be used.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="proton.utils.SyncRequestResponse.correlation_id">
+<code class="sig-name descname">correlation_id</code><em class="property"> = &lt;proton._utils.AtomicCount object&gt;</em><a class="headerlink" href="#proton.utils.SyncRequestResponse.correlation_id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="proton.utils.SyncRequestResponse.handlers">
+<code class="sig-name descname">handlers</code><a class="headerlink" href="#proton.utils.SyncRequestResponse.handlers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.on_aborted">
+<code class="sig-name descname">on_aborted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.SyncRequestResponse.on_aborted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for when a message delivery is aborted by the remote peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.on_delivery">
+<code class="sig-name descname">on_delivery</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.on_delivery" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.on_message">
+<code class="sig-name descname">on_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_utils.html#SyncRequestResponse.on_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.utils.SyncRequestResponse.on_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when we receive a message for our receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The event which occurs when a message is received.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.on_settled">
+<code class="sig-name descname">on_settled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span><a class="headerlink" href="#proton.utils.SyncRequestResponse.on_settled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Callback for when a message delivery is settled by the remote peer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.on_unhandled">
+<code class="sig-name descname">on_unhandled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.on_unhandled" title="Permalink to this definition">¶</a></dt>
+<dd><p>The callback for handling events which are not handled by
+any other handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – The name of the intended handler method.</p></li>
+<li><p><strong>args</strong> – Arguments for the intended handler method.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.reject">
+<code class="sig-name descname">reject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejects a received message that is considered invalid or
+unprocessable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – The message delivery tracking object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.release">
+<code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">delivered</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Releases a received message, making it available at the source
+for any (other) interested receiver. The <code class="docutils literal notranslate"><span class="pre">delivered</span></code>
+parameter indicates whether this should be considered a
+delivery attempt (and the delivery count updated) or not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>delivered</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the message will be annotated
+with a delivery attempt (setting delivery flag
+<a class="reference internal" href="proton.html#proton.Delivery.MODIFIED" title="proton.Delivery.MODIFIED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.MODIFIED</span></code></a>). Otherwise, the message
+will be returned without the annotation and released (setting
+delivery flag <a class="reference internal" href="proton.html#proton.Delivery.RELEASED" title="proton.Delivery.RELEASED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.RELEASED</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.reply_to">
+<em class="property">property </em><code class="sig-name descname">reply_to</code><a class="headerlink" href="#proton.utils.SyncRequestResponse.reply_to" title="Permalink to this definition">¶</a></dt>
+<dd><p>The dynamic address of our receiver.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.utils.SyncRequestResponse.settle">
+<code class="sig-name descname">settle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>DispositionType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.utils.SyncRequestResponse.settle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settles the message delivery, and optionally updating the
+delivery state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>state</strong> – The delivery state, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no update
+is to be performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module <code class="docutils literal notranslate"><span class="pre">proton.utils</span></code></a><ul>
+<li><a class="reference internal" href="#module-summary">Module Summary</a><ul>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-detail">Module Detail</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="proton.reactor.html"
+                        title="previous chapter">Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="next chapter">API Overview</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/proton.utils.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="overview.html" title="API Overview"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="proton.reactor.html" title="Module proton.reactor"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.utils</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>

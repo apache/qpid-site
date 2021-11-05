@@ -1,0 +1,1515 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>proton._endpoints &#8212; Qpid Proton Python API 0.36.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._endpoints</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for proton._endpoints</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1">#</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">The proton.endpoints module</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">weakref</span>
+
+<span class="kn">from</span> <span class="nn">cproton</span> <span class="kn">import</span> <span class="n">PN_CONFIGURATION</span><span class="p">,</span> <span class="n">PN_COORDINATOR</span><span class="p">,</span> <span class="n">PN_DELIVERIES</span><span class="p">,</span> <span class="n">PN_DIST_MODE_COPY</span><span class="p">,</span> <span class="n">PN_DIST_MODE_MOVE</span><span class="p">,</span> \
+    <span class="n">PN_DIST_MODE_UNSPECIFIED</span><span class="p">,</span> <span class="n">PN_EOS</span><span class="p">,</span> <span class="n">PN_EXPIRE_NEVER</span><span class="p">,</span> <span class="n">PN_EXPIRE_WITH_CONNECTION</span><span class="p">,</span> <span class="n">PN_EXPIRE_WITH_LINK</span><span class="p">,</span> \
+    <span class="n">PN_EXPIRE_WITH_SESSION</span><span class="p">,</span> <span class="n">PN_LOCAL_ACTIVE</span><span class="p">,</span> <span class="n">PN_LOCAL_CLOSED</span><span class="p">,</span> <span class="n">PN_LOCAL_UNINIT</span><span class="p">,</span> <span class="n">PN_NONDURABLE</span><span class="p">,</span> <span class="n">PN_RCV_FIRST</span><span class="p">,</span> \
+    <span class="n">PN_RCV_SECOND</span><span class="p">,</span> <span class="n">PN_REMOTE_ACTIVE</span><span class="p">,</span> <span class="n">PN_REMOTE_CLOSED</span><span class="p">,</span> <span class="n">PN_REMOTE_UNINIT</span><span class="p">,</span> <span class="n">PN_SND_MIXED</span><span class="p">,</span> <span class="n">PN_SND_SETTLED</span><span class="p">,</span> <span class="n">PN_SND_UNSETTLED</span><span class="p">,</span> \
+    <span class="n">PN_SOURCE</span><span class="p">,</span> <span class="n">PN_TARGET</span><span class="p">,</span> <span class="n">PN_UNSPECIFIED</span><span class="p">,</span> <span class="n">pn_connection</span><span class="p">,</span> <span class="n">pn_connection_attachments</span><span class="p">,</span> <span class="n">pn_connection_close</span><span class="p">,</span> \
+    <span class="n">pn_connection_collect</span><span class="p">,</span> <span class="n">pn_connection_condition</span><span class="p">,</span> <span class="n">pn_connection_desired_capabilities</span><span class="p">,</span> <span class="n">pn_connection_error</span><span class="p">,</span> \
+    <span class="n">pn_connection_get_authorization</span><span class="p">,</span> <span class="n">pn_connection_get_container</span><span class="p">,</span> <span class="n">pn_connection_get_hostname</span><span class="p">,</span> <span class="n">pn_connection_get_user</span><span class="p">,</span> \
+    <span class="n">pn_connection_offered_capabilities</span><span class="p">,</span> \
+    <span class="n">pn_connection_open</span><span class="p">,</span> <span class="n">pn_connection_properties</span><span class="p">,</span> <span class="n">pn_connection_release</span><span class="p">,</span> <span class="n">pn_connection_remote_condition</span><span class="p">,</span> \
+    <span class="n">pn_connection_remote_container</span><span class="p">,</span> <span class="n">pn_connection_remote_desired_capabilities</span><span class="p">,</span> <span class="n">pn_connection_remote_hostname</span><span class="p">,</span> \
+    <span class="n">pn_connection_remote_offered_capabilities</span><span class="p">,</span> <span class="n">pn_connection_remote_properties</span><span class="p">,</span> \
+    <span class="n">pn_connection_set_authorization</span><span class="p">,</span> <span class="n">pn_connection_set_container</span><span class="p">,</span> \
+    <span class="n">pn_connection_set_hostname</span><span class="p">,</span> <span class="n">pn_connection_set_password</span><span class="p">,</span> <span class="n">pn_connection_set_user</span><span class="p">,</span> <span class="n">pn_connection_state</span><span class="p">,</span> \
+    <span class="n">pn_connection_transport</span><span class="p">,</span> <span class="n">pn_delivery</span><span class="p">,</span> <span class="n">pn_error_code</span><span class="p">,</span> <span class="n">pn_error_text</span><span class="p">,</span> <span class="n">pn_link_advance</span><span class="p">,</span> <span class="n">pn_link_attachments</span><span class="p">,</span> \
+    <span class="n">pn_link_available</span><span class="p">,</span> <span class="n">pn_link_close</span><span class="p">,</span> <span class="n">pn_link_condition</span><span class="p">,</span> <span class="n">pn_link_credit</span><span class="p">,</span> <span class="n">pn_link_current</span><span class="p">,</span> <span class="n">pn_link_detach</span><span class="p">,</span> <span class="n">pn_link_drain</span><span class="p">,</span> \
+    <span class="n">pn_link_drained</span><span class="p">,</span> <span class="n">pn_link_draining</span><span class="p">,</span> <span class="n">pn_link_error</span><span class="p">,</span> <span class="n">pn_link_flow</span><span class="p">,</span> <span class="n">pn_link_free</span><span class="p">,</span> <span class="n">pn_link_get_drain</span><span class="p">,</span> <span class="n">pn_link_head</span><span class="p">,</span> \
+    <span class="n">pn_link_is_receiver</span><span class="p">,</span> <span class="n">pn_link_is_sender</span><span class="p">,</span> <span class="n">pn_link_max_message_size</span><span class="p">,</span> <span class="n">pn_link_name</span><span class="p">,</span> <span class="n">pn_link_next</span><span class="p">,</span> <span class="n">pn_link_offered</span><span class="p">,</span> \
+    <span class="n">pn_link_open</span><span class="p">,</span> <span class="n">pn_link_queued</span><span class="p">,</span> <span class="n">pn_link_rcv_settle_mode</span><span class="p">,</span> <span class="n">pn_link_recv</span><span class="p">,</span> <span class="n">pn_link_remote_condition</span><span class="p">,</span> \
+    <span class="n">pn_link_remote_max_message_size</span><span class="p">,</span> <span class="n">pn_link_remote_rcv_settle_mode</span><span class="p">,</span> <span class="n">pn_link_remote_snd_settle_mode</span><span class="p">,</span> \
+    <span class="n">pn_link_remote_source</span><span class="p">,</span> <span class="n">pn_link_remote_target</span><span class="p">,</span> <span class="n">pn_link_send</span><span class="p">,</span> <span class="n">pn_link_session</span><span class="p">,</span> <span class="n">pn_link_set_drain</span><span class="p">,</span> \
+    <span class="n">pn_link_set_max_message_size</span><span class="p">,</span> <span class="n">pn_link_set_rcv_settle_mode</span><span class="p">,</span> <span class="n">pn_link_set_snd_settle_mode</span><span class="p">,</span> <span class="n">pn_link_snd_settle_mode</span><span class="p">,</span> \
+    <span class="n">pn_link_source</span><span class="p">,</span> <span class="n">pn_link_state</span><span class="p">,</span> <span class="n">pn_link_target</span><span class="p">,</span> <span class="n">pn_link_unsettled</span><span class="p">,</span> <span class="n">pn_receiver</span><span class="p">,</span> <span class="n">pn_sender</span><span class="p">,</span> <span class="n">pn_session</span><span class="p">,</span> \
+    <span class="n">pn_session_attachments</span><span class="p">,</span> <span class="n">pn_session_close</span><span class="p">,</span> <span class="n">pn_session_condition</span><span class="p">,</span> <span class="n">pn_session_connection</span><span class="p">,</span> <span class="n">pn_session_free</span><span class="p">,</span> \
+    <span class="n">pn_session_get_incoming_capacity</span><span class="p">,</span> <span class="n">pn_session_get_outgoing_window</span><span class="p">,</span> <span class="n">pn_session_head</span><span class="p">,</span> <span class="n">pn_session_incoming_bytes</span><span class="p">,</span> \
+    <span class="n">pn_session_next</span><span class="p">,</span> <span class="n">pn_session_open</span><span class="p">,</span> <span class="n">pn_session_outgoing_bytes</span><span class="p">,</span> <span class="n">pn_session_remote_condition</span><span class="p">,</span> \
+    <span class="n">pn_session_set_incoming_capacity</span><span class="p">,</span> <span class="n">pn_session_set_outgoing_window</span><span class="p">,</span> <span class="n">pn_session_state</span><span class="p">,</span> <span class="n">pn_terminus_capabilities</span><span class="p">,</span> \
+    <span class="n">pn_terminus_copy</span><span class="p">,</span> <span class="n">pn_terminus_filter</span><span class="p">,</span> <span class="n">pn_terminus_get_address</span><span class="p">,</span> <span class="n">pn_terminus_get_distribution_mode</span><span class="p">,</span> \
+    <span class="n">pn_terminus_get_durability</span><span class="p">,</span> <span class="n">pn_terminus_get_expiry_policy</span><span class="p">,</span> <span class="n">pn_terminus_get_timeout</span><span class="p">,</span> <span class="n">pn_terminus_get_type</span><span class="p">,</span> \
+    <span class="n">pn_terminus_is_dynamic</span><span class="p">,</span> <span class="n">pn_terminus_outcomes</span><span class="p">,</span> <span class="n">pn_terminus_properties</span><span class="p">,</span> <span class="n">pn_terminus_set_address</span><span class="p">,</span> \
+    <span class="n">pn_terminus_set_distribution_mode</span><span class="p">,</span> <span class="n">pn_terminus_set_durability</span><span class="p">,</span> <span class="n">pn_terminus_set_dynamic</span><span class="p">,</span> \
+    <span class="n">pn_terminus_set_expiry_policy</span><span class="p">,</span> <span class="n">pn_terminus_set_timeout</span><span class="p">,</span> <span class="n">pn_terminus_set_type</span><span class="p">,</span> <span class="n">pn_work_head</span><span class="p">,</span> \
+    <span class="n">pn_link_properties</span><span class="p">,</span> <span class="n">pn_link_remote_properties</span>
+
+<span class="kn">from</span> <span class="nn">._common</span> <span class="kn">import</span> <span class="n">unicode2utf8</span><span class="p">,</span> <span class="n">utf82unicode</span>
+<span class="kn">from</span> <span class="nn">._condition</span> <span class="kn">import</span> <span class="n">cond2obj</span><span class="p">,</span> <span class="n">obj2cond</span>
+<span class="kn">from</span> <span class="nn">._data</span> <span class="kn">import</span> <span class="n">Data</span><span class="p">,</span> <span class="n">dat2obj</span><span class="p">,</span> <span class="n">obj2dat</span><span class="p">,</span> <span class="n">PropertyDict</span><span class="p">,</span> <span class="n">SymbolList</span>
+<span class="kn">from</span> <span class="nn">._delivery</span> <span class="kn">import</span> <span class="n">Delivery</span>
+<span class="kn">from</span> <span class="nn">._exceptions</span> <span class="kn">import</span> <span class="n">ConnectionException</span><span class="p">,</span> <span class="n">EXCEPTIONS</span><span class="p">,</span> <span class="n">LinkException</span><span class="p">,</span> <span class="n">SessionException</span>
+<span class="kn">from</span> <span class="nn">._transport</span> <span class="kn">import</span> <span class="n">Transport</span>
+<span class="kn">from</span> <span class="nn">._wrapper</span> <span class="kn">import</span> <span class="n">Wrapper</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">._condition</span> <span class="kn">import</span> <span class="n">Condition</span>
+    <span class="kn">from</span> <span class="nn">._data</span> <span class="kn">import</span> <span class="n">Array</span><span class="p">,</span> <span class="n">PythonAMQPData</span><span class="p">,</span> <span class="n">symbol</span>
+    <span class="kn">from</span> <span class="nn">._events</span> <span class="kn">import</span> <span class="n">Collector</span><span class="p">,</span> <span class="n">Handler</span>
+    <span class="kn">from</span> <span class="nn">._message</span> <span class="kn">import</span> <span class="n">Message</span>
+
+
+<div class="viewcode-block" id="Endpoint"><a class="viewcode-back" href="../../proton.html#proton.Endpoint">[docs]</a><span class="k">class</span> <span class="nc">Endpoint</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abstract class from which :class:`Connection`, :class:`Session`</span>
+<span class="sd">    and :class:`Link` are derived, and which defines the state</span>
+<span class="sd">    of these classes.</span>
+
+<span class="sd">    The :class:`Endpoint` state is an integral value with flags that</span>
+<span class="sd">    encode both the local and remote state of an AMQP Endpoint</span>
+<span class="sd">    (:class:`Connection`, :class:`Link`, or :class:`Session`).</span>
+<span class="sd">    The individual bits may be accessed using :const:`LOCAL_UNINIT`,</span>
+<span class="sd">    :const:`LOCAL_ACTIVE`, :const:`LOCAL_CLOSED`, and</span>
+<span class="sd">    :const:`REMOTE_UNINIT`, :const:`REMOTE_ACTIVE`, :const:`REMOTE_CLOSED`.</span>
+
+<span class="sd">    Every AMQP endpoint (:class:`Connection`, :class:`Link`, or</span>
+<span class="sd">    :class:`Session`) starts out in an uninitialized state and then</span>
+<span class="sd">    proceeds linearly to an active and then closed state. This</span>
+<span class="sd">    lifecycle occurs at both endpoints involved, and so the state</span>
+<span class="sd">    model for an endpoint includes not only the known local state,</span>
+<span class="sd">    but also the last known state of the remote endpoint.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LOCAL_UNINIT</span> <span class="o">=</span> <span class="n">PN_LOCAL_UNINIT</span>
+    <span class="sd">&quot;&quot;&quot; The local  endpoint state is uninitialized. &quot;&quot;&quot;</span>
+
+    <span class="n">REMOTE_UNINIT</span> <span class="o">=</span> <span class="n">PN_REMOTE_UNINIT</span>
+    <span class="sd">&quot;&quot;&quot; The local endpoint state is active. &quot;&quot;&quot;</span>
+
+    <span class="n">LOCAL_ACTIVE</span> <span class="o">=</span> <span class="n">PN_LOCAL_ACTIVE</span>
+    <span class="sd">&quot;&quot;&quot; The local endpoint state is closed. &quot;&quot;&quot;</span>
+
+    <span class="n">REMOTE_ACTIVE</span> <span class="o">=</span> <span class="n">PN_REMOTE_ACTIVE</span>
+    <span class="sd">&quot;&quot;&quot; The remote endpoint state is uninitialized. &quot;&quot;&quot;</span>
+
+    <span class="n">LOCAL_CLOSED</span> <span class="o">=</span> <span class="n">PN_LOCAL_CLOSED</span>
+    <span class="sd">&quot;&quot;&quot; The remote endpoint state is active. &quot;&quot;&quot;</span>
+
+    <span class="n">REMOTE_CLOSED</span> <span class="o">=</span> <span class="n">PN_REMOTE_CLOSED</span>
+    <span class="sd">&quot;&quot;&quot; The remote endpoint state is closed. &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Handler&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_update_cond</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">obj2cond</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">condition</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_cond_impl</span><span class="p">())</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_condition</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Condition&#39;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The remote condition associated with the connection endpoint.</span>
+<span class="sd">        See :class:`Condition` for more information.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">cond2obj</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_remote_cond_impl</span><span class="p">())</span>
+
+    <span class="c1"># the following must be provided by subclasses</span>
+    <span class="k">def</span> <span class="nf">_get_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Subclass must override this!&quot;</span>
+
+    <span class="k">def</span> <span class="nf">_get_remote_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;Subclass must override this!&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Handler&#39;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Handler for events.</span>
+
+<span class="sd">        :getter: Get the event handler, or return ``None`` if no handler has been set.</span>
+<span class="sd">        :setter: Set the event handler.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span>
+
+    <span class="nd">@handler</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Handler&#39;</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="c1"># TODO Hack This is here for some very odd (IMO) backwards compat behaviour</span>
+        <span class="kn">from</span> <span class="nn">._events</span> <span class="kn">import</span> <span class="n">Handler</span>
+        <span class="k">if</span> <span class="n">handler</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">handler</span><span class="p">),</span> <span class="n">Handler</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span> <span class="o">=</span> <span class="n">handler</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span> <span class="o">=</span> <span class="n">Handler</span><span class="p">()</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_handler</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="Connection"><a class="viewcode-back" href="../../proton.html#proton.Connection">[docs]</a><span class="k">class</span> <span class="nc">Connection</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A representation of an AMQP connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Connection</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[],</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">pn_connection</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Wrapper</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">pn_connection_attachments</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Endpoint</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">offered_capabilities</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">desired_capabilities</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_acceptor</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_get_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_connection_attachments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Connection&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get this connection.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Transport</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The transport bound to this connection. If the connection</span>
+<span class="sd">        is unbound, then this operation will return ``None``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Transport</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_connection_transport</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exc</span> <span class="o">=</span> <span class="n">EXCEPTIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">ConnectionException</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exc</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">pn_connection_error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">err</span>
+
+    <span class="k">def</span> <span class="nf">_get_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_connection_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_remote_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_connection_remote_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="c1"># TODO: Blacklisted API call</span>
+    <span class="k">def</span> <span class="nf">collect</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">collector</span><span class="p">:</span> <span class="s1">&#39;Collector&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">collector</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">pn_connection_collect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pn_connection_collect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">collector</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_collector</span> <span class="o">=</span> <span class="n">weakref</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">collector</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The container name for this connection object.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_connection_get_container</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@container</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_connection_set_container</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Set the name of the host (either fully qualified or relative) to which this</span>
+<span class="sd">        connection is connecting to.  This information may be used by the remote</span>
+<span class="sd">        peer to determine the correct back-end service to connect the client to.</span>
+<span class="sd">        This value will be sent in the Open performative, and will be used by SSL</span>
+<span class="sd">        and SASL layers to identify the peer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_connection_get_hostname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@hostname</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_connection_set_hostname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;The authentication username for a client connection.</span>
+
+<span class="sd">        It is necessary to set the username and password before binding</span>
+<span class="sd">        the connection to a transport and it isn&#39;t allowed to change</span>
+<span class="sd">        after the binding.</span>
+
+<span class="sd">        If not set then no authentication will be negotiated unless the</span>
+<span class="sd">        client sasl layer is explicitly created (this would be for something</span>
+<span class="sd">        like Kerberos where the credentials are implicit in the environment,</span>
+<span class="sd">        or to explicitly use the ``ANONYMOUS`` SASL mechanism)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_connection_get_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@user</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">user</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_connection_set_user</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">authorization</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The authorization username for a client connection.</span>
+
+<span class="sd">        It is necessary to set the authorization before binding</span>
+<span class="sd">        the connection to a transport and it isn&#39;t allowed to change</span>
+<span class="sd">        after the binding.</span>
+
+<span class="sd">        If not set then implicitly the requested authorization is the same as the</span>
+<span class="sd">        authentication user.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_connection_get_authorization</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@authorization</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">authorization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_connection_set_authorization</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">password</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Set the authentication password for a client connection.</span>
+
+<span class="sd">        It is necessary to set the username and password before binding the connection</span>
+<span class="sd">        to a transport and it isn&#39;t allowed to change after the binding.</span>
+
+<span class="sd">        .. note:: Getting the password always returns ``None``.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@password</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">password</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_connection_set_password</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The container identifier specified by the remote peer for this connection.</span>
+
+<span class="sd">        This will return ``None`` until the :const:&#39;REMOTE_ACTIVE` state is</span>
+<span class="sd">        reached. See :class:`Endpoint` for more details on endpoint state.</span>
+
+<span class="sd">        Any (non ``None``) name returned by this operation will be valid until</span>
+<span class="sd">        the connection object is unbound from a transport or freed,</span>
+<span class="sd">        whichever happens sooner.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_connection_remote_container</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_hostname</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The hostname specified by the remote peer for this connection.</span>
+
+<span class="sd">        This will return ``None`` until the :const:`REMOTE_ACTIVE` state is</span>
+<span class="sd">        reached. See :class:`Endpoint` for more details on endpoint state.</span>
+
+<span class="sd">        Any (non ``None``) name returned by this operation will be valid until</span>
+<span class="sd">        the connection object is unbound from a transport or freed,</span>
+<span class="sd">        whichever happens sooner.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_connection_remote_hostname</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_offered_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The capabilities offered by the remote peer for this connection.</span>
+
+<span class="sd">        This operation will return a :class:`Data` object that</span>
+<span class="sd">        is valid until the connection object is freed. This :class:`Data`</span>
+<span class="sd">        object will be empty until the remote connection is opened as</span>
+<span class="sd">        indicated by the :const:`REMOTE_ACTIVE` flag.</span>
+
+<span class="sd">        :type: :class:`Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">dat2obj</span><span class="p">(</span><span class="n">pn_connection_remote_offered_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_desired_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The capabilities desired by the remote peer for this connection.</span>
+
+<span class="sd">        This operation will return a :class:`Data` object that</span>
+<span class="sd">        is valid until the connection object is freed. This :class:`Data`</span>
+<span class="sd">        object will be empty until the remote connection is opened as</span>
+<span class="sd">        indicated by the :const:`REMOTE_ACTIVE` flag.</span>
+
+<span class="sd">        :type: :class:`Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">dat2obj</span><span class="p">(</span><span class="n">pn_connection_remote_desired_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The properties specified by the remote peer for this connection.</span>
+
+<span class="sd">        This operation will return a :class:`Data` object that</span>
+<span class="sd">        is valid until the connection object is freed. This :class:`Data`</span>
+<span class="sd">        object will be empty until the remote connection is opened as</span>
+<span class="sd">        indicated by the :const:`REMOTE_ACTIVE` flag.</span>
+
+<span class="sd">        :type: :class:`Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">dat2obj</span><span class="p">(</span><span class="n">pn_connection_remote_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connected_address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The address for this connection.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">url</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Connection.open"><a class="viewcode-back" href="../../proton.html#proton.Connection.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Opens the connection.</span>
+
+<span class="sd">        In more detail, this moves the local state of the connection to</span>
+<span class="sd">        the ``ACTIVE`` state and triggers an open frame to be sent to the</span>
+<span class="sd">        peer. A connection is fully active once both peers have opened it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj2dat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">offered_capabilities</span><span class="p">,</span>
+                <span class="n">pn_connection_offered_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+        <span class="n">obj2dat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">desired_capabilities</span><span class="p">,</span>
+                <span class="n">pn_connection_desired_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+        <span class="n">obj2dat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="n">pn_connection_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+        <span class="n">pn_connection_open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Connection.close"><a class="viewcode-back" href="../../proton.html#proton.Connection.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Closes the connection.</span>
+
+<span class="sd">        In more detail, this moves the local state of the connection to</span>
+<span class="sd">        the ``CLOSED`` state and triggers a close frame to be sent to the</span>
+<span class="sd">        peer. A connection is fully closed once both peers have closed it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_cond</span><span class="p">()</span>
+        <span class="n">pn_connection_close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_session_policy&#39;</span><span class="p">):</span>
+            <span class="c1"># break circular ref</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session_policy</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">transport</span>
+        <span class="k">if</span> <span class="n">t</span> <span class="ow">and</span> <span class="n">t</span><span class="o">.</span><span class="n">_connect_selectable</span><span class="p">:</span>
+            <span class="c1"># close() requested before TCP connect handshake completes on socket.</span>
+            <span class="c1"># Dismantle connection setup logic.</span>
+            <span class="n">s</span> <span class="o">=</span> <span class="n">t</span><span class="o">.</span><span class="n">_connect_selectable</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">_connect_selectable</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">close_head</span><span class="p">()</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">close_tail</span><span class="p">()</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">_transport</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">t</span><span class="o">.</span><span class="n">_selectable</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">terminate</span><span class="p">()</span>
+            <span class="n">s</span><span class="o">.</span><span class="n">update</span><span class="p">()</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The state of the connection as a bit field. The state has a local</span>
+<span class="sd">        and a remote component. Each of these can be in one of three</span>
+<span class="sd">        states: ``UNINIT``, ``ACTIVE`` or ``CLOSED``. These can be tested by masking</span>
+<span class="sd">        against :const:`LOCAL_UNINIT`, :const:`LOCAL_ACTIVE`, :const:`LOCAL_CLOSED`, :const:`REMOTE_UNINIT`,</span>
+<span class="sd">        :const:`REMOTE_ACTIVE` and :const:`REMOTE_CLOSED`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_connection_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Connection.session"><a class="viewcode-back" href="../../proton.html#proton.Connection.session">[docs]</a>    <span class="k">def</span> <span class="nf">session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Session&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a new session on this connection.</span>
+
+<span class="sd">        :return: New session</span>
+<span class="sd">        :raises: :class:`SessionException`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">ssn</span> <span class="o">=</span> <span class="n">pn_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ssn</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="p">(</span><span class="n">SessionException</span><span class="p">(</span><span class="s2">&quot;Session allocation failed.&quot;</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Session</span><span class="p">(</span><span class="n">ssn</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Connection.session_head"><a class="viewcode-back" href="../../proton.html#proton.Connection.session_head">[docs]</a>    <span class="k">def</span> <span class="nf">session_head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Session&#39;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the first session from a given connection that matches the</span>
+<span class="sd">        specified state mask.</span>
+
+<span class="sd">        Examines the state of each session owned by the connection, and</span>
+<span class="sd">        returns the first session that matches the given state mask. If</span>
+<span class="sd">        state contains both local and remote flags, then an exact match</span>
+<span class="sd">        against those flags is performed. If state contains only local or</span>
+<span class="sd">        only remote flags, then a match occurs if any of the local or</span>
+<span class="sd">        remote flags are set respectively.</span>
+
+<span class="sd">        :param mask: State mask to match</span>
+<span class="sd">        :return: The first session owned by the connection that matches the</span>
+<span class="sd">            mask, else ``None`` if no sessions matches.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Session</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_session_head</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Connection.link_head"><a class="viewcode-back" href="../../proton.html#proton.Connection.link_head">[docs]</a>    <span class="k">def</span> <span class="nf">link_head</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Sender&#39;</span><span class="p">,</span> <span class="s1">&#39;Receiver&#39;</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the first link that matches the given state mask.</span>
+
+<span class="sd">        Examines the state of each link owned by the connection and returns</span>
+<span class="sd">        the first link that matches the given state mask. If state contains</span>
+<span class="sd">        both local and remote flags, then an exact match against those</span>
+<span class="sd">        flags is performed. If state contains only local or only remote</span>
+<span class="sd">        flags, then a match occurs if any of the local or remote flags are</span>
+<span class="sd">        set respectively. ``state==0`` matches all links.</span>
+
+<span class="sd">        :param mask: State mask to match</span>
+<span class="sd">        :return: The first link owned by the connection that matches the</span>
+<span class="sd">            mask, else ``None`` if no link matches.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Link</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_link_head</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">work_head</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Delivery</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Deprecated: use on_message(), on_accepted(), on_rejected(),</span>
+<span class="sd">        on_released(), and on_settled() instead.</span>
+
+<span class="sd">        Extracts the first delivery on the connection that has pending</span>
+<span class="sd">        operations.</span>
+
+<span class="sd">        Retrieves the first delivery on the Connection that has pending</span>
+<span class="sd">        operations. A readable delivery indicates message data is waiting</span>
+<span class="sd">        to be read. A writable delivery indicates that message data may be</span>
+<span class="sd">        sent. An updated delivery indicates that the delivery&#39;s disposition</span>
+<span class="sd">        has changed. A delivery will never be both readable and writable,</span>
+<span class="sd">        but it may be both readable and updated or both writable and</span>
+<span class="sd">        updated.</span>
+
+<span class="sd">        :return: The first delivery object that needs to be serviced, or ``None`` if none.</span>
+<span class="sd">        :rtype: :class:`Delivery` or ``None``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Delivery</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_work_head</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">error</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Additional error information associated with the connection.</span>
+
+<span class="sd">        Whenever a connection operation fails (i.e. returns an error code),</span>
+<span class="sd">        additional error details can be obtained using this property. The</span>
+<span class="sd">        returned value is the error code defined by Proton in ``pn_error_t``</span>
+<span class="sd">        (see ``error.h``).</span>
+
+<span class="sd">        :type: ``int``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_error_code</span><span class="p">(</span><span class="n">pn_connection_error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Connection.free"><a class="viewcode-back" href="../../proton.html#proton.Connection.free">[docs]</a>    <span class="k">def</span> <span class="nf">free</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Releases this connection object.</span>
+
+<span class="sd">        When a connection object is released, all :class:`Session` and</span>
+<span class="sd">        :class:`Link` objects associated with this connection are also</span>
+<span class="sd">        released and all :class:`Delivery` objects are settled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_connection_release</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">offered_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span class="n">SymbolList</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Offered capabilities as a list of symbols. The AMQP 1.0 specification</span>
+<span class="sd">        restricts this list to symbol elements only. It is possible to use</span>
+<span class="sd">        the special ``list`` subclass :class:`SymbolList` as it will by</span>
+<span class="sd">        default enforce this restriction on construction. In addition, if a</span>
+<span class="sd">        string type is used, it will be silently converted into the required</span>
+<span class="sd">        symbol.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">offered_capabilities_list</span>
+
+    <span class="nd">@offered_capabilities</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">offered_capabilities</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">offered_capability_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">],</span> <span class="n">SymbolList</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">offered_capability_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">offered_capabilities_list</span> <span class="o">=</span> <span class="n">SymbolList</span><span class="p">(</span><span class="n">offered_capability_list</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">offered_capabilities_list</span> <span class="o">=</span> <span class="n">offered_capability_list</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">desired_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span class="n">SymbolList</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;Desired capabilities as a list of symbols. The AMQP 1.0 specification</span>
+<span class="sd">        restricts this list to symbol elements only. It is possible to use</span>
+<span class="sd">        the special ``list`` subclass :class:`SymbolList` which will by</span>
+<span class="sd">        default enforce this restriction on construction. In addition, if string</span>
+<span class="sd">        types are used, this class will be silently convert them into symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">desired_capabilities_list</span>
+
+    <span class="nd">@desired_capabilities</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">desired_capabilities</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">desired_capability_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Array&#39;</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">],</span> <span class="n">SymbolList</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">desired_capability_list</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">desired_capabilities_list</span> <span class="o">=</span> <span class="n">SymbolList</span><span class="p">(</span><span class="n">desired_capability_list</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">desired_capabilities_list</span> <span class="o">=</span> <span class="n">desired_capability_list</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PropertyDict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Connection properties as a dictionary of key/values. The AMQP 1.0</span>
+<span class="sd">        specification restricts this dictionary to have keys that are only</span>
+<span class="sd">        :class:`symbol` types. It is possible to use the special ``dict``</span>
+<span class="sd">        subclass :class:`PropertyDict` which will by default enforce this</span>
+<span class="sd">        restrictions on construction. In addition, if strings type are used,</span>
+<span class="sd">        this will silently convert them into symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">properties_dict</span>
+
+    <span class="nd">@properties</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">PropertyDict</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="s1">&#39;PythonAMQPData&#39;</span><span class="p">]]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">properties_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties_dict</span> <span class="o">=</span> <span class="n">PropertyDict</span><span class="p">(</span><span class="n">properties_dict</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">properties_dict</span> <span class="o">=</span> <span class="n">properties_dict</span></div>
+
+
+<div class="viewcode-block" id="Session"><a class="viewcode-back" href="../../proton.html#proton.Session">[docs]</a><span class="k">class</span> <span class="nc">Session</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;A container of links&quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Session</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">):</span>
+        <span class="n">Wrapper</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">pn_session_attachments</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_session_attachments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_session_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_remote_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_session_remote_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">incoming_capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The incoming capacity of this session in bytes. The incoming capacity</span>
+<span class="sd">        of a session determines how much incoming message data the session</span>
+<span class="sd">        can buffer.</span>
+
+<span class="sd">        .. note:: If set, this value must be greater than or equal to the negotiated</span>
+<span class="sd">            frame size of the transport. The window is computed as a whole number of</span>
+<span class="sd">            frames when dividing remaining capacity at a given time by the connection</span>
+<span class="sd">            max frame size. As such, capacity and max frame size should be chosen so</span>
+<span class="sd">            as to ensure the frame window isn&#39;t unduly small and limiting performance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_session_get_incoming_capacity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@incoming_capacity</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">incoming_capacity</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_session_set_incoming_capacity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">capacity</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">outgoing_window</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The outgoing window for this session.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_session_get_outgoing_window</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@outgoing_window</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">outgoing_window</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">window</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_session_set_outgoing_window</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">window</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">outgoing_bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The number of outgoing bytes currently buffered.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_session_outgoing_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">incoming_bytes</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The number of incoming bytes currently buffered.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_session_incoming_bytes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Session.open"><a class="viewcode-back" href="../../proton.html#proton.Session.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Open a session. Once this operation has completed, the</span>
+<span class="sd">        :const:`LOCAL_ACTIVE` state flag will be set.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_session_open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Session.close"><a class="viewcode-back" href="../../proton.html#proton.Session.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Close a session.</span>
+
+<span class="sd">        Once this operation has completed, the :const:`LOCAL_CLOSED` state flag</span>
+<span class="sd">        will be set. This may be called without calling</span>
+<span class="sd">        :meth:`open`, in this case it is equivalent to calling</span>
+<span class="sd">        :meth:`open` followed by :meth:`close`.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_cond</span><span class="p">()</span>
+        <span class="n">pn_session_close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Session.next"><a class="viewcode-back" href="../../proton.html#proton.Session.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the next session for this connection that matches the</span>
+<span class="sd">        specified state mask.</span>
+
+<span class="sd">        When used with :meth:`Connection.session_head`, application can</span>
+<span class="sd">        access all sessions on the connection that match the given state.</span>
+<span class="sd">        See :meth:`Connection.session_head` for description of match</span>
+<span class="sd">        behavior.</span>
+
+<span class="sd">        :param mask: Mask to match.</span>
+<span class="sd">        :return: The next session owned by this connection that matches the</span>
+<span class="sd">            mask, else ``None`` if no sessions match.</span>
+<span class="sd">        :rtype: :class:`Session` or ``None``</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Session</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_session_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The endpoint state flags for this session. See :class:`Endpoint` for</span>
+<span class="sd">        details of the flags.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_session_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Connection</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The parent connection for this session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Connection</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_session_connection</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Transport</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The transport bound to the parent connection for this session.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="o">.</span><span class="n">transport</span>
+
+<div class="viewcode-block" id="Session.sender"><a class="viewcode-back" href="../../proton.html#proton.Session.sender">[docs]</a>    <span class="k">def</span> <span class="nf">sender</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Sender&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new :class:`Sender` on this session.</span>
+
+<span class="sd">        :param name: Name of sender</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Sender</span><span class="p">(</span><span class="n">pn_sender</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="Session.receiver"><a class="viewcode-back" href="../../proton.html#proton.Session.receiver">[docs]</a>    <span class="k">def</span> <span class="nf">receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Receiver&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a new :class:`Receiver` on this session.</span>
+
+<span class="sd">        :param name: Name of receiver</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Receiver</span><span class="p">(</span><span class="n">pn_receiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">name</span><span class="p">)))</span></div>
+
+<div class="viewcode-block" id="Session.free"><a class="viewcode-back" href="../../proton.html#proton.Session.free">[docs]</a>    <span class="k">def</span> <span class="nf">free</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Free this session. When a session is freed it will no</span>
+<span class="sd">        longer be retained by the connection once any internal</span>
+<span class="sd">        references to the session are no longer needed. Freeing</span>
+<span class="sd">        a session will free all links on that session and settle</span>
+<span class="sd">        any deliveries on those links.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_session_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Link"><a class="viewcode-back" href="../../proton.html#proton.Link">[docs]</a><span class="k">class</span> <span class="nc">Link</span><span class="p">(</span><span class="n">Wrapper</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A representation of an AMQP link (a unidirectional channel for</span>
+<span class="sd">    transferring messages), of which there are two concrete</span>
+<span class="sd">    implementations, :class:`Sender` and :class:`Receiver`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SND_UNSETTLED</span> <span class="o">=</span> <span class="n">PN_SND_UNSETTLED</span>
+    <span class="sd">&quot;&quot;&quot;The sender will send all deliveries initially unsettled.&quot;&quot;&quot;</span>
+    <span class="n">SND_SETTLED</span> <span class="o">=</span> <span class="n">PN_SND_SETTLED</span>
+    <span class="sd">&quot;&quot;&quot;The sender will send all deliveries settled to the receiver.&quot;&quot;&quot;</span>
+    <span class="n">SND_MIXED</span> <span class="o">=</span> <span class="n">PN_SND_MIXED</span>
+    <span class="sd">&quot;&quot;&quot;The sender may send a mixture of settled and unsettled deliveries.&quot;&quot;&quot;</span>
+
+    <span class="n">RCV_FIRST</span> <span class="o">=</span> <span class="n">PN_RCV_FIRST</span>
+    <span class="sd">&quot;&quot;&quot;The receiver will settle deliveries regardless of what the sender does.&quot;&quot;&quot;</span>
+    <span class="n">RCV_SECOND</span> <span class="o">=</span> <span class="n">PN_RCV_SECOND</span>
+    <span class="sd">&quot;&quot;&quot;The receiver will only settle deliveries after the sender settles.&quot;&quot;&quot;</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">impl</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">pn_link_is_sender</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Sender</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Receiver</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">):</span>
+        <span class="n">Wrapper</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">pn_link_attachments</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">Endpoint</span><span class="o">.</span><span class="n">_init</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">properties</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">_get_attachments</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_link_attachments</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exc</span> <span class="o">=</span> <span class="n">EXCEPTIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">LinkException</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exc</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">pn_error_text</span><span class="p">(</span><span class="n">pn_link_error</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">err</span>
+
+    <span class="k">def</span> <span class="nf">_get_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_link_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_get_remote_cond_impl</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">pn_link_remote_condition</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Link.open"><a class="viewcode-back" href="../../proton.html#proton.Link.open">[docs]</a>    <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Opens the link.</span>
+
+<span class="sd">        In more detail, this moves the local state of the link to the</span>
+<span class="sd">        :const:`LOCAL_ACTIVE` state and triggers an attach frame to be</span>
+<span class="sd">        sent to the peer. A link is fully active once both peers have</span>
+<span class="sd">        attached it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">obj2dat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">properties</span><span class="p">,</span> <span class="n">pn_link_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+        <span class="n">pn_link_open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Link.close"><a class="viewcode-back" href="../../proton.html#proton.Link.close">[docs]</a>    <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Closes the link.</span>
+
+<span class="sd">        In more detail, this moves the local state of the link to the</span>
+<span class="sd">        :const:`LOCAL_CLOSED` state and triggers an detach frame (with</span>
+<span class="sd">        the closed flag set) to be sent to the peer. A link is fully</span>
+<span class="sd">        closed once both peers have detached it.</span>
+
+<span class="sd">        This may be called without calling :meth:`open`, in this case it</span>
+<span class="sd">        is equivalent to calling :meth:`open` followed by :meth:`close`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_update_cond</span><span class="p">()</span>
+        <span class="n">pn_link_close</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">state</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The state of the link as a bit field. The state has a local</span>
+<span class="sd">        and a remote component. Each of these can be in one of three</span>
+<span class="sd">        states: ``UNINIT``, ``ACTIVE`` or ``CLOSED``. These can be</span>
+<span class="sd">        tested by masking against :const:`LOCAL_UNINIT`,</span>
+<span class="sd">        :const:`LOCAL_ACTIVE`, :const:`LOCAL_CLOSED`,</span>
+<span class="sd">        :const:`REMOTE_UNINIT`, :const:`REMOTE_ACTIVE` and</span>
+<span class="sd">        :const:`REMOTE_CLOSED`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_state</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Terminus&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The source of the link as described by the local peer. The</span>
+<span class="sd">        returned object is valid until the link is freed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Terminus</span><span class="p">(</span><span class="n">pn_link_source</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">target</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Terminus&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The target of the link as described by the local peer. The</span>
+<span class="sd">        returned object is valid until the link is freed.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Terminus</span><span class="p">(</span><span class="n">pn_link_target</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_source</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Terminus&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The source of the link as described by the remote peer. The</span>
+<span class="sd">        returned object is valid until the link is freed. The remote</span>
+<span class="sd">        :class:`Terminus` object will be empty until the link is</span>
+<span class="sd">        remotely opened as indicated by the :const:`REMOTE_ACTIVE`</span>
+<span class="sd">        flag.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Terminus</span><span class="p">(</span><span class="n">pn_link_remote_source</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_target</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Terminus&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The target of the link as described by the remote peer. The</span>
+<span class="sd">        returned object is valid until the link is freed. The remote</span>
+<span class="sd">        :class:`Terminus` object will be empty until the link is</span>
+<span class="sd">        remotely opened as indicated by the :const:`REMOTE_ACTIVE`</span>
+<span class="sd">        flag.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Terminus</span><span class="p">(</span><span class="n">pn_link_remote_target</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Session</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The parent session for this link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Session</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_link_session</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Connection</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The connection on which this link was attached.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">connection</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Transport</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The transport bound to the connection on which this link was attached.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">transport</span>
+
+<div class="viewcode-block" id="Link.delivery"><a class="viewcode-back" href="../../proton.html#proton.Link.delivery">[docs]</a>    <span class="k">def</span> <span class="nf">delivery</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Delivery</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a delivery. Every delivery object within a</span>
+<span class="sd">        link must be supplied with a unique tag. Links</span>
+<span class="sd">        maintain a sequence of delivery object in the order that</span>
+<span class="sd">        they are created.</span>
+
+<span class="sd">        :param tag: Delivery tag unique for this link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Delivery</span><span class="p">(</span><span class="n">pn_delivery</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">tag</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Delivery</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The current delivery for this link.</span>
+
+<span class="sd">        Each link maintains a sequence of deliveries in the order</span>
+<span class="sd">        they were created, along with a pointer to the *current*</span>
+<span class="sd">        delivery. All send/recv operations on a link take place</span>
+<span class="sd">        on the *current* delivery. If a link has no current delivery,</span>
+<span class="sd">        the current delivery is automatically initialized to the</span>
+<span class="sd">        next delivery created on the link. Once initialized, the</span>
+<span class="sd">        current delivery remains the same until it is changed through</span>
+<span class="sd">        use of :meth:`advance` or until it is settled via</span>
+<span class="sd">        :meth:`Delivery.settle`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Delivery</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_link_current</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Link.advance"><a class="viewcode-back" href="../../proton.html#proton.Link.advance">[docs]</a>    <span class="k">def</span> <span class="nf">advance</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Advance the current delivery of this link to the next delivery.</span>
+
+<span class="sd">        For sending links this operation is used to finish sending message</span>
+<span class="sd">        data for the current outgoing delivery and move on to the next</span>
+<span class="sd">        outgoing delivery (if any).</span>
+
+<span class="sd">        For receiving links, this operation is used to finish accessing</span>
+<span class="sd">        message data from the current incoming delivery and move on to the</span>
+<span class="sd">        next incoming delivery (if any).</span>
+
+<span class="sd">        Each link maintains a sequence of deliveries in the order they were</span>
+<span class="sd">        created, along with a pointer to the *current* delivery. The</span>
+<span class="sd">        :meth:`advance` operation will modify the *current* delivery on the</span>
+<span class="sd">        link to point to the next delivery in the sequence. If there is no</span>
+<span class="sd">        next delivery in the sequence, the current delivery will be set to</span>
+<span class="sd">        ``NULL``.</span>
+
+<span class="sd">        :return: ``True`` if the value of the current delivery changed (even</span>
+<span class="sd">            if it was set to ``NULL``, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_advance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">unsettled</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The number of unsettled deliveries for this link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_unsettled</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">credit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The amount of outstanding credit on this link.</span>
+
+<span class="sd">        Links use a credit based flow control scheme. Every receiver</span>
+<span class="sd">        maintains a credit balance that corresponds to the number of</span>
+<span class="sd">        deliveries that the receiver can accept at any given moment. As</span>
+<span class="sd">        more capacity becomes available at the receiver (see</span>
+<span class="sd">        :meth:`Receiver.flow`), it adds credit to this balance and</span>
+<span class="sd">        communicates the new balance to the sender. Whenever a delivery</span>
+<span class="sd">        is sent/received, the credit balance maintained by the link is</span>
+<span class="sd">        decremented by one. Once the credit balance at the sender reaches</span>
+<span class="sd">        zero, the sender must pause sending until more credit is obtained</span>
+<span class="sd">        from the receiver.</span>
+
+<span class="sd">        .. note:: A sending link may still be used to send deliveries even</span>
+<span class="sd">            if :attr:`credit` reaches zero, however those deliveries will end</span>
+<span class="sd">            up being buffered by the link until enough credit is obtained from</span>
+<span class="sd">            the receiver to send them over the wire. In this case the balance</span>
+<span class="sd">            reported by :attr:`credit` will go negative.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_credit</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">available</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The available deliveries hint for this link.</span>
+
+<span class="sd">        The available count for a link provides a hint as to the number of</span>
+<span class="sd">        deliveries that might be able to be sent if sufficient credit were</span>
+<span class="sd">        issued by the receiving link endpoint. See :meth:`Sender.offered` for</span>
+<span class="sd">        more details.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_available</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">queued</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The number of queued deliveries for a link.</span>
+
+<span class="sd">        Links may queue deliveries for a number of reasons, for example</span>
+<span class="sd">        there may be insufficient credit to send them to the receiver (see</span>
+<span class="sd">        :meth:`credit`), or they simply may not have yet had a chance to</span>
+<span class="sd">        be written to the wire. This operation will return the number of</span>
+<span class="sd">        queued deliveries on a link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_queued</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Link.next"><a class="viewcode-back" href="../../proton.html#proton.Link.next">[docs]</a>    <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Sender&#39;</span><span class="p">,</span> <span class="s1">&#39;Receiver&#39;</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieve the next link that matches the given state mask.</span>
+
+<span class="sd">        When used with :meth:`Connection.link_head`, the application</span>
+<span class="sd">        can access all links on the connection that match the given</span>
+<span class="sd">        state. See :meth:`Connection.link_head` for a description of</span>
+<span class="sd">        match behavior.</span>
+
+<span class="sd">        :param mask: State mask to match</span>
+<span class="sd">        :return: The next link that matches the given state mask, or</span>
+<span class="sd">                 ``None`` if no link matches.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Link</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_link_next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mask</span><span class="p">))</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The name of the link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_link_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_sender</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        ``True`` if this link is a sender, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_is_sender</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">is_receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        ``True`` if this link is a receiver, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_is_receiver</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The remote sender settle mode for this link. One of</span>
+<span class="sd">        :const:`SND_UNSETTLED`, :const:`SND_SETTLED` or</span>
+<span class="sd">        :const:`SND_MIXED`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_remote_snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The remote receiver settle mode for this link. One of</span>
+<span class="sd">        :const:`RCV_FIRST` or :const:`RCV_SECOND`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_remote_rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The local sender settle mode for this link. One of</span>
+<span class="sd">        :const:`SND_UNSETTLED`, :const:`SND_SETTLED` or</span>
+<span class="sd">        :const:`SND_MIXED`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@snd_settle_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_link_set_snd_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The local receiver settle mode for this link. One of</span>
+<span class="sd">        :const:`RCV_FIRST` or :const:`RCV_SECOND`.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@rcv_settle_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_link_set_rcv_settle_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">drain_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The drain mode on this link.</span>
+
+<span class="sd">        If a link is in drain mode (``True``), then the sending</span>
+<span class="sd">        endpoint of a link must immediately use up all available</span>
+<span class="sd">        credit on the link. If this is not possible, the excess</span>
+<span class="sd">        credit must be returned by invoking :meth:`drained`. Only</span>
+<span class="sd">        the receiving endpoint can set the drain mode.</span>
+
+<span class="sd">        When ``False``, this link is not in drain mode.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_get_drain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@drain_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">drain_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
+        <span class="n">pn_link_set_drain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="nb">bool</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Link.drained"><a class="viewcode-back" href="../../proton.html#proton.Link.drained">[docs]</a>    <span class="k">def</span> <span class="nf">drained</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Drain excess credit for this link.</span>
+
+<span class="sd">        When a link is in drain mode (see :attr:`drain_mode`), the</span>
+<span class="sd">        sender must use all excess credit immediately, and release</span>
+<span class="sd">        any excess credit back to the receiver if there are no</span>
+<span class="sd">        deliveries available to send.</span>
+
+<span class="sd">        When invoked on a sending link that is in drain mode, this</span>
+<span class="sd">        operation will release all excess credit back to the receiver</span>
+<span class="sd">        and return the number of credits released back to the sender.</span>
+<span class="sd">        If the link is not in drain mode, this operation is a noop.</span>
+
+<span class="sd">        When invoked on a receiving link, this operation will return</span>
+<span class="sd">        and reset the number of credits the sender has released back</span>
+<span class="sd">        to the receiver.</span>
+
+<span class="sd">        :return: The number of credits drained.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_drained</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Get the remote view of the maximum message size for this link.</span>
+
+<span class="sd">        .. warning:: **Unsettled API**</span>
+
+<span class="sd">        A zero value means the size is unlimited.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_remote_max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The maximum message size for this link. A zero value means the</span>
+<span class="sd">        size is unlimited.</span>
+
+<span class="sd">        .. warning:: **Unsettled API**</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@max_message_size</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_link_set_max_message_size</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Link.detach"><a class="viewcode-back" href="../../proton.html#proton.Link.detach">[docs]</a>    <span class="k">def</span> <span class="nf">detach</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Detach this link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_detach</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Link.free"><a class="viewcode-back" href="../../proton.html#proton.Link.free">[docs]</a>    <span class="k">def</span> <span class="nf">free</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Free this link object. When a link object is freed,</span>
+<span class="sd">        all :class:`Delivery` objects associated with the session (**&lt;-- CHECK THIS**)</span>
+<span class="sd">        are also freed. Freeing a link will settle any unsettled</span>
+<span class="sd">        deliveries on the link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_link_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">remote_properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The properties specified by the remote peer for this link.</span>
+
+<span class="sd">        This operation will return a :class:`Data` object that</span>
+<span class="sd">        is valid until the link object is freed. This :class:`Data`</span>
+<span class="sd">        object will be empty until the remote link is opened as</span>
+<span class="sd">        indicated by the :const:`REMOTE_ACTIVE` flag.</span>
+
+<span class="sd">        :type: :class:`Data`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">dat2obj</span><span class="p">(</span><span class="n">pn_link_remote_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">PropertyDict</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Link properties as a dictionary of key/values. The AMQP 1.0</span>
+<span class="sd">        specification restricts this dictionary to have keys that are only</span>
+<span class="sd">        :class:`symbol` types. It is possible to use the special ``dict``</span>
+<span class="sd">        subclass :class:`PropertyDict` which will by default enforce this</span>
+<span class="sd">        restrictions on construction. In addition, if strings type are used,</span>
+<span class="sd">        this will silently convert them into symbols.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_properties_dict</span>
+
+    <span class="nd">@properties</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">properties_dict</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Dict</span><span class="p">[</span><span class="s1">&#39;symbol&#39;</span><span class="p">,</span> <span class="s1">&#39;PythonAMQPData&#39;</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">properties_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_properties_dict</span> <span class="o">=</span> <span class="n">PropertyDict</span><span class="p">(</span><span class="n">properties_dict</span><span class="p">,</span> <span class="n">raise_on_error</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_properties_dict</span> <span class="o">=</span> <span class="n">properties_dict</span></div>
+
+
+<div class="viewcode-block" id="Sender"><a class="viewcode-back" href="../../proton.html#proton.Sender">[docs]</a><span class="k">class</span> <span class="nc">Sender</span><span class="p">(</span><span class="n">Link</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A link over which messages are sent.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Sender.offered"><a class="viewcode-back" href="../../proton.html#proton.Sender.offered">[docs]</a>    <span class="k">def</span> <span class="nf">offered</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Signal the availability of deliveries for this Sender.</span>
+
+<span class="sd">        :param n: Credit the number of deliveries potentially</span>
+<span class="sd">                  available for transfer.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_link_offered</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sender.stream"><a class="viewcode-back" href="../../proton.html#proton.Sender.stream">[docs]</a>    <span class="k">def</span> <span class="nf">stream</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Send specified data as part of the current delivery.</span>
+
+<span class="sd">        :param data: Data to send</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_link_send</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="Sender.send"><a class="viewcode-back" href="../../proton.html#proton.Sender.send">[docs]</a>    <span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bytes</span><span class="p">,</span> <span class="s1">&#39;Message&#39;</span><span class="p">],</span> <span class="n">tag</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="n">Delivery</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A convenience method to send objects as message content.</span>
+
+<span class="sd">        Send specified object over this sender; the object is expected to</span>
+<span class="sd">        have a ``send()`` method on it that takes the sender and an optional</span>
+<span class="sd">        tag as arguments.</span>
+
+<span class="sd">        Where the object is a :class:`Message`, this will send the message over</span>
+<span class="sd">        this link, creating a new delivery for the purpose.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="s1">&#39;send&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="n">tag</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># treat object as bytes</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Sender.delivery_tag"><a class="viewcode-back" href="../../proton.html#proton.Sender.delivery_tag">[docs]</a>    <span class="k">def</span> <span class="nf">delivery_tag</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Increments and returns a counter to be used as the next message tag.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;tag_generator&#39;</span><span class="p">):</span>
+            <span class="k">def</span> <span class="nf">simple_tags</span><span class="p">():</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                    <span class="k">yield</span> <span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+                    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">tag_generator</span> <span class="o">=</span> <span class="n">simple_tags</span><span class="p">()</span>
+        <span class="k">return</span> <span class="nb">next</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tag_generator</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Receiver"><a class="viewcode-back" href="../../proton.html#proton.Receiver">[docs]</a><span class="k">class</span> <span class="nc">Receiver</span><span class="p">(</span><span class="n">Link</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A link over which messages are received.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Receiver.flow"><a class="viewcode-back" href="../../proton.html#proton.Receiver.flow">[docs]</a>    <span class="k">def</span> <span class="nf">flow</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Increases the credit issued to the remote sender by the specified number of messages.</span>
+
+<span class="sd">        :param n: The credit to be issued to the remote sender.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_link_flow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Receiver.recv"><a class="viewcode-back" href="../../proton.html#proton.Receiver.recv">[docs]</a>    <span class="k">def</span> <span class="nf">recv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">limit</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bytes</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Receive message data for the current delivery on this receiver.</span>
+
+<span class="sd">        .. note:: The link API can be used to stream large messages across</span>
+<span class="sd">            the network, so just because there is no data to read does not</span>
+<span class="sd">            imply the message is complete. To ensure the entirety of the</span>
+<span class="sd">            message data has been read, either invoke :meth:`recv` until</span>
+<span class="sd">            ``None`` is returned.</span>
+
+<span class="sd">        :param limit: the max data size to receive of this message</span>
+<span class="sd">        :return: The received message data, or ``None`` if the message</span>
+<span class="sd">            has been completely received.</span>
+<span class="sd">        :raise: * :class:`Timeout` if timed out</span>
+<span class="sd">                * :class:`Interrupt` if interrupted</span>
+<span class="sd">                * :class:`LinkException` for all other exceptions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span><span class="p">,</span> <span class="n">binary</span> <span class="o">=</span> <span class="n">pn_link_recv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">limit</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="n">PN_EOS</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">binary</span></div>
+
+<div class="viewcode-block" id="Receiver.drain"><a class="viewcode-back" href="../../proton.html#proton.Receiver.drain">[docs]</a>    <span class="k">def</span> <span class="nf">drain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Grant credit for incoming deliveries on this receiver, and</span>
+<span class="sd">        set drain mode to true.</span>
+
+<span class="sd">        Use :attr:`drain_mode` to set the drain mode explicitly.</span>
+
+<span class="sd">        :param n: The amount by which to increment the link credit</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">pn_link_drain</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="Receiver.draining"><a class="viewcode-back" href="../../proton.html#proton.Receiver.draining">[docs]</a>    <span class="k">def</span> <span class="nf">draining</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if a link is currently draining. A link is defined</span>
+<span class="sd">        to be draining when drain mode is set to ``True``, and the</span>
+<span class="sd">        sender still has excess credit.</span>
+
+<span class="sd">        :return: ``True`` if the link is currently draining, ``False`` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_link_draining</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="Terminus"><a class="viewcode-back" href="../../proton.html#proton.Terminus">[docs]</a><span class="k">class</span> <span class="nc">Terminus</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A source or target for messages.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">UNSPECIFIED</span> <span class="o">=</span> <span class="n">PN_UNSPECIFIED</span>
+    <span class="sd">&quot;&quot;&quot;A nonexistent terminus, may used as a source or target.&quot;&quot;&quot;</span>
+    <span class="n">SOURCE</span> <span class="o">=</span> <span class="n">PN_SOURCE</span>
+    <span class="sd">&quot;&quot;&quot;A source of messages.&quot;&quot;&quot;</span>
+    <span class="n">TARGET</span> <span class="o">=</span> <span class="n">PN_TARGET</span>
+    <span class="sd">&quot;&quot;&quot;A target for messages.&quot;&quot;&quot;</span>
+    <span class="n">COORDINATOR</span> <span class="o">=</span> <span class="n">PN_COORDINATOR</span>
+    <span class="sd">&quot;&quot;&quot;A special target identifying a transaction coordinator.&quot;&quot;&quot;</span>
+
+    <span class="n">NONDURABLE</span> <span class="o">=</span> <span class="n">PN_NONDURABLE</span>
+    <span class="sd">&quot;&quot;&quot;A non durable terminus.&quot;&quot;&quot;</span>
+    <span class="n">CONFIGURATION</span> <span class="o">=</span> <span class="n">PN_CONFIGURATION</span>
+    <span class="sd">&quot;&quot;&quot;A terminus with durably held configuration, but not delivery state.&quot;&quot;&quot;</span>
+    <span class="n">DELIVERIES</span> <span class="o">=</span> <span class="n">PN_DELIVERIES</span>
+    <span class="sd">&quot;&quot;&quot;A terminus with both durably held configuration and durably held delivery state.&quot;&quot;&quot;</span>
+
+    <span class="n">DIST_MODE_UNSPECIFIED</span> <span class="o">=</span> <span class="n">PN_DIST_MODE_UNSPECIFIED</span>
+    <span class="sd">&quot;&quot;&quot;The behavior is defined by the node.&quot;&quot;&quot;</span>
+    <span class="n">DIST_MODE_COPY</span> <span class="o">=</span> <span class="n">PN_DIST_MODE_COPY</span>
+    <span class="sd">&quot;&quot;&quot;The receiver gets all messages.&quot;&quot;&quot;</span>
+    <span class="n">DIST_MODE_MOVE</span> <span class="o">=</span> <span class="n">PN_DIST_MODE_MOVE</span>
+    <span class="sd">&quot;&quot;&quot;The receiver competes for messages.&quot;&quot;&quot;</span>
+
+    <span class="n">EXPIRE_WITH_LINK</span> <span class="o">=</span> <span class="n">PN_EXPIRE_WITH_LINK</span>
+    <span class="sd">&quot;&quot;&quot;The terminus is orphaned when the parent link is closed.&quot;&quot;&quot;</span>
+    <span class="n">EXPIRE_WITH_SESSION</span> <span class="o">=</span> <span class="n">PN_EXPIRE_WITH_SESSION</span>
+    <span class="sd">&quot;&quot;&quot;The terminus is orphaned when the parent session is closed&quot;&quot;&quot;</span>
+    <span class="n">EXPIRE_WITH_CONNECTION</span> <span class="o">=</span> <span class="n">PN_EXPIRE_WITH_CONNECTION</span>
+    <span class="sd">&quot;&quot;&quot;The terminus is orphaned when the parent connection is closed&quot;&quot;&quot;</span>
+    <span class="n">EXPIRE_NEVER</span> <span class="o">=</span> <span class="n">PN_EXPIRE_NEVER</span>
+    <span class="sd">&quot;&quot;&quot;The terminus is never considered orphaned&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">impl</span>
+
+    <span class="k">def</span> <span class="nf">_check</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">err</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">err</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">exc</span> <span class="o">=</span> <span class="n">EXCEPTIONS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">LinkException</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="n">exc</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%s</span><span class="s2">]&quot;</span> <span class="o">%</span> <span class="n">err</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">err</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The terminus type, must be one of :const:`UNSPECIFIED`,</span>
+<span class="sd">        :const:`SOURCE`, :const:`TARGET` or :const:`COORDINATOR`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_get_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@type</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="nb">type</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">address</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;The address that identifies the source or target node&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">utf82unicode</span><span class="p">(</span><span class="n">pn_terminus_get_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@address</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">address</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">address</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_address</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">unicode2utf8</span><span class="p">(</span><span class="n">address</span><span class="p">)))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">durability</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The terminus durability mode, must be one of :const:`NONDURABLE`,</span>
+<span class="sd">        :const:`CONFIGURATION` or :const:`DELIVERIES`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_get_durability</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@durability</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">durability</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_durability</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">expiry_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The terminus expiry policy, must be one of :const:`EXPIRE_WITH_LINK`,</span>
+<span class="sd">        :const:`EXPIRE_WITH_SESSION`, :const:`EXPIRE_WITH_CONNECTION` or</span>
+<span class="sd">        :const:`EXPIRE_NEVER`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_get_expiry_policy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@expiry_policy</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">expiry_policy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">policy</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_expiry_policy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">policy</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The terminus timeout in seconds.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_get_timeout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@timeout</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">timeout</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seconds</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_timeout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">seconds</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">dynamic</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Indicates whether the source or target node was dynamically</span>
+<span class="sd">        created&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_is_dynamic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@dynamic</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">dynamic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dynamic</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_dynamic</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">dynamic</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">distribution_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The terminus distribution mode, must be one of :const:`DIST_MODE_UNSPECIFIED`,</span>
+<span class="sd">        :const:`DIST_MODE_COPY` or :const:`DIST_MODE_MOVE`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">pn_terminus_get_distribution_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="nd">@distribution_mode</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">distribution_mode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_set_distribution_mode</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">mode</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">properties</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Properties of a dynamic source or target.</span>
+
+<span class="sd">        :type: :class:`Data` containing a map with :class:`symbol` keys.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_terminus_properties</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">capabilities</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Capabilities of the source or target.</span>
+
+<span class="sd">        :type: :class:`Data` containing an array of :class:`symbol`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_terminus_capabilities</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">outcomes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Outcomes of the source or target.</span>
+
+<span class="sd">        :type: :class:`Data` containing an array of :class:`symbol`.</span>
+<span class="sd">       &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_terminus_outcomes</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        A filter on a source allows the set of messages transferred over</span>
+<span class="sd">        the link to be restricted. The symbol-keyed map represents a&#39;</span>
+<span class="sd">        filter set.</span>
+
+<span class="sd">        :type: :class:`Data` containing a map with :class:`symbol` keys.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Data</span><span class="p">(</span><span class="n">pn_terminus_filter</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+<div class="viewcode-block" id="Terminus.copy"><a class="viewcode-back" href="../../proton.html#proton.Terminus.copy">[docs]</a>    <span class="k">def</span> <span class="nf">copy</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">src</span><span class="p">:</span> <span class="s1">&#39;Terminus&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Copy another terminus object.</span>
+
+<span class="sd">        :param src: The terminus to be copied from</span>
+<span class="sd">        :raises: :class:`LinkException` if there is an error</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check</span><span class="p">(</span><span class="n">pn_terminus_copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span></div></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._endpoints</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>

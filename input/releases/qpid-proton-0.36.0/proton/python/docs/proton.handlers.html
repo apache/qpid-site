@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module proton.handlers &#8212; Qpid Proton Python API 0.36.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module proton.reactor" href="proton.reactor.html" />
+    <link rel="prev" title="Module proton" href="proton.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="proton.reactor.html" title="Module proton.reactor"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="proton.html" title="Module proton"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.handlers</span></code></a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-proton-handlers">
+<h1>Module <code class="docutils literal notranslate"><span class="pre">proton.handlers</span></code><a class="headerlink" href="#module-proton-handlers" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-summary">
+<h2>Module Summary<a class="headerlink" href="#module-summary" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 70%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.handlers.MessagingHandler" title="proton.handlers.MessagingHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MessagingHandler</span></code></a></p></td>
+<td><p>A general purpose handler that makes the proton-c events somewhat simpler to deal with
+and/or avoids repetitive tasks for common use cases.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.handlers.TransactionHandler" title="proton.handlers.TransactionHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionHandler</span></code></a></p></td>
+<td><p>The interface for transaction handlers - ie objects that want to be notified of state
+changes related to a transaction.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.handlers.TransactionalClientHandler" title="proton.handlers.TransactionalClientHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionalClientHandler</span></code></a></p></td>
+<td><p>An extension to the MessagingHandler for applications using transactions.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="exceptions">
+<h3>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.handlers.Reject" title="proton.handlers.Reject"><code class="xref py py-class docutils literal notranslate"><span class="pre">Reject</span></code></a></p></td>
+<td><p>An exception that indicates a message should be rejected.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.handlers.Release" title="proton.handlers.Release"><code class="xref py py-class docutils literal notranslate"><span class="pre">Release</span></code></a></p></td>
+<td><p>An exception that indicates a message should be released.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-detail">
+<h2>Module Detail<a class="headerlink" href="#module-detail" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="py class">
+<dt id="proton.handlers.MessagingHandler">
+<em class="property">class </em><code class="sig-prename descclassname">proton.handlers.</code><code class="sig-name descname">MessagingHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefetch</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">10</span></em>, <em class="sig-param"><span class="n">auto_accept</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">auto_settle</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">peer_close_is_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._events.Handler</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._handlers.Acking</span></code></p>
+<p>A general purpose handler that makes the proton-c events somewhat
+simpler to deal with and/or avoids repetitive tasks for common use
+cases.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefetch</strong> – Initial flow credit for receiving messages, defaults to 10.</p></li>
+<li><p><strong>auto_accept</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, accept all messages (default). Otherwise
+messages must be individually accepted or rejected.</p></li>
+<li><p><strong>auto_settle</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, settle all messages (default). Otherwise
+messages must be explicitly settled.</p></li>
+<li><p><strong>peer_close_is_error</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a peer endpoint closing will be
+treated as an error with an error callback. Otherwise (default), the
+normal callbacks for the closing will occur.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.MessagingHandler.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accepts a received message.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – The message delivery tracking object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_accepted">
+<code class="sig-name descname">on_accepted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_accepted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_accepted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer accepts an outgoing message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_connection_closed">
+<code class="sig-name descname">on_connection_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_connection_closed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_connection_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the connection is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_connection_closing">
+<code class="sig-name descname">on_connection_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_connection_closing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_connection_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_connection_error">
+<code class="sig-name descname">on_connection_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_connection_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_connection_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the connection with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="proton.html#proton.Event" title="proton.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Event</span></code></a>) – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_disconnected">
+<code class="sig-name descname">on_disconnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_disconnected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the socket is disconnected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_link_closed">
+<code class="sig-name descname">on_link_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_link_closed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_link_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the link is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_link_closing">
+<code class="sig-name descname">on_link_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_link_closing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_link_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_link_error">
+<code class="sig-name descname">on_link_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_link_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_link_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the link with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_message">
+<code class="sig-name descname">on_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_message"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a message is received. The message itself can be
+obtained as a property on the event. For the purpose of
+referring to this message in further actions (e.g. if
+explicitly accepting it, the <code class="docutils literal notranslate"><span class="pre">delivery</span></code> should be used, also
+obtainable via a property on the event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event. In particular, the message itself may
+be obtained by accessing <code class="docutils literal notranslate"><span class="pre">event.message</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_reactor_init">
+<code class="sig-name descname">on_reactor_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_reactor_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_reactor_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop - the reactor - starts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_rejected">
+<code class="sig-name descname">on_rejected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_rejected"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_rejected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer rejects an outgoing message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_released">
+<code class="sig-name descname">on_released</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_released"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_released" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer releases an outgoing message. Note
+that this may be in response to either the RELEASE or MODIFIED
+state as defined by the AMQP specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_sendable">
+<code class="sig-name descname">on_sendable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_sendable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_sendable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the sender link has credit and messages can
+therefore be transferred.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_session_closed">
+<code class="sig-name descname">on_session_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_session_closed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_session_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the session is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_session_closing">
+<code class="sig-name descname">on_session_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_session_closing"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_session_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_session_error">
+<code class="sig-name descname">on_session_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_session_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_session_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the session with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_settled">
+<code class="sig-name descname">on_settled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_settled"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_settled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer has settled the outgoing
+message. This is the point at which it should never be
+retransmitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_start">
+<code class="sig-name descname">on_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_start"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop starts. (Just an alias for on_reactor_init)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_transport_error">
+<code class="sig-name descname">on_transport_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#MessagingHandler.on_transport_error"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.MessagingHandler.on_transport_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when some error is encountered with the transport over
+which the AMQP connection is to be established. This includes
+authentication errors as well as socket errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.on_unhandled">
+<code class="sig-name descname">on_unhandled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.MessagingHandler.on_unhandled" title="Permalink to this definition">¶</a></dt>
+<dd><p>The callback for handling events which are not handled by
+any other handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – The name of the intended handler method.</p></li>
+<li><p><strong>args</strong> – Arguments for the intended handler method.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.reject">
+<code class="sig-name descname">reject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.MessagingHandler.reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejects a received message that is considered invalid or
+unprocessable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – The message delivery tracking object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.release">
+<code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">delivered</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.MessagingHandler.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Releases a received message, making it available at the source
+for any (other) interested receiver. The <code class="docutils literal notranslate"><span class="pre">delivered</span></code>
+parameter indicates whether this should be considered a
+delivery attempt (and the delivery count updated) or not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>delivered</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the message will be annotated
+with a delivery attempt (setting delivery flag
+<a class="reference internal" href="proton.html#proton.Delivery.MODIFIED" title="proton.Delivery.MODIFIED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.MODIFIED</span></code></a>). Otherwise, the message
+will be returned without the annotation and released (setting
+delivery flag <a class="reference internal" href="proton.html#proton.Delivery.RELEASED" title="proton.Delivery.RELEASED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.RELEASED</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.MessagingHandler.settle">
+<code class="sig-name descname">settle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>DispositionType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.MessagingHandler.settle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settles the message delivery, and optionally updating the
+delivery state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>state</strong> – The delivery state, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no update
+is to be performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.handlers.TransactionHandler">
+<em class="property">class </em><code class="sig-prename descclassname">proton.handlers.</code><code class="sig-name descname">TransactionHandler</code><a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The interface for transaction handlers - ie objects that want to
+be notified of state changes related to a transaction.</p>
+<dl class="py method">
+<dt id="proton.handlers.TransactionHandler.on_transaction_aborted">
+<code class="sig-name descname">on_transaction_aborted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler.on_transaction_aborted"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler.on_transaction_aborted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is discharged unsuccessfully
+(aborted).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionHandler.on_transaction_commit_failed">
+<code class="sig-name descname">on_transaction_commit_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler.on_transaction_commit_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler.on_transaction_commit_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the commit of a local transaction fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionHandler.on_transaction_committed">
+<code class="sig-name descname">on_transaction_committed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler.on_transaction_committed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler.on_transaction_committed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is discharged successfully
+(committed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionHandler.on_transaction_declare_failed">
+<code class="sig-name descname">on_transaction_declare_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler.on_transaction_declare_failed"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler.on_transaction_declare_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction declare fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionHandler.on_transaction_declared">
+<code class="sig-name descname">on_transaction_declared</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_handlers.html#TransactionHandler.on_transaction_declared"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionHandler.on_transaction_declared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is declared.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event. In particular, the <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+object may be obtained by accessing <code class="docutils literal notranslate"><span class="pre">event.transaction</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.handlers.TransactionalClientHandler">
+<em class="property">class </em><code class="sig-prename descclassname">proton.handlers.</code><code class="sig-name descname">TransactionalClientHandler</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefetch</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">10</span></em>, <em class="sig-param"><span class="n">auto_accept</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">auto_settle</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">peer_close_is_error</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_handlers.html#TransactionalClientHandler"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionalClientHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._handlers.MessagingHandler</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._handlers.TransactionHandler</span></code></p>
+<p>An extension to the MessagingHandler for applications using
+transactions. This handler provides all of the callbacks found
+in <a class="reference internal" href="#proton.handlers.MessagingHandler" title="proton.handlers.MessagingHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">MessagingHandler</span></code></a> and <a class="reference internal" href="#proton.handlers.TransactionHandler" title="proton.handlers.TransactionHandler"><code class="xref py py-class docutils literal notranslate"><span class="pre">TransactionHandler</span></code></a>,
+and provides a convenience method <a class="reference internal" href="#proton.handlers.TransactionalClientHandler.accept" title="proton.handlers.TransactionalClientHandler.accept"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accept()</span></code></a> for performing
+a transactional acceptance of received messages.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefetch</strong> – Initial flow credit for receiving messages, defaults to 10.</p></li>
+<li><p><strong>auto_accept</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, accept all messages (default). Otherwise messages
+must be individually accepted or rejected.</p></li>
+<li><p><strong>auto_settle</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, settle all messages (default). Otherwise
+messages must be explicitly settled.</p></li>
+<li><p><strong>peer_close_is_error</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, a peer endpoint closing will be
+treated as an error with an error callback. Otherwise (default), the
+normal callbacks for the closing will occur.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">transaction</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Transaction<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_handlers.html#TransactionalClientHandler.accept"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.TransactionalClientHandler.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenience method for accepting a received message as part of a
+transaction. If no transaction object is supplied, a regular
+non-transactional acceptance will be performed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – Delivery tracking object for received message.</p></li>
+<li><p><strong>transaction</strong> – Transaction tracking object which is required if
+the message is being accepted under the transaction. If <code class="docutils literal notranslate"><span class="pre">None</span></code> (default),
+then a normal non-transactional accept occurs.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_accepted">
+<code class="sig-name descname">on_accepted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_accepted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer accepts an outgoing message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_connection_closed">
+<code class="sig-name descname">on_connection_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_connection_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the connection is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_connection_closing">
+<code class="sig-name descname">on_connection_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_connection_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the connection.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_connection_error">
+<code class="sig-name descname">on_connection_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_connection_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the connection with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="proton.html#proton.Event" title="proton.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Event</span></code></a>) – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_disconnected">
+<code class="sig-name descname">on_disconnected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_disconnected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the socket is disconnected.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_link_closed">
+<code class="sig-name descname">on_link_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_link_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the link is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_link_closing">
+<code class="sig-name descname">on_link_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_link_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_link_error">
+<code class="sig-name descname">on_link_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_link_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the link with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_message">
+<code class="sig-name descname">on_message</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a message is received. The message itself can be
+obtained as a property on the event. For the purpose of
+referring to this message in further actions (e.g. if
+explicitly accepting it, the <code class="docutils literal notranslate"><span class="pre">delivery</span></code> should be used, also
+obtainable via a property on the event.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event. In particular, the message itself may
+be obtained by accessing <code class="docutils literal notranslate"><span class="pre">event.message</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_reactor_init">
+<code class="sig-name descname">on_reactor_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_reactor_init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop - the reactor - starts.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_rejected">
+<code class="sig-name descname">on_rejected</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_rejected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer rejects an outgoing message.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_released">
+<code class="sig-name descname">on_released</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_released" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer releases an outgoing message. Note
+that this may be in response to either the RELEASE or MODIFIED
+state as defined by the AMQP specification.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_sendable">
+<code class="sig-name descname">on_sendable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_sendable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the sender link has credit and messages can
+therefore be transferred.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_session_closed">
+<code class="sig-name descname">on_session_closed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_session_closed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the session is closed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_session_closing">
+<code class="sig-name descname">on_session_closing</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_session_closing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer initiates the closing of the session.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_session_error">
+<code class="sig-name descname">on_session_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_session_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the peer closes the session with an error condition.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_settled">
+<code class="sig-name descname">on_settled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_settled" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the remote peer has settled the outgoing
+message. This is the point at which it should never be
+retransmitted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_start">
+<code class="sig-name descname">on_start</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the event loop starts. (Just an alias for on_reactor_init)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transaction_aborted">
+<code class="sig-name descname">on_transaction_aborted</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transaction_aborted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is discharged unsuccessfully
+(aborted).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transaction_commit_failed">
+<code class="sig-name descname">on_transaction_commit_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transaction_commit_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the commit of a local transaction fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transaction_committed">
+<code class="sig-name descname">on_transaction_committed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transaction_committed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is discharged successfully
+(committed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transaction_declare_failed">
+<code class="sig-name descname">on_transaction_declare_failed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transaction_declare_failed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction declare fails.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transaction_declared">
+<code class="sig-name descname">on_transaction_declared</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transaction_declared" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when a local transaction is declared.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event. In particular, the <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+object may be obtained by accessing <code class="docutils literal notranslate"><span class="pre">event.transaction</span></code>.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_transport_error">
+<code class="sig-name descname">on_transport_error</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_transport_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when some error is encountered with the transport over
+which the AMQP connection is to be established. This includes
+authentication errors as well as socket errors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> – The underlying event object. Use this to obtain further
+information on the event.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.on_unhandled">
+<code class="sig-name descname">on_unhandled</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">method</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.on_unhandled" title="Permalink to this definition">¶</a></dt>
+<dd><p>The callback for handling events which are not handled by
+any other handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>method</strong> – The name of the intended handler method.</p></li>
+<li><p><strong>args</strong> – Arguments for the intended handler method.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.reject">
+<code class="sig-name descname">reject</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rejects a received message that is considered invalid or
+unprocessable.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – The message delivery tracking object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.release">
+<code class="sig-name descname">release</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">delivered</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Releases a received message, making it available at the source
+for any (other) interested receiver. The <code class="docutils literal notranslate"><span class="pre">delivered</span></code>
+parameter indicates whether this should be considered a
+delivery attempt (and the delivery count updated) or not.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This method cannot currently be used in combination
+with transactions. See <a class="reference internal" href="proton.reactor.html#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.reactor.Transaction</span></code></a>
+for transactional methods.</p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>delivered</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, the message will be annotated
+with a delivery attempt (setting delivery flag
+<a class="reference internal" href="proton.html#proton.Delivery.MODIFIED" title="proton.Delivery.MODIFIED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.MODIFIED</span></code></a>). Otherwise, the message
+will be returned without the annotation and released (setting
+delivery flag <a class="reference internal" href="proton.html#proton.Delivery.RELEASED" title="proton.Delivery.RELEASED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Delivery.RELEASED</span></code></a></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.TransactionalClientHandler.settle">
+<code class="sig-name descname">settle</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em>, <em class="sig-param"><span class="n">state</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>DispositionType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.handlers.TransactionalClientHandler.settle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Settles the message delivery, and optionally updating the
+delivery state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delivery</strong> – The message delivery tracking object</p></li>
+<li><p><strong>state</strong> – The delivery state, or <code class="docutils literal notranslate"><span class="pre">None</span></code> if no update
+is to be performed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.handlers.Reject">
+<em class="property">class </em><code class="sig-prename descclassname">proton.handlers.</code><code class="sig-name descname">Reject</code><a class="reference internal" href="_modules/proton/_handlers.html#Reject"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.Reject" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._exceptions.ProtonException</span></code></p>
+<p>An exception that indicates a message should be rejected.</p>
+<dl class="py attribute">
+<dt id="proton.handlers.Reject.args">
+<code class="sig-name descname">args</code><a class="headerlink" href="#proton.handlers.Reject.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.Reject.with_traceback">
+<code class="sig-name descname">with_traceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.Reject.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.handlers.Release">
+<em class="property">class </em><code class="sig-prename descclassname">proton.handlers.</code><code class="sig-name descname">Release</code><a class="reference internal" href="_modules/proton/_handlers.html#Release"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.handlers.Release" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._exceptions.ProtonException</span></code></p>
+<p>An exception that indicates a message should be released.</p>
+<dl class="py attribute">
+<dt id="proton.handlers.Release.args">
+<code class="sig-name descname">args</code><a class="headerlink" href="#proton.handlers.Release.args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.handlers.Release.with_traceback">
+<code class="sig-name descname">with_traceback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#proton.handlers.Release.with_traceback" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exception.with_traceback(tb) –
+set self.__traceback__ to tb and return self.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module <code class="docutils literal notranslate"><span class="pre">proton.handlers</span></code></a><ul>
+<li><a class="reference internal" href="#module-summary">Module Summary</a><ul>
+<li><a class="reference internal" href="#exceptions">Exceptions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-detail">Module Detail</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="proton.html"
+                        title="previous chapter">Module <code class="docutils literal notranslate"><span class="pre">proton</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proton.reactor.html"
+                        title="next chapter">Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/proton.handlers.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="proton.reactor.html" title="Module proton.reactor"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="proton.html" title="Module proton"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.36.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.handlers</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>

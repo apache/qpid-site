@@ -1,0 +1,244 @@
+
+<h1>flow_control.cpp</h1>
+<div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&quot;options.hpp&quot;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/connection_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/listen_handler.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/listener.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/receiver_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/sender.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;proton/tracker.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;sstream&gt;</span><span class="cp"></span>
+
+
+<span class="k">namespace</span> <span class="p">{</span>
+
+<span class="kt">bool</span> <span class="n">verbose</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+
+<span class="kt">void</span> <span class="nf">verify</span><span class="p">(</span><span class="kt">bool</span> <span class="n">success</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">success</span><span class="p">)</span>
+        <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;example failure:&quot;</span> <span class="o">+</span> <span class="n">msg</span><span class="p">);</span>
+    <span class="k">else</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;success: &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">msg</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="c1">// flow_sender manages the incoming connection and acts as the message sender.</span>
+<span class="k">class</span> <span class="nc">flow_sender</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
+  <span class="k">private</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">available</span><span class="p">;</span>  <span class="c1">// Number of messages the sender may send assuming sufficient credit.</span>
+    <span class="kt">int</span> <span class="n">sequence</span><span class="p">;</span>
+
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">flow_sender</span><span class="p">()</span> <span class="o">:</span> <span class="n">available</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sequence</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">send_available_messages</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">sequence</span><span class="p">;</span> <span class="n">available</span> <span class="o">&amp;&amp;</span> <span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">mbody</span><span class="p">;</span>
+            <span class="n">mbody</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_sender message &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">sequence</span><span class="o">++</span><span class="p">;</span>
+            <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="n">m</span><span class="p">(</span><span class="n">mbody</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+            <span class="n">s</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">m</span><span class="p">);</span>
+            <span class="n">available</span><span class="o">--</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_sendable</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_sender in </span><span class="se">\&quot;</span><span class="s">on_sendable</span><span class="se">\&quot;</span><span class="s"> with credit &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span>
+                      <span class="o">&lt;&lt;</span> <span class="s">&quot; and &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">available</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; available messages&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">send_available_messages</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_sender_drain_start</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_sender in </span><span class="se">\&quot;</span><span class="s">on_drain_start</span><span class="se">\&quot;</span><span class="s"> with credit &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span>
+                      <span class="o">&lt;&lt;</span> <span class="s">&quot; and &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">available</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; available messages&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">send_available_messages</span><span class="p">(</span><span class="n">s</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">s</span><span class="p">.</span><span class="n">credit</span><span class="p">())</span> <span class="p">{</span>
+            <span class="n">s</span><span class="p">.</span><span class="n">return_credit</span><span class="p">();</span> <span class="c1">// return the rest</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">set_available</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span> <span class="n">available</span> <span class="o">=</span> <span class="n">n</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">flow_receiver</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
+  <span class="k">public</span><span class="o">:</span>
+    <span class="kt">int</span> <span class="n">stage</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">received</span><span class="p">;</span>
+    <span class="n">flow_sender</span> <span class="o">&amp;</span><span class="n">sender</span><span class="p">;</span>
+
+    <span class="n">flow_receiver</span><span class="p">(</span><span class="n">flow_sender</span> <span class="o">&amp;</span><span class="n">s</span><span class="p">)</span> <span class="o">:</span> <span class="n">stage</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">received</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">sender</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">example_setup</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">received</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="n">sender</span><span class="p">.</span><span class="n">set_available</span><span class="p">(</span><span class="n">n</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">run_stage</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">,</span> <span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">string</span> <span class="o">&amp;</span><span class="n">caller</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Serialize the progression of the flow control examples.</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">stage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example 1.  Simple use of credit.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="c1">// TODO: add timeout callbacks, show no messages until credit.</span>
+            <span class="n">example_setup</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">r</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+            <span class="n">verify</span><span class="p">(</span><span class="n">received</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&quot;Example 1: simple credit&quot;</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example 2.   Use basic drain, sender has 3 </span><span class="se">\&quot;</span><span class="s">immediate</span><span class="se">\&quot;</span><span class="s"> messages.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">example_setup</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span> <span class="c1">// ask for up to 5</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">drain</span><span class="p">();</span>       <span class="c1">// but only use what&#39;s available</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">caller</span> <span class="o">==</span> <span class="s">&quot;on_message&quot;</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">caller</span> <span class="o">==</span> <span class="s">&quot;on_receiver_drain_finish&quot;</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Note that unused credit of 2 at sender is returned and is now 0.</span>
+                <span class="n">verify</span><span class="p">(</span><span class="n">received</span> <span class="o">==</span> <span class="mi">3</span> <span class="o">&amp;&amp;</span> <span class="n">r</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example 2: basic drain&quot;</span><span class="p">);</span>
+
+                <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example 3. Drain use with no credit.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                <span class="n">example_setup</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+                <span class="n">r</span><span class="p">.</span><span class="n">drain</span><span class="p">();</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="n">verify</span><span class="p">(</span><span class="nb">false</span><span class="p">,</span> <span class="s">&quot;example 2 run_stage&quot;</span><span class="p">);</span>
+            <span class="k">return</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+            <span class="n">verify</span><span class="p">(</span><span class="n">caller</span> <span class="o">==</span> <span class="s">&quot;on_receiver_drain_finish&quot;</span> <span class="o">&amp;&amp;</span> <span class="n">received</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example 3: drain without credit&quot;</span><span class="p">);</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span> <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;Example 4. Show using high(10)/low(3) watermark for 25 messages.&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+            <span class="n">example_setup</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">received</span> <span class="o">&lt;</span> <span class="mi">25</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// Top up credit as needed.</span>
+                <span class="kt">uint32_t</span> <span class="n">credit</span> <span class="o">=</span> <span class="n">r</span><span class="p">.</span><span class="n">credit</span><span class="p">();</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">credit</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="kt">uint32_t</span> <span class="n">new_credit</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+                    <span class="kt">uint32_t</span> <span class="n">remaining</span> <span class="o">=</span> <span class="mi">25</span> <span class="o">-</span> <span class="n">received</span><span class="p">;</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">new_credit</span> <span class="o">&gt;</span> <span class="n">remaining</span><span class="p">)</span>
+                        <span class="n">new_credit</span> <span class="o">=</span> <span class="n">remaining</span><span class="p">;</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">new_credit</span> <span class="o">&gt;</span> <span class="n">credit</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">r</span><span class="p">.</span><span class="n">add_credit</span><span class="p">(</span><span class="n">new_credit</span> <span class="o">-</span> <span class="n">credit</span><span class="p">);</span>
+                        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+                            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_receiver adding credit for &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">new_credit</span> <span class="o">-</span> <span class="n">credit</span>
+                                      <span class="o">&lt;&lt;</span> <span class="s">&quot; messages&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">return</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="n">verify</span><span class="p">(</span><span class="n">received</span> <span class="o">==</span> <span class="mi">25</span> <span class="o">&amp;&amp;</span> <span class="n">r</span><span class="p">.</span><span class="n">credit</span><span class="p">()</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="s">&quot;Example 4: high/low watermark&quot;</span><span class="p">);</span>
+            <span class="n">r</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">close</span><span class="p">();</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="k">default</span><span class="o">:</span>
+            <span class="k">throw</span> <span class="n">std</span><span class="o">::</span><span class="n">runtime_error</span><span class="p">(</span><span class="s">&quot;run_stage sequencing error&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">stage</span><span class="o">++</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_receiver_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">run_stage</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s">&quot;on_receiver_open&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_message</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">delivery</span> <span class="o">&amp;</span><span class="n">d</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">message</span> <span class="o">&amp;</span><span class="n">m</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_receiver in </span><span class="se">\&quot;</span><span class="s">on_message</span><span class="se">\&quot;</span><span class="s"> with &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">m</span><span class="p">.</span><span class="n">body</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">.</span><span class="n">receiver</span><span class="p">());</span>
+        <span class="n">received</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">run_stage</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s">&quot;on_message&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_receiver_drain_finish</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span> <span class="o">&amp;</span><span class="n">r</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">verbose</span><span class="p">)</span>
+            <span class="n">std</span><span class="o">::</span><span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;flow_receiver in </span><span class="se">\&quot;</span><span class="s">on_receiver_drain_finish</span><span class="se">\&quot;</span><span class="s">&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+        <span class="n">run_stage</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="s">&quot;on_receiver_drain_finish&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">flow_listener</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">listen_handler</span> <span class="p">{</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">connection_options</span> <span class="n">opts</span><span class="p">;</span>
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">flow_listener</span><span class="p">(</span><span class="n">flow_sender</span><span class="o">&amp;</span> <span class="n">sh</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">opts</span><span class="p">.</span><span class="n">handler</span><span class="p">(</span><span class="n">sh</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">listener</span><span class="o">&amp;</span> <span class="n">l</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">ostringstream</span> <span class="n">url</span><span class="p">;</span>
+        <span class="n">url</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;//:&quot;</span> <span class="o">&lt;&lt;</span> <span class="n">l</span><span class="p">.</span><span class="n">port</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="s">&quot;/example&quot;</span><span class="p">;</span> <span class="c1">// Connect to the actual listening port</span>
+        <span class="n">l</span><span class="p">.</span><span class="n">container</span><span class="p">().</span><span class="n">connect</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="n">str</span><span class="p">());</span>
+    <span class="p">}</span>
+
+    <span class="n">proton</span><span class="o">::</span><span class="n">connection_options</span> <span class="n">on_accept</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">listener</span><span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span> <span class="k">return</span> <span class="n">opts</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="k">class</span> <span class="nc">flow_control</span> <span class="o">:</span> <span class="k">public</span> <span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span> <span class="p">{</span>
+  <span class="k">private</span><span class="o">:</span>
+    <span class="n">proton</span><span class="o">::</span><span class="n">listener</span> <span class="n">listener</span><span class="p">;</span>
+    <span class="n">flow_sender</span> <span class="n">send_handler</span><span class="p">;</span>
+    <span class="n">flow_receiver</span> <span class="n">receive_handler</span><span class="p">;</span>
+    <span class="n">flow_listener</span> <span class="n">listen_handler</span><span class="p">;</span>
+
+  <span class="k">public</span><span class="o">:</span>
+    <span class="n">flow_control</span><span class="p">()</span> <span class="o">:</span> <span class="n">receive_handler</span><span class="p">(</span><span class="n">send_handler</span><span class="p">),</span> <span class="n">listen_handler</span><span class="p">(</span><span class="n">send_handler</span><span class="p">)</span> <span class="p">{}</span>
+
+    <span class="kt">void</span> <span class="n">on_container_start</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="c1">// Listen on a dynamic port on the local host.</span>
+        <span class="n">listener</span> <span class="o">=</span> <span class="n">c</span><span class="p">.</span><span class="n">listen</span><span class="p">(</span><span class="s">&quot;//:0&quot;</span><span class="p">,</span> <span class="n">listen_handler</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_connection_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">connection</span> <span class="o">&amp;</span><span class="n">c</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="n">active</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">// outbound connection</span>
+            <span class="n">c</span><span class="p">.</span><span class="n">open_receiver</span><span class="p">(</span><span class="s">&quot;flow_example&quot;</span><span class="p">,</span> <span class="n">proton</span><span class="o">::</span><span class="n">receiver_options</span><span class="p">().</span><span class="n">handler</span><span class="p">(</span><span class="n">receive_handler</span><span class="p">).</span><span class="n">credit_window</span><span class="p">(</span><span class="mi">0</span><span class="p">));</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">void</span> <span class="n">on_connection_close</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">connection</span> <span class="o">&amp;</span><span class="p">)</span> <span class="k">override</span> <span class="p">{</span>
+        <span class="n">listener</span><span class="p">.</span><span class="n">stop</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Pick an &quot;unusual&quot; port since we are going to be talking to</span>
+    <span class="c1">// ourselves, not a broker.</span>
+    <span class="kt">bool</span> <span class="n">quiet</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+    <span class="n">example</span><span class="o">::</span><span class="n">options</span> <span class="n">opts</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
+    <span class="n">opts</span><span class="p">.</span><span class="n">add_flag</span><span class="p">(</span><span class="n">quiet</span><span class="p">,</span> <span class="sc">&#39;q&#39;</span><span class="p">,</span> <span class="s">&quot;quiet&quot;</span><span class="p">,</span> <span class="s">&quot;suppress additional commentary of credit allocation and consumption&quot;</span><span class="p">);</span>
+
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="n">opts</span><span class="p">.</span><span class="n">parse</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">quiet</span><span class="p">)</span>
+            <span class="n">verbose</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+
+        <span class="n">flow_control</span> <span class="n">fc</span><span class="p">;</span>
+        <span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">fc</span><span class="p">).</span><span class="n">run</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="k">const</span> <span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">std</span><span class="o">::</span><span class="n">cerr</span> <span class="o">&lt;&lt;</span> <span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span> <span class="o">&lt;&lt;</span> <span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="flow_control.cpp">Download this file</a></p>
