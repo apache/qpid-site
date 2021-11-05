@@ -93,6 +93,7 @@ Start a broker. Then:
 
 
 `<test-name>` may be one of:
+
 * `amqp-types-test` - a test of AMQP simple types
 * `amqp-complex-types-test` - a test of AMQP complex types (arrays, lists, maps)
 * `amqp-large-content-test` - a test of variable-size types using large content (up to 10MB)
