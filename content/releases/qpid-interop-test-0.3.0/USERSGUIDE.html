@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>USER GUIDE - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-interop-test-0.3.0/index.html">Qpid Interop Test 0.3.0</a></li><li>USER GUIDE</li></ul>
+
+        <div id="-middle-content">
+          <!--
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+
+-->
+
+<h1 id="user-guide">USER GUIDE</h1>
+
+<h2 id="1-introduction">1. Introduction</h2>
+
+<p>Qpid Interop Test is an AMQP client interoperability test suite. It tests
+various aspects of the AMQP protocol and/or test client features against
+each other to ensure that they can interoperate.</p>
+
+<p>The test suite consists of tests and shims. Each test has a set of test-cases
+which make up the test. Each test case will pass or fail a specific feature
+or piece of functionality under test.</p>
+
+<p>Each test has a set of shims, which are small and specific clients which
+send and receive messages, and is written using one of the client libraries
+under test. To obtain both self- and interoperability testing, each test
+program will run each shim against itself and every other shim in the role
+of both sender and receiver. It is possible to control the active shims
+at the time of running the test through the use of command-line options.</p>
+
+<h2 id="2-overview-of-build-process">2. Overview of Build Process</h2>
+
+<p>You must build and install qpid-interop-test before you can run the tests.
+The process follows the traditional steps:</p>
+
+<ul>
+<li>Install prerequisites</li>
+<li>Install source</li>
+<li>Cmake / make / sudo make install</li>
+<li>Start a test broker against which to run the tests</li>
+<li>Run the tests</li>
+</ul>
+
+<p>or using containers:</p>
+
+<ul>
+<li>podman build</li>
+<li>podman run</li>
+<li>Run test in container</li>
+</ul>
+
+<h2 id="3-obtaining">3. Obtaining</h2>
+
+<p>Qpid Interop Test is an Apache Qpid project.</p>
+
+<p>Web page: <a href="https://qpid.apache.org/components/interop-test/index.html">https://qpid.apache.org/components/interop-test/index.html</a></p>
+
+<p>Download soruce: <a href="https://qpid.apache.org/download.html">https://qpid.apache.org/download.html</a></p>
+
+<p>Git: <a href="https://github.com/apache/qpid-interop-test.git">https://github.com/apache/qpid-interop-test.git</a></p>
+
+<h2 id="4-build-prerequisites">4. Build Prerequisites</h2>
+
+<p>Qpid Interop Test should build and run on any reasonably recent distribution
+of Linux for which the prerequisite packages listed below are available.</p>
+
+<p>By default, qpid-interop-test will install to <code>/usr/local</code> (and will thus also
+require root privileges), but you can use any non-privileged directory as the
+install prefix using the cmake <code>--CMAKE_INSTALL_PREFIX</code> option, for
+example <code>${HOME}/install</code> or <code>/tmp/qit</code>.</p>
+
+<p>The following packages are needed to build qpid-interop-test (and the packages names):</p>
+
+<table>
+<thead>
+<tr>
+  <th>Tool</th>
+  <th></th>
+  <th>Fedora 34 &amp; CentOS 8</th>
+  <th></th>
+  <th>Ubuntu Focal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Git</td>
+  <td></td>
+  <td><code>git</code></td>
+  <td></td>
+  <td><code>git</code></td>
+</tr>
+<tr>
+  <td>Make</td>
+  <td></td>
+  <td><code>make</code></td>
+  <td></td>
+  <td><code>make</code></td>
+</tr>
+<tr>
+  <td>Cmake</td>
+  <td></td>
+  <td><code>cmake</code></td>
+  <td></td>
+  <td><code>cmake</code></td>
+</tr>
+<tr>
+  <td>GNU C++ compiler</td>
+  <td></td>
+  <td><code>gcc-c++</code></td>
+  <td></td>
+  <td><code>build-essential</code></td>
+</tr>
+<tr>
+  <td>JSON C++ (devel)</td>
+  <td></td>
+  <td><code>jsoncpp-devel</code></td>
+  <td></td>
+  <td><code>libjsoncpp-dev</code></td>
+</tr>
+<tr>
+  <td>Python 3 (devel)</td>
+  <td></td>
+  <td><code>python3-devel</code></td>
+  <td></td>
+  <td><code>python3-dev</code></td>
+</tr>
+<tr>
+  <td>Maven</td>
+  <td></td>
+  <td><code>maven</code></td>
+  <td></td>
+  <td><code>maven</code></td>
+</tr>
+<tr>
+  <td>Java 11 (devel)</td>
+  <td></td>
+  <td><code>java-11-openjdk-devel</code></td>
+  <td></td>
+  <td><code>openjdk-11-jdk</code></td>
+</tr>
+<tr>
+  <td>Qpid Proton C++ (devel)</td>
+  <td></td>
+  <td><code>qpid-proton-cpp-devel</code></td>
+  <td></td>
+  <td><code>libqpid-proton-cpp12-dev</code><sup>1</sup></td>
+</tr>
+<tr>
+  <td>Qpid Python 3 bindings</td>
+  <td></td>
+  <td><code>python3-qpid-proton</code></td>
+  <td></td>
+  <td><code>python3-qpid-proton</code><sup>1</sup></td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Must have <code>ppa:qpid/testing</code> added to repository list to install these packages. See <a href="USERGUIDE.html#43-ubuntu-focal">4.3 Ubuntu Focal</a> below for more detail.
+</small></p>
+
+<p>The following are not required, but if installed and present, will be tested:</p>
+
+<ul>
+<li>Rhea, a JavaScript AMQP client (https://github.com/amqp/rhea.git)</li>
+<li>.NET SDK 5.0 (https://docs.microsoft.com/en-us/dotnet/core/install/linux)</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>Tool</th>
+  <th></th>
+  <th>Fedora 34 &amp; CentOS 8</th>
+  <th></th>
+  <th>Ubuntu Focal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>node-js (devel)<sup>1</sup></td>
+  <td></td>
+  <td><code>nodejs-devel</code></td>
+  <td></td>
+  <td><code>libnode-dev</code></td>
+</tr>
+<tr>
+  <td>.NET SDK 5.0<sup>2</sup></td>
+  <td></td>
+  <td><code>dotnet-sdk-5.0</code></td>
+  <td></td>
+  <td><code>aspnetcore-runtime-5.0</code><sup>3</sup></td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Required to run Rhea Javascript client.<br>
+2: Required to run Amqp DotNet Lite client.<br>
+3: Must have <code>packages-microsoft-prod.deb</code> installed from Microsoft to install this package.
+</small></p>
+
+<p>In addition, if you wish to run the tests against a local broker on the build machine,
+it will be necessary to install one. One of the following may be installed and started:</p>
+
+<ul>
+<li>Artemis Java broker (https://activemq.apache.org/components/artemis/download/)</li>
+<li>Qpid Dispatch router, which may be used as a single node, or as part of a
+routed configuration. This is available in many distributions as a package.
+(https://qpid.apache.org/components/dispatch-router/index.html)</li>
+</ul>
+
+<table>
+<thead>
+<tr>
+  <th>Tool</th>
+  <th></th>
+  <th>Fedora 34 &amp; CentOS 8</th>
+  <th></th>
+  <th>Ubuntu Focal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Qpid Dispatch Router</td>
+  <td></td>
+  <td><code>qpid-dispatch-router</code></td>
+  <td></td>
+  <td><code>qdrouterd</code><sup>1</sup></td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Must have <code>ppa:qpid/testing</code> added to repository list to install these packages. See <a href="USERGUIDE.html#43-ubuntu-focal">4.3 Ubuntu Focal</a> below for more detail.
+</small></p>
+
+<p>Any AMQP 1.0 broker should work.</p>
+
+<p><strong>NOTE:</strong> Tests can also be run against a remote broker provided the broker IP address is
+known. This is achieved by using the <code>--sender &lt;addr[:port]&gt;</code> and
+<code>--receiver &lt;addr[:port]&gt;</code> options with each test.</p>
+
+<h3 id="41-fedora-34">4.1 Fedora 34</h3>
+
+<p>Make sure the following packages are installed:</p>
+
+<pre><code>sudo dnf install -y git make cmake gcc-c++ jsoncpp-devel python3-devel maven java-11-openjdk-devel qpid-proton-cpp-devel python3-qpid-proton
+</code></pre>
+
+<p>To use the optional javascript shims:</p>
+
+<pre><code>sudo dnf install -y nodejs-devel
+</code></pre>
+
+<p>To use the optional dotnet shims:</p>
+
+<pre><code>sudo dnf install -y dotnet-sdk-5.0
+</code></pre>
+
+<p>To install Qpid Dispatch Router as a broker:</p>
+
+<pre><code>sudo dnf install -y qpid-dispatch-router
+</code></pre>
+
+<h3 id="42-centos-8">4.2 CentOS 8</h3>
+
+<p>Install EPEL repository, then make sure the following packages are installed:</p>
+
+<pre><code>sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+sudo dnf install -y git make cmake gcc-c++ jsoncpp-devel python3-devel maven java-11-openjdk-devel qpid-proton-cpp-devel python3-qpid-proton
+</code></pre>
+
+<p>To use the optional javascript shims:</p>
+
+<pre><code>sudo dnf install -y nodejs-devel
+</code></pre>
+
+<p>To use the optional dotnet shims:</p>
+
+<pre><code>sudo dnf install -y dotnet-sdk-5.0
+</code></pre>
+
+<p>To install Qpid Dispatch Router as a broker:</p>
+
+<pre><code>sudo dnf install -y qpid-dispatch-router
+</code></pre>
+
+<p>CentOS 8 installs Java 8 with maven, and makes it the default. To switch the default to Java 11:</p>
+
+<pre><code>JAVA_11=$(alternatives --display java | grep 'family java-11-openjdk' | cut -d' ' -f1) &amp;&amp; sudo alternatives --set java ${JAVA_11}
+JAVAC_11=$(alternatives --display javac | grep 'family java-11-openjdk' | cut -d' ' -f1) &amp;&amp; sudo alternatives --set javac ${JAVAC_11}
+export JAVA_HOME=$(dirname $(dirname $(alternatives --display javac | grep 'javac' | grep 'link' | awk '{print $NF}')))
+</code></pre>
+
+<p>Verify the java version:</p>
+
+<pre><code>java -version
+javac -version
+echo ${JAVA_HOME}
+</code></pre>
+
+<p>To install Qpid Dispatch Router as a broker:</p>
+
+<pre><code>sudo dnf install -y qpid-dispatch-router
+</code></pre>
+
+<h3 id="43-ubuntu-focal">4.3 Ubuntu Focal</h3>
+
+<p>Make sure the following packages are installed:</p>
+
+<pre><code>sudo apt-get install -y git make cmake build-essential libjsoncpp-dev python3-dev maven openjdk-11-jdk software-properties-common
+</code></pre>
+
+<p>Add the Qpid PPA to allow installation of latest Qpid packages:</p>
+
+<pre><code>sudo add-apt-repository ppa:qpid/testing
+sudo apt-get update
+sudo apt-get install -y libqpid-proton-cpp12-dev python3-qpid-proton
+</code></pre>
+
+<p>To use the optional javascript shims:</p>
+
+<pre><code>sudo apt-get install -y libnode-dev
+</code></pre>
+
+<p>To use the optional dotnet shims (not an Ubuntu package, must download from Microsoft):</p>
+
+<pre><code>sudo apt-get install -y wget apt-transport-https
+wget https://packages.microsoft.com/config/ubuntu/21.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+sudo dpkg -i packages-microsoft-prod.deb
+sudo apt-get update
+sudo apt-get install -y aspnetcore-runtime-5.0
+</code></pre>
+
+<p>To install Qpid Dispatch Router as a broker:</p>
+
+<pre><code>sudo apt-get install -y qdrouterd
+</code></pre>
+
+<h2 id="5-install-source-and-build">5. Install Source and Build</h2>
+
+<p>This section describes building from source. To use containers, see [5. Containers] below.
+To use the optional javascript shims, install Rhea source. This should be done before cmake
+is run so that the source can be discovered and installed:</p>
+
+<pre><code>git clone https://github.com/amqp/rhea.git
+</code></pre>
+
+<p>Install Qpid Interop Test source:</p>
+
+<pre><code>git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
+</code></pre>
+
+<p>Build and install Qpid Interop Test:</p>
+
+<pre><code>cd qpid-interop-test &amp;&amp; mkdir build &amp;&amp; cd build
+cmake ..
+make
+sudo make install
+</code></pre>
+
+<p>NOTE: Qpid Interop Test will install into <code>/usr/local</code> by default. If you wish to
+change to another non-privileged location, use <code>--CMAKE_INSTALL_PREFIX</code> with
+cmake in the above sequence as follows:</p>
+
+<pre><code>cmake --CMAKE_INSTALL_PREFIX=&lt;abs-path-to-location&gt; ..
+</code></pre>
+
+<h2 id="6-run-the-tests">6. Run the Tests</h2>
+
+<p>The Qpid Interop Test entry point is <code>/usr/local/bin/qpid-interop-test</code>
+by default, or if an alternate location was specified,
+<code>&lt;CMAKE_INSTALL_PREFIX&gt;/usr/local/bin/qpid-interop-test</code>. If an alternate location
+was used, you will need to make sure that this directory is in the path.</p>
+
+<h3 id="61-start-a-broker">6.1 Start a Broker</h3>
+
+<p>Make sure an AMQP broker is running. Typically, the broker is run locally, but
+it may also be remote, provided it is accessible on the network.</p>
+
+<p>If you are using the dispatch router as a local broker as installed above,
+start it as follows:</p>
+
+<pre><code>sudo /sbin/qdrouterd --daemon
+</code></pre>
+
+<h3 id="62-run-the-tests-local-broker">6.2 Run the tests (local broker)</h3>
+
+<p>Run the tests by executing <code>qpid-interop-test test-name [test-options...]</code>.</p>
+
+<p>For example, to run all tests:</p>
+
+<pre><code>qpid-interop-test all
+</code></pre>
+
+<p>The following tests are available (see section 4.3 below):</p>
+
+<ul>
+<li><code>amqp-types-test</code> - a test of AMQP simple types</li>
+<li><code>amqp-complex-types-test</code> - a test of AMQP complex types (arrays, lists, maps)</li>
+<li><code>amqp-large-content-test</code> - a test of variable-size types using large content (up to 10MB)</li>
+<li><code>jms-messages-test</code> - a test of JMS message types as implemented by qpid-jms</li>
+<li><code>jms-hdrs-props-test</code> - a test of user-definable message headers and properties as implemented by qpid-jms.</li>
+<li><code>all</code> - run all the above tests sequentially. NOTE: when using this, any test options will be passed to all tests, so only those common to all tests may be used.</li>
+</ul>
+
+<p>For help on tests that can be run and options, run:</p>
+
+<pre><code>qpid-interop-test --help
+</code></pre>
+
+<p>For help on an individual test, run:</p>
+
+<pre><code>qpid-interop-test &lt;test-name&gt; --help
+</code></pre>
+
+<p>For help on all tests: run:</p>
+
+<pre><code>qpid-interop-test all --help
+</code></pre>
+
+<h3 id="63-output">6.3 Output</h3>
+
+<p>Tests will show each test case, followed by <code>ok</code> if the test passes or <code>FAIL</code> if it fails.
+When all tests have completed, all failed tests will be listed with a failure message and
+stack trace.</p>
+
+<p>Some tests will be skipped if they fail because of a known error in either the broker or
+the client. This prevents known failure cases from failing the test. For example, the
+following test is skipped because of a known Proton issue:</p>
+
+<pre><code>test_list_decimal32_ProtonCpp-&gt;ProtonCpp (__main__.ListTestCase) ... skipped 'BROKER: decimal32 and decimal64 sent byte reversed: PROTON-1160'
+</code></pre>
+
+<p>Each skipped tests references a JIRA issue number and which will usually refer to the
+<a href="https://issues.apache.org/jira">Apache Qpid JIRA</a>.</p>
+
+<h3 id="64-available-tests-and-their-options">6.4 Available Tests and their Options</h3>
+
+<p>The following tests and shims are available:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Test</th>
+  <th></th>
+  <th>Qpid Proton Python 3</th>
+  <th></th>
+  <th>Qpid C++</th>
+  <th></th>
+  <th>AmqpNetLite (.NET)</th>
+  <th></th>
+  <th>Rhea (Javascript)</th>
+  <th></th>
+  <th>Qpid JMS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>amqp-types-test</code></td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><code>amqp-complex-types-test</code></td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><code>amqp-large-content-test</code></td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>&nbsp;</td>
+</tr>
+<tr>
+  <td><code>jms-messages-test</code></td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Y</td>
+</tr>
+<tr>
+  <td><code>jms-hdrs-props-test</code></td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td>Y</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Y</td>
+</tr>
+</tbody>
+</table>
+
+<ul>
+<li>Missing shims will be added in future releases.</li>
+<li>The Qpid JMS client is incompatible with the AMQP types tests. However, the other clients can format messages that will be accepted by the JMS client.</li>
+</ul>
+
+<h4 id="641-options-common-to-all-tests">6.4.1 Options Common to All Tests</h4>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Default</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--sender</code></td>
+  <td></td>
+  <td><code>localhost:5672</code></td>
+  <td></td>
+  <td>IP address of node to which test suite will send messages.</td>
+</tr>
+<tr>
+  <td><code>--receiver</code></td>
+  <td></td>
+  <td><code>localhost:5672</code></td>
+  <td></td>
+  <td>IP address of node from which test suite will receive messages.</td>
+</tr>
+<tr>
+  <td><code>--no-skip</code></td>
+  <td></td>
+  <td>False</td>
+  <td></td>
+  <td>Do not skip tests that are excluded by default for reasons of a known bug.</td>
+</tr>
+<tr>
+  <td><code>--broker-type</code></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Disable test of broker type (using connection properties) by specifying the broker name.</td>
+</tr>
+<tr>
+  <td><code>--timeout</code></td>
+  <td></td>
+  <td>20 (amqp-large-content-test 300)</td>
+  <td></td>
+  <td>Timeout for test in seconds. If test is not complete in this time, it will be terminated.</td>
+</tr>
+<tr>
+  <td><code>--include-shim</code><sup>1</sup></td>
+  <td></td>
+  <td>All available shims</td>
+  <td></td>
+  <td>Name of shim to include. See table of shim names below.</td>
+</tr>
+<tr>
+  <td><code>--exclude-shim</code><sup>1</sup></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Name of shim to exclude from available shims. See table of shim names below.</td>
+</tr>
+<tr>
+  <td><code>--xunit-log</code></td>
+  <td></td>
+  <td>False</td>
+  <td></td>
+  <td>Enable xUnit logging of test results.</td>
+</tr>
+<tr>
+  <td><code>--xunit-log-dir</code></td>
+  <td></td>
+  <td><code>xunit_logs</code></td>
+  <td></td>
+  <td>Default xUnit log directory where xUnit logs are written relative to current directory.</td>
+</tr>
+<tr>
+  <td><code>--description</code></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Detailed description of test, used in xUnit logs.</td>
+</tr>
+<tr>
+  <td><code>--broker-topology</code></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>Detailed description of broker topology used in test, used in xUnit logs.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Mutually exclusive
+</small></p>
+
+<p>The following shims are supported:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>AmqpNetLite</code></td>
+  <td></td>
+  <td>.NET AmqpNetLite client</td>
+</tr>
+<tr>
+  <td><code>ProtonCpp</code></td>
+  <td></td>
+  <td>Proton C++ client</td>
+</tr>
+<tr>
+  <td><code>ProtonPython3</code></td>
+  <td></td>
+  <td>Proton Python 3 client</td>
+</tr>
+<tr>
+  <td><code>QpidJms</code></td>
+  <td></td>
+  <td>Qpid JMS client</td>
+</tr>
+<tr>
+  <td><code>RheaJs</code></td>
+  <td></td>
+  <td>Rhea Javascript client</td>
+</tr>
+</tbody>
+</table>
+
+<p>These options may be used when specifying <code>all</code> as the test name, as all the individual tests will accept them.</p>
+
+<h4 id="642-amqp-types-test">6.4.2 amqp-types-test</h4>
+
+<p>This test sends the simple AMQP types (i.e. types that are not container-like and do not include other AMQP types)
+as an AMQP value payload (section 3.2.7 of the
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html">AMQP 1.0 specification</a>. )</p>
+
+<p>In addition to the common options described above, the following options are available to this test:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--include-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to include. See table of AMQP simple types below. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--exclude-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to exclude. See table of AMQP simple types below. May be used multiple times.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Mutually exclusive
+</small></p>
+
+<p>Supported AMQP simple types are:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th></th>
+  <th>AMQP Type Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>null</code></td>
+  <td></td>
+  <td>Indicates an empty value.</td>
+</tr>
+<tr>
+  <td><code>boolean</code></td>
+  <td></td>
+  <td>Represents a true or false value.</td>
+</tr>
+<tr>
+  <td><code>ubyte</code></td>
+  <td></td>
+  <td>Integer in the range 0 to 2^8 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>ushort</code></td>
+  <td></td>
+  <td>Integer in the range 0 to 2^16 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>uint</code></td>
+  <td></td>
+  <td>Integer in the range 0 to 2^32 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>ulong</code></td>
+  <td></td>
+  <td>Integer in the range 0 to 2^64 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>byte</code></td>
+  <td></td>
+  <td>Integer in the range -(2^7) to 2^7 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>short</code></td>
+  <td></td>
+  <td>Integer in the range -(2^15) to 2^15 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>int</code></td>
+  <td></td>
+  <td>Integer in the range -(2^31) to 2^31 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>long</code></td>
+  <td></td>
+  <td>Integer in the range -(2^63) to 2^63 - 1 inclusive.</td>
+</tr>
+<tr>
+  <td><code>float</code></td>
+  <td></td>
+  <td>32-bit floating point number (IEEE 754-2008 binary32).</td>
+</tr>
+<tr>
+  <td><code>double</code></td>
+  <td></td>
+  <td>64-bit floating point number (IEEE 754-2008 binary64).</td>
+</tr>
+<tr>
+  <td><code>decimal32</code></td>
+  <td></td>
+  <td>32-bit decimal number (IEEE 754-2008 decimal32).</td>
+</tr>
+<tr>
+  <td><code>decimal64</code></td>
+  <td></td>
+  <td>64-bit decimal number (IEEE 754-2008 decimal64).</td>
+</tr>
+<tr>
+  <td><code>decimal128</code></td>
+  <td></td>
+  <td>128-bit decimal number (IEEE 754-2008 decimal128).</td>
+</tr>
+<tr>
+  <td><code>char</code></td>
+  <td></td>
+  <td>A single Unicode character (UTF-32BE).</td>
+</tr>
+<tr>
+  <td><code>timestamp</code></td>
+  <td></td>
+  <td>An absolute point in time using the Unix time_t [IEEE1003] encoding of UTC, but with a precision of milliseconds.</td>
+</tr>
+<tr>
+  <td><code>uuid</code></td>
+  <td></td>
+  <td>A universally unique identifier as defined by RFC-4122 section 4.1.2.</td>
+</tr>
+<tr>
+  <td><code>binary</code></td>
+  <td></td>
+  <td>A sequence of octets.</td>
+</tr>
+<tr>
+  <td><code>string</code></td>
+  <td></td>
+  <td>A sequence of Unicode characters as defined by the Unicode V6.0.0 standard.</td>
+</tr>
+<tr>
+  <td><code>symbol</code></td>
+  <td></td>
+  <td>Symbolic values from an application-defined constrained domain.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="643-amqp-complex-types-test">6.4.3 amqp-complex-types-test</h4>
+
+<p>This test sends the complex AMQP types (ie types that contain other AMQP types)
+as an AMQP value payload (section 3.2.7 of the
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html">AMQP 1.0 specification</a>. )</p>
+
+<p>In addition to the common options described above, the following options are available to this test:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--include-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to include. See table of AMQP complex types below. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--exclude-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to exclude. See table of AMQP complex types below. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--include-subtype</code><sup>2</sup></td>
+  <td></td>
+  <td>Name of AMQP subtype to include. See table of AMQP simple types above. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--exclude-subtype</code><sup>2</sup></td>
+  <td></td>
+  <td>Name of AMQP subtype to exclude. See table of AMQP simple types above. May be used multiple times.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: <code>--include-type</code> and <code>--exclude-type</code> are mutually exclusive<br>
+2: <code>--include-subtype</code> and <code>--exclude-subtype</code> are mutually exclusive
+</small></p>
+
+<p>Supported AMQP complex types are:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th></th>
+  <th>AMQP Type Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>array</code></td>
+  <td></td>
+  <td>A sequence of values of a single AMQP type.</td>
+</tr>
+<tr>
+  <td><code>list</code></td>
+  <td></td>
+  <td>A sequence of polymorphic AMQP values.</td>
+</tr>
+<tr>
+  <td><code>map</code></td>
+  <td></td>
+  <td>A polymorphic mapping from distinct keys to AMQP values.</td>
+</tr>
+</tbody>
+</table>
+
+<h4 id="644-amqp-large-content-test">6.4.4 amqp-large-content-test</h4>
+
+<p>This test is designed to stress clients and brokers with large messages
+as an AMQP value payload (section 3.2.7 of the
+<a href="http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-overview-v1.0-os.html">AMQP 1.0 specification</a>.
+AMQP extensible types are used to create large messages which are sent,
+received and compared.</p>
+
+<p>Owing to the large message size, this test has a default timeout of 300
+seconds per test. If this needs to be changed, use the <code>--timeout</code>
+option.</p>
+
+<p>In addition to the common options described above, the following options are available to this test:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--include-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to include. See list of AMQP extensible types below. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--exclude-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of AMQP type to exclude. See list of AMQP extensible types below. May be used multiple times.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Mutually exclusive
+</small></p>
+
+<p>Supported AMQP extensible types are <code>binary</code>, <code>string</code>, <code>symbol</code>, <code>list</code>
+and <code>map</code> (see above for descriptions). Currently, type <code>array</code> is not
+supported, but will be added in a future release.</p>
+
+<p>The message payload sizes are fixed at 1MB and 10MB. Currently there is no
+way to select or set payload size from the command-line. This will be added
+in a future release.</p>
+
+<h4 id="645-jms-messages-test">6.4.5 jms-messages-test</h4>
+
+<p>This test sends each of the JMS-defined message types.</p>
+
+<p>In addition to the common options described above, the following options are available to this test:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--include-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of JMS message type to include. See list of JMS message types below. May be used multiple times.</td>
+</tr>
+<tr>
+  <td><code>--exclude-type</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of JMS message type to exclude. See list of JMS message types below. May be used multiple times.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: Mutually exclusive
+</small></p>
+
+<p>The supported JMS message types are:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th></th>
+  <th>JMS Message Type Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>JMS_MESSAGE_TYPE</code></td>
+  <td></td>
+  <td>Base message type, usually without a message payload, but may contain headers and properties.</td>
+</tr>
+<tr>
+  <td><code>JMS_BYTESMESSAGE_TYPE</code></td>
+  <td></td>
+  <td>Payload is an array of bytes.</td>
+</tr>
+<tr>
+  <td><code>JMS_MAPMESSAGE_TYPE</code></td>
+  <td></td>
+  <td>Payload is a map of name-value pairs.</td>
+</tr>
+<tr>
+  <td><code>JMS_STREAMMESSAGE_TYPE</code></td>
+  <td></td>
+  <td>Sequence of primitive Java types.</td>
+</tr>
+<tr>
+  <td><code>JMS_TEXTMESSAGE_TYPE</code></td>
+  <td></td>
+  <td>Payload is a string.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The JMS Object message type is not currently supported for interoperability
+testing as it is dependent on Java to serialize objects, and which non-Java
+clients cannot easily support.</p>
+
+<h4 id="646-jms-hdrs-props-test">6.4.6 jms-hdrs-props-test</h4>
+
+<p>This test sends combinations of the JMS-defined user-settable message headers and
+user-defined message properties to a JMS message.</p>
+
+<p>In addition to the common options described above, the following options are available to this test:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Option</th>
+  <th></th>
+  <th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>--include-hdr</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of JMS header to include. See table of supported JMS headers below.</td>
+</tr>
+<tr>
+  <td><code>--exclude-hdr</code><sup>1</sup></td>
+  <td></td>
+  <td>Name of JMS header to exclude or <code>ALL</code> to exclude all header tests. See table of supported JMS headers below.</td>
+</tr>
+<tr>
+  <td><code>--include-prop</code><sup>2</sup></td>
+  <td></td>
+  <td>Name of JMS property type to include. See list of JMS property types below.</td>
+</tr>
+<tr>
+  <td><code>--exclude-prop</code><sup>2</sup></td>
+  <td></td>
+  <td>Name of JMS property type to exclude or <code>ALL</code> to exclude all property types.</td>
+</tr>
+</tbody>
+</table>
+
+<p><small>
+1: <code>--include-hdr</code> and <code>--exclude-hdr</code> are mutually exclusive
+2: <code>--include-prop</code> and <code>--exclude-prop</code> are mutually exclusive
+</small></p>
+
+<p>Supported JMS headers are:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Type</th>
+  <th></th>
+  <th>JMS Header Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>JMS_CORRELATIONID_HEADER</code></td>
+  <td></td>
+  <td>A string used for correlating or grouping messages. Defined and used by applications.</td>
+</tr>
+<tr>
+  <td><code>JMS_REPLYTO_HEADER</code></td>
+  <td></td>
+  <td>The queue/topic the sender expects replies to.</td>
+</tr>
+<tr>
+  <td><code>JMS_TYPE_HEADER</code></td>
+  <td></td>
+  <td>A string used to describe the message type. Defined and used by applications.</td>
+</tr>
+</tbody>
+</table>
+
+<p>The other JMS headers are set or overwritten by the JMS client, and may in some cases
+be set through the client API.</p>
+
+<p>Supported JMS property types are Java types <code>boolean</code>, <code>byte</code>, <code>double</code>, <code>float</code>,
+<code>int</code>, <code>long</code>, <code>short</code> and <code>string</code>.</p>
+
+<h3 id="65-using-a-remote-broker">6.5 Using a remote broker</h3>
+
+<p>The test shims will by default connect to <code>localhost:5672</code>. However, arbitrary
+IP addresses and ports may be specified by using the <code>--sender &lt;addr[:port]&gt;</code> and
+<code>--receiver &lt;addr[:port]&gt;</code> test options. Note that some brokers (for example, the
+Qpid Dispatch Router) may be configured to route the test messages to a different
+endpoint to the one that received it, so the address of the sender and receiver
+may be different in this case. For most regular single-endpoint brokers, the
+sender and receiver addresses will be the same.</p>
+
+<p>Both IP4 and IP6 addresses are valid.</p>
+
+<p>For example, to run a test against a remote broker at address <code>192.168.25.65</code> and
+listening on port 35672:</p>
+
+<pre><code>qpid-interop-test jms-messages-test --sender 192.168.25.65:35672 --receiver 192.168.25.65:35672
+</code></pre>
+
+<h2 id="7-containers">7. Containers</h2>
+
+<p>The Qpid Interop Test root directory contains a <code>containers</code> directory which
+contains Dockerfiles for Fedora 34, CentOS 8 and Ubuntu Focal. Building the
+Dockerfile will install all prerequisites, install the source and build/install
+Qpid Interop Test. The Qpid Dispatch Router is also installed, but is not running.</p>
+
+<p>Of course, if you prefer, you can use Docker rather than Podman by substituting
+<code>sudo docker</code> for <code>podman</code> in the following commands.</p>
+
+<h3 id="71-build-the-image">7.1 Build the image</h3>
+
+<pre><code>podman build -f &lt;dockerfile&gt; -t &lt;image-name&gt;
+</code></pre>
+
+<p>For example, to build the Fedora 34 image from the qpid-interop-test root directory
+and see it in the podmam image list:</p>
+
+<pre><code>podman build -f containers/Dockerfile.f34 -t fedora34.qit
+podman images
+</code></pre>
+
+<h3 id="72-run-qit-from-a-container">7.2 Run QIT from a Container</h3>
+
+<p>Once the image is built, it may be run as follows:</p>
+
+<pre><code>podman run -it &lt;image-name&gt; /bin/bash
+</code></pre>
+
+<p>For example, to run the Fedora 34 image built above:</p>
+
+<pre><code>podman run -it fedora34.qit /bin/bash
+</code></pre>
+
+<p>This will create a container, and present you with a command prompt as user
+<code>qit</code>. To run Qpid Interop Test form the container, first start the Qpid
+Dispatch Router as a broker, then run the tests:</p>
+
+<pre><code>sudo /sbin/qdrouterd --daemon
+qpid-interop-test &lt;test-name&gt;
+</code></pre>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

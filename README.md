@@ -136,6 +136,9 @@ following commands.
     # For new Qpid Dispatch releases
     [qpid-site]$ make gen-dispatch-release RELEASE=$VERSION
 
+    # For new Qpid Interop Test Releases
+    [qpid-site]$ make gen-interop-test-release RELEASE=$VERSION
+
 These will produce a new tree of release content under
 `input/releases/`.  The content includes API docs, examples, and
 books.  Once generated, you can make any edits you'd like and check it
@@ -208,4 +211,3 @@ changes.  Any additions or other structural changes under the `input/` and
 
  - The Qpid site code internally uses
    [Transom](http://www.ssorj.net/projects/transom.html)
-

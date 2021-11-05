@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>QUICK START - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-interop-test-0.3.0/index.html">Qpid Interop Test 0.3.0</a></li><li>QUICK START</li></ul>
+
+        <div id="-middle-content">
+          <!--
+
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+
+-->
+
+<h1 id="quick-start">QUICK START</h1>
+
+<h2 id="1-overview">1. Overview</h2>
+
+<p>You must build and install qpid-interop-test before you can run the tests.
+The process follows the traditional steps:</p>
+
+<ul>
+<li>Install prerequisites</li>
+<li>Install source</li>
+<li>Cmake / make / sudo make install</li>
+<li>Start a test broker against which to run the tests</li>
+<li>Run the tests</li>
+</ul>
+
+<p>or using containers:</p>
+
+<ul>
+<li>podman build</li>
+<li>podman run</li>
+<li>Run test in container</li>
+</ul>
+
+<p>This is a brief description for building, installing and running Qpid Interop
+Test. See <a href="docs/USERGUIDE.md">USERGUIDE</a> for more detail.</p>
+
+<h2 id="2-prerequisites">2. Prerequisites</h2>
+
+<p>The following packages are required:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Package</th>
+  <th>Fedora 34 &amp; CentOS 8</th>
+  <th>Ubuntu Focal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Git</td>
+  <td><code>git</code></td>
+  <td><code>git</code></td>
+</tr>
+<tr>
+  <td>Make</td>
+  <td><code>make</code></td>
+  <td><code>make</code></td>
+</tr>
+<tr>
+  <td>Cmake</td>
+  <td><code>cmake</code></td>
+  <td><code>cmake</code></td>
+</tr>
+<tr>
+  <td>GNU C++ compiler</td>
+  <td><code>gcc-c++</code></td>
+  <td><code>build-essential</code></td>
+</tr>
+<tr>
+  <td>JSON C++ (devel)</td>
+  <td><code>jsoncpp-devel</code></td>
+  <td><code>libjsoncpp-dev</code></td>
+</tr>
+<tr>
+  <td>Python 3 (devel)</td>
+  <td><code>python3-devel</code></td>
+  <td><code>python3-dev</code></td>
+</tr>
+<tr>
+  <td>Maven</td>
+  <td><code>maven</code></td>
+  <td><code>maven</code></td>
+</tr>
+<tr>
+  <td>Java 11 (devel)</td>
+  <td><code>java-11-openjdk-devel</code></td>
+  <td><code>openjdk-11-jdk</code></td>
+</tr>
+<tr>
+  <td>Qpid Proton C++ (devel)</td>
+  <td><code>qpid-proton-cpp-devel</code></td>
+  <td><code>libqpid-proton-cpp12-dev</code><sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup></td>
+</tr>
+<tr>
+  <td>Qpid Python 3 bindings</td>
+  <td><code>python3-qpid-proton</code></td>
+  <td><code>python3-qpid-proton</code><sup class="footnote-ref" id="fnref-1"><a href="#fn-1">2</a></sup></td>
+</tr>
+</tbody>
+</table>
+
+<p>The following are optional:</p>
+
+<table>
+<thead>
+<tr>
+  <th>Package</th>
+  <th>Fedora 34 &amp; CentOS 8</th>
+  <th>Ubuntu Focal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>node-js (devel)</td>
+  <td><code>nodejs-devel</code></td>
+  <td><code>libnode-dev</code></td>
+</tr>
+<tr>
+  <td>.NET SDK 5.0</td>
+  <td><code>dotnet-sdk-5.0</code></td>
+  <td><code>aspnetcore-runtime-5.0</code></td>
+</tr>
+</tbody>
+</table>
+
+<p>A broker is required against which to run the test. Any AMQP 1.0 broker should
+work. Suggestions: Apache ActiveMQ Artemis, Qpid Dispatch Router.</p>
+
+<h2 id="3-install-source-and-build">3. Install Source and Build</h2>
+
+<p>Git repository: https://gitbox.apache.org/repos/asf/qpid-interop-test.git</p>
+
+<p>By default, qpid-interop-test will install to <code>/usr/local</code>, use <code>--CMAKE_INSTALL_PREFIX</code>
+option to change.</p>
+
+<p>```bash</p>
+
+<h1 id="if-you-want-to-use-rhea-javascript-client">If you want to use Rhea Javascript client:</h1>
+
+<p>git clone https://github.com/amqp/rhea.git
+git clone https://gitbox.apache.org/repos/asf/qpid-interop-test.git
+cd qpid-interop-test &amp;&amp; mkdir build &amp;&amp; cd build
+cmake ..
+make
+sudo make install
+```</p>
+
+<h2 id="4-run-the-tests">4. Run the Tests</h2>
+
+<p>Start a broker. Then:</p>
+
+<p><code>bash
+qpid-interop-test &lt;test-name&gt; [test-options...]
+</code></p>
+
+<p><code>&lt;test-name&gt;</code> may be one of:
+* <code>amqp-types-test</code> - a test of AMQP simple types
+* <code>amqp-complex-types-test</code> - a test of AMQP complex types (arrays, lists, maps)
+* <code>amqp-large-content-test</code> - a test of variable-size types using large content (up to 10MB)
+* <code>jms-messages-test</code> - a test of JMS message types as implemented by qpid-jms
+* <code>jms-hdrs-props-test</code> - a test of user-definable message headers and properties as implemented by qpid-jms.
+* <code>all</code> - run all the above tests sequentially.</p>
+
+<p>For help on tests that can be run and options, run:
+<code>bash
+qpid-interop-test --help
+</code></p>
+
+<p>For help on options for an individual test, run:
+<code>bash
+qpid-interop-test &lt;test-name&gt; --help
+</code></p>
+
+<h2 id="5-containers">5. Containers</h2>
+
+<p>The Qpid Interop Test root directory has a <code>containers</code> directory which
+contains Dockerfiles for Fedora 34, CentOS 8 and Ubuntu Focal. The build
+process builds and installs Qpid Interop Test as well as the Qpid Dispatch
+Router for use as a local broker.</p>
+
+<p>For example:
+<code>bash
+podman build -f containers/Dockerfile.f34 -t fedora34.qit
+podman run -it fedora34.qit /bin/bash
+</code></p>
+
+<p>In the container:
+<code>bash
+sudo /sbin/qdrouterd --daemon
+qpid-interop-test all
+</code></p>
+
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn-1">
+<p>Must have <code>ppa:qpid/testing</code> added to repository list to install these packages.&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 1 in the text.">&#8617;</a></p>
+</li>
+
+<li id="fn-1">
+<p>Must have <code>ppa:qpid/testing</code> added to repository list to install these packages.&#160;<a href="#fnref-1" class="footnoteBackLink" title="Jump back to footnote 2 in the text.">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

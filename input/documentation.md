@@ -6,9 +6,9 @@
 ;; to you under the Apache License, Version 2.0 (the
 ;; "License"); you may not use this file except in compliance
 ;; with the License.  You may obtain a copy of the License at
-;; 
+;;
 ;;   http://www.apache.org/licenses/LICENSE-2.0
-;; 
+;;
 ;; Unless required by applicable law or agreed to in writing,
 ;; software distributed under the License is distributed on an
 ;; "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
@@ -104,8 +104,8 @@ You can find older versions with our
 
  - [Overview]({{site_url}}/components/interop-test/index.html)
  - [Quickstart guide]({{current_interop_test_release_url}}/QUICKSTART.html)
- - [User guide]({{current_interop_test_release_url}}/users-guide.html)
- - [Developer overview](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.1.0)
+ - [Users guide]({{current_interop_test_release_url}}/USERSGUIDE.html)
+ - [Developer overview](https://gitbox.apache.org/repos/asf?p=qpid-interop-test.git;a=blob_plain;f=docs/qpid-interop-test-devel-overview.txt;hb=0.3.0)
 
 </section>
 </div>
