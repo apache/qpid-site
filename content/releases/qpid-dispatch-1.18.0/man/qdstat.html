@@ -1,0 +1,1910 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>SYNOPSIS - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.18.0/index.html">Qpid Dispatch 1.18.0</a></li><li>SYNOPSIS</li></ul>
+
+        <div id="-middle-content">
+          <div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><strong>qdstat</strong> [<em>OPTIONS</em>]</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>An AMQP monitoring tool that shows status information about networks of Dispatch routers. It can display connections, network nodes and links, policy, and router stats such as memory use.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>-h, --help
+:   show this help message and exit</p></div>
+<div class="paragraph"><p>--version
+:   show program&#8217;s version number and exit</p></div>
+<div class="paragraph"><p>-v, --verbose
+:   Show maximum detail</p></div>
+<div class="paragraph"><p>--limit LIMIT
+:   Limit number of output rows. Unlimited if limit is zero or if limit not specified</p></div>
+<div class="paragraph"><p>--csv
+:   Render tabular output in csv format</p></div>
+<div class="paragraph"><p>-g, --general
+:   Show General Router Stats</p></div>
+<div class="paragraph"><p>-c, --connections
+:   Show Connections</p></div>
+<div class="paragraph"><p>-l, --links
+:   Show Router Links</p></div>
+<div class="paragraph"><p>-n, --nodes
+:   Show Router Nodes</p></div>
+<div class="paragraph"><p>-e, --edge
+:   Show edge connections</p></div>
+<div class="paragraph"><p>-a, --address
+:   Show Router Addresses</p></div>
+<div class="paragraph"><p>-m, --memory
+:   Show Router Memory Stats</p></div>
+<div class="paragraph"><p>-p, --policy
+:   Show Router Policy</p></div>
+<div class="paragraph"><p>--autolinks
+:   Show Auto Links</p></div>
+<div class="paragraph"><p>--linkroutes
+:   Show Link Routes</p></div>
+<div class="paragraph"><p>--vhosts
+:   Show Vhosts</p></div>
+<div class="paragraph"><p>--vhostgroups
+:   Show Vhost Groups</p></div>
+<div class="paragraph"><p>--vhoststats
+:   Show Vhost Stats</p></div>
+<div class="paragraph"><p>--log
+:   Show recent log entries</p></div>
+<div class="paragraph"><p>--all-entities
+:   Show all router entities. Can be combined with --all-routers option</p></div>
+<div class="paragraph"><p>--all-routers
+:   Show entities for all routers in network. Can also be used in combination with other options</p></div>
+<div class="paragraph"><p>-r ROUTER-ID, --router ROUTER-ID
+:   Router to be queried</p></div>
+<div class="paragraph"><p>-d EDGE-ROUTER-ID, --edge-router EDGE-ROUTER-ID
+:   Edge Router to be queried</p></div>
+<div class="paragraph"><p>-b URL, --bus URL
+:   URL of the messaging bus to connect to default 0.0.0.0</p></div>
+<div class="paragraph"><p>-t SECS, --timeout SECS
+:   Maximum time to wait for connection in seconds default 5</p></div>
+<div class="paragraph"><p>--ssl-certificate CERT
+:   Client SSL certificate (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-key KEY
+:   Client SSL private key (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-trustfile TRUSTED-CA-DB
+:   Trusted Certificate Authority Database file (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-password PASSWORD
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--ssl-password-file SSL-PASSWORD-FILE
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--sasl-mechanisms SASL-MECHANISMS
+:   Allowed sasl mechanisms to be supplied during the sasl handshake.</p></div>
+<div class="paragraph"><p>--sasl-username SASL-USERNAME
+:   User name for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password SASL-PASSWORD
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password-file SASL-PASSWORD-FILE
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--ssl-disable-peer-name-verify
+:   Disables SSL peer name verification. WARNING - This option is insecure and must not be used in production environments</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_output_columns">OUTPUT COLUMNS</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_qdstat_g">qdstat -g</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Version
+</dt>
+<dd>
+<p>
+The version of Dispatch Router.
+</p>
+</dd>
+<dt class="hdlist1">
+Mode
+</dt>
+<dd>
+<p>
+The router&#8217;s operating mode:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<code>standalone</code> - The router operates as a single, standalone network node.
+</p>
+</li>
+<li>
+<p>
+<code>interior</code> - The router operates in cooperation with other interior routers in an interconnected network.
+</p>
+</li>
+<li>
+<p>
+<code>edge</code> - The router operates at the edge of the router network. It maintains an uplink connection to an interior router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+Router Id
+</dt>
+<dd>
+<p>
+The router&#8217;s ID.
+</p>
+</dd>
+<dt class="hdlist1">
+Uptime
+</dt>
+<dd>
+<p>
+Time this router has been up. Displayed in the days:hours:minutes:seconds format.
+</p>
+</dd>
+</dl></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Link Routes
+</dt>
+<dd>
+<p>
+The number of active and inactive link routes configured for this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Auto Links
+</dt>
+<dd>
+<p>
+The number of incoming and outgoing auto links configured for this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Links
+</dt>
+<dd>
+<p>
+The number of incoming and outgoing links attached to the router.
+</p>
+</dd>
+<dt class="hdlist1">
+Nodes
+</dt>
+<dd>
+<p>
+The number of peer routers connected to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Addresses
+</dt>
+<dd>
+<p>
+The number of addresses with links attached to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Connections
+</dt>
+<dd>
+<p>
+The number of connections to the router. This includes connections from and to any AMQP route container.
+</p>
+</dd>
+<dt class="hdlist1">
+Presettled Count
+</dt>
+<dd>
+<p>
+The number of presettled deliveries forwarded by this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Dropped Presettled Count
+</dt>
+<dd>
+<p>
+The number of presettled deliveries that this router dropped due to congestion.
+</p>
+</dd>
+<dt class="hdlist1">
+Accepted Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were accepted.
+</p>
+</dd>
+<dt class="hdlist1">
+Rejected Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were rejected.
+</p>
+</dd>
+<dt class="hdlist1">
+Released Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were released.
+</p>
+</dd>
+<dt class="hdlist1">
+Modified Count
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were modified.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Delayed &gt; 1sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were unsettled for more than one second.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Delayed &gt; 10sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were unsettled for more than ten seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries Stuck &gt; 10sec
+</dt>
+<dd>
+<p>
+The number of deliveries forwarded by this router that were stuck for more than ten seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries to Fallback
+</dt>
+<dd>
+<p>
+The number of deliveries that were forwarded to a fallback destination.
+</p>
+</dd>
+<dt class="hdlist1">
+Links Blocked
+</dt>
+<dd>
+<p>
+The number of links that are blocked. A blocked link is one in which the available credit has remained zero for more than 10 seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+Ingress Count
+</dt>
+<dd>
+<p>
+The number of messages sent to this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Egress Count
+</dt>
+<dd>
+<p>
+The number of messages sent from this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Transit Count
+</dt>
+<dd>
+<p>
+The number of deliveries sent to another router in the network.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries from Route Container
+</dt>
+<dd>
+<p>
+The number of deliveries this router has received from AMQP route containers.
+</p>
+</dd>
+<dt class="hdlist1">
+Deliveries to Route Container
+</dt>
+<dd>
+<p>
+The number of deliveries this router has sent to AMQP route containers.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_c">qdstat -c</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+id
+</dt>
+<dd>
+<p>
+The connection&#8217;s unique identifier.
+</p>
+</dd>
+<dt class="hdlist1">
+host
+</dt>
+<dd>
+<p>
+The hostname or internet address of the remotely-connected AMQP container.
+</p>
+</dd>
+<dt class="hdlist1">
+container
+</dt>
+<dd>
+<p>
+The container name of the remotely-connected AMQP container.
+</p>
+</dd>
+<dt class="hdlist1">
+role
+</dt>
+<dd>
+<p>
+The connection&#8217;s role:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>normal</em> - The normal connection from a client to a router.
+</p>
+</li>
+<li>
+<p>
+<em>inter-router</em> - The connection between routers to form a network.
+</p>
+</li>
+<li>
+<p>
+<em>route-container</em> - The connection to or from a broker or other host to receive link routes and waypoints.
+</p>
+</li>
+<li>
+<p>
+<em>edge</em> - The connection between an edge router and an interior router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction in which the connection was established:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>in</em> - The connection was initiated by the remote container.
+</p>
+</li>
+<li>
+<p>
+<em>out</em> - The connection was initiated by this router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+security
+</dt>
+<dd>
+<p>
+The security or encryption method, if any, used for this connection.
+</p>
+</dd>
+<dt class="hdlist1">
+authentication
+</dt>
+<dd>
+<p>
+The authentication method and user ID of the connection&#8217;s authenticated user.
+</p>
+</dd>
+<dt class="hdlist1">
+tenant
+</dt>
+<dd>
+<p>
+If the connection is to a listener using multi-tenancy, this column displays the tenant namespace for the connection.
+</p>
+</dd>
+<dt class="hdlist1">
+last dlv
+</dt>
+<dd>
+<p>
+Time since the last delivery arrived on this connection. Displayed in the days:hours:minutes:seconds format.
+</p>
+</dd>
+<dt class="hdlist1">
+uptime
+</dt>
+<dd>
+<p>
+Time this connection has been up. Displayed in the days:hours:minutes:seconds format.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_l">qdstat -l</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+type
+</dt>
+<dd>
+<p>
+The type of link:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>router-control</em> - An inter-router link that is reserved for control messages exchanged between routers.
+</p>
+</li>
+<li>
+<p>
+<em>inter-router</em> - An inter-router link that is used for normal message-routed deliveries.
+</p>
+</li>
+<li>
+<p>
+<em>endpoint</em> - A normal link to an external endpoint container.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction that messages flow on the link:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>in</em> - Deliveries flow inbound to the router.
+</p>
+</li>
+<li>
+<p>
+<em>out</em> - Deliveries flow outbound from the router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+conn id
+</dt>
+<dd>
+<p>
+The unique identifier of the connection over which this link is
+attached.
+</p>
+</dd>
+<dt class="hdlist1">
+id
+</dt>
+<dd>
+<p>
+The unique identifier of this link.
+</p>
+</dd>
+<dt class="hdlist1">
+peer
+</dt>
+<dd>
+<p>
+For link-routed links, the unique identifier of the peer link. In
+link routing, an inbound link is paired with an outbound link.
+</p>
+</dd>
+<dt class="hdlist1">
+class
+</dt>
+<dd>
+<p>
+The class of the address bound to the link:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>local</em> - The address that is local to this router (temporary).
+</p>
+</li>
+<li>
+<p>
+<em>topo</em> - A topological address used for router control messages.
+</p>
+</li>
+<li>
+<p>
+<em>router</em> - A summary router address used to route messages to a remote router&#8217;s local addresses.
+</p>
+</li>
+<li>
+<p>
+<em>mobile</em> - A mobile address for an attached consumer or producer.
+</p>
+</li>
+<li>
+<p>
+<em>link-in</em> - The address match for incoming routed links.
+</p>
+</li>
+<li>
+<p>
+<em>link-out</em> - The address match for outgoing routed links.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+addr
+</dt>
+<dd>
+<p>
+The address bound to the link.
+</p>
+</dd>
+<dt class="hdlist1">
+phs
+</dt>
+<dd>
+<p>
+The phase of the address bound to the link.
+</p>
+</dd>
+<dt class="hdlist1">
+cap
+</dt>
+<dd>
+<p>
+The capacity, in deliveries, of the link.
+</p>
+</dd>
+<dt class="hdlist1">
+pri
+</dt>
+<dd>
+<p>
+The priority of the link.  Priority influences the order in which links are processed within a connection.
+Higher numbers represent higher priorities.
+</p>
+</dd>
+<dt class="hdlist1">
+undel
+</dt>
+<dd>
+<p>
+The number of undelivered messages stored on the link&#8217;s FIFO.
+</p>
+</dd>
+<dt class="hdlist1">
+unsett
+</dt>
+<dd>
+<p>
+The number of unsettled deliveries being tracked by the link.
+</p>
+</dd>
+<dt class="hdlist1">
+deliv
+</dt>
+<dd>
+<p>
+The total number of deliveries that have transited this link.
+</p>
+</dd>
+<dt class="hdlist1">
+presett
+</dt>
+<dd>
+<p>
+The number of pre-settled deliveries that transited this link.
+</p>
+</dd>
+<dt class="hdlist1">
+psdrop
+</dt>
+<dd>
+<p>
+The number of pre-settled deliveries that were dropped due to congestion.
+</p>
+</dd>
+<dt class="hdlist1">
+acc
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that were accepted.
+</p>
+</dd>
+<dt class="hdlist1">
+rej
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that were rejected.
+</p>
+</dd>
+<dt class="hdlist1">
+rel
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that were released.
+</p>
+</dd>
+<dt class="hdlist1">
+mod
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that were modified.
+</p>
+</dd>
+<dt class="hdlist1">
+delay
+</dt>
+<dd>
+<p>
+The number of settled deliveries on this link that were unsettled for more than one second.
+</p>
+</dd>
+<dt class="hdlist1">
+rate
+</dt>
+<dd>
+<p>
+The average rate (over a period of five seconds) at which deliveries have been settled on this link.
+</p>
+</dd>
+<dt class="hdlist1">
+stuck
+</dt>
+<dd>
+<p>
+The number of deliveries on this link that are flagged as "stuck".  A delivery is considered stuck if it has been either undelivered or unsettled for more than 10 seconds.
+</p>
+</dd>
+<dt class="hdlist1">
+cred
+</dt>
+<dd>
+<p>
+The number of flow credits currently available on this link.
+</p>
+</dd>
+<dt class="hdlist1">
+blkd
+</dt>
+<dd>
+<p>
+The time elapsed since the available credit for this link became zero and has remained zero.
+</p>
+</dd>
+<dt class="hdlist1">
+admin
+</dt>
+<dd>
+<p>
+The administrative status of the link (with -v option only):
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>enabled</em> - The link is enabled for normal operation.
+</p>
+</li>
+<li>
+<p>
+<em>disabled</em> - The link is disabled and should be quiescing or stopped (not yet supported).
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+oper
+</dt>
+<dd>
+<p>
+The operational status of the link (with -v option only):
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>up</em> - The link is operational.
+</p>
+</li>
+<li>
+<p>
+<em>down</em> - The link is not attached.
+</p>
+</li>
+<li>
+<p>
+<em>quiescing</em> - The link is in the process of quiescing (not yet supported).
+</p>
+</li>
+<li>
+<p>
+<em>idle</em> - The link has completed quiescing and is idle (not yet supported).
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+name
+</dt>
+<dd>
+<p>
+The link name (only shown if the -v option is provided).
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_n">qdstat -n</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+router-id
+</dt>
+<dd>
+<p>
+The router&#8217;s ID.
+</p>
+</dd>
+<dt class="hdlist1">
+next-hop
+</dt>
+<dd>
+<p>
+If this router is not a neighbor, this field identifies the next-hop neighbor used to reach this router.
+</p>
+</dd>
+<dt class="hdlist1">
+link
+</dt>
+<dd>
+<p>
+The ID of the link to the neighbor router.
+</p>
+</dd>
+<dt class="hdlist1">
+cost
+</dt>
+<dd>
+<p>
+The topology cost to this remote router (with -v option only).
+</p>
+</dd>
+<dt class="hdlist1">
+neighbors
+</dt>
+<dd>
+<p>
+The list of neighbor routers (the router&#8217;s link-state). This field is available only if you specify the -v option.
+</p>
+</dd>
+<dt class="hdlist1">
+valid-origins
+</dt>
+<dd>
+<p>
+The list of origin routers for which the best path to the listed router passes through this router (available only with the -v option).
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_e">qdstat -e</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+id
+</dt>
+<dd>
+<p>
+The connection&#8217;s unique identifier.
+</p>
+</dd>
+<dt class="hdlist1">
+host
+</dt>
+<dd>
+<p>
+The hostname or internet address of the remotely-connected edge router.
+</p>
+</dd>
+<dt class="hdlist1">
+container
+</dt>
+<dd>
+<p>
+The container name of the remotely-connected edge router.
+</p>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction in which the connection was established:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>in</em> - The connection was initiated by the edge router.
+</p>
+</li>
+<li>
+<p>
+<em>out</em> - The connection was initiated by this router.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+security
+</dt>
+<dd>
+<p>
+The security or encryption method, if any, used for this connection.
+</p>
+</dd>
+<dt class="hdlist1">
+authentication
+</dt>
+<dd>
+<p>
+The authentication method and user ID of the connection&#8217;s authenticated user.
+</p>
+</dd>
+<dt class="hdlist1">
+tenant
+</dt>
+<dd>
+<p>
+If the connection is to a listener using multi-tenancy, this column displays the tenant namespace for the connection.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_a">qdstat -a</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+class
+</dt>
+<dd>
+<p>
+The class of the address:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>local</em> - The address that is local to this router.
+</p>
+</li>
+<li>
+<p>
+<em>topo</em> - The topological address used for router control messages.
+</p>
+</li>
+<li>
+<p>
+<em>router</em> - A summary router address used to route messages to a remote router&#8217;s local addresses.
+</p>
+</li>
+<li>
+<p>
+<em>mobile</em> - A mobile address for an attached consumer or producer.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+addr
+</dt>
+<dd>
+<p>
+The address text.
+</p>
+</dd>
+<dt class="hdlist1">
+phs
+</dt>
+<dd>
+<p>
+For mobile addresses only, the phase of the address. Direct addresses have only a phase 0. Waypoint addresses have multiple phases, normally 0 and 1.
+</p>
+</dd>
+<dt class="hdlist1">
+distrib
+</dt>
+<dd>
+<p>
+One of the following distribution methods used for this address:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>multicast</em> - A copy of each message is delivered once to each consumer for the address.
+</p>
+</li>
+<li>
+<p>
+<em>closest</em> - Each message is delivered to only one consumer for the address. The closest (lowest cost) consumer will be chosen. If there are multiple lowest-cost consumers, deliveries will be spread across those consumers.
+</p>
+</li>
+<li>
+<p>
+<em>balanced</em> - Each message is delivered to only one consumer for the address. The consumer with the fewest outstanding (unsettled) deliveries will be chosen. The cost of the route to the consumer is a threshold for delivery (that is, higher cost consumers will only receive deliveries if closer consumers are backed up).
+</p>
+</li>
+<li>
+<p>
+<em>flood</em> - Used only for router-control traffic. This is multicast without the prevention of duplicate deliveries.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+pri
+</dt>
+<dd>
+<p>
+The priority of the address.  If the address prefix/pattern is configured with a priority, that priority will appear
+in this column.  Messages for addresses configured with a priority will be forwarded according to the address&#8217;s priority.
+</p>
+</dd>
+<dt class="hdlist1">
+in-proc
+</dt>
+<dd>
+<p>
+The number of in-process consumers for this address.
+</p>
+</dd>
+<dt class="hdlist1">
+local
+</dt>
+<dd>
+<p>
+For this router, the number of local consumers for this address, or for link-routed addresses, the number of locally-attached containers that are destinations for this address.
+</p>
+</dd>
+<dt class="hdlist1">
+remote
+</dt>
+<dd>
+<p>
+The number of remote routers that have at least one consumer for this address.
+</p>
+</dd>
+<dt class="hdlist1">
+in
+</dt>
+<dd>
+<p>
+The number of deliveries for this address that entered the network on this router.
+</p>
+</dd>
+<dt class="hdlist1">
+out
+</dt>
+<dd>
+<p>
+The number of deliveries for this address that exited the network on this router.
+</p>
+</dd>
+<dt class="hdlist1">
+thru
+</dt>
+<dd>
+<p>
+The number of deliveries for this address that were forwarded to other routers.
+</p>
+</dd>
+<dt class="hdlist1">
+to-proc
+</dt>
+<dd>
+<p>
+The number of deliveries for this address that were delivered to an in-process consumer.
+</p>
+</dd>
+<dt class="hdlist1">
+from-proc
+</dt>
+<dd>
+<p>
+The number of deliveries for this address that were received from an in-process producer.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_linkroutes">qdstat --linkroutes</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+prefix
+</dt>
+<dd>
+<p>
+The address prefix of the link route.
+</p>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction of matching links (from this router&#8217;s perspective).
+</p>
+</dd>
+<dt class="hdlist1">
+distrib
+</dt>
+<dd>
+<p>
+The distribution method used for routed links. This value should always be <em>linkBalanced</em>, which is the only supported distribution for routed links.
+</p>
+</dd>
+<dt class="hdlist1">
+status
+</dt>
+<dd>
+<p>
+The operational status of the link route:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>active</em> - The route is actively routing attaches (it is ready for use).
+</p>
+</li>
+<li>
+<p>
+<em>inactive</em> - The route is inactive, because no local destination is connected.
+</p>
+</li>
+</ul></div>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_autolinks">qdstat --autolinks</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+addr
+</dt>
+<dd>
+<p>
+The auto link&#8217;s address.
+</p>
+</dd>
+<dt class="hdlist1">
+dir
+</dt>
+<dd>
+<p>
+The direction that messages flow over the auto link:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>in</em> - Messages flow in from the route-container to the router network.
+</p>
+</li>
+<li>
+<p>
+<em>out</em> - Messages flow out to the route-container from the router network.
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+phs
+</dt>
+<dd>
+<p>
+The address phase for this auto link.
+</p>
+</dd>
+<dt class="hdlist1">
+link
+</dt>
+<dd>
+<p>
+The ID of the link managed by this auto link.
+</p>
+</dd>
+<dt class="hdlist1">
+status
+</dt>
+<dd>
+<p>
+The operational status of this auto link:
+</p>
+<div class="ulist"><ul>
+<li>
+<p>
+<em>inactive</em> - There is no connected container for this auto link.
+</p>
+</li>
+<li>
+<p>
+<em>attaching</em> - The link is attaching to the container.
+</p>
+</li>
+<li>
+<p>
+<em>failed</em> - The link-attach failed.
+</p>
+</li>
+<li>
+<p>
+<em>active</em> - The link is operational.
+</p>
+</li>
+<li>
+<p>
+<em>quiescing</em> - The link is quiescing (not yet supported).
+</p>
+</li>
+<li>
+<p>
+<em>idle</em> - The link is idle (not yet supported).
+</p>
+</li>
+</ul></div>
+</dd>
+<dt class="hdlist1">
+lastErr
+</dt>
+<dd>
+<p>
+The description of the last attach failure that occurred on this auto link.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_policy">qdstat --policy</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Maximum Concurrent Connections
+</dt>
+<dd>
+<p>
+The maximum number of concurrent client connections allowed for this router.
+</p>
+</dd>
+<dt class="hdlist1">
+Maximum Message Size
+</dt>
+<dd>
+<p>
+The maximum size in bytes of AMQP message transfers allowed for this router. This limit is applied to transfers over user connections and to transfers to interior
+routers from edge routers.
+</p>
+</dd>
+<dt class="hdlist1">
+Enable Vhost Policy
+</dt>
+<dd>
+<p>
+Enables the router to enforce the connection denials and resource limits defined in the
+vhost policies.
+</p>
+</dd>
+<dt class="hdlist1">
+Enable Vhost Name Patterns
+</dt>
+<dd>
+<p>
+Enable vhost name patterns. When false vhost hostnames are treated as literal strings.
+When true vhost hostnames are treated as match patterns.
+</p>
+</dd>
+<dt class="hdlist1">
+Policy Directory
+</dt>
+<dd>
+<p>
+The absolute path to a directory that holds vhost policy definition files in JSON format (*.json).
+</p>
+</dd>
+<dt class="hdlist1">
+Default Vhost
+</dt>
+<dd>
+<p>
+The name of the default vhost policy. This policy rule set is applied to a connection for which a
+vhost policy has not otherwise been configured. Processing for the default vhost is enabled by
+default and set to select vhost <em>$default</em>. To disable default vhost processing set defaultVhost
+to blank or do not define a vhost named <em>$default</em>.
+</p>
+</dd>
+<dt class="hdlist1">
+Connections Processed
+</dt>
+<dd>
+<p>
+Count of all incoming connection attempts.
+</p>
+</dd>
+<dt class="hdlist1">
+Connections Denied
+</dt>
+<dd>
+<p>
+Count of all incoming connection attempts denied by policy.
+</p>
+</dd>
+<dt class="hdlist1">
+Connections Current
+</dt>
+<dd>
+<p>
+Count of currently active incoming connections.
+</p>
+</dd>
+<dt class="hdlist1">
+Links Denied
+</dt>
+<dd>
+<p>
+Count of all sender and receiver policy denials summed across all vhosts.
+</p>
+</dd>
+<dt class="hdlist1">
+Maximum Message Size Denied
+</dt>
+<dd>
+<p>
+Count of all maxMessageSize policy denials summed across all vhosts.
+</p>
+</dd>
+<dt class="hdlist1">
+Total Denials
+</dt>
+<dd>
+<p>
+Count of all policy denials for any reason summed across all vhosts.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_vhosts">qdstat --vhosts</h3>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+hostname
+</dt>
+<dd>
+<p>
+The hostname of the vhost. This vhost policy applies
+to any client connection that uses this hostname in the <em>hostname</em> field of the incoming AMQP Open.
+</p>
+</dd>
+<dt class="hdlist1">
+maxConnections
+</dt>
+<dd>
+<p>
+The global maximum number of concurrent client connections allowed for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+maxMessageSize
+</dt>
+<dd>
+<p>
+Optional maximum size in bytes of AMQP message transfers allowed for connections to this vhost.
+This limit overrides the policy maxMessageSize value and may be overridden by vhost user group
+settings. A value of zero disables this limit.
+</p>
+</dd>
+<dt class="hdlist1">
+maxConnectionsPerUser
+</dt>
+<dd>
+<p>
+The maximum number of concurrent client connections allowed for any user.
+</p>
+</dd>
+<dt class="hdlist1">
+maxConnectionsPerHost
+</dt>
+<dd>
+<p>
+The maximum number of concurrent client connections allowed for any remote host
+(the host from which the client is connecting).
+</p>
+</dd>
+<dt class="hdlist1">
+allowUnknownUser
+</dt>
+<dd>
+<p>
+Set to <em>true</em> this allows <em>unknown users</em>, users who are not members of a defined user group, to
+connect to the vhost. Unknown users are assigned to the <em>$default</em> user group and receive
+<em>$default</em> settings.
+</p>
+</dd>
+<dt class="hdlist1">
+groups
+</dt>
+<dd>
+<p>
+Count of usergroups defined for this vhost.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_vhoststats">qdstat --vhoststats</h3>
+<div class="paragraph"><p>Vhost Stats table</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+hostname
+</dt>
+<dd>
+<p>
+Name of the vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+connectionsApproved
+</dt>
+<dd>
+<p>
+Count of connections approved by policy for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+connectionsDenied
+</dt>
+<dd>
+<p>
+Count of connections denied by policy for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+connectionsCurrent
+</dt>
+<dd>
+<p>
+Count of active connections for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+sessionDenied
+</dt>
+<dd>
+<p>
+Count of sessions denied by policy for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+senderDenied
+</dt>
+<dd>
+<p>
+Count of senders denied by policy for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+receiverDenied
+</dt>
+<dd>
+<p>
+Count of receivers denied by policy for this vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+maxMessageSizeDenied
+</dt>
+<dd>
+<p>
+Count of transfers denied by maxMesageSize policy for this vhost.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Vhost User Stats table</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+vhost
+</dt>
+<dd>
+<p>
+Vhost hostname
+</p>
+</dd>
+<dt class="hdlist1">
+user
+</dt>
+<dd>
+<p>
+Authenticated user name
+</p>
+</dd>
+<dt class="hdlist1">
+remote hosts
+</dt>
+<dd>
+<p>
+List of remote hosts from which this user has connected to this vhost.
+</p>
+</dd>
+</dl></div>
+</div>
+<div class="sect2">
+<h3 id="_qdstat_vhostgroups">qdstat --vhostgroups</h3>
+<div class="paragraph"><p>Table of settings for all vhosts and groups.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+vhost
+</dt>
+<dd>
+<p>
+Vhost name.
+</p>
+</dd>
+<dt class="hdlist1">
+group
+</dt>
+<dd>
+<p>
+Vhost user group name.
+</p>
+</dd>
+<dt class="hdlist1">
+maxConnectionsPerUser
+</dt>
+<dd>
+<p>
+Optional maximum number of connections that may be created by users
+in this group. This value, if specified, overrides the vhost
+maxConnectionsPerUser value.
+</p>
+</dd>
+<dt class="hdlist1">
+maxConnectionsPerHost
+</dt>
+<dd>
+<p>
+Optional maximum number of concurrent connections allowed for any
+remote host by users in this group. This value, if specified, overrides
+the vhost maxConnectionsPerHost value.
+</p>
+</dd>
+<dt class="hdlist1">
+maxMessageSize
+</dt>
+<dd>
+<p>
+Optional maximum size in bytes of AMQP message transfers allowed for
+connections created by users in this group. This limit overrides the
+policy and vhost maxMessageSize values. A value of zero disables this limit.
+</p>
+</dd>
+<dt class="hdlist1">
+maxFrameSize
+</dt>
+<dd>
+<p>
+The largest frame, in bytes, that may be sent on this connection. Non-zero
+policy values overwrite values specified for a listener object
+(AMQP Open, max-frame-size).
+</p>
+</dd>
+<dt class="hdlist1">
+maxSessionWindow
+</dt>
+<dd>
+<p>
+The incoming capacity for new AMQP sessions, measured in octets. Non-zero
+policy values overwrite values specified for a listener object
+(AMQP Begin, incoming-window).
+</p>
+</dd>
+<dt class="hdlist1">
+maxSessions
+</dt>
+<dd>
+<p>
+The maximum number of sessions that may be created on this connection.
+Non-zero policy values overwrite values specified for a listener object
+(AMQP Open, channel-max).
+</p>
+</dd>
+<dt class="hdlist1">
+maxSenders
+</dt>
+<dd>
+<p>
+The maximum number of sending links that may be created on this connection.
+A value of <em>0</em> disables all sender links.
+</p>
+</dd>
+<dt class="hdlist1">
+maxReceivers
+</dt>
+<dd>
+<p>
+The maximum number of receiving links that may be created on this connection.
+A value of <em>0</em> disables all receiver links.
+</p>
+</dd>
+<dt class="hdlist1">
+allowDynamicSource
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to create dynamic receiving links
+(links to resources that do not exist on the peer). A value of <em>true</em> means
+that users are able to automatically create resources on the peer system.
+</p>
+</dd>
+<dt class="hdlist1">
+allowAnonymousSender
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to create sending links if the sender
+does not provide a target address. By prohibiting anonymous senders,
+the router only needs to verify once, when the link is created, that
+the sender is permitted to send messages to the target address. The
+router does not need to verify each message that is sent on the link.
+A value of <em>true</em> means that users may send messages to any address.
+Allowing anonymous senders can also decrease performance: if the sender
+does not specify a target address, then the router must parse each message
+to determine how to route it.
+</p>
+</dd>
+<dt class="hdlist1">
+allowUserIdProxy
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to send messages with a user ID that
+is different than the connection&#8217;s authenticated user name.
+</p>
+</dd>
+<dt class="hdlist1">
+allowWaypointLinks
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to claim <em>waypoint.N</em> capability for
+attached links.  This allows endpoints to act as waypoints without
+needing auto-links.
+</p>
+</dd>
+<dt class="hdlist1">
+allowDynamicLinkRoutes
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to dynamically create connection-scoped
+link route destinations.
+</p>
+</dd>
+<dt class="hdlist1">
+allowAdminStatusUpdate
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to update the admin status of other
+connections. Note: Inter-router connections cannot be deleted at any time.
+</p>
+</dd>
+<dt class="hdlist1">
+allowFallbackLinks
+</dt>
+<dd>
+<p>
+Whether this connection is allowed to claim <em>qd.fallback</em> capability
+for attached links.  This allows endpoints to act as fallback destinations
+for addresses that have fallback capability enabled.
+</p>
+</dd>
+</dl></div>
+<div class="paragraph"><p>Tables for each vhost and user group.</p></div>
+<div class="dlist"><dl>
+<dt class="hdlist1">
+Vhost
+</dt>
+<dd>
+<p>
+Name of vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+UserGroup
+</dt>
+<dd>
+<p>
+Name of vhost usergroup.
+</p>
+</dd>
+<dt class="hdlist1">
+vhost
+</dt>
+<dd>
+<p>
+Name of vhost.
+</p>
+</dd>
+<dt class="hdlist1">
+group
+</dt>
+<dd>
+<p>
+Name of vhost usergroup.
+</p>
+</dd>
+<dt class="hdlist1">
+users
+</dt>
+<dd>
+<p>
+A list of authenticated users for this user group.
+</p>
+</dd>
+<dt class="hdlist1">
+remoteHosts
+</dt>
+<dd>
+<p>
+A list of remote hosts from which the users may connect. A host can
+be a hostname, IP address, or IP address range. Use commas to separate
+multiple hosts. To allow access from all remote hosts, specify a
+wildcard <em>asterisk \*</em>. To deny access from all remote hosts, leave this
+attribute blank.
+</p>
+</dd>
+<dt class="hdlist1">
+sources
+</dt>
+<dd>
+<p>
+A list of source addresses from which users in this group may receive messages.
+To specify multiple addresses, separate the addresses with either a comma or
+a space. If you do not specify any addresses, users in this group are not
+allowed to receive messages from any addresses. You can use the substitution
+token <code>${user}</code> to specify an address that contains a user&#8217;s authenticated
+user name. You can use an <em>asterisk \*</em> wildcard to match one or more
+characters in an address. However, this wildcard is only recognized if
+it is the last character in the address name. You may specify attributes
+<em>sources</em> or <em>sourcePattern</em> but not both at the same time.
+</p>
+</dd>
+<dt class="hdlist1">
+targets
+</dt>
+<dd>
+<p>
+A list of target addresses to which users in this group may send messages.
+To specify multiple addresses, separate the addresses with either a comma or
+a space. If you do not specify any addresses, users in this group are not
+allowed to send messages to any addresses. You can use the substitution
+token <code>${user}</code> to specify an address that contains a user&#8217;s authenticated
+user name. You can use an <em>asterisk \*</em> wildcard to match one or more
+characters in an address. However, this wildcard is only recognized if it
+is the last character in the address name. You may specify attributes
+<em>targets</em> or <em>targetPattern</em> but not both at the same time.
+</p>
+</dd>
+<dt class="hdlist1">
+sourcePattern
+</dt>
+<dd>
+<p>
+A wildcarded pattern for matching source addresses from which users in
+this group may receive messages. The pattern consists of one or more
+tokens separated by a forward slash <em>/</em>. A token can be one of the
+following: <em>asterisk *</em>, <em>hash #</em>, or a sequence of characters
+that do not include <em>/</em>, <em>asterisk *</em>, or <em>hash #</em>.  The <em>asterisk *</em> token matches any single token.
+The <em>hash #</em> token matches zero or more tokens. <em>asterisk \*</em> has higher precedence than <em>hash \#</em>,
+and exact match has the highest precedence. To specify multiple addresses,
+separate the addresses with either a comma or a space. You can use the
+text string <code>${user}</code> in a token to specify an address that contains a
+user&#8217;s authenticated user name. If you do not specify any addresses then
+users in this group are not allowed to receive messages from any addresses.
+You may specify attributes <em>sources</em> or <em>sourcePattern</em> but not both at
+the same time.
+</p>
+</dd>
+<dt class="hdlist1">
+targetPattern
+</dt>
+<dd>
+<p>
+A wildcarded pattern for matching target addresses to which users in this
+group may send messages. The pattern consists of one or more tokens
+separated by a forward slash "/". A token can be one of the following:
+<em>asterisk *</em>, <em>hash #</em>, or a sequence of characters that do not
+include "/", <em>asterisk *</em>, or <em>hash #</em>.  The <em>asterisk *</em> token matches any single token.  The <em>hash #</em>
+token matches zero or more tokens. <em>asterisk \*</em> has higher precedence than <em>hash \#</em>,
+and exact match has the highest precedence. To specify multiple addresses,
+separate the addresses with either a comma or a space. You can use the
+text string <code>${user}</code> in a token to specify an address that contains a
+user&#8217;s authenticated user name. If you do not specify any addresses then
+users in this group are not allowed to send messages to any addresses.
+You may specify attributes <em>targets</em> or <em>targetPattern</em> but not both at
+the same time.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>qdrouterd(8)</em>, <em>qdmanage(8)</em>, <em>qdrouterd.conf(5)</em></p></div>
+<div class="paragraph"><p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p></div>
+</div>
+</div>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
