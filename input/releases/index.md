@@ -27,8 +27,8 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
- - [Qpid JMS 1.4.1](qpid-jms-1.4.1/index.html), December 2021
- - [Qpid JMS 0.60.1](qpid-jms-0.60.1/index.html), December 2021
+ - [Qpid JMS 1.5.0](qpid-jms-1.5.0/index.html), December 2021
+ - [Qpid JMS 0.61.0](qpid-jms-0.61.0/index.html), December 2021
  - [Qpid Dispatch 1.18.0](qpid-dispatch-1.18.0/index.html), November 2021
  - [Qpid Interop-test 0.3.0](qpid-interop-test-0.3.0/index.html), November 2021
  - [Qpid Proton 0.36.0](qpid-proton-0.36.0/index.html), November 2021
@@ -45,6 +45,8 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid JMS 1.4.1](qpid-jms-1.4.1/index.html), December 2021
+ - [Qpid JMS 0.60.1](qpid-jms-0.60.1/index.html), December 2021
  - [Qpid Dispatch 1.17.1](qpid-dispatch-1.17.1/index.html), November 2021
  - [Qpid JMS 1.3.0](qpid-jms-1.3.0/index.html), October 2021
  - [Qpid JMS 1.2.0](qpid-jms-1.2.0/index.html), September 2021
