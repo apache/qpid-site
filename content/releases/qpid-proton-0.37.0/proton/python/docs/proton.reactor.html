@@ -1,0 +1,892 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Module proton.reactor &#8212; Qpid Proton Python API 0.37.0 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinxdoc.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module proton.utils" href="proton.utils.html" />
+    <link rel="prev" title="Module proton.handlers" href="proton.handlers.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="proton.utils.html" title="Module proton.utils"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="proton.handlers.html" title="Module proton.handlers"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.37.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code></a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-proton-reactor">
+<h1>Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code><a class="headerlink" href="#module-proton-reactor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-summary">
+<h2>Module Summary<a class="headerlink" href="#module-summary" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a></p></td>
+<td><p>A representation of the AMQP concept of a ‘container’, which loosely speaking is something that
+establishes links to or from another container, over which messages are transfered.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.ApplicationEvent" title="proton.reactor.ApplicationEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationEvent</span></code></a></p></td>
+<td><p>Application defined event, which can optionally be associated with an engine object and or an
+arbitrary subject.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.EventInjector" title="proton.reactor.EventInjector"><code class="xref py py-class docutils literal notranslate"><span class="pre">EventInjector</span></code></a></p></td>
+<td><p>Can be added to a <a class="reference internal" href="#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a> to allow events to be triggered by an external thread but
+handled on the event thread associated with the container.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.Backoff" title="proton.reactor.Backoff"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backoff</span></code></a></p></td>
+<td><p>A reconnect strategy involving an increasing delay between retries, up to a maximum or 10 seconds.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.Transaction" title="proton.reactor.Transaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">Transaction</span></code></a></p></td>
+<td><p>Tracks the state of an AMQP 1.0 local transaction.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="link-options">
+<h3>Link Options<a class="headerlink" href="#link-options" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The methods <a class="reference internal" href="#proton.reactor.Container.create_receiver" title="proton.reactor.Container.create_receiver"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Container.create_receiver()</span></code></a> and <a class="reference internal" href="#proton.reactor.Container.create_sender" title="proton.reactor.Container.create_sender"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Container.create_sender()</span></code></a> take one or more link options to allow the details of the links to be customized.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.LinkOption" title="proton.reactor.LinkOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinkOption</span></code></a></p></td>
+<td><p>Abstract interface for link configuration options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.ReceiverOption" title="proton.reactor.ReceiverOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">ReceiverOption</span></code></a></p></td>
+<td><p>Abstract class for receiver options.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.SenderOption" title="proton.reactor.SenderOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">SenderOption</span></code></a></p></td>
+<td><p>Abstract class for sender options.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.AtLeastOnce" title="proton.reactor.AtLeastOnce"><code class="xref py py-class docutils literal notranslate"><span class="pre">AtLeastOnce</span></code></a></p></td>
+<td><p>Set at-least-once delivery semantics for message delivery.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.AtMostOnce" title="proton.reactor.AtMostOnce"><code class="xref py py-class docutils literal notranslate"><span class="pre">AtMostOnce</span></code></a></p></td>
+<td><p>Set at-most-once delivery semantics for message delivery.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.DynamicNodeProperties" title="proton.reactor.DynamicNodeProperties"><code class="xref py py-class docutils literal notranslate"><span class="pre">DynamicNodeProperties</span></code></a></p></td>
+<td><p>Allows a map of link properties to be set on a link.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.Filter" title="proton.reactor.Filter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Filter</span></code></a></p></td>
+<td><p>Receiver option which allows incoming messages to be filtered.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.Selector" title="proton.reactor.Selector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Selector</span></code></a></p></td>
+<td><p>Configures a receiver with a message selector filter.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.DurableSubscription" title="proton.reactor.DurableSubscription"><code class="xref py py-class docutils literal notranslate"><span class="pre">DurableSubscription</span></code></a></p></td>
+<td><p>Receiver option which sets both the configuration and delivery state to durable.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#proton.reactor.Copy" title="proton.reactor.Copy"><code class="xref py py-class docutils literal notranslate"><span class="pre">Copy</span></code></a></p></td>
+<td><p>Receiver option which copies messages to the receiver.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#proton.reactor.Move" title="proton.reactor.Move"><code class="xref py py-class docutils literal notranslate"><span class="pre">Move</span></code></a></p></td>
+<td><p>Receiver option which moves messages to the receiver (rather than copying).</p></td>
+</tr>
+</tbody>
+</table>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+<div class="section" id="module-detail">
+<h2>Module Detail<a class="headerlink" href="#module-detail" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<dl class="py class">
+<dt id="proton.reactor.ApplicationEvent">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">ApplicationEvent</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">typename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">connection</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._endpoints.Connection<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">session</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._endpoints.Session<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._endpoints.Link<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._delivery.Delivery<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">subject</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Any<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#ApplicationEvent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.ApplicationEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._events.EventBase</span></code></p>
+<p>Application defined event, which can optionally be associated with
+an engine object and or an arbitrary subject. This produces
+extended event types - see <a class="reference internal" href="proton.html#proton.EventType" title="proton.EventType"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.EventType</span></code></a> for details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>typename</strong> – Event type name</p></li>
+<li><p><strong>connection</strong> – Associates this event with a connection.</p></li>
+<li><p><strong>session</strong> – Associates this event with a session.</p></li>
+<li><p><strong>link</strong> – Associate this event with a link.</p></li>
+<li><p><strong>delivery</strong> – Associate this event with a delivery.</p></li>
+<li><p><strong>subject</strong> – Associate this event with an arbitrary object</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt id="proton.reactor.ApplicationEvent.TYPES">
+<code class="sig-name descname">TYPES</code><em class="property"> = {}</em><a class="headerlink" href="#proton.reactor.ApplicationEvent.TYPES" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.ApplicationEvent.context">
+<em class="property">property </em><code class="sig-name descname">context</code><a class="headerlink" href="#proton.reactor.ApplicationEvent.context" title="Permalink to this definition">¶</a></dt>
+<dd><p>A reference to this event.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.ApplicationEvent.dispatch">
+<code class="sig-name descname">dispatch</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">proton._events.Handler</span></em>, <em class="sig-param"><span class="n">type</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.EventType<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.reactor.ApplicationEvent.dispatch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process this event by sending it to all known handlers that
+are valid for this event type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> – Parent handler to process this event</p></li>
+<li><p><strong>type</strong> – Event type</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.ApplicationEvent.type">
+<em class="property">property </em><code class="sig-name descname">type</code><a class="headerlink" href="#proton.reactor.ApplicationEvent.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>The type of this event.</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.AtLeastOnce">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">AtLeastOnce</code><a class="reference internal" href="_modules/proton/_reactor.html#AtLeastOnce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.AtLeastOnce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.LinkOption</span></code></p>
+<p>Set at-least-once delivery semantics for message delivery. This is achieved
+by setting the sender link settle mode to <a class="reference internal" href="proton.html#proton.Link.SND_UNSETTLED" title="proton.Link.SND_UNSETTLED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Link.SND_UNSETTLED</span></code></a>
+and the receiver link settle mode to <a class="reference internal" href="proton.html#proton.Link.RCV_FIRST" title="proton.Link.RCV_FIRST"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Link.RCV_FIRST</span></code></a>. This
+forces the receiver to settle all messages once they are successfully received.</p>
+<dl class="py method">
+<dt id="proton.reactor.AtLeastOnce.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#AtLeastOnce.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.AtLeastOnce.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the at-least-once delivery semantics on the link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference internal" href="proton.html#proton.Link" title="proton.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Link</span></code></a>) – The link on which this option is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.AtMostOnce">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">AtMostOnce</code><a class="reference internal" href="_modules/proton/_reactor.html#AtMostOnce"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.AtMostOnce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.LinkOption</span></code></p>
+<p>Set at-most-once delivery semantics for message delivery. This is achieved by
+setting the sender link settle mode to <a class="reference internal" href="proton.html#proton.Link.SND_SETTLED" title="proton.Link.SND_SETTLED"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Link.SND_SETTLED</span></code></a>
+(ie pre-settled).</p>
+<dl class="py method">
+<dt id="proton.reactor.AtMostOnce.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#AtMostOnce.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.AtMostOnce.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the at-most-once delivery semantics on the link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> (<a class="reference internal" href="proton.html#proton.Link" title="proton.Link"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Link</span></code></a>) – The link on which this option is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Backoff">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Backoff</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Backoff"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Backoff" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A reconnect strategy involving an increasing delay between
+retries, up to a maximum or 10 seconds. Repeated calls
+to <code class="xref py py-meth docutils literal notranslate"><span class="pre">next()</span></code> returns a value for the next delay, starting
+with an initial value of 0 seconds.</p>
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Container">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Container</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">handlers</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Container"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.Reactor</span></code></p>
+<p>A representation of the AMQP concept of a ‘container’, which
+loosely speaking is something that establishes links to or from
+another container, over which messages are transfered. This is
+an extension to the Reactor class that adds convenience methods
+for creating connections and sender- or receiver- links.</p>
+<dl class="py method">
+<dt id="proton.reactor.Container.connect">
+<code class="sig-name descname">connect</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>proton._url.Url<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">urls</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">address</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.Handler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">reconnect</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>None<span class="p">, </span>Literal<span class="p">[</span>False<span class="p">]</span><span class="p">, </span>proton._reactor.Backoff<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">heartbeat</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">ssl_domain</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._transport.SSLDomain<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span> &#x2192; proton._endpoints.Connection<a class="reference internal" href="_modules/proton/_reactor.html#Container.connect"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of an AMQP connection.</p>
+<p>An optional JSON configuration file may be used to specify some connection
+parameters. If present, these will override some of those given in this call
+(see note below). Some connection parameters (for SSL/TLS) can only be
+provided through this file. The configuration file is located by searching
+for it as follows:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>The location set in the environment variable <code class="docutils literal notranslate"><span class="pre">MESSAGING_CONNECT_FILE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">./connect.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">~/.config/messaging/connect.json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/etc/messaging/connect.json</span></code></p></li>
+</ol>
+</div></blockquote>
+<p>To use SSL/TLS for encryption (when an <code class="docutils literal notranslate"><span class="pre">amqps</span></code> URL scheme is used), the above
+configuration file must contain a <code class="docutils literal notranslate"><span class="pre">tls</span></code> submap containing the following
+configuration entries (See <a class="reference internal" href="proton.html#proton.SSLDomain" title="proton.SSLDomain"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.SSLDomain</span></code></a> for details):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ca</span></code>: Path to a database of trusted CAs that the server will advertise.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cert</span></code>: Path to a file/database containing the identifying certificate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code>: An optional key to access the identifying certificate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verify</span></code>: If <code class="docutils literal notranslate"><span class="pre">False</span></code>, do not verify the peer name
+(<a class="reference internal" href="proton.html#proton.SSLDomain.ANONYMOUS_PEER" title="proton.SSLDomain.ANONYMOUS_PEER"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.SSLDomain.ANONYMOUS_PEER</span></code></a>) or certificate.  By default
+(or if <code class="docutils literal notranslate"><span class="pre">True</span></code>) verify the peer name and certificate using the
+<code class="docutils literal notranslate"><span class="pre">ca</span></code> above (<a class="reference internal" href="proton.html#proton.SSLDomain.VERIFY_PEER_NAME" title="proton.SSLDomain.VERIFY_PEER_NAME"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.SSLDomain.VERIFY_PEER_NAME</span></code></a>).</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – URL string of process to connect to</p></li>
+<li><p><strong>urls</strong> – list of URL strings of process to try to connect to</p></li>
+<li><p><strong>reconnect</strong> – Reconnect is enabled by default.  You can
+pass in an instance of <a class="reference internal" href="#proton.reactor.Backoff" title="proton.reactor.Backoff"><code class="xref py py-class docutils literal notranslate"><span class="pre">Backoff</span></code></a> to control reconnect behavior.
+A value of <code class="docutils literal notranslate"><span class="pre">False</span></code> will prevent the library from automatically
+trying to reconnect if the underlying socket is disconnected
+before the connection has been closed.</p></li>
+<li><p><strong>heartbeat</strong> – A value in seconds indicating the
+desired frequency of heartbeats used to test the underlying
+socket is alive.</p></li>
+<li><p><strong>ssl_domain</strong> – SSL configuration.</p></li>
+<li><p><strong>handler</strong> – a connection scoped handler that will be
+called to process any events in the scope of this connection
+or its child links.</p></li>
+<li><p><strong>kwargs</strong> – <ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">sasl_enabled</span></code> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>), which determines whether a sasl layer
+is used for the connection.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed_mechs</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>), an optional string specifying the
+SASL mechanisms allowed for this  connection; the value is a
+space-separated list of mechanism  names; the mechanisms allowed
+by default are determined by your SASL library and system
+configuration, with two exceptions: <code class="docutils literal notranslate"><span class="pre">GSSAPI</span></code> and <code class="docutils literal notranslate"><span class="pre">GSS-SPNEGO</span></code>
+are disabled by default; to enable them, you must explicitly add
+them using this option; clients must set the allowed mechanisms
+before the outgoing connection is attempted; servers must set
+them before the listening connection is setup.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allow_insecure_mechs</span></code> (<code class="docutils literal notranslate"><span class="pre">bool</span></code>), a flag indicating whether insecure
+mechanisms, such as PLAIN over a non-encrypted socket, are
+allowed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>), the authentication secret. Ignored without <code class="docutils literal notranslate"><span class="pre">user</span></code>
+kwarg also being present.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>), the user to authenticate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">virtual_host</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>), the hostname to set in the Open performative
+used by peer to determine the correct back-end service for
+the client; if <code class="docutils literal notranslate"><span class="pre">virtual_host</span></code> is not supplied the host field
+from the URL is used instead.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">offered_capabilities</span></code>, a list of capabilities being offered to the
+peer. The list must contain symbols (or strings, which will be converted
+to symbols).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">desired_capabilities</span></code>, a list of capabilities desired from the peer.
+The list must contain symbols (or strings, which will be converted
+to symbols).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">properties</span></code>, a list of connection properties. This must be a map
+with symbol keys (or string keys, which will be converted to symbol keys).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sni</span></code> (<code class="docutils literal notranslate"><span class="pre">str</span></code>), a hostname to use with SSL/TLS Server Name Indication (SNI)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_frame_size</span></code> (<code class="docutils literal notranslate"><span class="pre">int</span></code>), the maximum allowable TCP packet size between the
+peers.</p></li>
+</ul>
+</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A new connection object.</p>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only one of <code class="docutils literal notranslate"><span class="pre">url</span></code> or <code class="docutils literal notranslate"><span class="pre">urls</span></code> should be specified.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following kwargs will be overridden by the values found
+in the JSON configuration file (if they exist there):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">password</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></li>
+</ul>
+<p>and the following kwargs will be overridden by the values found in the <code class="docutils literal notranslate"><span class="pre">sasl</span></code>
+sub-map of the above configuration file (if they exist there):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sasl_enabled</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">allowed_mechs</span></code></p></li>
+</ul>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.create_receiver">
+<code class="sig-name descname">create_receiver</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>proton._endpoints.Connection<span class="p">, </span>proton._url.Url<span class="p">, </span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">dynamic</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.Handler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>proton._reactor.ReceiverOption<span class="p">, </span>List<span class="p">[</span>proton._reactor.ReceiverOption<span class="p">]</span><span class="p">, </span>proton._reactor.LinkOption<span class="p">, </span>List<span class="p">[</span>proton._reactor.LinkOption<span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Receiver<a class="reference internal" href="_modules/proton/_reactor.html#Container.create_receiver"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.create_receiver" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of a link over which messages can
+be received (aka a subscription).</p>
+<p>There are two patterns of use:</p>
+<p>(1) A connection can be passed as the first argument, in which
+case the link is established on that connection. In this case
+the source address can be specified as the second argument (or
+as a keyword argument). The target address can also be specified
+if desired.</p>
+<p>(2) Alternatively a URL can be passed as the first argument. In
+this case a new connection will be established on which the link
+will be attached. If a path is specified and the source is not,
+then the path of the URL is used as the target address.</p>
+<p>The name of the link may be specified if desired, otherwise a
+unique name will be generated.</p>
+<p>Various <a class="reference internal" href="#proton.reactor.LinkOption" title="proton.reactor.LinkOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinkOption</span></code></a> s can be specified to further control the
+attachment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – A connection object or a URL.</p></li>
+<li><p><strong>source</strong> – Address of source node.</p></li>
+<li><p><strong>target</strong> – Address of target node.</p></li>
+<li><p><strong>name</strong> – Receiver name.</p></li>
+<li><p><strong>dynamic</strong> – If <code class="docutils literal notranslate"><span class="pre">True</span></code>, indicates dynamic creation of the receiver.</p></li>
+<li><p><strong>handler</strong> – Event handler for this receiver.</p></li>
+<li><p><strong>options</strong> – A single option, or a list of receiver options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New receiver instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.create_sender">
+<code class="sig-name descname">create_sender</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>proton._url.Url<span class="p">, </span>proton._endpoints.Connection<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">target</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">source</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._events.Handler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">tags</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Callable<span class="p">[</span><span class="p">]</span><span class="p">, </span>bytes<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span><a class="reference internal" href="#proton.reactor.SenderOption" title="proton.reactor.SenderOption">SenderOption</a><span class="p">, </span>List<span class="p">[</span><a class="reference internal" href="#proton.reactor.SenderOption" title="proton.reactor.SenderOption">SenderOption</a><span class="p">]</span><span class="p">, </span><a class="reference internal" href="#proton.reactor.LinkOption" title="proton.reactor.LinkOption">LinkOption</a><span class="p">, </span>List<span class="p">[</span><a class="reference internal" href="#proton.reactor.LinkOption" title="proton.reactor.LinkOption">LinkOption</a><span class="p">]</span><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Sender<a class="reference internal" href="_modules/proton/_reactor.html#Container.create_sender"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.create_sender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates the establishment of a link over which messages can
+be sent.</p>
+<p>There are two patterns of use:</p>
+<ol class="arabic simple">
+<li><p>A connection can be passed as the first argument, in which
+case the link is established on that connection. In this case
+the target address can be specified as the second argument (or
+as a keyword argument). The source address can also be specified
+if desired.</p></li>
+<li><p>Alternatively a URL can be passed as the first argument. In
+this case a new connection will be established on which the link
+will be attached. If a path is specified and the target is not,
+then the path of the URL is used as the target address.</p></li>
+</ol>
+<p>The name of the link may be specified if desired, otherwise a
+unique name will be generated.</p>
+<p>Various <a class="reference internal" href="#proton.reactor.LinkOption" title="proton.reactor.LinkOption"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinkOption</span></code></a> s can be specified to further control the
+attachment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – A connection object or a URL.</p></li>
+<li><p><strong>target</strong> – Address of target node.</p></li>
+<li><p><strong>source</strong> – Address of source node.</p></li>
+<li><p><strong>name</strong> – Sender name.</p></li>
+<li><p><strong>handler</strong> – Event handler for this sender.</p></li>
+<li><p><strong>tags</strong> – Function to generate tags for this sender of the form <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">simple_tags():</span></code> and returns a <code class="docutils literal notranslate"><span class="pre">bytes</span></code> type</p></li>
+<li><p><strong>options</strong> – A single option, or a list of sender options</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>New sender instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.declare_transaction">
+<code class="sig-name descname">declare_transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">context</span><span class="p">:</span> <span class="n">proton._endpoints.Connection</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>TransactionHandler<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">settle_before_discharge</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; proton._reactor.Transaction<a class="reference internal" href="_modules/proton/_reactor.html#Container.declare_transaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.declare_transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declare a local transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>context</strong> – Context for the transaction, usually the connection.</p></li>
+<li><p><strong>handler</strong> – Handler for transactional events.</p></li>
+<li><p><strong>settle_before_discharge</strong> – Settle all transaction control messages before
+the transaction is discharged.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.do_work">
+<code class="sig-name descname">do_work</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">timeout</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>float<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/proton/_reactor.html#Container.do_work"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.do_work" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.listen">
+<code class="sig-name descname">listen</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">url</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>str<span class="p">, </span>proton._url.Url<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">ssl_domain</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>proton._transport.SSLDomain<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._reactor.Acceptor<a class="reference internal" href="_modules/proton/_reactor.html#Container.listen"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Container.listen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initiates a server socket, accepting incoming AMQP connections
+on the interface and port specified.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>url</strong> – URL on which to listen for incoming AMQP connections.</p></li>
+<li><p><strong>ssl_domain</strong> – SSL configuration object if SSL is to be used, <code class="docutils literal notranslate"><span class="pre">None</span></code> otherwise.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.run">
+<code class="sig-name descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.reactor.Container.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the processing of events and messages for this container.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.schedule">
+<code class="sig-name descname">schedule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delay</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">proton._events.Handler</span></em><span class="sig-paren">)</span> &#x2192; proton._reactor.Task<a class="headerlink" href="#proton.reactor.Container.schedule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule a task to run on this container after a given delay,
+and using the supplied handler.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>delay</strong> – </p></li>
+<li><p><strong>handler</strong> – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Container.selectable">
+<code class="sig-name descname">selectable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>Acceptor<span class="p">, </span><a class="reference internal" href="#proton.reactor.EventInjector" title="proton.reactor.EventInjector">EventInjector</a><span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">delegate</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>socket<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._selectable.Selectable<a class="headerlink" href="#proton.reactor.Container.selectable" title="Permalink to this definition">¶</a></dt>
+<dd><p>NO IDEA!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handler</strong> – no idea</p></li>
+<li><p><strong>delegate</strong> – no idea</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Copy">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Copy</code><a class="reference internal" href="_modules/proton/_reactor.html#Copy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.ReceiverOption</span></code></p>
+<p>Receiver option which copies messages to the receiver. This ensures that all
+receivers receive all incoming messages, no matter how many receivers there
+are. This is achieved by setting the receiver source distribution mode to
+<a class="reference internal" href="proton.html#proton.Terminus.DIST_MODE_COPY" title="proton.Terminus.DIST_MODE_COPY"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Terminus.DIST_MODE_COPY</span></code></a>.</p>
+<dl class="py method">
+<dt id="proton.reactor.Copy.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Copy.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Copy.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set message copy semantics on the specified receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which message copy semantics is to be set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.DurableSubscription">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">DurableSubscription</code><a class="reference internal" href="_modules/proton/_reactor.html#DurableSubscription"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.DurableSubscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.ReceiverOption</span></code></p>
+<p>Receiver option which sets both the configuration and delivery state
+to durable. This is achieved by setting the receiver’s source durability
+to <a class="reference internal" href="proton.html#proton.Terminus.DELIVERIES" title="proton.Terminus.DELIVERIES"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Terminus.DELIVERIES</span></code></a> and the source expiry policy to
+<a class="reference internal" href="proton.html#proton.Terminus.EXPIRE_NEVER" title="proton.Terminus.EXPIRE_NEVER"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Terminus.EXPIRE_NEVER</span></code></a>.</p>
+<dl class="py method">
+<dt id="proton.reactor.DurableSubscription.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#DurableSubscription.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.DurableSubscription.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set durability on the specified receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which durability is to be set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.DynamicNodeProperties">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">DynamicNodeProperties</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">props</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#DynamicNodeProperties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.DynamicNodeProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.LinkOption</span></code></p>
+<p>Allows a map of link properties to be set on a link. The
+keys may be <a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a> or strings (in which case
+they will be converted to symbols before being applied).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>props</strong> – A map of link options to be applied to a link.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.reactor.DynamicNodeProperties.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#DynamicNodeProperties.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.DynamicNodeProperties.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the map of properties on the specified link.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>link</strong> – The link on which this property map is to be set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.EventInjector">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">EventInjector</code><a class="reference internal" href="_modules/proton/_reactor.html#EventInjector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Can be added to a <a class="reference internal" href="#proton.reactor.Container" title="proton.reactor.Container"><code class="xref py py-class docutils literal notranslate"><span class="pre">Container</span></code></a> to allow events to be triggered by an
+external thread but handled on the event thread associated with
+the container. An instance of this class can be passed to the
+<a class="reference internal" href="#proton.reactor.Container.selectable" title="proton.reactor.Container.selectable"><code class="xref py py-meth docutils literal notranslate"><span class="pre">Container.selectable()</span></code></a> method in order to activate
+it. <a class="reference internal" href="#proton.reactor.EventInjector.close" title="proton.reactor.EventInjector.close"><code class="xref py py-meth docutils literal notranslate"><span class="pre">close()</span></code></a> should be called when it is no longer
+needed, to allow the event loop to end if needed.</p>
+<dl class="py method">
+<dt id="proton.reactor.EventInjector.close">
+<code class="sig-name descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#EventInjector.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request that this EventInjector be closed. Existing events
+will be dispatched on the container’s event dispatch thread,
+then this will be removed from the set of interest.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.EventInjector.fileno">
+<code class="sig-name descname">fileno</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; int<a class="reference internal" href="_modules/proton/_reactor.html#EventInjector.fileno"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector.fileno" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.EventInjector.on_selectable_init">
+<code class="sig-name descname">on_selectable_init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#EventInjector.on_selectable_init"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector.on_selectable_init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.EventInjector.on_selectable_readable">
+<code class="sig-name descname">on_selectable_readable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._events.Event</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#EventInjector.on_selectable_readable"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector.on_selectable_readable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.EventInjector.trigger">
+<code class="sig-name descname">trigger</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">event</span><span class="p">:</span> <span class="n">proton._reactor.ApplicationEvent</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#EventInjector.trigger"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.EventInjector.trigger" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request that the given event be dispatched on the event thread
+of the container to which this EventInjector was added.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>event</strong> (<a class="reference internal" href="proton.html#proton.Event" title="proton.Event"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.Event</span></code></a>, <a class="reference internal" href="#proton.reactor.ApplicationEvent" title="proton.reactor.ApplicationEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">ApplicationEvent</span></code></a>) – Event to be injected</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Filter">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Filter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filter_set</span><span class="p">:</span> <span class="n">Dict<span class="p">[</span>proton._data.symbol<span class="p">, </span>proton._data.Described<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">{}</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Filter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Filter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.ReceiverOption</span></code></p>
+<p>Receiver option which allows incoming messages to be filtered.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filter_set</strong> – A map of filters with <a class="reference internal" href="proton.html#proton.symbol" title="proton.symbol"><code class="xref py py-class docutils literal notranslate"><span class="pre">proton.symbol</span></code></a> keys
+containing the filter name, and the value a filter string.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.reactor.Filter.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#Filter.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Filter.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the filter on the specified receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which this filter is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.LinkOption">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">LinkOption</code><a class="reference internal" href="_modules/proton/_reactor.html#LinkOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.LinkOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Abstract interface for link configuration options</p>
+<dl class="py method">
+<dt id="proton.reactor.LinkOption.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#LinkOption.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.LinkOption.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclasses will implement any configuration logic in this
+method</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.LinkOption.test">
+<code class="sig-name descname">test</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">link</span><span class="p">:</span> <span class="n">proton._endpoints.Link</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="reference internal" href="_modules/proton/_reactor.html#LinkOption.test"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.LinkOption.test" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subclasses can override this to selectively apply an option
+e.g. based on some link criteria</p>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Move">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Move</code><a class="reference internal" href="_modules/proton/_reactor.html#Move"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.ReceiverOption</span></code></p>
+<p>Receiver option which moves messages to the receiver (rather than copying).
+This has the effect of distributing the incoming messages between the
+receivers. This is achieved by setting the receiver source distribution
+mode to <a class="reference internal" href="proton.html#proton.Terminus.DIST_MODE_MOVE" title="proton.Terminus.DIST_MODE_MOVE"><code class="xref py py-const docutils literal notranslate"><span class="pre">proton.Terminus.DIST_MODE_MOVE</span></code></a>.</p>
+<dl class="py method">
+<dt id="proton.reactor.Move.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Move.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Move.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set message move semantics on the specified receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which message move semantics is to be set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.ReceiverOption">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">ReceiverOption</code><a class="reference internal" href="_modules/proton/_reactor.html#ReceiverOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.ReceiverOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.LinkOption</span></code></p>
+<p>Abstract class for receiver options</p>
+<dl class="py method">
+<dt id="proton.reactor.ReceiverOption.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#ReceiverOption.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.ReceiverOption.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the option on the receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which this option is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Selector">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Selector</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">value</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>bytes<span class="p">, </span>str<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'selector'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Selector"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Selector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.Filter</span></code></p>
+<p>Configures a receiver with a message selector filter</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value</strong> – Selector filter string</p></li>
+<li><p><strong>name</strong> – Name of the selector, defaults to <code class="docutils literal notranslate"><span class="pre">&quot;selector&quot;</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="proton.reactor.Selector.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">receiver</span><span class="p">:</span> <span class="n">Receiver</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#proton.reactor.Selector.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the filter on the specified receiver.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>receiver</strong> – The receiver on which this filter is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.SenderOption">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">SenderOption</code><a class="reference internal" href="_modules/proton/_reactor.html#SenderOption"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.SenderOption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">proton._reactor.LinkOption</span></code></p>
+<p>Abstract class for sender options.</p>
+<dl class="py method">
+<dt id="proton.reactor.SenderOption.apply">
+<code class="sig-name descname">apply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sender</span><span class="p">:</span> <span class="n">Sender</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#SenderOption.apply"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.SenderOption.apply" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the option on the sender.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sender</strong> – The sender on which this option is to be applied.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<hr class="docutils" />
+<dl class="py class">
+<dt id="proton.reactor.Transaction">
+<em class="property">class </em><code class="sig-prename descclassname">proton.reactor.</code><code class="sig-name descname">Transaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">txn_ctrl</span><span class="p">:</span> <span class="n">Sender</span></em>, <em class="sig-param"><span class="n">handler</span><span class="p">:</span> <span class="n">TransactionHandler</span></em>, <em class="sig-param"><span class="n">settle_before_discharge</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/proton/_reactor.html#Transaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Transaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Tracks the state of an AMQP 1.0 local transaction. In typical usage, this
+object is not created directly, but is obtained through the event returned
+by <a class="reference internal" href="proton.handlers.html#proton.handlers.TransactionHandler.on_transaction_declared" title="proton.handlers.TransactionHandler.on_transaction_declared"><code class="xref py py-meth docutils literal notranslate"><span class="pre">proton.handlers.TransactionHandler.on_transaction_declared()</span></code></a> after
+a call to <a class="reference internal" href="#proton.reactor.Container.declare_transaction" title="proton.reactor.Container.declare_transaction"><code class="xref py py-meth docutils literal notranslate"><span class="pre">proton.reactor.Container.declare_transaction()</span></code></a>.</p>
+<p>To send messages under this transaction, use <a class="reference internal" href="#proton.reactor.Transaction.send" title="proton.reactor.Transaction.send"><code class="xref py py-meth docutils literal notranslate"><span class="pre">send()</span></code></a>.</p>
+<p>To receive messages under this transaction, call <a class="reference internal" href="#proton.reactor.Transaction.accept" title="proton.reactor.Transaction.accept"><code class="xref py py-meth docutils literal notranslate"><span class="pre">accept()</span></code></a> once the
+message is received (typically from the
+<a class="reference internal" href="proton.handlers.html#proton.handlers.MessagingHandler.on_message" title="proton.handlers.MessagingHandler.on_message"><code class="xref py py-meth docutils literal notranslate"><span class="pre">proton.handlers.MessagingHandler.on_message()</span></code></a> callback).</p>
+<p>To discharge the transaction, call either <a class="reference internal" href="#proton.reactor.Transaction.commit" title="proton.reactor.Transaction.commit"><code class="xref py py-meth docutils literal notranslate"><span class="pre">commit()</span></code></a>
+(for a successful transaction), or <a class="reference internal" href="#proton.reactor.Transaction.abort" title="proton.reactor.Transaction.abort"><code class="xref py py-meth docutils literal notranslate"><span class="pre">abort()</span></code></a> (for a failed transaction).</p>
+<dl class="py method">
+<dt id="proton.reactor.Transaction.abort">
+<code class="sig-name descname">abort</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#Transaction.abort"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Transaction.abort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Abort or roll back this transaction. Closes the transaction as a failure,
+and reverses, or rolls back all actions (sent and received messages)
+performed under this transaction.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Transaction.accept">
+<code class="sig-name descname">accept</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">delivery</span><span class="p">:</span> <span class="n">proton._delivery.Delivery</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#Transaction.accept"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Transaction.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Accept a received message under this transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>delivery</strong> – Delivery object for the received message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Transaction.commit">
+<code class="sig-name descname">commit</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/proton/_reactor.html#Transaction.commit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Transaction.commit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Commit this transaction. Closes the transaction as a success.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="proton.reactor.Transaction.send">
+<code class="sig-name descname">send</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sender</span><span class="p">:</span> <span class="n">Sender</span></em>, <em class="sig-param"><span class="n">msg</span><span class="p">:</span> <span class="n">proton._message.Message</span></em>, <em class="sig-param"><span class="n">tag</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; proton._delivery.Delivery<a class="reference internal" href="_modules/proton/_reactor.html#Transaction.send"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#proton.reactor.Transaction.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send a message under this transaction.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sender</strong> – Link over which to send the message.</p></li>
+<li><p><strong>msg</strong> – Message to be sent under this transaction.</p></li>
+<li><p><strong>tag</strong> – The delivery tag</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Delivery object for this message.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code></a><ul>
+<li><a class="reference internal" href="#module-summary">Module Summary</a><ul>
+<li><a class="reference internal" href="#link-options">Link Options</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-detail">Module Detail</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="proton.handlers.html"
+                        title="previous chapter">Module <code class="docutils literal notranslate"><span class="pre">proton.handlers</span></code></a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="proton.utils.html"
+                        title="next chapter">Module <code class="docutils literal notranslate"><span class="pre">proton.utils</span></code></a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/proton.reactor.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="proton.utils.html" title="Module proton.utils"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="proton.handlers.html" title="Module proton.handlers"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Qpid Proton Python API 0.37.0 documentation</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">Module <code class="docutils literal notranslate"><span class="pre">proton.reactor</span></code></a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.4.3.
+    </div>
+  </body>
+</html>
