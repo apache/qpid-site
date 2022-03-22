@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>Qpid Dispatch 1.19.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.19.0/index.html">Qpid Dispatch 1.19.0</a></li><li>Qpid Dispatch 1.19.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-dispatch-1190-release-notes">Qpid Dispatch 1.19.0 Release Notes</h1>
+
+<p>Dispatch is a lightweight AMQP 1.0 message router. More about
+<a href="/components/dispatch-router/index.html">Qpid
+Dispatch</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1403">DISPATCH-1403</a> - Consolidate chained qd_buffer_t field handling code</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-1487">DISPATCH-1487</a> - Improve the parsing of message annotations</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2103">DISPATCH-2103</a> - Log the actual HTTP websocket listener port when 0 was specified in config</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2310">DISPATCH-2310</a> - Enforce a limit to the length of a router's id</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2317">DISPATCH-2317</a> - Router per-message annotations version negotiation</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2036">DISPATCH-2036</a> - TCP adaptor deliveries reported as "stuck" by delayed delivery detection</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2085">DISPATCH-2085</a> - system_tests_fallback_dest failure - addr_proxy.c:323: on_conn_event: Assertion `addr-&gt;edge_outlink == 0' failed</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2132">DISPATCH-2132</a> - core-&gt;uptime_ticks races</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2144">DISPATCH-2144</a> - Fatal Python error: _PyMem_DebugMalloc: Python memory allocator called without holding the GIL</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2301">DISPATCH-2301</a> - Protocol adaptors do not annotate AMQP messages</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2305">DISPATCH-2305</a> - policy code overrides configured connection settings by default</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2308">DISPATCH-2308</a> - temporary address generation infinite loop if router id &gt; 200 characters</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2309">DISPATCH-2309</a> - Message body validation can succeed without validating the actual message body</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2314">DISPATCH-2314</a> - TSAN data race when setting the presettled flag</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2316">DISPATCH-2316</a> - Py_True/Py_False is not increfed, causing crash in policy tests with libpythond (debug python library)</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2318">DISPATCH-2318</a> - Double free of subscription on shutdown</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2319">DISPATCH-2319</a> - system_tests_one_router.test_43_dropped_presettled_receiver_stops fails</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2327">DISPATCH-2327</a> - system_tests_multi_tenancy flaky link route test failures</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2333">DISPATCH-2333</a> - Fix assert that is always true (detected by Coverity Scan)</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2234">DISPATCH-2234</a> - Update JavaScript console packages for the 1.19.0 release</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2312">DISPATCH-2312</a> - Remove test system_tests_one_router.py::test_07_unsettled_undeliverable</li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2326">DISPATCH-2326</a> - Remove HTTP1/HTTP2/TCP Adaptors from the source code. </li>
+<li><a href="https://issues.apache.org/jira/browse/DISPATCH-2328">DISPATCH-2328</a> - c_unittests failing on RHEL 7</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

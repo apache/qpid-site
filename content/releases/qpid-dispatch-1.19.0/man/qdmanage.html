@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>SYNOPSIS - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-dispatch-1.19.0/index.html">Qpid Dispatch 1.19.0</a></li><li>SYNOPSIS</li></ul>
+
+        <div id="-middle-content">
+          <div class="sect1">
+<h2 id="_synopsis">SYNOPSIS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><strong>qdmanage</strong> [<em>OPTIONS</em>] <em>OPERATION</em> [<em>ARGUMENTS</em>]</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description">DESCRIPTION</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>An AMQP management client for use with the Dispatch router daemon
+(<em>qdrouterd</em>). Sends AMQP management operations requests and prints
+the response in JSON format. This is a generic AMQP management tool
+and can be used with any AMQP endpoint that follows the AMQP Management
+specification, not just with <em>qdrouterd</em>.</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_options">OPTIONS</h2>
+<div class="sectionbody">
+<div class="paragraph"><p>-h, --help
+:   show this help message and exit</p></div>
+<div class="paragraph"><p>--version
+:   show program&#8217;s version number and exit</p></div>
+<div class="paragraph"><p>-v, --verbose
+:   Show maximum detail</p></div>
+<div class="paragraph"><p>-r ROUTER-ID, --router ROUTER-ID
+:   Router to be queried</p></div>
+<div class="paragraph"><p>-d EDGE-ROUTER-ID, --edge-router EDGE-ROUTER-ID
+:   Edge Router to be queried</p></div>
+<div class="paragraph"><p>--type TYPE
+:   Type of entity to operate on.</p></div>
+<div class="paragraph"><p>--name NAME
+:   Name of entity to operate on.</p></div>
+<div class="paragraph"><p>--identity ID
+:   Identity of entity to operate on.</p></div>
+<div class="paragraph"><p>--indent INDENT
+:   Pretty-printing indent. -1 means don&#8217;t pretty-print (default 2)</p></div>
+<div class="paragraph"><p>--stdin
+:   Read attributes as JSON map or list of maps from stdin.</p></div>
+<div class="paragraph"><p>--body BODY
+:   JSON value to use as body of a non-standard operation call.</p></div>
+<div class="paragraph"><p>--properties PROPERTIES
+:   JSON map to use as properties for a non-standard operation call.</p></div>
+<div class="paragraph"><p>-b URL, --bus URL
+:   URL of the messaging bus to connect to default 0.0.0.0</p></div>
+<div class="paragraph"><p>-t SECS, --timeout SECS
+:   Maximum time to wait for connection in seconds default 5</p></div>
+<div class="paragraph"><p>--ssl-certificate CERT
+:   Client SSL certificate (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-key KEY
+:   Client SSL private key (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-trustfile TRUSTED-CA-DB
+:   Trusted Certificate Authority Database file (PEM Format)</p></div>
+<div class="paragraph"><p>--ssl-password PASSWORD
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--ssl-password-file SSL-PASSWORD-FILE
+:   Certificate password, will be prompted if not specifed.</p></div>
+<div class="paragraph"><p>--sasl-mechanisms SASL-MECHANISMS
+:   Allowed sasl mechanisms to be supplied during the sasl handshake.</p></div>
+<div class="paragraph"><p>--sasl-username SASL-USERNAME
+:   User name for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password SASL-PASSWORD
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--sasl-password-file SASL-PASSWORD-FILE
+:   Password for SASL plain authentication</p></div>
+<div class="paragraph"><p>--ssl-disable-peer-name-verify
+:   Disables SSL peer name verification. WARNING - This option is insecure and must not be used in production environments</p></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_operations">OPERATIONS</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+<code>query</code> [<em>ATTR</em>&#8230;]
+</dt>
+<dd>
+<p>
+  Print attributes for multiple entities. Prints all entities by default, use
+  --type, --name or --identity options to restrict which entities are printed.
+  Prints the attributes named in the ATTR list, or all attributes if none are
+  listed.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>create</code> [<em>ATTR=VALUE</em>&#8230;]
+</dt>
+<dd>
+<p>
+  Create a new entity with the specified attributes. With the --stdin
+  option, read attributes from stdin. This can be a JSON map of
+  attributes to create a single entity, or a JSON list of maps to create
+  multiple entities.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>read</code>
+</dt>
+<dd>
+<p>
+  Print all of the attributes of a single entity, specified by the --name or
+  --identity options.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>update</code> [<em>ATTR=VALUE</em>&#8230;]
+</dt>
+<dd>
+<p>
+  Update the attributes of an existing entity. If an ATTR name is listed with
+  no =VALUE, that attribute will be deleted from the entity. With the --stdin
+  option, read attributes from stdin. This can be a JSON map of attributes to
+  update a single entity, or a JSON list of maps to update multiple entities.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>delete</code>
+</dt>
+<dd>
+<p>
+  Delete an entity specified by the --name or --identity options.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-types</code> [<em>TYPE</em>]
+</dt>
+<dd>
+<p>
+  List entity types with their base types. With no arguments, list all
+  types.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-operations</code> [<em>TYPE</em>]
+</dt>
+<dd>
+<p>
+  List entity types with their operations. With no arguments, list all
+  types.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-attributes</code> [<em>TYPE</em>]
+</dt>
+<dd>
+<p>
+  List entity types with their attributes. With no arguments, list all
+  types.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-annotations</code> [<em>TYPE</em>]
+</dt>
+<dd>
+<p>
+  List entity types with their annotations. With no arguments, list all
+  types.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-mgmt-nodes</code>
+</dt>
+<dd>
+<p>
+  List all other known management nodes connected to this one.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-json-schema</code> [<em>INDENT</em>]
+</dt>
+<dd>
+<p>
+  Get the router schema in JSON format. Optional integer indent for
+  formatted output.
+</p>
+</dd>
+<dt class="hdlist1">
+<code>get-log</code> [<em>INDENT</em>]
+</dt>
+<dd>
+<p>
+  Get recent log entries from the router.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_files">FILES</h2>
+<div class="sectionbody">
+<div class="dlist"><dl>
+<dt class="hdlist1">
+/usr/local/share/doc/qpid-dispatch/qdrouter.json
+</dt>
+<dd>
+<p>
+  Management schema for <em>qdrouterd</em>.
+</p>
+</dd>
+<dt class="hdlist1">
+/usr/local/share/doc/qpid-dispatch/qdrouter.json.readme.txt
+</dt>
+<dd>
+<p>
+  Explanation of the management schema.
+</p>
+</dd>
+</dl></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_examples">EXAMPLES</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Show the logging configuration:</div>
+<div class="content">
+<pre><code>qdmanage query --type=log</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Enable debug and higher log messages by default:</div>
+<div class="content">
+<pre><code>qdmanage update name=log/DEFAULT enable=debug+</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Enable trace log messages only for the MESSAGE module, and direct MESSAGE logs to the file <em>test.log</em>:</div>
+<div class="content">
+<pre><code>qdmanage update name=log/MESSAGE enable=trace output=test.log</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Set MESSAGE logging back to the default:</div>
+<div class="content">
+<pre><code>qdmanage update name=log/MESSAGE enable=default</code></pre>
+</div></div>
+<div class="listingblock">
+<div class="title">Disable MESSAGE logging:</div>
+<div class="content">
+<pre><code>qdmanage update name=log/MESSAGE enable=none</code></pre>
+</div></div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_see_also">SEE ALSO</h2>
+<div class="sectionbody">
+<div class="paragraph"><p><em>qdrouterd(8)</em>, <em>qdstat(8)</em>, <em>qdrouterd.conf(5)</em></p></div>
+<div class="paragraph"><p><a href="http://qpid.apache.org/components/dispatch-router">http://qpid.apache.org/components/dispatch-router</a></p></div>
+</div>
+</div>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
