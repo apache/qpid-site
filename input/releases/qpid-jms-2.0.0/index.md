@@ -59,7 +59,7 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {
-      if ("2.0.0" === "{{current_jms_release}}") || "2.0.0" === "{{other_jms_release}}") {
+      if ("2.0.0" === "{{current_jms_release}}" || "2.0.0" === "{{other_jms_release}}") {
           _modifyCurrentReleaseLinks();
       }
   });
