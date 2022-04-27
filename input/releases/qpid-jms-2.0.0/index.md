@@ -17,9 +17,9 @@
 ;; under the License.
 ;;
 
-# Qpid JMS 1.6.0
+# Qpid JMS 2.0.0
 
-Qpid JMS is a complete [Jakarta Messaging](https://jakarta.ee/specifications/messaging/) 2.0
+Qpid JMS is a complete [Jakarta Messaging](https://jakarta.ee/specifications/messaging/) 3.0
 client built using the [Qpid Proton]({{site_url}}/proton/index.html) protocol engine.
 
 For a detailed list of the changes in this release, see the [release
@@ -33,8 +33,8 @@ files you download.
 
 | Content | Download | Verify |
 |---------|----------|--------|
-| Qpid JMS binaries | [apache-qpid-jms-1.6.0-bin.tar.gz](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz.sha512) |
-| Qpid JMS source code | [apache-qpid-jms-1.6.0-src.tar.gz](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz.sha512) |
+| Qpid JMS binaries | [apache-qpid-jms-2.0.0-bin.tar.gz](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-bin.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-bin.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-bin.tar.gz.sha512) |
+| Qpid JMS source code | [apache-qpid-jms-2.0.0-src.tar.gz](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-src.tar.gz) | [ASC](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-src.tar.gz.asc), [SHA512](https://archive.apache.org/dist/qpid/jms/2.0.0/apache-qpid-jms-2.0.0-src.tar.gz.sha512) |
 
 The client is also available [via Maven]({{site_url}}/maven.html).
 
@@ -43,8 +43,8 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 <div class="two-column" markdown="1">
 
- - [API reference](https://jakarta.ee/specifications/messaging/2.0/apidocs/)
- - [Examples](https://github.com/apache/qpid-jms/tree/1.6.0/qpid-jms-examples)
+ - [API reference](https://jakarta.ee/specifications/messaging/3.0/apidocs/)
+ - [Examples](https://github.com/apache/qpid-jms/tree/2.0.0/qpid-jms-examples)
  - [Configuration](docs/index.html)
  - [Building Qpid JMS](building.html)
 
@@ -53,13 +53,13 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 
 ## More information
 
- - [All release artefacts](https://archive.apache.org/dist/qpid/jms/1.6.0)
- - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%271.6.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
- - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/1.6.0)
+ - [All release artefacts](https://archive.apache.org/dist/qpid/jms/2.0.0)
+ - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%272.0.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
+ - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/2.0.0)
 
 <script type="text/javascript">
   _deferredFunctions.push(function() {
-      if ("1.6.0" === "{{current_jms_release}}") || "1.6.0" === "{{other_jms_release}}") {
+      if ("2.0.0" === "{{current_jms_release}}") || "2.0.0" === "{{other_jms_release}}") {
           _modifyCurrentReleaseLinks();
       }
   });

@@ -25,20 +25,18 @@
 
 ## JMS with the strength of AMQP
 
-Qpid JMS is an AMQP 1.0 [Java Message Service][jms] 2.0 client built
-using [Qpid Proton]({{site_url}}/proton/index.html).
+Qpid JMS is an AMQP 1.0 [Jakarta Messaging 3.0](https://jakarta.ee/specifications/messaging/3.0/jakarta-messaging-spec-3.0.html)
+client built using [Qpid Proton]({{site_url}}/proton/index.html).
 
-Qpid also provides an alternate JMS client supporting
-[earlier AMQP versions](amqp-0-x.html).
+For a release using Jakarta Messaging 3.0 (jakarta.jms), see the [{{current_jms_release}} release]({{site_url}}/releases/qpid-jms-{{current_jms_release}}/index.html).
 
-[jms]: http://en.wikipedia.org/wiki/Java_Message_Service
+For a release using Jakarta Messaging 2.0 (javax.jms), see the [{{other_jms_release}} release]({{site_url}}/releases/qpid-jms-{{other_jms_release}}/index.html).
 
 </div>
 
 ## Features
 
- - [JMS 2.0](https://jcp.org/aboutJava/communityprocess/mrel/jsr343/index.html)
-   API
+ - [Jakarta Messaging 3.0](https://jakarta.ee/specifications/messaging/3.0/jakarta-messaging-spec-3.0.html) API
  - Secure communication via SSL and SASL 
  - Producer flow control
  - Failover
@@ -47,8 +45,7 @@ Qpid also provides an alternate JMS client supporting
 ## Documentation
 
 <div class="two-column" markdown="1">
-
- - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
+ - [API reference](https://jakarta.ee/specifications/messaging/3.0/apidocs/)
  - [Examples](https://github.com/apache/qpid-jms/tree/{{current_jms_release}}/qpid-jms-examples)
  - [Configuration]({{current_jms_release_url}}/docs/index.html)
  - [Building Qpid JMS]({{current_jms_release_url}}/building.html)
@@ -64,6 +61,7 @@ For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
 ## Releases
 
  - {{current_jms_release_link}}
+ - [Qpid JMS {{other_jms_release}}]({{site_url}}/releases/qpid-jms-{{other_jms_release}}/index.html)
  - [Past releases]({{site_url}}/releases/index.html#past-releases)
 
 ## Issues

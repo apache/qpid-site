@@ -67,8 +67,8 @@ platform, environment, or language. More about
 ## Releases
 
  - {{current_proton_release_link}}
- - {{current_proton_j_release_link}}
  - {{current_protonj2_release_link}}
+ - {{current_proton_j_release_link}}
  - [Past releases]({{site_url}}/releases/index.html#past-releases)
 
 ## Issues

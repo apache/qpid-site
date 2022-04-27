@@ -31,7 +31,7 @@ documentation = \
 """
 <div class="two-column" markdown="1">
 
- - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
+ - [API reference](https://jakarta.ee/specifications/messaging/{api_version}/apidocs/)
  - [Examples](https://github.com/apache/qpid-jms/tree/{source_release}/qpid-jms-examples)
  - [Configuration](docs/index.html)
  - [Building Qpid JMS](building.html)
@@ -62,13 +62,11 @@ template = \
 
 # Qpid JMS {release}
 
-Qpid JMS is a complete [Java Message Service][jms] 2.0 client built
-using the [Qpid Proton]({{{{site_url}}}}/proton/index.html) protocol engine.
+Qpid JMS is a complete [Jakarta Messaging](https://jakarta.ee/specifications/messaging/) {api_version}
+client built using the [Qpid Proton]({{{{site_url}}}}/proton/index.html) protocol engine.
 
 For a detailed list of the changes in this release, see the [release
 notes](release-notes.html).
-
-[jms]: http://en.wikipedia.org/wiki/Java_Message_Service
 
 ## Download
 
@@ -123,8 +121,14 @@ def gen_release_page(release, issues_release, source_release, release_dir):
     jql = "project = QPIDJMS AND fixVersion = '{}' AND resolution = 'fixed' ORDER BY priority DESC".format(issues_release)
     issues_url = "https://issues.apache.org/jira/issues/?jql={}".format(urllib.parse.quote_plus(jql))
 
+    api_version = "3.0"
+    if release.startswith("1."):
+      api_version = 2.0
+    elif release.startswith("0."):
+      api_version = 2.0
+
     vars = locals()
-    vars["documentation"] = documentation.format(release=release, source_release=source_release)
+    vars["documentation"] = documentation.format(release=release, source_release=source_release, api_version=api_version)
 
     output = template.format(**vars)
     output = output.strip()
