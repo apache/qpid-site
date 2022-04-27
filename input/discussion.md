@@ -47,3 +47,4 @@ rather than "I'm using the broker and JMS client".
 ## More information
  
  - [Mailing lists at Apache](http://www.apache.org/foundation/mailinglists.html)
+ - [Privacy Policy](https://privacy.apache.org/policies/privacy-policy-public.html)
