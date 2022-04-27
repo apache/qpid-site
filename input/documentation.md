@@ -46,7 +46,7 @@ You can find older versions with our
 
  - [Overview]({{site_url}}/components/jms/index.html)
  - [Configuration]({{current_jms_release_url}}/docs/index.html)
- - [API reference](http://docs.oracle.com/javaee/7/api/javax/jms/package-summary.html)
+ - [API reference](https://jakarta.ee/specifications/messaging/3.0/apidocs/)
  - [Examples](https://github.com/apache/qpid-jms/tree/{{current_jms_release}}/qpid-jms-examples)
 
 </section>
