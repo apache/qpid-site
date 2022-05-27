@@ -28,7 +28,7 @@ the
 
 <div class="two-column" markdown="1">
  - [Qpid JMS 2.0.0](qpid-jms-2.0.0/index.html), April 2022
- - [Qpid ProtonJ2 1.0.0-M5](qpid-protonj2-1.0.0-M5/index.html), April 2022
+ - [Qpid ProtonJ2 1.0.0-M6](qpid-protonj2-1.0.0-M6/index.html), May 2022
  - [Qpid JMS 1.6.0](qpid-jms-1.6.0/index.html), March 2022
  - [Qpid Dispatch 1.19.0](qpid-dispatch-1.19.0/index.html), March 2021
  - [Qpid Proton 0.37.0](qpid-proton-0.37.0/index.html), March 2022
@@ -45,6 +45,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid ProtonJ2 1.0.0-M5](qpid-protonj2-1.0.0-M5/index.html), April 2022
  - [Qpid ProtonJ2 1.0.0-M4](qpid-protonj2-1.0.0-M4/index.html), December 2021
  - [Qpid JMS 0.61.0](qpid-jms-0.61.0/index.html), December 2021
  - [Qpid JMS 1.5.0](qpid-jms-1.5.0/index.html), December 2021
