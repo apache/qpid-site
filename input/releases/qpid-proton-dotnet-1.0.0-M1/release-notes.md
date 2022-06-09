@@ -33,3 +33,12 @@ documentation, see the [release overview](index.html).
 ## Tasks
 
  - [PROTON-2548](https://issues.apache.org/jira/browse/PROTON-2548) - Initial release tasks
+
+# Errata note on building the 1.0.0-M1 release
+
+The examples and unit tests included in the 1.0.0-M1 release will only
+build and run on platforms with the .NET 5.0 Framework installed. The
+next release will update the project files for the examples and tests 
+to allow them to roll forward and work with later .NET installations
+
+ - [PROTON-2560](https://issues.apache.org/jira/browse/PROTON-2560) - Running tests or examples can fail on system with only .NET 6 installed
