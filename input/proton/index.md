@@ -54,6 +54,7 @@ platform, environment, or language. More about
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
  - [Proton-J API reference]({{current_proton_j_release_url}}/api/index.html)
  - [ProtonJ2 API reference]({{current_protonj2_release_url}}/api/index.html)
+ - [Proton DotNet API reference]({{current_proton_dotnet_release_url}}/api/index.html)
  - [Python overview]({{current_proton_release_url}}/proton/python/docs/overview.html)
  - [Python tutorial]({{current_proton_release_url}}/proton/python/docs/tutorial.html)
  - [Python examples]({{current_proton_release_url}}/proton/python/examples/index.html)
@@ -69,6 +70,7 @@ platform, environment, or language. More about
  - {{current_proton_release_link}}
  - {{current_protonj2_release_link}}
  - {{current_proton_j_release_link}}
+ - {{current_proton_dotnet_release_link}}
  - [Past releases]({{site_url}}/releases/index.html#past-releases)
 
 ## Issues
@@ -89,6 +91,9 @@ platform, environment, or language. More about
  - ProtonJ2
      - [Browse via GitHub](https://github.com/apache/qpid-protonj2)
      - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-protonj2.git)
+ - Proton DotNet
+     - [Browse via GitHub](https://github.com/apache/qpid-proton-dotnet)
+     - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-proton-dotnet.git)
 
 ## Resources
 

@@ -1,0 +1,6 @@
+var searchData=
+[
+  ['beginmessage_2037',['BeginMessage',['../classApache_1_1Qpid_1_1Proton_1_1Client_1_1Implementation_1_1ClientStreamSender.html#a9a1cd02cda7ac1a69f408d922a98521f',1,'Apache.Qpid.Proton.Client.Implementation.ClientStreamSender.BeginMessage()'],['../interfaceApache_1_1Qpid_1_1Proton_1_1Client_1_1IStreamSender.html#a832f54231d28417973f019e93e1d1f46',1,'Apache.Qpid.Proton.Client.IStreamSender.BeginMessage()']]],
+  ['begintransaction_2038',['BeginTransaction',['../classApache_1_1Qpid_1_1Proton_1_1Client_1_1Implementation_1_1ClientSession.html#a425fff36f2e16fe6dba9346df9d40c73',1,'Apache.Qpid.Proton.Client.Implementation.ClientSession.BeginTransaction()'],['../interfaceApache_1_1Qpid_1_1Proton_1_1Client_1_1ISession.html#ae624e00036e368b876597ad9a6175520',1,'Apache.Qpid.Proton.Client.ISession.BeginTransaction()']]],
+  ['begintransactionasync_2039',['BeginTransactionAsync',['../classApache_1_1Qpid_1_1Proton_1_1Client_1_1Implementation_1_1ClientSession.html#acc5f9467d761e486dbe638f16d24cabe',1,'Apache.Qpid.Proton.Client.Implementation.ClientSession.BeginTransactionAsync()'],['../interfaceApache_1_1Qpid_1_1Proton_1_1Client_1_1ISession.html#ab2a2e3c3fb63efac53446c0191f6a69e',1,'Apache.Qpid.Proton.Client.ISession.BeginTransactionAsync()']]]
+];

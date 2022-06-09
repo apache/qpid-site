@@ -34,6 +34,7 @@ proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.37.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.33.10")
 protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.0.0-M6")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
+proton_dotnet_release = _Release(site_url, "Qpid Proton DotNet", "qpid-proton-dotnet", "1.0.0-M1")
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
@@ -74,6 +75,10 @@ current_protonj2_release_link = protonj2_release.link
 current_python_release = python_release.number
 current_python_release_url = python_release.url
 current_python_release_link = python_release.link
+
+current_proton_dotnet_release = proton_dotnet_release.number
+current_proton_dotnet_release_url = proton_dotnet_release.url
+current_proton_dotnet_release_link = proton_dotnet_release.link
 
 def dashboard_asf_jira_links(project_key, project_id, components=None):
     try:
