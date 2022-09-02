@@ -551,7 +551,7 @@ class _Process(_subprocess.Popen):
         except KeyError:
             if _is_string(command):
                 self.name = program_name(command)
-            elif isinstance(command, _collections.Iterable):
+            elif isinstance(command, _collections.abc.Iterable):
                 self.name = command[0]
             else:
                 raise Exception()
@@ -585,7 +585,7 @@ def start_process(command, *args, **kwargs):
         command = command.format(*args)
         command_args = _shlex.split(command)
         command_string = command
-    elif isinstance(command, _collections.Iterable):
+    elif isinstance(command, _collections.abc.Iterable):
         assert len(args) == 0, args
         command_args = command
         command_string = _command_string(command)

@@ -458,7 +458,7 @@ def _fetch_issues(project, release):
         filename, headers = urllib.request.urlretrieve(url)
 
         with open(filename) as f:
-            data = yaml.load(f)
+            data = yaml.load(f, Loader=yaml.Loader)
 
         issues.extend(data["issues"])
 
