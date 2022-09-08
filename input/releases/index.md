@@ -32,7 +32,7 @@ the
  - [Qpid proton-dotnet 1.0.0-M3](qpid-proton-dotnet-1.0.0-M3/index.html), August 2022
  - [Qpid JMS 2.0.0](qpid-jms-2.0.0/index.html), April 2022
  - [Qpid JMS 1.6.0](qpid-jms-1.6.0/index.html), March 2022
- - [Qpid Dispatch 1.19.0](qpid-dispatch-1.19.0/index.html), March 2021
+ - [Qpid Dispatch 1.19.0](qpid-dispatch-1.19.0/index.html), March 2022
  - [Qpid Proton 0.37.0](qpid-proton-0.37.0/index.html), March 2022
  - [Qpid Interop-test 0.3.0](qpid-interop-test-0.3.0/index.html), November 2021
  - [Qpid Broker-J 8.0.6](qpid-broker-j-8.0.6/index.html), August 2021
