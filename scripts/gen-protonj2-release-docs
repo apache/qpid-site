@@ -28,7 +28,7 @@ def gen_protonj2_api(release, source_dir, release_dir):
 
     remove(output_dir)
 
-    call("mvn -f {} clean javadoc:aggregate -pl '{}'", toplevel_pom, modules)
+    call("mvn -f {} clean javadoc:aggregate -Dnotimestamp -Dnoindex -pl '{}'", toplevel_pom, modules)
 
     copy(generated_docs, output_dir)
 

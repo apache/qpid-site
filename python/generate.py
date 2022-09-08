@@ -224,6 +224,7 @@ def gen_javadoc(release, title, input_paths, input_namespaces, output_dir):
     options.append("-subpackages {}".format(input_namespaces))
     options.append("-d {}".format(output_dir))
     options.append("-notimestamp")
+    options.append("-noindex")
     options = " ".join(options)
 
     call("javadoc {}", options)
