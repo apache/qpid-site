@@ -25,10 +25,10 @@
 
 ## JMS with the strength of AMQP
 
-Qpid JMS is an AMQP 1.0 [Jakarta Messaging 3.0](https://jakarta.ee/specifications/messaging/3.0/jakarta-messaging-spec-3.0.html)
+Qpid JMS is an AMQP 1.0 [Jakarta Messaging 3.1](https://jakarta.ee/specifications/messaging/3.1/jakarta-messaging-spec-3.1.html)
 client built using [Qpid Proton]({{site_url}}/proton/index.html).
 
-For a release using Jakarta Messaging 3.0 (jakarta.jms), see the [{{current_jms_release}} release]({{site_url}}/releases/qpid-jms-{{current_jms_release}}/index.html).
+For a release using Jakarta Messaging 3.1 (jakarta.jms), see the [{{current_jms_release}} release]({{site_url}}/releases/qpid-jms-{{current_jms_release}}/index.html).
 
 For a release using Jakarta Messaging 2.0 (javax.jms), see the [{{other_jms_release}} release]({{site_url}}/releases/qpid-jms-{{other_jms_release}}/index.html).
 
@@ -36,7 +36,7 @@ For a release using Jakarta Messaging 2.0 (javax.jms), see the [{{other_jms_rele
 
 ## Features
 
- - [Jakarta Messaging 3.0](https://jakarta.ee/specifications/messaging/3.0/jakarta-messaging-spec-3.0.html) API
+ - [Jakarta Messaging 3.1](https://jakarta.ee/specifications/messaging/3.1/jakarta-messaging-spec-3.1.html) API
  - Secure communication via SSL and SASL 
  - Producer flow control
  - Failover
@@ -45,7 +45,7 @@ For a release using Jakarta Messaging 2.0 (javax.jms), see the [{{other_jms_rele
 ## Documentation
 
 <div class="two-column" markdown="1">
- - [API reference](https://jakarta.ee/specifications/messaging/3.0/apidocs/)
+ - [API reference](https://jakarta.ee/specifications/messaging/3.1/apidocs/)
  - [Examples](https://github.com/apache/qpid-jms/tree/{{current_jms_release}}/qpid-jms-examples)
  - [Configuration]({{current_jms_release_url}}/docs/index.html)
  - [Building Qpid JMS]({{current_jms_release_url}}/building.html)
