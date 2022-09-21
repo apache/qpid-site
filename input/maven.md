@@ -25,7 +25,7 @@ The following dependencies can be added to the POM for your Maven build to utili
 
 ## Qpid JMS
 
-Jakarta Messaging 3.0 (jakarta.jms)
+Jakarta Messaging 3.1 (jakarta.jms)
 
 <div class="highlight"><pre>
 <span class="nt">&lt;dependency&gt;</span>
