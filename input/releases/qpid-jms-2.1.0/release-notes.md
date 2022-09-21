@@ -19,14 +19,11 @@
 
 # Qpid JMS 2.1.0 Release Notes
 
-Qpid JMS is a complete [Java Message Service][jms] 2.0 client built
-using the [Qpid Proton]({{site_url}}/proton/index.html) protocol
-engine.
+Qpid JMS is a complete [Jakarta Messaging](https://jakarta.ee/specifications/messaging/) 3.1
+client built using the [Qpid Proton]({{site_url}}/proton/index.html) protocol engine.
 
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
-
-[jms]: http://en.wikipedia.org/wiki/Java_Message_Service
 
 
 ## New features and improvements

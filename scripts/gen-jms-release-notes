@@ -43,14 +43,11 @@ template = \
 
 # Qpid JMS {release} Release Notes
 
-Qpid JMS is a complete [Java Message Service][jms] 2.0 client built
-using the [Qpid Proton]({{{{site_url}}}}/proton/index.html) protocol
-engine.
+Qpid JMS is a complete [Jakarta Messaging](https://jakarta.ee/specifications/messaging/) {api_version}
+client built using the [Qpid Proton]({{{{site_url}}}}/proton/index.html) protocol engine.
 
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
-
-[jms]: http://en.wikipedia.org/wiki/Java_Message_Service
 
 {release_notes}
 """
@@ -59,6 +56,12 @@ def gen_release_notes(release, issues_release, release_dir):
     output_path = join(release_dir, "release-notes.md")
 
     release_notes = render_release_notes("qpidjms", issues_release)
+
+    api_version = "3.1"
+    if release.startswith("1."):
+      api_version = 2.0
+    elif release.startswith("0."):
+      api_version = 2.0
 
     output = template.format(**locals())
     output = output.strip()
