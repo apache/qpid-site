@@ -121,8 +121,8 @@ following commands.
     # For new Qpid C++ releases
     [qpid-site]$ make gen-cpp-release RELEASE=$VERSION
 
-    # For new Qpid Java releases
-    [qpid-site]$ make gen-java-release RELEASE=$VERSION
+    # For new Qpid Broker-J releases
+    [qpid-site]$ make gen-broker-j-release RELEASE=$VERSION
 
     # For new Qpid JMS releases
     [qpid-site]$ make gen-jms-release RELEASE=$VERSION
