@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>10.4. Behaviour of the Group - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-broker-j-9.0.0/index.html">Qpid Broker-J 9.0.0</a></li><li><a href="/releases/qpid-broker-j-9.0.0/book/index.html">Apache Qpid Broker-J</a></li><li>10.4. Behaviour of the Group</li></ul>
+
+        <div id="-middle-content">
+          <div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">10.4. Behaviour of the Group</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-CreatingGroup.html">Prev</a> </td><th width="60%" align="center">Chapter 10. High Availability</th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-NodeOperations.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-High-Availability-Behaviour"></a>10.4. Behaviour of the Group</h2></div></div></div><p>This section first describes the behaviour of the group in its default configuration. It
+      then goes on to talk about the various controls that are available to override it. It
+      describes the controls available that affect the <a class="link" href="http://en.wikipedia.org/wiki/ACID#Durability" target="_top">durability</a> of transactions and
+      the data consistency between the master and replicas and thus make trade offs between
+      performance and reliability.</p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-Default-Behaviour"></a>10.4.1. Default Behaviour</h3></div></div></div><p>Let's first look at the behaviour of a group in default configuration.</p><p>In the default configuration, for any messaging work to be done, there must be at least
+          <span class="emphasis"><em>quorum</em></span> nodes present. This means for example, in a three node group,
+        this means there must be at least two nodes available.</p><p>When a messaging client sends a transaction, it can be assured that, before the control
+        returns back to his application after the commit call that the following is true:</p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>At the master, the transaction is <span class="emphasis"><em>written to disk and OS level caches
+                are flushed</em></span> meaning the data is on the storage device.</p></li><li class="listitem"><p>At least quorum minus 1 replicas, <span class="emphasis"><em>acknowledge the receipt of
+                transaction</em></span>. The replicas will write the data to the storage device
+              sometime later.</p></li></ul></div><p>If there were to be a master failure immediately after the transaction was committed,
+        the transaction would be held by at least quorum minus one replicas. For example, if we had
+        a group of three, then we would be assured that at least one replica held the
+        transaction.</p><p>In the event of a master failure, if quorum nodes remain, those nodes hold an election.
+        The nodes will elect master the node with the most recent transaction. If two or more nodes
+        have the most recent transaction the group makes an arbitrary choice. If quorum number of
+        nodes does not remain, the nodes cannot elect a new master and will wait until nodes rejoin.
+        You will see later that manual controls are available allow service to be restored from
+        fewer than quorum nodes and to influence which node gets elected in the event of a
+        tie.</p><p>Whenever a group has fewer than quorum nodes present, the virtualhost will be
+        unavailable and messaging connections will be refused. If quorum disappears at the very
+        moment a messaging client sends a transaction that transaction will fail.</p><p>You will have noticed the difference in the synchronization policies applied the master
+        and the replicas. The replicas send the acknowledgement back before the data is written to
+        disk. The master synchronously writes the transaction to storage. This is an example of a
+        trade off between durability and performance. We will see more about how to control this
+        trade off later.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-SynchronizationPolicy"></a>10.4.2. Synchronization Policy</h3></div></div></div><p>The <span class="emphasis"><em>synchronization policy</em></span> dictates what a node must do when it
+        receives a transaction before it acknowledges that transaction to the rest of the
+        group.</p><p>The following options are available: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>SYNC</em></span>. The node must write the transaction to disk and flush
+              any OS level buffers before sending the acknowledgement. SYNC is offers the highest
+              durability but offers the least performance.</p></li><li class="listitem"><p><span class="emphasis"><em>WRITE_NO_SYNC</em></span>. The node must write the transaction to disk
+              before sending the acknowledgement. OS level buffers will be flush as some point
+              later. This typically provides an assurance against failure of the application but not
+              the operating system or hardware.</p></li><li class="listitem"><p><span class="emphasis"><em>NO_SYNC</em></span>. The node immediately sends the acknowledgement. The
+              transaction will be written and OS level buffers flushed as some point later. NO_SYNC
+              offers the highest performance but the lowest durability level. This synchronization
+              policy is sometimes known as <span class="emphasis"><em>commit to the network</em></span>. Flushing
+              behavior can be influenced by virtual host context parameters "qpid.broker.bdbCommiterNotifyThreshold"
+              (defines threshold for amount of messages triggering BDB log flush to the disk) and
+              "qpid.broker.bdbCommiterWaitTimeout" (defines timeout for BDB log flush to the disk).</p></li></ul></div><p>It is possible to assign a one policy to the master and a different policy to the
+        replicas. These are configured as <a class="link" href="Java-Broker-Management-Managing-Virtualhosts.html#Java-Broker-Management-Managing-Virtualhost-Attributes" title="7.4.3. Attributes">
+        attributes <span class="emphasis"><em>localTransactionSynchronizationPolicy</em></span> and
+        <span class="emphasis"><em>remoteTransactionSynchronizationPolicy</em></span> on the virtualhost</a>.
+        By default the master uses <span class="emphasis"><em>SYNC</em></span> and replicas use
+        <span class="emphasis"><em>NO_SYNC</em></span>.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-NodePriority"></a>10.4.3. Node Priority</h3></div></div></div><p>Node priority can be used to influence the behaviour of the election algorithm. It is
+        useful in the case were you want to favour some nodes over others. For instance, if you wish
+        to favour nodes located in a particular data centre over those in a remote site. </p><p>
+        A new master is elected among nodes with the most current set of log files. When there is a tie,
+        the priority is used as a tie-breaker to select amongst these nodes.
+      </p><p>
+        The node priority is set as an integer value. A priority of zero is used to ensure that a node cannot
+        be elected master, even if it has the most current set of files.
+      </p><p>For convenience, the Web Management Console uses user friendly names for the priority integer values
+        in range from 0 to 3 inclusive. The following priority options are available: </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p><span class="emphasis"><em>Highest</em></span>. Nodes with this priority will be more favoured. In
+              the event of two or more nodes having the most recent transaction, the node with this
+              priority will be elected master. If two or more nodes have this priority the algorithm
+              will make an arbitrary choice. The priority value for option <span class="emphasis"><em>Highest</em></span> is <span class="emphasis"><em>3</em></span>.</p></li><li class="listitem"><p><span class="emphasis"><em>High</em></span>. Nodes with this priority will be favoured but not as
+              much so as those with Highest. The priority value for this option is <span class="emphasis"><em>2</em></span>.</p></li><li class="listitem"><p><span class="emphasis"><em>Normal</em></span>. This is a default election priority.
+              The priority value for this option is <span class="emphasis"><em>1</em></span>.</p></li><li class="listitem"><p><span class="emphasis"><em>Never</em></span>. The node will never be elected <span class="emphasis"><em>even if the
+                node has the most recent transaction</em></span>. The node will still keep up to date
+              with the replication stream and will still vote itself, but can just never be
+              elected. The priority value for this option is <span class="emphasis"><em>0</em></span>.</p></li></ul></div><p>
+      </p><p>Node priority is configured as an <a class="link" href="Java-Broker-Management-Managing-Virtualhost-Nodes.html#Java-Broker-Management-Managing-Virtualhost-Nodes-Attributes" title="7.3.2. Attributes">
+        attribute <span class="emphasis"><em>priority</em></span> on the virtualhost node</a> and can be changed
+        at runtime and is effective immediately.</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>Use of the Never priority can lead to transaction loss. For example, consider a group
+          of three where replica-2 is marked as Never. If a transaction were to arrive and it be
+          acknowledged only by Master and Replica-2, the transaction would succeed. Replica 1 is
+          running behind for some reason (perhaps a full-GC). If a Master failure were to occur at
+          that moment, the replicas would elect Replica-1 even though Replica-2 had the most recent
+          transaction.</p><p>Transaction loss is reported by message <a class="link" href="Java-Broker-Appendix-Operation-Logging.html#Java-Broker-Appendix-Operation-Logging-Message-HA-1014">HA-1014</a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-MinimumNumberOfNodes"></a>10.4.4. Required Minimum Number Of Nodes</h3></div></div></div><p>This controls the required minimum number of nodes to complete a transaction and to
+        elect a new master. By default, the required number of nodes is set to
+          <span class="emphasis"><em>Default</em></span> (which signifies quorum).</p><p>It is possible to reduce the required minimum number of nodes. The rationale for doing
+        this is normally to temporarily restore service from fewer than quorum nodes following an
+        extraordinary failure.</p><p>For example, consider a group of three. If one node were to fail, as quorum still
+        remained, the system would continue work without any intervention. If the failing node were
+        the master, a new master would be elected.</p><p>What if a further node were to fail? Quorum no longer remains, and the remaining node
+        would just wait. It cannot elect itself master. What if we wanted to restore service from
+        just this one node?</p><p>In this case, Required Number of Nodes can be reduced to 1 on the remain node, allowing
+        the node to elect itself and service to be restored from the singleton. Required minimum
+        number of nodes is configured as an <a class="link" href="Java-Broker-Management-Managing-Virtualhost-Nodes.html#Java-Broker-Management-Managing-Virtualhost-Nodes-Attributes" title="7.3.2. Attributes">
+        attribute <span class="emphasis"><em>quorumOverride</em></span> on the virtualhost node</a> and can be changed
+        at runtime and is effective immediately.</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>The attribute must be used cautiously. Careless use will lead to lost transactions and
+          can lead to a <a class="link" href="http://en.wikipedia.org/wiki/Split-brain_(computing)" target="_top">split-brain</a> in the event of a network partition. If used to temporarily restore
+          service from fewer than quorum nodes, it is <span class="emphasis"><em>imperative</em></span> to revert it
+          to the Default value as the failed nodes are restored.</p><p>Transaction loss is reported by message <a class="link" href="Java-Broker-Appendix-Operation-Logging.html#Java-Broker-Appendix-Operation-Logging-Message-HA-1014">HA-1014</a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-DesignatedPrimary"></a>10.4.5. Allow to Operate Solo</h3></div></div></div><p>This attribute only applies to groups containing exactly two nodes.</p><p> In a group of two, if a node were to fail then in default configuration work will cease
+        as quorum no longer exists. A single node cannot elect itself master. </p><p>The <code class="literal">allow to operate solo</code> flag allows a node in a two node group to elect itself master and
+        to operate sole. It is configured as an <a class="link" href="Java-Broker-Management-Managing-Virtualhost-Nodes.html#Java-Broker-Management-Managing-Virtualhost-Nodes-Attributes" title="7.3.2. Attributes">
+        attribute <span class="emphasis"><em>designatedPrimary</em></span> on the virtualhost node</a> and can be changed
+        at runtime and is effective immediately.</p><p>For example, consider a group of two where the master fails. Service will be interrupted
+        as the remaining node cannot elect itself master. To allow it to become master, apply the
+        <code class="literal">allow to operate solo</code> flag to it. It will elect itself master and work can continue, albeit
+        from one node.</p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>It is imperative not to allow the <code class="literal">allow to operate solo</code> flag to be set on both nodes at once. To
+          do so will mean, in the event of a network partition, a <a class="link" href="http://en.wikipedia.org/wiki/Split-brain_(computing)" target="_top">split-brain</a> will
+            occur.</p><p>Transaction loss is reported by message <a class="link" href="Java-Broker-Appendix-Operation-Logging.html#Java-Broker-Appendix-Operation-Logging-Message-HA-1014">HA-1014</a>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-High-Availability-Behaviour-MaximumMessageSize"></a>10.4.6. Maximum message size</h3></div></div></div><p>
+        Internally, BDB JE HA restricts the maximum size of replication stream records passed from the master
+        to the replica(s). This helps prevent DOS attacks.
+        If expected application maximum message size is greater than 5MB, the BDB JE setting
+        <code class="literal">je.rep.maxMessageSize</code> and Qpid context variable <code class="literal">qpid.max_message_size</code>
+        needs to be adjusted to reflect this in order to avoid running into the BDB HA JE limit.
+      </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-CreatingGroup.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-NodeOperations.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">10.3. Creating a group </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 10.5. Node Operations</td></tr></table></div></div>
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
