@@ -96,7 +96,38 @@ $(document).ready(function(){initNavTree('connect-config.html',''); initResizabl
 <div class="title">Connection Configuration </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p><a class="anchor" id="md__tmp_rgemmell_transom_qpid_proton_0_38_0_docs_connect_config"></a> Proton clients can read default connection configuration from a configuration file.</p>
+<p>If the environment variable <code>MESSAGING_CONNECT_FILE</code> is set, it is the path to the file. Otherwise the client looks for a file named <code>connect.json</code> in the following locations, using the first one found:</p>
+<ul>
+<li>Current working directory of client process.</li>
+<li><code>$HOME/.config/messaging/</code> - $HOME is user's home directory.</li>
+<li><code>$PREFIX/etc/messaging/</code> - $PREFIX is the prefix where the proton library is installed</li>
+<li><code>/etc/messaging/</code></li>
+</ul>
+<p>The configuration file is in JSON object format. Comments are allowed, as defined by the <a href="https://www.crockford.com/javascript/jsmin.html">JavaScript Minifier</a></p>
+<p>The file format is as follows. Properties are shown with their default values, all properties are optional. </p><pre class="fragment">{
+  "scheme": "amqps",   // [string] "amqp" (no TLS) or "amqps"
+  "host": "localhost", // [string] DNS or IP address for connection. Defaults to local host.
+  "port": "amqps",     // [string] "amqp", "amqps" or port number. Defaults to value of 'scheme'.
+  "user": null,        // [string] Authentication user name
+  "password": null,    // [string] Authentication password
+
+  "sasl": {
+    "enable": true,         // [bool] Enable or disable SASL
+    "mechanisms": null,     // [list] List of allowed SASL mechanism names.
+                            // If null the library determines the default list.
+    "allow_insecure": false // [boolean] Allow mechanisms that send unencrypted clear-text passwords
+  },
+
+  // Note: it is an error to have a "tls" object unless scheme="amqps"
+  "tls": {
+    "cert": null,   // [string] name of client certificate or database
+    "key": null,    // [string] private key or identity for client certificate
+    "ca": null,     // [string] name of CA certificate or database
+    "verify": true  // [bool] if true, require a valid cert with matching host name
+  }
+}
+</pre> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
