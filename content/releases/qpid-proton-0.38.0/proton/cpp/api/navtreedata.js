@@ -90,7 +90,7 @@ var NAVTREEINDEX =
 "classproton_1_1scalar.html#a61968283b9e1fc067dcad67e9fe58f6a",
 "connection__driver_8hpp.html",
 "namespaceproton.html#aab017f43c97ab4bd9a41cf3de50a8993",
-"work__queue_8hpp_source.html"
+"vector_8hpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

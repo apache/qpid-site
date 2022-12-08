@@ -96,7 +96,76 @@ $(document).ready(function(){initNavTree('tracing.html',''); initResizable(); })
 <div class="title">Tracing </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"></div></div><!-- contents -->
+<div class="textblock"><p>The tracing support is added using OpenTelemetry-cpp.</p>
+<p>There are two types of spans:</p><ol type="1">
+<li><p class="startli"><b>Library generated spans</b>:</p>
+<p class="startli">Send span <b>("amqp-message-send”)</b> gets created just before sending a message and ends when that message gets settled.</p>
+<p class="startli">Receive span <b>("amqp-message-received")</b> gets created just before receiving a message and ends as soon as the message is received.</p>
+</li>
+<li><p class="startli"><b>Application generated spans</b>:</p>
+<p class="startli">Users can also create their own spans and those spans will get linked with the library generated spans.</p>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md21"></a>
+Usage:</h2>
+<h3><a class="anchor" id="autotoc_md22"></a>
+1. Initialize the exporter</h3>
+<pre class="fragment">   opentelemetry::exporter::jaeger::JaegerExporterOptions opts;
+   std::unique_ptr&lt;opentelemetry::sdk::trace::SpanExporter&gt; exporter = std::unique_ptr&lt;opentelemetry::sdk::trace::SpanExporter&gt;(
+        new opentelemetry::exporter::jaeger::JaegerExporter(opts));
+</pre><p> Above is an example of initializing a jaeger exporter. Apart from jaeger exporter, there are many other exporters supported by OpenTelelemetry.</p>
+<h3><a class="anchor" id="autotoc_md23"></a>
+2. Set the Tracer Provider</h3>
+<pre class="fragment">   auto processor = std::unique_ptr&lt;opentelemetry::sdk::trace::SpanProcessor&gt;(
+        new opentelemetry::sdk::trace::SimpleSpanProcessor(std::move(exporter)));
+   auto provider = opentelemetry::nostd::shared_ptr&lt;opentelemetry::trace::TracerProvider&gt;(
+        new opentelemetry::sdk::trace::TracerProvider(std::move(processor));
+   opentelemetry::trace::Provider::SetTracerProvider(provider);
+</pre> <h3><a class="anchor" id="autotoc_md24"></a>
+3. Enable tracing in Proton C++</h3>
+<pre class="fragment">   proton::initOpenTelemetryTracer();
+</pre><p> This will generates the library spans ("amqp-message-send" and "amqp-message-received").</p>
+<p>In addition, users can create their own spans in the application. The tracing_client and tracing_server examples demonstrates how to do that with jaeger exporter.</p>
+<h2><a class="anchor" id="autotoc_md25"></a>
+Steps to run tracing examples:</h2>
+<pre class="fragment">A working example of distributed tracing using broker, tracing_server and tracing_client examples.
+</pre> <h3><a class="anchor" id="autotoc_md26"></a>
+Start Jaeger, for example:</h3>
+<p>docker run -d &ndash;name jaeger \ -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \ -p 5775:5775/udp \ -p 6831:6831/udp \ -p 6832:6832/udp \ -p 5778:5778 \ -p 16686:16686 \ -p 14268:14268 \ -p 14250:14250 \ -p 9411:9411 \ jaegertracing/all-in-one:1.25</p>
+<h3><a class="anchor" id="autotoc_md27"></a>
+Build/Install Opentelemetry-cpp:</h3>
+<p>Note: Thrift is jaeger exporter dependency.</p>
+<ol type="1">
+<li>Clone opentelemetry-cpp <br  />
+ <a href="https://github.com/open-telemetry/opentelemetry-cpp">https://github.com/open-telemetry/opentelemetry-cpp</a></li>
+<li>cd opentelemetry-cpp</li>
+<li>mkdir bld</li>
+<li>cd bld</li>
+<li>cmake .. -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=ON -DCMAKE_POSITION_INDEPENDENT_CODE=ON -DWITH_JAEGER=ON</li>
+<li>make</li>
+<li>sudo make install</li>
+</ol>
+<h3><a class="anchor" id="autotoc_md28"></a>
+Demo with broker.</h3>
+<p>WORKDIR cpp/examples <br  />
+</p>
+<ol type="1">
+<li><a class="el" href="broker_8cpp-example.html">broker.cpp</a> <br  />
+ <b>In one window run:</b> <br  />
+ <code>./broker</code> <br  />
+</li>
+<li>tracing_server.cpp <br  />
+ <b>In another window run:</b> <br  />
+ <code>./tracing_server</code></li>
+<li>tracing_client.cpp <br  />
+ <b>In the final window:</b> <br  />
+ <code>./tracing_client</code></li>
+</ol>
+<h3><a class="anchor" id="autotoc_md29"></a>
+Look in the Jaeger UI:</h3>
+<p>Browse to <a href="http://localhost:16686/">http://localhost:16686/</a>. This should open up a console for the Jaeger tracing system. <br  />
+ Select the Service dropdown at the top of the Search options (if not already selected). Hit Find Traces. </p>
+</div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
