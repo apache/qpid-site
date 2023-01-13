@@ -32,7 +32,7 @@ other_jms_release = "1.8.0"
 jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.4.0")
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.38.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.34.0")
-protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.0.0-M11")
+protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.0.0-M12")
 python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
 proton_dotnet_release = _Release(site_url, "Qpid Proton DotNet", "qpid-proton-dotnet", "1.0.0-M7")
 
