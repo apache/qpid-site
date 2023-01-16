@@ -1,0 +1,29 @@
+name: "Build"
+
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.10.9
+
+      - name: Build Content
+        run: |
+          make render
+          make publish
+
+      - name: Check Links
+        run: |
+          make check-links
+
+      - name: Check Output Files
+        run: |
+          make check-output-files
+
