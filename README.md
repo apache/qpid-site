@@ -6,7 +6,7 @@
  - Git
  - GNU Find
  - GNU Make
- - Python 2.7
+ - Python 3
 
 ## Project layout
 
