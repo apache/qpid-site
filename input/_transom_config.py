@@ -122,7 +122,13 @@ def dashboard_asf_git_links(repo_key):
 
 def appveyor_ci_badge(party_key, job_key, badge_key, branch="main"):
     job_url = "https://ci.appveyor.com/project/{}/{}/branch/{}".format(party_key, job_key, branch)
-    image_url = "https://ci.appveyor.com/api/projects/status/{}?svg=true".format(badge_key)
+    image_url = "https://ci.appveyor.com/api/projects/status/{}?branch={}&svg=true".format(badge_key, branch)
+
+    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
+
+def github_ci_badge(repo, branch="main", workflow="build.yml"):
+    job_url = "https://github.com/apache/{}/actions".format(repo)
+    image_url = "https://github.com/apache/{}/actions/workflows/{}/badge.svg?branch={}".format(repo, workflow, branch)
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
 
@@ -135,11 +141,5 @@ def asf_jenkins_badge(job_key):
 def asf_jenkins_pipeline_badge(job_key, branch="main"):
     job_url = "https://builds.apache.org/blue/organizations/jenkins/Qpid%2F{}/activity".format(job_key)
     image_url = "https://builds.apache.org/buildStatus/icon?job=Qpid/{}/{}".format(job_key, branch)
-
-    return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
-
-def travis_ci_badge(party_key, job_key, branch="main"):
-    job_url = "https://travis-ci.com/github/{}/{}".format(party_key, job_key)
-    image_url = "https://travis-ci.com/{}/{}.svg?branch={}".format(party_key, job_key, branch)
 
     return "<a href=\"{}\"><img src=\"{}\" height=\"20\"/></a>".format(job_url, image_url)
