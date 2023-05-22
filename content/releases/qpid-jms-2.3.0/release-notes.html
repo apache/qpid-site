@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid JMS 1.6.0 - Apache Qpid&#8482;</title>
+    <title>Qpid JMS 2.3.0 Release Notes - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,75 +111,30 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li>Qpid JMS 1.6.0</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-2.3.0/index.html">Qpid JMS 2.3.0</a></li><li>Qpid JMS 2.3.0 Release Notes</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-jms-160">Qpid JMS 1.6.0</h1>
+          <h1 id="qpid-jms-230-release-notes">Qpid JMS 2.3.0 Release Notes</h1>
 
-<p>Qpid JMS is a complete <a href="https://jakarta.ee/specifications/messaging/">Jakarta Messaging</a> 2.0
+<p>Qpid JMS is a complete <a href="https://jakarta.ee/specifications/messaging/">Jakarta Messaging</a> 3.1
 client built using the <a href="/proton/index.html">Qpid Proton</a> protocol engine.</p>
 
-<p>For a detailed list of the changes in this release, see the <a href="release-notes.html">release
-notes</a>.</p>
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
 
-<h2 id="download">Download</h2>
-
-<p>It's important to <a href="/download.html#verify-what-you-download">verify the
-integrity</a> of the
-files you download.</p>
-
-<table>
-<thead>
-<tr>
-  <th>Content</th>
-  <th>Download</th>
-  <th>Verify</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Qpid JMS binaries</td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz">apache-qpid-jms-1.6.0-bin.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-bin.tar.gz.sha512">SHA512</a></td>
-</tr>
-<tr>
-  <td>Qpid JMS source code</td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz">apache-qpid-jms-1.6.0-src.tar.gz</a></td>
-  <td><a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz.asc">ASC</a>, <a href="https://archive.apache.org/dist/qpid/jms/1.6.0/apache-qpid-jms-1.6.0-src.tar.gz.sha512">SHA512</a></td>
-</tr>
-</tbody>
-</table>
-
-<p>The client is also available <a href="/maven.html">via Maven</a>.</p>
-
-<h2 id="documentation">Documentation</h2>
-
-<div class="two-column">
+<h2 id="bugs-fixed">Bugs fixed</h2>
 
 <ul>
-<li><a href="https://jakarta.ee/specifications/messaging/2.0/apidocs/">API reference</a></li>
-<li><a href="https://github.com/apache/qpid-jms/tree/1.6.0/qpid-jms-examples">Examples</a></li>
-<li><a href="docs/index.html">Configuration</a></li>
-<li><a href="building.html">Building Qpid JMS</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-584">QPIDJMS-584</a> - JMSProducer#send(...body) will NPE when given null Map or byte[] body values</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-588">QPIDJMS-588</a> - failover URI with invalid/unused user-info in component URI not rejected, can be logged</li>
 </ul>
 
-</div>
-
-<h2 id="more-information">More information</h2>
+<h2 id="tasks">Tasks</h2>
 
 <ul>
-<li><a href="https://archive.apache.org/dist/qpid/jms/1.6.0">All release artefacts</a></li>
-<li><a href="https://issues.apache.org/jira/issues/?jql=project+%3D+QPIDJMS+AND+fixVersion+%3D+%271.6.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC">Resolved issues in JIRA</a></li>
-<li><a href="https://gitbox.apache.org/repos/asf/qpid-jms.git/tree/refs/tags/1.6.0">Source repository tag</a></li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-583">QPIDJMS-583</a> - Update to Netty 4.1.92</li>
+<li><a href="https://issues.apache.org/jira/browse/QPIDJMS-585">QPIDJMS-585</a> - update to proton-j 0.34.1</li>
 </ul>
-
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("1.6.0" === "2.3.0" || "1.6.0" === "1.9.0") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>
 
 
           <hr/>
