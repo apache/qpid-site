@@ -1,0 +1,4 @@
+var searchData=
+[
+  ['logging_0',['Logging',['../logging.html',1,'md__tmp_rgemmell_transom_qpid_proton_0_39_0_c_docs_advanced']]]
+];

@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <title>tracing_client.cpp - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.39.0/index.html">Qpid Proton 0.39.0</a></li><li><a href="/releases/qpid-proton-0.39.0/proton/cpp/examples/index.html">Proton C++ Examples</a></li><li>tracing_client.cpp</li></ul>
+
+        <div id="-middle-content">
+          
+<h1>tracing_client.cpp</h1>
+<div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;options.hpp&quot;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/connection.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/container.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/delivery.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/message.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/messaging_handler.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/receiver_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/source_options.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/tracing.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/tracker.hpp&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;proton/message_id.hpp&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;bits/stdc++.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;string&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;map&gt;</span><span class="cp"></span>
+
+<span class="c1">// Include opentelemetry header files</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/sdk/trace/simple_processor.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/sdk/trace/tracer_provider.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/trace/provider.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/nostd/unique_ptr.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/exporters/otlp/otlp_http_exporter.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/sdk/resource/resource.h&gt;</span><span class="cp"></span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/trace/span.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/trace/tracer.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;opentelemetry/trace/context.h&gt;</span><span class="cp"></span>
+
+<span class="k">using</span><span class="w"> </span><span class="n">proton</span><span class="o">::</span><span class="n">receiver_options</span><span class="p">;</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="n">proton</span><span class="o">::</span><span class="n">source_options</span><span class="p">;</span><span class="w"></span>
+
+<span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">TracerProvider</span><span class="o">&gt;</span><span class="w"> </span><span class="n">provider</span><span class="p">;</span><span class="w"></span>
+<span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">proton</span><span class="o">::</span><span class="n">message_id</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Scope</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">scope_map</span><span class="p">;</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="n">id_counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">client</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="k">public</span><span class="w"> </span><span class="n">proton</span><span class="o">::</span><span class="n">messaging_handler</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">url</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">requests</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">proton</span><span class="o">::</span><span class="n">sender</span><span class="w"> </span><span class="n">sender</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span><span class="w"> </span><span class="n">receiver</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">  </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">    </span><span class="n">client</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">u</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;&amp;</span><span class="w"> </span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">url</span><span class="p">(</span><span class="n">u</span><span class="p">),</span><span class="w"> </span><span class="n">requests</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_container_start</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="w"> </span><span class="o">&amp;</span><span class="n">c</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">sender</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">.</span><span class="n">open_sender</span><span class="p">(</span><span class="n">url</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="c1">// Create a receiver requesting a dynamically created queue</span>
+<span class="w">        </span><span class="c1">// for the message source.</span>
+<span class="w">        </span><span class="n">receiver_options</span><span class="w"> </span><span class="n">opts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">receiver_options</span><span class="p">().</span><span class="n">source</span><span class="p">(</span><span class="n">source_options</span><span class="p">().</span><span class="n">dynamic</span><span class="p">(</span><span class="nb">true</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">receiver</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sender</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">open_receiver</span><span class="p">(</span><span class="s">&quot;&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">opts</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">send_request</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="w"> </span><span class="n">req</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">req</span><span class="p">.</span><span class="n">body</span><span class="p">(</span><span class="n">requests</span><span class="p">.</span><span class="n">front</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">req</span><span class="p">.</span><span class="n">reply_to</span><span class="p">(</span><span class="n">receiver</span><span class="p">.</span><span class="n">source</span><span class="p">().</span><span class="n">address</span><span class="p">());</span><span class="w"></span>
+<span class="w">        </span><span class="n">req</span><span class="p">.</span><span class="n">id</span><span class="p">(</span><span class="n">id_counter</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">StartSpanOptions</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">SpanKind</span><span class="o">::</span><span class="n">kClient</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Start a span here before send</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Tracer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">provider</span><span class="o">-&gt;</span><span class="n">GetTracer</span><span class="p">(</span><span class="s">&quot;qpid-tracer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OPENTELEMETRY_SDK_VERSION</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Span</span><span class="o">&gt;</span><span class="w"> </span><span class="n">span</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">StartSpan</span><span class="p">(</span><span class="s">&quot;send_request&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{{</span><span class="s">&quot;reply_to&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">req</span><span class="p">.</span><span class="n">reply_to</span><span class="p">()},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;message&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">body</span><span class="p">())}},</span><span class="w"></span>
+<span class="w">            </span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Scope</span><span class="w"> </span><span class="n">scope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">WithActiveSpan</span><span class="p">(</span><span class="n">span</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Storing the &#39;scope&#39; in a map to keep it alive and erasing it when a response is received.</span>
+<span class="w">        </span><span class="n">scope_map</span><span class="p">[</span><span class="n">req</span><span class="p">.</span><span class="n">id</span><span class="p">()]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">make_shared</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Scope</span><span class="o">&gt;</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">scope</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">id_counter</span><span class="o">++</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">sender</span><span class="p">.</span><span class="n">send</span><span class="p">(</span><span class="n">req</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_receiver_open</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">receiver</span><span class="w"> </span><span class="o">&amp;</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">send_request</span><span class="p">();</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="n">on_message</span><span class="p">(</span><span class="n">proton</span><span class="o">::</span><span class="n">delivery</span><span class="w"> </span><span class="o">&amp;</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">proton</span><span class="o">::</span><span class="n">message</span><span class="w"> </span><span class="o">&amp;</span><span class="n">response</span><span class="p">)</span><span class="w"> </span><span class="k">override</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">requests</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="k">return</span><span class="p">;</span><span class="w"> </span><span class="c1">// Spurious extra message!</span>
+
+<span class="w">        </span><span class="c1">// Converting the tag in proton::binary to std::string to add it as a span attribute. Tag in binary won&#39;t be visible.</span>
+<span class="w">        </span><span class="n">proton</span><span class="o">::</span><span class="n">binary</span><span class="w"> </span><span class="n">tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="p">.</span><span class="n">tag</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">tag_in_string</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">(</span><span class="n">tag</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">ss</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">tag_in_string</span><span class="p">.</span><span class="n">length</span><span class="p">();</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="n">ss</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">hex</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">tag</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">delivery_tag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ss</span><span class="p">.</span><span class="n">str</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">StartSpanOptions</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">kind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">SpanKind</span><span class="o">::</span><span class="n">kClient</span><span class="p">;</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Get Tracer</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Tracer</span><span class="o">&gt;</span><span class="w"> </span><span class="n">tracer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">provider</span><span class="o">-&gt;</span><span class="n">GetTracer</span><span class="p">(</span><span class="s">&quot;qpid-tracer&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">OPENTELEMETRY_SDK_VERSION</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Start span with or without attributes as required.</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Span</span><span class="o">&gt;</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">StartSpan</span><span class="p">(</span><span class="s">&quot;on_message&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">            </span><span class="p">{{</span><span class="s">&quot;delivery_tag&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">delivery_tag</span><span class="p">},</span><span class="w"> </span><span class="p">{</span><span class="s">&quot;message-received&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">to_string</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">body</span><span class="p">())}},</span><span class="w"></span>
+<span class="w">            </span><span class="n">options</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Mark span as active.</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Scope</span><span class="w"> </span><span class="n">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">tracer</span><span class="o">-&gt;</span><span class="n">WithActiveSpan</span><span class="p">(</span><span class="n">s</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Response has been received, thus erasing the &#39;scope&#39; of the trace.</span>
+<span class="w">        </span><span class="n">scope_map</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">response</span><span class="p">.</span><span class="n">id</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">requests</span><span class="p">.</span><span class="n">front</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; =&gt; &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">response</span><span class="p">.</span><span class="n">body</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">requests</span><span class="p">.</span><span class="n">erase</span><span class="p">(</span><span class="n">requests</span><span class="p">.</span><span class="n">begin</span><span class="p">());</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">requests</span><span class="p">.</span><span class="n">empty</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">send_request</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="n">d</span><span class="p">.</span><span class="n">connection</span><span class="p">().</span><span class="n">close</span><span class="p">();</span><span class="w"></span>
+<span class="w">        </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+<span class="p">};</span><span class="w"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">url</span><span class="p">(</span><span class="s">&quot;127.0.0.1:5672/examples&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// 1. Initialize the exporter and the provider.</span>
+<span class="w">        </span><span class="c1">// 2. Set the global trace provider.</span>
+<span class="w">        </span><span class="c1">// 3. Call proton::initOpenTelemetryTracer().</span>
+
+<span class="w">        </span><span class="c1">// Initialize otlp http Exporter</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">exporter</span><span class="o">::</span><span class="n">otlp</span><span class="o">::</span><span class="n">OtlpHttpExporterOptions</span><span class="w"> </span><span class="n">options</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">options</span><span class="p">.</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;localhost:4318&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">exporter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">SpanExporter</span><span class="o">&gt;</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">exporter</span><span class="o">::</span><span class="n">otlp</span><span class="o">::</span><span class="n">OtlpHttpExporter</span><span class="p">(</span><span class="n">options</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Set service-name</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">resource_attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">resource</span><span class="o">::</span><span class="n">ResourceAttributes</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="s">&quot;service.name&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;qpid-example-client&quot;</span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Creation of the resource for associating it with telemetry</span>
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">resource</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">resource</span><span class="o">::</span><span class="n">Resource</span><span class="o">::</span><span class="n">Create</span><span class="p">(</span><span class="n">resource_attributes</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">auto</span><span class="w"> </span><span class="n">processor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">unique_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">SpanProcessor</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">SimpleSpanProcessor</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">exporter</span><span class="p">)));</span><span class="w"></span>
+<span class="w">        </span><span class="n">provider</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">nostd</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">TracerProvider</span><span class="o">&gt;</span><span class="p">(</span><span class="w"></span>
+<span class="w">            </span><span class="k">new</span><span class="w"> </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">sdk</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">TracerProvider</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">processor</span><span class="p">),</span><span class="w"> </span><span class="n">resource</span><span class="p">));</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Set the global trace provider</span>
+<span class="w">        </span><span class="n">opentelemetry</span><span class="o">::</span><span class="n">trace</span><span class="o">::</span><span class="n">Provider</span><span class="o">::</span><span class="n">SetTracerProvider</span><span class="p">(</span><span class="n">provider</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Enable tracing in proton cpp</span>
+<span class="w">        </span><span class="n">proton</span><span class="o">::</span><span class="n">initOpenTelemetryTracer</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="c1">// Sending 2 messages to the server.</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="o">&gt;</span><span class="w"> </span><span class="n">requests</span><span class="p">;</span><span class="w"></span>
+<span class="w">        </span><span class="n">requests</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;Two roads diverged in a wood.&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="w">        </span><span class="n">requests</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="s">&quot;I took the one less traveled by.&quot;</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">client</span><span class="w"> </span><span class="n">c</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">requests</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">proton</span><span class="o">::</span><span class="n">container</span><span class="p">(</span><span class="n">c</span><span class="p">).</span><span class="n">run</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">exception</span><span class="o">&amp;</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span><span class="w"></span>
+<span class="w">    </span><span class="p">}</span><span class="w"></span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+
+<p><a href="tracing_client.cpp">Download this file</a></p>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

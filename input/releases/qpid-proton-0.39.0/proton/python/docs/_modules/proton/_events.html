@@ -1,0 +1,675 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>proton._events &#8212; Qpid Proton Python API 0.39.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinxdoc.css" />
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.39.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" accesskey="U">Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._events</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for proton._events</h1><div class="highlight"><pre>
+<span></span><span class="c1">#</span>
+<span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="c1"># distributed with this work for additional information</span>
+<span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="c1"># software distributed under the License is distributed on an</span>
+<span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="c1"># specific language governing permissions and limitations</span>
+<span class="c1"># under the License.</span>
+<span class="c1">#</span>
+
+<span class="kn">import</span> <span class="nn">threading</span>
+
+<span class="kn">from</span> <span class="nn">cproton</span> <span class="kn">import</span> <span class="n">PN_CONNECTION_BOUND</span><span class="p">,</span> <span class="n">PN_CONNECTION_FINAL</span><span class="p">,</span> <span class="n">PN_CONNECTION_INIT</span><span class="p">,</span> <span class="n">PN_CONNECTION_LOCAL_CLOSE</span><span class="p">,</span> \
+    <span class="n">PN_CONNECTION_LOCAL_OPEN</span><span class="p">,</span> <span class="n">PN_CONNECTION_REMOTE_CLOSE</span><span class="p">,</span> <span class="n">PN_CONNECTION_REMOTE_OPEN</span><span class="p">,</span> <span class="n">PN_CONNECTION_UNBOUND</span><span class="p">,</span> <span class="n">PN_DELIVERY</span><span class="p">,</span> \
+    <span class="n">PN_LINK_FINAL</span><span class="p">,</span> <span class="n">PN_LINK_FLOW</span><span class="p">,</span> <span class="n">PN_LINK_INIT</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_CLOSE</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_DETACH</span><span class="p">,</span> <span class="n">PN_LINK_LOCAL_OPEN</span><span class="p">,</span> \
+    <span class="n">PN_LINK_REMOTE_CLOSE</span><span class="p">,</span> <span class="n">PN_LINK_REMOTE_DETACH</span><span class="p">,</span> <span class="n">PN_LINK_REMOTE_OPEN</span><span class="p">,</span> <span class="n">PN_SESSION_FINAL</span><span class="p">,</span> <span class="n">PN_SESSION_INIT</span><span class="p">,</span> \
+    <span class="n">PN_SESSION_LOCAL_CLOSE</span><span class="p">,</span> <span class="n">PN_SESSION_LOCAL_OPEN</span><span class="p">,</span> <span class="n">PN_SESSION_REMOTE_CLOSE</span><span class="p">,</span> <span class="n">PN_SESSION_REMOTE_OPEN</span><span class="p">,</span> <span class="n">PN_TIMER_TASK</span><span class="p">,</span> \
+    <span class="n">PN_TRANSPORT</span><span class="p">,</span> <span class="n">PN_TRANSPORT_CLOSED</span><span class="p">,</span> <span class="n">PN_TRANSPORT_ERROR</span><span class="p">,</span> <span class="n">PN_TRANSPORT_HEAD_CLOSED</span><span class="p">,</span> <span class="n">PN_TRANSPORT_TAIL_CLOSED</span><span class="p">,</span> \
+    <span class="n">pn_cast_pn_connection</span><span class="p">,</span> <span class="n">pn_cast_pn_delivery</span><span class="p">,</span> <span class="n">pn_cast_pn_link</span><span class="p">,</span> <span class="n">pn_cast_pn_session</span><span class="p">,</span> <span class="n">pn_cast_pn_transport</span><span class="p">,</span> \
+    <span class="n">pn_collector</span><span class="p">,</span> <span class="n">pn_collector_free</span><span class="p">,</span> <span class="n">pn_collector_more</span><span class="p">,</span> <span class="n">pn_collector_peek</span><span class="p">,</span> <span class="n">pn_collector_pop</span><span class="p">,</span> \
+    <span class="n">pn_collector_put_pyref</span><span class="p">,</span> <span class="n">pn_collector_release</span><span class="p">,</span> <span class="n">pn_event_connection</span><span class="p">,</span> <span class="n">pn_event_context</span><span class="p">,</span> <span class="n">pn_event_delivery</span><span class="p">,</span> <span class="n">pn_event_link</span><span class="p">,</span> \
+    <span class="n">pn_event_session</span><span class="p">,</span> <span class="n">pn_event_transport</span><span class="p">,</span> <span class="n">pn_event_type</span><span class="p">,</span> <span class="n">pn_event_class_name</span><span class="p">,</span> <span class="n">pn_event_type_name</span><span class="p">,</span> \
+    <span class="n">isnull</span><span class="p">,</span> <span class="n">void2py</span>
+
+<span class="kn">from</span> <span class="nn">._delivery</span> <span class="kn">import</span> <span class="n">Delivery</span>
+<span class="kn">from</span> <span class="nn">._endpoints</span> <span class="kn">import</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Link</span><span class="p">,</span> <span class="n">Session</span>
+<span class="kn">from</span> <span class="nn">._handler</span> <span class="kn">import</span> <span class="n">Handler</span>
+<span class="kn">from</span> <span class="nn">._transport</span> <span class="kn">import</span> <span class="n">Transport</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">TYPE_CHECKING</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">._endpoints</span> <span class="kn">import</span> <span class="n">Receiver</span><span class="p">,</span> <span class="n">Sender</span>
+    <span class="kn">from</span> <span class="nn">._reactor</span> <span class="kn">import</span> <span class="n">Container</span>
+
+
+<span class="k">class</span> <span class="nc">Collector</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span> <span class="o">=</span> <span class="n">pn_collector</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">etype</span><span class="p">:</span> <span class="s1">&#39;EventType&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_collector_put_pyref</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">etype</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">peek</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Event&#39;</span><span class="p">]:</span>
+        <span class="k">return</span> <span class="n">Event</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_collector_peek</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="nf">more</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pn_collector_more</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">pop</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">ev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">peek</span><span class="p">()</span>
+        <span class="n">pn_collector_pop</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">release</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_collector_release</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__del__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">pn_collector_free</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="p">)</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span>
+
+
+<span class="k">if</span> <span class="s2">&quot;TypeExtender&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="k">class</span> <span class="nc">TypeExtender</span><span class="p">:</span>
+        <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+
+        <span class="k">def</span> <span class="nf">next</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<div class="viewcode-block" id="EventType"><a class="viewcode-back" href="../../proton.html#proton.EventType">[docs]</a><span class="k">class</span> <span class="nc">EventType</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Connects an event number to an event name, and is used</span>
+<span class="sd">    internally by :class:`Event` to represent all known</span>
+<span class="sd">    event types. A global list of events is maintained. An</span>
+<span class="sd">    :class:`EventType` created with a name but no number is</span>
+<span class="sd">    treated as an *extended* event, and is assigned an</span>
+<span class="sd">    internal event number starting at 10000.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_lock</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">Lock</span><span class="p">()</span>
+    <span class="n">_extended</span> <span class="o">=</span> <span class="n">TypeExtender</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+    <span class="n">TYPES</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">number</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;extended events require a name&quot;</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">name</span> <span class="o">=</span> <span class="n">pn_event_type_name</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="n">number</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">number</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extended</span><span class="o">.</span><span class="n">next</span><span class="p">()</span>
+
+            <span class="k">if</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">method</span> <span class="o">=</span> <span class="s2">&quot;on_</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">name</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">number</span> <span class="o">=</span> <span class="n">number</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+
+            <span class="bp">self</span><span class="o">.</span><span class="n">TYPES</span><span class="p">[</span><span class="n">number</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_lock</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;EventType(name=</span><span class="si">%s</span><span class="s2">, number=</span><span class="si">%d</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">number</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span></div>
+
+
+<span class="k">def</span> <span class="nf">_dispatch</span><span class="p">(</span><span class="n">handler</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+        <span class="n">m</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="s2">&quot;on_unhandled&quot;</span><span class="p">):</span>
+        <span class="n">handler</span><span class="o">.</span><span class="n">on_unhandled</span><span class="p">(</span><span class="n">method</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">EventBase</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">EventType</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="nb">type</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventType</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The type of this event.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Handler</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;The handler for this event type. Not implemented, always returns ``None``.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">handler</span><span class="p">:</span> <span class="n">Handler</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">EventType</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Process this event by sending it to all known handlers that</span>
+<span class="sd">        are valid for this event type.</span>
+
+<span class="sd">        :param handler: Parent handler to process this event</span>
+<span class="sd">        :param type: Event type</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="nb">type</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_type</span>
+        <span class="n">_dispatch</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="nb">type</span><span class="o">.</span><span class="n">method</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="s2">&quot;handlers&quot;</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="n">handler</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="nb">type</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">(</span><span class="si">%r</span><span class="s2">)&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_type</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_core</span><span class="p">(</span><span class="n">number</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">method</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventType</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">EventType</span><span class="p">(</span><span class="n">number</span><span class="o">=</span><span class="n">number</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">_internal</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">EventType</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">EventType</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+
+
+<span class="n">wrappers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;pn_void&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">void2py</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="s2">&quot;pn_pyref&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">void2py</span><span class="p">(</span><span class="n">x</span><span class="p">),</span>
+    <span class="s2">&quot;pn_connection&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Connection</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_cast_pn_connection</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+    <span class="s2">&quot;pn_session&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Session</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_cast_pn_session</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+    <span class="s2">&quot;pn_link&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Link</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_cast_pn_link</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+    <span class="s2">&quot;pn_delivery&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Delivery</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_cast_pn_delivery</span><span class="p">(</span><span class="n">x</span><span class="p">)),</span>
+    <span class="s2">&quot;pn_transport&quot;</span><span class="p">:</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Transport</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_cast_pn_transport</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="Event"><a class="viewcode-back" href="../../proton.html#proton.Event">[docs]</a><span class="k">class</span> <span class="nc">Event</span><span class="p">(</span><span class="n">EventBase</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Notification of a state change in the protocol engine.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">TIMER_TASK</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TIMER_TASK</span><span class="p">,</span> <span class="s2">&quot;on_timer_task&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;A timer event has occurred.&quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_INIT</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_INIT</span><span class="p">,</span> <span class="s2">&quot;on_connection_init&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The connection has been created. This is the first event that</span>
+<span class="sd">    will ever be issued for a connection. Events of this type point</span>
+<span class="sd">    to the relevant connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_BOUND</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_BOUND</span><span class="p">,</span> <span class="s2">&quot;on_connection_bound&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The connection has been bound to a transport. This event is</span>
+<span class="sd">    issued when the :meth:`Transport.bind` operation is invoked.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_UNBOUND</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_UNBOUND</span><span class="p">,</span> <span class="s2">&quot;on_connection_unbound&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The connection has been unbound from its transport. This event is</span>
+<span class="sd">    issued when the :meth:`Transport.unbind` operation is invoked.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_LOCAL_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_LOCAL_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_connection_local_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local connection endpoint has been closed. Events of this</span>
+<span class="sd">    type point to the relevant connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_LOCAL_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_LOCAL_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_connection_local_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local connection endpoint has been closed. Events of this</span>
+<span class="sd">    type point to the relevant connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_REMOTE_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_REMOTE_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_connection_remote_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has opened the connection. Events of this</span>
+<span class="sd">    type point to the relevant connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_REMOTE_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_REMOTE_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_connection_remote_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has closed the connection. Events of this</span>
+<span class="sd">    type point to the relevant connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CONNECTION_FINAL</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_CONNECTION_FINAL</span><span class="p">,</span> <span class="s2">&quot;on_connection_final&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The connection has been freed and any outstanding processing has</span>
+<span class="sd">    been completed. This is the final event that will ever be issued</span>
+<span class="sd">    for a connection.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_INIT</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_INIT</span><span class="p">,</span> <span class="s2">&quot;on_session_init&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The session has been created. This is the first event that will</span>
+<span class="sd">    ever be issued for a session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_LOCAL_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_LOCAL_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_session_local_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local session endpoint has been opened. Events of this type</span>
+<span class="sd">    point to the relevant session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_LOCAL_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_LOCAL_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_session_local_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local session endpoint has been closed. Events of this type</span>
+<span class="sd">    point ot the relevant session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_REMOTE_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_REMOTE_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_session_remote_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has opened the session. Events of this type</span>
+<span class="sd">    point to the relevant session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_REMOTE_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_REMOTE_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_session_remote_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has closed the session. Events of this type</span>
+<span class="sd">    point to the relevant session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SESSION_FINAL</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_SESSION_FINAL</span><span class="p">,</span> <span class="s2">&quot;on_session_final&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The session has been freed and any outstanding processing has</span>
+<span class="sd">    been completed. This is the final event that will ever be issued</span>
+<span class="sd">    for a session.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_INIT</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_INIT</span><span class="p">,</span> <span class="s2">&quot;on_link_init&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The link has been created. This is the first event that will ever</span>
+<span class="sd">    be issued for a link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_LOCAL_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_LOCAL_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_link_local_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local link endpoint has been opened. Events of this type</span>
+<span class="sd">    point ot the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_LOCAL_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_LOCAL_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_link_local_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local link endpoint has been closed. Events of this type</span>
+<span class="sd">    point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_LOCAL_DETACH</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_LOCAL_DETACH</span><span class="p">,</span> <span class="s2">&quot;on_link_local_detach&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The local link endpoint has been detached. Events of this type</span>
+<span class="sd">    point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_REMOTE_OPEN</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_REMOTE_OPEN</span><span class="p">,</span> <span class="s2">&quot;on_link_remote_open&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has opened the link. Events of this type</span>
+<span class="sd">    point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_REMOTE_CLOSE</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_REMOTE_CLOSE</span><span class="p">,</span> <span class="s2">&quot;on_link_remote_close&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has closed the link. Events of this type</span>
+<span class="sd">    point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_REMOTE_DETACH</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_REMOTE_DETACH</span><span class="p">,</span> <span class="s2">&quot;on_link_remote_detach&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The remote endpoint has detached the link. Events of this type</span>
+<span class="sd">    point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_FLOW</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_FLOW</span><span class="p">,</span> <span class="s2">&quot;on_link_flow&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The flow control state for a link has changed. Events of this</span>
+<span class="sd">    type point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LINK_FINAL</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_LINK_FINAL</span><span class="p">,</span> <span class="s2">&quot;on_link_final&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The link has been freed and any outstanding processing has been</span>
+<span class="sd">    completed. This is the final event that will ever be issued for a</span>
+<span class="sd">    link. Events of this type point to the relevant link.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DELIVERY</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_DELIVERY</span><span class="p">,</span> <span class="s2">&quot;on_delivery&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A delivery has been created or updated. Events of this type point</span>
+<span class="sd">    to the relevant delivery.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSPORT</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TRANSPORT</span><span class="p">,</span> <span class="s2">&quot;on_transport&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The transport has new data to read and/or write. Events of this</span>
+<span class="sd">    type point to the relevant transport.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSPORT_ERROR</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TRANSPORT_ERROR</span><span class="p">,</span> <span class="s2">&quot;on_transport_error&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that a transport error has occurred. Use :attr:`Transport.condition`</span>
+<span class="sd">    to access the details of the error from the associated transport.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSPORT_HEAD_CLOSED</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TRANSPORT_HEAD_CLOSED</span><span class="p">,</span> <span class="s2">&quot;on_transport_head_closed&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that the &quot;head&quot; or writing end of the transport has been closed. This</span>
+<span class="sd">    means the transport will never produce more bytes for output to</span>
+<span class="sd">    the network. Events of this type point to the relevant transport.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSPORT_TAIL_CLOSED</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TRANSPORT_TAIL_CLOSED</span><span class="p">,</span> <span class="s2">&quot;on_transport_tail_closed&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that the &quot;tail&quot; of the transport has been closed. This</span>
+<span class="sd">    means the transport will never be able to process more bytes from</span>
+<span class="sd">    the network. Events of this type point to the relevant transport.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TRANSPORT_CLOSED</span> <span class="o">=</span> <span class="n">_core</span><span class="p">(</span><span class="n">PN_TRANSPORT_CLOSED</span><span class="p">,</span> <span class="s2">&quot;on_transport_closed&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Indicates that the both the &quot;head&quot; and &quot;tail&quot; of the transport are</span>
+<span class="sd">    closed. Events of this type point to the relevant transport.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># These events are now internal events in the python code</span>
+    <span class="n">REACTOR_INIT</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;reactor_init&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A reactor has been started. Events of this type point to the</span>
+<span class="sd">    reactor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">REACTOR_QUIESCED</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;reactor_quiesced&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A reactor has no more events to process. Events of this type</span>
+<span class="sd">    point to the reactor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">REACTOR_FINAL</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;reactor_final&quot;</span><span class="p">)</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A reactor has been stopped. Events of this type point to the</span>
+<span class="sd">    reactor.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">SELECTABLE_INIT</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_init&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_UPDATED</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_updated&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_READABLE</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_readable&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_WRITABLE</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_writable&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_EXPIRED</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_expired&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_ERROR</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_error&quot;</span><span class="p">)</span>
+    <span class="n">SELECTABLE_FINAL</span> <span class="o">=</span> <span class="n">_internal</span><span class="p">(</span><span class="s2">&quot;selectable_final&quot;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">wrap</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">isnull</span><span class="p">(</span><span class="n">impl</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">number</span> <span class="o">=</span> <span class="n">pn_event_type</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+        <span class="n">clsname</span> <span class="o">=</span> <span class="n">pn_event_class_name</span><span class="p">(</span><span class="n">impl</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">clsname</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="n">wrappers</span><span class="p">[</span><span class="n">clsname</span><span class="p">](</span><span class="n">pn_event_context</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+
+            <span class="c1"># check for an application defined ApplicationEvent and return that.  This</span>
+            <span class="c1"># avoids an expensive wrap operation invoked by event.context</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">EventBase</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">context</span> <span class="o">=</span> <span class="kc">None</span>
+
+        <span class="n">event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">(</span><span class="n">impl</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">event</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">impl</span><span class="p">,</span> <span class="n">number</span><span class="p">,</span> <span class="n">clsname</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_type</span> <span class="o">=</span> <span class="n">EventType</span><span class="o">.</span><span class="n">TYPES</span><span class="p">[</span><span class="n">number</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clsname</span> <span class="o">=</span> <span class="n">clsname</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">context</span>
+
+        <span class="c1"># Do all this messing around to avoid duplicate wrappers</span>
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">Delivery</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_delivery</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_delivery</span> <span class="o">=</span> <span class="n">Delivery</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_event_delivery</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delivery</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delivery</span><span class="o">.</span><span class="n">link</span>
+        <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">Link</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_link</span> <span class="o">=</span> <span class="n">Link</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_event_link</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span><span class="o">.</span><span class="n">session</span>
+        <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">Session</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_session</span> <span class="o">=</span> <span class="n">Session</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_event_session</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span><span class="o">.</span><span class="n">connection</span>
+        <span class="k">elif</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">Connection</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_event_connection</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">context</span><span class="p">),</span> <span class="n">Transport</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span> <span class="o">=</span> <span class="n">context</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span> <span class="o">=</span> <span class="n">Transport</span><span class="o">.</span><span class="n">wrap</span><span class="p">(</span><span class="n">pn_event_transport</span><span class="p">(</span><span class="n">impl</span><span class="p">))</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">clazz</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The name of the class associated with the event context.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_clsname</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">context</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Connection</span><span class="p">,</span> <span class="n">Session</span><span class="p">,</span> <span class="n">Link</span><span class="p">,</span> <span class="n">Delivery</span><span class="p">,</span> <span class="n">Transport</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The context object associated with the event.</span>
+
+<span class="sd">        :type: Depends on the type of event, and include the following:</span>
+<span class="sd">               - :class:`Connection`</span>
+<span class="sd">               - :class:`Session`</span>
+<span class="sd">               - :class:`Link`</span>
+<span class="sd">               - :class:`Delivery`</span>
+<span class="sd">               - :class:`Transport`</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_context</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">handler</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Handler</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The handler for this event. The handler is determined by looking</span>
+<span class="sd">        at the following in order:</span>
+
+<span class="sd">        - The link</span>
+<span class="sd">        - The session</span>
+<span class="sd">        - The connection</span>
+<span class="sd">        - The context object with an attribute &quot;handler&quot;</span>
+
+<span class="sd">        If none of these has a handler, then ``None`` is returned.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">link</span>
+        <span class="k">if</span> <span class="n">l</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">l</span><span class="o">.</span><span class="n">handler</span>
+            <span class="k">if</span> <span class="n">h</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">h</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span>
+        <span class="k">if</span> <span class="n">s</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">handler</span>
+            <span class="k">if</span> <span class="n">h</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">h</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">connection</span>
+        <span class="k">if</span> <span class="n">c</span><span class="p">:</span>
+            <span class="n">h</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">handler</span>
+            <span class="k">if</span> <span class="n">h</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">h</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span> <span class="ow">or</span> <span class="ow">not</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="s1">&#39;handler&#39;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">handler</span>
+        <span class="k">return</span> <span class="n">h</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">reactor</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Container&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        **Deprecated** - The :class:`reactor.Container` (was reactor) associated with the event.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">container</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">container</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s1">&#39;Container&#39;</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The :class:`reactor.Container` associated with the event.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span><span class="o">.</span><span class="n">_reactor</span>
+
+    <span class="k">def</span> <span class="fm">__getattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        This will look for a property of the event as an attached context object of the same</span>
+<span class="sd">        type as the property (but lowercase)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span>
+        <span class="c1"># Direct type or subclass of type</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="n">name</span> <span class="ow">or</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="vm">__name__</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">type</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="n">c</span>
+
+        <span class="c1"># If the attached object is the wrong type then see if *it* has a property of that name</span>
+        <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">transport</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Transport</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The transport associated with the event, or ``None`` if none</span>
+<span class="sd">        is associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_transport</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">connection</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Connection</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The connection associated with the event, or ``None`` if none</span>
+<span class="sd">        is associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_connection</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">session</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Session</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The session associated with the event, or ``None`` if none</span>
+<span class="sd">        is associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_session</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">link</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="s1">&#39;Receiver&#39;</span><span class="p">,</span> <span class="s1">&#39;Sender&#39;</span><span class="p">]]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The link associated with the event, or ``None`` if none</span>
+<span class="sd">        is associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_link</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">sender</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Sender&#39;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The sender link associated with the event, or ``None`` if</span>
+<span class="sd">        none is associated with it. This is essentially an alias for</span>
+<span class="sd">        ``link`` property, that does an additional check on the type of the</span>
+<span class="sd">        link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">link</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="ow">and</span> <span class="n">l</span><span class="o">.</span><span class="n">is_sender</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">l</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">receiver</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="s1">&#39;Receiver&#39;</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The receiver link associated with the event, or ``None`` if</span>
+<span class="sd">        none is associated with it. This is essentially an alias for</span>
+<span class="sd">        ``link`` property, that does an additional check on the type of the link.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">link</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="ow">and</span> <span class="n">l</span><span class="o">.</span><span class="n">is_receiver</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">l</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">delivery</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Delivery</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        The delivery associated with the event, or ``None`` if none</span>
+<span class="sd">        is associated with it.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_delivery</span></div>
+</pre></div>
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="nav-item nav-item-0"><a href="../../index.html">Qpid Proton Python API 0.39.0 documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="../index.html" >Module code</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href="">proton._events</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Apache Qpid Contributors.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+    </div>
+  </body>
+</html>
