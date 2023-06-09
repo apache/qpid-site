@@ -28,6 +28,7 @@ documentation, see the [release overview](index.html).
 
 ## New features and improvements
 
+ - [PROTON-2183](https://issues.apache.org/jira/browse/PROTON-2183) - [cpp client] No messaging_handler callback for aborted messages
  - [PROTON-2657](https://issues.apache.org/jira/browse/PROTON-2657) - [cpp] Accessors for user data on endpoints and deliveries
  - [PROTON-2663](https://issues.apache.org/jira/browse/PROTON-2663) - class ssl_client_options does not have a constructor for a custom client certificate, and default certificate trust database 
  - [PROTON-2665](https://issues.apache.org/jira/browse/PROTON-2665) - [C++] Make the broker example more idiomatic by using C++11 lambdas
