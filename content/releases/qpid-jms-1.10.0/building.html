@@ -21,7 +21,7 @@
 -->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
   <head>
-    <title>Qpid via Maven - Apache Qpid&#8482;</title>
+    <title>Qpid JMS - Apache Qpid&#8482;</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
@@ -111,88 +111,59 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
       </div>
 
       <div id="-middle" class="panel">
-        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li>Qpid via Maven</li></ul>
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-jms-1.10.0/index.html">Qpid JMS 1.10.0</a></li><li>Qpid JMS</li></ul>
 
         <div id="-middle-content">
-          <h1 id="qpid-via-maven">Qpid via Maven</h1>
+          <h1 id="qpid-jms">Qpid JMS</h1>
 
-<p>The following dependencies can be added to the POM for your Maven build to utilise the artifacts via the <a href="http://search.maven.org/">Maven central repository</a>.</p>
+<p><a href="https://qpid.apache.org/components/jms/">Qpid JMS</a> is a JMS 2.0 client that uses
+the AMQP 1.0 protocol, enabling it to interact with various AMQP 1.0 servers.</p>
 
-<h2 id="qpid-jms">Qpid JMS</h2>
+<p>Below are some quick pointers you might find useful.</p>
 
-<p>Jakarta Messaging 3.1 (jakarta.jms)</p>
+<h2 id="building-the-code">Building the code</h2>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-jms-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>2.3.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<p>The project requires Maven 3. Some example commands follow.</p>
 
-<p>Jakarta Messaging 2.0 (javax.jms)</p>
+<p>Clean previous builds output and install all modules to local repository without
+running the tests:</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-jms-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.10.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<pre><code>mvn clean install -DskipTests
+</code></pre>
 
-<h2 id="qpid-protonj2">Qpid ProtonJ2</h2>
+<p>Install all modules to the local repository after running all the tests:</p>
 
-<p>Client</p>
+<pre><code>mvn clean install
+</code></pre>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>protonj2-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0.0-M15<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<p>Perform a subset tests on the packaged release artifacts without
+installing:</p>
 
-<p>Engine</p>
+<pre><code>mvn clean verify -Dtest=TestNamePattern*
+</code></pre>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>protonj2<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0.0-M15<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<p>Execute the tests and produce code coverage report:</p>
 
-<h2 id="qpid-proton-j">Qpid Proton-J</h2>
+<pre><code>mvn clean test jacoco:report
+</code></pre>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>proton-j<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>0.34.1<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<h2 id="examples">Examples</h2>
 
-<h2 id="qpid-amqp-0-x-jms-client">Qpid AMQP 0-x JMS Client</h2>
+<p>First build and install all the modules as detailed above (if running against
+a source checkout/release, rather than against released binaries) and then
+consult the README in the qpid-jms-examples module itself.</p>
 
-<div class="highlight"><pre>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.qpid<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>qpid-client<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>6.4.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-  <span class="nt">&lt;groupId&gt;</span>org.apache.geronimo.specs<span class="nt">&lt;/groupId&gt;</span>
-  <span class="nt">&lt;artifactId&gt;</span>geronimo-jms_1.1_spec<span class="nt">&lt;/artifactId&gt;</span>
-  <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
+<h2 id="documentation">Documentation</h2>
 
-<h2 id="more-information">More information</h2>
+<p>Documentation source can be found in the qpid-jms-docs module, with a published
+version available on the <a href="https://qpid.apache.org/components/jms/">website</a>.</p>
 
-<ul>
-<li><a href="https://repository.apache.org/content/repositories/snapshots/">Snapshot repository</a></li>
-<li><a href="http://maven.apache.org/">Maven project</a></li>
-</ul>
+<h2 id="distribution-assemblies">Distribution assemblies</h2>
+
+<p>After building the modules, src and binary distribution assemblies can be found at:</p>
+
+<pre><code>apache-qpid-jms/target
+</code></pre>
 
 
           <hr/>
