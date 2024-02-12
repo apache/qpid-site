@@ -1,0 +1,37 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">12.2. Running the Container</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Docker.html">Prev</a> </td><th width="60%" align="center">Chapter 12. Docker Images</th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-Docker-Broker-Users.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Docker-Running-The-Container"></a>12.2. Running the Container</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Container-Start"></a>12.2.1. Container Start</h3></div></div></div><p>
+                Container can be started using following command:
+            </p><p>
+                </p><pre class="programlisting">
+                    docker run -d -p 5672:5672 -p 8080:8080 --name qpid &lt;IMAGE_NAME&gt;
+                </pre><p>
+            </p><p>
+                or
+            </p><p>
+                </p><pre class="programlisting">
+                    podman run -d -p 5672:5672 -p 8080:8080 -v qpid_volume:/qpid-broker-j/work:Z --name qpid &lt;IMAGE_NAME&gt;
+                </pre><p>
+            </p><p>
+                There are two ports exposed: 5672 for AMQP connections and 8080 for HTTP connections.
+            </p><p>
+                There are following environment variables available when running the container:
+            </p><div class="table"><a id="d0e13779"></a><p class="title"><strong>Table 12.1. Environment Variables</strong></p><div class="table-contents"><table summary="Environment Variables" border="1"><colgroup><col class="variable" /><col class="description" /></colgroup><thead><tr><th>Environment Variable</th><th>Description</th></tr></thead><tbody><tr><td>JAVA_GC</td><td>JVM Garbage Collector parameters, default value "-XX:+UseG1GC"</td></tr><tr><td>JAVA_MEM</td><td>JVM memory parameters, default value "-Xmx300m -XX:MaxDirectMemorySize=200m"</td></tr><tr><td>JAVA_OPTS</td><td>Further JVM parameters, default value is an empty string</td></tr></tbody></table></div></div><br class="table-break" /></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Container-Volume"></a>12.2.2. Container Volume</h3></div></div></div><p>
+                The image will use the directory /qpid-broker-j/work to hold the configuration and the data of the
+                running broker. To persist the broker configuration and the data outside the container, start container
+                with the volume mapping:
+            </p><p>
+                </p><pre class="programlisting">
+                    docker run -d -p 5672:5672 -p 8080:8080 -v &lt;BROKER_DIRECTOR_ON_HOST&gt;:/qpid-broker-j/work --name qpid &lt;IMAGE_NAME&gt;
+                </pre><p>
+            </p><p>
+                or
+            </p><p>
+                </p><pre class="programlisting">
+                    podman run -d -p 5672:5672 -p 8080:8080 -v &lt;BROKER_DIRECTOR_ON_HOST&gt;:/qpid-broker-j/work:Z --name qpid &lt;IMAGE_NAME&gt;
+                </pre><p>
+            </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Container-Stop"></a>12.2.3. Stopping the Container</h3></div></div></div><p>
+            Running container can be stopped using following command:
+        </p><p>
+            </p><pre class="programlisting">
+                docker stop &lt;CONTAINER_NAME&gt;
+            </pre><p>
+        </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Docker.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Docker.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Docker-Broker-Users.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 12. Docker Images </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 12.3. Broker Users</td></tr></table></div></div>
