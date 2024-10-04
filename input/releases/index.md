@@ -27,8 +27,8 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid JMS 1.12.1](qpid-jms-1.12.1/index.html), October 2024
  - [Qpid JMS 2.6.0](qpid-jms-2.6.0/index.html), September 2024
- - [Qpid JMS 1.12.0](qpid-jms-1.12.0/index.html), September 2024
  - [Qpid ProtonJ2 1.0.0-M22](qpid-protonj2-1.0.0-M22/index.html), September 2024 
  - [Qpid proton-dotnet 1.0.0-M10](qpid-proton-dotnet-1.0.0-M10/index.html), April 2024
  - [Qpid Proton 0.39.0](qpid-proton-0.39.0/index.html), June 2023
@@ -44,6 +44,7 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
+ - [Qpid JMS 1.12.0](qpid-jms-1.12.0/index.html), September 2024
  - [Qpid ProtonJ2 1.0.0-M21](qpid-protonj2-1.0.0-M21/index.html), July 2024 
  - [Qpid ProtonJ2 1.0.0-M20](qpid-protonj2-1.0.0-M20/index.html), March 2024 
  - [Qpid proton-dotnet 1.0.0-M9](qpid-proton-dotnet-1.0.0-M9/index.html), May 2023
