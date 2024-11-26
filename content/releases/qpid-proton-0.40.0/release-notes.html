@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--
+ -
+ - Licensed to the Apache Software Foundation (ASF) under one
+ - or more contributor license agreements.  See the NOTICE file
+ - distributed with this work for additional information
+ - regarding copyright ownership.  The ASF licenses this file
+ - to you under the Apache License, Version 2.0 (the
+ - "License"); you may not use this file except in compliance
+ - with the License.  You may obtain a copy of the License at
+ -
+ -   http://www.apache.org/licenses/LICENSE-2.0
+ -
+ - Unless required by applicable law or agreed to in writing,
+ - software distributed under the License is distributed on an
+ - "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ - KIND, either express or implied.  See the License for the
+ - specific language governing permissions and limitations
+ - under the License.
+ -
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Qpid Proton 0.40.0 Release Notes - Apache Qpid&#8482;</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/site.css" type="text/css" async="async"/>
+    <link rel="stylesheet" href="/deferred.css" type="text/css" defer="defer"/>
+    <script type="text/javascript">var _deferredFunctions = [];</script>
+    <script type="text/javascript" src="/deferred.js" defer="defer"></script>
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="/ie.css" type="text/css"/>
+      <script type="text/javascript" src="/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Redirects for `go get` and godoc.org -->
+    <meta name="go-import"
+          content="qpid.apache.org git https://gitbox.apache.org/repos/asf/qpid-proton.git"/>
+    <meta name="go-source"
+          content="qpid.apache.org
+https://github.com/apache/qpid-proton/blob/go1/README.md
+https://github.com/apache/qpid-proton/tree/go1{/dir}
+https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
+  </head>
+  <body>
+    <div id="-content">
+      <div id="-top" class="panel">
+        <a id="-menu-link"><img width="16" height="16" src="" alt="Menu"/></a>
+
+        <a id="-search-link"><img width="22" height="16" src="" alt="Search"/></a>
+
+        <ul id="-global-navigation">
+          <li><a id="-logotype" href="/index.html">Apache Qpid<sup>&#8482;</sup></a></li>
+          <li><a href="/documentation.html">Documentation</a></li>
+          <li><a href="/download.html">Download</a></li>
+          <li><a href="/discussion.html">Discussion</a></li>
+        </ul>
+      </div>
+
+      <div id="-menu" class="panel" style="display: none;">
+        <div class="flex">
+          <section>
+            <h3>Project</h3>
+
+            <ul>
+              <li><a href="/overview.html">Overview</a></li>
+              <li><a href="/components/index.html">Components</a></li>
+              <li><a href="/releases/index.html">Releases</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Messaging APIs</h3>
+
+            <ul>
+              <li><a href="/proton/index.html">Qpid Proton</a></li>
+              <li><a href="/components/jms/index.html">Qpid JMS</a></li>
+              <li><a href="/components/messaging-api/index.html">Qpid Messaging API</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Servers and tools</h3>
+
+            <ul>
+              <li><a href="/components/broker-j/index.html">Broker-J</a></li>
+              <li><a href="/components/cpp-broker/index.html">C++ broker</a></li>
+              <li><a href="/components/dispatch-router/index.html">Dispatch router</a></li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Resources</h3>
+
+            <ul>
+              <li><a href="/dashboard.html">Dashboard</a></li>
+              <li><a href="https://cwiki.apache.org/confluence/display/qpid/Index">Wiki</a></li>
+              <li><a href="/resources.html">More resources</a></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div id="-search" class="panel" style="display: none;">
+        <form action="http://www.google.com/search" method="get">
+          <input type="hidden" name="sitesearch" value="qpid.apache.org"/>
+          <input type="text" name="q" maxlength="255" autofocus="autofocus" tabindex="1"/>
+          <button type="submit">Search</button>
+          <a href="/search.html">More ways to search</a>
+        </form>
+      </div>
+
+      <div id="-middle" class="panel">
+        <ul id="-path-navigation"><li><a href="/index.html">Home</a></li><li><a href="/releases/index.html">Releases</a></li><li><a href="/releases/qpid-proton-0.40.0/index.html">Qpid Proton 0.40.0</a></li><li>Qpid Proton 0.40.0 Release Notes</li></ul>
+
+        <div id="-middle-content">
+          <h1 id="qpid-proton-0400-release-notes">Qpid Proton 0.40.0 Release Notes</h1>
+
+<p>Proton is a high-performance, lightweight messaging library. More
+about <a href="/proton/index.html">Qpid Proton</a>.</p>
+
+<p>For more information about this release, including download links and
+documentation, see the <a href="index.html">release overview</a>.</p>
+
+<h2 id="new-features-and-improvements">New features and improvements</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2594">PROTON-2594</a> - Use of HSM for crypto opterations with the private key of a TLS certificate</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2724">PROTON-2724</a> - Cannot disable building binaries in c/tools</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2751">PROTON-2751</a> - Reduce use of pn_buffer_t when not needed</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2752">PROTON-2752</a> - Use pn_string_t/pn_bytes_t instead of raw char*</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2753">PROTON-2753</a> - Split util.h to separate the C++ safe parts out of the C99 but not C++ parts</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2755">PROTON-2755</a> - [Python] Make python code and binding work with python 3.12</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2756">PROTON-2756</a> - [Python] There is no way to run python tests except by building a virtual environment</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2772">PROTON-2772</a> - [c] Add parameter safety annotations for printf format strings</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2773">PROTON-2773</a> - [c] Add various compiler diagnostic helper macros</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2774">PROTON-2774</a> - Support composite CMake builds</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2790">PROTON-2790</a> - Improve session flow control</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2791">PROTON-2791</a> - Add MSG_MORE performance boost to raw connections</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2813">PROTON-2813</a> - [Python] Make the python code pep8 clean</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2824">PROTON-2824</a> - C example broker doesn't respond well if the client tries to use transactions</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2838">PROTON-2838</a> - Remove all operations using the pn_data_t structure from the frame decode path</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2844">PROTON-2844</a> - Modernize python code</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2848">PROTON-2848</a> - [python] Add py.typed marker to officially support typing and be compliant with PEP 561</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2854">PROTON-2854</a> - Make it easier to build with AFL fuzzer manually</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2856">PROTON-2856</a> - Provide TLS support for intermediate CA certificates as trust anchors  in OpenSSL</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2861">PROTON-2861</a> - Use C++ raw string now that we can</li>
+</ul>
+
+<h2 id="bugs-fixed">Bugs fixed</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2322">PROTON-2322</a> - Fix and remove ignores in flake8 configuration</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2714">PROTON-2714</a> - logger.c:204:41: error: format ‘%x’ expects argument of type ‘unsigned int’, but argument 4 has type ‘size_t’ {aka ‘long unsigned int’} [-Werror=format=]</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2742">PROTON-2742</a> - The python binding installation instructions in python/PACKAGING.txt are wrong</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2743">PROTON-2743</a> - Logging raw frames only log outgoing frames not incoming frames</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2746">PROTON-2746</a> - pn_value_dump can access uninitialised memory</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2748">PROTON-2748</a> - Raw connections do not always complete close operations</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2754">PROTON-2754</a> - Python example broker supports ANONYMOUS-RELAY but doesn't offer the capability</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2759">PROTON-2759</a> - [python docs] auto_accept doc in TransactionalClientHandler is incorrect</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2760">PROTON-2760</a> - Ruby Some unit tests fail as they use MiniTest which is no longer an alias for Minitest</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2761">PROTON-2761</a> - The ruby unittests give deprecation warnings </li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2762">PROTON-2762</a> - [C++, tracing] Binding does not compile with opentracing</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2763">PROTON-2763</a> - Two final disconnect events possible from a raw connection</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2764">PROTON-2764</a> - Zombie raw connections</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2765">PROTON-2765</a> - [go] Go compilation fails with go 1.21</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2785">PROTON-2785</a> - [Go] Message of certain size fail to be marshalled by amqp module</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2786">PROTON-2786</a> - Cannot cross-compile proton-c using the <code>zig c++</code> compiler</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2787">PROTON-2787</a> - Compilation failure with <code>zig cc</code> (equivalent to clang 16)</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2788">PROTON-2788</a> - Static build of the Proton TLS library fails when openssl is located outside of default system include directories</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2792">PROTON-2792</a> - [cpp] Segmentation fault in container::impl::run_timer_jobs</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2810">PROTON-2810</a> - C++ compile standard needs to be advanced to c++14 or later</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2814">PROTON-2814</a> - [Python] Python tests incompatible with python 3.12</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2816">PROTON-2816</a> - The current python pkg build can only build a package with a bundled proton core</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2817">PROTON-2817</a> - [Python] Allow control of whether python build uses pip inside virtual environments</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2818">PROTON-2818</a> - Move epoll proctor connection logic to a task thread</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2820">PROTON-2820</a> - [Ruby] Test failure when using swig 4.2</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2822">PROTON-2822</a> - Build fails without building the proactor library</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2825">PROTON-2825</a> - C++ binding treats transaction coordinator termini incorrectly</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2831">PROTON-2831</a> - Mistaken use of logical-or operator instead of bitwise-or operator</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2832">PROTON-2832</a> - Use-after free tsan error in epoll.c::post_event</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2835">PROTON-2835</a> - [Win TLS] Incorrect certificate checking - not checking time validity</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2842">PROTON-2842</a> - Frame dump for custom descriptors is incorrect</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2843">PROTON-2843</a> - [Go] Acknowledging a message on a closed receiver results in a segmentation fault</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2853">PROTON-2853</a> - Undefined behaviour found by fuzzing transfer frame</li>
+</ul>
+
+<h2 id="tasks">Tasks</h2>
+
+<ul>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2644">PROTON-2644</a> - Update various GH actions versions to resolve deprecation warnings</li>
+<li><a href="https://issues.apache.org/jira/browse/PROTON-2860">PROTON-2860</a> - [cpp] Remove the unsettled API marker from the C++ reconnect API</li>
+</ul>
+
+
+          <hr/>
+
+          <ul id="-apache-navigation">
+            <li><a href="http://www.apache.org/">Apache</a></li>
+            <li><a href="http://www.apache.org/licenses/">License</a></li>
+            <li><a href="http://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+            <li><a href="http://www.apache.org/foundation/thanks.html">Thanks!</a></li>
+            <li><a href="/security.html">Security</a></li>
+            <li><a href="http://www.apache.org/"><img id="-apache-feather" width="48" height="14" src="" alt="Apache"/></a></li>
+          </ul>
+
+          <p id="-legal">
+            Apache Qpid, Messaging built on AMQP; Copyright &#169; 2015
+            The Apache Software Foundation; Licensed under
+            the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache
+            License, Version 2.0</a>; Apache Qpid, Qpid, Qpid Proton,
+            Proton, Apache, the Apache feather logo, and the Apache Qpid
+            project logo are trademarks of The Apache Software
+            Foundation; All other marks mentioned may be trademarks or
+            registered trademarks of their respective owners
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
