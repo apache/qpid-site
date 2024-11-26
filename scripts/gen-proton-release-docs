@@ -170,6 +170,7 @@ build_dir = make_temp_dir()
 
 with working_dir(build_dir):
     call("cmake {}", source_dir)
+    call("make -j4")
     call("make docs-py")
 
 gen_proton_apis(release, source_dir, release_dir)
