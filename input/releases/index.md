@@ -27,7 +27,7 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
- - [Qpid Proton 0.40.0](qpid-proton-0.40.0/index.html), November 2023
+ - [Qpid Proton 0.40.0](qpid-proton-0.40.0/index.html), November 2024
  - [Qpid JMS 2.6.1](qpid-jms-2.6.1/index.html), October 2024
  - [Qpid JMS 1.12.1](qpid-jms-1.12.1/index.html), October 2024
  - [Qpid ProtonJ2 1.0.0-M22](qpid-protonj2-1.0.0-M22/index.html), September 2024 
