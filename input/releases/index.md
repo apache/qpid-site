@@ -27,13 +27,13 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid Broker-J 9.2.1](qpid-broker-j-9.2.1/index.html), February 2025
  - [Qpid proton-dotnet 1.0.0-M11](qpid-proton-dotnet-1.0.0-M11/index.html), February 2025 
  - [Qpid ProtonJ2 1.0.0-M23](qpid-protonj2-1.0.0-M23/index.html), February 2025 
  - [Qpid JMS 2.7.0](qpid-jms-2.7.0/index.html), February 2025
  - [Qpid JMS 1.13.0](qpid-jms-1.13.0/index.html), February 2025
  - [Qpid Proton 0.40.0](qpid-proton-0.40.0/index.html), November 2024
  - [Qpid Proton-J 0.34.1](qpid-proton-j-0.34.1/index.html), March 2023
- - [Qpid Broker-J 9.2.0](qpid-broker-j-9.2.0/index.html), February 2024
  - [Qpid Dispatch 1.19.0](qpid-dispatch-1.19.0/index.html), March 2022
  - [Qpid Interop-test 0.3.0](qpid-interop-test-0.3.0/index.html), November 2021
  - [Qpid JMS AMQP 0-x 6.4.0](qpid-jms-amqp-0-x-6.4.0/index.html), June 2020
@@ -52,7 +52,7 @@ the
  - [Qpid ProtonJ2 1.0.0-M21](qpid-protonj2-1.0.0-M21/index.html), July 2024 
  - [Qpid proton-dotnet 1.0.0-M10](qpid-proton-dotnet-1.0.0-M10/index.html), April 2024
  - [Qpid ProtonJ2 1.0.0-M20](qpid-protonj2-1.0.0-M20/index.html), March 2024 
- - [Qpid proton-dotnet 1.0.0-M9](qpid-proton-dotnet-1.0.0-M9/index.html), May 2023
+ - [Qpid Broker-J 9.2.0](qpid-broker-j-9.2.0/index.html), February 2024
  - [Qpid ProtonJ2 1.0.0-M19](qpid-protonj2-1.0.0-M19/index.html), January 2024 
  - [Qpid ProtonJ2 1.0.0-M18](qpid-protonj2-1.0.0-M18/index.html), November 2023
  - [Qpid JMS 2.5.0](qpid-jms-2.5.0/index.html), October 2023
@@ -64,6 +64,7 @@ the
  - [Qpid JMS 1.10.0](qpid-jms-1.10.0/index.html), June 2023
  - [Qpid ProtonJ2 1.0.0-M16](qpid-protonj2-1.0.0-M16/index.html), June 2023
  - [Qpid ProtonJ2 1.0.0-M15](qpid-protonj2-1.0.0-M15/index.html), May 2023
+ - [Qpid proton-dotnet 1.0.0-M9](qpid-proton-dotnet-1.0.0-M9/index.html), May 2023
  - [Qpid JMS 2.3.0](qpid-jms-2.3.0/index.html), May 2023
  - [Qpid JMS 1.9.0](qpid-jms-1.9.0/index.html), May 2023
  - [Qpid proton-dotnet 1.0.0-M8](qpid-proton-dotnet-1.0.0-M8/index.html), May 2023

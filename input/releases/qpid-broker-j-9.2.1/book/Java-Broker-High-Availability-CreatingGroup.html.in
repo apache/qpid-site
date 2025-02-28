@@ -1,0 +1,42 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">10.3. Creating a group</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-OverviewOfHA.html">Prev</a> </td><th width="60%" align="center">Chapter 10. High Availability</th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-Behaviour.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-High-Availability-CreatingGroup"></a>10.3. Creating a group</h2></div></div></div><p>This section describes how to create a group. At a high level, creating a group involves
+      first creating the first node standalone, then creating subsequent nodes referencing the first
+      node so the nodes can introduce themselves and gradually the group is built up.</p><p>A group is created through either <a class="link" href="Java-Broker-Management-Channel-Web-Console.html" title="6.2. Web Management Console">Web Management</a>
+      or the <a class="link" href="Java-Broker-Management-Channel-REST-API.html" title="6.3. REST API">REST API</a>
+      or the initial configuration (<a class="xref" href="Java-Broker-Appendix-BDB-HA-initial-configuration.html" title="Appendix H. BDB HA initial configuration">Appendix H, <em>BDB HA initial configuration</em></a>
+      illustrates how to use initial configuration for BDB HA group creation).
+      These instructions presume you are using Web Management. To illustrate the example it builds the group
+      illustrated in figure <a class="xref" href="Java-Broker-High-Availability-OverviewOfHA.html#Java-Broker-High-Availability-OverviewOfHA-Figure" title="Figure 10.1. 3-node group deployed across three Brokers.">Figure 10.1, “3-node group deployed across three Brokers.”</a></p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p>Install a Broker on each machine that will be used to host the group. As messaging
+            clients will need to be able to connect to and authentication to all Brokers, it usually
+            makes sense to choose a common authentication mechanism e.g. Simple LDAP Authentication,
+            External with SSL client authentication or Kerberos.</p></li><li class="listitem"><p>Select one Broker instance to host the first node instance. This choice is an
+            arbitrary one. The node is special only whilst creating group. Once creation is
+            complete, all nodes will be considered equal.</p></li><li class="listitem"><p>Click the <code class="literal">Add</code> button on the Virtualhost Panel on the Broker
+            tab.</p><p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>Give the Virtualhost node a unique name e.g. <code class="literal">weather1</code>. The
+                  name must be unique within the group and unique to that Broker. It is best if the
+                  node names are chosen from a different nomenclature than the machine names
+                  themselves.</p></li><li class="listitem"><p>Choose <code class="literal">BDB_HA</code> and select <code class="literal">New group</code>
+                </p></li><li class="listitem"><p>Give the group a name e.g. <code class="literal">weather</code>. The group name must be
+                  unique and will be the name also given to the virtualhost, so this is the name the
+                  messaging clients will use in their connection url.</p></li><li class="listitem"><p>Give the address of this node. This is an address on this node's host that
+                  will be used for replication purposes. The hostname <span class="emphasis"><em>must</em></span> be
+                  resolvable by all the other nodes in the group. This is separate from the address
+                  used by messaging clients to connect to the Broker. It is usually best to choose a
+                  symbolic name, rather than an IP address.</p></li><li class="listitem"><p>Now add the node addresses of all the other nodes that will form the group. In
+                  our example we are building a three node group so we give the node addresses of
+                    <code class="literal">chaac:5000</code> and <code class="literal">indra:5000</code>.</p></li><li class="listitem"><p>Click Add to create the node. The virtualhost node will be created with the
+                  virtualhost. As there is only one node at this stage, the role will be
+                  master.</p></li></ol></div><p>
+            </p><div class="figure"><a id="d0e9872"></a><p class="title"><strong>Figure 10.2. Creating 1st node in a group</strong></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%"><tr><td><img src="images/HA-Create-1.png" height="360" alt="Creating 1st node in a group" /></td></tr></table></div></div></div><p><br class="figure-break" />
+          </p></li><li class="listitem"><p>Now move to the second Broker to be the group. Click the <code class="literal">Add</code>
+            button on the Virtualhost Panel on the Broker tab of the second Broker.</p><p>
+            </p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p>Give the Virtualhost node a unique name e.g.
+                  <code class="literal">weather2</code>.</p></li><li class="listitem"><p>Choose <code class="literal">BDB_HA</code> and choose <code class="literal">Existing group</code>
+                </p></li><li class="listitem"><p>Give the details of the <span class="emphasis"><em>existing node</em></span>. Following our
+                  example, specify <code class="literal">weather</code>, <code class="literal">weather1</code> and
+                    <code class="literal">thor:5000</code></p></li><li class="listitem"><p>Give the address of this node.</p></li><li class="listitem"><p>Click Add to create the node. The node will use the existing details to
+                  contact it and introduce itself into the group. At this stage, the group will have
+                  two nodes, with the second node in the replica role.</p></li><li class="listitem"><p>Repeat these steps until you have added all the nodes to the group.</p></li></ol></div><p>
+            </p><div class="figure"><a id="d0e9930"></a><p class="title"><strong>Figure 10.3. Adding subsequent nodes to the group</strong></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%"><tr><td><img src="images/HA-Create-2.png" height="360" alt="Adding subsequent nodes to the group" /></td></tr></table></div></div></div><p><br class="figure-break" />
+          </p></li></ol></div><p>The group is now formed and is ready for us. Looking at the virtualhost node of any of the
+      nodes shows a complete view of the whole group. </p><div class="figure"><a id="d0e9942"></a><p class="title"><strong>Figure 10.4. View of group from one node</strong></p><div class="figure-contents"><div class="mediaobject"><table border="0" summary="manufactured viewport for HTML img" style="cellpadding: 0; cellspacing: 0;" width="100%"><tr><td><img src="images/HA-Create-3.png" height="360" alt="View of group from one node" /></td></tr></table></div></div></div><p><br class="figure-break" /></p></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-High-Availability-OverviewOfHA.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-High-Availability.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-High-Availability-Behaviour.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">10.2. High Availability Overview </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 10.4. Behaviour of the Group</td></tr></table></div></div>
