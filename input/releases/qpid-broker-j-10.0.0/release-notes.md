@@ -48,7 +48,7 @@ documentation, see the [release overview](index.html).
  - [QPID-8709](https://issues.apache.org/jira/browse/QPID-8709) - [Broker-J] Docker image 9.2.1-alpine does not contain entrypoint.sh
  - [QPID-8712](https://issues.apache.org/jira/browse/QPID-8712) - [Broker-J] Operation not permitted when building docker image
 
-# Dependency updates
+## Dependency updates
 
  - [QPID-8684](https://issues.apache.org/jira/browse/QPID-8684) - [Broker-J] Maven plugins and test dependencies updates for version 10.0.0
  - [QPID-8685](https://issues.apache.org/jira/browse/QPID-8685) - [Broker-J] Update to Jetty 12 (12.1.1)
