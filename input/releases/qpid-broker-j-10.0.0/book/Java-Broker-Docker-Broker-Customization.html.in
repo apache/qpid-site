@@ -1,0 +1,135 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">12.4. Broker Customization</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Docker-Broker-Users.html">Prev</a> </td><th width="60%" align="center">Chapter 12. Docker Images</th><td width="20%" align="right"> </td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Docker-Broker-Customization"></a>12.4. Broker Customization</h2></div></div></div><p>
+            To customize broker before building the container image, its configuration files may be edited to start
+            broker with queues, exchanges, users or other objects.
+        </p><p>
+            The file config.json contains definitions of the broker objects and references a file containing definitions
+            of virtualhost objects (exchanges and queues).
+        </p><p>
+            It may be helpful first to create broker objects needed via broker web GUI or via REST API, and then
+            investigate the configuration files and copy the appropriate definitions to the configuration files used
+            for container image creation.
+        </p><p>
+            An example of the default initial configuration JSON file is provided in broker book
+            (<a class="link" href="Java-Broker-Initial-Configuration.html" title="Chapter 5. Initial Configuration">chapter 5.7</a>).
+        </p><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Broker-Customization-Exchanges"></a>12.4.1. Exchanges</h3></div></div></div><p>
+                To create exchanges a JSON element "exchanges" should be created containing an array of single
+                exchange definitions:
+            </p><p>
+                </p><pre class="programlisting">
+    "exchanges" : [ {
+        "name" : "amq.direct",
+        "type" : "direct"
+      }, {
+        "name" : "amq.fanout",
+        "type" : "fanout"
+      }, {
+        "name" : "amq.match",
+        "type" : "headers"
+      }, {
+        "name" : "amq.topic",
+        "type" : "topic"
+      }, {
+        "name" : "request.QUEUE1",
+        "type" : "topic",
+        "durable" : true,
+        "durableBindings" : [ {
+        "arguments" : { },
+        "destination" : "QUEUE1",
+        "bindingKey" : "#"
+      } ],
+      "unroutableMessageBehaviour" : "REJECT"
+    } ]
+                </pre><p>
+            </p><p>
+                Information about exchanges, their types and properties can be found in broker book
+                (<a class="link" href="Java-Broker-Concepts-Exchanges.html" title="4.6. Exchanges">chapter 4.6</a>).
+            </p><p>
+                Please note that each virtualhost pre-declares several exchanges, described in the broker book
+                (<a class="link" href="Java-Broker-Concepts-Exchanges.html#Java-Broker-Concepts-Exchanges-Predeclared" title="4.6.1. Predeclared Exchanges">chapter 4.6.1</a>).
+            </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Broker-Customization-Queues"></a>12.4.2. Queues</h3></div></div></div><p>
+                To create queue a JSON element "queues" should be created containing an array of single queue definitions:
+            </p><p>
+                </p><pre class="programlisting">
+    "queues" : [ {
+        "name" : "QUEUE1",
+        "type" : "standard",
+        "durable" : true,
+        "maximumQueueDepthBytes" : 6144000,
+        "maximumQueueDepthMessages" : 6000,
+        "messageDurability" : "ALWAYS",
+        "overflowPolicy" : "REJECT"
+      }, {
+        "name" : "QUEUE2",
+        "type" : "standard",
+        "durable" : true,
+        "maximumQueueDepthBytes" : 6144000,
+        "maximumQueueDepthMessages" : 6000,
+        "messageDurability" : "ALWAYS",
+        "overflowPolicy" : "REJECT"
+      } ]
+                </pre><p>
+            </p><p>
+                Information about queues, their types and properties can be found in broker book
+                (<a class="link" href="Java-Broker-Concepts-Queues.html" title="4.7. Queues">chapter 4.7</a>).
+            </p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Broker-Customization-Users"></a>12.4.3. Users</h3></div></div></div><p>
+                Users can be defined in an authentication provider. Authentication providers are defined on broker
+                level (file config.json).
+            </p><p>
+                Information about authentication providers, their types and properties can be found in broker book
+                (<a class="link" href="Java-Broker-Security.html#Java-Broker-Security-Authentication-Providers" title="8.1. Authentication Providers">chapter 8.1</a>).
+            </p><p>
+                Examples for most commonly used authentication providers can be found below.
+            </p><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Docker-Broker-Customization-Users-Anonymous"></a>12.4.3.1. Anonymous Authentication Provider</h4></div></div></div><p>
+                    </p><pre class="programlisting">
+    "authenticationproviders" : [ {
+        "name" : "anon",
+        "type" : "Anonymous"
+    } ]
+                    </pre><p>
+                </p><p>
+                    For additional details see broker book
+                    (<a class="link" href="Java-Broker-Security.html#Java-Broker-Security-Anonymous-Provider" title="8.1.5. Anonymous">chapter 8.1.5</a>).
+                </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Docker-Broker-Customization-Users-Plain"></a>12.4.3.2. Plain Authentication Provider</h4></div></div></div><p>
+                    </p><pre class="programlisting">
+    "authenticationproviders" : [{
+        "name" : "plain",
+        "type" : "Plain",
+        "secureOnlyMechanisms" : [],
+        "users" : [ {
+            "name" : "admin",
+            "type" : "managed",
+            "password" : "&lt;PASSWORD&gt;"
+        } ]
+    } ]
+                    </pre><p>
+                </p><p>
+                    For additional details see broker book
+                    (<a class="link" href="Java-Broker-Security.html#Java-Broker-Security-Plain-Provider" title="8.1.7. Plain">chapter 8.1.7</a>).
+                </p></div><div class="section"><div class="titlepage"><div><div><h4 class="title"><a id="Java-Broker-Docker-Broker-Customization-Users-ACL"></a>12.4.3.3. ACL Rules</h4></div></div></div><p>
+                    The ACL rules for users are defined in file broker.acl following the syntax:
+                </p><p>
+                    </p><pre class="programlisting">
+                        ACL {permission} {&lt;group-name&gt;|&lt;user-name&gt;|ALL} {action|ALL} [object|ALL] [property=&lt;property-values&gt;]
+                    </pre><p>
+                </p><p>
+                    The predefined broker.acl file contains permissions for the 'admin' user:
+                </p><p>
+                    </p><pre class="programlisting">
+    # account 'admin' - enabled all actions
+    ACL ALLOW-LOG admin ALL ALL
+                    </pre><p>
+                </p><p>
+                    For additional details see broker book
+                    (<a class="link" href="Java-Broker-Security-AccessControlProviders.html#Java-Broker-Security-AccessControlProviders-ACLRules" title="8.3.2.  ACL Rules">chapter 8.3.2</a>).
+                </p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Docker-Broker-Customization-Override"></a>12.4.4. Overriding Broker Configuration</h3></div></div></div><p>
+            Customized configuration for the Broker-J instance can be used by replacing the files residing in the work
+            folder with the custom ones, e.g. config.json or default.json. Put the replacement files inside a folder
+            and map it as a volume to:
+        </p><p>
+            </p><pre class="programlisting">
+    docker run -d -p 5672:5672 -p 8080:8080 -v &lt;DIRECTORY_ON_HOST&gt;:/qpid-broker-j/work-override:Z --name qpid &lt;IMAGE_NAME&gt;
+            </pre><p>
+        </p><p>
+            The contents of work-override folder will be copied over to work folder first time after the instance creation so that
+            the broker will start with user-supplied configuration.
+        </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Docker-Broker-Users.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Docker.html">Up</a></td><td width="40%" align="right"> </td></tr><tr><td width="40%" align="left" valign="top">12.3. Broker Users </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> </td></tr></table></div></div>
