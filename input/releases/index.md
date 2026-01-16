@@ -27,10 +27,10 @@ the
 ## Current releases
 
 <div class="two-column" markdown="1">
+ - [Qpid ProtonJ2 1.1.0](qpid-protonj2-1.1.0/index.html), January 2026 
  - [Qpid Broker-J 10.0.1](qpid-broker-j-10.0.1/index.html), December 2025
  - [Qpid JMS 2.9.0](qpid-jms-2.9.0/index.html), September 2025
  - [Qpid JMS 1.15.0](qpid-jms-1.15.0/index.html), September 2025
- - [Qpid ProtonJ2 1.0.0](qpid-protonj2-1.0.0/index.html), August 2025 
  - [Qpid proton-dotnet 1.0.0-M11](qpid-proton-dotnet-1.0.0-M11/index.html), February 2025 
  - [Qpid Proton 0.40.0](qpid-proton-0.40.0/index.html), November 2024
  - [Qpid Proton-J 0.34.1](qpid-proton-j-0.34.1/index.html), March 2023
@@ -45,6 +45,7 @@ the
 
 <div class="two-column" markdown="1">
  - [Qpid Broker-J 10.0.0](qpid-broker-j-10.0.0/index.html), October 2025
+ - [Qpid ProtonJ2 1.0.0](qpid-protonj2-1.0.0/index.html), August 2025 
  - [Qpid JMS 2.8.0](qpid-jms-2.8.0/index.html), August 2025
  - [Qpid JMS 1.14.0](qpid-jms-1.14.0/index.html), August 2025
  - [Qpid Broker-J 9.2.1](qpid-broker-j-9.2.1/index.html), February 2025
