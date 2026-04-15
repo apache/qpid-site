@@ -34,11 +34,7 @@ the
  - [Qpid Broker-J 10.0.1](qpid-broker-j-10.0.1/index.html), December 2025
  - [Qpid Proton 0.40.0](qpid-proton-0.40.0/index.html), November 2024
  - [Qpid Proton-J 0.34.1](qpid-proton-j-0.34.1/index.html), March 2023
- - [Qpid Dispatch 1.19.0](qpid-dispatch-1.19.0/index.html), March 2022
  - [Qpid Interop-test 0.3.0](qpid-interop-test-0.3.0/index.html), November 2021
- - [Qpid JMS AMQP 0-x 6.4.0](qpid-jms-amqp-0-x-6.4.0/index.html), June 2020
- - [Qpid C++ 1.39.0](qpid-cpp-1.39.0/index.html), October 2018
- - [Qpid Python 1.37.0](qpid-python-1.37.0/index.html), November 2017
 </div>
 
 ## Past releases
@@ -111,8 +107,6 @@ the
  - [Qpid JMS 1.5.0](qpid-jms-1.5.0/index.html), December 2021
  - [Qpid JMS 1.4.1](qpid-jms-1.4.1/index.html), December 2021
  - [Qpid JMS 0.60.1](qpid-jms-0.60.1/index.html), December 2021
- - [Qpid Dispatch 1.18.0](qpid-dispatch-1.18.0/index.html), November 2021
- - [Qpid Dispatch 1.17.1](qpid-dispatch-1.17.1/index.html), November 2021
  - [Qpid Proton 0.36.0](qpid-proton-0.36.0/index.html), November 2021
  - [Qpid ProtonJ2 1.0.0-M3](qpid-protonj2-1.0.0-M3/index.html), October 2021
  - [Qpid JMS 1.3.0](qpid-jms-1.3.0/index.html), October 2021
@@ -120,7 +114,6 @@ the
  - [Qpid JMS 1.2.0](qpid-jms-1.2.0/index.html), September 2021
  - [Qpid Proton-J 0.33.9](qpid-proton-j-0.33.9/index.html), August 2021
  - [Qpid Broker-J 8.0.6](qpid-broker-j-8.0.6/index.html), August 2021
- - [Qpid Dispatch 1.17.0](qpid-dispatch-1.17.0/index.html), August 2021
 </div>
 
 Still older releases are available in the

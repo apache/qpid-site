@@ -52,8 +52,6 @@ For a release using Jakarta Messaging 2.0 (javax.jms), see the [{{other_jms_rele
 
 </div>
 
-For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
-
 </div>
 
 <div id="-right-column" class="right-column-adjusted" markdown="1">
@@ -79,6 +77,5 @@ For details about the AMQP 0-x JMS client, look [here](amqp-0-x.html).
 ## Resources
 
  - [Security](security.html)
- - [AMQP 0-x JMS Client](amqp-0-x.html)
 
 </div>

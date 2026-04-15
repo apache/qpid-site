@@ -118,22 +118,21 @@ https://github.com/apache/qpid-proton/blob/go1{/dir}/{file}#L{line}"/>
           <h1 id="components">Components</h1>
 
 <p>The Qpid project offers two kinds of components, <em>messaging APIs</em> for
-building AMQP applications, and <em>messaging servers</em> for deploying AMQP
+building AMQP applications, and <em>messaging server</em> for deploying AMQP
 networks.  You can use them together to build robust distributed
 applications.</p>
 
 <p><strong>Messaging APIs</strong> give your application a tool for efficient,
 high-level interprocess communication.</p>
 
-<p>Qpid offers three messaging APIs.
+<p>Qpid offers various messaging APIs.
 <a href="/proton/index.html">Qpid Proton</a> is a reactive API with
 full-spectrum AMQP control. In addition to being a messaging API, Qpid
 Proton is used by other Qpid components to implement AMQP 1.0 protocol
 support.  <a href="jms/index.html">Qpid JMS</a> is an AMQP-fluent implementation
 of the widely used
 <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a>
-API.  The <a href="messaging-api/index.html">Qpid Messaging API</a> is a
-connection-oriented API that supports many languages.</p>
+API.</p>
 
 <p>The term "client" is often used to refer to messaging APIs, but some
 messaging APIs, such as Qpid Proton, can be used to implement any kind
@@ -144,31 +143,21 @@ proxies.</p>
 additional behaviors such as store-and-forward for improved
 reliability.</p>
 
-<p>The Qpid message brokers are full-featured
+<p>Qpid <a href="broker-j/index.html">Broker-J</a> is a full-featured
 <a href="http://en.wikipedia.org/wiki/Message-oriented_middleware">message-oriented middleware</a>
-brokers.  They offer specialized queueing behaviors, message
-persistence, and manageability.  Qpid offers pure-Java and native-code
-implementations, the <a href="broker-j/index.html">Broker-J</a> and the
-<a href="cpp-broker/index.html">C++ broker</a>.</p>
-
-<p><a href="dispatch-router/index.html">Dispatch router</a> is a new kind of
-messaging server.  It allows you to build redundant router networks
-connecting clients, brokers, and standalone services.</p>
+broker, offering specialized queueing behaviors, message persistence, and manageability.</p>
 
 <h2 id="messaging-apis">Messaging APIs</h2>
 
 <ul>
 <li><a href="/proton/index.html">Qpid Proton</a> - A toolkit allowing any application to speak AMQP</li>
 <li><a href="jms/index.html">Qpid JMS</a> - An AMQP-fluent <a href="http://en.wikipedia.org/wiki/Java_Message_Service">Java Message Service</a> implementation</li>
-<li><a href="messaging-api/index.html">Qpid Messaging API</a> - A connection-oriented messaging API that supports many languages</li>
 </ul>
 
 <h2 id="messaging-servers">Messaging servers</h2>
 
 <ul>
 <li><a href="broker-j/index.html">Broker-J</a> - A pure-Java AMQP message broker</li>
-<li><a href="cpp-broker/index.html">C++ broker</a> - A native-code AMQP message broker</li>
-<li><a href="dispatch-router/index.html">Dispatch router</a> - An AMQP router for scalable messaging interconnect</li>
 </ul>
 
 <h2 id="messaging-tools">Messaging tools</h2>
@@ -192,18 +181,6 @@ connecting clients, brokers, and standalone services.</p>
 </thead>
 <tbody>
 <tr>
-  <td><a href="/components/cpp-broker/index.html">C++ broker</a></td>
-  <td>-</td>
-  <td>Linux, Windows</td>
-  <td>1.0, 0-10</td>
-</tr>
-<tr>
-  <td><a href="/components/dispatch-router/index.html">Dispatch router</a></td>
-  <td>-</td>
-  <td>Linux</td>
-  <td>1.0</td>
-</tr>
-<tr>
   <td><a href="/components/broker-j/index.html">Broker-J</a></td>
   <td>-</td>
   <td>JVM</td>
@@ -213,13 +190,7 @@ connecting clients, brokers, and standalone services.</p>
   <td><a href="/components/jms/index.html">Qpid JMS</a></td>
   <td>Java</td>
   <td>JVM</td>
-  <td>1.0, 0-10, 0-9-1, 0-9, 0-8</td>
-</tr>
-<tr>
-  <td><a href="/components/messaging-api/index.html">Qpid Messaging API</a></td>
-  <td>C++, Python</td>
-  <td>Linux, Windows</td>
-  <td>1.0, 0-10</td>
+  <td>1.0</td>
 </tr>
 <tr>
   <td><a href="/proton/index.html">Qpid Proton</a></td>
@@ -237,8 +208,8 @@ connecting clients, brokers, and standalone services.</p>
 </table>
 
 <p>Any Qpid components that share an AMQP version can interoperate.  For
-instance, the brokers are implemented in C++ and Java respectively,
-but they do not require C++ or JMS clients for communication.</p>
+instance, Broker-J is implemented in Java, but can communicate with
+C++ clients for communication.</p>
 
 </div>
 

@@ -37,7 +37,6 @@ You can find older versions with our
  - [C API reference]({{current_proton_release_url}}/proton/c/api/files.html)
  - [C++ API reference]({{current_proton_release_url}}/proton/cpp/api/annotated.html)
  - [Python API reference]({{current_proton_release_url}}/proton/python/docs/index.html)
- - [Java API reference]({{current_proton_j_release_url}}/api/index.html)
 
 </section>
 <section markdown="1">
@@ -52,16 +51,14 @@ You can find older versions with our
 </section>
 <section markdown="1">
 
-### Qpid Messaging API
+### Qpid ProtonJ2
 
- - [Overview]({{site_url}}/components/messaging-api/index.html)
- - [Using the Qpid Messaging API]({{current_cpp_release_url}}/messaging-api/book/using-the-qpid-messaging-api.html) ([PDF]({{current_cpp_release_url}}/messaging-api/qpid-messaging-api-book.pdf))
- - [C++ API reference]({{current_cpp_release_url}}/messaging-api/cpp/api/index.html)
- - [C++ examples]({{current_cpp_release_url}}/messaging-api/cpp/examples/index.html)
+ - [Overview]({{site_url}}/proton/index.html)
+ - [API reference]({{current_protonj2_release_url}}/api/)
+ - [Examples](https://github.com/apache/qpid-protonj2/tree/{{current_protonj2_release}}/protonj2-client-examples)
 
 </section>
 </div>
-
 ---
 
 ## Messaging servers
@@ -73,22 +70,6 @@ You can find older versions with our
 
  - [Overview]({{site_url}}/components/broker-j/index.html)
  - [Broker book]({{current_broker_j_release_url}}/book/index.html)
-
-</section>
-<section markdown="1">
-
-### C++ broker
-
- - [Overview]({{site_url}}/components/cpp-broker/index.html)
- - [C++ broker book]({{current_cpp_release_url}}/cpp-broker/book/index.html) ([PDF]({{current_cpp_release_url}}/cpp-broker/cpp-broker-book.pdf))
-
-</section>
-<section markdown="1">
-
-### Dispatch router
-
- - [Overview]({{site_url}}/components/dispatch-router/index.html)
- - [Dispatch router book]({{current_dispatch_release_url}}/user-guide/index.html)
 
 </section>
 </div>
