@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Dispatch has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid Dispatch 1.19.0
 
 Dispatch is a lightweight AMQP 1.0 message router. More about
@@ -43,7 +48,7 @@ the files you download.
 
  - [Using Qpid Dispatch](user-guide/index.html)
  - [Installing Qpid Dispatch from
-   source](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb=1.19.0)
+   source](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README.adoc;hb=1.19.0)
  - [qdrouterd](man/qdrouterd.html) - Router daemon
  - [qdrouterd.conf](man/qdrouterd.conf.html) - Daemon configuration
  - [qdstat](man/qdstat.html) - Get router statistics
