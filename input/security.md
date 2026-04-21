@@ -30,17 +30,9 @@ Qpid components are detailed at:
 <section markdown="1">
 
  - [Broker-J]({{site_url}}/components/broker-j/security.html)
- - [C++ broker]({{site_url}}/components/cpp-broker/security.html)
- - [Dispatch]({{site_url}}/components/dispatch-router/security.html) 
-
-</section>
-<section markdown="1">
-
  - [JMS client]({{site_url}}/components/jms/security.html)
- - [AMQP 0-x JMS client]({{site_url}}/components/jms/security-0-x.html)
  - [Proton]({{site_url}}/proton/security.html)
  - [Proton-J]({{site_url}}/proton/security-j.html)
-
 </section>
 </div>
  

@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Dispatch has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Dispatch AMQP Mapping
 
 Dispatch Router is an AMQP router and as such, it provides extensions,

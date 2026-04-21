@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component">
+<b>WARNING</b>: Qpid Dispatch has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid Dispatch 1.19.0 Release Notes
 
 Dispatch is a lightweight AMQP 1.0 message router. More about

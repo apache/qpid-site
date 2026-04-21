@@ -1,3 +1,8 @@
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Dispatch has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Overview
 
 The Dispatch router is an AMQP router that provides advanced interconnect for AMQP.

@@ -25,7 +25,6 @@ class _Release(object):
 broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "10.0.1")
 other_broker_j_release = None
 cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.39.0")
-dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.19.0")
 interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-test", "0.3.0")
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "2.10.0")
 other_jms_release = "1.16.0"
@@ -43,10 +42,6 @@ current_broker_j_release_link = broker_j_release.link
 current_cpp_release = cpp_release.number
 current_cpp_release_url = cpp_release.url
 current_cpp_release_link = cpp_release.link
-
-current_dispatch_release = dispatch_release.number
-current_dispatch_release_url = dispatch_release.url
-current_dispatch_release_link = dispatch_release.link
 
 current_interop_test_release = interop_test_release.number
 current_interop_test_release_url = interop_test_release.url
@@ -79,6 +74,12 @@ current_python_release_link = python_release.link
 current_proton_dotnet_release = proton_dotnet_release.number
 current_proton_dotnet_release_url = proton_dotnet_release.url
 current_proton_dotnet_release_link = proton_dotnet_release.link
+
+current_dispatch_release = "0.0.0"
+dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.19.0")
+final_dispatch_release = dispatch_release.number
+final_dispatch_release_url = dispatch_release.url
+final_dispatch_release_link = dispatch_release.link
 
 def dashboard_asf_jira_links(project_key, project_id, components=None):
     try:

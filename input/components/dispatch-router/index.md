@@ -19,6 +19,11 @@
 
 <div id="-left-column" markdown="1">
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Dispatch has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Dispatch Router
 
 <div class="feature" markdown="1">
@@ -44,16 +49,16 @@ they be clients, brokers or other AMQP-enabled services.  More about
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 
- - [Dispatch router book]({{current_dispatch_release_url}}/user-guide/index.html)
- - [Installing Qpid Dispatch](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README;hb={{current_dispatch_release}})
+ - [Dispatch router book]({{final_dispatch_release_url}}/user-guide/index.html)
+ - [Installing Qpid Dispatch](https://gitbox.apache.org/repos/asf?p=qpid-dispatch.git;a=blob_plain;f=README.adoc;hb={{final_dispatch_release}})
 
 </div>
 <div class="column" markdown="1">
 
- - [qdrouterd]({{current_dispatch_release_url}}/man/qdrouterd.html) - Router daemon
- - [qdrouterd.conf]({{current_dispatch_release_url}}/man/qdrouterd.conf.html) - Daemon configuration
- - [qdstat]({{current_dispatch_release_url}}/man/qdstat.html) - Get router statistics
- - [qdmanage]({{current_dispatch_release_url}}/man/qdmanage.html) - Manage the router
+ - [qdrouterd]({{final_dispatch_release_url}}/man/qdrouterd.html) - Router daemon
+ - [qdrouterd.conf]({{final_dispatch_release_url}}/man/qdrouterd.conf.html) - Daemon configuration
+ - [qdstat]({{final_dispatch_release_url}}/man/qdstat.html) - Get router statistics
+ - [qdmanage]({{final_dispatch_release_url}}/man/qdmanage.html) - Manage the router
 
 </div>
 </div>
@@ -63,20 +68,15 @@ they be clients, brokers or other AMQP-enabled services.  More about
 
 ## Releases
 
- - {{current_dispatch_release_link}}
- - [Past releases]({{site_url}}/releases/index.html#past-releases)
+ - [Archive](https://archive.apache.org/dist/qpid/dispatch/)
 
 ## Issues
 
- - [Report a bug](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12315321&issuetype=1&priority=3)
- - [Request an improvement](https://issues.apache.org/jira/secure/CreateIssue.jspa?pid=12315321&issuetype=4&priority=3)
- - <form id="-jira-goto-form">Go to issue <input name="jira" value="DISPATCH-"/></form>
  - [JIRA project page](http://issues.apache.org/jira/browse/DISPATCH)
 
 ## Source code
 
  - [Browse via GitHub](https://github.com/apache/qpid-dispatch)
- - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-dispatch.git)
 
 ## Resources
 

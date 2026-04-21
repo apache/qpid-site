@@ -84,7 +84,6 @@ page.  To illustrate:
 
     {{site_url}}                 -> http://qpid.apache.org
     {{current_proton_release}}   -> 0.17.0
-    {{current_dispatch_release}} -> 0.8.0
 
 Under `output/`, `{{site_url}}` is set to a path in your development
 environment, to allow for local testing.  Under `content/`,
@@ -118,9 +117,6 @@ following commands.
 
     # Usage: make gen-$module-release RELEASE=$VERSION [CHECKOUT_DIR=$DIR]
 
-    # For new Qpid C++ releases
-    [qpid-site]$ make gen-cpp-release RELEASE=$VERSION
-
     # For new Qpid Broker-J releases
     [qpid-site]$ make gen-broker-j-release RELEASE=$VERSION
 
@@ -132,9 +128,6 @@ following commands.
 
     # For new Qpid Proton-J releases
     [qpid-site]$ make gen-proton-j-release RELEASE=$VERSION
-
-    # For new Qpid Dispatch releases
-    [qpid-site]$ make gen-dispatch-release RELEASE=$VERSION
 
     # For new Qpid Interop Test Releases
     [qpid-site]$ make gen-interop-test-release RELEASE=$VERSION
