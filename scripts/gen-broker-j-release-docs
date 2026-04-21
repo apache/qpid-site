@@ -29,8 +29,8 @@ def gen_broker_j_books(release, source_dir, output_dir):
     toplevel_pom = join(source_dir, "pom.xml")
     input_dir = join(source_dir, "doc")
 
-    cpp_broker_book_url = "/releases/qpid-cpp-{{current_cpp_release}}/cpp-broker/book/"
-    jms_client010_book_url = "/releases/qpid-jms-amqp-0-x-{{current_jms_amqp_0_x_release}}/jms-client-0-10/book/"
+    cpp_broker_book_url = "/releases/qpid-cpp-{{final_cpp_release}}/cpp-broker/book/"
+    jms_client010_book_url = "/releases/qpid-jms-amqp-0-x-{{final_jms_amqp_0_x_release}}/jms-client-0-10/book/"
 
     call("mvn -f {} -pl doc -amd -Ddoc=true package -DqpidCppBook={} -DqpidJmsClient010Book={}",
          toplevel_pom,

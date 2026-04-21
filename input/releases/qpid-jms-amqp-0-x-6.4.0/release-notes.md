@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component">
+<b>WARNING</b>: Qpid JMS AMQP 0-x has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid JMS AMQP 0-x 6.4.0 Release Notes
 
 Qpid JMS AMQP 0-x is JMS 1.1 compatible client which can speak AMQP 0-8,0-9,0-9-1 and 0-10.

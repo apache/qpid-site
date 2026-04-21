@@ -24,24 +24,17 @@ class _Release(object):
 
 broker_j_release = _Release(site_url, "Qpid Broker-J", "qpid-broker-j", "10.0.1")
 other_broker_j_release = None
-cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.39.0")
 interop_test_release = _Release(site_url, "Qpid Interop Test", "qpid-interop-test", "0.3.0")
 jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "2.10.0")
 other_jms_release = "1.16.0"
-jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.4.0")
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.40.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.34.1")
 protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.1.0")
-python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
 proton_dotnet_release = _Release(site_url, "Qpid Proton DotNet", "qpid-proton-dotnet", "1.0.0")
 
 current_broker_j_release = broker_j_release.number
 current_broker_j_release_url = broker_j_release.url
 current_broker_j_release_link = broker_j_release.link
-
-current_cpp_release = cpp_release.number
-current_cpp_release_url = cpp_release.url
-current_cpp_release_link = cpp_release.link
 
 current_interop_test_release = interop_test_release.number
 current_interop_test_release_url = interop_test_release.url
@@ -50,10 +43,6 @@ current_interop_test_release_link = interop_test_release.link
 current_jms_release = jms_release.number
 current_jms_release_url = jms_release.url
 current_jms_release_link = jms_release.link
-
-current_jms_amqp_0_x_release = jms_amqp_0_x_release.number
-current_jms_amqp_0_x_release_url = jms_amqp_0_x_release.url
-current_jms_amqp_0_x_release_link = jms_amqp_0_x_release.link
 
 current_proton_release = proton_release.number
 current_proton_release_url = proton_release.url
@@ -67,10 +56,6 @@ current_protonj2_release = protonj2_release.number
 current_protonj2_release_url = protonj2_release.url
 current_protonj2_release_link = protonj2_release.link
 
-current_python_release = python_release.number
-current_python_release_url = python_release.url
-current_python_release_link = python_release.link
-
 current_proton_dotnet_release = proton_dotnet_release.number
 current_proton_dotnet_release_url = proton_dotnet_release.url
 current_proton_dotnet_release_link = proton_dotnet_release.link
@@ -80,6 +65,24 @@ dispatch_release = _Release(site_url, "Qpid Dispatch", "qpid-dispatch", "1.19.0"
 final_dispatch_release = dispatch_release.number
 final_dispatch_release_url = dispatch_release.url
 final_dispatch_release_link = dispatch_release.link
+
+current_cpp_release = "0.0.0"
+cpp_release = _Release(site_url, "Qpid C++", "qpid-cpp", "1.39.0")
+final_cpp_release = cpp_release.number
+final_cpp_release_url = cpp_release.url
+final_cpp_release_link = cpp_release.link
+
+current_jms_amqp_0_x_release = "0.0.0"
+jms_amqp_0_x_release = _Release(site_url, "Qpid JMS for AMQP 0-x", "qpid-jms-amqp-0-x", "6.4.0")
+final_jms_amqp_0_x_release = jms_amqp_0_x_release.number
+final_jms_amqp_0_x_release_url = jms_amqp_0_x_release.url
+final_jms_amqp_0_x_release_link = jms_amqp_0_x_release.link
+
+current_python_release = "0.0.0"
+python_release = _Release(site_url, "Qpid Python", "qpid-python", "1.37.0")
+final_python_release = python_release.number
+final_python_release_url = python_release.url
+final_python_release_link = python_release.link
 
 def dashboard_asf_jira_links(project_key, project_id, components=None):
     try:

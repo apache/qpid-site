@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid C++ has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid C++ 1.39.0
 
 Qpid C++ offers a connection-oriented messaging API and a message
@@ -62,10 +67,3 @@ files you download.
  - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-cpp-1.39.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-cpp.git/tree/refs/tags/1.39.0)
 
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("1.39.0" === "{{current_cpp_release}}") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
-</script>

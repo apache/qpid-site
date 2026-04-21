@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid C++ has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid C++ 1.39.0 Release Notes
 
 Qpid C++ offers a connection-oriented messaging API supporting many

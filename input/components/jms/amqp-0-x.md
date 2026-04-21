@@ -18,13 +18,19 @@
 ;;
 
 <div id="-left-column" markdown="1">
+
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid JMS AMQP 0-x has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid JMS AMQP 0-x
 
 <div class="feature" markdown="1">
 A JMS 1.1 implementation supporting AMQP versions 0-10, 0-9-1, 0-9, and
 0-8.
 
-For AMQP 1.0 and JMS 2.0 / 3.0 support, use the newer [Qpid JMS](index.html) client.
+For AMQP 1.0 and JMS 2.0 / 3.1 support, use the newer [Qpid JMS](index.html) client.
 </div>
 
 ## Features
@@ -42,10 +48,10 @@ For AMQP 1.0 and JMS 2.0 / 3.0 support, use the newer [Qpid JMS](index.html) cli
 <div class="two-column" markdown="1">
 
  - [API reference](http://docs.oracle.com/javaee/1.4/api/javax/jms/package-summary.html)
- - [Using the Qpid JMS AMQP 0-x - AMQP 0-10]({{current_jms_amqp_0_x_release_url}}/jms-amqp-0-10-book/index.html)
- - [Using the Qpid JMS AMQP 0-x - AMQP 0-9-1, 0-9, 0-8]({{current_jms_amqp_0_x_release_url}}/jms-amqp-0-8-book/index.html)
- - [Examples (AMQP 0-10)]({{current_jms_amqp_0_x_release_url}}/examples/index.html)
- - [Examples (AMQP 0-9-1, 0-9, 0-8)]({{current_jms_amqp_0_x_release_url}}/jms-amqp-0-8-book/JMS-Client-0-8-Examples.html)
+ - [Using the Qpid JMS AMQP 0-x - AMQP 0-10]({{final_jms_amqp_0_x_release_url}}/jms-amqp-0-10-book/index.html)
+ - [Using the Qpid JMS AMQP 0-x - AMQP 0-9-1, 0-9, 0-8]({{final_jms_amqp_0_x_release_url}}/jms-amqp-0-8-book/index.html)
+ - [Examples (AMQP 0-10)]({{final_jms_amqp_0_x_release_url}}/examples/index.html)
+ - [Examples (AMQP 0-9-1, 0-9, 0-8)]({{final_jms_amqp_0_x_release_url}}/jms-amqp-0-8-book/JMS-Client-0-8-Examples.html)
 
 </div>
 
@@ -55,20 +61,11 @@ For AMQP 1.0 and JMS 2.0 / 3.0 support, use the newer [Qpid JMS](index.html) cli
 
 ## Releases
 
- - {{current_jms_amqp_0_x_release_link}}
- - [Past releases]({{site_url}}/releases/index.html#past-releases)
-
-## Issues
-
- - [Report a bug](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=1&priority=3&components=12311389)
- - [Request an improvement](http://issues.apache.org/jira/secure/CreateIssueDetails!init.jspa?pid=12310520&issuetype=4&priority=3&components=12311389)
- - <form id="-jira-goto-form">Go to issue <input name="jira" value="QPID-"/></form>
- - [JIRA project page](http://issues.apache.org/jira/browse/QPID/component/12311389)
+ - [Archive](https://archive.apache.org/dist/qpid/jms-amqp-0-x/)
 
 ## Source code
 
  - [Browse via GitHub](https://github.com/apache/qpid-jms-amqp-0-x)
- - [Git clone URL](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git)
 
 ## Resources
 

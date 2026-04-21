@@ -46,6 +46,8 @@ they be clients, brokers or other AMQP-enabled services.  More about
 
 ## Documentation
 
+This is the documentation for the final released version.
+
 <div class="two-column" markdown="1">
 <div class="column" markdown="1">
 

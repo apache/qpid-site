@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid JMS AMQP 0-x has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid JMS AMQP 0-x 6.4.0
 
 Qpid JMS AMQP 0-x is JMS 1.1 compatible client which can speak AMQP 0-8,0-9,0-9-1 and 0-10.
@@ -57,13 +62,6 @@ The client is also available [via Maven]({{site_url}}/maven.html).
 ## More information
 
  - [All release artefacts](https://archive.apache.org/dist/qpid/jms-amqp-0-x/6.4.0)
- - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-java-client-0-x-6.4.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf/qpid-jms-amqp-0-x.git/tree/refs/tags/6.4.0)
 
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("6.4.0" === "{{current_jms_amqp_0_x_release}}") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
 </script>

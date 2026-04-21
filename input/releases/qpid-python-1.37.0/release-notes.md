@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Python has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid Python 1.37.0 Release Notes
 
 Qpid Python includes an AMQP messaging library and a suite of tests
@@ -25,7 +30,7 @@ for AMQP conformance.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
-**NOTE**: Look to [Qpid Proton](http://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
+**NOTE**: Look to [Qpid Proton](https://qpid.apache.org/proton) for Python 3 and AMQP 1.0 support.
 
 
 ## Bugs fixed

@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid Python has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Qpid Python 1.37.0
 
 Qpid Python offers a connection-oriented AMQP messaging API. More
@@ -57,13 +62,6 @@ files you download.
 
 ## More information
 
- - [Resolved issues in JIRA](https://issues.apache.org/jira/issues/?jql=project+%3D+QPID+AND+fixVersion+%3D+%27qpid-python-1.37.0%27+AND+resolution+%3D+%27fixed%27+ORDER+BY+priority+DESC)
  - [Source repository tag](https://gitbox.apache.org/repos/asf?p=qpid-python.git;a=tag;h=1.37.0)
 
-<script type="text/javascript">
-  _deferredFunctions.push(function() {
-      if ("1.37.0" === "{{current_python_release}}") {
-          _modifyCurrentReleaseLinks();
-      }
-  });
 </script>

@@ -17,6 +17,11 @@
 ;; under the License.
 ;;
 
+<div class="retired-component" markdown="1">
+**WARNING**: Qpid JMS AMQP 0-x has been retired and is no longer maintained. This page is for historic
+reference and may be stale. No new features, bug fixes, or security updates will be provided.
+</div>
+
 # Security
 
 ## AMQP 0-x JMS (AMQP 0-8, 0-9, 0-9-1, 0-10)
