@@ -1,0 +1,52 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">9.4. Handing Undeliverable Messages</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Runtime-Transaction-Timeout.html">Prev</a> </td><th width="60%" align="center">Chapter 9. Runtime</th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html">Next</a></td></tr></table><hr /></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages"></a>9.4. Handing Undeliverable Messages</h2></div></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Introduction"></a>9.4.1. Introduction</h3></div></div></div><p> Messages that cannot be delivered successfully to a consumer (for instance, because the
+   client is using a transacted session and rolls-back the transaction) can be made available on
+   the queue again and then subsequently be redelivered, depending on the precise session
+   acknowledgement mode and messaging model used by the application. This is normally desirable
+   behaviour that contributes to the ability of a system to withstand unexpected errors. However, it
+   leaves open the possibility for a message to be repeatedly redelivered (potentially indefinitely),
+   consuming system resources and preventing the delivery of other messages. Such undeliverable
+   messages are sometimes known as poison messages.</p><p>For an example, consider a stock ticker application that has been designed to consume prices
+   contained within JMS TextMessages. What if inadvertently a BytesMessage is placed onto the queue?
+   As the ticker application does not expect the BytesMessage, its processing might fail and cause it
+   to roll-back the transaction, however the default behavior of the Broker would mean that the
+   BytesMessage would be delivered over and over again, preventing the delivery of other legitimate
+   messages, until an operator intervenes and removes the erroneous message from the queue. </p><p>Qpid has maximum delivery count and dead-letter queue (DLQ) features which can be used in
+   concert to construct a system that automatically handles such a condition. These features are
+   described in the following sections.</p></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Maximum-Delivery-Count"></a>9.4.2. Maximum Delivery Count</h3></div></div></div><p> Maximum delivery count is an attribute of a queue. If a consumer application is unable to
+   process a message more than the specified number of times, then the Broker will either route the
+   message via the queue's <span class="emphasis"><em>alternate binding</em></span> (if one has been defined), or will
+   discard the message.</p><p>When using AMQP 1.0 the current delivery count of a message is available to the consuming
+   application via the <code class="literal">message-count</code> message header (exposed via the
+   <code class="literal">JMSXDeliveryCount</code> JMS message property when using JMS).  When using the
+   AMQP 0-8..0-10 protocols this information is not available.</p><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3><p> When using AMQP 0-8..0-10, in order for a maximum delivery count to be enforced, the consuming application
+    <span class="emphasis"><em>must</em></span> call <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#rollback()" target="_top">Session#rollback()</a> (or <a class="link" href="http://docs.oracle.com/javaee/6/api/javax/jms/Session.html#recover()" target="_top">Session#recover()</a> if the session is not transacted). It is during the Broker's
+    processing of Session#rollback() (or Session#recover()) that if a message has been seen
+    at least the maximum number of times then it will move the message to the DLQ or discard the
+    message. If the consuming application fails in another manner, for instance, closes the connection, the
+    message will not be re-routed and consumer application will see the same poison message again
+    once it reconnects.</p><p> If the consuming application is using Qpid JMS Client 0-x and using AMQP 0-8, 0-9, or 0-9-1
+    protocols, it is necessary to set the client system property <code class="varname">qpid.reject.behaviour</code> or
+    connection or binding URL option <code class="varname">rejectbehaviour</code> to the value <code class="literal">server</code>.</p></div></div><div class="section"><div class="titlepage"><div><div><h3 class="title"><a id="Java-Broker-Runtime-Handling-Undeliverable-Messages-Dead-Letter-Queues"></a>9.4.3. Alternate Binding</h3></div></div></div><p>Once the maximum delivery count is exceeded, if the queue has an <code class="literal">alternateBinding</code>
+    specified, the Broker automatically routes the message via the alternate binding.  The alternate binding
+    would normally specify a queue designated for that purpose of receiving the undeliverable messages.
+    By convention such queues are known as dead-letter queues or simply DLQs.</p><p>It is possible to configure the broker to automatically default a DLQ for every queue created.  To do this
+    one can set the context variable <code class="varname">queue.defaultAlternateBinding</code> at the Virtual Host (or above)
+    level.  For example, by setting the value to <code class="literal">{\"destination\": \"$${this:name}_DLQ\"}</code>
+    a new queue <span class="emphasis"><em>exampleQueue</em></span> will default to having an alternate binding to
+    <span class="emphasis"><em>exampleQueue_DLQ</em></span>.  To avoid error this should be combined with setting a node auto creation
+    policy on the VirtualHost, so that such DLQs are automatically created, e.g. </p><pre class="screen">
+   "nodeAutoCreationPolicies" : [ {
+   "pattern" : ".*_DLQ",
+   "nodeType" : "Queue",
+   "attributes" : {
+   "alternateBinding" : ""
+   },
+   "createdOnPublish" : true,
+   "createdOnConsume" : true
+   } ]
+  </pre><div class="note" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Note</h3>For the autocreated DLQs it is important to override the default alternate binding, as above, else the creation of an
+    infinite chain of DLQs for DLQs will be attempted.</div><div class="caution" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Avoid excessive queue depth</h3><p>Applications making use of DLQs <span class="emphasis"><em>should</em></span> make provision for the frequent
+    examination of messages arriving on DLQs so that both corrective actions can be taken to resolve
+    the underlying cause and organise for their timely removal from the DLQ. Messages on DLQs
+    consume system resources in the same manner as messages on normal queues so excessive queue
+    depths should not be permitted to develop.</p></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Runtime-Transaction-Timeout.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="Java-Broker-Runtime.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Runtime-Close-Connection-When-No-Route.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">9.3. Transaction Timeout </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 9.5. Closing client connections on unroutable mandatory messages</td></tr></table></div></div>
