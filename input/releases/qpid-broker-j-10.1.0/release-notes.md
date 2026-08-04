@@ -25,7 +25,11 @@ and forwards messages using AMQP.
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+See also the [Broker-J security page]({{site_url}}/components/broker-j/security.html) for issues addressed in this release.
+
 ## New features and improvements
+
+This release adds support for Java 25.
 
  - [QPID-8013](https://issues.apache.org/jira/browse/QPID-8013) - [Broker-J] Reduce footprint of AMQP 1.0 protocol objects
  - [QPID-8706](https://issues.apache.org/jira/browse/QPID-8706) - [Broker-J] Move AMQP-1.0 symbols declarations to a utility class
@@ -52,5 +56,3 @@ documentation, see the [release overview](index.html).
  - [QPID-8745](https://issues.apache.org/jira/browse/QPID-8745) - [Broker-J] Bump caffeine dependency to the version 3.2.4
  - [QPID-8746](https://issues.apache.org/jira/browse/QPID-8746) - [Broker-J] Bump hikaricp dependency to the version 7.1.0
  - [QPID-8747](https://issues.apache.org/jira/browse/QPID-8747) - [Broker-J] Bump logback-gelf dependency to the version 6.1.2
-
-

@@ -29,6 +29,13 @@
 | [CVE-2018-1298]({{site_url}}/cves/CVE-2018-1298.html) | Important | 7.0.0 | 7.0.1 | Denial of Service |
 | [CVE-2018-8030]({{site_url}}/cves/CVE-2018-8030.html) | Important | 7.0.0, 7.0.1, 7.0.2, 7.0.3 and 7.0.4 | 7.0.5 | Denial of Service |
 | [CVE-2019-0200]({{site_url}}/cves/CVE-2019-0200.html) | Important | 6.0.0, 6.0.1, 6.0.2, 6.0.3, 6.0.4, 6.0.5, 6.0.6, 6.0.7, 6.0.8, 6.1.0, 6.1.1, 6.1.2, 6.1.3, 6.1.4, 6.1.5, 6.1.6, 6.1.7, 7.0.0, 7.0.1, 7.0.2, 7.0.3, 7.0.4, 7.0.5, 7.0.6 and 7.1.0 | 7.0.7, 7.1.1 | Denial of Service |
+| [CVE-2026-68060]({{site_url}}/cves/CVE-2026-68060.html) | Important | 10.0.1 and earlier | 10.1.0 | Type size/count handling can lead to excessive allocation pre-authentication |
+| [CVE-2026-68073]({{site_url}}/cves/CVE-2026-68073.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded type nesting can lead to pre-authentication stack overflow |
+| [CVE-2026-68074]({{site_url}}/cves/CVE-2026-68074.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded symbol value caching can lead to pre-authentication resource exhaustion |
+| [CVE-2026-68075]({{site_url}}/cves/CVE-2026-68075.html) | Important | 10.0.1 and earlier | 10.1.0 | Incoming session flow control window can be exceeded |
+| [CVE-2026-68077]({{site_url}}/cves/CVE-2026-68077.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded disposition range handling can lead to denial of service |
+| [CVE-2026-68078]({{site_url}}/cves/CVE-2026-68078.html) | Important | 10.0.1 and earlier | 10.1.0 | Unable to govern the maximum number of transfer frames per incoming delivery |
+| [CVE-2026-68080]({{site_url}}/cves/CVE-2026-68080.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded echo flow responses can lead to denial of service |
 
 
 See the main [security]({{site_url}}/security.html) page for general
