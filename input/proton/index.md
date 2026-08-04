@@ -99,6 +99,8 @@ platform, environment, or language. More about
 
  - [Security](security.html)
  - [Security - Proton-J](security-j.html)
+ - [Security - Proton-J2](security-j2.html)
+ - [Security - Proton-Dotnet](security-dotnet.html)
  - [Contributing to Proton](submitting-patches.html)
  - [Proton wiki pages](https://cwiki.apache.org/confluence/display/qpid/proton)
 

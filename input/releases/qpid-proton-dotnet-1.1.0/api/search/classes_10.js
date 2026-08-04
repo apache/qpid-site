@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['unknowndescribedtype_0',['UnknownDescribedType',['../classApache_1_1Qpid_1_1Proton_1_1Types_1_1UnknownDescribedType.html',1,'Apache::Qpid::Proton::Types']]],
+  ['unknowndescribedtypedecoder_1',['UnknownDescribedTypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1UnknownDescribedTypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders']]],
+  ['unknowndescribedtypeencoder_2',['UnknownDescribedTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1UnknownDescribedTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders']]],
+  ['unmodifiablelinkcreditstate_3',['UnmodifiableLinkCreditState',['../classApache_1_1Qpid_1_1Proton_1_1Engine_1_1Implementation_1_1UnmodifiableLinkCreditState.html',1,'Apache::Qpid::Proton::Engine::Implementation']]],
+  ['unsettledbucket_4',['UnsettledBucket',['../classApache_1_1Qpid_1_1Proton_1_1Utilities_1_1UnsettledDictionary_1_1UnsettledBucket.html',1,'Apache::Qpid::Proton::Utilities::UnsettledDictionary']]],
+  ['unsettleddictionary_5',['UnsettledDictionary',['../classApache_1_1Qpid_1_1Proton_1_1Utilities_1_1UnsettledDictionary.html',1,'Apache::Qpid::Proton::Utilities']]],
+  ['unsettleddictionary_3c_20apache_3a_3aqpid_3a_3aproton_3a_3aengine_3a_3aimplementation_3a_3aprotonincomingdelivery_20_3e_6',['UnsettledDictionary&lt; Apache::Qpid::Proton::Engine::Implementation::ProtonIncomingDelivery &gt;',['../classApache_1_1Qpid_1_1Proton_1_1Utilities_1_1UnsettledDictionary.html',1,'Apache::Qpid::Proton::Utilities']]],
+  ['unsettleddictionary_3c_20apache_3a_3aqpid_3a_3aproton_3a_3aengine_3a_3aimplementation_3a_3aprotonoutgoingdelivery_20_3e_7',['UnsettledDictionary&lt; Apache::Qpid::Proton::Engine::Implementation::ProtonOutgoingDelivery &gt;',['../classApache_1_1Qpid_1_1Proton_1_1Utilities_1_1UnsettledDictionary.html',1,'Apache::Qpid::Proton::Utilities']]],
+  ['unsignedbytetypedecoder_8',['UnsignedByteTypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedByteTypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedbytetypeencoder_9',['UnsignedByteTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1Primitives_1_1UnsignedByteTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders::Primitives']]],
+  ['unsignedinteger0typedecoder_10',['UnsignedInteger0TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedInteger0TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedinteger32typedecoder_11',['UnsignedInteger32TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedInteger32TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedinteger8typedecoder_12',['UnsignedInteger8TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedInteger8TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedintegertypeencoder_13',['UnsignedIntegerTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1Primitives_1_1UnsignedIntegerTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders::Primitives']]],
+  ['unsignedlong0typedecoder_14',['UnsignedLong0TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedLong0TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedlong64typedecoder_15',['UnsignedLong64TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedLong64TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedlong8typedecoder_16',['UnsignedLong8TypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedLong8TypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedlongtypeencoder_17',['UnsignedLongTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1Primitives_1_1UnsignedLongTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders::Primitives']]],
+  ['unsignedshorttypedecoder_18',['UnsignedShortTypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UnsignedShortTypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['unsignedshorttypeencoder_19',['UnsignedShortTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1Primitives_1_1UnsignedShortTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders::Primitives']]],
+  ['uuidtypedecoder_20',['UuidTypeDecoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1Primitives_1_1UuidTypeDecoder.html',1,'Apache::Qpid::Proton::Codec::Decoders::Primitives']]],
+  ['uuidtypeencoder_21',['UuidTypeEncoder',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Encoders_1_1Primitives_1_1UuidTypeEncoder.html',1,'Apache::Qpid::Proton::Codec::Encoders::Primitives']]]
+];

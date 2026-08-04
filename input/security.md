@@ -33,6 +33,8 @@ Qpid components are detailed at:
  - [JMS client]({{site_url}}/components/jms/security.html)
  - [Proton]({{site_url}}/proton/security.html)
  - [Proton-J]({{site_url}}/proton/security-j.html)
+ - [Proton-Dotnet]({{site_url}}/proton/security-dotnet.html)
+ - [ProtonJ2]({{site_url}}/proton/security-j2.html)
 </section>
 </div>
  

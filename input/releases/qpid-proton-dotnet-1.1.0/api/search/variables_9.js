@@ -1,0 +1,5 @@
+var searchData=
+[
+  ['unknowndescribedtypecachelimit_0',['unknowndescribedtypecachelimit',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1ProtonDecoder.html#aa305a17ab5a44ff95d4221f12da9a812',1,'Apache.Qpid.Proton.Codec.Decoders.ProtonDecoder.UnknownDescribedTypeCacheLimit'],['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1ProtonStreamDecoder.html#a2161503c2afc47bdd40abc3e5ba3ccdb',1,'Apache.Qpid.Proton.Codec.Decoders.ProtonStreamDecoder.UnknownDescribedTypeCacheLimit']]],
+  ['unknowndescribedtypedescriptorsizelimit_1',['unknowndescribedtypedescriptorsizelimit',['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1ProtonDecoder.html#aed29b850a4a24669c465d4f11804e8d4',1,'Apache.Qpid.Proton.Codec.Decoders.ProtonDecoder.UnknownDescribedTypeDescriptorSizeLimit'],['../classApache_1_1Qpid_1_1Proton_1_1Codec_1_1Decoders_1_1ProtonStreamDecoder.html#a964c534ba45c7b9a0fcc9975604deee7',1,'Apache.Qpid.Proton.Codec.Decoders.ProtonStreamDecoder.UnknownDescribedTypeDescriptorSizeLimit']]]
+];
