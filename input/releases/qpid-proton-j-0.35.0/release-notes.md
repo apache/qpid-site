@@ -25,10 +25,11 @@ about [Qpid Proton]({{site_url}}/proton/index.html).
 For more information about this release, including download links and
 documentation, see the [release overview](index.html).
 
+See also the [Proton-J security page]({{site_url}}/proton/security-j.html) for issues addressed in this release.
 
 ## New features and improvements
 
- - [PROTON-2609](https://issues.apache.org/jira/browse/PROTON-2609) - [proton-j] Remove unnecessary ByteBuffer slices and duplicates from the codec 
+ - [PROTON-2609](https://issues.apache.org/jira/browse/PROTON-2609) - Remove unnecessary ByteBuffer slices and duplicates from the codec
  - [PROTON-2943](https://issues.apache.org/jira/browse/PROTON-2943) - Improve some default settings
 
 ## Tasks
