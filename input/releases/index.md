@@ -40,9 +40,9 @@ the
 ## Past releases
 
 <div class="two-column" markdown="1">
- - [Qpid Broker-J 10.0.1](qpid-broker-j-10.0.1/index.html), December 2025
  - [Qpid proton-dotnet 1.0.0](qpid-proton-dotnet-1.0.0/index.html), January 2026
  - [Qpid ProtonJ2 1.1.0](qpid-protonj2-1.1.0/index.html), January 2026 
+ - [Qpid Broker-J 10.0.1](qpid-broker-j-10.0.1/index.html), December 2025
  - [Qpid Broker-J 10.0.0](qpid-broker-j-10.0.0/index.html), October 2025
  - [Qpid JMS 2.9.0](qpid-jms-2.9.0/index.html), September 2025
  - [Qpid JMS 1.15.0](qpid-jms-1.15.0/index.html), September 2025
