@@ -29,7 +29,7 @@ jms_release = _Release(site_url, "Qpid JMS", "qpid-jms", "2.11.0")
 other_jms_release = "1.17.0"
 proton_release = _Release(site_url, "Qpid Proton", "qpid-proton", "0.40.0")
 proton_j_release = _Release(site_url, "Qpid Proton-J", "qpid-proton-j", "0.35.0")
-protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.2.0")
+protonj2_release = _Release(site_url, "Qpid ProtonJ2", "qpid-protonj2", "1.3.0")
 proton_dotnet_release = _Release(site_url, "Qpid Proton DotNet", "qpid-proton-dotnet", "1.1.0")
 
 current_broker_j_release = broker_j_release.number
