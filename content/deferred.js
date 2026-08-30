@@ -233,20 +233,6 @@ function _updatePathNavigation() {
     }
 }
 
-var _apacheFeather = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAOCAYAAABQFS4BAAAFnElEQVRIx83S22ukdx3H8e/v8Pyew5xnsrMJSZNsmm4PW91uL5ZWhIK9EA/Fq8Uiite9EuzVFhbxoqvd7kWLVEWEuioqpQgVtmpFssZtabpR9xCb7uQwmexMspPM5JmZ5/w8v9/v64UtiCi2StX3X/CCz4fMz8w8vN5qLSGihnf7ypkzdw333Eeaq43f/G7xtRb8H0bOnz//+He/9cLjCHpZEfL9ZrN5+9wLL55GUJ/f2W7B3M+WnzZRfqmAukA0jgpVfu1NHF1dGHZ+abbnswVckP8T+Orq6tEwjJ5/9plvlv5wZflO1PriY6dOYcwKX6xWyli/uLUaRf2jdwRUTBGl+kL6PA5HlVGQ2zNVK7T0WlJhr1wW6hcvLizE/zU4IsLS0lKxVjv09dXVP3/5RxcuHNy4dn18/r77LCIKOBFN+XWds4uQcuEOCKOZOr6b8O6E0OV+AGUtVd+I99JS4ks3XWncgctqlv36qe+9dvVDh79Xo9E4ufzH61/b6e5/YnHxEvY7bYPGNs5Wj+s8q4GdY7TkR8gxFGNdATiZKifwyHTXBZnPqZR4EScq9aNQxfPkem8YvVPhxhu/Pch+9YM/LQw+NPgTp0/PVuzydxTwh6M4sk9gLrj51nZxhwWqPdwgeXFYVcQkpdqgRlbmDhI1z3sqsyjPp4GquSMSCIrTUUATJlJSSKMeCePJ7TTr5OTQrBsH7JAY9kDK3n504WK7/ebi2tr+fww/e/bcZ6rj489YljNj2zYUnv6x50VpXRoFFGmFL9QTKR2qtocbdDAI+HhlBkp0QumUkgckI/0q6OPuEHrlHFaTEeaTGHUA3MwzXXB9Gtg69axcaoYBt+NwEN7N/L0idvsr2TtpPrnCHilcOn32lfUPDG82mx/dat366sR4XW9ttUz9k1c/LV5fLylb4DGX0x/OjeuwMh0DoKF9yg/EjhrpHu4MtlgYKFIvTslJo0oTXcGTI5f2ihVdFEBEGGhOJB3latqWrprrBwa3Ez0kDl5lR8jd5oZv0CAd21RsO99ruyet55e8Wy+/9NKK/77g7/78HinlpmmaH9Fan+ldfvVT8Po1VlpL2VVq60IM6TDTzIkOGe44xBEXYOuEbViCeSyRcerhXtBlu26blewxnTcPY44yQLRBgca52KYz6BMTDL1sztM7jU00MiWjxOEP8S5WICK7EtrJgcvg0ULXOZrnmxitdQ+it/3B8LlvfPv37j+E/33r6xvnR8POF8JOozh6e004FzehdluzQbFM0VRxzAUSRJIhwX6GlOdySgJhocH5fhqgb9kqIgAcQgiYAXE2Yv1gQJRCYMjJlEI5yh/GIzo05oNMdUSRTSovPTaMhHvqcBpMUmIWUMkMItRhZ9f1fvrEkz8/9y/hf12heZxz/KTS+nO3b63cG/VvOvLyBoOmr8enLOoveiT3MQfxUkC6JigClDAF1NAKUuFgGSg2c4bUjINODbZPJF3nd9H7RUdFQUgaloVjmYcDs05M1YWBClFUGZs8kqpqxQGDE0oBkHOiewM/VFl87X3B/7Zms/mYUvjZKPIe8lu7VSn2S8mVthGzgCIJCH2jD3yoSBpr4tQYhAQwvydJDYnuGEwxhcxWSPYYp9IXMCdivWMbmACiiRrUkLKyleq+JVBMC6ofFbpUNQEVAEpJGzsuuAMVfWD4e7XbbdtPknsp4oME8R4AOg2g61HgV73RIGdorr1GK+/vbrPEyuxiMyJwgsvkUo+jDgxdtzANU8PeylT+42PS24iQFBixcijkyInh/kqaBcpwWiM4eNAE7gjl5OuqUDsWT0zO7P7b8H/WjRs3Koh4qFwuZ1mWPYAIJwCwCAA5JKREEPJKqRnKmUcQbSCEESAeAqSISAmBKiKuEIAuALUQ9BglBBExopSuUkpfnp2dvfkX6a5m0ZqSUXAAAAAASUVORK5CYII="
-
-function _updateApacheNavigation() {
-    var elem = document.getElementById("-apache-feather");
-
-    if (!elem) {
-        return;
-    }
-
-    _log("Updating Apache navigation");
-
-    elem.src = _apacheFeather;
-}
-
 function _getHeadings() {
     var tags = ["h2", "h3", "h4", "h5", "h6"];
     var headings = [];
@@ -455,7 +441,6 @@ if (path === "/index.html" || path === "/") {
     elem.style.display = "none";
 } else {
     _updatePathNavigation();
-    _updateApacheNavigation();
     _updateHeadingSelection();
     _addHeadingAnchors();
     _focusJiraSearchForm();
