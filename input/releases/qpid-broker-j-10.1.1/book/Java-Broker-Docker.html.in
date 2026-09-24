@@ -1,0 +1,39 @@
+<div class="docbook"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 12. Docker Images</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="Java-Broker-Appendix-BDB-HA-initial-configuration-creation.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="Java-Broker-Docker-Running-The-Container.html">Next</a></td></tr></table><hr /></div><div class="chapter"><div class="titlepage"><div><div><h1 class="title"><a id="Java-Broker-Docker"></a>Chapter 12. Docker Images</h1></div></div></div><div class="toc"><p><strong>Table of Contents</strong></p><dl class="toc"><dt><span class="section"><a href="Java-Broker-Docker.html#Java-Broker-Docker-Building-Image">12.1. Building Container Image</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Running-The-Container.html">12.2. Running the Container</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Docker-Running-The-Container.html#Java-Broker-Docker-Container-Start">12.2.1. Container Start</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Running-The-Container.html#Java-Broker-Docker-Container-Volume">12.2.2. Container Volume</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Running-The-Container.html#Java-Broker-Docker-Container-Stop">12.2.3. Stopping the Container</a></span></dt></dl></dd><dt><span class="section"><a href="Java-Broker-Docker-Broker-Users.html">12.3. Broker Users</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Broker-Customization.html">12.4. Broker Customization</a></span></dt><dd><dl><dt><span class="section"><a href="Java-Broker-Docker-Broker-Customization.html#Java-Broker-Docker-Broker-Customization-Exchanges">12.4.1. Exchanges</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Broker-Customization.html#Java-Broker-Docker-Broker-Customization-Queues">12.4.2. Queues</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Broker-Customization.html#Java-Broker-Docker-Broker-Customization-Users">12.4.3. Users</a></span></dt><dt><span class="section"><a href="Java-Broker-Docker-Broker-Customization.html#Java-Broker-Docker-Broker-Customization-Override">12.4.4. Overriding Broker Configuration</a></span></dt></dl></dd></dl></div><div class="section"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a id="Java-Broker-Docker-Building-Image"></a>12.1. Building Container Image</h2></div></div></div><p>
+            To use an official Apache release in your image run the following command from the qpid-docker directory where
+            &lt;QPID_RELEASE_VERSION&gt; is the release version you wish to use (e.g. 9.1.0):
+        </p><p>
+            </p><pre class="programlisting">
+                cd qpid-docker
+            </pre><p>
+        </p><p>
+            </p><pre class="programlisting">
+                docker-build.sh --release &lt;QPID_RELEASE_VERSION&gt;
+            </pre><p>
+        </p><p>
+            This will download the Qpid Broker-J release and copy all the files necessary to build the pre-configured
+            Docker image and provide you with additional instructions. Follow these instructions to finish building
+            the image you want based on the provided Docker file or even one of your own.
+        </p><p>
+            If you would rather prefer to build the docker image from local Broker-J distribution, build the parent
+            project using the command
+        </p><p>
+            </p><pre class="programlisting">
+                mvn clean install -DskipTests=true
+            </pre><p>
+        </p><p>
+            Navigate to the module 'qpid-docker':
+        </p><p>
+            </p><pre class="programlisting">
+                cd qpid-docker
+            </pre><p>
+        </p><p>
+            Execute the command:
+        </p><p>
+            </p><pre class="programlisting">
+                docker-build.sh --local-dist-path &lt;PATH_TO_LOCAL_QPID_DISTRIBUTION&gt;
+            </pre><p>
+        </p><p>
+            This will copy all the files necessary to build the pre-configured Docker image and provide you with additional
+            instructions. Follow these instructions to finish building the image you want based on one of the provided
+            Docker file or even one of your own.
+        </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="Java-Broker-Appendix-BDB-HA-initial-configuration-creation.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="Java-Broker-Docker-Running-The-Container.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">H.2. Creation of BDB HA group using an initial configuration. </td><td width="20%" align="center"><a accesskey="h" href="Apache-Qpid-Broker-J-Book.html">Home</a></td><td width="40%" align="right" valign="top"> 12.2. Running the Container</td></tr></table></div></div>
