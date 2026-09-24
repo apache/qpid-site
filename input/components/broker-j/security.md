@@ -36,6 +36,12 @@
 | [CVE-2026-68077]({{site_url}}/cves/CVE-2026-68077.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded disposition range handling can lead to denial of service |
 | [CVE-2026-68078]({{site_url}}/cves/CVE-2026-68078.html) | Important | 10.0.1 and earlier | 10.1.0 | Unable to govern the maximum number of transfer frames per incoming delivery |
 | [CVE-2026-68080]({{site_url}}/cves/CVE-2026-68080.html) | Important | 10.0.1 and earlier | 10.1.0 | Unbounded echo flow responses can lead to denial of service |
+| [CVE-2026-92550]({{site_url}}/cves/CVE-2026-92550.html) | Important | 10.1.0 and earlier | 10.1.1 | Type size/count handling can lead to excessive allocation pre-authentication in the AMQP 0-8/0-9/0-9-1 decoder |
+| [CVE-2026-92560]({{site_url}}/cves/CVE-2026-92560.html) | Important | 10.1.0 and earlier | 10.1.1 | Type size/count handling can lead to excessive allocation pre-authentication in the AMQP 0-10 decoder |
+| [CVE-2026-92564]({{site_url}}/cves/CVE-2026-92564.html) | Important | 10.1.0 and earlier | 10.1.1 | Unbounded type nesting can lead to stack overflow pre-authentication in AMQP 0-8/0-9/0-9-1 field-table processing |
+| [CVE-2026-92573]({{site_url}}/cves/CVE-2026-92573.html) | Important | 10.1.0 and earlier | 10.1.1 | Uncontrolled resource consumption during AMQP delivery decompression, message conversion and HTTP management JSON rendering |
+| [CVE-2026-92608]({{site_url}}/cves/CVE-2026-92608.html) | Moderate | 10.1.0 and earlier | 10.1.1 | Incomplete property conversion handling from AMQP 1.0 to AMQP 0-10 |
+| [CVE-2026-92609]({{site_url}}/cves/CVE-2026-92609.html) | Important | 10.1.0 and earlier | 10.1.1 | Missing HTTP-session renewal after successful authentication |
 
 
 See the main [security]({{site_url}}/security.html) page for general
