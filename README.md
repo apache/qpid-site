@@ -8,6 +8,8 @@
  - GNU Make
  - Python 3
 
+Note that the release scripts have their own dependencies which are noted in the section below.
+
 ## Project layout
 
     Makefile                      # Defines the make targets
