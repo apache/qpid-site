@@ -24,6 +24,10 @@
 | [CVE-2016-4467]({{site_url}}/cves/CVE-2016-4467.html) | Medium | 0.8 through 0.13.0 inclusive | 0.13.1 and later | Failure to verify that the server host name matches the certificate host name on Windows |
 | [CVE-2016-2166]({{site_url}}/cves/CVE-2016-2166.html) | Moderate | 0.9 through 0.12.0 inclusive | 0.12.1 and later | Python bindings silently ignore request for amqps if SSL/TLS not supported |
 | [CVE-2019-0223]({{site_url}}/cves/CVE-2019-0223.html) | Important | 0.9 through 0.27.0 inclusive | 0.27.1 and later | TLS Man in the Middle Vulnerability |
+| [CVE-2026-105031]({{site_url}}/cves/CVE-2026-105031.html) | Important | versions through 0.40.0 inclusive | 0.41.1 and later | TLS implementation adds to the existing trusted system trust anchors |
+| [CVE-2026-105042]({{site_url}}/cves/CVE-2026-105042.html) | Important | versions through 0.40.0 inclusive | 0.41.1 and later | Unbounded recursion in parsing AMQP message bodies can lead to crash |
+| [CVE-2026-114230]({{site_url}}/cves/CVE-2026-114230.html) | Important | versions through 0.40.0 inclusive | 0.41.1 and later | Regular AMQP frames can be sent as SASL frame |
+| [CVE-2026-115942]({{site_url}}/cves/CVE-2026-115942.html) | Low | versions through 0.40.0 inclusive | 0.41.1 and later | Verifying non-compliant TLS wildcard cert can cause stack buffer overflow read |
 
 See the main [Security]({{site_url}}/security.html) page for general
 information and details for other components.
